@@ -1,0 +1,6 @@
+#cmakedefine VERSION "@VERSION@"
+#cmakedefine HAVE_RPKG
+#cmakedefine RSCRIPT_EXEC "@RSCRIPT_EXEC@"
+#cmakedefine READ_MAXLEN @READ_MAXLEN@
+#cmakedefine RMD_QUALITY_REPORT "@RMD_QUALITY_REPORT@"
+#cmakedefine RMD_SUMMARY_REPORT "@RMD_SUMMARY_REPORT@"

@@ -1,0 +1,80 @@
+\hypertarget{fopen__gen_8h}{\section{include/fopen\+\_\+gen.h File Reference}
+\label{fopen__gen_8h}\index{include/fopen\+\_\+gen.\+h@{include/fopen\+\_\+gen.\+h}}
+}
+
+
+Uncompress/compress input/output files using pipes.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+Include dependency graph for fopen\+\_\+gen.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{fopen__gen_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{fopen__gen_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{fopen__gen_8h_a2469c53816dc077f9deefb187ffcabf3}{\#define {\bfseries R\+E\+A\+D\+\_\+\+E\+N\+D}~0}\label{fopen__gen_8h_a2469c53816dc077f9deefb187ffcabf3}
+
+\item 
+\hypertarget{fopen__gen_8h_a2efd706d915e621e5e18b3f0803c4ed2}{\#define {\bfseries W\+R\+I\+T\+E\+\_\+\+E\+N\+D}~1}\label{fopen__gen_8h_a2efd706d915e621e5e18b3f0803c4ed2}
+
+\item 
+\hypertarget{fopen__gen_8h_a8b390f7305d3e2e82316936cde24101c}{\#define {\bfseries P\+E\+R\+M\+I\+S\+S\+I\+O\+N\+S}~0640}\label{fopen__gen_8h_a8b390f7305d3e2e82316936cde24101c}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{fopen__gen_8h_ae59755703d84f781f127762acf2deb6d}{int {\bfseries set\+Cloexec} (int fd)}\label{fopen__gen_8h_ae59755703d84f781f127762acf2deb6d}
+
+\item 
+F\+I\+L\+E $\ast$ \hyperlink{fopen__gen_8h_ae03fc1b9180f740dcb577fdb00072fb3}{fopen\+\_\+gen} (const char $\ast$path, const char $\ast$mode)
+\begin{DoxyCompactList}\small\item\em Generalized fopen function. fopen\+\_\+gen is to be used as fopen. Can be used in read and in write mode. When used in read mode with a compressed extension, the file will be first decompressed and then read. When used in write mode with a compressed extension, the output will be compressed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Uncompress/compress input/output files using pipes. 
+
+Hook the standard file opening functions, open, fopen and fopen64. If the extension of the file being opened indicates the file is compressed (.gz, .bz2, .xz), when opening in the reading mode a pipe to a program is opened that decompresses that file (gunzip, bunzip2 or xzdec) and return a handle to the open pipe. When opening in the writing mode (only for .gz, .bam), a pipe to a program is opened that compresses the output.
+
+\begin{DoxyAuthor}{Author}
+Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+com} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+03.\+08.\+2017 
+\end{DoxyDate}
+\begin{DoxyWarning}{Warning}
+vfork vs fork to be checked! 
+\end{DoxyWarning}
+\begin{DoxyNote}{Note}
+-\/ original copyright note -\/ (reading mode, original C++ code) author\+: Shaun Jackman \href{mailto:sjackman@bcgsc.ca}{\tt sjackman@bcgsc.\+ca}, \href{https://github.com/bcgsc,}{\tt https\+://github.\+com/bcgsc,} filename\+: Uncompress.\+cpp 
+\end{DoxyNote}
+
+
+\subsection{Function Documentation}
+\hypertarget{fopen__gen_8h_ae03fc1b9180f740dcb577fdb00072fb3}{\index{fopen\+\_\+gen.\+h@{fopen\+\_\+gen.\+h}!fopen\+\_\+gen@{fopen\+\_\+gen}}
+\index{fopen\+\_\+gen@{fopen\+\_\+gen}!fopen\+\_\+gen.\+h@{fopen\+\_\+gen.\+h}}
+\subsubsection[{fopen\+\_\+gen}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+L\+E$\ast$ fopen\+\_\+gen (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{path, }
+\item[{const char $\ast$}]{mode}
+\end{DoxyParamCaption}
+)}}\label{fopen__gen_8h_ae03fc1b9180f740dcb577fdb00072fb3}
+
+
+Generalized fopen function. fopen\+\_\+gen is to be used as fopen. Can be used in read and in write mode. When used in read mode with a compressed extension, the file will be first decompressed and then read. When used in write mode with a compressed extension, the output will be compressed. 
+
+\begin{DoxyReturn}{Returns}
+a F\+I\+L\+E pointer 
+\end{DoxyReturn}

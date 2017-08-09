@@ -1,0 +1,8 @@
+<map id="src/Qreport.c" name="src/Qreport.c">
+<area shape="rect" id="node6" href="$init__Qreport_8h.html" title="Header file: help dialog for Qreport and initialization of the command line arguments. " alt="" coords="225,80,325,107"/>
+<area shape="rect" id="node8" href="$fopen__gen_8h.html" title="Uncompress/compress input/output files using pipes. " alt="" coords="5,80,99,107"/>
+<area shape="rect" id="node9" href="$fq__read_8h.html" title="fastq entries manipulations (read/write) " alt="" coords="439,155,515,181"/>
+<area shape="rect" id="node11" href="$stats__info_8h.html" title="Construct the quality report variables and update them. " alt="" coords="349,80,440,107"/>
+<area shape="rect" id="node13" href="$Rcommand__Qreport_8h.html" title="get Rscript command for Qreport " alt="" coords="689,80,839,107"/>
+<area shape="rect" id="node7" href="$defines_8h.html" title="Macro definitions. " alt="" coords="248,155,323,181"/>
+</map>

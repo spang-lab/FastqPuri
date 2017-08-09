@@ -1,0 +1,126 @@
+\hypertarget{structstatsinfo}{\section{statsinfo Struct Reference}
+\label{structstatsinfo}\index{statsinfo@{statsinfo}}
+}
+
+
+stores info needed to create the summary graphs  
+
+
+
+
+{\ttfamily \#include $<$stats\+\_\+info.\+h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{structstatsinfo_a90c9a180632378e22ab9b0358daf3f0d}{read\+\_\+len}
+\item 
+int \hyperlink{structstatsinfo_abcfe8e12737ac99b724d4d4407204ec8}{ntiles}
+\item 
+int \hyperlink{structstatsinfo_a8f99f5ac1c3643e6ad59f124c11676e2}{n\+Q}
+\item 
+int \hyperlink{structstatsinfo_a6b33794a27827b8e2ea2b45a95f937d9}{min\+Q}
+\item 
+int \hyperlink{structstatsinfo_a740378fa01d92f6e0b2c50a26889fefd}{tile\+\_\+pos}
+\item 
+int \hyperlink{structstatsinfo_a2f01e91b444793507cb4173582e215bb}{nreads}
+\item 
+int \hyperlink{structstatsinfo_a14bb0b9848f2301718833bd2130683b7}{reads\+\_\+w\+N}
+\item 
+int \hyperlink{structstatsinfo_ae3c83d12e46748f3a0de4628b5e48068}{sz\+\_\+low\+Q\+\_\+\+A\+C\+G\+T\+\_\+tile}
+\item 
+int \hyperlink{structstatsinfo_a4e1223289cbb8f609d522747d4b47b54}{sz\+\_\+\+A\+C\+G\+T\+\_\+tile}
+\item 
+int \hyperlink{structstatsinfo_a5f0e812f7a2213cb57a79c8110b7a02e}{sz\+\_\+reads\+\_\+\+Mlow\+Q}
+\item 
+int \hyperlink{structstatsinfo_aceed3737e42259fa6e7438dc185e587f}{sz\+\_\+\+Q\+Pos\+Tile\+\_\+table}
+\item 
+int \hyperlink{structstatsinfo_ae95899480cc574a09163190663dd504a}{sz\+\_\+\+A\+C\+G\+T\+\_\+pos}
+\item 
+int $\ast$ \hyperlink{structstatsinfo_a25f475c79fa4d5aa1255b8c543d8a731}{tile\+\_\+tags}
+\item 
+int $\ast$ \hyperlink{structstatsinfo_a2fc74c1d7cec79d9b28b5e578d96d7a1}{lane\+\_\+tags}
+\item 
+int $\ast$ \hyperlink{structstatsinfo_a2fc7cfbe32bd01653402ff070638292b}{qual\+\_\+tags}
+\item 
+uint64\+\_\+t $\ast$ \hyperlink{structstatsinfo_ac1a8b88e2e4f486f2767072588adcd2a}{low\+Q\+\_\+\+A\+C\+G\+T\+\_\+tile}
+\item 
+uint64\+\_\+t $\ast$ \hyperlink{structstatsinfo_aa4987d17317a2d744efaa104f7a3e0b7}{A\+C\+G\+T\+\_\+tile}
+\item 
+uint64\+\_\+t $\ast$ \hyperlink{structstatsinfo_a9b58ee91e10fa9301a186ca94e68e6fb}{reads\+\_\+\+Mlow\+Q}
+\item 
+uint64\+\_\+t $\ast$ \hyperlink{structstatsinfo_af2781fc5113bab8c208921a221e2c834}{Q\+Pos\+Tile\+\_\+table}
+\item 
+uint64\+\_\+t $\ast$ \hyperlink{structstatsinfo_a315b402bd89ea205117d2fab4b26ef10}{A\+C\+G\+T\+\_\+pos}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+stores info needed to create the summary graphs 
+
+\subsection{Member Data Documentation}
+\hypertarget{structstatsinfo_a315b402bd89ea205117d2fab4b26ef10}{\index{statsinfo@{statsinfo}!A\+C\+G\+T\+\_\+pos@{A\+C\+G\+T\+\_\+pos}}
+\index{A\+C\+G\+T\+\_\+pos@{A\+C\+G\+T\+\_\+pos}!statsinfo@{statsinfo}}
+\subsubsection[{A\+C\+G\+T\+\_\+pos}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t$\ast$ statsinfo\+::\+A\+C\+G\+T\+\_\+pos}}\label{structstatsinfo_a315b402bd89ea205117d2fab4b26ef10}
+\# A, C, G, T, N per position \hypertarget{structstatsinfo_aa4987d17317a2d744efaa104f7a3e0b7}{\index{statsinfo@{statsinfo}!A\+C\+G\+T\+\_\+tile@{A\+C\+G\+T\+\_\+tile}}
+\index{A\+C\+G\+T\+\_\+tile@{A\+C\+G\+T\+\_\+tile}!statsinfo@{statsinfo}}
+\subsubsection[{A\+C\+G\+T\+\_\+tile}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t$\ast$ statsinfo\+::\+A\+C\+G\+T\+\_\+tile}}\label{structstatsinfo_aa4987d17317a2d744efaa104f7a3e0b7}
+\# A, C, G, T, N per tile, to compute the fraction of low\+Quality bases per tile and per nucleotide. \hypertarget{structstatsinfo_a2fc74c1d7cec79d9b28b5e578d96d7a1}{\index{statsinfo@{statsinfo}!lane\+\_\+tags@{lane\+\_\+tags}}
+\index{lane\+\_\+tags@{lane\+\_\+tags}!statsinfo@{statsinfo}}
+\subsubsection[{lane\+\_\+tags}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ statsinfo\+::lane\+\_\+tags}}\label{structstatsinfo_a2fc74c1d7cec79d9b28b5e578d96d7a1}
+Names of the existing tiles \hypertarget{structstatsinfo_ac1a8b88e2e4f486f2767072588adcd2a}{\index{statsinfo@{statsinfo}!low\+Q\+\_\+\+A\+C\+G\+T\+\_\+tile@{low\+Q\+\_\+\+A\+C\+G\+T\+\_\+tile}}
+\index{low\+Q\+\_\+\+A\+C\+G\+T\+\_\+tile@{low\+Q\+\_\+\+A\+C\+G\+T\+\_\+tile}!statsinfo@{statsinfo}}
+\subsubsection[{low\+Q\+\_\+\+A\+C\+G\+T\+\_\+tile}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t$\ast$ statsinfo\+::low\+Q\+\_\+\+A\+C\+G\+T\+\_\+tile}}\label{structstatsinfo_ac1a8b88e2e4f486f2767072588adcd2a}
+\# low Quality A, C, G, T, N per tile \hypertarget{structstatsinfo_a6b33794a27827b8e2ea2b45a95f937d9}{\index{statsinfo@{statsinfo}!min\+Q@{min\+Q}}
+\index{min\+Q@{min\+Q}!statsinfo@{statsinfo}}
+\subsubsection[{min\+Q}]{\setlength{\rightskip}{0pt plus 5cm}int statsinfo\+::min\+Q}}\label{structstatsinfo_a6b33794a27827b8e2ea2b45a95f937d9}
+Minimum quality threshold \hypertarget{structstatsinfo_a8f99f5ac1c3643e6ad59f124c11676e2}{\index{statsinfo@{statsinfo}!n\+Q@{n\+Q}}
+\index{n\+Q@{n\+Q}!statsinfo@{statsinfo}}
+\subsubsection[{n\+Q}]{\setlength{\rightskip}{0pt plus 5cm}int statsinfo\+::n\+Q}}\label{structstatsinfo_a8f99f5ac1c3643e6ad59f124c11676e2}
+\# possible quality values \hypertarget{structstatsinfo_a2f01e91b444793507cb4173582e215bb}{\index{statsinfo@{statsinfo}!nreads@{nreads}}
+\index{nreads@{nreads}!statsinfo@{statsinfo}}
+\subsubsection[{nreads}]{\setlength{\rightskip}{0pt plus 5cm}int statsinfo\+::nreads}}\label{structstatsinfo_a2f01e91b444793507cb4173582e215bb}
+\# reads read till current position. \hypertarget{structstatsinfo_abcfe8e12737ac99b724d4d4407204ec8}{\index{statsinfo@{statsinfo}!ntiles@{ntiles}}
+\index{ntiles@{ntiles}!statsinfo@{statsinfo}}
+\subsubsection[{ntiles}]{\setlength{\rightskip}{0pt plus 5cm}int statsinfo\+::ntiles}}\label{structstatsinfo_abcfe8e12737ac99b724d4d4407204ec8}
+\# tiles \hypertarget{structstatsinfo_af2781fc5113bab8c208921a221e2c834}{\index{statsinfo@{statsinfo}!Q\+Pos\+Tile\+\_\+table@{Q\+Pos\+Tile\+\_\+table}}
+\index{Q\+Pos\+Tile\+\_\+table@{Q\+Pos\+Tile\+\_\+table}!statsinfo@{statsinfo}}
+\subsubsection[{Q\+Pos\+Tile\+\_\+table}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t$\ast$ statsinfo\+::\+Q\+Pos\+Tile\+\_\+table}}\label{structstatsinfo_af2781fc5113bab8c208921a221e2c834}
+\# bases of a given quality per tile. \hypertarget{structstatsinfo_a2fc7cfbe32bd01653402ff070638292b}{\index{statsinfo@{statsinfo}!qual\+\_\+tags@{qual\+\_\+tags}}
+\index{qual\+\_\+tags@{qual\+\_\+tags}!statsinfo@{statsinfo}}
+\subsubsection[{qual\+\_\+tags}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ statsinfo\+::qual\+\_\+tags}}\label{structstatsinfo_a2fc7cfbe32bd01653402ff070638292b}
+Names of the existing qualities \hypertarget{structstatsinfo_a90c9a180632378e22ab9b0358daf3f0d}{\index{statsinfo@{statsinfo}!read\+\_\+len@{read\+\_\+len}}
+\index{read\+\_\+len@{read\+\_\+len}!statsinfo@{statsinfo}}
+\subsubsection[{read\+\_\+len}]{\setlength{\rightskip}{0pt plus 5cm}int statsinfo\+::read\+\_\+len}}\label{structstatsinfo_a90c9a180632378e22ab9b0358daf3f0d}
+Maximum length of a read \hypertarget{structstatsinfo_a9b58ee91e10fa9301a186ca94e68e6fb}{\index{statsinfo@{statsinfo}!reads\+\_\+\+Mlow\+Q@{reads\+\_\+\+Mlow\+Q}}
+\index{reads\+\_\+\+Mlow\+Q@{reads\+\_\+\+Mlow\+Q}!statsinfo@{statsinfo}}
+\subsubsection[{reads\+\_\+\+Mlow\+Q}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t$\ast$ statsinfo\+::reads\+\_\+\+Mlow\+Q}}\label{structstatsinfo_a9b58ee91e10fa9301a186ca94e68e6fb}
+\# reads with M(position) low\+Quality bases. \hypertarget{structstatsinfo_a14bb0b9848f2301718833bd2130683b7}{\index{statsinfo@{statsinfo}!reads\+\_\+w\+N@{reads\+\_\+w\+N}}
+\index{reads\+\_\+w\+N@{reads\+\_\+w\+N}!statsinfo@{statsinfo}}
+\subsubsection[{reads\+\_\+w\+N}]{\setlength{\rightskip}{0pt plus 5cm}int statsinfo\+::reads\+\_\+w\+N}}\label{structstatsinfo_a14bb0b9848f2301718833bd2130683b7}
+\# reads with N's found till current position \hypertarget{structstatsinfo_ae95899480cc574a09163190663dd504a}{\index{statsinfo@{statsinfo}!sz\+\_\+\+A\+C\+G\+T\+\_\+pos@{sz\+\_\+\+A\+C\+G\+T\+\_\+pos}}
+\index{sz\+\_\+\+A\+C\+G\+T\+\_\+pos@{sz\+\_\+\+A\+C\+G\+T\+\_\+pos}!statsinfo@{statsinfo}}
+\subsubsection[{sz\+\_\+\+A\+C\+G\+T\+\_\+pos}]{\setlength{\rightskip}{0pt plus 5cm}int statsinfo\+::sz\+\_\+\+A\+C\+G\+T\+\_\+pos}}\label{structstatsinfo_ae95899480cc574a09163190663dd504a}
+A\+C\+G\+T\+\_\+pos size = read\+\_\+len $\ast$ N\+\_\+\+A\+C\+G\+T \hypertarget{structstatsinfo_a4e1223289cbb8f609d522747d4b47b54}{\index{statsinfo@{statsinfo}!sz\+\_\+\+A\+C\+G\+T\+\_\+tile@{sz\+\_\+\+A\+C\+G\+T\+\_\+tile}}
+\index{sz\+\_\+\+A\+C\+G\+T\+\_\+tile@{sz\+\_\+\+A\+C\+G\+T\+\_\+tile}!statsinfo@{statsinfo}}
+\subsubsection[{sz\+\_\+\+A\+C\+G\+T\+\_\+tile}]{\setlength{\rightskip}{0pt plus 5cm}int statsinfo\+::sz\+\_\+\+A\+C\+G\+T\+\_\+tile}}\label{structstatsinfo_a4e1223289cbb8f609d522747d4b47b54}
+A\+C\+G\+T\+\_\+tile size = ntiles $\ast$ N\+A\+C\+G\+T \hypertarget{structstatsinfo_ae3c83d12e46748f3a0de4628b5e48068}{\index{statsinfo@{statsinfo}!sz\+\_\+low\+Q\+\_\+\+A\+C\+G\+T\+\_\+tile@{sz\+\_\+low\+Q\+\_\+\+A\+C\+G\+T\+\_\+tile}}
+\index{sz\+\_\+low\+Q\+\_\+\+A\+C\+G\+T\+\_\+tile@{sz\+\_\+low\+Q\+\_\+\+A\+C\+G\+T\+\_\+tile}!statsinfo@{statsinfo}}
+\subsubsection[{sz\+\_\+low\+Q\+\_\+\+A\+C\+G\+T\+\_\+tile}]{\setlength{\rightskip}{0pt plus 5cm}int statsinfo\+::sz\+\_\+low\+Q\+\_\+\+A\+C\+G\+T\+\_\+tile}}\label{structstatsinfo_ae3c83d12e46748f3a0de4628b5e48068}
+low\+Q\+\_\+\+A\+C\+G\+T\+\_\+tile size = ntiles $\ast$ N\+\_\+\+A\+C\+G\+T \hypertarget{structstatsinfo_aceed3737e42259fa6e7438dc185e587f}{\index{statsinfo@{statsinfo}!sz\+\_\+\+Q\+Pos\+Tile\+\_\+table@{sz\+\_\+\+Q\+Pos\+Tile\+\_\+table}}
+\index{sz\+\_\+\+Q\+Pos\+Tile\+\_\+table@{sz\+\_\+\+Q\+Pos\+Tile\+\_\+table}!statsinfo@{statsinfo}}
+\subsubsection[{sz\+\_\+\+Q\+Pos\+Tile\+\_\+table}]{\setlength{\rightskip}{0pt plus 5cm}int statsinfo\+::sz\+\_\+\+Q\+Pos\+Tile\+\_\+table}}\label{structstatsinfo_aceed3737e42259fa6e7438dc185e587f}
+Qpos\+Tile\+\_\+\+Table size = ntiles $\ast$ n\+Q $\ast$ read\+\_\+len \hypertarget{structstatsinfo_a5f0e812f7a2213cb57a79c8110b7a02e}{\index{statsinfo@{statsinfo}!sz\+\_\+reads\+\_\+\+Mlow\+Q@{sz\+\_\+reads\+\_\+\+Mlow\+Q}}
+\index{sz\+\_\+reads\+\_\+\+Mlow\+Q@{sz\+\_\+reads\+\_\+\+Mlow\+Q}!statsinfo@{statsinfo}}
+\subsubsection[{sz\+\_\+reads\+\_\+\+Mlow\+Q}]{\setlength{\rightskip}{0pt plus 5cm}int statsinfo\+::sz\+\_\+reads\+\_\+\+Mlow\+Q}}\label{structstatsinfo_a5f0e812f7a2213cb57a79c8110b7a02e}
+reads\+\_\+\+Mlow\+Q size = read\+\_\+len + 1 \hypertarget{structstatsinfo_a740378fa01d92f6e0b2c50a26889fefd}{\index{statsinfo@{statsinfo}!tile\+\_\+pos@{tile\+\_\+pos}}
+\index{tile\+\_\+pos@{tile\+\_\+pos}!statsinfo@{statsinfo}}
+\subsubsection[{tile\+\_\+pos}]{\setlength{\rightskip}{0pt plus 5cm}int statsinfo\+::tile\+\_\+pos}}\label{structstatsinfo_a740378fa01d92f6e0b2c50a26889fefd}
+current tile position \hypertarget{structstatsinfo_a25f475c79fa4d5aa1255b8c543d8a731}{\index{statsinfo@{statsinfo}!tile\+\_\+tags@{tile\+\_\+tags}}
+\index{tile\+\_\+tags@{tile\+\_\+tags}!statsinfo@{statsinfo}}
+\subsubsection[{tile\+\_\+tags}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ statsinfo\+::tile\+\_\+tags}}\label{structstatsinfo_a25f475c79fa4d5aa1255b8c543d8a731}
+Names of the existing tiles 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{stats__info_8h}{stats\+\_\+info.\+h}\end{DoxyCompactItemize}

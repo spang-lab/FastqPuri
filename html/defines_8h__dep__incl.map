@@ -1,0 +1,12 @@
+<map id="include/defines.h" name="include/defines.h">
+<area shape="rect" id="node2" href="$init__Qreport_8h.html" title="Header file: help dialog for Qreport and initialization of the command line arguments. " alt="" coords="223,80,369,107"/>
+<area shape="rect" id="node4" href="$init__Qreport_8c.html" title="Help dialog for Qreport and initialization of the command line arguments. " alt="" coords="5,155,128,181"/>
+<area shape="rect" id="node7" href="$init__Sreport_8h_source.html" title="include/init_Sreport.h" alt="" coords="591,80,735,107"/>
+<area shape="rect" id="node9" href="$Rcommand__Sreport_8c.html" title="get Rscript command for Sreport " alt="" coords="801,155,972,181"/>
+<area shape="rect" id="node11" href="$stats__info_8h.html" title="Construct the quality report variables and update them. " alt="" coords="393,80,527,107"/>
+<area shape="rect" id="node3" href="$fq__read_8c.html" title="fastq entries manipulations (read/write) " alt="" coords="152,155,251,181"/>
+<area shape="rect" id="node5" href="$Qreport_8c.html" title="QReport main function. " alt="" coords="411,155,509,181"/>
+<area shape="rect" id="node6" href="$stats__info_8c.html" title="Construct the quality report variables and update them. " alt="" coords="275,155,387,181"/>
+<area shape="rect" id="node8" href="$init__Sreport_8c.html" title="Help dialog for Sreport and initialization of the command line arguments. " alt="" coords="655,155,777,181"/>
+<area shape="rect" id="node10" href="$Sreport_8c.html" title="Sreport main function. " alt="" coords="534,155,631,181"/>
+</map>

@@ -1,0 +1,108 @@
+\hypertarget{fq__read_8c}{\section{src/fq\+\_\+read.c File Reference}
+\label{fq__read_8c}\index{src/fq\+\_\+read.\+c@{src/fq\+\_\+read.\+c}}
+}
+
+
+fastq entries manipulations (read/write)  
+
+
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}init\+\_\+\+Qreport.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}fq\+\_\+read.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}str\+\_\+manip.\+h\char`\"{}}\\*
+Include dependency graph for fq\+\_\+read.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fq__read_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{fq__read_8c_a65766fec27771b0b42524625f76d067b}{get\+\_\+fqread} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, char $\ast$buffer, int pos1, int pos2, int nline)
+\begin{DoxyCompactList}\small\item\em reads fastq line from a buffer \end{DoxyCompactList}\item 
+int \hyperlink{fq__read_8c_ae58e185777143cd1fc4c75fccd5c647a}{string\+\_\+seq} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, char $\ast$char\+\_\+seq)
+\begin{DoxyCompactList}\small\item\em writes the fq entry in a string \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{init__Qreport_8h_a883b1b3db368b84ab55f011bbb41bc80}{Iparam\+\_\+\+Qreport} \hyperlink{fq__read_8c_a5c6527d396580d559cfd1916fc959e23}{par\+\_\+\+Q\+R}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+fastq entries manipulations (read/write) 
+
+\begin{DoxyAuthor}{Author}
+Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+com} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+03.\+08.\+2017 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{fq__read_8c_a65766fec27771b0b42524625f76d067b}{\index{fq\+\_\+read.\+c@{fq\+\_\+read.\+c}!get\+\_\+fqread@{get\+\_\+fqread}}
+\index{get\+\_\+fqread@{get\+\_\+fqread}!fq\+\_\+read.\+c@{fq\+\_\+read.\+c}}
+\subsubsection[{get\+\_\+fqread}]{\setlength{\rightskip}{0pt plus 5cm}void get\+\_\+fqread (
+\begin{DoxyParamCaption}
+\item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
+\item[{char $\ast$}]{buffer, }
+\item[{int}]{pos1, }
+\item[{int}]{pos2, }
+\item[{int}]{nline}
+\end{DoxyParamCaption}
+)}}\label{fq__read_8c_a65766fec27771b0b42524625f76d067b}
+
+
+reads fastq line from a buffer 
+
+a fastq line is read from a buffer and the relevant information is stored in a structure {\bfseries Fq\+\_\+read}. Depending on the variable {\bfseries par\+\_\+\+Q\+R} values, information about whether the read was trimmed is stored.
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$seq} & pointer to {\bfseries Fq\+\_\+read}, where the info will be stored. \\
+\hline
+{\em buffer} & variable where the file being read is stored. \\
+\hline
+{\em pos1} & buffer start position of the line. \\
+\hline
+{\em pos2} & buffer end position of the line. \\
+\hline
+{\em nline} & file line number being read. \\
+\hline
+\end{DoxyParams}
+\hypertarget{fq__read_8c_ae58e185777143cd1fc4c75fccd5c647a}{\index{fq\+\_\+read.\+c@{fq\+\_\+read.\+c}!string\+\_\+seq@{string\+\_\+seq}}
+\index{string\+\_\+seq@{string\+\_\+seq}!fq\+\_\+read.\+c@{fq\+\_\+read.\+c}}
+\subsubsection[{string\+\_\+seq}]{\setlength{\rightskip}{0pt plus 5cm}int string\+\_\+seq (
+\begin{DoxyParamCaption}
+\item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
+\item[{char $\ast$}]{char\+\_\+seq}
+\end{DoxyParamCaption}
+)}}\label{fq__read_8c_ae58e185777143cd1fc4c75fccd5c647a}
+
+
+writes the fq entry in a string 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$seq} & pointer to {\bfseries Fq\+\_\+read}, where the info will be stored. \\
+\hline
+{\em char\+\_\+seq} & pointer to buffer, where the sequence will be stored \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+change the call to sprintf to snprintf 
+\end{DoxyWarning}
+
+
+\subsection{Variable Documentation}
+\hypertarget{fq__read_8c_a5c6527d396580d559cfd1916fc959e23}{\index{fq\+\_\+read.\+c@{fq\+\_\+read.\+c}!par\+\_\+\+Q\+R@{par\+\_\+\+Q\+R}}
+\index{par\+\_\+\+Q\+R@{par\+\_\+\+Q\+R}!fq\+\_\+read.\+c@{fq\+\_\+read.\+c}}
+\subsubsection[{par\+\_\+\+Q\+R}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Iparam\+\_\+\+Qreport} par\+\_\+\+Q\+R}}\label{fq__read_8c_a5c6527d396580d559cfd1916fc959e23}
+input parameters
+
+global variable\+: input parameters 

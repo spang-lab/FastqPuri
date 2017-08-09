@@ -1,0 +1,146 @@
+\hypertarget{stats__info_8c}{\section{src/stats\+\_\+info.c File Reference}
+\label{stats__info_8c}\index{src/stats\+\_\+info.\+c@{src/stats\+\_\+info.\+c}}
+}
+
+
+Construct the quality report variables and update them.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}stats\+\_\+info.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}init\+\_\+\+Qreport.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}str\+\_\+manip.\+h\char`\"{}}\\*
+Include dependency graph for stats\+\_\+info.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{stats__info_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{stats__info_8c_a5475bae263602449a0bb1af3ea112ad3}{get\+\_\+tile\+\_\+lane} (char $\ast$line1, int $\ast$tile, int $\ast$lane)
+\begin{DoxyCompactList}\small\item\em get tile number from first line in fastq entry. \end{DoxyCompactList}\item 
+\hypertarget{stats__info_8c_a398c4dad447f1384af6d620500788a0a}{static int \hyperlink{stats__info_8c_a398c4dad447f1384af6d620500788a0a}{belongsto} (int k, int $\ast$qual\+\_\+tags, int n\+Q)}\label{stats__info_8c_a398c4dad447f1384af6d620500788a0a}
+
+\begin{DoxyCompactList}\small\item\em returns 1 if k is in qual\+\_\+tags, 0 otherwise. \end{DoxyCompactList}\item 
+\hypertarget{stats__info_8c_ac4b64efac6b92ff63774c58b92d0fdb5}{static int \hyperlink{stats__info_8c_ac4b64efac6b92ff63774c58b92d0fdb5}{cmpfunc} (const void $\ast$a, const void $\ast$b)}\label{stats__info_8c_ac4b64efac6b92ff63774c58b92d0fdb5}
+
+\begin{DoxyCompactList}\small\item\em comparison function for qsort \end{DoxyCompactList}\item 
+void \hyperlink{stats__info_8c_a5c125debcca38ba396c6c01ecbc3dd5d}{init\+\_\+info} (\hyperlink{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{Info} $\ast$res)
+\begin{DoxyCompactList}\small\item\em Initialization of a Info type. \end{DoxyCompactList}\item 
+\hypertarget{stats__info_8c_a3354d39b533bb35891251afdb5961a3a}{void \hyperlink{stats__info_8c_a3354d39b533bb35891251afdb5961a3a}{free\+\_\+info} (\hyperlink{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{Info} $\ast$res)}\label{stats__info_8c_a3354d39b533bb35891251afdb5961a3a}
+
+\begin{DoxyCompactList}\small\item\em frees allocated memory in Info \end{DoxyCompactList}\item 
+\hypertarget{stats__info_8c_a7815bd5c300f89c99b539fa3e4c4f776}{void \hyperlink{stats__info_8c_a7815bd5c300f89c99b539fa3e4c4f776}{read\+\_\+info} (\hyperlink{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{Info} $\ast$res, char $\ast$file)}\label{stats__info_8c_a7815bd5c300f89c99b539fa3e4c4f776}
+
+\begin{DoxyCompactList}\small\item\em Read Info from binary file. \end{DoxyCompactList}\item 
+\hypertarget{stats__info_8c_ae17b550d0328a66a4941b18f24f2a920}{void \hyperlink{stats__info_8c_ae17b550d0328a66a4941b18f24f2a920}{write\+\_\+info} (\hyperlink{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{Info} $\ast$res, char $\ast$file)}\label{stats__info_8c_ae17b550d0328a66a4941b18f24f2a920}
+
+\begin{DoxyCompactList}\small\item\em Write info to binary file. \end{DoxyCompactList}\item 
+\hypertarget{stats__info_8c_a76d353cb30ac4cd4bc55362e7359976d}{void \hyperlink{stats__info_8c_a76d353cb30ac4cd4bc55362e7359976d}{print\+\_\+info} (\hyperlink{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{Info} $\ast$res, char $\ast$infofile)}\label{stats__info_8c_a76d353cb30ac4cd4bc55362e7359976d}
+
+\begin{DoxyCompactList}\small\item\em print Info to a textfile \end{DoxyCompactList}\item 
+\hypertarget{stats__info_8c_a9ca0a2ed2eb78d9a9717b82efcfdcb1f}{void \hyperlink{stats__info_8c_a9ca0a2ed2eb78d9a9717b82efcfdcb1f}{get\+\_\+first\+\_\+tile} (\hyperlink{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{Info} $\ast$res, \hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq)}\label{stats__info_8c_a9ca0a2ed2eb78d9a9717b82efcfdcb1f}
+
+\begin{DoxyCompactList}\small\item\em gets first tile \end{DoxyCompactList}\item 
+\hypertarget{stats__info_8c_af599aaaf2eb242dcb6e9f44c0eb8c180}{void \hyperlink{stats__info_8c_af599aaaf2eb242dcb6e9f44c0eb8c180}{update\+\_\+info} (\hyperlink{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{Info} $\ast$res, \hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq)}\label{stats__info_8c_af599aaaf2eb242dcb6e9f44c0eb8c180}
+
+\begin{DoxyCompactList}\small\item\em updates Info with Fq\+\_\+read \end{DoxyCompactList}\item 
+int \hyperlink{stats__info_8c_a5bceee4c9ce4858a2e1a1022020f3051}{update\+\_\+\+A\+C\+G\+T\+\_\+counts} (uint64\+\_\+t $\ast$A\+C\+G\+T\+\_\+low, char A\+C\+G\+T)
+\begin{DoxyCompactList}\small\item\em update, for current tile, A\+C\+G\+T counts. \end{DoxyCompactList}\item 
+\hypertarget{stats__info_8c_a12859b5ec4a85f24df22833b2ddeee79}{void \hyperlink{stats__info_8c_a12859b5ec4a85f24df22833b2ddeee79}{update\+\_\+\+Q\+Pos\+Tile\+\_\+table} (\hyperlink{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{Info} $\ast$res, \hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq)}\label{stats__info_8c_a12859b5ec4a85f24df22833b2ddeee79}
+
+\begin{DoxyCompactList}\small\item\em update Q\+Postile table \end{DoxyCompactList}\item 
+\hypertarget{stats__info_8c_a0bf1e9e20a67a78adc88e500610b45f7}{void \hyperlink{stats__info_8c_a0bf1e9e20a67a78adc88e500610b45f7}{update\+\_\+\+A\+C\+G\+T\+\_\+pos} (uint64\+\_\+t $\ast$A\+C\+G\+T\+\_\+pos, \hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, int read\+\_\+len)}\label{stats__info_8c_a0bf1e9e20a67a78adc88e500610b45f7}
+
+\begin{DoxyCompactList}\small\item\em update A\+C\+G\+T\+\_\+pos \end{DoxyCompactList}\item 
+void \hyperlink{stats__info_8c_a8ca7ce52d36a35e78b8c0bde089aedcf}{resize\+\_\+info} (\hyperlink{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{Info} $\ast$res)
+\begin{DoxyCompactList}\small\item\em resize Info \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{init__Qreport_8h_a883b1b3db368b84ab55f011bbb41bc80}{Iparam\+\_\+\+Qreport} \hyperlink{stats__info_8c_a5c6527d396580d559cfd1916fc959e23}{par\+\_\+\+Q\+R}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Construct the quality report variables and update them. 
+
+\begin{DoxyAuthor}{Author}
+Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+com} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+04.\+08.\+2017 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{stats__info_8c_a5475bae263602449a0bb1af3ea112ad3}{\index{stats\+\_\+info.\+c@{stats\+\_\+info.\+c}!get\+\_\+tile\+\_\+lane@{get\+\_\+tile\+\_\+lane}}
+\index{get\+\_\+tile\+\_\+lane@{get\+\_\+tile\+\_\+lane}!stats\+\_\+info.\+c@{stats\+\_\+info.\+c}}
+\subsubsection[{get\+\_\+tile\+\_\+lane}]{\setlength{\rightskip}{0pt plus 5cm}void get\+\_\+tile\+\_\+lane (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{line1, }
+\item[{int $\ast$}]{tile, }
+\item[{int $\ast$}]{lane}
+\end{DoxyParamCaption}
+)}}\label{stats__info_8c_a5475bae263602449a0bb1af3ea112ad3}
+
+
+get tile number from first line in fastq entry. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line1} & first line of a fastq entry \\
+\hline
+{\em tile} & int$\ast$ where the tile will be stored \\
+\hline
+{\em lane} & int$\ast$ where the lane will be stored \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\href{http://wiki.christophchamp.com/index.php?title=FASTQ_format}{\tt http\+://wiki.\+christophchamp.\+com/index.\+php?title=\+F\+A\+S\+T\+Q\+\_\+format}
+\end{DoxySeeAlso}
+Only Illumina sequence identifiers are allowed. The line is inspected, and the number of '\+:' is obtained. The function exits with an error if the number of semicolons is different from 4 or 9. \hypertarget{stats__info_8c_a5c125debcca38ba396c6c01ecbc3dd5d}{\index{stats\+\_\+info.\+c@{stats\+\_\+info.\+c}!init\+\_\+info@{init\+\_\+info}}
+\index{init\+\_\+info@{init\+\_\+info}!stats\+\_\+info.\+c@{stats\+\_\+info.\+c}}
+\subsubsection[{init\+\_\+info}]{\setlength{\rightskip}{0pt plus 5cm}void init\+\_\+info (
+\begin{DoxyParamCaption}
+\item[{{\bf Info} $\ast$}]{res}
+\end{DoxyParamCaption}
+)}}\label{stats__info_8c_a5c125debcca38ba396c6c01ecbc3dd5d}
+
+
+Initialization of a Info type. 
+
+It sets\+: n\+Q, read\+\_\+len, ntiles, min\+Q and the dimensions of the arrays. Initializes the rest of the variables to zero and allocates memory to the arrays initializing them to 0 (calloc). \hypertarget{stats__info_8c_a8ca7ce52d36a35e78b8c0bde089aedcf}{\index{stats\+\_\+info.\+c@{stats\+\_\+info.\+c}!resize\+\_\+info@{resize\+\_\+info}}
+\index{resize\+\_\+info@{resize\+\_\+info}!stats\+\_\+info.\+c@{stats\+\_\+info.\+c}}
+\subsubsection[{resize\+\_\+info}]{\setlength{\rightskip}{0pt plus 5cm}void resize\+\_\+info (
+\begin{DoxyParamCaption}
+\item[{{\bf Info} $\ast$}]{res}
+\end{DoxyParamCaption}
+)}}\label{stats__info_8c_a8ca7ce52d36a35e78b8c0bde089aedcf}
+
+
+resize Info 
+
+At the end of the program, resize the structure Info, and adapt it to the actual number of tiles and the actual number of different quality values present. \hypertarget{stats__info_8c_a5bceee4c9ce4858a2e1a1022020f3051}{\index{stats\+\_\+info.\+c@{stats\+\_\+info.\+c}!update\+\_\+\+A\+C\+G\+T\+\_\+counts@{update\+\_\+\+A\+C\+G\+T\+\_\+counts}}
+\index{update\+\_\+\+A\+C\+G\+T\+\_\+counts@{update\+\_\+\+A\+C\+G\+T\+\_\+counts}!stats\+\_\+info.\+c@{stats\+\_\+info.\+c}}
+\subsubsection[{update\+\_\+\+A\+C\+G\+T\+\_\+counts}]{\setlength{\rightskip}{0pt plus 5cm}int update\+\_\+\+A\+C\+G\+T\+\_\+counts (
+\begin{DoxyParamCaption}
+\item[{uint64\+\_\+t $\ast$}]{A\+C\+G\+T\+\_\+low, }
+\item[{char}]{A\+C\+G\+T}
+\end{DoxyParamCaption}
+)}}\label{stats__info_8c_a5bceee4c9ce4858a2e1a1022020f3051}
+
+
+update, for current tile, A\+C\+G\+T counts. 
+
+Makes update of A\+C\+G\+T counts for the current tile. Can be used with variables\+: low\+Q\+\_\+\+A\+C\+G\+T\+\_\+tile and A\+C\+G\+T\+\_\+tile 
+
+\subsection{Variable Documentation}
+\hypertarget{stats__info_8c_a5c6527d396580d559cfd1916fc959e23}{\index{stats\+\_\+info.\+c@{stats\+\_\+info.\+c}!par\+\_\+\+Q\+R@{par\+\_\+\+Q\+R}}
+\index{par\+\_\+\+Q\+R@{par\+\_\+\+Q\+R}!stats\+\_\+info.\+c@{stats\+\_\+info.\+c}}
+\subsubsection[{par\+\_\+\+Q\+R}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Iparam\+\_\+\+Qreport} par\+\_\+\+Q\+R}}\label{stats__info_8c_a5c6527d396580d559cfd1916fc959e23}
+global variable\+: input parameters 

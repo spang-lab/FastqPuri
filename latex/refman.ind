@@ -1,0 +1,14 @@
+\begin{theindex}
+
+  \item {nreads}
+    \subitem {statsinfo}, \hyperpage{8}
+  \item {ntiles}
+    \subitem {statsinfo}, \hyperpage{9}
+
+  \indexspace
+
+  \item {statsinfo}, \hyperpage{7}
+    \subitem {nreads}, \hyperpage{8}
+    \subitem {ntiles}, \hyperpage{9}
+
+\end{theindex}

@@ -1,0 +1,119 @@
+\hypertarget{stats__info_8h}{\section{include/stats\+\_\+info.h File Reference}
+\label{stats__info_8h}\index{include/stats\+\_\+info.\+h@{include/stats\+\_\+info.\+h}}
+}
+
+
+Construct the quality report variables and update them.  
+
+
+{\ttfamily \#include \char`\"{}fq\+\_\+read.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+Include dependency graph for stats\+\_\+info.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{stats__info_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{stats__info_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structstatsinfo}{statsinfo}
+\begin{DoxyCompactList}\small\item\em stores info needed to create the summary graphs \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{typedef struct \hyperlink{structstatsinfo}{statsinfo} \hyperlink{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{Info}}\label{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}
+
+\begin{DoxyCompactList}\small\item\em stores info needed to create the summary graphs \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{stats__info_8h_a5c125debcca38ba396c6c01ecbc3dd5d}{init\+\_\+info} (\hyperlink{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{Info} $\ast$res)
+\begin{DoxyCompactList}\small\item\em Initialization of a Info type. \end{DoxyCompactList}\item 
+\hypertarget{stats__info_8h_a3354d39b533bb35891251afdb5961a3a}{void \hyperlink{stats__info_8h_a3354d39b533bb35891251afdb5961a3a}{free\+\_\+info} (\hyperlink{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{Info} $\ast$res)}\label{stats__info_8h_a3354d39b533bb35891251afdb5961a3a}
+
+\begin{DoxyCompactList}\small\item\em frees allocated memory in Info \end{DoxyCompactList}\item 
+\hypertarget{stats__info_8h_a7815bd5c300f89c99b539fa3e4c4f776}{void \hyperlink{stats__info_8h_a7815bd5c300f89c99b539fa3e4c4f776}{read\+\_\+info} (\hyperlink{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{Info} $\ast$res, char $\ast$file)}\label{stats__info_8h_a7815bd5c300f89c99b539fa3e4c4f776}
+
+\begin{DoxyCompactList}\small\item\em Read Info from binary file. \end{DoxyCompactList}\item 
+\hypertarget{stats__info_8h_ae17b550d0328a66a4941b18f24f2a920}{void \hyperlink{stats__info_8h_ae17b550d0328a66a4941b18f24f2a920}{write\+\_\+info} (\hyperlink{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{Info} $\ast$res, char $\ast$file)}\label{stats__info_8h_ae17b550d0328a66a4941b18f24f2a920}
+
+\begin{DoxyCompactList}\small\item\em Write info to binary file. \end{DoxyCompactList}\item 
+\hypertarget{stats__info_8h_a76d353cb30ac4cd4bc55362e7359976d}{void \hyperlink{stats__info_8h_a76d353cb30ac4cd4bc55362e7359976d}{print\+\_\+info} (\hyperlink{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{Info} $\ast$res, char $\ast$infofile)}\label{stats__info_8h_a76d353cb30ac4cd4bc55362e7359976d}
+
+\begin{DoxyCompactList}\small\item\em print Info to a textfile \end{DoxyCompactList}\item 
+\hypertarget{stats__info_8h_a9ca0a2ed2eb78d9a9717b82efcfdcb1f}{void \hyperlink{stats__info_8h_a9ca0a2ed2eb78d9a9717b82efcfdcb1f}{get\+\_\+first\+\_\+tile} (\hyperlink{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{Info} $\ast$res, \hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq)}\label{stats__info_8h_a9ca0a2ed2eb78d9a9717b82efcfdcb1f}
+
+\begin{DoxyCompactList}\small\item\em gets first tile \end{DoxyCompactList}\item 
+\hypertarget{stats__info_8h_af599aaaf2eb242dcb6e9f44c0eb8c180}{void \hyperlink{stats__info_8h_af599aaaf2eb242dcb6e9f44c0eb8c180}{update\+\_\+info} (\hyperlink{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{Info} $\ast$res, \hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq)}\label{stats__info_8h_af599aaaf2eb242dcb6e9f44c0eb8c180}
+
+\begin{DoxyCompactList}\small\item\em updates Info with Fq\+\_\+read \end{DoxyCompactList}\item 
+int \hyperlink{stats__info_8h_a5bceee4c9ce4858a2e1a1022020f3051}{update\+\_\+\+A\+C\+G\+T\+\_\+counts} (uint64\+\_\+t $\ast$A\+C\+G\+T\+\_\+low, char A\+C\+G\+T)
+\begin{DoxyCompactList}\small\item\em update, for current tile, A\+C\+G\+T counts. \end{DoxyCompactList}\item 
+\hypertarget{stats__info_8h_a12859b5ec4a85f24df22833b2ddeee79}{void \hyperlink{stats__info_8h_a12859b5ec4a85f24df22833b2ddeee79}{update\+\_\+\+Q\+Pos\+Tile\+\_\+table} (\hyperlink{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{Info} $\ast$res, \hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq)}\label{stats__info_8h_a12859b5ec4a85f24df22833b2ddeee79}
+
+\begin{DoxyCompactList}\small\item\em update Q\+Postile table \end{DoxyCompactList}\item 
+\hypertarget{stats__info_8h_a0bf1e9e20a67a78adc88e500610b45f7}{void \hyperlink{stats__info_8h_a0bf1e9e20a67a78adc88e500610b45f7}{update\+\_\+\+A\+C\+G\+T\+\_\+pos} (uint64\+\_\+t $\ast$A\+C\+G\+T\+\_\+pos, \hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, int read\+\_\+len)}\label{stats__info_8h_a0bf1e9e20a67a78adc88e500610b45f7}
+
+\begin{DoxyCompactList}\small\item\em update A\+C\+G\+T\+\_\+pos \end{DoxyCompactList}\item 
+void \hyperlink{stats__info_8h_a8ca7ce52d36a35e78b8c0bde089aedcf}{resize\+\_\+info} (\hyperlink{stats__info_8h_a2671cb2f7634ad56ed3dc27446796ef1}{Info} $\ast$res)
+\begin{DoxyCompactList}\small\item\em resize Info \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Construct the quality report variables and update them. 
+
+\begin{DoxyAuthor}{Author}
+Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+com} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+04.\+08.\+2017 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{stats__info_8h_a5c125debcca38ba396c6c01ecbc3dd5d}{\index{stats\+\_\+info.\+h@{stats\+\_\+info.\+h}!init\+\_\+info@{init\+\_\+info}}
+\index{init\+\_\+info@{init\+\_\+info}!stats\+\_\+info.\+h@{stats\+\_\+info.\+h}}
+\subsubsection[{init\+\_\+info}]{\setlength{\rightskip}{0pt plus 5cm}void init\+\_\+info (
+\begin{DoxyParamCaption}
+\item[{{\bf Info} $\ast$}]{res}
+\end{DoxyParamCaption}
+)}}\label{stats__info_8h_a5c125debcca38ba396c6c01ecbc3dd5d}
+
+
+Initialization of a Info type. 
+
+It sets\+: n\+Q, read\+\_\+len, ntiles, min\+Q and the dimensions of the arrays. Initializes the rest of the variables to zero and allocates memory to the arrays initializing them to 0 (calloc). \hypertarget{stats__info_8h_a8ca7ce52d36a35e78b8c0bde089aedcf}{\index{stats\+\_\+info.\+h@{stats\+\_\+info.\+h}!resize\+\_\+info@{resize\+\_\+info}}
+\index{resize\+\_\+info@{resize\+\_\+info}!stats\+\_\+info.\+h@{stats\+\_\+info.\+h}}
+\subsubsection[{resize\+\_\+info}]{\setlength{\rightskip}{0pt plus 5cm}void resize\+\_\+info (
+\begin{DoxyParamCaption}
+\item[{{\bf Info} $\ast$}]{res}
+\end{DoxyParamCaption}
+)}}\label{stats__info_8h_a8ca7ce52d36a35e78b8c0bde089aedcf}
+
+
+resize Info 
+
+At the end of the program, resize the structure Info, and adapt it to the actual number of tiles and the actual number of different quality values present. \hypertarget{stats__info_8h_a5bceee4c9ce4858a2e1a1022020f3051}{\index{stats\+\_\+info.\+h@{stats\+\_\+info.\+h}!update\+\_\+\+A\+C\+G\+T\+\_\+counts@{update\+\_\+\+A\+C\+G\+T\+\_\+counts}}
+\index{update\+\_\+\+A\+C\+G\+T\+\_\+counts@{update\+\_\+\+A\+C\+G\+T\+\_\+counts}!stats\+\_\+info.\+h@{stats\+\_\+info.\+h}}
+\subsubsection[{update\+\_\+\+A\+C\+G\+T\+\_\+counts}]{\setlength{\rightskip}{0pt plus 5cm}int update\+\_\+\+A\+C\+G\+T\+\_\+counts (
+\begin{DoxyParamCaption}
+\item[{uint64\+\_\+t $\ast$}]{A\+C\+G\+T\+\_\+low, }
+\item[{char}]{A\+C\+G\+T}
+\end{DoxyParamCaption}
+)}}\label{stats__info_8h_a5bceee4c9ce4858a2e1a1022020f3051}
+
+
+update, for current tile, A\+C\+G\+T counts. 
+
+Makes update of A\+C\+G\+T counts for the current tile. Can be used with variables\+: low\+Q\+\_\+\+A\+C\+G\+T\+\_\+tile and A\+C\+G\+T\+\_\+tile 
