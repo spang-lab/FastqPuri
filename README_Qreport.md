@@ -43,15 +43,19 @@ stored in binary format.
    * `int` (4B) : size of `reads_MlowQ`, see below (`sz_reads_MlowQ`), 
    * `int` (4B) : size of `QPosTile_table`, see below (`sz_QPosTile_table`),
    * `int` (4B) : size of `ACGT_pos`, see below (`sz_ACGT_pos`),
-   * `int` (4B) : 
    * `ntiles*int ` (4x`ntiles`B) : tile tags (`tile_tags`),
    * `ntiles*int ` (4x`ntiles`B) : lane tags (`lane_tags`),
    * `nQxint` (4x`nQ`B) : quality tags (`quality tags`),
-   * `5 x ntiles x (long int)` (5x`ntiles`x8B) :  # (A,C,G,T,N) per tile with low quality  (`lowQ_ACGT_tile`),
-   * `5 x ntiles x (long int)` (5x`ntiles`x8B) : # (A,C,G,T,N) per tile (`ACGT_tile`),
-   * `(read_len+1) x (long int)` ((`read_len`+1)x8B) : number of reads with at least `m` low quality nucleotides    (`reads_MlowQ`),
-   * `ntiles x read_len x nQ x (long int)` (`ntiles`x`read_len`x`nQ`x8B) : nucleotides  per tile per position with a given quality (`QposTile_table`).
-   * `5 x read_len x (long int)` (5x`read_len`x8B ): # (A,C,G,T,N) per position, (`ACGT_pos`)
+   * `5 x ntiles x (long int)` (5x`ntiles`x8B) : 
+     \# (A,C,G,T,N) per tile with low quality (`lowQ_ACGT_tile`),
+   * `5 x ntiles x (long int)` (5x`ntiles`x8B) : 
+     \# (A,C,G,T,N) per tile (`ACGT_tile`),
+   * `(read_len+1) x (long int)` ((`read_len`+1)x8B) : 
+     \# reads with at least `m` low quality nucleotides (`reads_MlowQ`),
+   * `ntiles x read_len x nQ x (long int)` (`ntiles`x`read_len`x`nQ`x8B) : 
+     nucleotides  per tile per position with a given quality (`QposTile_table`).
+   * `5 x read_len x (long int)` (5x`read_len`x8B ): 
+     \# (A,C,G,T,N) per position, (`ACGT_pos`)
 
 - html output:
    * Table with general information ,

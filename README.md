@@ -34,7 +34,7 @@ make
 When running cmake, there are some variables you can set 
 using the option -D followed by the variable name. This variables are, 
 
-- CMAKE_C_COMPILER: C compiler (default gcc)
+- CMAKE_C_COMPILER: C compiler (default `gcc`)
 - CMAKE_C_FLAGS: compiler flags (default `-Wall -O3 -march=native -std=c11`).
 - PANDOC: pandoc executable (default `pandoc`),
 - RSCRIPT:  Rscript executable (default `Rscript`), 
@@ -46,8 +46,8 @@ The executables will be created in the folder `bin`.
 
 # Executables
 
-* `Qreport`: generates a quality report in html format (see README_Qreport.md),
-* `Sreport`: generates a summary report in html format (see README_Sreport.md),
+* `Qreport`: creates a quality report in html format (see `README_Qreport.md`),
+* `Sreport`: creates a summary report in html format (see `README_Sreport.md`),
 * `makeSA`: work in progress,
 * `makeBloomFilter`: work in progress,
 * `makeTree`: work in progress,
