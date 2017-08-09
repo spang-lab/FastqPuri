@@ -111,7 +111,7 @@ void init_info(Info *res) {
 
   // Allocate memory
   res -> tile_tags = (int*) calloc(par_QR.ntiles , sizeof(int));
-  res -> lane_tags = (int*) malloc(par_QR.ntiles * sizeof(int));
+  res -> lane_tags = (int*) calloc(par_QR.ntiles , sizeof(int));
   res -> qual_tags = (int*) malloc(par_QR.nQ * sizeof(int));
   for ( i = 0 ; i < par_QR.nQ ; i++) res -> qual_tags[i] = i;
   res -> lowQ_ACGT_tile = (uint64_t*) calloc(res -> sz_lowQ_ACGT_tile,
