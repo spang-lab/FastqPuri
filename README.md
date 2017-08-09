@@ -12,23 +12,23 @@ reads, reads containing too many N's or contamination reads
 Clone the repository, or download the source. Make sure that 
 your system supplies the following dependencies for FastqArazketa.
 
-
-- cmake 
-- a C compiler supporting the c11 standard (change the compiler flags otherwise)
-- pandoc (optional, see documentation in PANDOC.md)
-- Rscript (optional)
-- Following R packages installed (optional):
-   * pheatmap
-   * knitr
-   * rmarkdown
+- `cmake` (at least version 2.8), 
+- a `C` compiler supporting the `c11` standard 
+  (change the compiler flags otherwise),
+- pandoc (optional, see documentation in `PANDOC.md`),
+- `Rscript` (optional),
+- Following `R` packages installed (optional):
+   * `pheatmap`
+   * `knitr`
+   * `rmarkdown`
 
 **NOTE:**  FastqArazketa will work without the optional dependencies 
 but will skip creating html reports if they are not available.
 
 ```
-cmake -H. -Bbuild/ [-DRSCRIPT=myRscriptexec ... ]
-cd build 
-make 
+$ cmake -H. -Bbuild/ [-DRSCRIPT=myRscriptexec ... ]
+$ cd build 
+$ make 
 ```
 
 When running cmake, there are some variables you can set 
@@ -44,7 +44,7 @@ using the option -D followed by the variable name. This variables are,
 
 The executables will be created in the folder `bin`. 
 
-# Executables
+## Executables
 
 * `Qreport`: creates a quality report in html format (see `README_Qreport.md`),
 * `Sreport`: creates a summary report in html format (see `README_Sreport.md`),
@@ -53,8 +53,16 @@ The executables will be created in the folder `bin`.
 * `makeTree`: work in progress,
 * `trim_filter`: work in progress.
 
-# Documentation of the code
+## Documentation of the code
 
 A Doxygen documentation of the code is available: 
 - `html` version under the folder `html` (open `index.html` with a browser).
 - `pdf` version: `latex/refman.pdf`
+
+## Contributors
+
+Paula Pérez Rubio 
+
+## License
+
+GPL v3 (see LICENSE.txt)

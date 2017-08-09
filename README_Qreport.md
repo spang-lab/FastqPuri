@@ -75,10 +75,10 @@ there will be a heatmap pro lane.
 An example is given in the folder `examples`. To run an example, type, 
 
 ``` 
-    cd example
-    mkdir run_test
-    cd run_test
-    ../../bin/QReport -i ../test.fq.bz2 -l 51 -o my_test_output
+    $ cd example
+    $ mkdir run_test
+    $ cd run_test
+    $ ../../bin/QReport -i ../test.fq.bz2 -l 51 -o my_test_output
 ```
  and compare it with the provided run example, as specified in the README
  file under `./example`

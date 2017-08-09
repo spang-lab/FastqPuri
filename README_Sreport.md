@@ -34,8 +34,8 @@ and generates a summary report in html format
 An example is given in the folder `examples`. To run an example, type, 
 
 ``` 
-    cd example/run_test/
-    ../../bin/SReport -i ./ -o my_test_summary_report
+    $ cd example/run_test/
+    $ ../../bin/SReport -i ./ -o my_test_summary_report
 ```
  and compare it with the provided run example, as specified in the README
  file under `./example`
