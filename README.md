@@ -34,13 +34,13 @@ $ make
 When running cmake, there are some variables you can set 
 using the option -D followed by the variable name. This variables are, 
 
-- CMAKE_C_COMPILER: C compiler (default `gcc`)
-- CMAKE_C_FLAGS: compiler flags (default `-Wall -O3 -march=native -std=c11`).
-- PANDOC: pandoc executable (default `pandoc`),
-- RSCRIPT:  Rscript executable (default `Rscript`), 
-- READ_MAXLEN: Maximum Illumina read length (default 400),
-- RMD_QUALITY_REPORT path to `quality_report.Rmd`,
-- RMD_SUMMARY_REPORT path to `summary_report.Rmd`,
+- `CMAKE_C_COMPILER`: `C` compiler (default `gcc`)
+- `CMAKE_C_FLAGS`: compiler flags (default `-Wall -O3 -march=native -std=c11`).
+- `PANDOC`: `pandoc` executable (default `pandoc`),
+- `RSCRIPT`:  `Rscript` executable (default `Rscript`), 
+- `READ_MAXLEN`: Maximum Illumina read length (default 400),
+- `RMD_QUALITY_REPORT`: path to `quality_report.Rmd`,
+- `RMD_SUMMARY_REPORT`: path to `summary_report.Rmd`,
 
 The executables will be created in the folder `bin`. 
 
