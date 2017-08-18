@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['n_5facgt',['N_ACGT',['../defines_8h.html#a71b6eab2a5d9fd457d48f50869a888f6',1,'defines.h']]],
-  ['nq',['nQ',['../struct__iparam__Qreport.html#a47cfa018e6e957cb132e22876a400a1f',1,'_iparam_Qreport::nQ()'],['../structstatsinfo.html#a8f99f5ac1c3643e6ad59f124c11676e2',1,'statsinfo::nQ()']]],
-  ['nreads',['nreads',['../structstatsinfo.html#a2f01e91b444793507cb4173582e215bb',1,'statsinfo']]],
-  ['ntiles',['ntiles',['../struct__iparam__Qreport.html#a9d91db490f318f69dcea4999f630712e',1,'_iparam_Qreport::ntiles()'],['../structstatsinfo.html#abcfe8e12737ac99b724d4d4407204ec8',1,'statsinfo::ntiles()']]]
+  ['main',['main',['../Qreport_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;Qreport.c'],['../Sreport_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;Sreport.c']]],
+  ['max_5ffilename',['MAX_FILENAME',['../defines_8h.html#abe0ec333b60117063f9b9fd9f849cb08',1,'defines.h']]],
+  ['max_5frcommand',['MAX_RCOMMAND',['../defines_8h.html#ac95fc8ee3f8ffd70f4564bcdc813ae2d',1,'defines.h']]],
+  ['minq',['minQ',['../struct__iparam__Qreport.html#a1fa54b38e988ffe30eba5e0284e9dacb',1,'_iparam_Qreport::minQ()'],['../structstatsinfo.html#a6b33794a27827b8e2ea2b45a95f937d9',1,'statsinfo::minQ()']]]
 ];

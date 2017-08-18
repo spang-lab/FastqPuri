@@ -38,7 +38,6 @@
 #include "stats_info.h"
 #include "Rcommand_Qreport.h"
 
-#define B_LEN 131072  /**< buffer size */
 
 Iparam_Qreport par_QR; /**< global variable:  input parameters */
 

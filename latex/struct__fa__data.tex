@@ -1,0 +1,60 @@
+\hypertarget{struct__fa__data}{\section{\+\_\+fa\+\_\+data Struct Reference}
+\label{struct__fa__data}\index{\+\_\+fa\+\_\+data@{\+\_\+fa\+\_\+data}}
+}
+
+
+stores sequences of a fasta file  
+
+
+
+
+{\ttfamily \#include $<$fa\+\_\+read.\+h$>$}
+
+
+
+Collaboration diagram for \+\_\+fa\+\_\+data\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=137pt]{struct__fa__data__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \hyperlink{struct__fa__data_a49ac64b09307f73104bbf1e650f3c2c5}{nlines}
+\item 
+int \hyperlink{struct__fa__data_a2e49d8da3a888d7df62cd887367e2923}{nentries}
+\item 
+int \hyperlink{struct__fa__data_a3607f37f43d8b2f14ced6a93c6a444ff}{linelen}
+\item 
+uint64\+\_\+t $\ast$ \hyperlink{struct__fa__data_acdb54c828a0fbfe8b8851f5290afc16e}{entrylen}
+\item 
+\hyperlink{fa__read_8h_a8f68b28ad3a6c33fe1dd78d5ac044b30}{Fa\+\_\+entry} $\ast$ \hyperlink{struct__fa__data_a3c2c4488c834a828085df7b409d292e4}{entry}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+stores sequences of a fasta file 
+
+\subsection{Member Data Documentation}
+\hypertarget{struct__fa__data_a3c2c4488c834a828085df7b409d292e4}{\index{\+\_\+fa\+\_\+data@{\+\_\+fa\+\_\+data}!entry@{entry}}
+\index{entry@{entry}!\+\_\+fa\+\_\+data@{\+\_\+fa\+\_\+data}}
+\subsubsection[{entry}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Fa\+\_\+entry}$\ast$ \+\_\+fa\+\_\+data\+::entry}}\label{struct__fa__data_a3c2c4488c834a828085df7b409d292e4}
+Array with fasta entries (see Fa\+\_\+entry) \hypertarget{struct__fa__data_acdb54c828a0fbfe8b8851f5290afc16e}{\index{\+\_\+fa\+\_\+data@{\+\_\+fa\+\_\+data}!entrylen@{entrylen}}
+\index{entrylen@{entrylen}!\+\_\+fa\+\_\+data@{\+\_\+fa\+\_\+data}}
+\subsubsection[{entrylen}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t$\ast$ \+\_\+fa\+\_\+data\+::entrylen}}\label{struct__fa__data_acdb54c828a0fbfe8b8851f5290afc16e}
+Array containing the length of the entries \hypertarget{struct__fa__data_a3607f37f43d8b2f14ced6a93c6a444ff}{\index{\+\_\+fa\+\_\+data@{\+\_\+fa\+\_\+data}!linelen@{linelen}}
+\index{linelen@{linelen}!\+\_\+fa\+\_\+data@{\+\_\+fa\+\_\+data}}
+\subsubsection[{linelen}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+fa\+\_\+data\+::linelen}}\label{struct__fa__data_a3607f37f43d8b2f14ced6a93c6a444ff}
+Line length of the $\ast$fa file entries \hypertarget{struct__fa__data_a2e49d8da3a888d7df62cd887367e2923}{\index{\+\_\+fa\+\_\+data@{\+\_\+fa\+\_\+data}!nentries@{nentries}}
+\index{nentries@{nentries}!\+\_\+fa\+\_\+data@{\+\_\+fa\+\_\+data}}
+\subsubsection[{nentries}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+fa\+\_\+data\+::nentries}}\label{struct__fa__data_a2e49d8da3a888d7df62cd887367e2923}
+Number of entries in $\ast$fa file \hypertarget{struct__fa__data_a49ac64b09307f73104bbf1e650f3c2c5}{\index{\+\_\+fa\+\_\+data@{\+\_\+fa\+\_\+data}!nlines@{nlines}}
+\index{nlines@{nlines}!\+\_\+fa\+\_\+data@{\+\_\+fa\+\_\+data}}
+\subsubsection[{nlines}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t \+\_\+fa\+\_\+data\+::nlines}}\label{struct__fa__data_a49ac64b09307f73104bbf1e650f3c2c5}
+Number of lines in $\ast$fa file 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{fa__read_8h}{fa\+\_\+read.\+h}\end{DoxyCompactItemize}

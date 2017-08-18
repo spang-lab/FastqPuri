@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['n_5facgt',['N_ACGT',['../defines_8h.html#a71b6eab2a5d9fd457d48f50869a888f6',1,'defines.h']]]
+  ['max_5ffilename',['MAX_FILENAME',['../defines_8h.html#abe0ec333b60117063f9b9fd9f849cb08',1,'defines.h']]],
+  ['max_5frcommand',['MAX_RCOMMAND',['../defines_8h.html#ac95fc8ee3f8ffd70f4564bcdc813ae2d',1,'defines.h']]]
 ];

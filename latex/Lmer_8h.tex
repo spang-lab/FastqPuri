@@ -1,0 +1,71 @@
+\hypertarget{Lmer_8h}{\section{include/\+Lmer.h File Reference}
+\label{Lmer_8h}\index{include/\+Lmer.\+h@{include/\+Lmer.\+h}}
+}
+
+
+Manipulation of Lmers and sequences.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{Lmer_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{Lmer_8h_a5f1586659681cf692359f7c8c003dd8b}{init\+\_\+map} ()
+\begin{DoxyCompactList}\small\item\em Initialize lookup table L\+T. \end{DoxyCompactList}\item 
+void \hyperlink{Lmer_8h_a54a9d22589c1235957b6472310280e1d}{init\+\_\+map\+\_\+\+S\+A} ()
+\begin{DoxyCompactList}\small\item\em Initialize lookup table L\+T (for S\+A) \end{DoxyCompactList}\item 
+\hypertarget{Lmer_8h_a3280d056532aa23523d08dfd52b60b51}{void \hyperlink{Lmer_8h_a3280d056532aa23523d08dfd52b60b51}{Lmer\+\_\+s\+Lmer} (char $\ast$Lmer, int L)}\label{Lmer_8h_a3280d056532aa23523d08dfd52b60b51}
+
+\begin{DoxyCompactList}\small\item\em Transforms an Lmer to the convention stored in the lookup table L\+T. \end{DoxyCompactList}\item 
+\hypertarget{Lmer_8h_ae4b4f0b75c0a5784ad66d856aed9d39f}{void \hyperlink{Lmer_8h_ae4b4f0b75c0a5784ad66d856aed9d39f}{rev\+\_\+comp} (char $\ast$s\+Lmer, int L)}\label{Lmer_8h_ae4b4f0b75c0a5784ad66d856aed9d39f}
+
+\begin{DoxyCompactList}\small\item\em Obtains the reverse complement, for \{'\textbackslash{}000','\textbackslash{}001','\textbackslash{}002','\textbackslash{}003'\}. \end{DoxyCompactList}\item 
+\hypertarget{Lmer_8h_a6adc3e6b4aa23ade6c889592c50c2963}{void \hyperlink{Lmer_8h_a6adc3e6b4aa23ade6c889592c50c2963}{rev\+\_\+comp2} (char $\ast$s\+Lmer, int L)}\label{Lmer_8h_a6adc3e6b4aa23ade6c889592c50c2963}
+
+\begin{DoxyCompactList}\small\item\em Obtains the reverse complement, for \{'\textbackslash{}001','\textbackslash{}002','\textbackslash{}003','\textbackslash{}004'\}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Manipulation of Lmers and sequences. 
+
+\begin{DoxyAuthor}{Author}
+Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+com} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+18.\+08.\+2017 
+\end{DoxyDate}
+\begin{DoxyNote}{Note}
+I have to try to merge the two versions of conversions!
+\end{DoxyNote}
+Basically, and depending on the method used, nucleotides \{'a', 'c', 'g', 't'\} are shifted to the characters \{'\textbackslash{}000','\textbackslash{}001','\textbackslash{}002','\textbackslash{}003'\} or to \{'\textbackslash{}001','\textbackslash{}002','\textbackslash{}003','\textbackslash{}004'\} in a Lmer. A function to provide the reverse complement is also provided. 
+
+\subsection{Function Documentation}
+\hypertarget{Lmer_8h_a5f1586659681cf692359f7c8c003dd8b}{\index{Lmer.\+h@{Lmer.\+h}!init\+\_\+map@{init\+\_\+map}}
+\index{init\+\_\+map@{init\+\_\+map}!Lmer.\+h@{Lmer.\+h}}
+\subsubsection[{init\+\_\+map}]{\setlength{\rightskip}{0pt plus 5cm}void init\+\_\+map (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{Lmer_8h_a5f1586659681cf692359f7c8c003dd8b}
+
+
+Initialize lookup table L\+T. 
+
+\{'a','c','g','t'\} --$>$ \{'\textbackslash{}000','\textbackslash{}001','\textbackslash{}002','\textbackslash{}003'\}, rest '\textbackslash{}004'. \hypertarget{Lmer_8h_a54a9d22589c1235957b6472310280e1d}{\index{Lmer.\+h@{Lmer.\+h}!init\+\_\+map\+\_\+\+S\+A@{init\+\_\+map\+\_\+\+S\+A}}
+\index{init\+\_\+map\+\_\+\+S\+A@{init\+\_\+map\+\_\+\+S\+A}!Lmer.\+h@{Lmer.\+h}}
+\subsubsection[{init\+\_\+map\+\_\+\+S\+A}]{\setlength{\rightskip}{0pt plus 5cm}void init\+\_\+map\+\_\+\+S\+A (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{Lmer_8h_a54a9d22589c1235957b6472310280e1d}
+
+
+Initialize lookup table L\+T (for S\+A) 
+
+\{'a','c','g','t'\} --$>$ \{'\textbackslash{}001','\textbackslash{}002','\textbackslash{}003','\textbackslash{}004'\}, rest '\textbackslash{}005'. 

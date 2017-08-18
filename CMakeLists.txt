@@ -385,7 +385,10 @@ add_executable(Qreport ${PROJECT_SOURCE_DIR}/Qreport.c
 add_executable(Sreport ${PROJECT_SOURCE_DIR}/Sreport.c
             ${PROJECT_SOURCE_DIR}/init_Sreport.c
             ${PROJECT_SOURCE_DIR}/Rcommand_Sreport.c)
-
+add_executable(make_tree ${PROJECT_SOURCE_DIR}/make_tree.c 
+            ${PROJECT_SOURCE_DIR}/fa_read.c 
+            ${PROJECT_SOURCE_DIR}/fopen_gen.c
+            ${PROJECT_SOURCE_DIR}/Lmer.c)
 
 if ( NOT HAVE_RPKG )
    message("-- WARNING:  Package will be compiled but R script will not ")

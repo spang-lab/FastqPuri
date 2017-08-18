@@ -118,12 +118,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="defines_8h.html#aa98062065af56c6cd07cc43f35ef7aad">   37</a></span>&#160;<span class="preprocessor">#define ZEROQ 33 </span></div>
 <div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="defines_8h.html#a71b6eab2a5d9fd457d48f50869a888f6">   38</a></span>&#160;<span class="preprocessor">#define N_ACGT 5 </span></div>
 <div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="defines_8h.html#ac95fc8ee3f8ffd70f4564bcdc813ae2d">   39</a></span>&#160;<span class="preprocessor">#define MAX_RCOMMAND  4000 </span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="defines_8h.html#a4419cb9bb22330d00cfd4727a05060dd">   42</a></span>&#160;<span class="preprocessor">#define B_LEN 131072  </span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="defines_8h.html#a305c0ce0ef65658d5c81329adf54294f">   44</a></span>&#160;<span class="preprocessor">#define FA_ENTRY_BUF 20 </span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#ifndef max</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">   #define max( a, b ) ( ((a) &gt; (b)) ? (a) : (b) )</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#ifndef min</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">   #define min( a, b ) ( ((a) &lt; (b)) ? (a) : (b) )</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#ifndef mem_usageMB</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">   #define mem_usageMB()  fprintf(stderr, \</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">         &quot;- Current allocated memory: %ld MB.\n&quot;,alloc_mem &gt;&gt; 20)</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#ifndef mem_usage</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">   #define mem_usage()  fprintf(stderr, \</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">         &quot;- Current allocated memory: %ld Bytes.\n&quot;,alloc_mem)</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 9 2017 16:09:37 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 18 2017 17:42:38 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

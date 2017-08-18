@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['par_5fqr',['par_QR',['../fq__read_8c.html#a5c6527d396580d559cfd1916fc959e23',1,'par_QR():&#160;Qreport.c'],['../init__Qreport_8c.html#a5c6527d396580d559cfd1916fc959e23',1,'par_QR():&#160;Qreport.c'],['../Qreport_8c.html#a5c6527d396580d559cfd1916fc959e23',1,'par_QR():&#160;Qreport.c'],['../stats__info_8c.html#a5c6527d396580d559cfd1916fc959e23',1,'par_QR():&#160;Qreport.c']]],
-  ['par_5fsr',['par_SR',['../init__Sreport_8c.html#aa230276b7e03d43430c998def780682e',1,'par_SR():&#160;Sreport.c'],['../Rcommand__Sreport_8c.html#aa230276b7e03d43430c998def780682e',1,'par_SR():&#160;Sreport.c'],['../Sreport_8c.html#aa230276b7e03d43430c998def780682e',1,'par_SR():&#160;Sreport.c']]],
-  ['print_5finfo',['print_info',['../stats__info_8c.html#a76d353cb30ac4cd4bc55362e7359976d',1,'print_info(Info *res, char *infofile):&#160;stats_info.c'],['../stats__info_8h.html#a76d353cb30ac4cd4bc55362e7359976d',1,'print_info(Info *res, char *infofile):&#160;stats_info.c']]],
-  ['printhelpdialog_5fqreport',['printHelpDialog_Qreport',['../init__Qreport_8c.html#a48be775a109c8bf8672933494d67f30f',1,'printHelpDialog_Qreport():&#160;init_Qreport.c'],['../init__Qreport_8h.html#a48be775a109c8bf8672933494d67f30f',1,'printHelpDialog_Qreport():&#160;init_Qreport.c']]],
-  ['printhelpdialog_5fsreport',['printHelpDialog_Sreport',['../init__Sreport_8c.html#a80638b0730feac5c7634c29c6f08ee9e',1,'init_Sreport.c']]]
+  ['one_5fread_5flen',['one_read_len',['../struct__iparam__Qreport.html#a0a09c5cc791e625b948acb45b39164e6',1,'_iparam_Qreport']]],
+  ['outputfile',['outputfile',['../struct__iparam__Sreport.html#aab71d9b5647daf65a8ba9ba6f7a35ee5',1,'_iparam_Sreport']]],
+  ['outputfilebin',['outputfilebin',['../struct__iparam__Qreport.html#abdf92f14bc1c49787cda4b94ceb668cd',1,'_iparam_Qreport']]],
+  ['outputfilehtml',['outputfilehtml',['../struct__iparam__Qreport.html#a54ffbb27584db445494af7d9a1c214de',1,'_iparam_Qreport']]],
+  ['outputfileinfo',['outputfileinfo',['../struct__iparam__Qreport.html#a75f5c38f9365c0c1370040928f43d316',1,'_iparam_Qreport']]]
 ];

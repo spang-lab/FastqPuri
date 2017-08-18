@@ -1,0 +1,81 @@
+\hypertarget{Lmer_8c}{\section{src/\+Lmer.c File Reference}
+\label{Lmer_8c}\index{src/\+Lmer.\+c@{src/\+Lmer.\+c}}
+}
+
+
+Manipulation of Lmers and sequences.  
+
+
+{\ttfamily \#include \char`\"{}Lmer.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+Include dependency graph for Lmer.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{Lmer_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{Lmer_8c_a5f1586659681cf692359f7c8c003dd8b}{init\+\_\+map} ()
+\begin{DoxyCompactList}\small\item\em Initialize lookup table L\+T. \end{DoxyCompactList}\item 
+void \hyperlink{Lmer_8c_a54a9d22589c1235957b6472310280e1d}{init\+\_\+map\+\_\+\+S\+A} ()
+\begin{DoxyCompactList}\small\item\em Initialize lookup table L\+T (for S\+A) \end{DoxyCompactList}\item 
+\hypertarget{Lmer_8c_a3280d056532aa23523d08dfd52b60b51}{void \hyperlink{Lmer_8c_a3280d056532aa23523d08dfd52b60b51}{Lmer\+\_\+s\+Lmer} (char $\ast$Lmer, int L)}\label{Lmer_8c_a3280d056532aa23523d08dfd52b60b51}
+
+\begin{DoxyCompactList}\small\item\em Transforms an Lmer to the convention stored in the lookup table L\+T. \end{DoxyCompactList}\item 
+\hypertarget{Lmer_8c_ae4b4f0b75c0a5784ad66d856aed9d39f}{void \hyperlink{Lmer_8c_ae4b4f0b75c0a5784ad66d856aed9d39f}{rev\+\_\+comp} (char $\ast$s\+Lmer, int L)}\label{Lmer_8c_ae4b4f0b75c0a5784ad66d856aed9d39f}
+
+\begin{DoxyCompactList}\small\item\em Obtains the reverse complement, for \{'\textbackslash{}000','\textbackslash{}001','\textbackslash{}002','\textbackslash{}003'\}. \end{DoxyCompactList}\item 
+\hypertarget{Lmer_8c_a6adc3e6b4aa23ade6c889592c50c2963}{void \hyperlink{Lmer_8c_a6adc3e6b4aa23ade6c889592c50c2963}{rev\+\_\+comp2} (char $\ast$s\+Lmer, int L)}\label{Lmer_8c_a6adc3e6b4aa23ade6c889592c50c2963}
+
+\begin{DoxyCompactList}\small\item\em Obtains the reverse complement, for \{'\textbackslash{}001','\textbackslash{}002','\textbackslash{}003','\textbackslash{}004'\}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{Lmer_8c_abecb1b17de58b71ea7da6803df2486ae}{L\+T} \mbox{[}256\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Manipulation of Lmers and sequences. 
+
+\begin{DoxyAuthor}{Author}
+Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+com} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+18.\+08.\+2017 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{Lmer_8c_a5f1586659681cf692359f7c8c003dd8b}{\index{Lmer.\+c@{Lmer.\+c}!init\+\_\+map@{init\+\_\+map}}
+\index{init\+\_\+map@{init\+\_\+map}!Lmer.\+c@{Lmer.\+c}}
+\subsubsection[{init\+\_\+map}]{\setlength{\rightskip}{0pt plus 5cm}void init\+\_\+map (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{Lmer_8c_a5f1586659681cf692359f7c8c003dd8b}
+
+
+Initialize lookup table L\+T. 
+
+\{'a','c','g','t'\} --$>$ \{'\textbackslash{}000','\textbackslash{}001','\textbackslash{}002','\textbackslash{}003'\}, rest '\textbackslash{}004'. \hypertarget{Lmer_8c_a54a9d22589c1235957b6472310280e1d}{\index{Lmer.\+c@{Lmer.\+c}!init\+\_\+map\+\_\+\+S\+A@{init\+\_\+map\+\_\+\+S\+A}}
+\index{init\+\_\+map\+\_\+\+S\+A@{init\+\_\+map\+\_\+\+S\+A}!Lmer.\+c@{Lmer.\+c}}
+\subsubsection[{init\+\_\+map\+\_\+\+S\+A}]{\setlength{\rightskip}{0pt plus 5cm}void init\+\_\+map\+\_\+\+S\+A (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{Lmer_8c_a54a9d22589c1235957b6472310280e1d}
+
+
+Initialize lookup table L\+T (for S\+A) 
+
+\{'a','c','g','t'\} --$>$ \{'\textbackslash{}001','\textbackslash{}002','\textbackslash{}003','\textbackslash{}004'\}, rest '\textbackslash{}005'. 
+
+\subsection{Variable Documentation}
+\hypertarget{Lmer_8c_abecb1b17de58b71ea7da6803df2486ae}{\index{Lmer.\+c@{Lmer.\+c}!L\+T@{L\+T}}
+\index{L\+T@{L\+T}!Lmer.\+c@{Lmer.\+c}}
+\subsubsection[{L\+T}]{\setlength{\rightskip}{0pt plus 5cm}char L\+T\mbox{[}256\mbox{]}}}\label{Lmer_8c_abecb1b17de58b71ea7da6803df2486ae}
+global variable. Lookup table. 

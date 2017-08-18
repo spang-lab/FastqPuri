@@ -1,14 +1,14 @@
 \begin{theindex}
 
   \item {nreads}
-    \subitem {statsinfo}, \hyperpage{8}
+    \subitem {statsinfo}, \hyperpage{10}
   \item {ntiles}
-    \subitem {statsinfo}, \hyperpage{9}
+    \subitem {statsinfo}, \hyperpage{10}
 
   \indexspace
 
-  \item {statsinfo}, \hyperpage{7}
-    \subitem {nreads}, \hyperpage{8}
-    \subitem {ntiles}, \hyperpage{9}
+  \item {statsinfo}, \hyperpage{9}
+    \subitem {nreads}, \hyperpage{10}
+    \subitem {ntiles}, \hyperpage{10}
 
 \end{theindex}

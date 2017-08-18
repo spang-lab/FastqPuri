@@ -19,7 +19,7 @@
  ****************************************************************************/
 
 /**
- * @file init_Sreport.c 
+ * @file init_Sreport.h 
  * @author Paula Perez <paulaperezrubio@gmail.com>
  * @date 09.08.2017
  * @brief Help dialog for Sreport and initialization of 

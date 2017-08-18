@@ -39,5 +39,30 @@
 #define MAX_RCOMMAND  4000 /**< Maximum # chars in R command*/
 
 
+#define B_LEN 131072  /**< buffer size */
+
+#define FA_ENTRY_BUF 20 /**< buffer for fasta entries*/
+
+#ifndef max
+   #define max( a, b ) ( ((a) > (b)) ? (a) : (b) )
+#endif
+
+#ifndef min
+   #define min( a, b ) ( ((a) < (b)) ? (a) : (b) )
+#endif
+
+#ifndef mem_usageMB
+   #define mem_usageMB()  fprintf(stderr, \
+         "- Current allocated memory: %ld MB.\n",alloc_mem >> 20)
+#endif
+
+#ifndef mem_usage
+   #define mem_usage()  fprintf(stderr, \
+         "- Current allocated memory: %ld Bytes.\n",alloc_mem)
+#endif
+
+
+
+
 #endif
 

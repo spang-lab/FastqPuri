@@ -1,0 +1,105 @@
+\hypertarget{fa__read_8h}{\section{include/fa\+\_\+read.h File Reference}
+\label{fa__read_8h}\index{include/fa\+\_\+read.\+h@{include/fa\+\_\+read.\+h}}
+}
+
+
+reads in and stores fasta files  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+Include dependency graph for fa\+\_\+read.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=171pt]{fa__read_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=171pt]{fa__read_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__fa__entry}{\+\_\+fa\+\_\+entry}
+\begin{DoxyCompactList}\small\item\em fasta entry \end{DoxyCompactList}\item 
+struct \hyperlink{struct__fa__data}{\+\_\+fa\+\_\+data}
+\begin{DoxyCompactList}\small\item\em stores sequences of a fasta file \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{fa__read_8h_a8f68b28ad3a6c33fe1dd78d5ac044b30}{typedef struct \hyperlink{struct__fa__entry}{\+\_\+fa\+\_\+entry} \hyperlink{fa__read_8h_a8f68b28ad3a6c33fe1dd78d5ac044b30}{Fa\+\_\+entry}}\label{fa__read_8h_a8f68b28ad3a6c33fe1dd78d5ac044b30}
+
+\begin{DoxyCompactList}\small\item\em fasta entry \end{DoxyCompactList}\item 
+\hypertarget{fa__read_8h_a797328b16bc1c1088998cd164aafb09d}{typedef struct \hyperlink{struct__fa__data}{\+\_\+fa\+\_\+data} \hyperlink{fa__read_8h_a797328b16bc1c1088998cd164aafb09d}{Fa\+\_\+data}}\label{fa__read_8h_a797328b16bc1c1088998cd164aafb09d}
+
+\begin{DoxyCompactList}\small\item\em stores sequences of a fasta file \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{fa__read_8h_a4d2d77d66924fdc762222c8f28f9718a}{read\+\_\+fasta} (char $\ast$filename, \hyperlink{fa__read_8h_a797328b16bc1c1088998cd164aafb09d}{Fa\+\_\+data} $\ast$ptr\+\_\+fa)
+\begin{DoxyCompactList}\small\item\em reads a fasta file and stores the contents in a Fa\+\_\+data structure. \end{DoxyCompactList}\item 
+void \hyperlink{fa__read_8h_a714b70ff332a85349cd52b76965dd444}{free\+\_\+fasta} (\hyperlink{fa__read_8h_a797328b16bc1c1088998cd164aafb09d}{Fa\+\_\+data} $\ast$ptr\+\_\+fa)
+\begin{DoxyCompactList}\small\item\em free fasta file \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+reads in and stores fasta files 
+
+\begin{DoxyAuthor}{Author}
+Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+com} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+16.\+08.\+2017 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{fa__read_8h_a714b70ff332a85349cd52b76965dd444}{\index{fa\+\_\+read.\+h@{fa\+\_\+read.\+h}!free\+\_\+fasta@{free\+\_\+fasta}}
+\index{free\+\_\+fasta@{free\+\_\+fasta}!fa\+\_\+read.\+h@{fa\+\_\+read.\+h}}
+\subsubsection[{free\+\_\+fasta}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+fasta (
+\begin{DoxyParamCaption}
+\item[{{\bf Fa\+\_\+data} $\ast$}]{ptr\+\_\+fa}
+\end{DoxyParamCaption}
+)}}\label{fa__read_8h_a714b70ff332a85349cd52b76965dd444}
+
+
+free fasta file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pointer} & to Fa\+\_\+data structure.\\
+\hline
+\end{DoxyParams}
+The dynamically allocated memory in a Fa\+\_\+data struct is deallocated and counted, so that we can \hypertarget{fa__read_8h_a4d2d77d66924fdc762222c8f28f9718a}{\index{fa\+\_\+read.\+h@{fa\+\_\+read.\+h}!read\+\_\+fasta@{read\+\_\+fasta}}
+\index{read\+\_\+fasta@{read\+\_\+fasta}!fa\+\_\+read.\+h@{fa\+\_\+read.\+h}}
+\subsubsection[{read\+\_\+fasta}]{\setlength{\rightskip}{0pt plus 5cm}int read\+\_\+fasta (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{filename, }
+\item[{{\bf Fa\+\_\+data} $\ast$}]{ptr\+\_\+fa}
+\end{DoxyParamCaption}
+)}}\label{fa__read_8h_a4d2d77d66924fdc762222c8f28f9718a}
+
+
+reads a fasta file and stores the contents in a Fa\+\_\+data structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & to a fasta input file. \\
+\hline
+{\em pointer} & to Fa\+\_\+data structure. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of entries in the fasta file.
+\end{DoxyReturn}
+A fasta file is read and stored in a structure Fa\+\_\+data The basic problem with reading F\+A\+S\+T\+A files is that there is no end-\/of-\/record indicator. When you're reading sequence n, you don't know you're done until you've read the header line for sequence n+1, which you won't parse 'til later (when you're reading in the sequence n+1). The solution implemented here is to read the file twice. The first time, (sweep\+\_\+fa), we initialize Fa\+\_\+data and store the parameters\+:
+\begin{DoxyItemize}
+\item nlines\+: number of lines of the fasta file.
+\item nentries\+: number of entries in the fasta file.
+\item linelen\+: length of a line in the considered fasta file.
+\item entrylen\+: array containing the lengths of every entry. With this information, the pointer to Fa\+\_\+entry can be allocated and the file is read again and the entries are stored in the structure. 
+\end{DoxyItemize}
