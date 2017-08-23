@@ -1,21 +1,21 @@
 /****************************************************************************
- * Copyright (C) 2017 by Paula Perez Rubio                                  *
+ * copyright (c) 2017 by paula perez rubio                                  *
  *                                                                          *
- * This file is part of FastqArazketa.                                      *
+ * this file is part of fastqarazketa.                                      *
  *                                                                          *
- *   FastqArazketa is free software: you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as                *
- *   published by the Free Software Foundation, either version 3 of the     *
- *   License, or (at your option) any later version.                        *
+ *   fastqarazketa is free software: you can redistribute it and/or modify  *
+ *   it under the terms of the gnu general public license as                *
+ *   published by the free software foundation, either version 3 of the     *
+ *   license, or (at your option) any later version.                        *
  *                                                                          *
- *   FastqArazketa is distributed in the hope that it will be useful,       *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of         *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the          *
- *   GNU General Public License for more details.                           *
+ *   fastqarazketa is distributed in the hope that it will be useful,       *
+ *   but without any warranty; without even the implied warranty of         *
+ *   merchantability or fitness for a particular purpose.  see the          *
+ *   gnu general public license for more details.                           *
  *                                                                          *
- *   You should have received a copy of the GNU General Public License      *
- *   along with FastqArazketa.                                              *
- *   If not, see <http://www.gnu.org/licenses/>.                            *
+ *   you should have received a copy of the gnu general public license      *
+ *   along with fastqarazketa.                                              *
+ *   if not, see <http://www.gnu.org/licenses/>.                            *
  ****************************************************************************/
 
 /**
@@ -64,6 +64,7 @@ int main(int argc, char *argv[]) {
   if ((status = system(command)) != 0) {
       fprintf(stderr, "Something went wrong when executing R script.\n");
       fprintf(stderr, "Most probably, a html file will not be generated.\n");
+      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
       fprintf(stderr, "Exiting program.\n");
       exit(EXIT_FAILURE);
   }

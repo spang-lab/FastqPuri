@@ -6,6 +6,7 @@ var searchData=
   ['read_5ffasta',['read_fasta',['../fa__read_8c.html#a4d2d77d66924fdc762222c8f28f9718a',1,'read_fasta(char *filename, Fa_data *ptr_fa):&#160;fa_read.c'],['../fa__read_8h.html#a4d2d77d66924fdc762222c8f28f9718a',1,'read_fasta(char *filename, Fa_data *ptr_fa):&#160;fa_read.c']]],
   ['read_5finfo',['read_info',['../stats__info_8c.html#a7815bd5c300f89c99b539fa3e4c4f776',1,'read_info(Info *res, char *file):&#160;stats_info.c'],['../stats__info_8h.html#a7815bd5c300f89c99b539fa3e4c4f776',1,'read_info(Info *res, char *file):&#160;stats_info.c']]],
   ['read_5flen',['read_len',['../struct__iparam__Qreport.html#a1004bab2a5776669710b74925ba4d338',1,'_iparam_Qreport::read_len()'],['../structstatsinfo.html#a90c9a180632378e22ab9b0358daf3f0d',1,'statsinfo::read_len()']]],
+  ['read_5ftree',['read_tree',['../tree_8c.html#a58f15d601ef34104e008d0ff8cb28bee',1,'read_tree(char *filename):&#160;tree.c'],['../tree_8h.html#a58f15d601ef34104e008d0ff8cb28bee',1,'read_tree(char *filename):&#160;tree.c']]],
   ['reads_5fmlowq',['reads_MlowQ',['../structstatsinfo.html#a9b58ee91e10fa9301a186ca94e68e6fb',1,'statsinfo']]],
   ['reads_5fwn',['reads_wN',['../structstatsinfo.html#a14bb0b9848f2301718833bd2130683b7',1,'statsinfo']]],
   ['realloc_5ffa',['realloc_fa',['../fa__read_8c.html#a5c08d4c247d5c3e55bb572fb8d6a11bd',1,'fa_read.c']]],

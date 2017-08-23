@@ -50,7 +50,8 @@ The executables will be created in the folder `bin`.
 * `Sreport`: creates a summary report in html format (see `README_Sreport.md`),
 * `makeSA`: work in progress,
 * `makeBloomFilter`: work in progress,
-* `makeTree`: work in progress,
+* `makeTree`: creates a tree of a certain depth from a fasta file and stores
+ it in a file (see `README_makeTree.md`),
 * `trim_filter`: work in progress.
 
 ## Documentation of the code

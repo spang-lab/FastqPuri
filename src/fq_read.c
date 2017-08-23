@@ -59,6 +59,7 @@ void get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline) {
             READ_MAXLEN);
      fprintf(stderr, "You can reset it to a larger value before compiling:\n");
      fprintf(stderr, "cmake -Bbuild -H. [OPTIONS] -DREAD_MAXLEN = LARGERN\n");
+     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      fprintf(stderr, "Exiting program.\n");
      exit(EXIT_FAILURE);
   }
@@ -76,6 +77,7 @@ void get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline) {
             fprintf(stderr, "A read was found with length: %d\n", seq -> L);
             fprintf(stderr, "Read length exceeds predefined length.\n");
             fprintf(stderr, "Revise your settings.\n");
+            fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
             fprintf(stderr, "Exiting program.\n");
             exit(EXIT_FAILURE);
          }
@@ -102,6 +104,7 @@ void get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline) {
           * coincides with the readlength*/
          if ((pos2 - pos1) != seq -> L) {
            fprintf(stderr, "Found read with unequal read and quality");
+           fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
            fprintf(stderr, "lengths\n. Exiting program");
            exit(EXIT_FAILURE);
          }

@@ -42,7 +42,8 @@ void printHelpDialog_Sreport() {
   const char dialog[] =
     "Usage: ./Sreport -i <INPUT_FOLDER> -o <OUTPUT_FILE> \n"
     "Uses all *bin files found in a folder ( output of Qreport) \n"
-    "and generates a summary report in html format\n"
+    "and generates a summary report in html format.\n"
+    "Options:\n"
      " -v Prints package version.\n"
      " -h Prints help dialog.\n"
      " -i Input folder containing *bin data (output from Qreport)."
@@ -60,6 +61,7 @@ void getarg_Sreport(int argc, char **argv) {
   if (argc != 2 && argc != 5) {
      fprintf(stderr, "Not adequate number of arguments\n");
      printHelpDialog_Sreport();
+     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
   char option;
@@ -77,18 +79,27 @@ void getarg_Sreport(int argc, char **argv) {
         par_SR.inputfolder = optarg;
       case 'o':
         snprintf(par_SR.outputfile, MAX_FILENAME, "%s.html" , optarg);
+      default:
+        fprintf(stderr, "%s: option `-%c' is invalid: ignored\n",
+                              argv[0], option);
+        printHelpDialog_Sreport();
+        fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+        exit(EXIT_FAILURE);
+        break;
     }
   }
   if (par_SR.inputfolder == NULL) {
      fprintf(stderr, "Input folder was not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");
      printHelpDialog_Sreport();
+     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
   if (par_SR.outputfile == NULL) {
      fprintf(stderr, "html output file was not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");
      printHelpDialog_Sreport();
+     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
 }

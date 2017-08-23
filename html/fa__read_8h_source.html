@@ -127,18 +127,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">int</span> <a class="code" href="fa__read_8h.html#a4d2d77d66924fdc762222c8f28f9718a">read_fasta</a>(<span class="keywordtype">char</span> *filename, <a class="code" href="struct__fa__data.html">Fa_data</a> *ptr_fa);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fa__read_8h.html#a714b70ff332a85349cd52b76965dd444">free_fasta</a>(<a class="code" href="struct__fa__data.html">Fa_data</a> *ptr_fa);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;uint64_t <a class="code" href="fa__read_8h.html#a0e6b9d47a8472d0768270afbdbf17d4e">size_fasta</a>(<a class="code" href="struct__fa__data.html">Fa_data</a> *ptr_fa); </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">void</span> <a class="code" href="fa__read_8h.html#a714b70ff332a85349cd52b76965dd444">free_fasta</a>(<a class="code" href="struct__fa__data.html">Fa_data</a> *ptr_fa);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="struct__fa__entry_html_a46bfe034cc419f00fccd2d7d174c76e2"><div class="ttname"><a href="struct__fa__entry.html#a46bfe034cc419f00fccd2d7d174c76e2">_fa_entry::N</a></div><div class="ttdeci">uint64_t N</div><div class="ttdef"><b>Definition:</b> fa_read.h:39</div></div>
 <div class="ttc" id="struct__fa__data_html_a3607f37f43d8b2f14ced6a93c6a444ff"><div class="ttname"><a href="struct__fa__data.html#a3607f37f43d8b2f14ced6a93c6a444ff">_fa_data::linelen</a></div><div class="ttdeci">int linelen</div><div class="ttdef"><b>Definition:</b> fa_read.h:49</div></div>
 <div class="ttc" id="struct__fa__data_html"><div class="ttname"><a href="struct__fa__data.html">_fa_data</a></div><div class="ttdoc">stores sequences of a fasta file </div><div class="ttdef"><b>Definition:</b> fa_read.h:46</div></div>
 <div class="ttc" id="struct__fa__data_html_a3c2c4488c834a828085df7b409d292e4"><div class="ttname"><a href="struct__fa__data.html#a3c2c4488c834a828085df7b409d292e4">_fa_data::entry</a></div><div class="ttdeci">Fa_entry * entry</div><div class="ttdef"><b>Definition:</b> fa_read.h:51</div></div>
 <div class="ttc" id="struct__fa__data_html_acdb54c828a0fbfe8b8851f5290afc16e"><div class="ttname"><a href="struct__fa__data.html#acdb54c828a0fbfe8b8851f5290afc16e">_fa_data::entrylen</a></div><div class="ttdeci">uint64_t * entrylen</div><div class="ttdef"><b>Definition:</b> fa_read.h:50</div></div>
 <div class="ttc" id="struct__fa__data_html_a49ac64b09307f73104bbf1e650f3c2c5"><div class="ttname"><a href="struct__fa__data.html#a49ac64b09307f73104bbf1e650f3c2c5">_fa_data::nlines</a></div><div class="ttdeci">uint64_t nlines</div><div class="ttdef"><b>Definition:</b> fa_read.h:47</div></div>
-<div class="ttc" id="fa__read_8h_html_a4d2d77d66924fdc762222c8f28f9718a"><div class="ttname"><a href="fa__read_8h.html#a4d2d77d66924fdc762222c8f28f9718a">read_fasta</a></div><div class="ttdeci">int read_fasta(char *filename, Fa_data *ptr_fa)</div><div class="ttdoc">reads a fasta file and stores the contents in a Fa_data structure. </div><div class="ttdef"><b>Definition:</b> fa_read.c:209</div></div>
+<div class="ttc" id="fa__read_8h_html_a4d2d77d66924fdc762222c8f28f9718a"><div class="ttname"><a href="fa__read_8h.html#a4d2d77d66924fdc762222c8f28f9718a">read_fasta</a></div><div class="ttdeci">int read_fasta(char *filename, Fa_data *ptr_fa)</div><div class="ttdoc">reads a fasta file and stores the contents in a Fa_data structure. </div><div class="ttdef"><b>Definition:</b> fa_read.c:213</div></div>
 <div class="ttc" id="fa__read_8h_html_a8f68b28ad3a6c33fe1dd78d5ac044b30"><div class="ttname"><a href="fa__read_8h.html#a8f68b28ad3a6c33fe1dd78d5ac044b30">Fa_entry</a></div><div class="ttdeci">struct _fa_entry Fa_entry</div><div class="ttdoc">fasta entry </div></div>
-<div class="ttc" id="fa__read_8h_html_a714b70ff332a85349cd52b76965dd444"><div class="ttname"><a href="fa__read_8h.html#a714b70ff332a85349cd52b76965dd444">free_fasta</a></div><div class="ttdeci">void free_fasta(Fa_data *ptr_fa)</div><div class="ttdoc">free fasta file </div><div class="ttdef"><b>Definition:</b> fa_read.c:278</div></div>
+<div class="ttc" id="fa__read_8h_html_a714b70ff332a85349cd52b76965dd444"><div class="ttname"><a href="fa__read_8h.html#a714b70ff332a85349cd52b76965dd444">free_fasta</a></div><div class="ttdeci">void free_fasta(Fa_data *ptr_fa)</div><div class="ttdoc">free fasta file </div><div class="ttdef"><b>Definition:</b> fa_read.c:299</div></div>
+<div class="ttc" id="fa__read_8h_html_a0e6b9d47a8472d0768270afbdbf17d4e"><div class="ttname"><a href="fa__read_8h.html#a0e6b9d47a8472d0768270afbdbf17d4e">size_fasta</a></div><div class="ttdeci">uint64_t size_fasta(Fa_data *ptr_fa)</div><div class="ttdoc">computes length of genome in fasta structure </div><div class="ttdef"><b>Definition:</b> fa_read.c:282</div></div>
 <div class="ttc" id="struct__fa__entry_html_a6c548e86ed6ce8bb33bd1fcdcd56abbe"><div class="ttname"><a href="struct__fa__entry.html#a6c548e86ed6ce8bb33bd1fcdcd56abbe">_fa_entry::seq</a></div><div class="ttdeci">char * seq</div><div class="ttdef"><b>Definition:</b> fa_read.h:40</div></div>
 <div class="ttc" id="struct__fa__entry_html"><div class="ttname"><a href="struct__fa__entry.html">_fa_entry</a></div><div class="ttdoc">fasta entry </div><div class="ttdef"><b>Definition:</b> fa_read.h:38</div></div>
 <div class="ttc" id="struct__fa__data_html_a2e49d8da3a888d7df62cd887367e2923"><div class="ttname"><a href="struct__fa__data.html#a2e49d8da3a888d7df62cd887367e2923">_fa_data::nentries</a></div><div class="ttdeci">int nentries</div><div class="ttdef"><b>Definition:</b> fa_read.h:48</div></div>
@@ -146,7 +148,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 18 2017 17:42:38 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 23 2017 17:05:59 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -34,7 +34,7 @@
 #include "config.h"
 #include "defines.h"
 
-extern Iparam_Qreport par_QR; /**< input parameters */
+extern Iparam_Qreport par_QR; /**< Input parameters  of Qreport*/
 
 /**
  * @brief Function that prints Qreport help dialog when called.
@@ -47,6 +47,7 @@ void printHelpDialog_Qreport() {
     "Reads in a fq file (gz, bz2, z formats also accepted) and creates a \n"
     "quality report (html file) along with the necessary data to create it\n"
     "stored in binary format.\n"
+    "Options:\n"
      " -v Prints package version.\n"
      " -h Prints help dialog.\n"
      " -i Input file [*fq|*fq.gz|*fq.bz2]. Mandatory option.\n"
@@ -70,6 +71,7 @@ void getarg_Qreport(int argc, char **argv) {
       argc != 13 && argc != 15) {
      fprintf(stderr, "Not adequate number of arguments");
      printHelpDialog_Qreport();
+     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
   // Assigning default parameters
@@ -115,6 +117,7 @@ void getarg_Qreport(int argc, char **argv) {
         fprintf(stderr, "%s: option `-%c' is invalid: ignored\n",
                               argv[0], optopt);
        printHelpDialog_Qreport();
+       fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
        exit(EXIT_FAILURE);
        break;
     }
@@ -125,24 +128,28 @@ void getarg_Qreport(int argc, char **argv) {
      fprintf(stderr, "read length was not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");
      printHelpDialog_Qreport();
+     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
   if (par_QR.inputfile == NULL) {
      fprintf(stderr, "Input file was not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");
      printHelpDialog_Qreport();
+     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
   if (par_QR.outputfilebin == NULL) {
      fprintf(stderr, "Binary output file was not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");
      printHelpDialog_Qreport();
+     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
   if (par_QR.outputfilehtml == NULL) {
      fprintf(stderr, "html output file was not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");
      printHelpDialog_Qreport();
+     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
 }

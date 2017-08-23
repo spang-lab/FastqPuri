@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['l',['L',['../struct__fq__read.html#a746efa9093b5223e85ffb7274e7693ef',1,'_fq_read']]],
-  ['lane_5ftags',['lane_tags',['../structstatsinfo.html#a2fc74c1d7cec79d9b28b5e578d96d7a1',1,'statsinfo']]],
-  ['linelen',['linelen',['../struct__fa__data.html#a3607f37f43d8b2f14ced6a93c6a444ff',1,'_fa_data']]],
-  ['lowq_5facgt_5ftile',['lowQ_ACGT_tile',['../structstatsinfo.html#ac1a8b88e2e4f486f2767072588adcd2a',1,'statsinfo']]],
-  ['lt',['LT',['../Lmer_8c.html#abecb1b17de58b71ea7da6803df2486ae',1,'Lmer.c']]]
+  ['inputfasta',['inputfasta',['../struct__iparam__makeTree.html#a864d463534785b7f6cc7b9d52664b443',1,'_iparam_makeTree']]],
+  ['inputfile',['inputfile',['../struct__iparam__Qreport.html#ac96f6463d81dc1fcc41850564f24cf11',1,'_iparam_Qreport']]],
+  ['inputfolder',['inputfolder',['../struct__iparam__Sreport.html#af5521a185f440566547b4b11b9fac6a4',1,'_iparam_Sreport']]]
 ];

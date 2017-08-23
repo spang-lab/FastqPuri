@@ -39,7 +39,7 @@
 #include "Rcommand_Qreport.h"
 
 
-Iparam_Qreport par_QR; /**< global variable:  input parameters */
+Iparam_Qreport par_QR; /**< global variable: input parameters for Qreport*/
 
 /**
  * @brief Qreport main function
@@ -83,6 +83,7 @@ int main(int argc, char *argv[]) {
   if (f == NULL) {
      fprintf(stderr, "File %s not found. Exiting program.\n",
            par_QR.inputfile);
+     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
 

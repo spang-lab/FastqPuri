@@ -1,3 +1,6 @@
 <map id="include/fa_read.h" name="include/fa_read.h">
-<area shape="rect" id="node2" href="$fa__read_8c.html" title="reads in and stores fasta files " alt="" coords="17,80,115,107"/>
+<area shape="rect" id="node2" href="$fa__read_8c.html" title="reads in and stores fasta files " alt="" coords="5,80,104,107"/>
+<area shape="rect" id="node3" href="$makeTree_8c.html" title="makeTree main function " alt="" coords="85,155,198,181"/>
+<area shape="rect" id="node4" href="$tree_8h.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="179,80,279,107"/>
+<area shape="rect" id="node5" href="$tree_8c.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="223,155,300,181"/>
 </map>

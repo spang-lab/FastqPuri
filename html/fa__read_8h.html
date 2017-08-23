@@ -105,7 +105,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="fa__read_8h__dep__incl.png" border="0" usemap="#include_2fa__read_8hdep" alt=""/></div>
 <map name="include_2fa__read_8hdep" id="include_2fa__read_8hdep">
-<area shape="rect" id="node2" href="fa__read_8c.html" title="reads in and stores fasta files " alt="" coords="17,80,115,107"/></map>
+<area shape="rect" id="node2" href="fa__read_8c.html" title="reads in and stores fasta files " alt="" coords="5,80,104,107"/><area shape="rect" id="node3" href="makeTree_8c.html" title="makeTree main function " alt="" coords="85,155,198,181"/><area shape="rect" id="node4" href="tree_8h.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="179,80,279,107"/><area shape="rect" id="node5" href="tree_8c.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="223,155,300,181"/></map>
 </div>
 </div>
 <p><a href="fa__read_8h_source.html">Go to the source code of this file.</a></p>
@@ -135,6 +135,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a4d2d77d66924fdc762222c8f28f9718a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fa__read_8h.html#a4d2d77d66924fdc762222c8f28f9718a">read_fasta</a> (char *filename, <a class="el" href="fa__read_8h.html#a797328b16bc1c1088998cd164aafb09d">Fa_data</a> *ptr_fa)</td></tr>
 <tr class="memdesc:a4d2d77d66924fdc762222c8f28f9718a"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads a fasta file and stores the contents in a Fa_data structure.  <a href="#a4d2d77d66924fdc762222c8f28f9718a">More...</a><br /></td></tr>
 <tr class="separator:a4d2d77d66924fdc762222c8f28f9718a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e6b9d47a8472d0768270afbdbf17d4e"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fa__read_8h.html#a0e6b9d47a8472d0768270afbdbf17d4e">size_fasta</a> (<a class="el" href="fa__read_8h.html#a797328b16bc1c1088998cd164aafb09d">Fa_data</a> *ptr_fa)</td></tr>
+<tr class="memdesc:a0e6b9d47a8472d0768270afbdbf17d4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes length of genome in fasta structure  <a href="#a0e6b9d47a8472d0768270afbdbf17d4e">More...</a><br /></td></tr>
+<tr class="separator:a0e6b9d47a8472d0768270afbdbf17d4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a714b70ff332a85349cd52b76965dd444"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fa__read_8h.html#a714b70ff332a85349cd52b76965dd444">free_fasta</a> (<a class="el" href="fa__read_8h.html#a797328b16bc1c1088998cd164aafb09d">Fa_data</a> *ptr_fa)</td></tr>
 <tr class="memdesc:a714b70ff332a85349cd52b76965dd444"><td class="mdescLeft">&#160;</td><td class="mdescRight">free fasta file  <a href="#a714b70ff332a85349cd52b76965dd444">More...</a><br /></td></tr>
 <tr class="separator:a714b70ff332a85349cd52b76965dd444"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,7 +164,7 @@ Functions</h2></td></tr>
 <p>free fasta file </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pointer</td><td>to Fa_data structure.</td></tr>
+    <tr><td class="paramname">ptr_fa</td><td>pointer to Fa_data structure.</td></tr>
   </table>
   </dd>
 </dl>
@@ -196,8 +199,8 @@ Functions</h2></td></tr>
 <p>reads a fasta file and stores the contents in a Fa_data structure. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>to a fasta input file. </td></tr>
-    <tr><td class="paramname">pointer</td><td>to Fa_data structure. </td></tr>
+    <tr><td class="paramname">filename</td><td>path to a fasta input file. </td></tr>
+    <tr><td class="paramname">ptr_fa</td><td>pointer to Fa_data structure. </td></tr>
   </table>
   </dd>
 </dl>
@@ -211,10 +214,35 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a0e6b9d47a8472d0768270afbdbf17d4e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t size_fasta </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fa__read_8h.html#a797328b16bc1c1088998cd164aafb09d">Fa_data</a> *&#160;</td>
+          <td class="paramname"><em>ptr_fa</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>computes length of genome in fasta structure </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr_fa</td><td>pointer to Fa_data </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>total number of nucleotides </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 18 2017 17:42:38 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 23 2017 17:05:59 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

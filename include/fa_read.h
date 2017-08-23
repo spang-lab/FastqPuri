@@ -53,6 +53,7 @@ typedef struct _fa_data {
 
 
 int read_fasta(char *filename, Fa_data *ptr_fa);
+uint64_t size_fasta(Fa_data *ptr_fa); 
 void free_fasta(Fa_data *ptr_fa);
 
 #endif

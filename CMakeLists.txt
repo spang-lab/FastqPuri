@@ -382,11 +382,15 @@ add_executable(Qreport ${PROJECT_SOURCE_DIR}/Qreport.c
             ${PROJECT_SOURCE_DIR}/stats_info.c
             ${PROJECT_SOURCE_DIR}/Rcommand_Qreport.c
             ${PROJECT_SOURCE_DIR}/str_manip.c )
+
 add_executable(Sreport ${PROJECT_SOURCE_DIR}/Sreport.c
             ${PROJECT_SOURCE_DIR}/init_Sreport.c
             ${PROJECT_SOURCE_DIR}/Rcommand_Sreport.c)
-add_executable(make_tree ${PROJECT_SOURCE_DIR}/make_tree.c 
+
+add_executable(makeTree ${PROJECT_SOURCE_DIR}/makeTree.c 
+            ${PROJECT_SOURCE_DIR}/init_makeTree.c 
             ${PROJECT_SOURCE_DIR}/fa_read.c 
+            ${PROJECT_SOURCE_DIR}/tree.c 
             ${PROJECT_SOURCE_DIR}/fopen_gen.c
             ${PROJECT_SOURCE_DIR}/Lmer.c)
 

@@ -39,7 +39,7 @@ extern uint64_t alloc_mem; // global variable: memory allocated in the heap.
 
 /**
  * @brief ignore header lines.
- * @param string of characters.
+ * @param line string of characters.
  * @return number of characters to jump until a \n is found.
  *
  * */
@@ -52,7 +52,7 @@ static int ignore_line(char *line) {
 
 /**
  * @brief Initialization of Fa_data.
- * @param pointer to Fa_data structure.
+ * @param ptr_fa pointer to Fa_data structure.
  *
  * Initializes nlines, linelen, nentries to 0 and allocates
  * memory for entrylen (FA_ENTRY_BUF entries).
@@ -68,7 +68,7 @@ static void init_fa(Fa_data *ptr_fa) {
 
 /**
  * @brief Reallocation of Fa_data, in case the length of entrylen is exhausted.
- * @param pointer to Fa_data.
+ * @param ptr_fa pointer to Fa_data structure.
  *
 * */
 static void realloc_fa(Fa_data *ptr_fa) {
@@ -79,7 +79,7 @@ static void realloc_fa(Fa_data *ptr_fa) {
 
 /**
  * @brief Allocation of Fa_entries.
- * @param pointer to Fa_data structure.
+ * @param ptr_fa pointer to Fa_data structure.
  *
  * When we have sweeped the fasta file once, we can proceed to allocate
  * the memory for the entries (now we have registered their length).
@@ -91,6 +91,7 @@ static void init_entries(Fa_data *ptr_fa) {
       if (ptr_fa -> entry == NULL) {
         fprintf(stderr, "Error occured when trying to allocate %ld Bytes.\n",
             ptr_fa -> nentries * sizeof(Fa_entry));
+        fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
         fprintf(stderr, "Exiting program.\n");
         exit(EXIT_FAILURE);
       }
@@ -98,6 +99,7 @@ static void init_entries(Fa_data *ptr_fa) {
   } else {
      fprintf(stderr, "Fasta entries seem to be already allocated \n");
      fprintf(stderr, "and they should not. Unexpected error occured.\n");
+     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      fprintf(stderr, "Exiting program.\n");
      exit(EXIT_FAILURE);
   }
@@ -109,6 +111,7 @@ static void init_entries(Fa_data *ptr_fa) {
     if (ptr_fa -> entry == NULL) {
       fprintf(stderr, "Error occured when trying to allocate %ld Bytes.\n",
           sizeof(char) * (ptr_fa -> entrylen[i]));
+      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
       fprintf(stderr, "Exiting program.\n");
       exit(EXIT_FAILURE);
     }
@@ -118,8 +121,8 @@ static void init_entries(Fa_data *ptr_fa) {
 
 /**
  * @brief this function sweeps a fasta file to obtain structure details.
- * @param path to a fasta input file.
- * @param pointer to Fa_data structure.
+ * @param filename path to a fasta input file.
+ * @param ptr_fa pointer to Fa_data structure.
  * @return size of fasta file.
  *
  * This function sweeps over the fasta file once to annotate how
@@ -130,6 +133,7 @@ static uint64_t sweep_fa(char *filename, Fa_data *ptr_fa) {
   FILE *fa_in;
   fa_in = fopen_gen(filename, "r");
   if (fa_in == NULL) {
+     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      fprintf(stderr, "File %s not found. Exiting program.\n", filename);
      exit(EXIT_FAILURE);
   }
@@ -186,8 +190,8 @@ static uint64_t sweep_fa(char *filename, Fa_data *ptr_fa) {
 
 /**
  * @brief reads a fasta file and stores the contents in a Fa_data structure.
- * @param path to a fasta input file.
- * @param pointer to Fa_data structure.
+ * @param filename path to a fasta input file.
+ * @param ptr_fa pointer to Fa_data structure.
  * @return number of entries in the fasta file.
  *
  *  A fasta file is read and stored in a structure Fa_data
@@ -225,6 +229,7 @@ int read_fasta(char *filename, Fa_data * ptr_fa) {
   FILE *fa_in;
   fa_in = fopen_gen(filename, "r");
   if (fa_in == NULL) {
+     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      fprintf(stderr, "File %s not found. Exiting program.\n", filename);
      exit(EXIT_FAILURE);
   }
@@ -235,12 +240,12 @@ int read_fasta(char *filename, Fa_data * ptr_fa) {
   if (buffer == NULL) {
     fprintf(stderr, "Error occured. Could not allocate %ld  Bytes.\n",
           sizeof(char)*sz);
+    fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
     fprintf(stderr, "Exiting program.\n");
     exit(EXIT_FAILURE);
   }
   alloc_mem += sizeof(char)*sz;
   mem_usageMB();
-  fprintf(stderr, "WARNING: introduce a MEMORY CHECK!!!!");
   uint64_t pos = 0;
   int  linelen =  ptr_fa -> linelen;
   fread(buffer, 1, sz, fa_in);
@@ -269,8 +274,24 @@ int read_fasta(char *filename, Fa_data * ptr_fa) {
 }
 
 /**
+ * @brief computes length of genome in fasta structure
+ * @param ptr_fa pointer to Fa_data
+ * @return total number of nucleotides
+ *
+ * */
+uint64_t size_fasta(Fa_data *ptr_fa) {
+   int  i; 
+   uint64_t size = 0; 
+   for (i = 0; i < ptr_fa -> nentries; i++) {
+      size += ptr_fa -> entrylen[i];
+   }
+   return size;
+} 
+
+
+/**
  * @brief free fasta file
- * @param pointer to Fa_data structure.
+ * @param ptr_fa pointer to Fa_data structure.
  *
  * The dynamically allocated memory in a Fa_data struct  is deallocated
  * and counted, so that we can

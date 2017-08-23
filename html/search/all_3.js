@@ -1,6 +1,8 @@
 var searchData=
 [
   ['catexec',['catExec',['../fopen__gen_8c.html#aaad17dde0a82955fa873b2a8b93c99ae',1,'fopen_gen.c']]],
+  ['check_5fpath',['check_path',['../tree_8c.html#a89532e754b480a48dab808acd1490876',1,'check_path(Node *tree, char *Lmer, int L, int Lread):&#160;tree.c'],['../tree_8h.html#a89532e754b480a48dab808acd1490876',1,'check_path(Node *tree, char *Lmer, int L, int Lread):&#160;tree.c']]],
+  ['children',['children',['../struct__node.html#a7f878e5e9c5c9d2801715c870b9bbc1c',1,'_node']]],
   ['cmpfunc',['cmpfunc',['../stats__info_8c.html#ac4b64efac6b92ff63774c58b92d0fdb5',1,'stats_info.c']]],
   ['command_5fqreport',['command_Qreport',['../Rcommand__Qreport_8h.html#a336345f346ab2a993022a0ca4862731c',1,'Rcommand_Qreport.c']]],
   ['command_5fsreport',['command_Sreport',['../Rcommand__Sreport_8c.html#a843ffc16afb438c7430da804efd8dfaf',1,'command_Sreport():&#160;Rcommand_Sreport.c'],['../Rcommand__Sreport_8h.html#a843ffc16afb438c7430da804efd8dfaf',1,'command_Sreport():&#160;Rcommand_Sreport.c']]],

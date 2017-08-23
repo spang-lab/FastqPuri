@@ -1,6 +1,8 @@
 var searchData=
 [
+  ['save_5ftree',['save_tree',['../tree_8c.html#a3b6ea3f3ef0c84a182e93a58ea417aea',1,'save_tree(Tree *tree_ptr, char *filename):&#160;tree.c'],['../tree_8h.html#a3b6ea3f3ef0c84a182e93a58ea417aea',1,'save_tree(Tree *tree_ptr, char *filename):&#160;tree.c']]],
   ['seq',['seq',['../struct__fa__entry.html#a6c548e86ed6ce8bb33bd1fcdcd56abbe',1,'_fa_entry']]],
+  ['size_5ffasta',['size_fasta',['../fa__read_8c.html#a0e6b9d47a8472d0768270afbdbf17d4e',1,'size_fasta(Fa_data *ptr_fa):&#160;fa_read.c'],['../fa__read_8h.html#a0e6b9d47a8472d0768270afbdbf17d4e',1,'size_fasta(Fa_data *ptr_fa):&#160;fa_read.c']]],
   ['sreport_2ec',['Sreport.c',['../Sreport_8c.html',1,'']]],
   ['start',['start',['../struct__fq__read.html#a0b8deb6c25c72026b4928b17e3f12ade',1,'_fq_read']]],
   ['stats_5finfo_2ec',['stats_info.c',['../stats__info_8c.html',1,'']]],

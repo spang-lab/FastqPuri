@@ -110,43 +110,53 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef DEFINES_H_</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define DEFINES_H_</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="defines_8h.html#abe0ec333b60117063f9b9fd9f849cb08">   33</a></span>&#160;<span class="preprocessor">#define MAX_FILENAME 300 </span></div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="defines_8h.html#a5c35b08af4e6a3b09783354fcd255b79">   34</a></span>&#160;<span class="preprocessor">#define DEFAULT_MINQ 27   </span></div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="defines_8h.html#ad27320ae41ed8a200b4379d022dd3d2e">   35</a></span>&#160;<span class="preprocessor">#define DEFAULT_NTILES 96 </span></div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="defines_8h.html#afc545fae88ff3e374926c51cc44ff4e1">   36</a></span>&#160;<span class="preprocessor">#define DEFAULT_NQ 46 </span></div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="defines_8h.html#aa98062065af56c6cd07cc43f35ef7aad">   37</a></span>&#160;<span class="preprocessor">#define ZEROQ 33 </span></div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="defines_8h.html#a71b6eab2a5d9fd457d48f50869a888f6">   38</a></span>&#160;<span class="preprocessor">#define N_ACGT 5 </span></div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="defines_8h.html#ac95fc8ee3f8ffd70f4564bcdc813ae2d">   39</a></span>&#160;<span class="preprocessor">#define MAX_RCOMMAND  4000 </span></div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="defines_8h.html#a4419cb9bb22330d00cfd4727a05060dd">   42</a></span>&#160;<span class="preprocessor">#define B_LEN 131072  </span></div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="defines_8h.html#a305c0ce0ef65658d5c81329adf54294f">   44</a></span>&#160;<span class="preprocessor">#define FA_ENTRY_BUF 20 </span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#ifndef max</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">   #define max( a, b ) ( ((a) &gt; (b)) ? (a) : (b) )</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#ifndef min</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">   #define min( a, b ) ( ((a) &lt; (b)) ? (a) : (b) )</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#ifndef mem_usageMB</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">   #define mem_usageMB()  fprintf(stderr, \</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">         &quot;- Current allocated memory: %ld MB.\n&quot;,alloc_mem &gt;&gt; 20)</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">// General </span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="defines_8h.html#a4419cb9bb22330d00cfd4727a05060dd">   33</a></span>&#160;<span class="preprocessor">#define B_LEN 131072  </span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="defines_8h.html#abe0ec333b60117063f9b9fd9f849cb08">   34</a></span>&#160;<span class="preprocessor">#define MAX_FILENAME 300 </span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="defines_8h.html#abb452686968e48b67397da5f97445f5b">   35</a></span>&#160;<span class="preprocessor">#define bool short  </span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="defines_8h.html#a41f9c5fb8b08eb5dc3edce4dcb37fee7">   36</a></span>&#160;<span class="preprocessor">#define true 1   </span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="defines_8h.html#a65e9886d74aaee76545e83dd09011727">   37</a></span>&#160;<span class="preprocessor">#define false 0  </span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#ifndef max</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="defines_8h.html#affe776513b24d84b39af8ab0930fef7f">   40</a></span>&#160;<span class="preprocessor">   #define max( a, b ) ( ((a) &gt; (b)) ? (a) : (b) ) </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#ifndef min</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="defines_8h.html#ac6afabdc09a49a433ee19d8a9486056d">   44</a></span>&#160;<span class="preprocessor">   #define min( a, b ) ( ((a) &lt; (b)) ? (a) : (b) ) </span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#ifndef mem_usageMB</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="defines_8h.html#afb615637083826bc311382f50b9a112d">   48</a></span>&#160;<span class="preprocessor">   #define mem_usageMB()  fprintf(stderr, \</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">         &quot;- Current allocated memory: %ld MB.\n&quot;, \</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">         alloc_mem &gt;&gt; 20)  </span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#ifndef mem_usage</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">   #define mem_usage()  fprintf(stderr, \</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">         &quot;- Current allocated memory: %ld Bytes.\n&quot;, \</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="defines_8h.html#a3589a26d6b84700042e948056edb43f6">   56</a></span>&#160;<span class="preprocessor">         alloc_mem) </span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#ifndef mem_usage</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">   #define mem_usage()  fprintf(stderr, \</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">         &quot;- Current allocated memory: %ld Bytes.\n&quot;,alloc_mem)</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">// Q_report, S_report</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#define DEFAULT_MINQ 27   </span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#define DEFAULT_NTILES 96 </span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#define DEFAULT_NQ 46 </span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#define ZEROQ 33 </span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="defines_8h.html#a5c35b08af4e6a3b09783354fcd255b79">   65</a></span>&#160;<span class="preprocessor">#define N_ACGT 5 </span></div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="defines_8h.html#ad27320ae41ed8a200b4379d022dd3d2e">   66</a></span>&#160;<span class="preprocessor">#define MAX_RCOMMAND  4000 </span></div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="defines_8h.html#a71b6eab2a5d9fd457d48f50869a888f6">   69</a></span>&#160;<span class="preprocessor">// Fasta files</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="defines_8h.html#ac95fc8ee3f8ffd70f4564bcdc813ae2d">   70</a></span>&#160;<span class="preprocessor">#define FA_ENTRY_BUF 20 </span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">// Tree </span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#define T_ACGT 4 </span></div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="defines_8h.html#a305c0ce0ef65658d5c81329adf54294f">   74</a></span>&#160;<span class="preprocessor">#define NPOOL_1D 1048576 </span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#define NPOOL_2D 16  </span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#define MAX_FASZ_TREE 1e7 </span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 18 2017 17:42:38 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 23 2017 17:05:59 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

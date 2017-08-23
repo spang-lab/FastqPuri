@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['seq',['seq',['../struct__fa__entry.html#a6c548e86ed6ce8bb33bd1fcdcd56abbe',1,'_fa_entry']]],
-  ['start',['start',['../struct__fq__read.html#a0b8deb6c25c72026b4928b17e3f12ade',1,'_fq_read']]],
-  ['sz_5facgt_5fpos',['sz_ACGT_pos',['../structstatsinfo.html#ae95899480cc574a09163190663dd504a',1,'statsinfo']]],
-  ['sz_5facgt_5ftile',['sz_ACGT_tile',['../structstatsinfo.html#a4e1223289cbb8f609d522747d4b47b54',1,'statsinfo']]],
-  ['sz_5flowq_5facgt_5ftile',['sz_lowQ_ACGT_tile',['../structstatsinfo.html#ae3c83d12e46748f3a0de4628b5e48068',1,'statsinfo']]],
-  ['sz_5fqpostile_5ftable',['sz_QPosTile_table',['../structstatsinfo.html#aceed3737e42259fa6e7438dc185e587f',1,'statsinfo']]],
-  ['sz_5freads_5fmlowq',['sz_reads_MlowQ',['../structstatsinfo.html#a5f0e812f7a2213cb57a79c8110b7a02e',1,'statsinfo']]]
+  ['read_5flen',['read_len',['../struct__iparam__Qreport.html#a1004bab2a5776669710b74925ba4d338',1,'_iparam_Qreport::read_len()'],['../structstatsinfo.html#a90c9a180632378e22ab9b0358daf3f0d',1,'statsinfo::read_len()']]],
+  ['reads_5fmlowq',['reads_MlowQ',['../structstatsinfo.html#a9b58ee91e10fa9301a186ca94e68e6fb',1,'statsinfo']]],
+  ['reads_5fwn',['reads_wN',['../structstatsinfo.html#a14bb0b9848f2301718833bd2130683b7',1,'statsinfo']]]
 ];
