@@ -48,7 +48,7 @@ void printHelpDialog_makeTree() {
    "Options: \n"
    " -v|--version Prints package version.\n"
    " -h|--help    Prints help dialog.\n"
-   " -f|--fasta   Input folder containing *bin data (output from Qreport)."
+   " -f|--fasta   Fasta input file."
    " Mandatory option.\n"
    " -l|--depth depth of the tree structure\n"
    " -o|--output Output file. If the extension is not *gz, it is added."

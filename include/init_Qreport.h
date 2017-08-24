@@ -39,7 +39,7 @@ typedef struct _iparam_Qreport {
   char outputfilebin[MAX_FILENAME]; /**< Binary outputfile name.*/
   char outputfilehtml[MAX_FILENAME]; /**< html outputfile name */
   char outputfileinfo[MAX_FILENAME]; /**< Info outputfile name */
-  int nQ;         /**< \# different quality values (default is 46) */
+  int nQ;        /**< \# different quality values (default is 46) */
   int ntiles;    /**< \# tiles (default is 96) */
   int minQ;      /**< minimum Quality allowed 0 - 45 */
   int read_len;  /**< original read length  */

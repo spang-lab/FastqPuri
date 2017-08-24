@@ -19,44 +19,32 @@
  ****************************************************************************/
 
 /**
- * @file Rcommand_Sreport.c
- * @brief get Rscript command for Sreport
+ * @file init_treefilter.c
  * @author Paula Perez <paulaperezrubio@gmail.com>
- * @date 09.08.2017
+ * @date 24.08.2017
+ * @brief help dialog for trimFilter and initialization of the 
+ * command line arguments.
  *
- */
+ * */
 
-#include <stdio.h>
-#include <unistd.h>
-#include "Rcommand_Sreport.h"
-#include "init_Sreport.h"
-#include "defines.h"
-#include "config.h"
+#include "init_trimFilter.h"
 
-extern Iparam_Sreport par_SR; /**< input parameters Sreport*/
+extern Iparam_trimFilter par_TF; /**< Input parameters of makeTree */
 
 /**
- * @brief returns Rscript command that generates the summary report in html
- * */
-char *command_Sreport(){
-  char command[MAX_RCOMMAND];
-  char cwd[1024];
-  if (getcwd(cwd, sizeof(cwd)) != NULL)
-      fprintf(stdout, "Current working dir: %s\n", cwd);
-  else
-      perror("getcwd() error");
-  snprintf(command, MAX_RCOMMAND, "%s -e \" inputfolder = normalizePath('%s', \
-mustWork = TRUE); output = '%s';\
-output_file = gsub('.*/', '', output);\
-path = gsub('[^/]+$', '', output);\
-if (path != '') { output_file = paste0(normalizePath(path, mustWork=TRUE)\
-, '/', output_file); \
-} else {\
-output_file = paste0('%s', '/', output_file); };\
-rmarkdown::render('%s', params = list(inputfolder = inputfolder, \
-version = '%s'), output_file = output_file)\"",
-        RSCRIPT_EXEC, par_SR.inputfolder,
-        par_SR.outputfile, cwd, RMD_SUMMARY_REPORT, VERSION);
-  char *str_command = command;
-  return str_command;
+ * @brief Function that prints trimFilter help dialog when called.
+*/
+void printHelpDialog_trimFilter() {
+  const char dialog[] = 
+   "Usage ./trimFilter ";
+
+  fprintf(stderr, "%s", dialog);
+}
+
+/**
+ * @brief Reads in the arguments passed through the command line to trimFilter.
+ *   and stores them in the global variable par_TF.
+*/
+void getarg_trimFilter(int argc, char **argv) {
+
 }

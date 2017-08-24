@@ -33,7 +33,6 @@
 #include "defines.h"
 #include "fa_read.h"
 
-
 /**
  * @brief Node structure: formed out of T_ACGT pointers to Node structure.
  *
@@ -76,12 +75,16 @@ void insert_Lmer(Tree *tree_ptr, char *Lmer);
 
 void insert_entry(Tree *tree_ptr, Fa_entry *entry);
 
-bool check_path(Node *tree, char *Lmer, int L, int Lread);
+double check_path(Tree *tree_ptr, char *read, int Lread); 
 
 Tree *tree_from_fasta(Fa_data *fasta, int L);
 
-void save_tree(Tree *tree_ptr,  char * filename);
+void save_tree(Tree *tree_ptr, char * filename);
 
 Tree *read_tree(char *filename);
+
+/* static functions 
+ * check_path(Tree *tree_ptr, char *Lmer, int Lread);
+ * */ 
 
 #endif

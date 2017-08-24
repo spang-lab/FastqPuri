@@ -19,44 +19,34 @@
  ****************************************************************************/
 
 /**
- * @file Rcommand_Sreport.c
- * @brief get Rscript command for Sreport
+ * @file init_treefilter.h
  * @author Paula Perez <paulaperezrubio@gmail.com>
- * @date 09.08.2017
+ * @date 24.08.2017
+ * @brief help dialog for trimFilter and initialization of the 
+ * command line arguments.
  *
- */
+ * */
+
+#ifndef INIT_TRIMFILTER_H
+#define INIT_TRIMFILTER_H
 
 #include <stdio.h>
-#include <unistd.h>
-#include "Rcommand_Sreport.h"
-#include "init_Sreport.h"
-#include "defines.h"
-#include "config.h"
+#include "defines.h" 
 
-extern Iparam_Sreport par_SR; /**< input parameters Sreport*/
+typedef struct _iparam_trimFilter {
+  char *Ifq;
+  char *Ifa;
+  char *Iidx;
+  char *Oprefix;
+  int trimQ;  // NO(0), FRAC(1), ENDS(2), ENDSFRAC(3), GLOBAL(4)
+  int trimN;  // NO(0), ALL(1), ENDS(2), STRIP(3)
+  bool is_fa, is_idx, tree;
+  double score; 
+  int  minQ, L, minL, nlowQ, Lmer_len, globleft, globright, percent;
+} Iparam_trimFilter;
 
-/**
- * @brief returns Rscript command that generates the summary report in html
- * */
-char *command_Sreport(){
-  char command[MAX_RCOMMAND];
-  char cwd[1024];
-  if (getcwd(cwd, sizeof(cwd)) != NULL)
-      fprintf(stdout, "Current working dir: %s\n", cwd);
-  else
-      perror("getcwd() error");
-  snprintf(command, MAX_RCOMMAND, "%s -e \" inputfolder = normalizePath('%s', \
-mustWork = TRUE); output = '%s';\
-output_file = gsub('.*/', '', output);\
-path = gsub('[^/]+$', '', output);\
-if (path != '') { output_file = paste0(normalizePath(path, mustWork=TRUE)\
-, '/', output_file); \
-} else {\
-output_file = paste0('%s', '/', output_file); };\
-rmarkdown::render('%s', params = list(inputfolder = inputfolder, \
-version = '%s'), output_file = output_file)\"",
-        RSCRIPT_EXEC, par_SR.inputfolder,
-        par_SR.outputfile, cwd, RMD_SUMMARY_REPORT, VERSION);
-  char *str_command = command;
-  return str_command;
-}
+void printHelpDialog_trimFilter();
+
+void getarg_Qreport(int argc, char **argv);
+
+#endif  // INIT_TRIMFILTER_H

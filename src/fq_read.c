@@ -121,7 +121,7 @@ void get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline) {
  * @warning change the call to sprintf to snprintf
  */
 int string_seq(Fq_read *seq, char *char_seq ) {
-  return(sprintf(char_seq, "%s\n%s\n%s\n%s\n", seq -> line1,
+  return(snprintf(char_seq, 4*READ_MAXLEN, "%s\n%s\n%s\n%s\n", seq -> line1,
           seq -> line2, seq -> line3, seq -> line4));
 }
 

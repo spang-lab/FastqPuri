@@ -19,44 +19,40 @@
  ****************************************************************************/
 
 /**
- * @file Rcommand_Sreport.c
- * @brief get Rscript command for Sreport
+ * @file trim.h
  * @author Paula Perez <paulaperezrubio@gmail.com>
- * @date 09.08.2017
+ * @date 24.08.2017
+ * @brief trims/filter sequences after Quality, N's contaminations.
  *
- */
+ * */
+
+#ifndef TRIM_H
+#define TRIM_H
 
 #include <stdio.h>
-#include <unistd.h>
-#include "Rcommand_Sreport.h"
-#include "init_Sreport.h"
+#include "Lmer.h"
+#include "fq_read.h"
 #include "defines.h"
-#include "config.h"
+#include "tree.h"
+#include "init_trimFilter.h"
+// will need them in the future
+//#include SA.h
+//#include bloomfilter.h... 
 
-extern Iparam_Sreport par_SR; /**< input parameters Sreport*/
 
-/**
- * @brief returns Rscript command that generates the summary report in html
- * */
-char *command_Sreport(){
-  char command[MAX_RCOMMAND];
-  char cwd[1024];
-  if (getcwd(cwd, sizeof(cwd)) != NULL)
-      fprintf(stdout, "Current working dir: %s\n", cwd);
-  else
-      perror("getcwd() error");
-  snprintf(command, MAX_RCOMMAND, "%s -e \" inputfolder = normalizePath('%s', \
-mustWork = TRUE); output = '%s';\
-output_file = gsub('.*/', '', output);\
-path = gsub('[^/]+$', '', output);\
-if (path != '') { output_file = paste0(normalizePath(path, mustWork=TRUE)\
-, '/', output_file); \
-} else {\
-output_file = paste0('%s', '/', output_file); };\
-rmarkdown::render('%s', params = list(inputfolder = inputfolder, \
-version = '%s'), output_file = output_file)\"",
-        RSCRIPT_EXEC, par_SR.inputfolder,
-        par_SR.outputfile, cwd, RMD_SUMMARY_REPORT, VERSION);
-  char *str_command = command;
-  return str_command;
-}
+int trim_sequenceN(Fq_read *seq);
+int trim_sequenceQ(Fq_read *seq);
+bool is_read_in_seq(Tree *tree_ptr, Fq_read *seq);
+
+/* static functions
+* static int no_N(Fq_read *seq);
+* static int Nfree_Lmer(Fq_read *seq, int minL);
+* static int Ntrim_ends(Fq_read *seq, int minL);
+* static int no_lowQ(Fq_read *seq, int minQ);
+* static int Qtrim_ends(Fq_read *seq, int minQ, int minL);
+* static int Qtrim_frac(Fq_read *seq, int minQ ,int nlowQ );
+* static int Qtrim_endsfrac(Fq_read *seq, int minQ, int minL, int nlowQ );
+* static int Qtrim_global(Fq_read *seq, int left, int right );
+*/
+
+#endif  // TRIM_H

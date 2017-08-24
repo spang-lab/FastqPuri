@@ -30,6 +30,7 @@
 #include <stdio.h>
 
 char LT[256]; /**< global variable. Lookup table. */
+char Nencode; /**< global variable. Encoding for N's(\004, or \005) */
 
 /**
  * @brief Initialize lookup table LT.
@@ -49,6 +50,7 @@ void init_map() {
   LT['C'] = 1;
   LT['G'] = 2;
   LT['T'] = 3;
+  Nencode = '\004';
 }
 
 /**
@@ -69,6 +71,7 @@ void init_map_SA() {
   LT['C'] = 2;
   LT['G'] = 3;
   LT['T'] = 4;
+  Nencode = '\005';
 }
 
 /**
@@ -76,9 +79,9 @@ void init_map_SA() {
  *
  * */
 void Lmer_sLmer(char* Lmer, int L) {
-  int i;
-  for (i = 0; i < L; i++){
-     Lmer[i] = LT[(int)Lmer[i]];
+  unsigned int i;
+  for (i = 0; i < L; i++) {
+     Lmer[i] = LT[(unsigned char)Lmer[i]];
   }
 }
 
@@ -89,12 +92,12 @@ void rev_comp(char *sLmer, int L) {
   char RC[5]= {3, 2, 1, 0, 4};
   int c, i, j;
   for (i = 0, j = L-1; i < j; i++, j--) {
-     c = RC[(int) sLmer[i]];
-     sLmer[i] = RC[(int) sLmer[j]];
+     c = RC[(unsigned char) sLmer[i]];
+     sLmer[i] = RC[(unsigned char) sLmer[j]];
      sLmer[j] = c;
   }
   if (i == j) {
-     sLmer[i] = RC[(int) sLmer[j]];
+     sLmer[i] = RC[(unsigned char) sLmer[j]];
   }
 }
 
@@ -105,11 +108,11 @@ void rev_comp2(char *sLmer, int L) {
   char RC[5]= {4, 3, 2, 1, 5};
   int c, i, j;
   for (i = 0, j = L-1; i < j; i++, j--) {
-     c = RC[(int) sLmer[i] -1];
-     sLmer[i] = RC[(int) sLmer[j]-1];
+     c = RC[(unsigned char) sLmer[i] -1];
+     sLmer[i] = RC[(unsigned char) sLmer[j]-1];
      sLmer[j] = c;
   }
   if (i == j) {
-     sLmer[i] = RC[(int) sLmer[j]-1];
+     sLmer[i] = RC[(unsigned char) sLmer[j]-1];
   }
 }

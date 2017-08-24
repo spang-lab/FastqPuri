@@ -34,7 +34,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-extern uint64_t alloc_mem; // global variable: memory allocated in the heap.
+extern uint64_t alloc_mem;  // global variable: memory allocated in the heap.
 
 /**
  * @brief reallocs pool_2D (++NPOOL_2D) if all existing nodes have been used
@@ -146,13 +146,13 @@ void insert_Lmer(Tree *tree_ptr, char *Lmer) {
   int i = 0;
   Node *current = tree_ptr -> pool_2D[0];
   for (i = 0; i < tree_ptr -> L; i++) {
-    if ((int)Lmer[i] >= T_ACGT) {
+    if ((unsigned char)Lmer[i] >= T_ACGT) {
        break;
     }  // ignore N's
-    if (current -> children[(int) Lmer[i]] == NULL) {
-        current -> children[(int) Lmer[i]] = new_node_buf(tree_ptr);
+    if (current -> children[(unsigned char) Lmer[i]] == NULL) {
+        current -> children[(unsigned char) Lmer[i]] = new_node_buf(tree_ptr);
     }
-    current = current -> children[(int) Lmer[i]];
+    current = current -> children[(unsigned char) Lmer[i]];
   }
 }
 
@@ -187,25 +187,32 @@ Tree *tree_from_fasta(Fa_data *fasta, int L) {
 }
 
 /**
- * @brief check if Lread is contained in tree.
- *
- * change it so that it returns a score!
+ * @brief checks if read is found in tree and outputs a score
+ * @param tree_ptr pointer to Tree structure
+ * @param read Read or reverse complement
+ * @param Lread length of read
+ * @returns score = (number of Lmers of reads found in read) / (Lread-L+1)
  *
  * */
-bool check_path(Node *tree, char *Lmer, int L, int Lread) {
+double check_path(Tree *tree_ptr, char *read, int Lread) {
+  int L = min(tree_ptr -> L, Lread);  // Maximum depth
+  int N = Lread - L + 1;   // number of checks we have to do
+  int Nsuccess;
   int i, j;
-  L = min(L, Lread);
-  for (i = 0; i < (Lread-L+1); i++) {
-    Node* current = tree;
+  for (i = 0; i < N; i++) {
+    Node* current = tree_ptr -> pool_2D[0];
+    bool found = true;
     for (j = 0; j < L; j++) {
-      if (current->children[(int)Lmer[i+j]] == NULL) {
-          return false;
+      if (!(current->children[(unsigned char)read[i+j]] == NULL)) {
+          found = false;
+          break;
       } else {
-          current = current -> children[(int)Lmer[i+j]];
+          current = current -> children[(unsigned char)read[i+j]];
       }
     }
+    if (found) Nsuccess++;
   }
-  return true;
+  return((double)Nsuccess/N);
 }
 
 /**

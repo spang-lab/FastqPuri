@@ -34,8 +34,7 @@
 #include "defines.h"
 #include "fopen_gen.h"
 
-
-extern uint64_t alloc_mem; // global variable: memory allocated in the heap.
+extern uint64_t alloc_mem;  // global variable: memory allocated in the heap.
 
 /**
  * @brief ignore header lines.
@@ -280,13 +279,13 @@ int read_fasta(char *filename, Fa_data * ptr_fa) {
  *
  * */
 uint64_t size_fasta(Fa_data *ptr_fa) {
-   int  i; 
-   uint64_t size = 0; 
-   for (i = 0; i < ptr_fa -> nentries; i++) {
-      size += ptr_fa -> entrylen[i];
-   }
-   return size;
-} 
+  int  i;
+  uint64_t size = 0;
+  for (i = 0; i < ptr_fa -> nentries; i++) {
+     size += ptr_fa -> entrylen[i];
+  }
+  return size;
+}
 
 
 /**
