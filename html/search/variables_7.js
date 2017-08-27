@@ -1,6 +1,7 @@
 var searchData=
 [
   ['n',['N',['../struct__fa__entry.html#a46bfe034cc419f00fccd2d7d174c76e2',1,'_fa_entry']]],
+  ['nencode',['Nencode',['../Lmer_8c.html#a09f8263f3577dfabc13a037c32504ad3',1,'Nencode():&#160;Lmer.c'],['../trim_8c.html#a09f8263f3577dfabc13a037c32504ad3',1,'Nencode():&#160;Lmer.c']]],
   ['nentries',['nentries',['../struct__fa__data.html#a2e49d8da3a888d7df62cd887367e2923',1,'_fa_data']]],
   ['nlines',['nlines',['../struct__fa__data.html#a49ac64b09307f73104bbf1e650f3c2c5',1,'_fa_data']]],
   ['nnodes',['nnodes',['../struct__tree.html#abffdcd9dcf0df92df4b5444fb74cc523',1,'_tree']]],

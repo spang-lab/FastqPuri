@@ -38,15 +38,16 @@ typedef struct _iparam_trimFilter {
   char *Ifa;
   char *Iidx;
   char *Oprefix;
-  int trimQ;  // NO(0), FRAC(1), ENDS(2), ENDSFRAC(3), GLOBAL(4)
-  int trimN;  // NO(0), ALL(1), ENDS(2), STRIP(3)
-  bool is_fa, is_idx, tree;
+  int trimQ;   // NO(0), FRAC(1), ENDS(2), ENDSFRAC(3), GLOBAL(4)
+  int trimN;   // NO(0), ALL(1), ENDS(2), STRIP(3)
+  int method;  // TREE(1), SA(2), BLOOM(3)
+  bool is_fa, is_idx;
   double score; 
   int  minQ, L, minL, nlowQ, Lmer_len, globleft, globright, percent;
 } Iparam_trimFilter;
 
 void printHelpDialog_trimFilter();
 
-void getarg_Qreport(int argc, char **argv);
+void getarg_trimFilter(int argc, char **argv);
 
 #endif  // INIT_TRIMFILTER_H

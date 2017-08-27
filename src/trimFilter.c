@@ -32,19 +32,18 @@
 #include <stdio.h>
 #include <time.h>
 #include "init_trimFilter.h"
-#include "init_Qreport.h"
 #include "trim.h"
 
 
 uint64_t alloc_mem = 0;  /**< global variable. Memory allocated in the heap.*/
 Iparam_trimFilter par_TF;  /**< global variable: Input parameters of makeTree.*/
-Iparam_Qreport par_QR;  /**< global variable: Input parameters of makeTree.*/
 
 /**
  * @brief makeTree main function
  *
  * */
 int main(int argc, char *argv[]) {
+  getarg_trimFilter(argc,argv); 
   clock_t start, end;
   double cpu_time_used;
   time_t rawtime;

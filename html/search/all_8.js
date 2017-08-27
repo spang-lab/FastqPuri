@@ -20,5 +20,6 @@ var searchData=
   ['insert_5flmer',['insert_Lmer',['../tree_8c.html#a3cd8ebe19e5c6e6b54771eede75c935b',1,'insert_Lmer(Tree *tree_ptr, char *Lmer):&#160;tree.c'],['../tree_8h.html#a3cd8ebe19e5c6e6b54771eede75c935b',1,'insert_Lmer(Tree *tree_ptr, char *Lmer):&#160;tree.c']]],
   ['iparam_5fmaketree',['Iparam_makeTree',['../init__makeTree_8h.html#a10d824f48589000a94c210c64f08c9a9',1,'init_makeTree.h']]],
   ['iparam_5fqreport',['Iparam_Qreport',['../init__Qreport_8h.html#a883b1b3db368b84ab55f011bbb41bc80',1,'init_Qreport.h']]],
-  ['iparam_5fsreport',['Iparam_Sreport',['../init__Sreport_8h.html#ae7c35fd710a54db5b21f5c6b04fe9a5d',1,'init_Sreport.h']]]
+  ['iparam_5fsreport',['Iparam_Sreport',['../init__Sreport_8h.html#ae7c35fd710a54db5b21f5c6b04fe9a5d',1,'init_Sreport.h']]],
+  ['is_5fread_5fintree',['is_read_inTree',['../trim_8c.html#a7e2b4015298659b7e21a80d4bb031e2f',1,'trim.c']]]
 ];

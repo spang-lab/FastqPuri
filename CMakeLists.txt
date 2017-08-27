@@ -122,7 +122,6 @@ add_executable(makeTree ${PROJECT_SOURCE_DIR}/makeTree.c
 
 add_executable(trimFilter ${PROJECT_SOURCE_DIR}/trimFilter.c 
             ${PROJECT_SOURCE_DIR}/init_trimFilter.c 
-            ${PROJECT_SOURCE_DIR}/init_Qreport.c
             ${PROJECT_SOURCE_DIR}/fa_read.c 
             ${PROJECT_SOURCE_DIR}/fq_read.c 
             ${PROJECT_SOURCE_DIR}/tree.c 

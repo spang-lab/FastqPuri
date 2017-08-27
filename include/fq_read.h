@@ -43,7 +43,8 @@ typedef struct _fq_read {
                  filtered with this tool.*/
 } Fq_read;
 
-void get_fqread(Fq_read* seq, char* buffer, int c1, int c2, int k);
+int get_fqread(Fq_read* seq, char* buffer, int pos1, int pos2, 
+               int nline, int read_len, int filter);
 
 int string_seq(Fq_read *seq, char *char_seq );
 

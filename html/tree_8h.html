@@ -109,7 +109,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="tree_8h__dep__incl.png" border="0" usemap="#include_2tree_8hdep" alt=""/></div>
 <map name="include_2tree_8hdep" id="include_2tree_8hdep">
-<area shape="rect" id="node2" href="makeTree_8c.html" title="makeTree main function " alt="" coords="5,80,119,107"/><area shape="rect" id="node3" href="tree_8c.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="143,80,221,107"/></map>
+<area shape="rect" id="node2" href="makeTree_8c.html" title="makeTree main function " alt="" coords="5,80,119,107"/><area shape="rect" id="node3" href="tree_8c.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="143,80,221,107"/><area shape="rect" id="node4" href="trim_8h.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="244,80,344,107"/><area shape="rect" id="node5" href="trim_8c.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="197,155,274,181"/><area shape="rect" id="node6" href="trimFilter_8c.html" title="trimFilter main function " alt="" coords="298,155,405,181"/></map>
 </div>
 </div>
 <p><a href="tree_8h_source.html">Go to the source code of this file.</a></p>
@@ -152,9 +152,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8h.html#a5f428a722fa118b5f4684fd06401db9a">insert_entry</a> (<a class="el" href="tree_8h.html#a50a06950fa1e82738ad9a6bd85914900">Tree</a> *tree_ptr, <a class="el" href="fa__read_8h.html#a8f68b28ad3a6c33fe1dd78d5ac044b30">Fa_entry</a> *entry)</td></tr>
 <tr class="memdesc:a5f428a722fa118b5f4684fd06401db9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">fasta entry insertion in the tree (depth L). <br /></td></tr>
 <tr class="separator:a5f428a722fa118b5f4684fd06401db9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89532e754b480a48dab808acd1490876"><td class="memItemLeft" align="right" valign="top"><a class="el" href="defines_8h.html#abb452686968e48b67397da5f97445f5b">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8h.html#a89532e754b480a48dab808acd1490876">check_path</a> (<a class="el" href="tree_8h.html#a6390a1d02010dee1843fa2b1263308c1">Node</a> *tree, char *Lmer, int L, int Lread)</td></tr>
-<tr class="memdesc:a89532e754b480a48dab808acd1490876"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if Lread is contained in tree.  <a href="#a89532e754b480a48dab808acd1490876">More...</a><br /></td></tr>
-<tr class="separator:a89532e754b480a48dab808acd1490876"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ea4e8b262dc61c20d94b598bffab181"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8h.html#a7ea4e8b262dc61c20d94b598bffab181">check_path</a> (<a class="el" href="tree_8h.html#a50a06950fa1e82738ad9a6bd85914900">Tree</a> *tree_ptr, char *read, int Lread)</td></tr>
+<tr class="memdesc:a7ea4e8b262dc61c20d94b598bffab181"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if read is found in tree and outputs a score  <a href="#a7ea4e8b262dc61c20d94b598bffab181">More...</a><br /></td></tr>
+<tr class="separator:a7ea4e8b262dc61c20d94b598bffab181"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3cec782fc1e0ae4063a34c641b463f89"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3cec782fc1e0ae4063a34c641b463f89"></a>
 <a class="el" href="tree_8h.html#a50a06950fa1e82738ad9a6bd85914900">Tree</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8h.html#a3cec782fc1e0ae4063a34c641b463f89">tree_from_fasta</a> (<a class="el" href="fa__read_8h.html#a797328b16bc1c1088998cd164aafb09d">Fa_data</a> *fasta, int L)</td></tr>
 <tr class="memdesc:a3cec782fc1e0ae4063a34c641b463f89"><td class="mdescLeft">&#160;</td><td class="mdescRight">create Tree structure from fasta structure. <br /></td></tr>
@@ -187,27 +187,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a89532e754b480a48dab808acd1490876"></a>
+<a class="anchor" id="a7ea4e8b262dc61c20d94b598bffab181"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="defines_8h.html#abb452686968e48b67397da5f97445f5b">bool</a> check_path </td>
+          <td class="memname">double check_path </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="tree_8h.html#a6390a1d02010dee1843fa2b1263308c1">Node</a> *&#160;</td>
-          <td class="paramname"><em>tree</em>, </td>
+          <td class="paramtype"><a class="el" href="tree_8h.html#a50a06950fa1e82738ad9a6bd85914900">Tree</a> *&#160;</td>
+          <td class="paramname"><em>tree_ptr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>Lmer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>L</em>, </td>
+          <td class="paramname"><em>read</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -223,8 +217,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree
       </table>
 </div><div class="memdoc">
 
-<p>check if Lread is contained in tree. </p>
-<p>change it so that it returns a score! </p>
+<p>checks if read is found in tree and outputs a score </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tree_ptr</td><td>pointer to Tree structure </td></tr>
+    <tr><td class="paramname">read</td><td>Read or reverse complement </td></tr>
+    <tr><td class="paramname">Lread</td><td>length of read </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>score = (number of Lmers of reads found in read) / (Lread-L+1) </dd></dl>
 
 </div>
 </div>
@@ -371,7 +373,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 23 2017 17:06:00 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 24 2017 18:23:36 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

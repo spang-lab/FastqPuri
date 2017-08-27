@@ -98,7 +98,8 @@ int main(int argc, char *argv[]) {
         c1 = c2 + 1;
         if (buffer[j]== '\n') {
           c2 = j;
-          get_fqread(seq, buffer, c1, c2, k);
+           par_QR.one_read_len &= get_fqread(seq, buffer, c1, c2, k, 
+                                   par_QR.read_len, par_QR.filter);
           if ( (k % 4) == 3 ) {
              // printf("Nreads: %d \n",res -> nreads);
              if (res -> nreads == 0) get_first_tile(res, seq);

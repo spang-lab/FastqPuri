@@ -78,15 +78,22 @@
 
 
 // Trimming
+#define NO 0        /**< No trimming */
+#define ALL 1       /**< Trims if a lowQ base calling | N is found */
+#define ENDS 2      /**< Trims at the ends */
+#define STRIP 3     /**< Looks for the largest N-free sequence */
+#define FRAC  3     /**< Discards a read if it contains > percent lowQ bases*/
+#define ENDSFRAC 4  /**< trims at the ends and discards a read if the 
+                      remaining part has more than > percent lowQ bases */
+#define GLOBAL 5    /**< Trims a fixed # bases from e left and right*/    
 
-#define NO 0
-#define ALL 1
-#define ENDS 2
-#define STRIP 3
-#define FRAC  3
-#define ENDSFRAC 4
-#define GLOBAL 5 
+#define TREE 1   /**< Use a tree to look for contaminations*/
+#define SA 2     /**< Use a suffix array to look for contaminations*/
+#define BLOOM 3  /**< Use a bloom filter to look for contaminations*/
 
-
+#define ERROR 1000 /**< Encodes an error when reading in trimN, trimQ, method
+                     options in trimFilter */
+#define DEFAULT_MINL 25 /**< Default minimum length under which we discard 
+                          the reads */
 #endif
 

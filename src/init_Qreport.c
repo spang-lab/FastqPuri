@@ -42,7 +42,7 @@ extern Iparam_Qreport par_QR; /**< Input parameters  of Qreport*/
 void printHelpDialog_Qreport() {
   const char dialog[] =
     "Usage: ./Qreport -i <INPUT_FILE.fq> -l <READ_LENGTH> \n"
-    "       -o <OUTPUT_FILE> -t [NUMBER_OF_TILES] -q [MINIMUM_QUALITY]\n"
+    "       -o <OUTPUT_FILE> -t [NUMBER_OF_TILES] -q [MINQ]\n"
     "       -n [#_QUALITY_VALUES] -f [FILTER_STATUS]\n"
     "Reads in a fq file (gz, bz2, z formats also accepted) and creates a \n"
     "quality report (html file) along with the necessary data to create it\n"
@@ -116,39 +116,46 @@ void getarg_Qreport(int argc, char **argv) {
       default:
         fprintf(stderr, "%s: option `-%c' is invalid: ignored\n",
                               argv[0], optopt);
-       printHelpDialog_Qreport();
-       fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
-       exit(EXIT_FAILURE);
+        printHelpDialog_Qreport();
+        fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+        exit(EXIT_FAILURE);
        break;
     }
   }
 
   // Checking the required options
   if (par_QR.read_len == 0) {
+     printHelpDialog_Qreport();
      fprintf(stderr, "read length was not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");
-     printHelpDialog_Qreport();
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
   if (par_QR.inputfile == NULL) {
+     printHelpDialog_Qreport();
      fprintf(stderr, "Input file was not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");
-     printHelpDialog_Qreport();
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
-  if (par_QR.outputfilebin == NULL) {
-     fprintf(stderr, "Binary output file was not properly initialized. \n");
-     fprintf(stderr, "Exiting program.\n");
+  if (!strncmp(par_QR.outputfilebin,"",MAX_FILENAME)) {
      printHelpDialog_Qreport();
+     fprintf(stderr, "Binary output file name not properly initialized. \n");
+     fprintf(stderr, "Exiting program.\n");
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
-  if (par_QR.outputfilehtml == NULL) {
-     fprintf(stderr, "html output file was not properly initialized. \n");
-     fprintf(stderr, "Exiting program.\n");
+  if (!strncmp(par_QR.outputfilehtml,"",MAX_FILENAME)) {
      printHelpDialog_Qreport();
+     fprintf(stderr, "html output file name was not properly initialized. \n");
+     fprintf(stderr, "Exiting program.\n");
+     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+     exit(EXIT_FAILURE);
+  }
+  if (!strncmp(par_QR.outputfileinfo,"",MAX_FILENAME)) {
+     printHelpDialog_Qreport();
+     fprintf(stderr, "info output file name was not properly initialized. \n");
+     fprintf(stderr, "Exiting program.\n");
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }

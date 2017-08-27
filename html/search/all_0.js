@@ -6,6 +6,7 @@ var searchData=
   ['_5fiparam_5fmaketree',['_iparam_makeTree',['../struct__iparam__makeTree.html',1,'']]],
   ['_5fiparam_5fqreport',['_iparam_Qreport',['../struct__iparam__Qreport.html',1,'']]],
   ['_5fiparam_5fsreport',['_iparam_Sreport',['../struct__iparam__Sreport.html',1,'']]],
+  ['_5fiparam_5ftrimfilter',['_iparam_trimFilter',['../struct__iparam__trimFilter.html',1,'']]],
   ['_5fnode',['_node',['../struct__node.html',1,'']]],
   ['_5ftree',['_tree',['../struct__tree.html',1,'']]]
 ];

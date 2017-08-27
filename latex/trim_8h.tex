@@ -1,0 +1,106 @@
+\hypertarget{trim_8h}{\section{include/trim.h File Reference}
+\label{trim_8h}\index{include/trim.\+h@{include/trim.\+h}}
+}
+
+
+trims/filter sequences after Quality, N's contaminations.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}Lmer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}fq\+\_\+read.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}tree.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}init\+\_\+trim\+Filter.\+h\char`\"{}}\\*
+Include dependency graph for trim.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{trim_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{trim_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{trim_8h_af23d3685193b624b72a6969a49903a97}{trim\+\_\+sequence\+N} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq)
+\begin{DoxyCompactList}\small\item\em trims sequence based on presence of N nucleotides \end{DoxyCompactList}\item 
+int \hyperlink{trim_8h_ae5ab2bb79068d8a7e0d72686c1f50320}{trim\+\_\+sequence\+Q} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq)
+\begin{DoxyCompactList}\small\item\em trims sequence based on low\+Q base callings \end{DoxyCompactList}\item 
+\hypertarget{trim_8h_a2fcf29b5c8c548e1214eda9d9fd85c54}{\hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool} {\bfseries is\+\_\+read\+\_\+in\+\_\+seq} (\hyperlink{tree_8h_a50a06950fa1e82738ad9a6bd85914900}{Tree} $\ast$tree\+\_\+ptr, \hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq)}\label{trim_8h_a2fcf29b5c8c548e1214eda9d9fd85c54}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+trims/filter sequences after Quality, N's contaminations. 
+
+\begin{DoxyAuthor}{Author}
+Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+com} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+24.\+08.\+2017 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{trim_8h_af23d3685193b624b72a6969a49903a97}{\index{trim.\+h@{trim.\+h}!trim\+\_\+sequence\+N@{trim\+\_\+sequence\+N}}
+\index{trim\+\_\+sequence\+N@{trim\+\_\+sequence\+N}!trim.\+h@{trim.\+h}}
+\subsubsection[{trim\+\_\+sequence\+N}]{\setlength{\rightskip}{0pt plus 5cm}int trim\+\_\+sequence\+N (
+\begin{DoxyParamCaption}
+\item[{{\bf Fq\+\_\+read} $\ast$}]{seq}
+\end{DoxyParamCaption}
+)}}\label{trim_8h_af23d3685193b624b72a6969a49903a97}
+
+
+trims sequence based on presence of N nucleotides 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seq} & fastq read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/1 error, 0 discarded, 1 accepted as is, 2 accepted and trimmed
+\end{DoxyReturn}
+This function calls a different function depending on the method passed as input par\+\_\+\+T\+F.\+trim\+N\+:
+\begin{DoxyItemize}
+\item N\+O(0)\+: accepts it as is, (1),
+\item A\+L\+L(1)\+: accepts it as is if N\+O N's found (1), rejects it otherwise (0),
+\item E\+N\+D\+S(2)\+: trims the ends and accepts it if it is longer than min\+L (2 if trimming, 1 if no trimming), rejects it otherwise (0),
+\item S\+T\+R\+I\+P(3)\+: finds the longest N-\/free subsequence and trims it if it is at least min\+L nucleotides long (2 if trimming, 1 if no N's are found), rejects it otherwise (0). 
+\end{DoxyItemize}\hypertarget{trim_8h_ae5ab2bb79068d8a7e0d72686c1f50320}{\index{trim.\+h@{trim.\+h}!trim\+\_\+sequence\+Q@{trim\+\_\+sequence\+Q}}
+\index{trim\+\_\+sequence\+Q@{trim\+\_\+sequence\+Q}!trim.\+h@{trim.\+h}}
+\subsubsection[{trim\+\_\+sequence\+Q}]{\setlength{\rightskip}{0pt plus 5cm}int trim\+\_\+sequence\+Q (
+\begin{DoxyParamCaption}
+\item[{{\bf Fq\+\_\+read} $\ast$}]{seq}
+\end{DoxyParamCaption}
+)}}\label{trim_8h_ae5ab2bb79068d8a7e0d72686c1f50320}
+
+
+trims sequence based on low\+Q base callings 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seq} & fastq read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/1 error, 0 discarded, 1 accepted as is, 2 accepted and trimmed
+\end{DoxyReturn}
+This function calls a different function depending on the method passed as input par\+\_\+\+T\+F.\+trim\+Q\+:
+\begin{DoxyItemize}
+\item N\+O(0)\+: accepts is as is , (1),
+\item F\+R\+A\+C(1)\+: accepts it if less than par\+\_\+\+T\+F.\+nlow\+Q are found (1), rejects it otherwise (0),
+\item E\+N\+D\+S(2)\+: trims the ends and accepts it if it is longer than min\+L (2 if triming, 1 if no trimming), rejects it otherwise (0),
+\item E\+N\+D\+S\+F\+R\+A\+C(3)\+: trims the ends and accepts if the remaining sequence is at least min\+L bases long and if it contains less than nlow\+Q low\+Q nucleotides (2 if trimming, 1 if no trimming). Otherwise, it is rejected, (0).
+\item G\+L\+O\+B\+A\+L(4)\+: it trims globally globleft nucleotides from the left and globright from the right, (returns 2). 
+\end{DoxyItemize}

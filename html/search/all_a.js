@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['main',['main',['../makeTree_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;makeTree.c'],['../Qreport_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;Qreport.c'],['../Sreport_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;Sreport.c']]],
+  ['main',['main',['../makeTree_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;makeTree.c'],['../Qreport_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;Qreport.c'],['../Sreport_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;Sreport.c'],['../trimFilter_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;trimFilter.c']]],
   ['maketree_2ec',['makeTree.c',['../makeTree_8c.html',1,'']]],
   ['max',['max',['../defines_8h.html#affe776513b24d84b39af8ab0930fef7f',1,'defines.h']]],
   ['max_5ffasz_5ftree',['MAX_FASZ_TREE',['../defines_8h.html#aba3b47d51c7ee08d2e0e92e58aa07106',1,'defines.h']]],

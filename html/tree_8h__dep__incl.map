@@ -1,4 +1,7 @@
 <map id="include/tree.h" name="include/tree.h">
 <area shape="rect" id="node2" href="$makeTree_8c.html" title="makeTree main function " alt="" coords="5,80,119,107"/>
 <area shape="rect" id="node3" href="$tree_8c.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="143,80,221,107"/>
+<area shape="rect" id="node4" href="$trim_8h.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="244,80,344,107"/>
+<area shape="rect" id="node5" href="$trim_8c.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="197,155,274,181"/>
+<area shape="rect" id="node6" href="$trimFilter_8c.html" title="trimFilter main function " alt="" coords="298,155,405,181"/>
 </map>

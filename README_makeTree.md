@@ -20,16 +20,14 @@ Usage `C` executable (in folder `bin`):
 
 ```
 Usage: ./makeTree -f|--fasta <FASTA_INPUT> -l|--depth <DEPTH> 
--o|--output <OUTPUT_FILE> Reads a *fa file, constructs a tree of 
+-o, --output <OUTPUT_FILE> Reads a *fa file, constructs a tree of 
 depth DEPTH and saves it compressed in OUTPUT_FILE.
 Options: 
- -v|--version Prints package version.
- -h|--help    Prints help dialog.
- -f|--fasta   Input folder containing *bin data (output from Qreport).
- Mandatory option.
- -l|--depth depth of the tree structure
- -o|--output Output file. If the extension is not *gz, it is added. 
- Mandatory option.
+ -v, --version Prints package version.
+ -h, --help    Prints help dialog.
+ -f, --fasta   Input folder containing *bin data (output from Qreport). Mandatory option.
+ -l, --depth depth of the tree structure
+ -o, --output Output file. If the extension is not *gz, it is added. Mandatory option.
  -o Output file (with NO extension). Mandatory option.
 ```
 

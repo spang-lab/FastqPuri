@@ -38,8 +38,8 @@ void \hyperlink{tree_8c_a9bf758d5738d90a332fcd04485853d84}{free\+\_\+all\+\_\+no
 \hypertarget{tree_8c_a3cec782fc1e0ae4063a34c641b463f89}{\hyperlink{tree_8h_a50a06950fa1e82738ad9a6bd85914900}{Tree} $\ast$ \hyperlink{tree_8c_a3cec782fc1e0ae4063a34c641b463f89}{tree\+\_\+from\+\_\+fasta} (\hyperlink{fa__read_8h_a797328b16bc1c1088998cd164aafb09d}{Fa\+\_\+data} $\ast$fasta, int L)}\label{tree_8c_a3cec782fc1e0ae4063a34c641b463f89}
 
 \begin{DoxyCompactList}\small\item\em create Tree structure from fasta structure. \end{DoxyCompactList}\item 
-\hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool} \hyperlink{tree_8c_a89532e754b480a48dab808acd1490876}{check\+\_\+path} (\hyperlink{tree_8h_a6390a1d02010dee1843fa2b1263308c1}{Node} $\ast$tree, char $\ast$Lmer, int L, int Lread)
-\begin{DoxyCompactList}\small\item\em check if Lread is contained in tree. \end{DoxyCompactList}\item 
+double \hyperlink{tree_8c_a7ea4e8b262dc61c20d94b598bffab181}{check\+\_\+path} (\hyperlink{tree_8h_a50a06950fa1e82738ad9a6bd85914900}{Tree} $\ast$tree\+\_\+ptr, char $\ast$read, int Lread)
+\begin{DoxyCompactList}\small\item\em checks if read is found in tree and outputs a score \end{DoxyCompactList}\item 
 void \hyperlink{tree_8c_a3b6ea3f3ef0c84a182e93a58ea417aea}{save\+\_\+tree} (\hyperlink{tree_8h_a50a06950fa1e82738ad9a6bd85914900}{Tree} $\ast$tree\+\_\+ptr, char $\ast$filename)
 \begin{DoxyCompactList}\small\item\em saves Tree to disk in filename \end{DoxyCompactList}\item 
 \hyperlink{tree_8h_a50a06950fa1e82738ad9a6bd85914900}{Tree} $\ast$ \hyperlink{tree_8c_a58f15d601ef34104e008d0ff8cb28bee}{read\+\_\+tree} (char $\ast$filename)
@@ -63,21 +63,32 @@ Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+
 
 
 \subsection{Function Documentation}
-\hypertarget{tree_8c_a89532e754b480a48dab808acd1490876}{\index{tree.\+c@{tree.\+c}!check\+\_\+path@{check\+\_\+path}}
+\hypertarget{tree_8c_a7ea4e8b262dc61c20d94b598bffab181}{\index{tree.\+c@{tree.\+c}!check\+\_\+path@{check\+\_\+path}}
 \index{check\+\_\+path@{check\+\_\+path}!tree.\+c@{tree.\+c}}
-\subsubsection[{check\+\_\+path}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool} check\+\_\+path (
+\subsubsection[{check\+\_\+path}]{\setlength{\rightskip}{0pt plus 5cm}double check\+\_\+path (
 \begin{DoxyParamCaption}
-\item[{{\bf Node} $\ast$}]{tree, }
-\item[{char $\ast$}]{Lmer, }
-\item[{int}]{L, }
+\item[{{\bf Tree} $\ast$}]{tree\+\_\+ptr, }
+\item[{char $\ast$}]{read, }
 \item[{int}]{Lread}
 \end{DoxyParamCaption}
-)}}\label{tree_8c_a89532e754b480a48dab808acd1490876}
+)}}\label{tree_8c_a7ea4e8b262dc61c20d94b598bffab181}
 
 
-check if Lread is contained in tree. 
+checks if read is found in tree and outputs a score 
 
-change it so that it returns a score! \hypertarget{tree_8c_a9bf758d5738d90a332fcd04485853d84}{\index{tree.\+c@{tree.\+c}!free\+\_\+all\+\_\+nodes@{free\+\_\+all\+\_\+nodes}}
+
+\begin{DoxyParams}{Parameters}
+{\em tree\+\_\+ptr} & pointer to Tree structure \\
+\hline
+{\em read} & Read or reverse complement \\
+\hline
+{\em Lread} & length of read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+score = (number of Lmers of reads found in read) / (Lread-\/\+L+1) 
+\end{DoxyReturn}
+\hypertarget{tree_8c_a9bf758d5738d90a332fcd04485853d84}{\index{tree.\+c@{tree.\+c}!free\+\_\+all\+\_\+nodes@{free\+\_\+all\+\_\+nodes}}
 \index{free\+\_\+all\+\_\+nodes@{free\+\_\+all\+\_\+nodes}!tree.\+c@{tree.\+c}}
 \subsubsection[{free\+\_\+all\+\_\+nodes}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+all\+\_\+nodes (
 \begin{DoxyParamCaption}

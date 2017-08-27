@@ -111,23 +111,23 @@ void getarg_makeTree(int argc, char **argv) {
   // Since the variable par_MT is global, it is automatically initialized to
   // 0 when created.
   if (par_MT.inputfasta == NULL) {
+     printHelpDialog_makeTree();
      fprintf(stderr, "Input fasta file was not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");
-     printHelpDialog_makeTree();
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
-  if (par_MT.outputfile == NULL) {
+  if  (!strncmp(par_MT.outputfile,"",MAX_FILENAME)) {
+     printHelpDialog_makeTree();
      fprintf(stderr, "Output file was not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");
-     printHelpDialog_makeTree();
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
   if (par_MT.L == 0) {
+     printHelpDialog_makeTree();
      fprintf(stderr, "Tree depth was not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");
-     printHelpDialog_makeTree();
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }

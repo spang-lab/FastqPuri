@@ -166,7 +166,6 @@ static int Ntrim_ends(Fq_read *seq, int minL) {
   }
 }
 
-
 /**
  * @brief checks if a sequence contains lowQ nucleotides
  * @param seq fastq read
@@ -297,7 +296,6 @@ static int Qtrim_endsfrac(Fq_read *seq, int minQ, int minL, int nlowQ ) {
   return 2;
 }
 
-
 /**
  * @brief trims left from the left and right from the right
  * @param seq fastq read
@@ -349,7 +347,6 @@ int trim_sequenceN(Fq_read *seq ) {
           (par_TF.trimN == STRIP)? Nfree_Lmer(seq, par_TF.minL): -1;
 }
 
-/* 0 if not used, 1 if accepted as is, 2 if accepted and trimmed*/
 /**
  * @brief trims sequence based on lowQ base callings
  * @param seq fastq read

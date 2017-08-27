@@ -11,20 +11,21 @@ Usage `C` executable (in folder `bin`):
 
 ```
 Usage: ./Qreport -i <INPUT_FILE.fq> -l <READ_LENGTH>
-       -o <OUTPUT_FILE> -t [NUMBER_OF_TILES] -q [MINIMUM_QUALITY]
+       -o <OUTPUT_FILE> -t [NUMBER_OF_TILES] -q [MINQ]
        -n [#_QUALITY_VALUES] -f [FILTER_STATUS]
 Reads in a fq file (gz, bz2, z formats also accepted) and creates a
 quality report (html file) along with the necessary data to create it
 stored in binary format.
+Options: 
  -v prints package version.
  -h prints help dialog.
- -i Input file [*fq|*fq.gz|*fq.bz2]. Required option.
- -l Read length. Length of the reads. Required option.
- -o Output file prefix (with NO extension). Required option.
+ -i Input file [*fq|*fq.gz|*fq.bz2]. Mandatory option.
+ -l Read length. Length of the reads. Mandatory option.
+ -o Output file prefix (with NO extension). Mandatory option.
  -t Number of tiles. Optional (default 96).
  -q Minimum quality allowed. Optional (default 27).
  -n Number of different quality values allowed. Optional (default 46).
- -f Filter status: 0 original file, 1 file filtered with filter_trim,
+ -f Filter status: 0 original file, 1 file filtered with trimFilter,
     2 file filtered with another tool. Optional (default 0).
 ```
 

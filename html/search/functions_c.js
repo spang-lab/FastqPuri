@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['uncompress',['uncompress',['../fopen__gen_8c.html#ad91f7120fe65477ca4ccc599808434e6',1,'fopen_gen.c']]],
-  ['update_5facgt_5fcounts',['update_ACGT_counts',['../stats__info_8c.html#a5bceee4c9ce4858a2e1a1022020f3051',1,'update_ACGT_counts(uint64_t *ACGT_low, char ACGT):&#160;stats_info.c'],['../stats__info_8h.html#a5bceee4c9ce4858a2e1a1022020f3051',1,'update_ACGT_counts(uint64_t *ACGT_low, char ACGT):&#160;stats_info.c']]],
-  ['update_5facgt_5fpos',['update_ACGT_pos',['../stats__info_8c.html#a0bf1e9e20a67a78adc88e500610b45f7',1,'update_ACGT_pos(uint64_t *ACGT_pos, Fq_read *seq, int read_len):&#160;stats_info.c'],['../stats__info_8h.html#a0bf1e9e20a67a78adc88e500610b45f7',1,'update_ACGT_pos(uint64_t *ACGT_pos, Fq_read *seq, int read_len):&#160;stats_info.c']]],
-  ['update_5finfo',['update_info',['../stats__info_8c.html#af599aaaf2eb242dcb6e9f44c0eb8c180',1,'update_info(Info *res, Fq_read *seq):&#160;stats_info.c'],['../stats__info_8h.html#af599aaaf2eb242dcb6e9f44c0eb8c180',1,'update_info(Info *res, Fq_read *seq):&#160;stats_info.c']]],
-  ['update_5fqpostile_5ftable',['update_QPosTile_table',['../stats__info_8c.html#a12859b5ec4a85f24df22833b2ddeee79',1,'update_QPosTile_table(Info *res, Fq_read *seq):&#160;stats_info.c'],['../stats__info_8h.html#a12859b5ec4a85f24df22833b2ddeee79',1,'update_QPosTile_table(Info *res, Fq_read *seq):&#160;stats_info.c']]]
+  ['tree_5ffrom_5ffasta',['tree_from_fasta',['../tree_8c.html#a3cec782fc1e0ae4063a34c641b463f89',1,'tree_from_fasta(Fa_data *fasta, int L):&#160;tree.c'],['../tree_8h.html#a3cec782fc1e0ae4063a34c641b463f89',1,'tree_from_fasta(Fa_data *fasta, int L):&#160;tree.c']]],
+  ['trim_5fsequencen',['trim_sequenceN',['../trim_8c.html#af23d3685193b624b72a6969a49903a97',1,'trim_sequenceN(Fq_read *seq):&#160;trim.c'],['../trim_8h.html#af23d3685193b624b72a6969a49903a97',1,'trim_sequenceN(Fq_read *seq):&#160;trim.c']]],
+  ['trim_5fsequenceq',['trim_sequenceQ',['../trim_8c.html#ae5ab2bb79068d8a7e0d72686c1f50320',1,'trim_sequenceQ(Fq_read *seq):&#160;trim.c'],['../trim_8h.html#ae5ab2bb79068d8a7e0d72686c1f50320',1,'trim_sequenceQ(Fq_read *seq):&#160;trim.c']]]
 ];

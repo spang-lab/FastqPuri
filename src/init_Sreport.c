@@ -89,16 +89,16 @@ void getarg_Sreport(int argc, char **argv) {
     }
   }
   if (par_SR.inputfolder == NULL) {
+     printHelpDialog_Sreport();
      fprintf(stderr, "Input folder was not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");
-     printHelpDialog_Sreport();
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
   if (par_SR.outputfile == NULL) {
+     printHelpDialog_Sreport();
      fprintf(stderr, "html output file was not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");
-     printHelpDialog_Sreport();
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }

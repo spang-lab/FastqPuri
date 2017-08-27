@@ -30,18 +30,16 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "init_Qreport.h"
 #include "fq_read.h"
 #include "str_manip.h"
 
-extern Iparam_Qreport par_QR;  /**< input parameters */
 
 /**
  * @brief reads fastq line from a buffer
  *
  * a fastq line is read from a buffer and the relevant
  * information is stored in a structure <b>Fq_read</b>. Depending
- * on the variable <b>par_QR</b> values, information about whether
+ * on the value of <b>filter</b>, information about whether
  * the read was trimmed is stored.
  *
  * @param *seq pointer to <b>Fq_read</b>, where the info will be stored.
@@ -49,9 +47,13 @@ extern Iparam_Qreport par_QR;  /**< input parameters */
  * @param pos1 buffer start position of the line.
  * @param pos2 buffer end position of the line.
  * @param nline file line number being read.
+ * @param L predefined read length
+ * @param filter 0 original file, 1 file filtered with filter_trim,
+ *     2 file filtered with another tool
  *
  */
-void get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline) {
+int get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline, 
+                int read_len, int filter) {
   /* Check if the line length exceeds READ_MAXLEN
    * and exit the program*/
   if ((pos2 - pos1) > READ_MAXLEN) {
@@ -63,7 +65,8 @@ void get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline) {
      fprintf(stderr, "Exiting program.\n");
      exit(EXIT_FAILURE);
   }
-  switch ( nline%4 ) {
+  int one_read_len = 1; 
+  switch (nline%4) {
       case 0:
          memcpy(seq -> line1 , buffer + pos1, pos2 - pos1);
          seq -> line1[pos2-pos1]='\0';
@@ -71,9 +74,9 @@ void get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline) {
       case 1:
          memcpy(seq -> line2 , buffer + pos1, pos2 - pos1);
          seq -> L = pos2 - pos1;
-         // Exit programm if seq -> L > par_QR.read_len
-         if ((seq -> L) > par_QR.read_len) {
-            fprintf(stderr, "Predefined read length %d\n", par_QR.read_len);
+         // Exit programm if seq -> L > read_len 
+         if ((seq -> L) > read_len) {
+            fprintf(stderr, "Predefined read length %d\n", read_len);
             fprintf(stderr, "A read was found with length: %d\n", seq -> L);
             fprintf(stderr, "Read length exceeds predefined length.\n");
             fprintf(stderr, "Revise your settings.\n");
@@ -82,15 +85,15 @@ void get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline) {
             exit(EXIT_FAILURE);
          }
          seq -> line2[pos2 - pos1] = '\0';
-         if (seq -> L != par_QR.read_len) {
-            par_QR.one_read_len = 0;
+         if (seq -> L != read_len) {
+            one_read_len = 0;
          }
          break;
       case 2:
          memcpy(seq -> line3 , buffer + pos1, pos2 - pos1);
          seq -> line3[pos2 - pos1]='\0';
          seq -> start = 0;
-         if ( par_QR.filter == 1 ) {
+         if ( filter == 1 ) {
            char *trim = "TRIM";
            int i, end;
            if ( (i = strindex(seq -> line3, trim)) > 0 ) {
@@ -112,6 +115,7 @@ void get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline) {
          seq -> line4[ pos2 - pos1]='\0';
          break;
   }
+  return one_read_len;
 }
 
 /**

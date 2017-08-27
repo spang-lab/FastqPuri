@@ -7,5 +7,5 @@ var searchData=
   ['lmer_2eh',['Lmer.h',['../Lmer_8h.html',1,'']]],
   ['lmer_5fslmer',['Lmer_sLmer',['../Lmer_8c.html#a3280d056532aa23523d08dfd52b60b51',1,'Lmer_sLmer(char *Lmer, int L):&#160;Lmer.c'],['../Lmer_8h.html#a3280d056532aa23523d08dfd52b60b51',1,'Lmer_sLmer(char *Lmer, int L):&#160;Lmer.c']]],
   ['lowq_5facgt_5ftile',['lowQ_ACGT_tile',['../structstatsinfo.html#ac1a8b88e2e4f486f2767072588adcd2a',1,'statsinfo']]],
-  ['lt',['LT',['../Lmer_8c.html#abecb1b17de58b71ea7da6803df2486ae',1,'Lmer.c']]]
+  ['lt',['LT',['../Lmer_8c.html#abecb1b17de58b71ea7da6803df2486ae',1,'LT():&#160;Lmer.c'],['../trim_8c.html#abecb1b17de58b71ea7da6803df2486ae',1,'LT():&#160;Lmer.c']]]
 ];
