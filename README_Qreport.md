@@ -52,20 +52,20 @@ Options:
    * `5 x ntiles x (long int)` (5x`ntiles`x8B) : 
      \# (A,C,G,T,N) per tile (`ACGT_tile`),
    * `(read_len+1) x (long int)` ((`read_len`+1)x8B) : 
-     \# reads with at least `m` low quality nucleotides (`reads_MlowQ`),
+     \# reads with at least `m` low quality base callings (`reads_MlowQ`),
    * `ntiles x read_len x nQ x (long int)` (`ntiles`x`read_len`x`nQ`x8B) : 
-     nucleotides  per tile per position with a given quality (`QposTile_table`).
+     base callings  per tile per position with a given quality (`QposTile_table`).
    * `5 x read_len x (long int)` (5x`read_len`x8B ): 
      \# (A,C,G,T,N) per position, (`ACGT_pos`)
 
 - html output:
-   * Table with general information ,
+   * Table with general information,
    * Plot 1: per base sequence quality, 
-   * Plot 2: # reads with at least m low Q nucleotides,
-   * Plot 3: Low Q nucleotide proportion per tile per lane,
+   * Plot 2: # reads with at least m low Q base callings,
+   * Plot 3: Low Q base calling proportion per nucleotide type per tile per lane,
    * Plot 4: Average quality per position per tile per lane,
-   * Plot 5: Low Q nucleotides proportion per position per tile per lane,
-   * Plot 6: Low Q nucleotides proportion per position for all tiles.
+   * Plot 5: Low Q base calling proportion per position per tile per lane,
+   * Plot 6: Low Q base calling proportion per position for all tiles.
    * Plot 7: Nucleotide content per position
 
 **NOTE** If the data were sequenced on more than one lane, in Plots 3, 4 and 5 
