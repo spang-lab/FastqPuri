@@ -7,23 +7,28 @@ functions that do string manipulation
 
 
 {\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
 {\ttfamily \#include \char`\"{}str\+\_\+manip.\+h\char`\"{}}\\*
 Include dependency graph for str\+\_\+manip.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=212pt]{str__manip_8c__incl}
+\includegraphics[width=346pt]{str__manip_8c__incl}
 \end{center}
 \end{figure}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{str__manip_8c_a8108ab52dfbc1af644bf7682c1bbe33f}{int \hyperlink{str__manip_8c_a8108ab52dfbc1af644bf7682c1bbe33f}{strindex} (char $\ast$s, char $\ast$t)}\label{str__manip_8c_a8108ab52dfbc1af644bf7682c1bbe33f}
-
+int \hyperlink{str__manip_8c_a8108ab52dfbc1af644bf7682c1bbe33f}{strindex} (char $\ast$s, char $\ast$t)
 \begin{DoxyCompactList}\small\item\em returns index of t in s (start, first occurence) \end{DoxyCompactList}\item 
-\hypertarget{str__manip_8c_af8d13ec7edfe3ca8a03f48bd7e3b1d83}{int \hyperlink{str__manip_8c_af8d13ec7edfe3ca8a03f48bd7e3b1d83}{count\+\_\+char} (char $\ast$s, char c)}\label{str__manip_8c_af8d13ec7edfe3ca8a03f48bd7e3b1d83}
+\hypertarget{str__manip_8c_a9790090291ece4c0a93c6c337dd528c1}{int \hyperlink{str__manip_8c_a9790090291ece4c0a93c6c337dd528c1}{count\+\_\+char} (char $\ast$str, char sep)}\label{str__manip_8c_a9790090291ece4c0a93c6c337dd528c1}
 
-\begin{DoxyCompactList}\small\item\em returns the \# of occurences of char c in string s \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em returns the \# of occurences of char c in string s \end{DoxyCompactList}\item 
+int \hyperlink{str__manip_8c_adc6cfcce267d36f0d09ecc6948d25747}{strindex\+C} (char $\ast$s, char sep)
+\begin{DoxyCompactList}\small\item\em returns index of t in s (start, first occurence) \end{DoxyCompactList}\item 
+\hyperlink{str__manip_8h_aeff63a40ce3fff0c51bd207baeba2013}{Split} \hyperlink{str__manip_8c_a245675aede3b8bedd8ce6c8c2aa70ec0}{strsplit} (char $\ast$str, char sep)
+\begin{DoxyCompactList}\small\item\em Separates strings by a separator. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -35,3 +40,66 @@ Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+
 \begin{DoxyDate}{Date}
 03.\+08.\+2017 
 \end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{str__manip_8c_a8108ab52dfbc1af644bf7682c1bbe33f}{\index{str\+\_\+manip.\+c@{str\+\_\+manip.\+c}!strindex@{strindex}}
+\index{strindex@{strindex}!str\+\_\+manip.\+c@{str\+\_\+manip.\+c}}
+\subsubsection[{strindex}]{\setlength{\rightskip}{0pt plus 5cm}int strindex (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s, }
+\item[{char $\ast$}]{t}
+\end{DoxyParamCaption}
+)}}\label{str__manip_8c_a8108ab52dfbc1af644bf7682c1bbe33f}
+
+
+returns index of t in s (start, first occurence) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & string to be checked. \\
+\hline
+{\em t} & substring to be found in s. \\
+\hline
+\end{DoxyParams}
+\hypertarget{str__manip_8c_adc6cfcce267d36f0d09ecc6948d25747}{\index{str\+\_\+manip.\+c@{str\+\_\+manip.\+c}!strindex\+C@{strindex\+C}}
+\index{strindex\+C@{strindex\+C}!str\+\_\+manip.\+c@{str\+\_\+manip.\+c}}
+\subsubsection[{strindex\+C}]{\setlength{\rightskip}{0pt plus 5cm}int strindex\+C (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s, }
+\item[{char}]{sep}
+\end{DoxyParamCaption}
+)}}\label{str__manip_8c_adc6cfcce267d36f0d09ecc6948d25747}
+
+
+returns index of t in s (start, first occurence) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & string to be checked. \\
+\hline
+{\em sep} & char, separator \\
+\hline
+\end{DoxyParams}
+\hypertarget{str__manip_8c_a245675aede3b8bedd8ce6c8c2aa70ec0}{\index{str\+\_\+manip.\+c@{str\+\_\+manip.\+c}!strsplit@{strsplit}}
+\index{strsplit@{strsplit}!str\+\_\+manip.\+c@{str\+\_\+manip.\+c}}
+\subsubsection[{strsplit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Split} strsplit (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{str, }
+\item[{char}]{sep}
+\end{DoxyParamCaption}
+)}}\label{str__manip_8c_a245675aede3b8bedd8ce6c8c2aa70ec0}
+
+
+Separates strings by a separator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & input string \\
+\hline
+{\em sep} & separator (char) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array of strings containing the substrings in the input separated 
+\end{DoxyReturn}

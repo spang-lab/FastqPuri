@@ -24,14 +24,22 @@
  * @date 25.08.2017
  * @brief trimFilter main function
  *
- * This file contains the trimFilter main function. BLA BLA 
+ * This file contains the trimFilter main function. BLA BLA
  * See README_trimFilter.md for more details.
  *
  */
 
 #include <stdio.h>
 #include <time.h>
+#include <string.h>
+#include <stdlib.h>
+#include "fq_read.h"
+#include "fopen_gen.h"
+#include "config.h"
+#include "defines.h"
 #include "init_trimFilter.h"
+#include "io_trimFilter.h"
+#include "tree.h"
 #include "trim.h"
 
 
@@ -43,7 +51,32 @@ Iparam_trimFilter par_TF;  /**< global variable: Input parameters of makeTree.*/
  *
  * */
 int main(int argc, char *argv[]) {
-  getarg_trimFilter(argc,argv); 
+  // Read in command line arguments
+  getarg_trimFilter(argc, argv);
+
+  // Output filenames
+  char fq_good[MAX_FILENAME]; strncpy(fq_good, par_TF.Oprefix, MAX_FILENAME);
+  char fq_adap[MAX_FILENAME]; strncpy(fq_adap, par_TF.Oprefix, MAX_FILENAME);
+  char fq_cont[MAX_FILENAME]; strncpy(fq_cont, par_TF.Oprefix, MAX_FILENAME);
+  char fq_lowq[MAX_FILENAME]; strncpy(fq_lowq, par_TF.Oprefix, MAX_FILENAME);
+  char fq_NNNN[MAX_FILENAME]; strncpy(fq_NNNN, par_TF.Oprefix, MAX_FILENAME);
+  char summary[MAX_FILENAME]; strncpy(summary, par_TF.Oprefix, MAX_FILENAME);
+  strncat(fq_good, "_good.fq.gz", 15);
+  strncat(fq_adap, "_adap.fq.gz", 15);
+  strncat(fq_cont, "_cont.fq.gz", 15);
+  strncat(fq_lowq, "_lowq.fq.gz", 15);
+  strncat(fq_NNNN, "_NNNN.fq.gz", 15);
+  strncat(summary, "_summary.bin", 15);
+  FILE  *fq_in, *f_good, *f_cont, *f_lowq, *f_NNNN, *f_adap;
+
+  int newlen;
+  int offset = 0;
+  char *buffer = malloc(sizeof(char)*(B_LEN + 1));
+  Stats_TF stat_TF;
+  int j = 0, nlines = 0, c1 = 0, c2 = -1;
+  char char_seq[4*READ_MAXLEN];  // string containing one fq read
+  int Nchar;  // length of char_seq
+
   clock_t start, end;
   double cpu_time_used;
   time_t rawtime;
@@ -53,10 +86,202 @@ int main(int argc, char *argv[]) {
   start = clock();
   time(&rawtime);
   timeinfo = localtime(&rawtime);
-  
-  // BODY of the function here! 
+  fprintf(stderr , "Starting program at: %s", asctime(timeinfo));
+
+  // BODY of the function here!
+  // Loading the adapters file if the option is activated
+  if (par_TF.is_adapter) {
+    stat_TF.filters[ADAP] = true;     // set filter ADAP to true
+    f_adap = fopen_gen(fq_adap, "w");  // open fq_adap  file for writing
+    fprintf(stderr, "Adapters removal is activated!\n");
+    fprintf(stderr, "WARNING: this option is WORK IN PROGRESS!!\n");
+    fprintf(stderr, "Exiting program\n");
+    exit(EXIT_FAILURE);
+  }
+  // Loading the index file to look for contaminations
+  Tree *ptr_tree = NULL;
+  if (par_TF.method) {
+    stat_TF.filters[CONT] = true;  // set filter CONT to true
+    f_cont = fopen_gen(fq_cont, "w");  // open fq_cont file for writing
+    if (par_TF.is_fa && par_TF.method == TREE) {
+       Fa_data *ptr_fa = malloc(sizeof(Fa_data));
+       fprintf(stderr, "* DOING: Reading fasta file %s ...\n",
+                       par_TF.Ifa);
+       read_fasta(par_TF.Ifa, ptr_fa);
+       if (size_fasta(ptr_fa) > MAX_FASZ_TREE) {
+         fprintf(stderr, "Fasta file is larger than %d.\b", (int)MAX_FASZ_TREE);
+         fprintf(stderr, "This is too large for constructing a tree.\n");
+         fprintf(stderr, "Try a Suffix Array or a bloomfilter instead.\n");
+         fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+         exit(EXIT_FAILURE);
+         fprintf(stderr, "Exiting program.\n");
+       }
+       // Constructing tree
+       fprintf(stderr, "* DOING: Constructing tree ... \n");
+       ptr_tree = tree_from_fasta(ptr_fa, par_TF.Lmer_len);
+       // Free fasta file
+       fprintf(stderr, "* DOING: Deallocating fasta file structure...\n");
+       free_fasta(ptr_fa);
+    } else if (par_TF.is_idx && par_TF.method == TREE) {
+       // Reading tree from file
+       fprintf(stderr, "* DOING: Reading tree structure from %s ... \n",
+                        par_TF.Iidx);
+       ptr_tree = read_tree(par_TF.Iidx);
+    } else if (par_TF.is_idx && par_TF.method == SA) {
+        fprintf(stderr, "Method for contaminations detection: SA\n");
+        fprintf(stderr, "WARNING: this option is WORK IN PROGRESS!!\n");
+        fprintf(stderr, "Exiting program\n");
+        exit(EXIT_FAILURE);
+    } else if (par_TF.is_idx && par_TF.method == BLOOM) {
+        fprintf(stderr, "Method for contaminations detection: BLOOM\n");
+        fprintf(stderr, "WARNING: this option is WORK IN PROGRESS!!\n");
+        fprintf(stderr, "Exiting program\n");
+        exit(EXIT_FAILURE);
+    } else {
+        fprintf(stderr, "OPTION_ERROR: something went wrong with the");
+        fprintf(stderr, "contaminations options\n");
+        fprintf(stderr, "Exiting program\n");
+        fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+        exit(EXIT_FAILURE);
+    }
+  }  // endif par_TF.method
+  if (par_TF.trimQ) {
+     stat_TF.filters[LOWQ] = true;  // set filter LOWQ to true
+     f_lowq = fopen_gen(fq_lowq, "w");  // open fq_lowq file for writing
+  }  // endif par_TF.trimQ
+
+  if (par_TF.trimN) {
+     stat_TF.filters[NNNN] = true;  // set filter LOWQ to true
+     f_NNNN = fopen_gen(fq_NNNN, "w");  // open fq_lowq file for writing
+  }  // endif par_TF.trimQ
+
+  // Opening fq file for reading
+  fq_in = fopen_gen(par_TF.Ifq, "r");
+  // Open the output files for writing GOOD reads
+  f_good = fopen_gen(fq_good, "w");
+
+  // Loop over the fastq file
+  Fq_read* seq = malloc(sizeof *seq);
+  while ( (newlen = fread(buffer+offset, 1, B_LEN-offset, fq_in)) > 0 ) {
+    newlen += offset;
+    buffer[newlen++] =  '\0';
+    for (j = 0; buffer[j] != '\0'; j++) {
+       if (buffer[j] == '\n') {
+           c2 = j;
+           offset = newlen - j+1;
+           get_fqread(seq, buffer, c1, c2, nlines, par_TF.L, 0);
+           if ((nlines % 4) == 3) {
+              stat_TF.nreads++;
+              bool discarded = false;
+              int trim;
+              if (stat_TF.filters[ADAP] && !discarded) {
+                  fprintf(stderr, "Adapter filtering is not supported yet.\n");
+                  fprintf(stderr, "Exiting program\n");
+                  exit(EXIT_FAILURE);
+              }
+              if (stat_TF.filters[CONT] && !discarded) {
+                if (par_TF.method == TREE) {
+                  discarded = is_read_inTree(ptr_tree, seq);
+                  if (discarded) {
+                     Nchar = string_seq(seq, char_seq);
+                     buffer_output(f_cont, char_seq, Nchar, CONT);
+                     stat_TF.discarded[CONT]++;
+                  }
+                } else {
+                  fprintf(stderr, "SA, BLOOM options are not supported yet.\n");
+                  fprintf(stderr, "Exiting program\n");
+                  exit(EXIT_FAILURE);
+                }
+              }
+              if (stat_TF.filters[LOWQ] && !discarded) {
+                trim = trim_sequenceQ(seq);
+                discarded = (!trim);
+                if (discarded) {
+                   Nchar = string_seq(seq, char_seq);
+                   buffer_output(f_lowq, char_seq, Nchar, LOWQ);
+                   stat_TF.discarded[LOWQ]++;
+                } else if (trim == 2) {
+                   stat_TF.trimmed[LOWQ]++;
+                }
+              }
+              if (stat_TF.filters[NNNN] && !discarded) {
+                trim = trim_sequenceN(seq);
+                discarded = (!trim);
+                if (discarded) {
+                   Nchar = string_seq(seq, char_seq);
+                   buffer_output(f_NNNN, char_seq, Nchar, NNNN);
+                   stat_TF.discarded[NNNN]++;
+                } else if (trim == 2) {
+                   stat_TF.trimmed[NNNN]++;
+                }
+              }
+              if (!discarded) {
+                 Nchar = string_seq(seq, char_seq);
+                 buffer_output(f_good, char_seq, Nchar, GOOD);
+                 stat_TF.good++;
+              }
+              if (stat_TF.nreads % 1000000 == 0)
+                 fprintf(stderr, "  %10d reads have been read.\n",
+                         stat_TF.nreads);
+           }  // end if (nlines%4 == 3)
+           c1 = c2 + 1;
+           nlines++;
+       }  // end  if \n
+    }  // end  buffer loop
+    offset = newlen - c1 -1;
+    if (offset > -1)
+      memcpy(buffer, buffer+c1, offset);
+    c2 = -1;
+    c1 = 0;
+  }  // end while
+  printf("Number of lines in fq_file %d\n", nlines);
+  // Printing the rest of the buffer outputs and closing file
+  fprintf(stderr, "- Finished reading fq file.\n");
+  fprintf(stderr, "- Closing files.\n");
+  buffer_output(f_good, NULL, 0, GOOD);
+  fclose(f_good);
+  fclose(fq_in);
+  fprintf(stderr, "- Number of reads: %d\n", stat_TF.nreads);
+  fprintf(stderr, "- Reads accepted as good: %d, stored in %s\n",
+        stat_TF.good, fq_good);
+
+  if (stat_TF.filters[ADAP]) {
+    buffer_output(f_adap, NULL, 0, ADAP);
+    fclose(f_adap);
+    fprintf(stderr, "- Discarded due to adapter %d, stored in %s\n",
+          stat_TF.discarded[ADAP], fq_adap);
+    fprintf(stderr, "- Trimmed due to adapters %d\n", stat_TF.trimmed[ADAP]);
+  }
+  if (stat_TF.filters[CONT]) {
+    buffer_output(f_cont, NULL, 0, CONT);
+    fclose(f_cont);
+    fprintf(stderr, "- Discarded due to cont %d, stored in %s\n",
+          stat_TF.discarded[CONT], fq_cont);
+  }
+  if (stat_TF.filters[LOWQ]) {
+    buffer_output(f_lowq, NULL, 0, LOWQ);
+    fclose(f_lowq);
+    fprintf(stderr, "- Discarded due to lowQ %d, stored in %s\n",
+          stat_TF.discarded[LOWQ], fq_lowq);
+    fprintf(stderr, "- Trimmed due to lowQ %d\n", stat_TF.trimmed[LOWQ]);
+  }
+  if (stat_TF.filters[NNNN]) {
+    buffer_output(f_NNNN, NULL, 0, NNNN);
+    fclose(f_NNNN);
+    fprintf(stderr, "- Discarded due to N's %d, stored in %s\n",
+          stat_TF.discarded[NNNN], fq_NNNN);
+    fprintf(stderr, "- Trimmed due to N's %d\n", stat_TF.trimmed[NNNN]);
+  }
+  // Write summary info file
+  fprintf(stderr, "Writing summary data to %s\n", summary);
+  write_summary_TF(stat_TF, summary);
 
 
+  if (ptr_tree != NULL) {
+     fprintf(stderr, "- Deallocating tree\n");
+     free_all_nodes(ptr_tree);
+  }
+  free(buffer);
   // Obtaining elapsed time
   end = clock();
   cpu_time_used = (double)(end - start)/CLOCKS_PER_SEC;
@@ -64,5 +289,5 @@ int main(int argc, char *argv[]) {
   timeinfo = localtime(&rawtime);
   fprintf(stderr, "Finishing program at: %s", asctime(timeinfo) );
   fprintf(stderr, "Time elapsed: %f s.\n", cpu_time_used);
-  return 0; 
+  return 0;
 }

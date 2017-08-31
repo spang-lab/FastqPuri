@@ -11,9 +11,9 @@ var indexSectionsWithContent =
   1: "_s",
   2: "dfilmqrst",
   3: "bcfgilmnpqrstuw",
-  4: "acefilmnopqrst",
-  5: "fint",
-  6: "bdfmntz"
+  4: "acdefgilmnopqrst",
+  5: "afinst",
+  6: "abcdefglmnstz"
 };
 
 var indexSectionNames =

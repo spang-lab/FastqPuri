@@ -138,21 +138,21 @@ void getarg_Qreport(int argc, char **argv) {
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
-  if (!strncmp(par_QR.outputfilebin,"",MAX_FILENAME)) {
+  if (!strncmp(par_QR.outputfilebin, "", MAX_FILENAME)) {
      printHelpDialog_Qreport();
      fprintf(stderr, "Binary output file name not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
-  if (!strncmp(par_QR.outputfilehtml,"",MAX_FILENAME)) {
+  if (!strncmp(par_QR.outputfilehtml, "", MAX_FILENAME)) {
      printHelpDialog_Qreport();
      fprintf(stderr, "html output file name was not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
-  if (!strncmp(par_QR.outputfileinfo,"",MAX_FILENAME)) {
+  if (!strncmp(par_QR.outputfileinfo, "", MAX_FILENAME)) {
      printHelpDialog_Qreport();
      fprintf(stderr, "info output file name was not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");

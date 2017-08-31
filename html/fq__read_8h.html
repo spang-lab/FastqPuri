@@ -105,7 +105,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="fq__read_8h__dep__incl.png" border="0" usemap="#include_2fq__read_8hdep" alt=""/></div>
 <map name="include_2fq__read_8hdep" id="include_2fq__read_8hdep">
-<area shape="rect" id="node2" href="fq__read_8c.html" title="fastq entries manipulations (read/write) " alt="" coords="5,80,104,107"/><area shape="rect" id="node3" href="Qreport_8c.html" title="QReport main function. " alt="" coords="92,155,191,181"/><area shape="rect" id="node4" href="stats__info_8h.html" title="Construct the quality report variables and update them. " alt="" coords="179,80,314,107"/><area shape="rect" id="node6" href="trim_8h.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="339,80,439,107"/><area shape="rect" id="node5" href="stats__info_8c.html" title="Construct the quality report variables and update them. " alt="" coords="215,155,327,181"/><area shape="rect" id="node7" href="trim_8c.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="351,155,428,181"/><area shape="rect" id="node8" href="trimFilter_8c.html" title="trimFilter main function " alt="" coords="452,155,559,181"/></map>
+<area shape="rect" id="node2" href="fq__read_8c.html" title="fastq entries manipulations (read/write) " alt="" coords="5,80,104,107"/><area shape="rect" id="node3" href="Qreport_8c.html" title="QReport main function. " alt="" coords="84,155,183,181"/><area shape="rect" id="node4" href="stats__info_8h.html" title="Construct the quality report variables and update them. " alt="" coords="179,80,314,107"/><area shape="rect" id="node6" href="trim_8h.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="338,80,438,107"/><area shape="rect" id="node8" href="trimFilter_8c.html" title="trimFilter main function " alt="" coords="444,155,551,181"/><area shape="rect" id="node5" href="stats__info_8c.html" title="Construct the quality report variables and update them. " alt="" coords="207,155,319,181"/><area shape="rect" id="node7" href="trim_8c.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="343,155,420,181"/></map>
 </div>
 </div>
 <p><a href="fq__read_8h_source.html">Go to the source code of this file.</a></p>
@@ -125,9 +125,9 @@ typedef struct <a class="el" href="struct__fq__read.html">_fq_read</a>&#160;</td
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a27084cfcd27239f92fe4816029c1aa21"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fq__read_8h.html#a27084cfcd27239f92fe4816029c1aa21">get_fqread</a> (<a class="el" href="fq__read_8h.html#a9af37aa81397c9531c66863d4e97f034">Fq_read</a> *seq, char *buffer, int c1, int c2, int k)</td></tr>
-<tr class="memdesc:a27084cfcd27239f92fe4816029c1aa21"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads fastq line from a buffer  <a href="#a27084cfcd27239f92fe4816029c1aa21">More...</a><br /></td></tr>
-<tr class="separator:a27084cfcd27239f92fe4816029c1aa21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0d30098d51bea3d11c442c3dd60e15f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fq__read_8h.html#af0d30098d51bea3d11c442c3dd60e15f">get_fqread</a> (<a class="el" href="fq__read_8h.html#a9af37aa81397c9531c66863d4e97f034">Fq_read</a> *seq, char *buffer, int pos1, int pos2, int nline, int read_len, int filter)</td></tr>
+<tr class="memdesc:af0d30098d51bea3d11c442c3dd60e15f"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads fastq line from a buffer  <a href="#af0d30098d51bea3d11c442c3dd60e15f">More...</a><br /></td></tr>
+<tr class="separator:af0d30098d51bea3d11c442c3dd60e15f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae58e185777143cd1fc4c75fccd5c647a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fq__read_8h.html#ae58e185777143cd1fc4c75fccd5c647a">string_seq</a> (<a class="el" href="fq__read_8h.html#a9af37aa81397c9531c66863d4e97f034">Fq_read</a> *seq, char *char_seq)</td></tr>
 <tr class="memdesc:ae58e185777143cd1fc4c75fccd5c647a"><td class="mdescLeft">&#160;</td><td class="mdescRight">writes the fq entry in a string  <a href="#ae58e185777143cd1fc4c75fccd5c647a">More...</a><br /></td></tr>
 <tr class="separator:ae58e185777143cd1fc4c75fccd5c647a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,12 +137,12 @@ Functions</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Paula Perez <a href="#" onclick="location.href='mai'+'lto:'+'pau'+'la'+'per'+'ez'+'rub'+'io'+'@gm'+'ai'+'l.c'+'om'; return false;">paula<span style="display: none;">.nosp@m.</span>pere<span style="display: none;">.nosp@m.</span>zrubi<span style="display: none;">.nosp@m.</span>o@gm<span style="display: none;">.nosp@m.</span>ail.c<span style="display: none;">.nosp@m.</span>om</a> </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>03.08.2017 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a27084cfcd27239f92fe4816029c1aa21"></a>
+<a class="anchor" id="af0d30098d51bea3d11c442c3dd60e15f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void get_fqread </td>
+          <td class="memname">int get_fqread </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="fq__read_8h.html#a9af37aa81397c9531c66863d4e97f034">Fq_read</a> *&#160;</td>
           <td class="paramname"><em>seq</em>, </td>
@@ -169,7 +169,19 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>nline</em>&#160;</td>
+          <td class="paramname"><em>nline</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>read_len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>filter</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -180,7 +192,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>reads fastq line from a buffer </p>
-<p>a fastq line is read from a buffer and the relevant information is stored in a structure <b>Fq_read</b>. Depending on the variable <b>par_QR</b> values, information about whether the read was trimmed is stored.</p>
+<p>a fastq line is read from a buffer and the relevant information is stored in a structure <b>Fq_read</b>. Depending on the value of <b>filter</b>, information about whether the read was trimmed is stored.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*seq</td><td>pointer to <b>Fq_read</b>, where the info will be stored. </td></tr>
@@ -188,6 +200,8 @@ Functions</h2></td></tr>
     <tr><td class="paramname">pos1</td><td>buffer start position of the line. </td></tr>
     <tr><td class="paramname">pos2</td><td>buffer end position of the line. </td></tr>
     <tr><td class="paramname">nline</td><td>file line number being read. </td></tr>
+    <tr><td class="paramname">read_len</td><td>predefined read length </td></tr>
+    <tr><td class="paramname">filter</td><td>0 original file, 1 file filtered with filter_trim, 2 file filtered with another tool </td></tr>
   </table>
   </dd>
 </dl>
@@ -233,7 +247,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 24 2017 18:23:36 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 31 2017 16:58:04 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

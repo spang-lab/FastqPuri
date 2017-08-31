@@ -93,19 +93,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>Construction of tree, check paths, write tree, read in tree.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="tree_8h_source.html">tree.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="Lmer_8h_source.html">Lmer.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="fopen__gen_8h_source.html">fopen_gen.h</a>&quot;</code><br />
-<code>#include &lt;limits.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;limits.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="tree_8h_source.html">tree.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Lmer_8h_source.html">Lmer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="fopen__gen_8h_source.html">fopen_gen.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for tree.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="tree_8c__incl.png" border="0" usemap="#src_2tree_8c" alt=""/></div>
 <map name="src_2tree_8c" id="src_2tree_8c">
-<area shape="rect" id="node2" href="tree_8h.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="31,80,85,107"/><area shape="rect" id="node6" href="Lmer_8h.html" title="Manipulation of Lmers and sequences. " alt="" coords="109,80,172,107"/><area shape="rect" id="node7" href="fopen__gen_8h.html" title="Uncompress/compress input/output files using pipes. " alt="" coords="197,80,290,107"/><area shape="rect" id="node4" href="defines_8h.html" title="Macro definitions. " alt="" coords="21,155,95,181"/><area shape="rect" id="node5" href="fa__read_8h.html" title="reads in and stores fasta files " alt="" coords="120,155,196,181"/></map>
+<area shape="rect" id="node6" href="tree_8h.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="273,80,327,107"/><area shape="rect" id="node10" href="Lmer_8h.html" title="Manipulation of Lmers and sequences. " alt="" coords="403,80,466,107"/><area shape="rect" id="node11" href="fopen__gen_8h.html" title="Uncompress/compress input/output files using pipes. " alt="" coords="491,80,584,107"/><area shape="rect" id="node8" href="defines_8h.html" title="Macro definitions. " alt="" coords="263,155,337,181"/><area shape="rect" id="node9" href="fa__read_8h.html" title="reads in and stores fasta files " alt="" coords="362,155,438,181"/></map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -127,9 +127,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8c.html#a5f428a722fa118b5f4684fd06401db9a">insert_entry</a> (<a class="el" href="tree_8h.html#a50a06950fa1e82738ad9a6bd85914900">Tree</a> *tree_ptr, <a class="el" href="fa__read_8h.html#a8f68b28ad3a6c33fe1dd78d5ac044b30">Fa_entry</a> *entry)</td></tr>
 <tr class="memdesc:a5f428a722fa118b5f4684fd06401db9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">fasta entry insertion in the tree (depth L). <br /></td></tr>
 <tr class="separator:a5f428a722fa118b5f4684fd06401db9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cec782fc1e0ae4063a34c641b463f89"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3cec782fc1e0ae4063a34c641b463f89"></a>
-<a class="el" href="tree_8h.html#a50a06950fa1e82738ad9a6bd85914900">Tree</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8c.html#a3cec782fc1e0ae4063a34c641b463f89">tree_from_fasta</a> (<a class="el" href="fa__read_8h.html#a797328b16bc1c1088998cd164aafb09d">Fa_data</a> *fasta, int L)</td></tr>
-<tr class="memdesc:a3cec782fc1e0ae4063a34c641b463f89"><td class="mdescLeft">&#160;</td><td class="mdescRight">create Tree structure from fasta structure. <br /></td></tr>
+<tr class="memitem:a3cec782fc1e0ae4063a34c641b463f89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="tree_8h.html#a50a06950fa1e82738ad9a6bd85914900">Tree</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8c.html#a3cec782fc1e0ae4063a34c641b463f89">tree_from_fasta</a> (<a class="el" href="fa__read_8h.html#a797328b16bc1c1088998cd164aafb09d">Fa_data</a> *fasta, int L)</td></tr>
+<tr class="memdesc:a3cec782fc1e0ae4063a34c641b463f89"><td class="mdescLeft">&#160;</td><td class="mdescRight">create Tree structure from fasta structure.  <a href="#a3cec782fc1e0ae4063a34c641b463f89">More...</a><br /></td></tr>
 <tr class="separator:a3cec782fc1e0ae4063a34c641b463f89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ea4e8b262dc61c20d94b598bffab181"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tree_8c.html#a7ea4e8b262dc61c20d94b598bffab181">check_path</a> (<a class="el" href="tree_8h.html#a50a06950fa1e82738ad9a6bd85914900">Tree</a> *tree_ptr, char *read, int Lread)</td></tr>
 <tr class="memdesc:a7ea4e8b262dc61c20d94b598bffab181"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if read is found in tree and outputs a score  <a href="#a7ea4e8b262dc61c20d94b598bffab181">More...</a><br /></td></tr>
@@ -334,6 +333,41 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a3cec782fc1e0ae4063a34c641b463f89"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="tree_8h.html#a50a06950fa1e82738ad9a6bd85914900">Tree</a>* tree_from_fasta </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fa__read_8h.html#a797328b16bc1c1088998cd164aafb09d">Fa_data</a> *&#160;</td>
+          <td class="paramname"><em>fasta</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>L</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>create Tree structure from fasta structure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fasta</td><td>pointer to fasta structure </td></tr>
+    <tr><td class="paramname">L</td><td>tree length </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a class="anchor" id="a1f18264718e0b1b1be5a1f0ee64431e4"></a>
 <div class="memitem">
@@ -351,7 +385,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 24 2017 18:23:37 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 31 2017 16:58:06 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

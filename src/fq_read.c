@@ -47,25 +47,25 @@
  * @param pos1 buffer start position of the line.
  * @param pos2 buffer end position of the line.
  * @param nline file line number being read.
- * @param L predefined read length
+ * @param read_len predefined read length
  * @param filter 0 original file, 1 file filtered with filter_trim,
  *     2 file filtered with another tool
  *
  */
-int get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline, 
+int get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline,
                 int read_len, int filter) {
   /* Check if the line length exceeds READ_MAXLEN
    * and exit the program*/
   if ((pos2 - pos1) > READ_MAXLEN) {
-     fprintf(stderr, "A line in the fastq file exceeds READ_MAXLEN = %d\n ",
-            READ_MAXLEN);
+     fprintf(stderr, "Read in line %d in fq file exceeds READ_MAXLEN = %d\n ",
+            nline, READ_MAXLEN);
      fprintf(stderr, "You can reset it to a larger value before compiling:\n");
      fprintf(stderr, "cmake -Bbuild -H. [OPTIONS] -DREAD_MAXLEN = LARGERN\n");
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      fprintf(stderr, "Exiting program.\n");
      exit(EXIT_FAILURE);
   }
-  int one_read_len = 1; 
+  int one_read_len = 1;
   switch (nline%4) {
       case 0:
          memcpy(seq -> line1 , buffer + pos1, pos2 - pos1);
@@ -74,12 +74,14 @@ int get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline,
       case 1:
          memcpy(seq -> line2 , buffer + pos1, pos2 - pos1);
          seq -> L = pos2 - pos1;
-         // Exit programm if seq -> L > read_len 
+         // Exit programm if seq -> L > read_len
          if ((seq -> L) > read_len) {
             fprintf(stderr, "Predefined read length %d\n", read_len);
-            fprintf(stderr, "A read was found with length: %d\n", seq -> L);
+            fprintf(stderr, "A read in line %d  was found with length: %d\n",
+                  nline, seq -> L);
             fprintf(stderr, "Read length exceeds predefined length.\n");
             fprintf(stderr, "Revise your settings.\n");
+            fprintf(stderr, "Check that you fq has NO trailing characters\n");
             fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
             fprintf(stderr, "Exiting program.\n");
             exit(EXIT_FAILURE);
@@ -106,13 +108,16 @@ int get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline,
          /* Check that the length of the quality string
           * coincides with the readlength*/
          if ((pos2 - pos1) != seq -> L) {
-           fprintf(stderr, "Found read with unequal read and quality");
+           fprintf(stderr, "Qual_len: %d Read_len: %d in line = %d\n",
+                 pos2-pos1, seq -> L, nline);
+           fprintf(stderr, "Found read with unequal read and quality\n");
+           fprintf(stderr, "Check that you fq has NO trailing characters\n");
            fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
            fprintf(stderr, "lengths\n. Exiting program");
            exit(EXIT_FAILURE);
          }
          memcpy(seq -> line4 , buffer + pos1, pos2 - pos1);
-         seq -> line4[ pos2 - pos1]='\0';
+         seq -> line4[pos2 - pos1]='\0';
          break;
   }
   return one_read_len;

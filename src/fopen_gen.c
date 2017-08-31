@@ -243,6 +243,8 @@ FILE* fopen_gen(const char *path, const  char * mode) {
   FILE* f = fopen(path, mode);
   if (f == NULL) {
      fprintf(stderr, "Error opening file: %s\n", path);
+     fprintf(stderr, "Exiting program.\n");
+     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      _exit(EXIT_FAILURE);
   }
   if (f && zcatExec(path) != NULL && (!strcmp(mode, "r"))) {

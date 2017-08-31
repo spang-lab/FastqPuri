@@ -11,10 +11,10 @@ trims/filter sequences after Quality, N's contaminations.
 {\ttfamily \#include $<$stdlib.\+h$>$}\\*
 {\ttfamily \#include \char`\"{}trim.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Lmer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}str\+\_\+manip.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
-Include dependency graph for trim.\+c\+:
-\nopagebreak
+Include dependency graph for trim.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -24,8 +24,7 @@ Include dependency graph for trim.\+c\+:
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{trim_8c_aaeb5f4dc06b2ca1b46fa5212b6b8a203}{\#define {\bfseries T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+N\+G}~20}\label{trim_8c_aaeb5f4dc06b2ca1b46fa5212b6b8a203}
-
+\#define \hyperlink{trim_8c_aaeb5f4dc06b2ca1b46fa5212b6b8a203}{T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+N\+G}~20
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -51,7 +50,7 @@ int \hyperlink{trim_8c_af23d3685193b624b72a6969a49903a97}{trim\+\_\+sequence\+N}
 int \hyperlink{trim_8c_ae5ab2bb79068d8a7e0d72686c1f50320}{trim\+\_\+sequence\+Q} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq)
 \begin{DoxyCompactList}\small\item\em trims sequence based on low\+Q base callings \end{DoxyCompactList}\item 
 \hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool} \hyperlink{trim_8c_a7e2b4015298659b7e21a80d4bb031e2f}{is\+\_\+read\+\_\+in\+Tree} (\hyperlink{tree_8h_a50a06950fa1e82738ad9a6bd85914900}{Tree} $\ast$tree\+\_\+ptr, \hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq)
-\begin{DoxyCompactList}\small\item\em check if Lread is contained in tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em check if Lread is contained in tree. It computes the score for the read and its reverse complement; if one ot them exceeds the user selected threshold, it returns true. Otherwise, it returns false. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -59,7 +58,7 @@ char \hyperlink{trim_8c_abecb1b17de58b71ea7da6803df2486ae}{L\+T} \mbox{[}256\mbo
 \item 
 char \hyperlink{trim_8c_a09f8263f3577dfabc13a037c32504ad3}{Nencode}
 \item 
-\hyperlink{struct__iparam__trimFilter}{Iparam\+\_\+trim\+Filter} \hyperlink{trim_8c_aed14b08f25fd6aa9a6cffb8c0074c953}{par\+\_\+\+T\+F}
+\hyperlink{init__trimFilter_8h_aff83806f1ff2b5f3609dc7d4c04b7c19}{Iparam\+\_\+trim\+Filter} \hyperlink{trim_8c_aed14b08f25fd6aa9a6cffb8c0074c953}{par\+\_\+\+T\+F}
 \end{DoxyCompactItemize}
 
 
@@ -74,6 +73,12 @@ Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+
 \end{DoxyDate}
 
 
+\subsection{Macro Definition Documentation}
+\hypertarget{trim_8c_aaeb5f4dc06b2ca1b46fa5212b6b8a203}{\index{trim.\+c@{trim.\+c}!T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+N\+G@{T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+N\+G}}
+\index{T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+N\+G@{T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+N\+G}!trim.\+c@{trim.\+c}}
+\subsubsection[{T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+N\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+N\+G~20}}\label{trim_8c_aaeb5f4dc06b2ca1b46fa5212b6b8a203}
+maximal length of trimming info string. 
+
 \subsection{Function Documentation}
 \hypertarget{trim_8c_a7e2b4015298659b7e21a80d4bb031e2f}{\index{trim.\+c@{trim.\+c}!is\+\_\+read\+\_\+in\+Tree@{is\+\_\+read\+\_\+in\+Tree}}
 \index{is\+\_\+read\+\_\+in\+Tree@{is\+\_\+read\+\_\+in\+Tree}!trim.\+c@{trim.\+c}}
@@ -85,15 +90,13 @@ Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+
 )}}\label{trim_8c_a7e2b4015298659b7e21a80d4bb031e2f}
 
 
-check if Lread is contained in tree. 
+check if Lread is contained in tree. It computes the score for the read and its reverse complement; if one ot them exceeds the user selected threshold, it returns true. Otherwise, it returns false. 
 
 
 \begin{DoxyParams}{Parameters}
 {\em tree\+\_\+ptr} & pointer to Tree structure \\
 \hline
 {\em seq} & fastq read \\
-\hline
-{\em score} & threshold score \mbox{[}0,1\mbox{]} over which we consider a read was in tree \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -194,6 +197,8 @@ trims a read if low\+Qs are at the ends and remaining sub-\/seq $>$= min\+L
 
 
 \begin{DoxyParams}{Parameters}
+{\em seq} & fastq read \\
+\hline
 {\em min\+Q} & minimum accepted quality value \\
 \hline
 {\em min\+L} & minimum accepted trimmed length \\
@@ -301,10 +306,10 @@ trims sequence based on presence of N nucleotides
 \end{DoxyReturn}
 This function calls a different function depending on the method passed as input par\+\_\+\+T\+F.\+trim\+N\+:
 \begin{DoxyItemize}
-\item N\+O(0)\+: accepts it as is, (1),
-\item A\+L\+L(1)\+: accepts it as is if N\+O N's found (1), rejects it otherwise (0),
-\item E\+N\+D\+S(2)\+: trims the ends and accepts it if it is longer than min\+L (2 if trimming, 1 if no trimming), rejects it otherwise (0),
-\item S\+T\+R\+I\+P(3)\+: finds the longest N-\/free subsequence and trims it if it is at least min\+L nucleotides long (2 if trimming, 1 if no N's are found), rejects it otherwise (0). 
+\item \hyperlink{defines_8h_a996bde01ecac342918f0a2c4e7ce7bd5}{N\+O(0)}\+: accepts it as is, (1),
+\item \hyperlink{defines_8h_a1edd1ea8bddaf4d9c5eb3eae1ee1726a}{A\+L\+L(1)}\+: accepts it as is if N\+O N's found (1), rejects it otherwise (0),
+\item \hyperlink{defines_8h_a052e72209cfac2ff9aa78294f0bebea8}{E\+N\+D\+S(2)}\+: trims the ends and accepts it if it is longer than min\+L (2 if trimming, 1 if no trimming), rejects it otherwise (0),
+\item \hyperlink{defines_8h_a53529d9638a1d70f6e5989dedf4c2672}{S\+T\+R\+I\+P(3)}\+: finds the longest N-\/free subsequence and trims it if it is at least min\+L nucleotides long (2 if trimming, 1 if no N's are found), rejects it otherwise (0). 
 \end{DoxyItemize}\hypertarget{trim_8c_ae5ab2bb79068d8a7e0d72686c1f50320}{\index{trim.\+c@{trim.\+c}!trim\+\_\+sequence\+Q@{trim\+\_\+sequence\+Q}}
 \index{trim\+\_\+sequence\+Q@{trim\+\_\+sequence\+Q}!trim.\+c@{trim.\+c}}
 \subsubsection[{trim\+\_\+sequence\+Q}]{\setlength{\rightskip}{0pt plus 5cm}int trim\+\_\+sequence\+Q (
@@ -326,11 +331,11 @@ trims sequence based on low\+Q base callings
 \end{DoxyReturn}
 This function calls a different function depending on the method passed as input par\+\_\+\+T\+F.\+trim\+Q\+:
 \begin{DoxyItemize}
-\item N\+O(0)\+: accepts is as is , (1),
-\item F\+R\+A\+C(1)\+: accepts it if less than par\+\_\+\+T\+F.\+nlow\+Q are found (1), rejects it otherwise (0),
-\item E\+N\+D\+S(2)\+: trims the ends and accepts it if it is longer than min\+L (2 if triming, 1 if no trimming), rejects it otherwise (0),
-\item E\+N\+D\+S\+F\+R\+A\+C(3)\+: trims the ends and accepts if the remaining sequence is at least min\+L bases long and if it contains less than nlow\+Q low\+Q nucleotides (2 if trimming, 1 if no trimming). Otherwise, it is rejected, (0).
-\item G\+L\+O\+B\+A\+L(4)\+: it trims globally globleft nucleotides from the left and globright from the right, (returns 2). 
+\item \hyperlink{defines_8h_a996bde01ecac342918f0a2c4e7ce7bd5}{N\+O(0)}\+: accepts is as is , (1),
+\item \hyperlink{defines_8h_a653af6bd29f56a2699de26a928820da7}{F\+R\+A\+C(1)}\+: accepts it if less than par\+\_\+\+T\+F.\+nlow\+Q are found (1), rejects it otherwise (0),
+\item \hyperlink{defines_8h_a052e72209cfac2ff9aa78294f0bebea8}{E\+N\+D\+S(2)}\+: trims the ends and accepts it if it is longer than min\+L (2 if triming, 1 if no trimming), rejects it otherwise (0),
+\item \hyperlink{defines_8h_abf0b71573c7ffc4f6746c24c9abc202a}{E\+N\+D\+S\+F\+R\+A\+C(3)}\+: trims the ends and accepts if the remaining sequence is at least min\+L bases long and if it contains less than nlow\+Q low\+Q nucleotides (2 if trimming, 1 if no trimming). Otherwise, it is rejected, (0).
+\item \hyperlink{defines_8h_a3de33738fd3c7e77bffbcfaefc3e7645}{G\+L\+O\+B\+A\+L(4)}\+: it trims globally globleft nucleotides from the left and globright from the right, (returns 2). 
 \end{DoxyItemize}
 
 \subsection{Variable Documentation}

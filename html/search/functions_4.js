@@ -8,5 +8,5 @@ var searchData=
   ['init_5fmap_5fsa',['init_map_SA',['../Lmer_8c.html#a54a9d22589c1235957b6472310280e1d',1,'init_map_SA():&#160;Lmer.c'],['../Lmer_8h.html#a54a9d22589c1235957b6472310280e1d',1,'init_map_SA():&#160;Lmer.c']]],
   ['insert_5fentry',['insert_entry',['../tree_8c.html#a5f428a722fa118b5f4684fd06401db9a',1,'insert_entry(Tree *tree_ptr, Fa_entry *entry):&#160;tree.c'],['../tree_8h.html#a5f428a722fa118b5f4684fd06401db9a',1,'insert_entry(Tree *tree_ptr, Fa_entry *entry):&#160;tree.c']]],
   ['insert_5flmer',['insert_Lmer',['../tree_8c.html#a3cd8ebe19e5c6e6b54771eede75c935b',1,'insert_Lmer(Tree *tree_ptr, char *Lmer):&#160;tree.c'],['../tree_8h.html#a3cd8ebe19e5c6e6b54771eede75c935b',1,'insert_Lmer(Tree *tree_ptr, char *Lmer):&#160;tree.c']]],
-  ['is_5fread_5fintree',['is_read_inTree',['../trim_8c.html#a7e2b4015298659b7e21a80d4bb031e2f',1,'trim.c']]]
+  ['is_5fread_5fintree',['is_read_inTree',['../trim_8c.html#a7e2b4015298659b7e21a80d4bb031e2f',1,'is_read_inTree(Tree *tree_ptr, Fq_read *seq):&#160;trim.c'],['../trim_8h.html#a7e2b4015298659b7e21a80d4bb031e2f',1,'is_read_inTree(Tree *tree_ptr, Fq_read *seq):&#160;trim.c']]]
 ];

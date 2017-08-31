@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['t_5facgt',['T_ACGT',['../defines_8h.html#a3919067d6defd46504313402bac82d22',1,'defines.h']]],
-  ['true',['true',['../defines_8h.html#a41f9c5fb8b08eb5dc3edce4dcb37fee7',1,'defines.h']]]
+  ['fa_5fentry_5fbuf',['FA_ENTRY_BUF',['../defines_8h.html#a305c0ce0ef65658d5c81329adf54294f',1,'defines.h']]],
+  ['false',['false',['../defines_8h.html#a65e9886d74aaee76545e83dd09011727',1,'defines.h']]],
+  ['frac',['FRAC',['../defines_8h.html#a653af6bd29f56a2699de26a928820da7',1,'defines.h']]]
 ];

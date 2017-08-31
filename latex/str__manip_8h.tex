@@ -13,15 +13,27 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \includegraphics[width=350pt]{str__manip_8h__dep__incl}
 \end{center}
 \end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__split}{\+\_\+split}
+\begin{DoxyCompactList}\small\item\em contains a splitted string and the number or splitted fields \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{str__manip_8h_aeff63a40ce3fff0c51bd207baeba2013}{typedef struct \hyperlink{struct__split}{\+\_\+split} \hyperlink{str__manip_8h_aeff63a40ce3fff0c51bd207baeba2013}{Split}}\label{str__manip_8h_aeff63a40ce3fff0c51bd207baeba2013}
+
+\begin{DoxyCompactList}\small\item\em contains a splitted string and the number or splitted fields \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{str__manip_8h_a8108ab52dfbc1af644bf7682c1bbe33f}{int \hyperlink{str__manip_8h_a8108ab52dfbc1af644bf7682c1bbe33f}{strindex} (char $\ast$s, char $\ast$t)}\label{str__manip_8h_a8108ab52dfbc1af644bf7682c1bbe33f}
-
+int \hyperlink{str__manip_8h_a8108ab52dfbc1af644bf7682c1bbe33f}{strindex} (char $\ast$s, char $\ast$t)
 \begin{DoxyCompactList}\small\item\em returns index of t in s (start, first occurence) \end{DoxyCompactList}\item 
 \hypertarget{str__manip_8h_af8d13ec7edfe3ca8a03f48bd7e3b1d83}{int \hyperlink{str__manip_8h_af8d13ec7edfe3ca8a03f48bd7e3b1d83}{count\+\_\+char} (char $\ast$s, char c)}\label{str__manip_8h_af8d13ec7edfe3ca8a03f48bd7e3b1d83}
 
-\begin{DoxyCompactList}\small\item\em returns the \# of occurences of char c in string s \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em returns the \# of occurences of char c in string s \end{DoxyCompactList}\item 
+\hyperlink{str__manip_8h_aeff63a40ce3fff0c51bd207baeba2013}{Split} \hyperlink{str__manip_8h_a245675aede3b8bedd8ce6c8c2aa70ec0}{strsplit} (char $\ast$str, char sep)
+\begin{DoxyCompactList}\small\item\em Separates strings by a separator. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -33,3 +45,47 @@ Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+
 \begin{DoxyDate}{Date}
 03.\+08.\+2017 
 \end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{str__manip_8h_a8108ab52dfbc1af644bf7682c1bbe33f}{\index{str\+\_\+manip.\+h@{str\+\_\+manip.\+h}!strindex@{strindex}}
+\index{strindex@{strindex}!str\+\_\+manip.\+h@{str\+\_\+manip.\+h}}
+\subsubsection[{strindex}]{\setlength{\rightskip}{0pt plus 5cm}int strindex (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s, }
+\item[{char $\ast$}]{t}
+\end{DoxyParamCaption}
+)}}\label{str__manip_8h_a8108ab52dfbc1af644bf7682c1bbe33f}
+
+
+returns index of t in s (start, first occurence) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & string to be checked. \\
+\hline
+{\em t} & substring to be found in s. \\
+\hline
+\end{DoxyParams}
+\hypertarget{str__manip_8h_a245675aede3b8bedd8ce6c8c2aa70ec0}{\index{str\+\_\+manip.\+h@{str\+\_\+manip.\+h}!strsplit@{strsplit}}
+\index{strsplit@{strsplit}!str\+\_\+manip.\+h@{str\+\_\+manip.\+h}}
+\subsubsection[{strsplit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Split} strsplit (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{str, }
+\item[{char}]{sep}
+\end{DoxyParamCaption}
+)}}\label{str__manip_8h_a245675aede3b8bedd8ce6c8c2aa70ec0}
+
+
+Separates strings by a separator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & input string \\
+\hline
+{\em sep} & separator (char) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array of strings containing the substrings in the input separated 
+\end{DoxyReturn}

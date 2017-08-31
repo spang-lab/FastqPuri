@@ -16,8 +16,7 @@ Include dependency graph for tree.\+h\+:\nopagebreak
 \includegraphics[width=223pt]{tree_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -56,8 +55,7 @@ void \hyperlink{tree_8h_a9bf758d5738d90a332fcd04485853d84}{free\+\_\+all\+\_\+no
 \begin{DoxyCompactList}\small\item\em fasta entry insertion in the tree (depth L). \end{DoxyCompactList}\item 
 double \hyperlink{tree_8h_a7ea4e8b262dc61c20d94b598bffab181}{check\+\_\+path} (\hyperlink{tree_8h_a50a06950fa1e82738ad9a6bd85914900}{Tree} $\ast$tree\+\_\+ptr, char $\ast$read, int Lread)
 \begin{DoxyCompactList}\small\item\em checks if read is found in tree and outputs a score \end{DoxyCompactList}\item 
-\hypertarget{tree_8h_a3cec782fc1e0ae4063a34c641b463f89}{\hyperlink{tree_8h_a50a06950fa1e82738ad9a6bd85914900}{Tree} $\ast$ \hyperlink{tree_8h_a3cec782fc1e0ae4063a34c641b463f89}{tree\+\_\+from\+\_\+fasta} (\hyperlink{fa__read_8h_a797328b16bc1c1088998cd164aafb09d}{Fa\+\_\+data} $\ast$fasta, int L)}\label{tree_8h_a3cec782fc1e0ae4063a34c641b463f89}
-
+\hyperlink{tree_8h_a50a06950fa1e82738ad9a6bd85914900}{Tree} $\ast$ \hyperlink{tree_8h_a3cec782fc1e0ae4063a34c641b463f89}{tree\+\_\+from\+\_\+fasta} (\hyperlink{fa__read_8h_a797328b16bc1c1088998cd164aafb09d}{Fa\+\_\+data} $\ast$fasta, int L)
 \begin{DoxyCompactList}\small\item\em create Tree structure from fasta structure. \end{DoxyCompactList}\item 
 void \hyperlink{tree_8h_a3b6ea3f3ef0c84a182e93a58ea417aea}{save\+\_\+tree} (\hyperlink{tree_8h_a50a06950fa1e82738ad9a6bd85914900}{Tree} $\ast$tree\+\_\+ptr, char $\ast$filename)
 \begin{DoxyCompactList}\small\item\em saves Tree to disk in filename \end{DoxyCompactList}\item 
@@ -205,4 +203,22 @@ The tree structure is stored as follows\+: every address is stored in a uint32\+
 \begin{DoxyItemize}
 \item If it is pointing to N\+U\+L\+L\+: 0.
 \item Otherwise\+: i2, the index in the outer dimension of pool\+\_\+2\+D is identified, and the difference jump = pool\+\_\+2\+D\mbox{[}i\mbox{]}\mbox{[}j\mbox{]}.children\mbox{[}k\mbox{]} -\/ pool\+\_\+2\+D\mbox{[}i2\mbox{]} is computed. i2$\ast$\+N\+P\+O\+O\+L\+\_\+\+D1 + jump is then stored for child k. 
-\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{tree_8h_a3cec782fc1e0ae4063a34c641b463f89}{\index{tree.\+h@{tree.\+h}!tree\+\_\+from\+\_\+fasta@{tree\+\_\+from\+\_\+fasta}}
+\index{tree\+\_\+from\+\_\+fasta@{tree\+\_\+from\+\_\+fasta}!tree.\+h@{tree.\+h}}
+\subsubsection[{tree\+\_\+from\+\_\+fasta}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tree}$\ast$ tree\+\_\+from\+\_\+fasta (
+\begin{DoxyParamCaption}
+\item[{{\bf Fa\+\_\+data} $\ast$}]{fasta, }
+\item[{int}]{L}
+\end{DoxyParamCaption}
+)}}\label{tree_8h_a3cec782fc1e0ae4063a34c641b463f89}
+
+
+create Tree structure from fasta structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fasta} & pointer to fasta structure \\
+\hline
+{\em L} & tree length \\
+\hline
+\end{DoxyParams}

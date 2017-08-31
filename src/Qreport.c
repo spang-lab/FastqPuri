@@ -46,8 +46,8 @@ Iparam_Qreport par_QR; /**< global variable: input parameters for Qreport*/
  * */
 int main(int argc, char *argv[]) {
   FILE *f;
-  int j = 0, k = 0, c1 = 0, c2 = -1;
-  char buffer[B_LEN + 1];
+  int j = 0, nlines = 0, c1 = 0, c2 = -1;
+  char *buffer = malloc(sizeof(char)*(B_LEN + 1));
   int newlen;
   int offset = 0;
   Info* res = malloc(sizeof *res);
@@ -92,22 +92,22 @@ int main(int argc, char *argv[]) {
 
   // Read the fastq file
   while ( (newlen = fread(buffer+offset, 1, B_LEN-offset, f) ) > 0 ) {
-     newlen += offset+1;
-     buffer[newlen] =  '\0';
+     newlen += offset;
+     buffer[newlen++] =  '\0';
      for (j = 0 ; buffer[j] != '\0' ; j++) {
-        c1 = c2 + 1;
-        if (buffer[j]== '\n') {
+        if (buffer[j] == '\n') {
           c2 = j;
-           par_QR.one_read_len &= get_fqread(seq, buffer, c1, c2, k, 
+          par_QR.one_read_len &= get_fqread(seq, buffer, c1, c2, nlines,
                                    par_QR.read_len, par_QR.filter);
-          if ( (k % 4) == 3 ) {
+          if ( (nlines % 4) == 3 ) {
              // printf("Nreads: %d \n",res -> nreads);
              if (res -> nreads == 0) get_first_tile(res, seq);
              update_info(res, seq);
              if (res -> nreads % 1000000 == 0)
               fprintf(stderr, "  %10d reads have been read.\n", res -> nreads);
           }
-          k++;
+          c1 = c2 + 1;
+          nlines++;
         }
     }
     offset = newlen - c1 -1;
@@ -159,6 +159,7 @@ int main(int argc, char *argv[]) {
   fprintf(stderr, "WARNING: html reports are NOT being generated.\n");
   fprintf(stderr, "         Dependencies not fulfilled.\n");
 #endif
+  free(buffer);
   // Obtaining elapsed time
   end = clock();
   cpu_time_used = (double)(end - start)/CLOCKS_PER_SEC;

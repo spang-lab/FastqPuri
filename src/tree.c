@@ -26,13 +26,13 @@
  *
  * */
 
-#include "tree.h"
-#include "Lmer.h"
-#include "fopen_gen.h"
 #include <limits.h>
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "tree.h"
+#include "Lmer.h"
+#include "fopen_gen.h"
 
 extern uint64_t alloc_mem;  // global variable: memory allocated in the heap.
 
@@ -170,6 +170,8 @@ void insert_entry(Tree *tree_ptr, Fa_entry *entry) {
 
 /**
  * @brief create Tree structure from fasta structure.
+ * @param fasta pointer to fasta structure 
+ * @param L tree length
  *
  * */
 Tree *tree_from_fasta(Fa_data *fasta, int L) {
@@ -197,13 +199,13 @@ Tree *tree_from_fasta(Fa_data *fasta, int L) {
 double check_path(Tree *tree_ptr, char *read, int Lread) {
   int L = min(tree_ptr -> L, Lread);  // Maximum depth
   int N = Lread - L + 1;   // number of checks we have to do
-  int Nsuccess;
+  int Nsuccess = 0;
   int i, j;
   for (i = 0; i < N; i++) {
     Node* current = tree_ptr -> pool_2D[0];
     bool found = true;
     for (j = 0; j < L; j++) {
-      if (!(current->children[(unsigned char)read[i+j]] == NULL)) {
+      if ((current->children[(unsigned char)read[i+j]] == NULL)) {
           found = false;
           break;
       } else {
@@ -212,6 +214,7 @@ double check_path(Tree *tree_ptr, char *read, int Lread) {
     }
     if (found) Nsuccess++;
   }
+
   return((double)Nsuccess/N);
 }
 

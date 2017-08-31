@@ -1,0 +1,31 @@
+################################################################################
+#  trimFilter example:                                                         #
+################################################################################
+#                                                                              # 
+# The code following way (**NOTE**: this has to be MUCH more detailed):        #
+#                                                                              #
+# 1. `EColi_rRNA.fq` was created with `./create_fq.sh`. The file contains:     # 
+#    * 2e5 reads of length 50 from `EColi_genome.fa` with NO errors.           #
+#    * 5e4 reads of length 50 from `rRNA_modified.fa` with NO errrors          #
+#      (rRNA contaminations).                                                  #
+#    * Artificially generated reads with low quality score (see script).       #
+#    * Artificially generated reads with Ns (see script).                      #
+# 2. The code was tested with flags:                                           # 
+#    `../../bin/trimFilter -l 50 --ifq EColi_rRNA.fq.gz --method TREE\         #
+#     --ifa rRNA_CRUnit.fa:0.9:50 --trimQ ENDSFRAC --trimN STRIP`              #
+#    i.e., we check for contaminations from rRNA, trim reads with lowQ at      #
+#    the ends and less than 5% in the remaining part, and strip reads          #
+#    containing N's. Output is stored in `example*.fq.gz` files.               # 
+# 3. One can run the example in `./run_example.sh` that will generate the      #
+#    output again with the prefix `tmp` (**WARNING:** do not run               #
+#    `./create_fq.sh` again if you want the same results).                     #
+# 4. With this set up, it is possible to run further customized tests.         #
+#                                                                              # 
+################################################################################
+################################################################################
+#  Rreport example:                                                            #
+################################################################################
+#                                                                              #
+#                                                                              #
+#                                                                              #
+################################################################################

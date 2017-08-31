@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['n',['N',['../struct__fa__entry.html#a46bfe034cc419f00fccd2d7d174c76e2',1,'_fa_entry']]],
-  ['nencode',['Nencode',['../Lmer_8c.html#a09f8263f3577dfabc13a037c32504ad3',1,'Nencode():&#160;Lmer.c'],['../trim_8c.html#a09f8263f3577dfabc13a037c32504ad3',1,'Nencode():&#160;Lmer.c']]],
-  ['nentries',['nentries',['../struct__fa__data.html#a2e49d8da3a888d7df62cd887367e2923',1,'_fa_data']]],
-  ['nlines',['nlines',['../struct__fa__data.html#a49ac64b09307f73104bbf1e650f3c2c5',1,'_fa_data']]],
-  ['nnodes',['nnodes',['../struct__tree.html#abffdcd9dcf0df92df4b5444fb74cc523',1,'_tree']]],
-  ['nq',['nQ',['../struct__iparam__Qreport.html#a47cfa018e6e957cb132e22876a400a1f',1,'_iparam_Qreport::nQ()'],['../structstatsinfo.html#a8f99f5ac1c3643e6ad59f124c11676e2',1,'statsinfo::nQ()']]],
-  ['nreads',['nreads',['../structstatsinfo.html#a2f01e91b444793507cb4173582e215bb',1,'statsinfo']]],
-  ['ntiles',['ntiles',['../struct__iparam__Qreport.html#a9d91db490f318f69dcea4999f630712e',1,'_iparam_Qreport::ntiles()'],['../structstatsinfo.html#abcfe8e12737ac99b724d4d4407204ec8',1,'statsinfo::ntiles()']]]
+  ['l',['L',['../struct__fq__read.html#a746efa9093b5223e85ffb7274e7693ef',1,'_fq_read::L()'],['../struct__iparam__makeTree.html#a56fd13b9cf051d4770f40b015a295fd3',1,'_iparam_makeTree::L()'],['../struct__iparam__trimFilter.html#a72fcc236d4136d2405a04f155b515894',1,'_iparam_trimFilter::L()'],['../struct__tree.html#a36ca6c909dd7c119452da0cb49e2c829',1,'_tree::L()']]],
+  ['lane_5ftags',['lane_tags',['../structstatsinfo.html#a2fc74c1d7cec79d9b28b5e578d96d7a1',1,'statsinfo']]],
+  ['linelen',['linelen',['../struct__fa__data.html#a3607f37f43d8b2f14ced6a93c6a444ff',1,'_fa_data']]],
+  ['lmer_5flen',['Lmer_len',['../struct__iparam__trimFilter.html#a8d64cf4832f3c403bd7c505d5a3fee75',1,'_iparam_trimFilter']]],
+  ['lowq_5facgt_5ftile',['lowQ_ACGT_tile',['../structstatsinfo.html#ac1a8b88e2e4f486f2767072588adcd2a',1,'statsinfo']]],
+  ['lt',['LT',['../Lmer_8c.html#abecb1b17de58b71ea7da6803df2486ae',1,'LT():&#160;Lmer.c'],['../trim_8c.html#abecb1b17de58b71ea7da6803df2486ae',1,'LT():&#160;Lmer.c']]]
 ];

@@ -6,13 +6,13 @@
 Construction of tree, check paths, write tree, read in tree.  
 
 
-{\ttfamily \#include \char`\"{}tree.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}Lmer.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}fopen\+\_\+gen.\+h\char`\"{}}\\*
 {\ttfamily \#include $<$limits.\+h$>$}\\*
 {\ttfamily \#include $<$string.\+h$>$}\\*
 {\ttfamily \#include $<$stdlib.\+h$>$}\\*
 {\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}tree.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Lmer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}fopen\+\_\+gen.\+h\char`\"{}}\\*
 Include dependency graph for tree.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -35,8 +35,7 @@ void \hyperlink{tree_8c_a9bf758d5738d90a332fcd04485853d84}{free\+\_\+all\+\_\+no
 \hypertarget{tree_8c_a5f428a722fa118b5f4684fd06401db9a}{void \hyperlink{tree_8c_a5f428a722fa118b5f4684fd06401db9a}{insert\+\_\+entry} (\hyperlink{tree_8h_a50a06950fa1e82738ad9a6bd85914900}{Tree} $\ast$tree\+\_\+ptr, \hyperlink{fa__read_8h_a8f68b28ad3a6c33fe1dd78d5ac044b30}{Fa\+\_\+entry} $\ast$entry)}\label{tree_8c_a5f428a722fa118b5f4684fd06401db9a}
 
 \begin{DoxyCompactList}\small\item\em fasta entry insertion in the tree (depth L). \end{DoxyCompactList}\item 
-\hypertarget{tree_8c_a3cec782fc1e0ae4063a34c641b463f89}{\hyperlink{tree_8h_a50a06950fa1e82738ad9a6bd85914900}{Tree} $\ast$ \hyperlink{tree_8c_a3cec782fc1e0ae4063a34c641b463f89}{tree\+\_\+from\+\_\+fasta} (\hyperlink{fa__read_8h_a797328b16bc1c1088998cd164aafb09d}{Fa\+\_\+data} $\ast$fasta, int L)}\label{tree_8c_a3cec782fc1e0ae4063a34c641b463f89}
-
+\hyperlink{tree_8h_a50a06950fa1e82738ad9a6bd85914900}{Tree} $\ast$ \hyperlink{tree_8c_a3cec782fc1e0ae4063a34c641b463f89}{tree\+\_\+from\+\_\+fasta} (\hyperlink{fa__read_8h_a797328b16bc1c1088998cd164aafb09d}{Fa\+\_\+data} $\ast$fasta, int L)
 \begin{DoxyCompactList}\small\item\em create Tree structure from fasta structure. \end{DoxyCompactList}\item 
 double \hyperlink{tree_8c_a7ea4e8b262dc61c20d94b598bffab181}{check\+\_\+path} (\hyperlink{tree_8h_a50a06950fa1e82738ad9a6bd85914900}{Tree} $\ast$tree\+\_\+ptr, char $\ast$read, int Lread)
 \begin{DoxyCompactList}\small\item\em checks if read is found in tree and outputs a score \end{DoxyCompactList}\item 
@@ -181,7 +180,26 @@ The tree structure is stored as follows\+: every address is stored in a uint32\+
 \begin{DoxyItemize}
 \item If it is pointing to N\+U\+L\+L\+: 0.
 \item Otherwise\+: i2, the index in the outer dimension of pool\+\_\+2\+D is identified, and the difference jump = pool\+\_\+2\+D\mbox{[}i\mbox{]}\mbox{[}j\mbox{]}.children\mbox{[}k\mbox{]} -\/ pool\+\_\+2\+D\mbox{[}i2\mbox{]} is computed. i2$\ast$\+N\+P\+O\+O\+L\+\_\+\+D1 + jump is then stored for child k. 
-\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{tree_8c_a3cec782fc1e0ae4063a34c641b463f89}{\index{tree.\+c@{tree.\+c}!tree\+\_\+from\+\_\+fasta@{tree\+\_\+from\+\_\+fasta}}
+\index{tree\+\_\+from\+\_\+fasta@{tree\+\_\+from\+\_\+fasta}!tree.\+c@{tree.\+c}}
+\subsubsection[{tree\+\_\+from\+\_\+fasta}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tree}$\ast$ tree\+\_\+from\+\_\+fasta (
+\begin{DoxyParamCaption}
+\item[{{\bf Fa\+\_\+data} $\ast$}]{fasta, }
+\item[{int}]{L}
+\end{DoxyParamCaption}
+)}}\label{tree_8c_a3cec782fc1e0ae4063a34c641b463f89}
+
+
+create Tree structure from fasta structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fasta} & pointer to fasta structure \\
+\hline
+{\em L} & tree length \\
+\hline
+\end{DoxyParams}
+
 
 \subsection{Variable Documentation}
 \hypertarget{tree_8c_a1f18264718e0b1b1be5a1f0ee64431e4}{\index{tree.\+c@{tree.\+c}!alloc\+\_\+mem@{alloc\+\_\+mem}}

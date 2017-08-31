@@ -31,16 +31,17 @@ and generates a summary report in html format
 
 ## Example 
  
-An example is given in the folder `examples`. To run an example, type, 
+An example is given in the folder `examples/QReport_Sreport`. To run an 
+example, type, 
 
 ``` 
     $ cd example/run_test/
-    $ ../../bin/SReport -i ./ -o my_test_summary_report
+    $ ../../../bin/SReport -i ./ -o my_test_summary_report
 ```
  and compare it with the provided run example, as specified in the README
- file under `./example`
+ file under `./example/QReport_Sreport`
 
-**NOTE:** it has to be run AFTER `Qreport`
+**NOTE:** it has to be run AFTER `Qreport` example
 
 ## Contributors
 

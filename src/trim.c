@@ -31,6 +31,7 @@
 #include <stdlib.h>
 #include "trim.h"
 #include "Lmer.h"
+#include "str_manip.h"
 #include "defines.h"
 #include "config.h"
 
@@ -39,7 +40,7 @@ extern char LT[256]; /**< global variable. Lookup table. */
 extern char Nencode;
 extern Iparam_trimFilter par_TF;
 
-#define TRIM_STRING 20
+#define TRIM_STRING 20 /**< maximal length of trimming info string.*/
 
 /**
 *
@@ -77,7 +78,7 @@ static int Nfree_Lmer(Fq_read *seq, int minL) {
   int len_cur = 0;  // length of the current N-free sub-seq (updated in loop)
   int len_cum = 0;  // cumulative N-free length as we run in the loop
   int i;
-  char Lmer[seq-> L];
+  char Lmer[seq->L];
   memcpy(Lmer, seq->line2, seq -> L);
   Lmer_sLmer(Lmer, seq->L);
   for (i = 0 ; i < seq -> L; i++) {
@@ -152,7 +153,18 @@ static int Ntrim_ends(Fq_read *seq, int minL) {
     seq -> line4[seq -> L] = '\0';
     seq -> line2[seq -> L] = '\0';
     char add[TRIM_STRING];
-    snprintf(add, TRIM_STRING, " TRIMN:%d:%d", t_start, t_end);
+    int init;
+    if ((init = strindex(seq->line3, "TRIM")) == -1) {
+       snprintf(add, TRIM_STRING, " TRIMN:%d:%d", t_start, t_end);
+    } else {
+       init += 6;  // length of TRIMN: or TRIMQ: or TRIMA: or TRIMX:
+       int told_start, told_end;
+       sscanf(&(seq -> line3[init]), "%d:%d", &told_start, &told_end);
+       t_start += told_start;
+       t_end += told_start;
+       seq -> line3[init - 6] = '\0';
+       snprintf(add, TRIM_STRING, " TRIMX:%d:%d", t_start, t_end);
+    }
     if (strlen(add) + strlen(seq -> line3) > READ_MAXLEN) {
       fprintf(stderr, "Cannot append  %s to %s.\n", add, seq -> line3);
       fprintf(stderr, "sequence exceeds the predifined limit.\n");
@@ -184,6 +196,7 @@ static int no_lowQ(Fq_read *seq, int minQ) {
 
 /**
  * @brief trims a read if lowQs are at the ends and remaining sub-seq >= minL
+ * @param seq fastq read
  * @param minQ minimum accepted quality value
  * @param minL minimum accepted trimmed length
  * @return 0 if not used, 1 if accepted as is, 2 if accepted and trimmed
@@ -213,6 +226,18 @@ static int Qtrim_ends(Fq_read *seq, int minQ, int minL) {
   seq -> line4[seq -> L] = '\0';
   seq -> line2[seq -> L] = '\0';
   char add[TRIM_STRING];
+  int init;
+  if ((init = strindex(seq->line3, "TRIM")) == -1) {
+     snprintf(add, TRIM_STRING, " TRIMQ:%d:%d", t_start, t_end);
+  } else {
+     init += 6;  // length of TRIMN: or TRIMQ: or TRIMA: or TRIMX:
+     int told_start, told_end;
+     sscanf(&(seq -> line3[init]), "%d:%d", &told_start, &told_end);
+     t_start += told_start;
+     t_end += told_start;
+     seq -> line3[init - 6] = '\0';
+     snprintf(add, TRIM_STRING, " TRIMX:%d:%d", t_start, t_end);
+  }
   snprintf(add, TRIM_STRING, " TRIMQ:%d:%d", t_start, t_end);
   if (strlen(add) + strlen(seq -> line3) > READ_MAXLEN) {
     fprintf(stderr, "Cannot append  %s to %s.\n", add, seq -> line3);
@@ -380,16 +405,18 @@ int trim_sequenceQ(Fq_read *seq) {
 
 // Check if a read is in the sequence or its reverse complement
 /**
- * @brief check if Lread is contained in tree.
+ * @brief check if Lread is contained in tree. It computes the score for the 
+ *        read and its reverse complement; if one ot them exceeds the user
+ *        selected threshold, it returns true. Otherwise, it returns false.
  * @param tree_ptr pointer to Tree structure
  * @param seq fastq read
- * @param score threshold score [0,1] over which we consider a read was in tree
  * @returns true if read was found, false otherwise
  *
  * */
 bool is_read_inTree(Tree *tree_ptr, Fq_read *seq) {
-  char read[seq -> L];
-  memcpy(read, seq -> line2, seq -> L);
+  char read[seq->L];
+  memcpy(read, seq -> line2, seq -> L+1);
+  Lmer_sLmer(read, seq -> L);
   if (check_path(tree_ptr, read, seq -> L) > par_TF.score) {
      return true;
   } else {
@@ -397,4 +424,3 @@ bool is_read_inTree(Tree *tree_ptr, Fq_read *seq) {
      return (check_path(tree_ptr, read, seq -> L) > par_TF.score);
   }
 }
-

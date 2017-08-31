@@ -19,10 +19,10 @@
  ****************************************************************************/
 
 /**
- * @file init_treefilter.h
+ * @file init_trimFilter.h
  * @author Paula Perez <paulaperezrubio@gmail.com>
  * @date 24.08.2017
- * @brief help dialog for trimFilter and initialization of the 
+ * @brief help dialog for trimFilter and initialization of the
  * command line arguments.
  *
  * */
@@ -30,20 +30,44 @@
 #ifndef INIT_TRIMFILTER_H
 #define INIT_TRIMFILTER_H
 
-#include <stdio.h>
-#include "defines.h" 
+#include "defines.h"
 
+
+/**
+ * @ brief adapter struct
+ * @ note UNFINISHED!
+ * */
+typedef struct _adapter {
+   char *adapter_fa; /**< fasta file containing adapters*/
+   int mismatches;   /**< Number of allowed mismatches*/
+   int threshold;  /**< Score threshold*/
+} Adapter;
+
+/**
+ * @brief trimFilter input parameters
+ *
+ * */
 typedef struct _iparam_trimFilter {
-  char *Ifq;
-  char *Ifa;
-  char *Iidx;
-  char *Oprefix;
-  int trimQ;   // NO(0), FRAC(1), ENDS(2), ENDSFRAC(3), GLOBAL(4)
-  int trimN;   // NO(0), ALL(1), ENDS(2), STRIP(3)
-  int method;  // TREE(1), SA(2), BLOOM(3)
-  bool is_fa, is_idx;
-  double score; 
-  int  minQ, L, minL, nlowQ, Lmer_len, globleft, globright, percent;
+  char *Ifq;  /**< Input fq file */
+  char *Ifa;  /**< Input fa file (containing contamination sequences) */
+  char *Iidx;  /**< Input index file (constructed from an input.fa cont file) */
+  char *Oprefix;  /**< Output files prefix (PATH/prefix) */
+  Adapter ad;  /**< Adapter trimming parameters  */
+  int trimQ;   /**< NO(0), FRAC(1), ENDS(2), ENDSFRAC(3), GLOBAL(4) */
+  int trimN;   /**< NO(0), ALL(1), ENDS(2), STRIP(3) */
+  int method;  /**< TREE(1), SA(2), BLOOM(3), 0, when not looking for cont*/
+  bool is_fa;  /**< true if a fasta file was passed as a parameter*/
+  bool is_idx;  /**< true if an index file was passed as a parameter */
+  bool is_adapter;  /**< true if filtering adapter sequences*/
+  double score;  /**< score threshold for matching reads in sequences */
+  int minQ;  /**<  minimum quality threshold*/
+  int L;  /**<  read length*/
+  int minL;  /**<  minimum read length accepted before discarding a read */
+  int nlowQ;  /**< maximum number of lowQ bases accepted before discarding */
+  int Lmer_len;  /**< Lmer length to look for contamination */
+  int globleft;  /**< number of bases globally trimming from the left */
+  int globright;  /**< number of bases globally trimming from the right */
+  int percent;  /**< percentage of lowQ bases allowed in a read */
 } Iparam_trimFilter;
 
 void printHelpDialog_trimFilter();

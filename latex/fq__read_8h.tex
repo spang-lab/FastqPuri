@@ -14,8 +14,7 @@ Include dependency graph for fq\+\_\+read.\+h\+:\nopagebreak
 \includegraphics[width=171pt]{fq__read_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -36,7 +35,7 @@ struct \hyperlink{struct__fq__read}{\+\_\+fq\+\_\+read}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{fq__read_8h_a27084cfcd27239f92fe4816029c1aa21}{get\+\_\+fqread} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, char $\ast$buffer, int c1, int c2, int k)
+int \hyperlink{fq__read_8h_af0d30098d51bea3d11c442c3dd60e15f}{get\+\_\+fqread} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, char $\ast$buffer, int pos1, int pos2, int nline, int read\+\_\+len, int filter)
 \begin{DoxyCompactList}\small\item\em reads fastq line from a buffer \end{DoxyCompactList}\item 
 int \hyperlink{fq__read_8h_ae58e185777143cd1fc4c75fccd5c647a}{string\+\_\+seq} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, char $\ast$char\+\_\+seq)
 \begin{DoxyCompactList}\small\item\em writes the fq entry in a string \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -54,22 +53,24 @@ Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+
 
 
 \subsection{Function Documentation}
-\hypertarget{fq__read_8h_a27084cfcd27239f92fe4816029c1aa21}{\index{fq\+\_\+read.\+h@{fq\+\_\+read.\+h}!get\+\_\+fqread@{get\+\_\+fqread}}
+\hypertarget{fq__read_8h_af0d30098d51bea3d11c442c3dd60e15f}{\index{fq\+\_\+read.\+h@{fq\+\_\+read.\+h}!get\+\_\+fqread@{get\+\_\+fqread}}
 \index{get\+\_\+fqread@{get\+\_\+fqread}!fq\+\_\+read.\+h@{fq\+\_\+read.\+h}}
-\subsubsection[{get\+\_\+fqread}]{\setlength{\rightskip}{0pt plus 5cm}void get\+\_\+fqread (
+\subsubsection[{get\+\_\+fqread}]{\setlength{\rightskip}{0pt plus 5cm}int get\+\_\+fqread (
 \begin{DoxyParamCaption}
 \item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
 \item[{char $\ast$}]{buffer, }
 \item[{int}]{pos1, }
 \item[{int}]{pos2, }
-\item[{int}]{nline}
+\item[{int}]{nline, }
+\item[{int}]{read\+\_\+len, }
+\item[{int}]{filter}
 \end{DoxyParamCaption}
-)}}\label{fq__read_8h_a27084cfcd27239f92fe4816029c1aa21}
+)}}\label{fq__read_8h_af0d30098d51bea3d11c442c3dd60e15f}
 
 
 reads fastq line from a buffer 
 
-a fastq line is read from a buffer and the relevant information is stored in a structure {\bfseries Fq\+\_\+read}. Depending on the variable {\bfseries par\+\_\+\+Q\+R} values, information about whether the read was trimmed is stored.
+a fastq line is read from a buffer and the relevant information is stored in a structure {\bfseries Fq\+\_\+read}. Depending on the value of {\bfseries filter}, information about whether the read was trimmed is stored.
 
 
 \begin{DoxyParams}{Parameters}
@@ -82,6 +83,10 @@ a fastq line is read from a buffer and the relevant information is stored in a s
 {\em pos2} & buffer end position of the line. \\
 \hline
 {\em nline} & file line number being read. \\
+\hline
+{\em read\+\_\+len} & predefined read length \\
+\hline
+{\em filter} & 0 original file, 1 file filtered with filter\+\_\+trim, 2 file filtered with another tool \\
 \hline
 \end{DoxyParams}
 \hypertarget{fq__read_8h_ae58e185777143cd1fc4c75fccd5c647a}{\index{fq\+\_\+read.\+h@{fq\+\_\+read.\+h}!string\+\_\+seq@{string\+\_\+seq}}

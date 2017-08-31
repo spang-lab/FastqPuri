@@ -97,13 +97,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;<a class="el" href="fq__read_8h_source.html">fq_read.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="defines_8h_source.html">defines.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="tree_8h_source.html">tree.h</a>&quot;</code><br />
-<code>#include &quot;init_trimFilter.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="init__trimFilter_8h_source.html">init_trimFilter.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for trim.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="trim_8h__incl.png" border="0" usemap="#include_2trim_8h" alt=""/></div>
 <map name="include_2trim_8h" id="include_2trim_8h">
-<area shape="rect" id="node3" href="Lmer_8h.html" title="Manipulation of Lmers and sequences. " alt="" coords="295,80,358,107"/><area shape="rect" id="node4" href="fq__read_8h.html" title="fastq entries manipulations (read/write) " alt="" coords="382,80,458,107"/><area shape="rect" id="node6" href="defines_8h.html" title="Macro definitions. " alt="" coords="132,155,207,181"/><area shape="rect" id="node7" href="tree_8h.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="217,80,271,107"/><area shape="rect" id="node10" href="init__trimFilter_8h_source.html" title="init_trimFilter.h" alt="" coords="33,80,141,107"/><area shape="rect" id="node9" href="fa__read_8h.html" title="reads in and stores fasta files " alt="" coords="282,155,358,181"/></map>
+<area shape="rect" id="node3" href="Lmer_8h.html" title="Manipulation of Lmers and sequences. " alt="" coords="91,80,154,107"/><area shape="rect" id="node4" href="fq__read_8h.html" title="fastq entries manipulations (read/write) " alt="" coords="178,80,254,107"/><area shape="rect" id="node6" href="defines_8h.html" title="Macro definitions. " alt="" coords="347,155,421,181"/><area shape="rect" id="node7" href="tree_8h.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="462,80,517,107"/><area shape="rect" id="node10" href="init__trimFilter_8h.html" title="help dialog for trimFilter and initialization of the command line arguments. " alt="" coords="330,80,438,107"/><area shape="rect" id="node9" href="fa__read_8h.html" title="reads in and stores fasta files " alt="" coords="511,155,587,181"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -123,15 +123,51 @@ Functions</h2></td></tr>
 <tr class="memitem:ae5ab2bb79068d8a7e0d72686c1f50320"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="trim_8h.html#ae5ab2bb79068d8a7e0d72686c1f50320">trim_sequenceQ</a> (<a class="el" href="fq__read_8h.html#a9af37aa81397c9531c66863d4e97f034">Fq_read</a> *seq)</td></tr>
 <tr class="memdesc:ae5ab2bb79068d8a7e0d72686c1f50320"><td class="mdescLeft">&#160;</td><td class="mdescRight">trims sequence based on lowQ base callings  <a href="#ae5ab2bb79068d8a7e0d72686c1f50320">More...</a><br /></td></tr>
 <tr class="separator:ae5ab2bb79068d8a7e0d72686c1f50320"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fcf29b5c8c548e1214eda9d9fd85c54"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2fcf29b5c8c548e1214eda9d9fd85c54"></a>
-<a class="el" href="defines_8h.html#abb452686968e48b67397da5f97445f5b">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><b>is_read_in_seq</b> (<a class="el" href="tree_8h.html#a50a06950fa1e82738ad9a6bd85914900">Tree</a> *tree_ptr, <a class="el" href="fq__read_8h.html#a9af37aa81397c9531c66863d4e97f034">Fq_read</a> *seq)</td></tr>
-<tr class="separator:a2fcf29b5c8c548e1214eda9d9fd85c54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e2b4015298659b7e21a80d4bb031e2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="defines_8h.html#abb452686968e48b67397da5f97445f5b">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="trim_8h.html#a7e2b4015298659b7e21a80d4bb031e2f">is_read_inTree</a> (<a class="el" href="tree_8h.html#a50a06950fa1e82738ad9a6bd85914900">Tree</a> *tree_ptr, <a class="el" href="fq__read_8h.html#a9af37aa81397c9531c66863d4e97f034">Fq_read</a> *seq)</td></tr>
+<tr class="memdesc:a7e2b4015298659b7e21a80d4bb031e2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if Lread is contained in tree. It computes the score for the read and its reverse complement; if one ot them exceeds the user selected threshold, it returns true. Otherwise, it returns false.  <a href="#a7e2b4015298659b7e21a80d4bb031e2f">More...</a><br /></td></tr>
+<tr class="separator:a7e2b4015298659b7e21a80d4bb031e2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>trims/filter sequences after Quality, N's contaminations. </p>
 <dl class="section author"><dt>Author</dt><dd>Paula Perez <a href="#" onclick="location.href='mai'+'lto:'+'pau'+'la'+'per'+'ez'+'rub'+'io'+'@gm'+'ai'+'l.c'+'om'; return false;">paula<span style="display: none;">.nosp@m.</span>pere<span style="display: none;">.nosp@m.</span>zrubi<span style="display: none;">.nosp@m.</span>o@gm<span style="display: none;">.nosp@m.</span>ail.c<span style="display: none;">.nosp@m.</span>om</a> </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>24.08.2017 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a7e2b4015298659b7e21a80d4bb031e2f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="defines_8h.html#abb452686968e48b67397da5f97445f5b">bool</a> is_read_inTree </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="tree_8h.html#a50a06950fa1e82738ad9a6bd85914900">Tree</a> *&#160;</td>
+          <td class="paramname"><em>tree_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="fq__read_8h.html#a9af37aa81397c9531c66863d4e97f034">Fq_read</a> *&#160;</td>
+          <td class="paramname"><em>seq</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>check if Lread is contained in tree. It computes the score for the read and its reverse complement; if one ot them exceeds the user selected threshold, it returns true. Otherwise, it returns false. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tree_ptr</td><td>pointer to Tree structure </td></tr>
+    <tr><td class="paramname">seq</td><td>fastq read </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if read was found, false otherwise </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="af23d3685193b624b72a6969a49903a97"></a>
 <div class="memitem">
 <div class="memproto">
@@ -155,10 +191,10 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>-1 error, 0 discarded, 1 accepted as is, 2 accepted and trimmed</dd></dl>
 <p>This function calls a different function depending on the method passed as input par_TF.trimN:</p><ul>
-<li>NO(0): accepts it as is, (1),</li>
-<li>ALL(1): accepts it as is if NO N's found (1), rejects it otherwise (0),</li>
-<li>ENDS(2): trims the ends and accepts it if it is longer than minL (2 if trimming, 1 if no trimming), rejects it otherwise (0),</li>
-<li>STRIP(3): finds the longest N-free subsequence and trims it if it is at least minL nucleotides long (2 if trimming, 1 if no N's are found), rejects it otherwise (0). </li>
+<li><a class="el" href="defines_8h.html#a996bde01ecac342918f0a2c4e7ce7bd5">NO(0)</a>: accepts it as is, (1),</li>
+<li><a class="el" href="defines_8h.html#a1edd1ea8bddaf4d9c5eb3eae1ee1726a">ALL(1)</a>: accepts it as is if NO N's found (1), rejects it otherwise (0),</li>
+<li><a class="el" href="defines_8h.html#a052e72209cfac2ff9aa78294f0bebea8">ENDS(2)</a>: trims the ends and accepts it if it is longer than minL (2 if trimming, 1 if no trimming), rejects it otherwise (0),</li>
+<li><a class="el" href="defines_8h.html#a53529d9638a1d70f6e5989dedf4c2672">STRIP(3)</a>: finds the longest N-free subsequence and trims it if it is at least minL nucleotides long (2 if trimming, 1 if no N's are found), rejects it otherwise (0). </li>
 </ul>
 
 </div>
@@ -186,11 +222,11 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>-1 error, 0 discarded, 1 accepted as is, 2 accepted and trimmed</dd></dl>
 <p>This function calls a different function depending on the method passed as input par_TF.trimQ:</p><ul>
-<li>NO(0): accepts is as is , (1),</li>
-<li>FRAC(1): accepts it if less than par_TF.nlowQ are found (1), rejects it otherwise (0),</li>
-<li>ENDS(2): trims the ends and accepts it if it is longer than minL (2 if triming, 1 if no trimming), rejects it otherwise (0),</li>
-<li>ENDSFRAC(3): trims the ends and accepts if the remaining sequence is at least minL bases long and if it contains less than nlowQ lowQ nucleotides (2 if trimming, 1 if no trimming). Otherwise, it is rejected, (0).</li>
-<li>GLOBAL(4): it trims globally globleft nucleotides from the left and globright from the right, (returns 2). </li>
+<li><a class="el" href="defines_8h.html#a996bde01ecac342918f0a2c4e7ce7bd5">NO(0)</a>: accepts is as is , (1),</li>
+<li><a class="el" href="defines_8h.html#a653af6bd29f56a2699de26a928820da7">FRAC(1)</a>: accepts it if less than par_TF.nlowQ are found (1), rejects it otherwise (0),</li>
+<li><a class="el" href="defines_8h.html#a052e72209cfac2ff9aa78294f0bebea8">ENDS(2)</a>: trims the ends and accepts it if it is longer than minL (2 if triming, 1 if no trimming), rejects it otherwise (0),</li>
+<li><a class="el" href="defines_8h.html#abf0b71573c7ffc4f6746c24c9abc202a">ENDSFRAC(3)</a>: trims the ends and accepts if the remaining sequence is at least minL bases long and if it contains less than nlowQ lowQ nucleotides (2 if trimming, 1 if no trimming). Otherwise, it is rejected, (0).</li>
+<li><a class="el" href="defines_8h.html#a3de33738fd3c7e77bffbcfaefc3e7645">GLOBAL(4)</a>: it trims globally globleft nucleotides from the left and globright from the right, (returns 2). </li>
 </ul>
 
 </div>
@@ -198,7 +234,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 24 2017 18:23:36 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 31 2017 16:58:05 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

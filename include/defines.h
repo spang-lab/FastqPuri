@@ -95,5 +95,15 @@
                      options in trimFilter */
 #define DEFAULT_MINL 25 /**< Default minimum length under which we discard 
                           the reads */
+
+// Classification of filters
+#define ADAP 0 /**<  Adapter filter */
+#define CONT 1 /**<  Contamination filter */
+#define LOWQ 2 /**<  Low quality filter */
+#define NNNN 3 /**<  N's presence filter */
+#define GOOD 4 /**<  Good reads */
+
+//Number of filters
+#define NFILTERS 4 /**< total number of filters */ 
 #endif
 

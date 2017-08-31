@@ -28,10 +28,14 @@
 
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "str_manip.h"
 
 /**
  * @brief  returns index of t in s (start, first occurence)
+ * @param s string to be checked.
+ * @param t substring to be found in s. 
  * */
 int strindex(char *s, char *t) {
   int i, j, k;
@@ -47,10 +51,46 @@ int strindex(char *s, char *t) {
 /**
  * @brief returns the \# of occurences of char c in string s
  */
-int count_char(char *s, char c) {
+int count_char(char *str, char sep) {
   int i;
-  for (i = 0; s[i]; (s[i] == c) ? i++ : *s++);
+  for (i = 0; str[i]; (str[i] == sep) ? i++ : *str++);
   return i;
 }
 
+/**
+ * @brief  returns index of t in s (start, first occurence)
+ * @param s string to be checked.
+ * @param sep char, separator
+ * */
+int strindexC(char *s, char sep) {
+  int i;
+  for (i = 0; s[i] != '\0'; i++) {
+     if (s[i] == sep)
+        return i;
+  }
+  return -1;
+}
 
+/**
+ * @brief Separates strings by a separator
+ * @param str input string
+ * @param sep separator (char)
+ * @return array of strings containing the substrings in the input separated
+ *
+ */
+Split strsplit(char *str, char sep) {
+  Split res;
+  int i, idx1 = 0, idx2 = 0;
+  res.N = count_char(str, sep) + 1;
+  res.s = malloc(sizeof(char*)*(res.N));
+  for (i = 0; i < res.N; i++) {
+    idx2 = strindexC(str+idx1, sep);
+    if (idx2 == -1) {
+       idx2 = strlen(str) -idx1;
+     }
+    res.s[i] = malloc(sizeof(char)*(idx2));
+    memcpy(res.s[i], str+idx1, idx2);
+    idx1 += idx2+1;
+  }
+  return res;
+}

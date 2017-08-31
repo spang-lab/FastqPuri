@@ -93,34 +93,148 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>functions that do string manipulation  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="str__manip_8h_source.html">str_manip.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for str_manip.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="str__manip_8c__incl.png" border="0" usemap="#src_2str__manip_8c" alt=""/></div>
 <map name="src_2str__manip_8c" id="src_2str__manip_8c">
-<area shape="rect" id="node3" href="str__manip_8h.html" title="functions that do string manipulation " alt="" coords="91,80,181,107"/></map>
+<area shape="rect" id="node5" href="str__manip_8h.html" title="functions that do string manipulation " alt="" coords="269,80,360,107"/></map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8108ab52dfbc1af644bf7682c1bbe33f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8108ab52dfbc1af644bf7682c1bbe33f"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="str__manip_8c.html#a8108ab52dfbc1af644bf7682c1bbe33f">strindex</a> (char *s, char *t)</td></tr>
-<tr class="memdesc:a8108ab52dfbc1af644bf7682c1bbe33f"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns index of t in s (start, first occurence) <br /></td></tr>
+<tr class="memitem:a8108ab52dfbc1af644bf7682c1bbe33f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="str__manip_8c.html#a8108ab52dfbc1af644bf7682c1bbe33f">strindex</a> (char *s, char *t)</td></tr>
+<tr class="memdesc:a8108ab52dfbc1af644bf7682c1bbe33f"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns index of t in s (start, first occurence)  <a href="#a8108ab52dfbc1af644bf7682c1bbe33f">More...</a><br /></td></tr>
 <tr class="separator:a8108ab52dfbc1af644bf7682c1bbe33f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8d13ec7edfe3ca8a03f48bd7e3b1d83"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af8d13ec7edfe3ca8a03f48bd7e3b1d83"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="str__manip_8c.html#af8d13ec7edfe3ca8a03f48bd7e3b1d83">count_char</a> (char *s, char c)</td></tr>
-<tr class="memdesc:af8d13ec7edfe3ca8a03f48bd7e3b1d83"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the # of occurences of char c in string s <br /></td></tr>
-<tr class="separator:af8d13ec7edfe3ca8a03f48bd7e3b1d83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9790090291ece4c0a93c6c337dd528c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9790090291ece4c0a93c6c337dd528c1"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="str__manip_8c.html#a9790090291ece4c0a93c6c337dd528c1">count_char</a> (char *str, char sep)</td></tr>
+<tr class="memdesc:a9790090291ece4c0a93c6c337dd528c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the # of occurences of char c in string s <br /></td></tr>
+<tr class="separator:a9790090291ece4c0a93c6c337dd528c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc6cfcce267d36f0d09ecc6948d25747"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="str__manip_8c.html#adc6cfcce267d36f0d09ecc6948d25747">strindexC</a> (char *s, char sep)</td></tr>
+<tr class="memdesc:adc6cfcce267d36f0d09ecc6948d25747"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns index of t in s (start, first occurence)  <a href="#adc6cfcce267d36f0d09ecc6948d25747">More...</a><br /></td></tr>
+<tr class="separator:adc6cfcce267d36f0d09ecc6948d25747"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a245675aede3b8bedd8ce6c8c2aa70ec0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="str__manip_8h.html#aeff63a40ce3fff0c51bd207baeba2013">Split</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="str__manip_8c.html#a245675aede3b8bedd8ce6c8c2aa70ec0">strsplit</a> (char *str, char sep)</td></tr>
+<tr class="memdesc:a245675aede3b8bedd8ce6c8c2aa70ec0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Separates strings by a separator.  <a href="#a245675aede3b8bedd8ce6c8c2aa70ec0">More...</a><br /></td></tr>
+<tr class="separator:a245675aede3b8bedd8ce6c8c2aa70ec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>functions that do string manipulation </p>
 <dl class="section author"><dt>Author</dt><dd>Paula Perez <a href="#" onclick="location.href='mai'+'lto:'+'pau'+'la'+'per'+'ez'+'rub'+'io'+'@gm'+'ai'+'l.c'+'om'; return false;">paula<span style="display: none;">.nosp@m.</span>pere<span style="display: none;">.nosp@m.</span>zrubi<span style="display: none;">.nosp@m.</span>o@gm<span style="display: none;">.nosp@m.</span>ail.c<span style="display: none;">.nosp@m.</span>om</a> </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>03.08.2017 </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a8108ab52dfbc1af644bf7682c1bbe33f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int strindex </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns index of t in s (start, first occurence) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>string to be checked. </td></tr>
+    <tr><td class="paramname">t</td><td>substring to be found in s. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="adc6cfcce267d36f0d09ecc6948d25747"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int strindexC </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>sep</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns index of t in s (start, first occurence) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>string to be checked. </td></tr>
+    <tr><td class="paramname">sep</td><td>char, separator </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a245675aede3b8bedd8ce6c8c2aa70ec0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="str__manip_8h.html#aeff63a40ce3fff0c51bd207baeba2013">Split</a> strsplit </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>sep</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Separates strings by a separator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>input string </td></tr>
+    <tr><td class="paramname">sep</td><td>separator (char) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>array of strings containing the substrings in the input separated </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 24 2017 18:23:37 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 31 2017 16:58:06 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -1,8 +1,8 @@
 <map id="include/trim.h" name="include/trim.h">
-<area shape="rect" id="node3" href="$Lmer_8h.html" title="Manipulation of Lmers and sequences. " alt="" coords="295,80,358,107"/>
-<area shape="rect" id="node4" href="$fq__read_8h.html" title="fastq entries manipulations (read/write) " alt="" coords="382,80,458,107"/>
-<area shape="rect" id="node6" href="$defines_8h.html" title="Macro definitions. " alt="" coords="132,155,207,181"/>
-<area shape="rect" id="node7" href="$tree_8h.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="217,80,271,107"/>
-<area shape="rect" id="node10" href="$init__trimFilter_8h_source.html" title="init_trimFilter.h" alt="" coords="33,80,141,107"/>
-<area shape="rect" id="node9" href="$fa__read_8h.html" title="reads in and stores fasta files " alt="" coords="282,155,358,181"/>
+<area shape="rect" id="node3" href="$Lmer_8h.html" title="Manipulation of Lmers and sequences. " alt="" coords="91,80,154,107"/>
+<area shape="rect" id="node4" href="$fq__read_8h.html" title="fastq entries manipulations (read/write) " alt="" coords="178,80,254,107"/>
+<area shape="rect" id="node6" href="$defines_8h.html" title="Macro definitions. " alt="" coords="347,155,421,181"/>
+<area shape="rect" id="node7" href="$tree_8h.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="462,80,517,107"/>
+<area shape="rect" id="node10" href="$init__trimFilter_8h.html" title="help dialog for trimFilter and initialization of the command line arguments. " alt="" coords="330,80,438,107"/>
+<area shape="rect" id="node9" href="$fa__read_8h.html" title="reads in and stores fasta files " alt="" coords="511,155,587,181"/>
 </map>

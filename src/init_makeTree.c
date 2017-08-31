@@ -117,7 +117,7 @@ void getarg_makeTree(int argc, char **argv) {
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
-  if  (!strncmp(par_MT.outputfile,"",MAX_FILENAME)) {
+  if  (!strncmp(par_MT.outputfile, "", MAX_FILENAME)) {
      printHelpDialog_makeTree();
      fprintf(stderr, "Output file was not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");

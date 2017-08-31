@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tree',['Tree',['../tree_8h.html#a50a06950fa1e82738ad9a6bd85914900',1,'tree.h']]]
+  ['node',['Node',['../tree_8h.html#a6390a1d02010dee1843fa2b1263308c1',1,'tree.h']]]
 ];

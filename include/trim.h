@@ -42,7 +42,7 @@
 
 int trim_sequenceN(Fq_read *seq);
 int trim_sequenceQ(Fq_read *seq);
-bool is_read_in_seq(Tree *tree_ptr, Fq_read *seq);
+bool is_read_inTree(Tree *tree_ptr, Fq_read *seq);
 
 /* static functions
 * static int no_N(Fq_read *seq);

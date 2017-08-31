@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['b_5flen',['B_LEN',['../defines_8h.html#a4419cb9bb22330d00cfd4727a05060dd',1,'defines.h']]],
-  ['bool',['bool',['../defines_8h.html#abb452686968e48b67397da5f97445f5b',1,'defines.h']]]
+  ['adap',['ADAP',['../defines_8h.html#a50b2092be2f53229fda4d54644214af7',1,'defines.h']]],
+  ['all',['ALL',['../defines_8h.html#a1edd1ea8bddaf4d9c5eb3eae1ee1726a',1,'defines.h']]]
 ];

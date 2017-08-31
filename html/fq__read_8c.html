@@ -84,8 +84,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">fq_read.c File Reference</div>  </div>
 </div><!--header-->
@@ -96,7 +95,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="init__Qreport_8h_source.html">init_Qreport.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="fq__read_8h_source.html">fq_read.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="str__manip_8h_source.html">str_manip.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -104,34 +102,29 @@ Include dependency graph for fq_read.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="fq__read_8c__incl.png" border="0" usemap="#src_2fq__read_8c" alt=""/></div>
 <map name="src_2fq__read_8c" id="src_2fq__read_8c">
-<area shape="rect" id="node5" href="init__Qreport_8h.html" title="Header file: help dialog for Qreport and initialization of the command line arguments. " alt="" coords="269,80,369,107"/><area shape="rect" id="node7" href="fq__read_8h.html" title="fastq entries manipulations (read/write) " alt="" coords="393,80,469,107"/><area shape="rect" id="node9" href="str__manip_8h.html" title="functions that do string manipulation " alt="" coords="494,80,585,107"/><area shape="rect" id="node6" href="defines_8h.html" title="Macro definitions. " alt="" coords="282,155,357,181"/></map>
+<area shape="rect" id="node5" href="fq__read_8h.html" title="fastq entries manipulations (read/write) " alt="" coords="269,80,345,107"/><area shape="rect" id="node7" href="str__manip_8h.html" title="functions that do string manipulation " alt="" coords="370,80,461,107"/></map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a65766fec27771b0b42524625f76d067b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fq__read_8c.html#a65766fec27771b0b42524625f76d067b">get_fqread</a> (<a class="el" href="fq__read_8h.html#a9af37aa81397c9531c66863d4e97f034">Fq_read</a> *seq, char *buffer, int pos1, int pos2, int nline)</td></tr>
-<tr class="memdesc:a65766fec27771b0b42524625f76d067b"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads fastq line from a buffer  <a href="#a65766fec27771b0b42524625f76d067b">More...</a><br /></td></tr>
-<tr class="separator:a65766fec27771b0b42524625f76d067b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0d30098d51bea3d11c442c3dd60e15f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fq__read_8c.html#af0d30098d51bea3d11c442c3dd60e15f">get_fqread</a> (<a class="el" href="fq__read_8h.html#a9af37aa81397c9531c66863d4e97f034">Fq_read</a> *seq, char *buffer, int pos1, int pos2, int nline, int read_len, int filter)</td></tr>
+<tr class="memdesc:af0d30098d51bea3d11c442c3dd60e15f"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads fastq line from a buffer  <a href="#af0d30098d51bea3d11c442c3dd60e15f">More...</a><br /></td></tr>
+<tr class="separator:af0d30098d51bea3d11c442c3dd60e15f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae58e185777143cd1fc4c75fccd5c647a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fq__read_8c.html#ae58e185777143cd1fc4c75fccd5c647a">string_seq</a> (<a class="el" href="fq__read_8h.html#a9af37aa81397c9531c66863d4e97f034">Fq_read</a> *seq, char *char_seq)</td></tr>
 <tr class="memdesc:ae58e185777143cd1fc4c75fccd5c647a"><td class="mdescLeft">&#160;</td><td class="mdescRight">writes the fq entry in a string  <a href="#ae58e185777143cd1fc4c75fccd5c647a">More...</a><br /></td></tr>
 <tr class="separator:ae58e185777143cd1fc4c75fccd5c647a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a5c6527d396580d559cfd1916fc959e23"><td class="memItemLeft" align="right" valign="top"><a class="el" href="init__Qreport_8h.html#a883b1b3db368b84ab55f011bbb41bc80">Iparam_Qreport</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fq__read_8c.html#a5c6527d396580d559cfd1916fc959e23">par_QR</a></td></tr>
-<tr class="separator:a5c6527d396580d559cfd1916fc959e23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>fastq entries manipulations (read/write) </p>
 <dl class="section author"><dt>Author</dt><dd>Paula Perez <a href="#" onclick="location.href='mai'+'lto:'+'pau'+'la'+'per'+'ez'+'rub'+'io'+'@gm'+'ai'+'l.c'+'om'; return false;">paula<span style="display: none;">.nosp@m.</span>pere<span style="display: none;">.nosp@m.</span>zrubi<span style="display: none;">.nosp@m.</span>o@gm<span style="display: none;">.nosp@m.</span>ail.c<span style="display: none;">.nosp@m.</span>om</a> </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>03.08.2017 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a65766fec27771b0b42524625f76d067b"></a>
+<a class="anchor" id="af0d30098d51bea3d11c442c3dd60e15f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void get_fqread </td>
+          <td class="memname">int get_fqread </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="fq__read_8h.html#a9af37aa81397c9531c66863d4e97f034">Fq_read</a> *&#160;</td>
           <td class="paramname"><em>seq</em>, </td>
@@ -158,7 +151,19 @@ Variables</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>nline</em>&#160;</td>
+          <td class="paramname"><em>nline</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>read_len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>filter</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -169,7 +174,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>reads fastq line from a buffer </p>
-<p>a fastq line is read from a buffer and the relevant information is stored in a structure <b>Fq_read</b>. Depending on the variable <b>par_QR</b> values, information about whether the read was trimmed is stored.</p>
+<p>a fastq line is read from a buffer and the relevant information is stored in a structure <b>Fq_read</b>. Depending on the value of <b>filter</b>, information about whether the read was trimmed is stored.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*seq</td><td>pointer to <b>Fq_read</b>, where the info will be stored. </td></tr>
@@ -177,6 +182,8 @@ Variables</h2></td></tr>
     <tr><td class="paramname">pos1</td><td>buffer start position of the line. </td></tr>
     <tr><td class="paramname">pos2</td><td>buffer end position of the line. </td></tr>
     <tr><td class="paramname">nline</td><td>file line number being read. </td></tr>
+    <tr><td class="paramname">read_len</td><td>predefined read length </td></tr>
+    <tr><td class="paramname">filter</td><td>0 original file, 1 file filtered with filter_trim, 2 file filtered with another tool </td></tr>
   </table>
   </dd>
 </dl>
@@ -219,26 +226,10 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="a5c6527d396580d559cfd1916fc959e23"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="init__Qreport_8h.html#a883b1b3db368b84ab55f011bbb41bc80">Iparam_Qreport</a> par_QR</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>input parameters</p>
-<p>global variable: input parameters for Qreport</p>
-<p>global variable: Input parameters of makeTree. </p>
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 24 2017 18:23:37 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 31 2017 16:58:05 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
