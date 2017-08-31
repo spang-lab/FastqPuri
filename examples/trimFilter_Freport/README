@@ -2,7 +2,8 @@
 #  trimFilter example:                                                         #
 ################################################################################
 #                                                                              # 
-# The code following way (**NOTE**: this has to be MUCH more detailed):        #
+# The example works in the  following way (**NOTE**: this has to be MUCH more  #
+# detailed):                                                                   #
 #                                                                              #
 # 1. `EColi_rRNA.fq` was created with `./create_fq.sh`. The file contains:     # 
 #    * 2e5 reads of length 50 from `EColi_genome.fa` with NO errors.           #

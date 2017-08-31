@@ -301,6 +301,8 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 
 
 ## Test/examples
+ The example in folder `examples/trimFilter_FReport/` works in the following 
+ way (**NOTE**: this has to be MUCH more detailed):                        
  The code following way (**NOTE**: this has to be MUCH more detailed):   
                                                                          
  1. `EColi_rRNA.fq` was created with `./create_fq.sh`. The file contains:
