@@ -26,8 +26,8 @@
  *
  * */
 
-#ifndef FQ_READ_H
-#define FQ_READ_H
+#ifndef FQ_READ_H_
+#define FQ_READ_H_
 
 #include "config.h"
 
@@ -48,4 +48,4 @@ int get_fqread(Fq_read* seq, char* buffer, int pos1, int pos2,
 
 int string_seq(Fq_read *seq, char *char_seq );
 
-#endif
+#endif  // endif FQ_READ_H_

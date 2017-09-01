@@ -27,8 +27,8 @@
  *
  * */
 
-#ifndef INIT_TRIMFILTER_H
-#define INIT_TRIMFILTER_H
+#ifndef INIT_TRIMFILTER_H_
+#define INIT_TRIMFILTER_H_
 
 #include "defines.h"
 
@@ -74,4 +74,4 @@ void printHelpDialog_trimFilter();
 
 void getarg_trimFilter(int argc, char **argv);
 
-#endif  // INIT_TRIMFILTER_H
+#endif  // INIT_TRIMFILTER_H_

@@ -27,9 +27,9 @@
  */
 
 
-#ifndef RCOMMAND_Qreport_H_
-#define RCOMMAND_Qreport_H_
+#ifndef RCOMMAND_QREPORT_H_
+#define RCOMMAND_QREPORT_H_
 
 char *command_Qreport(); 
 
-#endif
+#endif  // endif RCOMMAND_QREPORT_H_

@@ -105,5 +105,7 @@
 
 //Number of filters
 #define NFILTERS 4 /**< total number of filters */ 
-#endif
+
+
+#endif // endif DEFINES_H_
 

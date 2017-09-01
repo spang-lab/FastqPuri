@@ -27,8 +27,8 @@
  */
 
 
-#ifndef INIT_SREPORT_H
-#define INIT_SREPORT_H
+#ifndef INIT_SREPORT_H_
+#define INIT_SREPORT_H_
 
 #include "defines.h"
 
@@ -37,11 +37,12 @@
  */
 typedef struct _iparam_Sreport{
    char *inputfolder; /**< input folder */
-   char outputfile[MAX_FILENAME]; /**< html outputfile name */ 
+   char outputfile[MAX_FILENAME]; /**< html outputfile name */
+   char *Rmd_file;  
 } Iparam_Sreport; 
 
 void printHelpDialog_Sreport();
 
 void getarg_Sreport(int argc, char **argv);
 
-#endif
+#endif  // endif INIT_SREPORT_H_

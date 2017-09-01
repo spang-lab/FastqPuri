@@ -26,6 +26,10 @@
  *
  * */
 
+#ifndef STR_MANIP_H_
+#define STR_MANIP_H_
+
+
 /**
  * @brief contains a splitted string and the number or splitted fields
  * */
@@ -39,3 +43,5 @@ int strindex(char *s, char *t);
 int count_char(char *s, char c);
 
 Split strsplit(char *str, char sep);
+
+#endif  // endif STR_MANIP_H_

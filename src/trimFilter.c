@@ -89,9 +89,14 @@ int main(int argc, char *argv[]) {
   fprintf(stderr , "Starting program at: %s", asctime(timeinfo));
 
   // BODY of the function here!
+  // Initializing stat_TF.
+  stat_TF.filters[ADAP] = par_TF.is_adapter; 
+  stat_TF.filters[CONT] = par_TF.method;  
+  stat_TF.filters[LOWQ] = par_TF.trimQ;
+  stat_TF.filters[NNNN] = par_TF.trimN;
+
   // Loading the adapters file if the option is activated
   if (par_TF.is_adapter) {
-    stat_TF.filters[ADAP] = true;     // set filter ADAP to true
     f_adap = fopen_gen(fq_adap, "w");  // open fq_adap  file for writing
     fprintf(stderr, "Adapters removal is activated!\n");
     fprintf(stderr, "WARNING: this option is WORK IN PROGRESS!!\n");
@@ -101,7 +106,6 @@ int main(int argc, char *argv[]) {
   // Loading the index file to look for contaminations
   Tree *ptr_tree = NULL;
   if (par_TF.method) {
-    stat_TF.filters[CONT] = true;  // set filter CONT to true
     f_cont = fopen_gen(fq_cont, "w");  // open fq_cont file for writing
     if (par_TF.is_fa && par_TF.method == TREE) {
        Fa_data *ptr_fa = malloc(sizeof(Fa_data));
@@ -146,12 +150,10 @@ int main(int argc, char *argv[]) {
     }
   }  // endif par_TF.method
   if (par_TF.trimQ) {
-     stat_TF.filters[LOWQ] = true;  // set filter LOWQ to true
      f_lowq = fopen_gen(fq_lowq, "w");  // open fq_lowq file for writing
   }  // endif par_TF.trimQ
 
   if (par_TF.trimN) {
-     stat_TF.filters[NNNN] = true;  // set filter LOWQ to true
      f_NNNN = fopen_gen(fq_NNNN, "w");  // open fq_lowq file for writing
   }  // endif par_TF.trimQ
 

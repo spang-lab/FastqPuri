@@ -27,8 +27,8 @@
  * */
 
 
-#ifndef TREE_H
-#define TREE_H
+#ifndef TREE_H_
+#define TREE_H_
 #include <stdint.h>
 #include "defines.h"
 #include "fa_read.h"
@@ -87,4 +87,4 @@ Tree *read_tree(char *filename);
  * check_path(Tree *tree_ptr, char *Lmer, int Lread);
  * */ 
 
-#endif
+#endif  // endif TREE_H_

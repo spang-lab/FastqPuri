@@ -22,8 +22,7 @@ Include dependency graph for Rcommand\+\_\+\+Sreport.\+c\+:\nopagebreak
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{Rcommand__Sreport_8c_a843ffc16afb438c7430da804efd8dfaf}{char $\ast$ \hyperlink{Rcommand__Sreport_8c_a843ffc16afb438c7430da804efd8dfaf}{command\+\_\+\+Sreport} ()}\label{Rcommand__Sreport_8c_a843ffc16afb438c7430da804efd8dfaf}
-
+char $\ast$ \hyperlink{Rcommand__Sreport_8c_a843ffc16afb438c7430da804efd8dfaf}{command\+\_\+\+Sreport} ()
 \begin{DoxyCompactList}\small\item\em returns Rscript command that generates the summary report in html \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -42,6 +41,36 @@ Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+
 09.\+08.\+2017 
 \end{DoxyDate}
 
+
+\subsection{Function Documentation}
+\hypertarget{Rcommand__Sreport_8c_a843ffc16afb438c7430da804efd8dfaf}{\index{Rcommand\+\_\+\+Sreport.\+c@{Rcommand\+\_\+\+Sreport.\+c}!command\+\_\+\+Sreport@{command\+\_\+\+Sreport}}
+\index{command\+\_\+\+Sreport@{command\+\_\+\+Sreport}!Rcommand\+\_\+\+Sreport.\+c@{Rcommand\+\_\+\+Sreport.\+c}}
+\subsubsection[{command\+\_\+\+Sreport}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ command\+\_\+\+Sreport (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{Rcommand__Sreport_8c_a843ffc16afb438c7430da804efd8dfaf}
+
+
+returns Rscript command that generates the summary report in html 
+
+
+\begin{DoxyCode}
+1 # To run between quotation marks after:  Rscript\_RBioC -e (Rscript)
+2 inputfolder = normalizePath( <par.SR.inputfolder>, mustWork = TRUE);
+3 output = <par\_SR.outputfile>;
+4 output\_file = gsub('.* /', '', output);
+5 path = gsub('[^/]+$', '', output);
+6 if (path != '') \{
+7   outputfile = paste0(normalizePath(path, mustWork = TRUE), '/', outputfile);
+8 \} else \{
+9   outputfile = paste0(cwd, '/', output\_file); # cwd: current working dir
+10 \}; 
+11 rmarkdown::render(RMD\_SUMMARY\_REPORT, 
+12                   params = list(inputfolder = inputfolder, version= VERSION),
+13                   output\_file = output\_file)
+\end{DoxyCode}
+ 
 
 \subsection{Variable Documentation}
 \hypertarget{Rcommand__Sreport_8c_aa230276b7e03d43430c998def780682e}{\index{Rcommand\+\_\+\+Sreport.\+c@{Rcommand\+\_\+\+Sreport.\+c}!par\+\_\+\+S\+R@{par\+\_\+\+S\+R}}

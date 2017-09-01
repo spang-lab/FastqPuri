@@ -77,4 +77,4 @@ void update_QPosTile_table(Info *res, Fq_read *seq);
 void update_ACGT_pos(uint64_t* ACGT_pos, Fq_read *seq, int read_len);
 void resize_info(Info* res);
 
-#endif
+#endif  // endif STATS_INFO_H_

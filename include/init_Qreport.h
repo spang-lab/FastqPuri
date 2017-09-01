@@ -26,8 +26,8 @@
  * the command line arguments.
  */
 
-#ifndef init_Qreport_H
-#define init_Qreport_H
+#ifndef INIT_QREPORT_H_
+#define INIT_QREPORT_H_
 
 #include "defines.h"
 
@@ -54,4 +54,4 @@ void printHelpDialog_Qreport();
 
 void getarg_Qreport(int argc, char **argv);
 
-#endif
+#endif  // endif INIT_QREPORT_H_

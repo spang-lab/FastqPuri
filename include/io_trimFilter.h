@@ -26,8 +26,8 @@
  *
  */
 
-#ifndef IO_TRIMFILTER_H
-#define IO_TRIMFILTER_H
+#ifndef IO_TRIMFILTER_H_
+#define IO_TRIMFILTER_H_
 
 #include <stdio.h>
 #include "defines.h"
@@ -36,7 +36,7 @@
  * @brief collects stats info from the filtering procedure
  * */
 typedef struct _stats_TF {
-  bool filters[NFILTERS];  /**< Using filters for: ADAP, CONT, LOWQ, NNNN */
+  int filters[NFILTERS];  /**< Using filters for: ADAP, CONT, LOWQ, NNNN */
   int trimmed[NFILTERS];  /**< \# trimmed reads by: ADAP, CONT, LOWQ, NNNN */
   int discarded[NFILTERS];  /**< \# discarded reads: ADAP, CONT, LOWQ, NNNN */
   int good;  /**< \# good reads */
@@ -47,4 +47,4 @@ void buffer_output(FILE *fout, const char *a, const int len, const int fd_i);
 
 void write_summary_TF(Stats_TF tf_stats, char *filename);
 
-#endif  // IO_TRIMFILTER_H
+#endif  // IO_TRIMFILTER_H_

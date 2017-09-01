@@ -27,9 +27,9 @@
  */
 
 
-#ifndef RCOMMAND_Sreport_H_
-#define RCOMMAND_Sreport_H_
+#ifndef RCOMMAND_SREPORT_H_
+#define RCOMMAND_SREPORT_H_
 
 char *command_Sreport();
 
-#endif
+#endif  // endif RCOMMAND_SREPORT_H_

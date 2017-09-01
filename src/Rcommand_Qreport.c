@@ -19,7 +19,7 @@
  ****************************************************************************/
 
 /**
- * @file Rcommand_Qreport.h
+ * @file Rcommand_Qreport.c
  * @brief get Rscript command for Qreport
  * @author Paula Perez <paulaperezrubio@gmail.com>
  * @date 07.08.2017

@@ -26,8 +26,8 @@
  *
  * */
 
-#ifndef TRIM_H
-#define TRIM_H
+#ifndef TRIM_H_
+#define TRIM_H_
 
 #include <stdio.h>
 #include "Lmer.h"
@@ -55,4 +55,4 @@ bool is_read_inTree(Tree *tree_ptr, Fq_read *seq);
 * static int Qtrim_global(Fq_read *seq, int left, int right );
 */
 
-#endif  // TRIM_H
+#endif  // TRIM_H_

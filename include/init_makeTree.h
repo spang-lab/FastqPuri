@@ -26,8 +26,8 @@
  * the command line arguments.
  */
 
-#ifndef INIT_MAKETREE_H
-#define INIT_MAKETREE_H
+#ifndef INIT_MAKETREE_H_
+#define INIT_MAKETREE_H_
 
 #include "defines.h"
 
@@ -44,4 +44,4 @@ void printHelpDialog_makeTree();
 
 void getarg_makeTree(int argc, char **argv);
 
-#endif
+#endif  // endif INIT_MAKETREE_H_

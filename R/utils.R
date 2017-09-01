@@ -125,3 +125,74 @@ my_plot <- function(data){
 
 }
 
+
+# Reads trimFilter output data 
+# and stores them in a list.
+getFilterStats <- function(path) {
+  to.read = file(path, "rb")
+  if (file.info(path)$size != 56) {
+    stop("File size is not 56 Bytes as expected. Exiting.")
+  }
+  NFILTER <- 4
+  res <- list()
+  res$filter <- readBin(to.read, integer(), n=NFILTER)
+  res$trimmed <- readBin(to.read, integer(), n=NFILTER)
+  res$discarded <- readBin(to.read, integer(), n=NFILTER)
+  res$good <- readBin(to.read, integer())
+  res$nreads <- readBin(to.read, integer())
+  if (res$good > 0) {
+     res$trimmed <- res$trimmed/res$good*100
+     res$discarded <- res$discarded/res$good*100
+  } else {
+     stop("All reads were discarded")
+  }
+  close(to.read)
+  res   
+}
+
+# Construct the two tables that will be outputted 
+# in the summary_filter_report performing 
+# some consistency checks
+getFilterTables <- function(inputfolder) {
+   NFILTER <- 4
+   GRAL_TABLE <- TRUE
+   adapters <- c("NONE", "DEFAULT")
+   method <- c("NONE", "TREE", "SA", "BLOOM")
+   trimQ <- c("NONE", "ALL", "ENDS", "FRAC", "ENDSFRAC", "GLOBAL")
+   trimN <- c("NONE", "ALL", "ENDS", "STRIPS")
+   applied <- c("NO", "YES", "YES", "YES", "YES", "YES")
+   files <- list.files(inputfolder,pattern="bin$")
+   nombres <- gsub('_summary\\.bin$', '', files)
+   Ns <- length(files)
+   table <- matrix(nrow = Ns, ncol = 9,
+            dimnames = list(nombres,c("Nreads","Naccepted", "%disc Ad", 
+                                      "%cont", "%disc lowQ", "%disc N's", 
+                                      "%trim Ad", "%trim N's", "%trim lowQ")))
+   i = 1
+   for (f in files) {
+      st_f <- getFilterStats(paste0(inputfolder,"/",f)) 
+      if (i == 1) {
+         filter = st_f$filter
+      } else {
+         GRAL_TABLE  <- GRAL_TABLE && all.equal(filter, st_f$filter) 
+      }
+      table[i,] <- c(st_f$nreads, st_f$good, st_f$discarded, 
+                     st_f$trimmed[c(1,3,4)])
+      i = i+1
+   }
+   if (GRAL_TABLE) {
+      setup  <- matrix(nrow = NFILTER, ncol =  2, dimnames = 
+                       list(c("ADAPTERS", "CONTAMINATIONS", "LOW Q", "N's"),
+                           c("Applied", "Method")))
+      setup[,1] <- applied[st_f$filter+1]
+      setup["ADAPTERS",2] <- adapters[st_f$filter[1] +1]
+      setup["CONTAMINATIONS",2] <- method[st_f$filter[2] +1]
+      setup["LOW Q",2] <- trimQ[st_f$filter[3] +1]
+      setup["N's",2] <- trimN[st_f$filter[4] +1]
+   } else  {
+      setup <- NULL
+   }
+   return (list(setup = setup, table = table))
+}
+
+

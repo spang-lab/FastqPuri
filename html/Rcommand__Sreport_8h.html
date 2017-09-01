@@ -104,19 +104,49 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a843ffc16afb438c7430da804efd8dfaf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a843ffc16afb438c7430da804efd8dfaf"></a>
-char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Rcommand__Sreport_8h.html#a843ffc16afb438c7430da804efd8dfaf">command_Sreport</a> ()</td></tr>
-<tr class="memdesc:a843ffc16afb438c7430da804efd8dfaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns Rscript command that generates the summary report in html <br /></td></tr>
+<tr class="memitem:a843ffc16afb438c7430da804efd8dfaf"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Rcommand__Sreport_8h.html#a843ffc16afb438c7430da804efd8dfaf">command_Sreport</a> ()</td></tr>
+<tr class="memdesc:a843ffc16afb438c7430da804efd8dfaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns Rscript command that generates the summary report in html  <a href="#a843ffc16afb438c7430da804efd8dfaf">More...</a><br /></td></tr>
 <tr class="separator:a843ffc16afb438c7430da804efd8dfaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>get Rscript command for Sreport </p>
 <dl class="section author"><dt>Author</dt><dd>Paula Perez <a href="#" onclick="location.href='mai'+'lto:'+'pau'+'la'+'per'+'ez'+'rub'+'io'+'@gm'+'ai'+'l.c'+'om'; return false;">paula<span style="display: none;">.nosp@m.</span>pere<span style="display: none;">.nosp@m.</span>zrubi<span style="display: none;">.nosp@m.</span>o@gm<span style="display: none;">.nosp@m.</span>ail.c<span style="display: none;">.nosp@m.</span>om</a> </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>09.08.2017 </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a843ffc16afb438c7430da804efd8dfaf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* command_Sreport </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns Rscript command that generates the summary report in html </p>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;# To run between quotation marks after:  Rscript_RBioC -e (Rscript)</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;inputfolder = normalizePath( &lt;par.SR.inputfolder&gt;, mustWork = TRUE);</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;output = &lt;par_SR.outputfile&gt;;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;output_file = gsub(&#39;.* /&#39;, &#39;&#39;, output);</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;path = gsub(&#39;[^/]+$&#39;, &#39;&#39;, output);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;if (path != &#39;&#39;) {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  outputfile = paste0(normalizePath(path, mustWork = TRUE), &#39;/&#39;, outputfile);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;} else {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  outputfile = paste0(cwd, &#39;/&#39;, output_file); # cwd: current working dir</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;rmarkdown::render(RMD_SUMMARY_REPORT, </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                  params = list(inputfolder = inputfolder, version= VERSION),</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                  output_file = output_file)</div>
+</div><!-- fragment --> 
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 31 2017 16:58:05 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 1 2017 09:57:27 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

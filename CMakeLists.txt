@@ -79,6 +79,9 @@ message("-- Setting Rmd quality report file: ${RMD_QUALITY_REPORT}")
 set(RMD_SUMMARY_REPORT ${PROJECT_R_DIR}/summary_report.Rmd CACHE STRING 
    "Rmd summary report file")
 message("-- Setting Rmd summary report file: ${RMD_SUMMARY_REPORT}")
+set(RMD_SUMMARY_FILTER_REPORT ${PROJECT_R_DIR}/summary_filter_report.Rmd 
+   CACHE STRING  "Rmd summary filter report file")
+message("-- Setting Rmd summary filter report file: ${RMD_SUMMARY_FILTER_REPORT}")
 #MISSING SETTING MEMORY ROOF!!! 
 
 

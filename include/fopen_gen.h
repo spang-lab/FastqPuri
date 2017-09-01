@@ -39,8 +39,8 @@
  * 
  */
 
-#ifndef FOPEN_GEN_H
-#define FOPEN_GEN_H
+#ifndef FOPEN_GEN_H_
+#define FOPEN_GEN_H_
 
 #define READ_END 0
 #define WRITE_END 1
@@ -67,4 +67,4 @@ FILE* fopen_gen(const char *path, const  char * mode);
  *  static FILE* compress(const char* path);
 */
 
-#endif  // FOPEN_GEN_H
+#endif  // FOPEN_GEN_H_

@@ -67,7 +67,7 @@ void write_summary_TF(Stats_TF tf_stats, char *filename) {
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
-  fwrite(tf_stats.filters, sizeof(bool), NFILTERS, f);
+  fwrite(tf_stats.filters, sizeof(int), NFILTERS, f);
   fwrite(tf_stats.trimmed, sizeof(int), NFILTERS, f);
   fwrite(tf_stats.discarded, sizeof(int), NFILTERS, f);
   fwrite(&tf_stats.good, sizeof(int), 1, f);

@@ -40,14 +40,16 @@ extern Iparam_Sreport par_SR;
 */
 void printHelpDialog_Sreport() {
   const char dialog[] =
-    "Usage: ./Sreport -i <INPUT_FOLDER> -o <OUTPUT_FILE> \n"
-    "Uses all *bin files found in a folder ( output of Qreport) \n"
-    "and generates a summary report in html format.\n"
+    "Usage: ./Sreport -i <INPUT_FOLDER> -t <Q|T> -o <OUTPUT_FILE> \n"
+    "Uses all *bin files found in a folder (output of Qreport|trimFilter)\n"
+    "and generates a summary report in html format (of Qreport|trimFilter).\n"
     "Options:\n"
      " -v Prints package version.\n"
      " -h Prints help dialog.\n"
      " -i Input folder containing *bin data (output from Qreport)."
      " Mandatory option.\n"
+     " -t {Q,F} Type of report to be generated: 'Q' for quality summary \n" 
+     "    report, 'F' for filter summary report. Mandatory option,\n"
      " -o Output file (with NO extension). Mandatory option.\n\n";
   fprintf(stderr, "%s", dialog);
 }
@@ -58,14 +60,14 @@ void printHelpDialog_Sreport() {
  *
 */
 void getarg_Sreport(int argc, char **argv) {
-  if (argc != 2 && argc != 5) {
+  if (argc != 2 && argc != 7) {
      fprintf(stderr, "Not adequate number of arguments\n");
      printHelpDialog_Sreport();
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
   char option;
-  while ((option = getopt(argc, argv, "hvi:l:t:q:n:o:f:")) != -1) {
+  while ((option = getopt(argc, argv, "hvi:o:t:")) != -1) {
     switch (option) {
       case 'h':  // show the HelpDialog
         printHelpDialog_Sreport();
@@ -77,8 +79,17 @@ void getarg_Sreport(int argc, char **argv) {
         break;
       case 'i':
         par_SR.inputfolder = optarg;
+        break;
+      case 't': 
+        if (!strncmp(optarg, "Q", 1)) {
+          par_SR.Rmd_file = RMD_SUMMARY_REPORT; 
+        } else if (!strncmp(optarg, "F", 1)) {
+          par_SR.Rmd_file = RMD_SUMMARY_FILTER_REPORT; 
+        }
+        break;
       case 'o':
         snprintf(par_SR.outputfile, MAX_FILENAME, "%s.html" , optarg);
+        break;
       default:
         fprintf(stderr, "%s: option `-%c' is invalid: ignored\n",
                               argv[0], option);
@@ -95,7 +106,14 @@ void getarg_Sreport(int argc, char **argv) {
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
-  if (par_SR.outputfile == NULL) {
+  if (par_SR.Rmd_file == NULL) {
+     printHelpDialog_Sreport();
+     fprintf(stderr, "Option -t is mandatory and takes the values {Q,F}. \n");
+     fprintf(stderr, "Exiting program.\n");
+     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+     exit(EXIT_FAILURE);
+  }
+  if (!strncmp(par_SR.outputfile, "", 1)) {
      printHelpDialog_Sreport();
      fprintf(stderr, "html output file was not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");

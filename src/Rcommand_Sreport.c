@@ -37,6 +37,21 @@ extern Iparam_Sreport par_SR; /**< input parameters Sreport*/
 
 /**
  * @brief returns Rscript command that generates the summary report in html
+ * @code{.R}
+ * # To run between quotation marks after:  Rscript_RBioC -e (Rscript)
+ * inputfolder = normalizePath( <par.SR.inputfolder>, mustWork = TRUE);
+ * output = <par_SR.outputfile>;
+ * output_file = gsub('.* /', '', output);
+ * path = gsub('[^/]+$', '', output);
+ * if (path != '') {
+ *   outputfile = paste0(normalizePath(path, mustWork = TRUE), '/', outputfile);
+ * } else {
+ *   outputfile = paste0(cwd, '/', output_file); # cwd: current working dir
+ * }; 
+ * rmarkdown::render(<par_SR.Rmd_file>, 
+ *                   params = list(inputfolder = inputfolder, version= VERSION),
+ *                   output_file = output_file)
+ * @endcode
  * */
 char *command_Sreport(){
   char command[MAX_RCOMMAND];
@@ -56,7 +71,7 @@ output_file = paste0('%s', '/', output_file); };\
 rmarkdown::render('%s', params = list(inputfolder = inputfolder, \
 version = '%s'), output_file = output_file)\"",
         RSCRIPT_EXEC, par_SR.inputfolder,
-        par_SR.outputfile, cwd, RMD_SUMMARY_REPORT, VERSION);
+        par_SR.outputfile, cwd, par_SR.Rmd_file, VERSION);
   char *str_command = command;
   return str_command;
 }

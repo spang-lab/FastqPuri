@@ -47,7 +47,9 @@ The executables will be created in the folder `bin`.
 ## Executables
 
 * `Qreport`: creates a quality report in html format (see `README_Qreport.md`),
-* `Sreport`: creates a summary report in html format (see `README_Sreport.md`),
+* `Sreport`: creates a summary report in html format on a set of samples, 
+   regarding either the original files or the filtering process
+   (see `README_Sreport.md`),
 * `makeSA`: work in progress,
 * `makeBloomFilter`: work in progress,
 * `makeTree`: creates a tree of a certain depth from a fasta file and stores

@@ -32,8 +32,8 @@
  *
  * */
 
-#ifndef LMER_H
-#define LMER_H
+#ifndef LMER_H_
+#define LMER_H_
 
 void init_map();
 void init_map_SA();
@@ -41,4 +41,4 @@ void Lmer_sLmer(char* Lmer, int L);
 void rev_comp(char *sLmer, int L);
 void rev_comp2(char *sLmer, int L);
 
-#endif
+#endif  // endif LMER_H_
