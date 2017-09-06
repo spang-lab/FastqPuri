@@ -42,16 +42,16 @@ extern Iparam_makeTree par_MT; /**< Input parameters of makeTree */
 void printHelpDialog_makeTree() {
   const char dialog[] =
    "Usage: ./makeTree -f|--fasta <FASTA_INPUT> -l|--depth <DEPTH> "
-   "-o|--output <OUTPUT_FILE>\n"
+   "-o, --output <OUTPUT_FILE>\n"
    "Reads a *fa file, constructs a tree of depth DEPTH and saves it\n"
    "compressed in OUTPUT_FILE.\n"
    "Options: \n"
-   " -v|--version Prints package version.\n"
-   " -h|--help    Prints help dialog.\n"
-   " -f|--fasta   Fasta input file."
+   " -v, --version Prints package version.\n"
+   " -h, --help    Prints help dialog.\n"
+   " -f, --fasta   Fasta input file."
    " Mandatory option.\n"
-   " -l|--depth depth of the tree structure\n"
-   " -o|--output Output file. If the extension is not *gz, it is added."
+   " -l, --depth depth of the tree structure. Mandatory option. \n"
+   " -o, --output Output file. If the extension is not *gz, it is added."
    " Mandatory option.\n\n";
   fprintf(stderr, "%s", dialog);
 }
@@ -74,10 +74,10 @@ void getarg_makeTree(int argc, char **argv) {
       {"depth", required_argument, 0, 'l'},
       {"output", required_argument, 0, 'o'}
   };
-  char option;
-  while ((option = getopt_long(argc, argv, "hvf:l:o:", long_options, 0))
+  char options;
+  while ((options = getopt_long(argc, argv, "hvf:l:o:", long_options, 0))
         != -1) {
-    switch (option) {
+    switch (options) {
       case 'h':  // show the HelpDialog
         printHelpDialog_makeTree();
         exit(EXIT_SUCCESS);
@@ -101,25 +101,25 @@ void getarg_makeTree(int argc, char **argv) {
         break;
       default:
         fprintf(stderr, "%s: option `-%c' is invalid: ignored\n",
-                              argv[0], option);
-       printHelpDialog_makeTree();
-       fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
-       exit(EXIT_FAILURE);
-       break;
+                              argv[0], options);
+        printHelpDialog_makeTree();
+        fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+        exit(EXIT_FAILURE);
+        break;
     }
   }
   // Since the variable par_MT is global, it is automatically initialized to
   // 0 when created.
   if (par_MT.inputfasta == NULL) {
      printHelpDialog_makeTree();
-     fprintf(stderr, "Input fasta file was not properly initialized. \n");
+     fprintf(stderr, "Input fasta file name was not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
   if  (!strncmp(par_MT.outputfile, "", MAX_FILENAME)) {
      printHelpDialog_makeTree();
-     fprintf(stderr, "Output file was not properly initialized. \n");
+     fprintf(stderr, "Output file name was not properly initialized. \n");
      fprintf(stderr, "Exiting program.\n");
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);

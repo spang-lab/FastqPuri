@@ -1,9 +1,12 @@
 <map id="include/fa_read.h" name="include/fa_read.h">
-<area shape="rect" id="node2" href="$fa__read_8c.html" title="reads in and stores fasta files " alt="" coords="5,80,104,107"/>
-<area shape="rect" id="node3" href="$makeTree_8c.html" title="makeTree main function " alt="" coords="69,155,182,181"/>
-<area shape="rect" id="node4" href="$tree_8h.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="195,80,295,107"/>
-<area shape="rect" id="node5" href="$tree_8c.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="207,155,284,181"/>
-<area shape="rect" id="node6" href="$trim_8h.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="307,155,407,181"/>
-<area shape="rect" id="node8" href="$trimFilter_8c.html" title="trimFilter main function " alt="" coords="392,229,499,256"/>
-<area shape="rect" id="node7" href="$trim_8c.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="291,229,368,256"/>
+<area shape="rect" id="node2" href="$bloom_8h.html" title="functions that implement the bloom filter " alt="" coords="31,80,145,107"/>
+<area shape="rect" id="node4" href="$makeBloom_8c.html" title="makeBloom main function " alt="" coords="121,155,245,181"/>
+<area shape="rect" id="node5" href="$fa__read_8c.html" title="reads in and stores fasta files " alt="" coords="220,80,319,107"/>
+<area shape="rect" id="node6" href="$makeTree_8c.html" title="makeTree main function " alt="" coords="283,155,397,181"/>
+<area shape="rect" id="node7" href="$tree_8h.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="410,80,510,107"/>
+<area shape="rect" id="node3" href="$bloom_8c.html" title="functions that implement the bloom filter " alt="" coords="5,155,96,181"/>
+<area shape="rect" id="node8" href="$tree_8c.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="421,155,499,181"/>
+<area shape="rect" id="node9" href="$trim_8h.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="522,155,622,181"/>
+<area shape="rect" id="node11" href="$trimFilter_8c.html" title="trimFilter main function " alt="" coords="607,229,713,256"/>
+<area shape="rect" id="node10" href="$trim_8c.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="505,229,583,256"/>
 </map>

@@ -35,6 +35,8 @@ int \hyperlink{fa__read_8c_a4d2d77d66924fdc762222c8f28f9718a}{read\+\_\+fasta} (
 \begin{DoxyCompactList}\small\item\em reads a fasta file and stores the contents in a Fa\+\_\+data structure. \end{DoxyCompactList}\item 
 uint64\+\_\+t \hyperlink{fa__read_8c_a0e6b9d47a8472d0768270afbdbf17d4e}{size\+\_\+fasta} (\hyperlink{fa__read_8h_a797328b16bc1c1088998cd164aafb09d}{Fa\+\_\+data} $\ast$ptr\+\_\+fa)
 \begin{DoxyCompactList}\small\item\em computes length of genome in fasta structure \end{DoxyCompactList}\item 
+uint64\+\_\+t \hyperlink{fa__read_8c_a73143a443a198eaf51820e5862f8547b}{nkmers} (\hyperlink{fa__read_8h_a797328b16bc1c1088998cd164aafb09d}{Fa\+\_\+data} $\ast$ptr\+\_\+fa, int kmersize)
+\begin{DoxyCompactList}\small\item\em number of kmers of length kmersize contained in a fasta structure \end{DoxyCompactList}\item 
 void \hyperlink{fa__read_8c_a714b70ff332a85349cd52b76965dd444}{free\+\_\+fasta} (\hyperlink{fa__read_8h_a797328b16bc1c1088998cd164aafb09d}{Fa\+\_\+data} $\ast$ptr\+\_\+fa)
 \begin{DoxyCompactList}\small\item\em free fasta file \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
@@ -124,7 +126,22 @@ Initialization of Fa\+\_\+data.
 {\em ptr\+\_\+fa} & pointer to Fa\+\_\+data structure.\\
 \hline
 \end{DoxyParams}
-Initializes nlines, linelen, nentries to 0 and allocates memory for entrylen (F\+A\+\_\+\+E\+N\+T\+R\+Y\+\_\+\+B\+U\+F entries). \hypertarget{fa__read_8c_a4d2d77d66924fdc762222c8f28f9718a}{\index{fa\+\_\+read.\+c@{fa\+\_\+read.\+c}!read\+\_\+fasta@{read\+\_\+fasta}}
+Initializes nlines, linelen, nentries to 0 and allocates memory for entrylen (F\+A\+\_\+\+E\+N\+T\+R\+Y\+\_\+\+B\+U\+F entries). \hypertarget{fa__read_8c_a73143a443a198eaf51820e5862f8547b}{\index{fa\+\_\+read.\+c@{fa\+\_\+read.\+c}!nkmers@{nkmers}}
+\index{nkmers@{nkmers}!fa\+\_\+read.\+c@{fa\+\_\+read.\+c}}
+\subsubsection[{nkmers}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t nkmers (
+\begin{DoxyParamCaption}
+\item[{{\bf Fa\+\_\+data} $\ast$}]{ptr\+\_\+fa, }
+\item[{int}]{kmersize}
+\end{DoxyParamCaption}
+)}}\label{fa__read_8c_a73143a443a198eaf51820e5862f8547b}
+
+
+number of kmers of length kmersize contained in a fasta structure 
+
+\begin{DoxyReturn}{Returns}
+number of kmers of length kmersize contained in a fasta structure 
+\end{DoxyReturn}
+\hypertarget{fa__read_8c_a4d2d77d66924fdc762222c8f28f9718a}{\index{fa\+\_\+read.\+c@{fa\+\_\+read.\+c}!read\+\_\+fasta@{read\+\_\+fasta}}
 \index{read\+\_\+fasta@{read\+\_\+fasta}!fa\+\_\+read.\+c@{fa\+\_\+read.\+c}}
 \subsubsection[{read\+\_\+fasta}]{\setlength{\rightskip}{0pt plus 5cm}int read\+\_\+fasta (
 \begin{DoxyParamCaption}

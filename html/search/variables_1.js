@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['children',['children',['../struct__node.html#a7f878e5e9c5c9d2801715c870b9bbc1c',1,'_node']]]
+  ['bfsizebits',['bfsizeBits',['../struct__bfilter.html#adb5c576f93d920a3ad5250781698d6ff',1,'_bfilter::bfsizeBits()'],['../struct__iparam__makeBloom.html#a8a0dac58ee8e9f1d8b29be730a5205a8',1,'_iparam_makeBloom::bfsizeBits()']]],
+  ['bfsizebytes',['bfsizeBytes',['../struct__bfilter.html#a61487a85ddb47e6642f8c805f4d2f041',1,'_bfilter']]],
+  ['bitmask',['bitMask',['../bloom_8h.html#ae59851bb0bb0e2d66b28d475a0eca5a0',1,'bloom.h']]]
 ];

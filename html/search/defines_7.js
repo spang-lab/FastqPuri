@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lowq',['LOWQ',['../defines_8h.html#a88236da90fdc203156cd02218f106f25',1,'defines.h']]]
+  ['kmer_5flen',['KMER_LEN',['../defines_8h.html#a53c139d8ab18ed3e13ff65f63067fcac',1,'defines.h']]]
 ];

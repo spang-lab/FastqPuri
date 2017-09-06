@@ -55,7 +55,7 @@ returns Rscript command that generates the summary report in html
 8 \} else \{
 9   outputfile = paste0(cwd, '/', output\_file); # cwd: current working dir
 10 \}; 
-11 rmarkdown::render(RMD\_SUMMARY\_REPORT, 
+11 rmarkdown::render(<par\_SR.Rmd\_file>, 
 12                   params = list(inputfolder = inputfolder, version= VERSION),
 13                   output\_file = output\_file)
 \end{DoxyCode}

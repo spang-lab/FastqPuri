@@ -134,6 +134,17 @@ add_executable(trimFilter ${PROJECT_SOURCE_DIR}/trimFilter.c
             ${PROJECT_SOURCE_DIR}/Lmer.c
             ${PROJECT_SOURCE_DIR}/str_manip.c )
 
+# Set linker flags
+set(CMAKE_C_LINK_FLAGS  "-lm")
+add_executable(makeBloom ${PROJECT_SOURCE_DIR}/makeBloom.c 
+            ${PROJECT_SOURCE_DIR}/init_makeBloom.c 
+            ${PROJECT_SOURCE_DIR}/city.c 
+            ${PROJECT_SOURCE_DIR}/fa_read.c 
+            ${PROJECT_SOURCE_DIR}/bloom.c 
+            ${PROJECT_SOURCE_DIR}/fopen_gen.c
+            ${PROJECT_SOURCE_DIR}/Lmer.c)
+
+
 
 if ( NOT HAVE_RPKG )
    message("-- WARNING:  Package will be compiled but R script will not ")

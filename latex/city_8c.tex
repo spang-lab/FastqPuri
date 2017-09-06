@@ -1,0 +1,120 @@
+\hypertarget{city_8c}{\section{src/city.c File Reference}
+\label{city_8c}\index{src/city.\+c@{src/city.\+c}}
+}
+
+
+functions for hashin strings, C translation of cityhash (C++, google)  
+
+
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}city.\+h\char`\"{}}\\*
+Include dependency graph for city.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{city_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{city_8c_aeaffbeef893240bf17d51c8ccde3c686}{\#define {\bfseries uint32\+\_\+in\+\_\+expected\+\_\+order}(x)~(x)}\label{city_8c_aeaffbeef893240bf17d51c8ccde3c686}
+
+\item 
+\hypertarget{city_8c_aebeacf3a6a1c4e278fa1b74f18c08d4a}{\#define {\bfseries uint64\+\_\+in\+\_\+expected\+\_\+order}(x)~(x)}\label{city_8c_aebeacf3a6a1c4e278fa1b74f18c08d4a}
+
+\item 
+\hypertarget{city_8c_affde14445f49f65ff4f5b592e44ee71a}{\#define {\bfseries L\+I\+K\+E\+L\+Y}(x)~(x)}\label{city_8c_affde14445f49f65ff4f5b592e44ee71a}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{city_8c_aa8f55842838f0f27ad900e4c68a89437}{static uint64 {\bfseries U\+N\+A\+L\+I\+G\+N\+E\+D\+\_\+\+L\+O\+A\+D64} (const char $\ast$p)}\label{city_8c_aa8f55842838f0f27ad900e4c68a89437}
+
+\item 
+\hypertarget{city_8c_ab582efce342fc9bb140dd67d2c5a6c1e}{static uint32 {\bfseries U\+N\+A\+L\+I\+G\+N\+E\+D\+\_\+\+L\+O\+A\+D32} (const char $\ast$p)}\label{city_8c_ab582efce342fc9bb140dd67d2c5a6c1e}
+
+\item 
+\hypertarget{city_8c_ad37da67dfc8ad6f6ad1f0aa8b9962403}{static uint64 {\bfseries Fetch64} (const char $\ast$p)}\label{city_8c_ad37da67dfc8ad6f6ad1f0aa8b9962403}
+
+\item 
+\hypertarget{city_8c_a83d43dafbc11754766e1727514326b46}{static uint32 {\bfseries Fetch32} (const char $\ast$p)}\label{city_8c_a83d43dafbc11754766e1727514326b46}
+
+\item 
+\hypertarget{city_8c_af884d8e0248c5c2861a67385aa76669c}{static uint64 {\bfseries Hash128to64} (const \hyperlink{struct__uint128}{uint128} x)}\label{city_8c_af884d8e0248c5c2861a67385aa76669c}
+
+\item 
+\hypertarget{city_8c_abff583bd4718081f427dd4f46a411b7f}{static uint64 {\bfseries Rotate} (uint64 val, int shift)}\label{city_8c_abff583bd4718081f427dd4f46a411b7f}
+
+\item 
+\hypertarget{city_8c_a59e3c2d10d4aaa543de187033b473fb4}{static uint64 {\bfseries Rotate\+By\+At\+Least1} (uint64 val, int shift)}\label{city_8c_a59e3c2d10d4aaa543de187033b473fb4}
+
+\item 
+\hypertarget{city_8c_a29ffac454b61445d188c0cdb024674ab}{static uint64 {\bfseries Shift\+Mix} (uint64 val)}\label{city_8c_a29ffac454b61445d188c0cdb024674ab}
+
+\item 
+\hypertarget{city_8c_a6b04ce5568f91cae31cd97c5cec1b7f5}{static uint64 {\bfseries Hash\+Len16} (uint64 u, uint64 v)}\label{city_8c_a6b04ce5568f91cae31cd97c5cec1b7f5}
+
+\item 
+\hypertarget{city_8c_ad97a52e6478913f15f5d4330553f3955}{static uint64 {\bfseries Hash\+Len0to16} (const char $\ast$s, size\+\_\+t len)}\label{city_8c_ad97a52e6478913f15f5d4330553f3955}
+
+\item 
+\hypertarget{city_8c_a81339f4a93276e38bf3cfa97b4437509}{static uint64 {\bfseries Hash\+Len17to32} (const char $\ast$s, size\+\_\+t len)}\label{city_8c_a81339f4a93276e38bf3cfa97b4437509}
+
+\item 
+\hypertarget{city_8c_a33c9a1e124172135327c5426f0d8b47b}{\hyperlink{struct__uint128}{uint128} {\bfseries Weak\+Hash\+Len32\+With\+Seeds6} (uint64 w, uint64 x, uint64 y, uint64 z, uint64 a, uint64 b)}\label{city_8c_a33c9a1e124172135327c5426f0d8b47b}
+
+\item 
+\hypertarget{city_8c_a58bbc15d0c1f537c7737b296ca2f6d7c}{\hyperlink{struct__uint128}{uint128} {\bfseries Weak\+Hash\+Len32\+With\+Seeds} (const char $\ast$s, uint64 a, uint64 b)}\label{city_8c_a58bbc15d0c1f537c7737b296ca2f6d7c}
+
+\item 
+\hypertarget{city_8c_a4576c118f6462a3e7dee68efeb9c2921}{static uint64 {\bfseries Hash\+Len33to64} (const char $\ast$s, size\+\_\+t len)}\label{city_8c_a4576c118f6462a3e7dee68efeb9c2921}
+
+\item 
+\hypertarget{city_8c_ad0ba022ddd9dae3ad8f79eadc9568c76}{uint64 {\bfseries City\+Hash64} (const char $\ast$s, size\+\_\+t len)}\label{city_8c_ad0ba022ddd9dae3ad8f79eadc9568c76}
+
+\item 
+\hypertarget{city_8c_aed2a4750316c07de6ee99ee932bf28bd}{uint64 {\bfseries City\+Hash64\+With\+Seed} (const char $\ast$s, size\+\_\+t len, uint64 seed)}\label{city_8c_aed2a4750316c07de6ee99ee932bf28bd}
+
+\item 
+\hypertarget{city_8c_abd356fce295f927ddb52e38ce76d10c2}{uint64 {\bfseries City\+Hash64\+With\+Seeds} (const char $\ast$s, size\+\_\+t len, uint64 seed0, uint64 seed1)}\label{city_8c_abd356fce295f927ddb52e38ce76d10c2}
+
+\item 
+\hypertarget{city_8c_a3c940d95bd7bfbed8eeddbdf1adab1d2}{static \hyperlink{struct__uint128}{uint128} {\bfseries City\+Murmur} (const char $\ast$s, size\+\_\+t len, \hyperlink{struct__uint128}{uint128} seed)}\label{city_8c_a3c940d95bd7bfbed8eeddbdf1adab1d2}
+
+\item 
+\hypertarget{city_8c_abe254b73fecfa7a0b9ceb61f6d713c8d}{\hyperlink{struct__uint128}{uint128} {\bfseries City\+Hash128\+With\+Seed} (const char $\ast$s, size\+\_\+t len, \hyperlink{struct__uint128}{uint128} seed)}\label{city_8c_abe254b73fecfa7a0b9ceb61f6d713c8d}
+
+\item 
+\hypertarget{city_8c_ad487ffee003419a5c1394dc4117e6847}{\hyperlink{struct__uint128}{uint128} {\bfseries City\+Hash128} (const char $\ast$s, size\+\_\+t len)}\label{city_8c_ad487ffee003419a5c1394dc4117e6847}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{city_8c_ac7f34277e576244b844cc6b79343cf76}{static const uint64 {\bfseries k0} = 0xc3a5c85c97cb3127\+U\+L\+L}\label{city_8c_ac7f34277e576244b844cc6b79343cf76}
+
+\item 
+\hypertarget{city_8c_a2e78a10677039f82f4f417f40958ce3a}{static const uint64 {\bfseries k1} = 0xb492b66fbe98f273\+U\+L\+L}\label{city_8c_a2e78a10677039f82f4f417f40958ce3a}
+
+\item 
+\hypertarget{city_8c_a770262882e2bbb6e86e4e3573e25497e}{static const uint64 {\bfseries k2} = 0x9ae16a3b2f90404f\+U\+L\+L}\label{city_8c_a770262882e2bbb6e86e4e3573e25497e}
+
+\item 
+\hypertarget{city_8c_ab1ea20165613e32c33bd38b0cdbc1581}{static const uint64 {\bfseries k3} = 0xc949d7c7509e6557\+U\+L\+L}\label{city_8c_ab1ea20165613e32c33bd38b0cdbc1581}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+functions for hashin strings, C translation of cityhash (C++, google) 
+
+\begin{DoxyAuthor}{Author}
+Alexander Nusov 
+\end{DoxyAuthor}
+\begin{DoxySeeAlso}{See also}
+\href{https://github.com/nusov/cityhash-c}{\tt https\+://github.\+com/nusov/cityhash-\/c} 
+
+\href{https://github.com/google/cityhash}{\tt https\+://github.\+com/google/cityhash} 
+\end{DoxySeeAlso}

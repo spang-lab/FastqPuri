@@ -117,7 +117,7 @@ Node* new_node_buf(Tree *tree_ptr) {
 void free_all_nodes(Tree *tree_ptr) {
   uint32_t i;
   uint32_t N = tree_ptr -> pool_count;
-  uint32_t dealloc_mem = 0;
+  uint64_t dealloc_mem = 0;
   fprintf(stderr, "Deallocating Tree structure\n");
   for (i = 0; i < N; i++) {
      if (tree_ptr -> pool_2D[i] != NULL) {
@@ -133,7 +133,7 @@ void free_all_nodes(Tree *tree_ptr) {
   tree_ptr -> pool_available = 0;
   tree_ptr -> nnodes = 0;
   tree_ptr -> L = 0;
-  fprintf(stderr, "%d Bytes deallocated.\n", dealloc_mem);
+  fprintf(stderr, "%ld Bytes deallocated.\n", dealloc_mem);
   alloc_mem -= dealloc_mem;
   mem_usageMB();
 }

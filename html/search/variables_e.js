@@ -1,12 +1,13 @@
 var searchData=
 [
-  ['s',['s',['../struct__split.html#a84d5273295857f35a812eeab15ae607f',1,'_split']]],
-  ['score',['score',['../struct__iparam__trimFilter.html#a193ef2030f6eb8db0b75afbbd152d6a1',1,'_iparam_trimFilter']]],
-  ['seq',['seq',['../struct__fa__entry.html#a6c548e86ed6ce8bb33bd1fcdcd56abbe',1,'_fa_entry']]],
-  ['start',['start',['../struct__fq__read.html#a0b8deb6c25c72026b4928b17e3f12ade',1,'_fq_read']]],
-  ['sz_5facgt_5fpos',['sz_ACGT_pos',['../structstatsinfo.html#ae95899480cc574a09163190663dd504a',1,'statsinfo']]],
-  ['sz_5facgt_5ftile',['sz_ACGT_tile',['../structstatsinfo.html#a4e1223289cbb8f609d522747d4b47b54',1,'statsinfo']]],
-  ['sz_5flowq_5facgt_5ftile',['sz_lowQ_ACGT_tile',['../structstatsinfo.html#ae3c83d12e46748f3a0de4628b5e48068',1,'statsinfo']]],
-  ['sz_5fqpostile_5ftable',['sz_QPosTile_table',['../structstatsinfo.html#aceed3737e42259fa6e7438dc185e587f',1,'statsinfo']]],
-  ['sz_5freads_5fmlowq',['sz_reads_MlowQ',['../structstatsinfo.html#a5f0e812f7a2213cb57a79c8110b7a02e',1,'statsinfo']]]
+  ['par_5fmb',['par_MB',['../init__makeBloom_8c.html#a796b65f2316b94ee6720a4ec9966b0f3',1,'par_MB():&#160;makeBloom.c'],['../makeBloom_8c.html#a796b65f2316b94ee6720a4ec9966b0f3',1,'par_MB():&#160;makeBloom.c']]],
+  ['par_5fmt',['par_MT',['../init__makeTree_8c.html#ad02dd84d6aa8a100953e0c8683c44b7d',1,'par_MT():&#160;makeTree.c'],['../makeTree_8c.html#ad02dd84d6aa8a100953e0c8683c44b7d',1,'par_MT():&#160;makeTree.c']]],
+  ['par_5fqr',['par_QR',['../init__Qreport_8c.html#a5c6527d396580d559cfd1916fc959e23',1,'par_QR():&#160;Qreport.c'],['../Qreport_8c.html#a5c6527d396580d559cfd1916fc959e23',1,'par_QR():&#160;Qreport.c'],['../Rcommand__Qreport_8c.html#a5c6527d396580d559cfd1916fc959e23',1,'par_QR():&#160;Qreport.c'],['../stats__info_8c.html#a5c6527d396580d559cfd1916fc959e23',1,'par_QR():&#160;Qreport.c']]],
+  ['par_5fsr',['par_SR',['../init__Sreport_8c.html#aa230276b7e03d43430c998def780682e',1,'par_SR():&#160;Sreport.c'],['../Rcommand__Sreport_8c.html#aa230276b7e03d43430c998def780682e',1,'par_SR():&#160;Sreport.c'],['../Sreport_8c.html#aa230276b7e03d43430c998def780682e',1,'par_SR():&#160;Sreport.c']]],
+  ['par_5ftf',['par_TF',['../init__trimFilter_8c.html#aed14b08f25fd6aa9a6cffb8c0074c953',1,'par_TF():&#160;trimFilter.c'],['../trim_8c.html#aed14b08f25fd6aa9a6cffb8c0074c953',1,'par_TF():&#160;trimFilter.c'],['../trimFilter_8c.html#aed14b08f25fd6aa9a6cffb8c0074c953',1,'par_TF():&#160;trimFilter.c']]],
+  ['paramfile',['paramfile',['../struct__iparam__makeBloom.html#a8cf429229a99acfab0ce48046f42dfac',1,'_iparam_makeBloom']]],
+  ['percent',['percent',['../struct__iparam__trimFilter.html#a8ed026b1de4fccc7288258c3a8faa395',1,'_iparam_trimFilter']]],
+  ['pool_5f2d',['pool_2D',['../struct__tree.html#a2783a2aaf32fc3b3c9de8b9fbb14de58',1,'_tree']]],
+  ['pool_5favailable',['pool_available',['../struct__tree.html#afd3769cd9db40fa460d35a0033fb7d02',1,'_tree']]],
+  ['pool_5fcount',['pool_count',['../struct__tree.html#aa90c2b558fc833fc22bcd6617689a41f',1,'_tree']]]
 ];

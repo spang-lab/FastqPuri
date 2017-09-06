@@ -51,9 +51,17 @@ typedef struct _fa_data {
   Fa_entry *entry;  /**< Array with fasta entries (see Fa_entry)*/
 } Fa_data;
 
-
 int read_fasta(char *filename, Fa_data *ptr_fa);
 uint64_t size_fasta(Fa_data *ptr_fa); 
+uint64_t nkmers(Fa_data *ptr_fa, int kmersize); 
 void free_fasta(Fa_data *ptr_fa);
+
+// static functions: 
+// static int ignore_line(char *line)
+// static void init_fa(Fa_data *ptr_fa)
+// static voiid realloc_fa(Fa_data *ptr_fa)
+// static voiid init_entries(Fa_data *ptr_fa)
+// static uint64_t swee_fa(char *filename, Fa_data *ptr_fa)
+
 
 #endif  // endif FA_READ_H_

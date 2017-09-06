@@ -105,7 +105,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="fa__read_8h__dep__incl.png" border="0" usemap="#include_2fa__read_8hdep" alt=""/></div>
 <map name="include_2fa__read_8hdep" id="include_2fa__read_8hdep">
-<area shape="rect" id="node2" href="fa__read_8c.html" title="reads in and stores fasta files " alt="" coords="5,80,104,107"/><area shape="rect" id="node3" href="makeTree_8c.html" title="makeTree main function " alt="" coords="69,155,182,181"/><area shape="rect" id="node4" href="tree_8h.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="195,80,295,107"/><area shape="rect" id="node5" href="tree_8c.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="207,155,284,181"/><area shape="rect" id="node6" href="trim_8h.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="307,155,407,181"/><area shape="rect" id="node8" href="trimFilter_8c.html" title="trimFilter main function " alt="" coords="392,229,499,256"/><area shape="rect" id="node7" href="trim_8c.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="291,229,368,256"/></map>
+<area shape="rect" id="node2" href="bloom_8h.html" title="functions that implement the bloom filter " alt="" coords="31,80,145,107"/><area shape="rect" id="node4" href="makeBloom_8c.html" title="makeBloom main function " alt="" coords="121,155,245,181"/><area shape="rect" id="node5" href="fa__read_8c.html" title="reads in and stores fasta files " alt="" coords="220,80,319,107"/><area shape="rect" id="node6" href="makeTree_8c.html" title="makeTree main function " alt="" coords="283,155,397,181"/><area shape="rect" id="node7" href="tree_8h.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="410,80,510,107"/><area shape="rect" id="node3" href="bloom_8c.html" title="functions that implement the bloom filter " alt="" coords="5,155,96,181"/><area shape="rect" id="node8" href="tree_8c.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="421,155,499,181"/><area shape="rect" id="node9" href="trim_8h.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="522,155,622,181"/><area shape="rect" id="node11" href="trimFilter_8c.html" title="trimFilter main function " alt="" coords="607,229,713,256"/><area shape="rect" id="node10" href="trim_8c.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="505,229,583,256"/></map>
 </div>
 </div>
 <p><a href="fa__read_8h_source.html">Go to the source code of this file.</a></p>
@@ -138,6 +138,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a0e6b9d47a8472d0768270afbdbf17d4e"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fa__read_8h.html#a0e6b9d47a8472d0768270afbdbf17d4e">size_fasta</a> (<a class="el" href="fa__read_8h.html#a797328b16bc1c1088998cd164aafb09d">Fa_data</a> *ptr_fa)</td></tr>
 <tr class="memdesc:a0e6b9d47a8472d0768270afbdbf17d4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes length of genome in fasta structure  <a href="#a0e6b9d47a8472d0768270afbdbf17d4e">More...</a><br /></td></tr>
 <tr class="separator:a0e6b9d47a8472d0768270afbdbf17d4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73143a443a198eaf51820e5862f8547b"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fa__read_8h.html#a73143a443a198eaf51820e5862f8547b">nkmers</a> (<a class="el" href="fa__read_8h.html#a797328b16bc1c1088998cd164aafb09d">Fa_data</a> *ptr_fa, int kmersize)</td></tr>
+<tr class="memdesc:a73143a443a198eaf51820e5862f8547b"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of kmers of length kmersize contained in a fasta structure  <a href="#a73143a443a198eaf51820e5862f8547b">More...</a><br /></td></tr>
+<tr class="separator:a73143a443a198eaf51820e5862f8547b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a714b70ff332a85349cd52b76965dd444"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fa__read_8h.html#a714b70ff332a85349cd52b76965dd444">free_fasta</a> (<a class="el" href="fa__read_8h.html#a797328b16bc1c1088998cd164aafb09d">Fa_data</a> *ptr_fa)</td></tr>
 <tr class="memdesc:a714b70ff332a85349cd52b76965dd444"><td class="mdescLeft">&#160;</td><td class="mdescRight">free fasta file  <a href="#a714b70ff332a85349cd52b76965dd444">More...</a><br /></td></tr>
 <tr class="separator:a714b70ff332a85349cd52b76965dd444"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -169,6 +172,35 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <p>The dynamically allocated memory in a Fa_data struct is deallocated and counted, so that we can </p>
+
+</div>
+</div>
+<a class="anchor" id="a73143a443a198eaf51820e5862f8547b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t nkmers </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fa__read_8h.html#a797328b16bc1c1088998cd164aafb09d">Fa_data</a> *&#160;</td>
+          <td class="paramname"><em>ptr_fa</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>kmersize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>number of kmers of length kmersize contained in a fasta structure </p>
+<dl class="section return"><dt>Returns</dt><dd>number of kmers of length kmersize contained in a fasta structure </dd></dl>
 
 </div>
 </div>
@@ -242,7 +274,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 1 2017 09:57:26 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 6 2017 14:49:46 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

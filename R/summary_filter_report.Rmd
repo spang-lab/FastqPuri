@@ -5,6 +5,7 @@ output:
       number_section: no
       toc_depth: 2
       toc_float: true
+css: style.css
 params:
     inputfolder:
         value: x

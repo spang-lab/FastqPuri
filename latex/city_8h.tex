@@ -1,0 +1,84 @@
+\hypertarget{city_8h}{\section{include/city.h File Reference}
+\label{city_8h}\index{include/city.\+h@{include/city.\+h}}
+}
+
+
+functions for hashin strings, C translation of cityhash (C++, google)  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+Include dependency graph for city.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{city_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{city_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__uint128}{\+\_\+uint128}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{city_8h_a89a317e57f11dc07ec8861a3a7beb0b2}{\#define {\bfseries Uint128\+Low64}(x)~(x).first}\label{city_8h_a89a317e57f11dc07ec8861a3a7beb0b2}
+
+\item 
+\hypertarget{city_8h_aad0f7984724992a3f8e26f6d25f09dae}{\#define {\bfseries Uint128\+High64}(x)~(x).second}\label{city_8h_aad0f7984724992a3f8e26f6d25f09dae}
+
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{city_8h_a33a5e996e7a90acefb8b1c0bea47e365}{typedef uint8\+\_\+t {\bfseries uint8}}\label{city_8h_a33a5e996e7a90acefb8b1c0bea47e365}
+
+\item 
+\hypertarget{city_8h_acbd4acd0d29e2d6c43104827f77d9cd2}{typedef uint32\+\_\+t {\bfseries uint32}}\label{city_8h_acbd4acd0d29e2d6c43104827f77d9cd2}
+
+\item 
+\hypertarget{city_8h_abc0f5bc07737e498f287334775dff2b6}{typedef uint64\+\_\+t {\bfseries uint64}}\label{city_8h_abc0f5bc07737e498f287334775dff2b6}
+
+\item 
+\hypertarget{city_8h_a7ba5362f3566e2a5d8c08ef0aa7e1833}{typedef struct \hyperlink{struct__uint128}{\+\_\+uint128} {\bfseries uint128}}\label{city_8h_a7ba5362f3566e2a5d8c08ef0aa7e1833}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{city_8h_ad1bd1546443b3e43413429c5b81d7c5e}{uint64 {\bfseries City\+Hash64} (const char $\ast$buf, size\+\_\+t len)}\label{city_8h_ad1bd1546443b3e43413429c5b81d7c5e}
+
+\item 
+\hypertarget{city_8h_a8b875a47b3845075412f32d28c29f3cd}{uint64 {\bfseries City\+Hash64\+With\+Seed} (const char $\ast$buf, size\+\_\+t len, uint64 seed)}\label{city_8h_a8b875a47b3845075412f32d28c29f3cd}
+
+\item 
+\hypertarget{city_8h_ad6379aabcc4d80f0c495829430c2b682}{uint64 {\bfseries City\+Hash64\+With\+Seeds} (const char $\ast$buf, size\+\_\+t len, uint64 seed0, uint64 seed1)}\label{city_8h_ad6379aabcc4d80f0c495829430c2b682}
+
+\item 
+\hypertarget{city_8h_ad487ffee003419a5c1394dc4117e6847}{\hyperlink{struct__uint128}{uint128} {\bfseries City\+Hash128} (const char $\ast$s, size\+\_\+t len)}\label{city_8h_ad487ffee003419a5c1394dc4117e6847}
+
+\item 
+\hypertarget{city_8h_abe254b73fecfa7a0b9ceb61f6d713c8d}{\hyperlink{struct__uint128}{uint128} {\bfseries City\+Hash128\+With\+Seed} (const char $\ast$s, size\+\_\+t len, \hyperlink{struct__uint128}{uint128} seed)}\label{city_8h_abe254b73fecfa7a0b9ceb61f6d713c8d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+functions for hashin strings, C translation of cityhash (C++, google) 
+
+\begin{DoxyAuthor}{Author}
+Alexander Nusov 
+\end{DoxyAuthor}
+\begin{DoxySeeAlso}{See also}
+\href{https://github.com/nusov/cityhash-c}{\tt https\+://github.\+com/nusov/cityhash-\/c} 
+
+\href{https://github.com/google/cityhash}{\tt https\+://github.\+com/google/cityhash} 
+\end{DoxySeeAlso}

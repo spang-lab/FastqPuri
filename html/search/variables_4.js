@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['filter',['filter',['../struct__iparam__Qreport.html#ae1ce417a16c5d30c05a09ec868154e14',1,'_iparam_Qreport']]],
-  ['filters',['filters',['../struct__stats__TF.html#a5f5b0402d226910a834373a684eb6f07',1,'_stats_TF']]]
+  ['entry',['entry',['../struct__fa__data.html#a3c2c4488c834a828085df7b409d292e4',1,'_fa_data']]],
+  ['entrylen',['entrylen',['../struct__fa__data.html#acdb54c828a0fbfe8b8851f5290afc16e',1,'_fa_data']]]
 ];

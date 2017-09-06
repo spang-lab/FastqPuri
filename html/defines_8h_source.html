@@ -151,33 +151,41 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="defines_8h.html#a305c0ce0ef65658d5c81329adf54294f">   74</a></span>&#160;<span class="preprocessor">#define NPOOL_1D 1048576 </span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#define NPOOL_2D 16  </span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#define MAX_FASZ_TREE 1e7 </span></div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="defines_8h.html#aba3b47d51c7ee08d2e0e92e58aa07106">   80</a></span>&#160;<span class="preprocessor">// Trimming</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#define NO 0        </span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#define ALL 1       </span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#define ENDS 2      </span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#define STRIP 3     </span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#define FRAC  3     </span></div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="defines_8h.html#a996bde01ecac342918f0a2c4e7ce7bd5">   86</a></span>&#160;<span class="preprocessor">#define ENDSFRAC 4  </span></div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="defines_8h.html#a052e72209cfac2ff9aa78294f0bebea8">   88</a></span>&#160;<span class="preprocessor">#define GLOBAL 5    </span></div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="defines_8h.html#a653af6bd29f56a2699de26a928820da7">   90</a></span>&#160;<span class="preprocessor">#define TREE 1   </span></div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="defines_8h.html#abf0b71573c7ffc4f6746c24c9abc202a">   91</a></span>&#160;<span class="preprocessor">#define SA 2     </span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#define BLOOM 3  </span></div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="defines_8h.html#a3de33738fd3c7e77bffbcfaefc3e7645">   94</a></span>&#160;<span class="preprocessor">#define ERROR 1000 </span></div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="defines_8h.html#abf5b8fbbeb8255336e401a15a80214a8">   96</a></span>&#160;<span class="preprocessor">#define DEFAULT_MINL 25 </span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">// Classification of filters</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="defines_8h.html#a8fe83ac76edc595f6b98cd4a4127aed5">  100</a></span>&#160;<span class="preprocessor">#define ADAP 0 </span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#define CONT 1 </span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#define LOWQ 2 </span></div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="defines_8h.html#a7fcff0e388619a194fb57f65c1053944">  103</a></span>&#160;<span class="preprocessor">#define NNNN 3 </span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#define GOOD 4 </span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">//Number of filters</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#define NFILTERS 4 </span></div>
-<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="defines_8h.html#a88236da90fdc203156cd02218f106f25">  110</a></span>&#160;<span class="preprocessor">#endif // endif DEFINES_H_</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="defines_8h.html#afdad8e3654b5f02ff4c50fcb88f6eed9">  111</a></span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="defines_8h.html#a4d1f3741d002e1c5367ca1e87ee103ae">   78</a></span>&#160;<span class="preprocessor">// BloomFilter</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="defines_8h.html#aaaa0c4d9e8b67e3f38fb68b27baca056">   79</a></span>&#160;<span class="preprocessor">#define BITSPERCHAR 8  </span></div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="defines_8h.html#aba3b47d51c7ee08d2e0e92e58aa07106">   80</a></span>&#160;<span class="preprocessor">#define BASESPERCHAR 4  </span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#define KMER_LEN 25    </span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#define FALSE_POS_RATE 0.05 </span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#define ZERO_POS_RATE 1e-14 </span></div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="defines_8h.html#a6722ebf83f6f843343b21592e3cd86ed">   85</a></span>&#160;<span class="preprocessor">// Trimming</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="defines_8h.html#a53c139d8ab18ed3e13ff65f63067fcac">   86</a></span>&#160;<span class="preprocessor">#define NO 0        </span></div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="defines_8h.html#ad9cbfc308e2064d4cc62c835753a39ea">   87</a></span>&#160;<span class="preprocessor">#define ALL 1       </span></div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="defines_8h.html#a78ea345c3971e9f004f71b15dda31d37">   88</a></span>&#160;<span class="preprocessor">#define ENDS 2      </span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">// trimN only</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#define STRIP 3     </span></div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="defines_8h.html#a996bde01ecac342918f0a2c4e7ce7bd5">   91</a></span>&#160;<span class="preprocessor">// trimQ only</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="defines_8h.html#a1edd1ea8bddaf4d9c5eb3eae1ee1726a">   92</a></span>&#160;<span class="preprocessor">#define FRAC  3     </span></div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="defines_8h.html#a052e72209cfac2ff9aa78294f0bebea8">   93</a></span>&#160;<span class="preprocessor">#define ENDSFRAC 4  </span></div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="defines_8h.html#a53529d9638a1d70f6e5989dedf4c2672">   95</a></span>&#160;<span class="preprocessor">#define GLOBAL 5    </span></div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="defines_8h.html#a653af6bd29f56a2699de26a928820da7">   97</a></span>&#160;<span class="preprocessor">#define TREE 1   </span></div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="defines_8h.html#abf0b71573c7ffc4f6746c24c9abc202a">   98</a></span>&#160;<span class="preprocessor">#define SA 2     </span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#define BLOOM 3  </span></div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="defines_8h.html#a3de33738fd3c7e77bffbcfaefc3e7645">  101</a></span>&#160;<span class="preprocessor">#define ERROR 1000 </span></div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="defines_8h.html#abf5b8fbbeb8255336e401a15a80214a8">  103</a></span>&#160;<span class="preprocessor">#define DEFAULT_MINL 25 </span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">// Classification of filters</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="defines_8h.html#a8fe83ac76edc595f6b98cd4a4127aed5">  107</a></span>&#160;<span class="preprocessor">#define ADAP 0 </span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#define CONT 1 </span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#define LOWQ 2 </span></div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="defines_8h.html#a7fcff0e388619a194fb57f65c1053944">  110</a></span>&#160;<span class="preprocessor">#define NNNN 3 </span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#define GOOD 4 </span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">//Number of filters</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#define NFILTERS 4 </span></div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="defines_8h.html#a60519a721b44bce2b05a70cfa7ae8a1b">  116</a></span>&#160;<span class="preprocessor">#endif // endif DEFINES_H_</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="defines_8h.html#a88236da90fdc203156cd02218f106f25">  117</a></span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 1 2017 09:57:26 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 6 2017 14:49:45 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

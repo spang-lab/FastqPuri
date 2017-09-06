@@ -1,12 +1,7 @@
 var searchData=
 [
-  ['par_5ffr',['par_FR',['../Rcommand__Freport_8c.html#a953ecd02bc7b00cb35e50e8b0977221f',1,'Rcommand_Freport.c']]],
-  ['par_5fmt',['par_MT',['../init__makeTree_8c.html#ad02dd84d6aa8a100953e0c8683c44b7d',1,'par_MT():&#160;makeTree.c'],['../makeTree_8c.html#ad02dd84d6aa8a100953e0c8683c44b7d',1,'par_MT():&#160;makeTree.c']]],
-  ['par_5fqr',['par_QR',['../init__Qreport_8c.html#a5c6527d396580d559cfd1916fc959e23',1,'par_QR():&#160;Qreport.c'],['../Qreport_8c.html#a5c6527d396580d559cfd1916fc959e23',1,'par_QR():&#160;Qreport.c'],['../Rcommand__Qreport_8c.html#a5c6527d396580d559cfd1916fc959e23',1,'par_QR():&#160;Qreport.c'],['../stats__info_8c.html#a5c6527d396580d559cfd1916fc959e23',1,'par_QR():&#160;Qreport.c']]],
-  ['par_5fsr',['par_SR',['../init__Sreport_8c.html#aa230276b7e03d43430c998def780682e',1,'par_SR():&#160;Sreport.c'],['../Rcommand__Sreport_8c.html#aa230276b7e03d43430c998def780682e',1,'par_SR():&#160;Sreport.c'],['../Sreport_8c.html#aa230276b7e03d43430c998def780682e',1,'par_SR():&#160;Sreport.c']]],
-  ['par_5ftf',['par_TF',['../init__trimFilter_8c.html#aed14b08f25fd6aa9a6cffb8c0074c953',1,'par_TF():&#160;trimFilter.c'],['../trim_8c.html#aed14b08f25fd6aa9a6cffb8c0074c953',1,'par_TF():&#160;trimFilter.c'],['../trimFilter_8c.html#aed14b08f25fd6aa9a6cffb8c0074c953',1,'par_TF():&#160;trimFilter.c']]],
-  ['percent',['percent',['../struct__iparam__trimFilter.html#a8ed026b1de4fccc7288258c3a8faa395',1,'_iparam_trimFilter']]],
-  ['pool_5f2d',['pool_2D',['../struct__tree.html#a2783a2aaf32fc3b3c9de8b9fbb14de58',1,'_tree']]],
-  ['pool_5favailable',['pool_available',['../struct__tree.html#afd3769cd9db40fa460d35a0033fb7d02',1,'_tree']]],
-  ['pool_5fcount',['pool_count',['../struct__tree.html#aa90c2b558fc833fc22bcd6617689a41f',1,'_tree']]]
+  ['method',['method',['../struct__iparam__trimFilter.html#a0b5f9bed4a7b4e2de8c917b42360f4d3',1,'_iparam_trimFilter']]],
+  ['minl',['minL',['../struct__iparam__trimFilter.html#ac2b43664ca0c95a8572f97254893d675',1,'_iparam_trimFilter']]],
+  ['minq',['minQ',['../struct__iparam__Qreport.html#a1fa54b38e988ffe30eba5e0284e9dacb',1,'_iparam_Qreport::minQ()'],['../struct__iparam__trimFilter.html#a1e2b69f148d9299815af6ab7f575ad1a',1,'_iparam_trimFilter::minQ()'],['../structstatsinfo.html#a6b33794a27827b8e2ea2b45a95f937d9',1,'statsinfo::minQ()']]],
+  ['mismatches',['mismatches',['../struct__adapter.html#a51c6998b13837c66f79b3a1dd3c11995',1,'_adapter']]]
 ];

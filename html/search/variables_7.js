@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['l',['L',['../struct__fq__read.html#a746efa9093b5223e85ffb7274e7693ef',1,'_fq_read::L()'],['../struct__iparam__makeTree.html#a56fd13b9cf051d4770f40b015a295fd3',1,'_iparam_makeTree::L()'],['../struct__iparam__trimFilter.html#a72fcc236d4136d2405a04f155b515894',1,'_iparam_trimFilter::L()'],['../struct__tree.html#a36ca6c909dd7c119452da0cb49e2c829',1,'_tree::L()']]],
-  ['lane_5ftags',['lane_tags',['../structstatsinfo.html#a2fc74c1d7cec79d9b28b5e578d96d7a1',1,'statsinfo']]],
-  ['linelen',['linelen',['../struct__fa__data.html#a3607f37f43d8b2f14ced6a93c6a444ff',1,'_fa_data']]],
-  ['lmer_5flen',['Lmer_len',['../struct__iparam__trimFilter.html#a8d64cf4832f3c403bd7c505d5a3fee75',1,'_iparam_trimFilter']]],
-  ['lowq_5facgt_5ftile',['lowQ_ACGT_tile',['../structstatsinfo.html#ac1a8b88e2e4f486f2767072588adcd2a',1,'statsinfo']]],
-  ['lt',['LT',['../Lmer_8c.html#abecb1b17de58b71ea7da6803df2486ae',1,'LT():&#160;Lmer.c'],['../trim_8c.html#abecb1b17de58b71ea7da6803df2486ae',1,'LT():&#160;Lmer.c']]]
+  ['halfsizebytes',['halfsizeBytes',['../struct__procs__kmer.html#aa45c7225cd512dec96f9a8745b24c047',1,'_procs_kmer']]],
+  ['hangingbases',['hangingBases',['../struct__procs__kmer.html#a39a5e3c54a27bd06061038f8c9628471',1,'_procs_kmer']]],
+  ['hashnum',['hashNum',['../struct__bfilter.html#ab1c41e821137ae9d35a240c67819d51f',1,'_bfilter::hashNum()'],['../struct__procs__kmer.html#a054cf4233a621787e53874d2c1c4495e',1,'_procs_kmer::hashNum()'],['../struct__iparam__makeBloom.html#a0e8c97b918d06b17856569ede06bb2d9',1,'_iparam_makeBloom::hashNum()']]],
+  ['hashvalues',['hashValues',['../struct__procs__kmer.html#ac47c2d17d8a2559b22593e1beb7bb48a',1,'_procs_kmer']]],
+  ['hasoverhead',['hasOverhead',['../struct__procs__kmer.html#a13ad18789320173c1a2ea9c514571cb7',1,'_procs_kmer']]]
 ];

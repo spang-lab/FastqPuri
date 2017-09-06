@@ -75,13 +75,20 @@
 #define NPOOL_2D 16  /**< Number of *Node allocated in outer dim */
 #define MAX_FASZ_TREE 1e7 /**< Maximum fasta size for constructing a tree.
                                DECIDE A SENSIBLE SIZE! */
-
+// BloomFilter
+#define BITSPERCHAR 8  /**< number of bits in a char */
+#define BASESPERCHAR 4  /**< number of nucleotides that can fit in a char */
+#define KMER_LEN 25    /**< default kmer length */
+#define FALSE_POS_RATE 0.05 /**< default false positive rate */
+#define ZERO_POS_RATE 1e-14 /**< 0 threshold for a double */
 
 // Trimming
 #define NO 0        /**< No trimming */
 #define ALL 1       /**< Trims if a lowQ base calling | N is found */
 #define ENDS 2      /**< Trims at the ends */
+// trimN only
 #define STRIP 3     /**< Looks for the largest N-free sequence */
+// trimQ only
 #define FRAC  3     /**< Discards a read if it contains > percent lowQ bases*/
 #define ENDSFRAC 4  /**< trims at the ends and discards a read if the 
                       remaining part has more than > percent lowQ bases */
@@ -105,7 +112,6 @@
 
 //Number of filters
 #define NFILTERS 4 /**< total number of filters */ 
-
 
 #endif // endif DEFINES_H_
 

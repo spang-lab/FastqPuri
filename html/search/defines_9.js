@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['n_5facgt',['N_ACGT',['../defines_8h.html#a71b6eab2a5d9fd457d48f50869a888f6',1,'defines.h']]],
-  ['nfilters',['NFILTERS',['../defines_8h.html#a23f1103d8247781ab0be4b0fba2f085f',1,'defines.h']]],
-  ['nnnn',['NNNN',['../defines_8h.html#afdad8e3654b5f02ff4c50fcb88f6eed9',1,'defines.h']]],
-  ['no',['NO',['../defines_8h.html#a996bde01ecac342918f0a2c4e7ce7bd5',1,'defines.h']]],
-  ['npool_5f1d',['NPOOL_1D',['../defines_8h.html#a4d1f3741d002e1c5367ca1e87ee103ae',1,'defines.h']]],
-  ['npool_5f2d',['NPOOL_2D',['../defines_8h.html#aaaa0c4d9e8b67e3f38fb68b27baca056',1,'defines.h']]]
+  ['max',['max',['../defines_8h.html#affe776513b24d84b39af8ab0930fef7f',1,'defines.h']]],
+  ['max_5ffasz_5ftree',['MAX_FASZ_TREE',['../defines_8h.html#aba3b47d51c7ee08d2e0e92e58aa07106',1,'defines.h']]],
+  ['max_5ffilename',['MAX_FILENAME',['../defines_8h.html#abe0ec333b60117063f9b9fd9f849cb08',1,'defines.h']]],
+  ['max_5frcommand',['MAX_RCOMMAND',['../defines_8h.html#ac95fc8ee3f8ffd70f4564bcdc813ae2d',1,'defines.h']]],
+  ['mem_5fusage',['mem_usage',['../defines_8h.html#a3589a26d6b84700042e948056edb43f6',1,'defines.h']]],
+  ['mem_5fusagemb',['mem_usageMB',['../defines_8h.html#afb615637083826bc311382f50b9a112d',1,'defines.h']]],
+  ['min',['min',['../defines_8h.html#ac6afabdc09a49a433ee19d8a9486056d',1,'defines.h']]]
 ];

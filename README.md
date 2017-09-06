@@ -54,7 +54,8 @@ The executables will be created in the folder `bin`.
 * `makeBloomFilter`: work in progress,
 * `makeTree`: creates a tree of a certain depth from a fasta file and stores
  it in a file (see `README_makeTree.md`),
-* `trim_filter`: work in progress.
+* `trimFilter`: performs the filtering process for single end data 
+   (see `README_trimFilter.md`).
 
 ## Documentation of the code
 
