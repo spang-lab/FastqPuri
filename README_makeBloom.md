@@ -41,11 +41,11 @@ NOTE: the options -p, -n, -m are mutually exclusive. The program
 Two files are created as output: 
  - `<FILTERFILE>.bf`: contains the filter (binary file).
  - `<FILTERFILE>.txt`: contains the following information: 
-   * kmersize: length of the kmers inserted in the filter, 
-   * bfsizeBits: size of Bloom filter in bits,
-   * hashNum: number of hash functions used in the filter, 
-   * falsePosRate: false positive rate,
-   * nelem number: of elemens (kmers in the sequece) contained in the filter.
+   * `kmersize`: length of the kmers inserted in the filter, 
+   * `bfsizeBits`: size of Bloom filter in bits,
+   * `hashNum`: number of hash functions used in the filter, 
+   * `falsePosRate:` false positive rate,
+   * `nelem`: number of elemens (kmers in the sequece) contained in the filter.
 
 For further details, read the `Doxygen` documentation of the files
 `bloom.c`, `init_makeBloom.c`, `makeBloom.c`
@@ -164,7 +164,36 @@ proceed as follows:
 If the score is above the user predefined threshold (`-s`), 
 the read is classified as belonging to the set, and not otherwise. 
 
-### Memory isage, sensitivity and specificity
+### Memory usage, sensitivity and specificity
+
+The **memory usage** will be determined by `m`, the size of the filter. The optimal
+number of bits per element is
+
+<p align="center"><b>
+<sup>m</sup>&frasl;<sub>n</sub> = - <sup> log (p)</sup>&frasl;
+<sub>log<sup>2</sup>(2)</sub>.
+</b></p>
+
+In the figures below, we can see both the optimal number of bits 
+per element and the optimal number of hash functions as a function 
+of the false positive rate. 
+
+![false discovery rate](pics/bloomfilter.png)
+
+As an example, let's assume we want to look for contaminations in a
+genome `~3GB` and want to keep the false positive rate by `2%`. Then,
+we will need a filter of `~3.05GB`. 
+
+**Sensitivity** (true positive rate,  TP/(TP + FN)) can be increased 
+by decreasing the `k`-mer size (`-k`) and the score threshold. False 
+negatives only occur in the presence of mismatches due to variants, 
+or errors in the base calling procedure, since the filter itself
+does not allow for false negatives. 
+
+To increase *specificity* (true negative rate, TN/(TN + FP)), you can increase
+the score threshold (`-s`) or, obviusly reduce the positive rate, (`-p`). 
+
+
 
 ## Contributors
 
