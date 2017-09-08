@@ -73,8 +73,8 @@ to `0`. For every element in the set,  **s<sub>&alpha;</sub> &isin; S**, the
 `g` hash functions,  **H<sub>i</sub> (s<sub>&alpha;</sub>) &forall; 
 i  &isin; {1,...,g}** and set the corresponding bits to
 `1` in the filter, i.e., 
-**B[H<sub>i</sub> (s<sub>&alpha;</sub>) mod m] = 1 &forall; i &isin;** and
-`0` otherwise. 
+**B[H<sub>i</sub> (s<sub>&alpha;</sub>) mod m] = 1 &forall; i &isin; 
+{1,...,g}** and `0` otherwise. 
 
 Then, if we want to check whether an element **s<sub>&beta;</sub>** is in 
 the set **S**, we compute **H<sub>i</sub> (s<sub>&beta;</sub>) &forall;
@@ -90,13 +90,22 @@ number of hash functions to be used is tuned so that the false positive
 rate is minimized. 
 
 We assume the hash functions select all positions with the same 
-probability. The probability that an element in the filter `B` is not 
-set to `1` after inserting an element using `g` hash functionss is: 
+probability. The probability that an bit in the filter `B` is not 
+set to `1` after inserting an element using `g` hash functions is: 
 
-<center>(1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>g</sup> </center>
+<p align="center">
+**(1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>g</sup>**
+</p>
 
+where `m` is the number of bits of the filter. If we insert `n` elements, 
+the probability that an element is still 0 is: 
 
-if we insert 
+<p align="center">
+**(1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>gn</sup>**
+</p>
+
+The probability that a bit is 1 is then, 
+
 
 ### Creating a bloom filter from a fasta file
 
