@@ -45,19 +45,13 @@ extern uint64_t alloc_mem; /**< allocated memory */
  *  It initializes: fw0, fw1, fw2, fw3, bw0, bw2, bw3, bw4. They are uint8_t
  *  arrays with 256 elements. All elements are set to 0xFF excepting the
  *  ones corresponding to 'a', 'A', 'c', 'C', 'g', 'G', 't', 'T':
- * <table>
- * <caption id="multi_row">variables setup</caption>
- * <tr><td>Variable<th>a,A<th>c,C<th>g,G<th>t,T
- *     <td>Variable<th>a,A<th>c,C<th>g,G<th>t,T
- * <tr><th> fw0 <td>0x00<td>0x40<td>0x80<td>0xC0
- *     <th> bw0 <td>0xC0<td>0x80<td>0x40<td>0x00
- * <tr><th> fw1 <td>0x00<td>0x10<td>0x20<td>0x30
- *     <th> bw1 <td>0x30<td>0x20<td>0x10<td>0x00
- * <tr><th> fw2 <td>0x00<td>0x04<td>0x08<td>0x0C
- *     <th> bw2 <td>0x0C<td>0x08<td>0x04<td>0x00
- * <tr><th> fw3 <td>0x00<td>0x01<td>0x02<td>0x03
- *     <th> bw3 <td>0x03<td>0x02<td>0x01<td>0x00
- * </table>
+ *
+ *  Var | a,A  | c,C  | g,G  | t,T  | Var | a,A  | c,C  | g,G  | t,T
+ *  ----|------|------|------|------|-----|------|------|------|-----
+ *  fw0 | 0x00 | 0x40 | 0x80 | 0xC0 | bw0 | 0xC0 | 0x80 | 0x40 | 0x00
+ *  fw1 | 0x00 | 0x10 | 0x20 | 0x30 | bw1 | 0x30 | 0x20 | 0x10 | 0x00
+ *  fw2 | 0x00 | 0x04 | 0x08 | 0x0C | bw2 | 0x0C | 0x08 | 0x04 | 0x00
+ *  fw3 | 0x00 | 0x01 | 0x02 | 0x03 | bw3 | 0x03 | 0x02 | 0x01 | 0x00
  *
  * With these variables, we will be able to encode a Sequence
  * using 2 bits per nucleotide.

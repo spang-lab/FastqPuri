@@ -35,19 +35,6 @@ NOTE: the options -p, -n, -m are mutually exclusive. The program
       more details.
 ```
 
-## Generating a bloom filter
-
-TODO
-
-### Input parameters. 
-
-### Encoding the kmers
-
-### Incluing a kmer in the filter
-
-For further details, read the `Doxygen` documentation of the files
-`bloom.c`, `init_makeBloom.c`, `makeBloom.c` and the supplementary material.
-
 
 ## Output description
 
@@ -66,6 +53,56 @@ For further details, read the `Doxygen` documentation of the files
 ## Example 
  
 TODO
+
+## Details on bloom filters
+
+**NOTE**: For further details, read the `Doxygen` documentation of the files
+`bloom.c`, `init_makeBloom.c`, `makeBloom.c` and the supplementary material.
+
+A bloom filter is a probabilistic data structure used to test if an element
+is a member of a set. False positive matches are possible but false negative 
+are not. For a given set of `n` elements, we proceed as follows: 
+
+- decide on the number `g` of hash functions we will use for the construction
+of the filter and the length of the filter `m` (number of bits). This choice 
+will be made based on the false positive rate we want to 
+achieve (see Parameters)
+
+- we create an empty bloom filter, `B`, i.e. and array of `m` bits set 
+to `0`. For every element in the set,  **s<sub>&alpha;</sub> &isin; S**, the 
+`g` hash functions,  **H<sub>i</sub> (s<sub>&alpha;</sub>) &forall; 
+i  &isin; {1,...,g}** and set the corresponding bits to
+`1` in the filter, i.e., 
+**B[H<sub>i</sub> (s<sub>&alpha;</sub>) mod m] = 1 &forall; i &isin;** and
+`0` otherwise. 
+
+Then, if we want to check whether an element **s<sub>&beta;</sub>** is in 
+the set **S**, we compute **H<sub>i</sub> (s<sub>&beta;</sub>) &forall;
+i &isin; {1,...,g}** and check whether all coresponding positions in the 
+filter are set to `1`, in which case we can say that **s<sub>&beta;</sub>** 
+might be in the set. Otherwise it is definitely not in the set. 
+
+### Parameters. 
+
+We choose the parameters so that the desired false positive rate is 
+achieved. Alternatively, we can pass the filter size, and then the 
+number of hash functions to be used is tuned so that the false positive
+rate is minimized. 
+
+We assume the hash functions select all positions with the same 
+probability. The probability that an element in the filter `B` is not 
+set to `1` after inserting an element using `g` hash functionss is: 
+
+<center>(1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>g</sup> </center>
+
+
+if we insert 
+
+### Creating a bloom filter from a fasta file
+
+### Checking ir a read in a fastq file is in the filter
+
+
 
 ## Contributors
 

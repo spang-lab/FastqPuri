@@ -175,8 +175,8 @@ static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bw2</b> [25
 <tr class="memitem:ade667321e4ebea595e0bd22d2afdb00e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade667321e4ebea595e0bd22d2afdb00e"></a>
 static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bw3</b> [256]</td></tr>
 <tr class="separator:ade667321e4ebea595e0bd22d2afdb00e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa0ac3ef63b80a6bf32b2cffd17ceb0f"><td class="memItemLeft" align="right" valign="top">long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bloom_8c.html#aaa0ac3ef63b80a6bf32b2cffd17ceb0f">alloc_mem</a></td></tr>
-<tr class="separator:aaa0ac3ef63b80a6bf32b2cffd17ceb0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f18264718e0b1b1be5a1f0ee64431e4"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bloom_8c.html#a1f18264718e0b1b1be5a1f0ee64431e4">alloc_mem</a></td></tr>
+<tr class="separator:a1f18264718e0b1b1be5a1f0ee64431e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>functions that implement the bloom filter </p>
@@ -432,18 +432,18 @@ static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bw3</b> [25
 </div><div class="memdoc">
 
 <p>look up table initialization </p>
-<p>It initializes: fw0, fw1, fw2, fw3, bw0, bw2, bw3, bw4. They are uint8_t arrays with 256 elements. All elements are set to 0xFF excepting the ones corresponding to 'a', 'A', 'c', 'C', 'g', 'G', 't', 'T': </p><table class="doxtable">
-<caption id="multi_row" align="bottom">variables setup</caption>
+<p>It initializes: fw0, fw1, fw2, fw3, bw0, bw2, bw3, bw4. They are uint8_t arrays with 256 elements. All elements are set to 0xFF excepting the ones corresponding to 'a', 'A', 'c', 'C', 'g', 'G', 't', 'T':</p>
+<table class="doxtable">
 <tr>
-<td>Variable</td><th>a,A</th><th>c,C</th><th>g,G</th><th>t,T </th><td>Variable</td><th>a,A</th><th>c,C</th><th>g,G</th><th>t,T </th></tr>
+<th>Var </th><th>a,A </th><th>c,C </th><th>g,G </th><th>t,T </th><th>Var </th><th>a,A </th><th>c,C </th><th>g,G </th><th>t,T  </th></tr>
 <tr>
-<th>fw0 </th><td>0x00</td><td>0x40</td><td>0x80</td><td>0xC0 </td><th>bw0 </th><td>0xC0</td><td>0x80</td><td>0x40</td><td>0x00 </td></tr>
+<td>fw0 </td><td>0x00 </td><td>0x40 </td><td>0x80 </td><td>0xC0 </td><td>bw0 </td><td>0xC0 </td><td>0x80 </td><td>0x40 </td><td>0x00 </td></tr>
 <tr>
-<th>fw1 </th><td>0x00</td><td>0x10</td><td>0x20</td><td>0x30 </td><th>bw1 </th><td>0x30</td><td>0x20</td><td>0x10</td><td>0x00 </td></tr>
+<td>fw1 </td><td>0x00 </td><td>0x10 </td><td>0x20 </td><td>0x30 </td><td>bw1 </td><td>0x30 </td><td>0x20 </td><td>0x10 </td><td>0x00 </td></tr>
 <tr>
-<th>fw2 </th><td>0x00</td><td>0x04</td><td>0x08</td><td>0x0C </td><th>bw2 </th><td>0x0C</td><td>0x08</td><td>0x04</td><td>0x00 </td></tr>
+<td>fw2 </td><td>0x00 </td><td>0x04 </td><td>0x08 </td><td>0x0C </td><td>bw2 </td><td>0x0C </td><td>0x08 </td><td>0x04 </td><td>0x00 </td></tr>
 <tr>
-<th>fw3 </th><td>0x00</td><td>0x01</td><td>0x02</td><td>0x03 </td><th>bw3 </th><td>0x03</td><td>0x02</td><td>0x01</td><td>0x00 </td></tr>
+<td>fw3 </td><td>0x00 </td><td>0x01 </td><td>0x02 </td><td>0x03 </td><td>bw3 </td><td>0x03 </td><td>0x02 </td><td>0x01 </td><td>0x00 </td></tr>
 </table>
 <p>With these variables, we will be able to encode a Sequence using 2 bits per nucleotide. </p>
 
@@ -696,12 +696,12 @@ static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bw3</b> [25
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="aaa0ac3ef63b80a6bf32b2cffd17ceb0f"></a>
+<a class="anchor" id="a1f18264718e0b1b1be5a1f0ee64431e4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">long int alloc_mem</td>
+          <td class="memname">uint64_t alloc_mem</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -713,7 +713,7 @@ static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bw3</b> [25
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 6 2017 14:49:48 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 8 2017 11:45:54 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

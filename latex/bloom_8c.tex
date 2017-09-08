@@ -74,7 +74,7 @@ void \hyperlink{bloom_8c_a48a74d10082ed27381512e23650ba823}{save\+\_\+\+Bfilter}
 \hypertarget{bloom_8c_ade667321e4ebea595e0bd22d2afdb00e}{static uint8\+\_\+t {\bfseries bw3} \mbox{[}256\mbox{]}}\label{bloom_8c_ade667321e4ebea595e0bd22d2afdb00e}
 
 \item 
-long int \hyperlink{bloom_8c_aaa0ac3ef63b80a6bf32b2cffd17ceb0f}{alloc\+\_\+mem}
+uint64\+\_\+t \hyperlink{bloom_8c_a1f18264718e0b1b1be5a1f0ee64431e4}{alloc\+\_\+mem}
 \end{DoxyCompactItemize}
 
 
@@ -232,19 +232,16 @@ Given a kmersize, bfsize\+Bits, number of hash functions, we assign these values
 
 look up table initialization 
 
-It initializes\+: fw0, fw1, fw2, fw3, bw0, bw2, bw3, bw4. They are uint8\+\_\+t arrays with 256 elements. All elements are set to 0x\+F\+F excepting the ones corresponding to 'a', 'A', 'c', 'C', 'g', 'G', 't', 'T'\+: \begin{table}[h]\begin{TabularC}{10}
+It initializes\+: fw0, fw1, fw2, fw3, bw0, bw2, bw3, bw4. They are uint8\+\_\+t arrays with 256 elements. All elements are set to 0x\+F\+F excepting the ones corresponding to 'a', 'A', 'c', 'C', 'g', 'G', 't', 'T'\+:
+
+\begin{TabularC}{10}
 \hline
-Variable&{\bf a,A}&{\bf c,C}&{\bf g,G}&{\bf t,T }&Variable&{\bf a,A}&{\bf c,C}&{\bf g,G}&{\bf t,T }\\\cline{1-10}
-\rowcolor{lightgray}{\bf fw0 }&0x00&0x40&0x80&0x\+C0 &{\bf bw0 }&0x\+C0&0x80&0x40&0x00 \\\cline{1-10}
-\rowcolor{lightgray}{\bf fw1 }&0x00&0x10&0x20&0x30 &{\bf bw1 }&0x30&0x20&0x10&0x00 \\\cline{1-10}
-\rowcolor{lightgray}{\bf fw2 }&0x00&0x04&0x08&0x0\+C &{\bf bw2 }&0x0\+C&0x08&0x04&0x00 \\\cline{1-10}
-\rowcolor{lightgray}{\bf fw3 }&0x00&0x01&0x02&0x03 &{\bf bw3 }&0x03&0x02&0x01&0x00 \\\cline{1-10}
-\end{TabularNC}
-\centering
-\caption{variables setup}
-\end{table}
-
-
+\rowcolor{lightgray}{\bf Var }&{\bf a,A }&{\bf c,C }&{\bf g,G }&{\bf t,T }&{\bf Var }&{\bf a,A }&{\bf c,C }&{\bf g,G }&{\bf t,T  }\\\cline{1-10}
+fw0 &0x00 &0x40 &0x80 &0x\+C0 &bw0 &0x\+C0 &0x80 &0x40 &0x00 \\\cline{1-10}
+fw1 &0x00 &0x10 &0x20 &0x30 &bw1 &0x30 &0x20 &0x10 &0x00 \\\cline{1-10}
+fw2 &0x00 &0x04 &0x08 &0x0\+C &bw2 &0x0\+C &0x08 &0x04 &0x00 \\\cline{1-10}
+fw3 &0x00 &0x01 &0x02 &0x03 &bw3 &0x03 &0x02 &0x01 &0x00 \\\cline{1-10}
+\end{TabularC}
 With these variables, we will be able to encode a Sequence using 2 bits per nucleotide. \hypertarget{bloom_8c_ad66c3b4f481734a97142bc82e9367e12}{\index{bloom.\+c@{bloom.\+c}!init\+\_\+procs@{init\+\_\+procs}}
 \index{init\+\_\+procs@{init\+\_\+procs}!bloom.\+c@{bloom.\+c}}
 \subsubsection[{init\+\_\+procs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Procs\+\_\+kmer}$\ast$ init\+\_\+procs (
@@ -381,9 +378,9 @@ computes a score for a read being in the bloom filter
 
 
 \subsection{Variable Documentation}
-\hypertarget{bloom_8c_aaa0ac3ef63b80a6bf32b2cffd17ceb0f}{\index{bloom.\+c@{bloom.\+c}!alloc\+\_\+mem@{alloc\+\_\+mem}}
+\hypertarget{bloom_8c_a1f18264718e0b1b1be5a1f0ee64431e4}{\index{bloom.\+c@{bloom.\+c}!alloc\+\_\+mem@{alloc\+\_\+mem}}
 \index{alloc\+\_\+mem@{alloc\+\_\+mem}!bloom.\+c@{bloom.\+c}}
-\subsubsection[{alloc\+\_\+mem}]{\setlength{\rightskip}{0pt plus 5cm}long int alloc\+\_\+mem}}\label{bloom_8c_aaa0ac3ef63b80a6bf32b2cffd17ceb0f}
+\subsubsection[{alloc\+\_\+mem}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t alloc\+\_\+mem}}\label{bloom_8c_a1f18264718e0b1b1be5a1f0ee64431e4}
 allocated memory
 
 global variable. Memory allocated in the heap. 
