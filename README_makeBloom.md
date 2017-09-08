@@ -93,25 +93,78 @@ We assume the hash functions select all positions with the same
 probability. The probability that an bit in the filter `B` is not 
 set to `1` after inserting an element using `g` hash functions is: 
 
-<p align="center">
-**(1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>g</sup>**
-</p>
+**<p align="center">
+(1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>g</sup>
+</p>**
 
 where `m` is the number of bits of the filter. If we insert `n` elements, 
 the probability that an element is still 0 is: 
 
 <p align="center">
-**(1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>gn</sup>**
+**p<sub>0</sub> = (1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>gn</sup>**
 </p>
 
-The probability that a bit is 1 is then, 
+The probability that a bit is `1` is then, 
+
+**<p align="center">
+p<sub>1</sub> = 1 -(1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>gn</sup>
+</p>**
+
+Now, let's compute the false positive rate, i.e., that probability that
+an element that is not in the set is classified as belonging to it. This 
+is the probability that all positions computed from the hash functions 
+being `1` is, 
+
+**<p align="center">
+p(g, n, m) = (1 -(1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>gn</sup>)<sup>g</sup>
+= (1 - e^<sup> - <sup>gn</sup>&frasl;<sub>m</sub> </sup>)<sup>g</sup>
+</p>**
+
+For a giben `n` and `m` the value of `g` that minimizes `p` is, 
+
+**<p align="center">
+<sup>dp(g, n, m)</sup>&frasl;<sub>dg</sub> = 0 &rArr; 
+g = <sup>m</sup>&frasl;<sub>n</sub> log(2)
+</p>**
+
+The requiered number of bits `m` for the desired positive rate given 
+`n` number of elements and assuming the optimal number of hash functions 
+being used is, 
+
+**<p align="center">
+m = - <sup>n log (p)</sup>&frasl;<sub>log<sup>2</sup>(2)</sub>.
+</p>**
+
+### Creating a bloom filter from a `fasta` file
+
+Given a `fasta` file, the elements to be inserted in the bloom filter are 
+all possible `k`-mers contained in the `fasta` file. The length `k` of the 
+`k`-mers can be given by the user as an input parameter and is chosen to 
+be `25` by default. All `k`-mers containing nucleotides different from 
+`{A,C,G,T}` will not be consiedered and they are encoded such that every
+nuclotide takes only 2-bits memory. Wee look into the reverse complement 
+and insert only the one that is lexycographically smaller. 
+
+ Once the `k`-mer has been processed, the hash functions are computed an the 
+positions of the output values are set to `1` in the filter. 
 
 
-### Creating a bloom filter from a fasta file
+### Checking ir a read in a `fastq` file is in the filter
 
-### Checking ir a read in a fastq file is in the filter
+To check whether a `fastq` read of length `L` is in the filter, we 
+proceed as follows: 
 
+1. Start with a score `score = 0`. 
+2. Construct and process all `k`-mers of length `k` in the read, `(L - k + 1)`
+   (note that `L `&ge;`k`)
+3. For each `k`-mer, compute the `g` hash functions and check whether all 
+   bits in the corresponding positions in the filter are set to `1`. If so, 
+   add  **<sup>1</sup>&frasl;<sub>(L - k + 1)</sub>** to the score. 
 
+If the score is above the user predefined threshold (`-s`), 
+the read is classified as belonging to the set, and not otherwise. 
+
+### Memory isage, sensitivity and specificity
 
 ## Contributors
 
