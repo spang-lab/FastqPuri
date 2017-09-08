@@ -93,47 +93,47 @@ We assume the hash functions select all positions with the same
 probability. The probability that an bit in the filter `B` is not 
 set to `1` after inserting an element using `g` hash functions is: 
 
-**<p align="center">
+<p align="center"><b>
 (1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>g</sup>
-</p>**
+</b></p>
 
 where `m` is the number of bits of the filter. If we insert `n` elements, 
 the probability that an element is still 0 is: 
 
-<p align="center">
-**p<sub>0</sub> = (1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>gn</sup>**
-</p>
+<p align="center"><b>
+p<sub>0</sub> = (1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>gn</sup>
+</b></p>
 
 The probability that a bit is `1` is then, 
 
-**<p align="center">
+<p align="center"><b>
 p<sub>1</sub> = 1 -(1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>gn</sup>
-</p>**
+</b></p>
 
 Now, let's compute the false positive rate, i.e., that probability that
 an element that is not in the set is classified as belonging to it. This 
 is the probability that all positions computed from the hash functions 
 being `1` is, 
 
-**<p align="center">
+<p align="center"><b>
 p(g, n, m) = (1 -(1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>gn</sup>)<sup>g</sup>
 = (1 - e^<sup> - <sup>gn</sup>&frasl;<sub>m</sub> </sup>)<sup>g</sup>
-</p>**
+</b></p>
 
 For a giben `n` and `m` the value of `g` that minimizes `p` is, 
 
-**<p align="center">
+<p align="center"><b>
 <sup>dp(g, n, m)</sup>&frasl;<sub>dg</sub> = 0 &rArr; 
 g = <sup>m</sup>&frasl;<sub>n</sub> log(2)
-</p>**
+</b></p>
 
 The requiered number of bits `m` for the desired positive rate given 
 `n` number of elements and assuming the optimal number of hash functions 
 being used is, 
 
-**<p align="center">
+<p align="center"><b>
 m = - <sup>n log (p)</sup>&frasl;<sub>log<sup>2</sup>(2)</sub>.
-</p>**
+</b></p>
 
 ### Creating a bloom filter from a `fasta` file
 
