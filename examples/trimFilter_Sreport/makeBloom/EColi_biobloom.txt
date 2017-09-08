@@ -1,0 +1,14 @@
+[user_input_options]
+filter_id=EColi_biobloom
+kmer_size=25
+desired_false_positve_rate=0.01
+number_of_hash_functions=6
+expected_num_entries=5277652
+sequence_sources=../EColi_genome.fa 
+
+[runtime_options]
+size=50753408
+num_entries=5110192
+approximate_false_positive_rate=0.00869254
+redundant_sequences=167460
+redundant_fpr=0.00155483

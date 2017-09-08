@@ -108,7 +108,8 @@ Bfilter *init_Bfilter(int kmersize, uint64_t bfsizeBits, int hashNum,
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
-  Bfilter *ptr_bf;
+  Bfilter *ptr_bf = malloc(sizeof(Bfilter));
+  alloc_mem += sizeof(Bfilter);
   ptr_bf -> kmersize = kmersize;
   ptr_bf -> kmersizeBytes = (kmersize + BASESPERCHAR - 1) / BASESPERCHAR;
   ptr_bf -> hashNum = hashNum;
@@ -149,7 +150,7 @@ void free_Bfilter(Bfilter * ptr_bf) {
  *  and memory is allocated and set to 0 for compact and hashValues
  * */
 Procs_kmer *init_procs(int kmersize, int hashNum) {
-  Procs_kmer *procs;
+  Procs_kmer *procs = malloc(sizeof(Procs_kmer));
   procs -> kmersize = kmersize;
   procs -> kmersizeBytes = kmersize / 4;
   procs -> halfsizeBytes = kmersize / 8;
@@ -268,7 +269,7 @@ static int compact_kmer(const unsigned char *sequence, uint64_t position,
          m_fw[idx] |= fw1[sequence[b++]];
          m_fw[idx] |= fw2[sequence[b++]];
          if ((m_fw[idx] == 0xFF) || (fw3[sequence[b]] == 0xFF)) {
-             // discards kmers with N's
+             ;// discards kmers with N's
              free(m_fw);
              alloc_mem -= (procs->kmersizeBytes)*sizeof(unsigned char);
              return 0;

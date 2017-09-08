@@ -1,4 +1,4 @@
-# makeTree user manual
+# makeBloom user manual
 
 Reads a `fasta` file, creates a bloom filter with a predefined:
  - size (bits). 
@@ -178,7 +178,9 @@ In the figures below, we can see both the optimal number of bits
 per element and the optimal number of hash functions as a function 
 of the false positive rate. 
 
+<center>
 ![false discovery rate](pics/bloomfilter.png)
+</center>
 
 As an example, let's assume we want to look for contaminations in a
 genome `~3GB` and want to keep the false positive rate by `2%`. Then,
@@ -190,7 +192,7 @@ negatives only occur in the presence of mismatches due to variants,
 or errors in the base calling procedure, since the filter itself
 does not allow for false negatives. 
 
-To increase *specificity* (true negative rate, TN/(TN + FP)), you can increase
+To increase **specificity** (true negative rate, TN/(TN + FP)), you can increase
 the score threshold (`-s`) or, obviusly reduce the positive rate, (`-p`). 
 
 

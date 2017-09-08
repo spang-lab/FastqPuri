@@ -40,6 +40,7 @@
 #include "init_trimFilter.h"
 #include "io_trimFilter.h"
 #include "tree.h"
+#include "bloom.h"
 #include "trim.h"
 
 
@@ -105,6 +106,7 @@ int main(int argc, char *argv[]) {
   }
   // Loading the index file to look for contaminations
   Tree *ptr_tree = NULL;
+  Bfilter *ptr_bf = NULL; 
   if (par_TF.method) {
     f_cont = fopen_gen(fq_cont, "w");  // open fq_cont file for writing
     if (par_TF.is_fa && par_TF.method == TREE) {
@@ -137,10 +139,10 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Exiting program\n");
         exit(EXIT_FAILURE);
     } else if (par_TF.is_idx && par_TF.method == BLOOM) {
+        ptr_bf  = read_Bfilter(par_TF.Iidx, par_TF.Iidx);   // handle filenames
         fprintf(stderr, "Method for contaminations detection: BLOOM\n");
-        fprintf(stderr, "WARNING: this option is WORK IN PROGRESS!!\n");
-        fprintf(stderr, "Exiting program\n");
-        exit(EXIT_FAILURE);
+        fprintf(stderr, "* DOING: Reading Bloom filter  from %s\n", 
+              par_TF.Iidx);
     } else {
         fprintf(stderr, "OPTION_ERROR: something went wrong with the");
         fprintf(stderr, "contaminations options\n");
