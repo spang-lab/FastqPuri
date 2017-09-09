@@ -68,9 +68,9 @@ of the filter and the length of the filter `m` (number of bits). This choice
 will be made based on the false positive rate we want to 
 achieve (see Parameters)
 
-- we create an empty bloom filter, `B`, i.e. and array of `m` bits set 
-to `0`. For every element in the set,  **s<sub>&alpha;</sub> &isin; S**, the 
-`g` hash functions,  **H<sub>i</sub> (s<sub>&alpha;</sub>) &forall; 
+- we create an empty bloom filter, `B`, i.e. an array of `m` bits set 
+to `0`. For every element in the set,  **s<sub>&alpha;</sub> &isin; S**, compute 
+the `g` hash functions,  **H<sub>i</sub> (s<sub>&alpha;</sub>) &forall; 
 i  &isin; {1,...,g}** and set the corresponding bits to
 `1` in the filter, i.e., 
 **B[H<sub>i</sub> (s<sub>&alpha;</sub>) mod m] = 1 &forall; i &isin; 
@@ -81,6 +81,7 @@ the set **S**, we compute **H<sub>i</sub> (s<sub>&beta;</sub>) &forall;
 i &isin; {1,...,g}** and check whether all coresponding positions in the 
 filter are set to `1`, in which case we can say that **s<sub>&beta;</sub>** 
 might be in the set. Otherwise it is definitely not in the set. 
+[fdsa](http://www.google.es)
 
 ### Parameters. 
 
@@ -107,7 +108,7 @@ p<sub>0</sub> = (1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>gn</sup>
 The probability that a bit is `1` is then, 
 
 <p align="center"><b>
-p<sub>1</sub> = 1 -(1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>gn</sup>
+p<sub>1</sub> = 1 - (1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>gn</sup>
 </b></p>
 
 Now, let's compute the false positive rate, i.e., that probability that
@@ -116,8 +117,8 @@ is the probability that all positions computed from the hash functions
 being `1` is, 
 
 <p align="center"><b>
-p(g, n, m) = (1 -(1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>gn</sup>)<sup>g</sup>
-= (1 - e^<sup> - <sup>gn</sup>&frasl;<sub>m</sub> </sup>)<sup>g</sup>
+p(g, n, m) = (1 - (1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>gn</sup>)<sup>g</sup>
+= (1 - e<sup> - <sup>gn</sup>&frasl;<sub>m</sub> </sup>)<sup>g</sup>
 </b></p>
 
 For a giben `n` and `m` the value of `g` that minimizes `p` is, 
@@ -142,7 +143,7 @@ all possible `k`-mers contained in the `fasta` file. The length `k` of the
 `k`-mers can be given by the user as an input parameter and is chosen to 
 be `25` by default. All `k`-mers containing nucleotides different from 
 `{A,C,G,T}` will not be consiedered and they are encoded such that every
-nuclotide takes only 2-bits memory. Wee look into the reverse complement 
+nucleotide takes only 2-bits memory. Wee look into the reverse complement 
 and insert only the one that is lexycographically smaller. 
 
  Once the `k`-mer has been processed, the hash functions are computed an the 
@@ -179,7 +180,7 @@ per element and the optimal number of hash functions as a function
 of the false positive rate. 
 
 <center>
-![false discovery rate](pics/bloomfilter.png)
+![false discovery rate](./pics/bloomfilter.png)
 </center>
 
 As an example, let's assume we want to look for contaminations in a
