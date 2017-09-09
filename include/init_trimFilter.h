@@ -38,9 +38,9 @@
  * @ note UNFINISHED!
  * */
 typedef struct _adapter {
-   char *adapter_fa; /**< fasta file containing adapters*/
-   int mismatches;   /**< Number of allowed mismatches*/
-   int threshold;  /**< Score threshold*/
+  char *adapter_fa; /**< fasta file containing adapters*/
+  int mismatches;   /**< Number of allowed mismatches*/
+  int threshold;  /**< Score threshold*/
 } Adapter;
 
 /**
@@ -51,6 +51,7 @@ typedef struct _iparam_trimFilter {
   char *Ifq;  /**< Input fq file */
   char *Ifa;  /**< Input fa file (containing contamination sequences) */
   char *Iidx;  /**< Input index file (constructed from an input.fa cont file) */
+  char Iinfo[MAX_FILENAME]; /**< Input index info file  */
   char *Oprefix;  /**< Output files prefix (PATH/prefix) */
   Adapter ad;  /**< Adapter trimming parameters  */
   int trimQ;   /**< NO(0), FRAC(1), ENDS(2), ENDSFRAC(3), GLOBAL(4) */

@@ -62,7 +62,7 @@ typedef struct _procs_kmer {
   int kmersize;  /**< kmer size (number of elements)*/
   int hashNum;  /**< number of hash functions used to construct the filter*/
   int kmersizeBytes;  /**< Bytes needed to store the kmer (4bases ~ 1byte) */
-  int halfsizeBytes;  /**< half size in Bytes (needed to decide whether
+  int halfsizeBytes;  /**< half size in bytes(needed to decide whether
                            to store a kmer or its reverse complement) */
   int hangingBases;  /**< number of hanging bases that don't complete a byte*/
   int hasOverhead;  /**< kmer has overhead when kmersize % 4!=0 */
@@ -91,11 +91,10 @@ void save_Bfilter(Bfilter *ptr_bf, char *filterfile, char *paramfile);
 
 Bfilter *read_Bfilter(char *filterfile, char *paramfile);
 
-// Static functions
-// static int compact_kmer(const unsigned char *sequence, uint64_t position,
-//                       Procs_kmer *procs);
-// static void multiHash(Procs_kmer* procs);
-// static bool insert_and_fetch(Bfilter *pr_bf, Procs_kmer* procs);
-// static bool contains(Bfilter *ptr_bf, Procs_kmer* procs);
+int compact_kmer(const unsigned char *sequence, uint64_t position,
+               Procs_kmer *procs);
+void multiHash(Procs_kmer* procs);
+bool insert_and_fetch(Bfilter *pr_bf, Procs_kmer* procs);
+bool contains(Bfilter *ptr_bf, Procs_kmer* procs);
 
 #endif  // endif BLOOM_MAKER_H_

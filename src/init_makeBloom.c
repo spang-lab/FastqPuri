@@ -108,7 +108,7 @@ void getarg_makeBloom(int argc, char **argv) {
         break;
       case 'o':
         snprintf(par_MB.filterfile, MAX_FILENAME, "%s.bf", optarg);
-        snprintf(par_MB.paramfile, MAX_FILENAME, "%s.txt", optarg);
+        snprintf(par_MB.paramfile, MAX_FILENAME, "%s.bf.txt", optarg);
         break;
       case 'k':
         par_MB.kmersize = atoi(optarg);

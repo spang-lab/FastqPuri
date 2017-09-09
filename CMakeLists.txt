@@ -129,6 +129,8 @@ add_executable(trimFilter ${PROJECT_SOURCE_DIR}/trimFilter.c
             ${PROJECT_SOURCE_DIR}/fa_read.c 
             ${PROJECT_SOURCE_DIR}/fq_read.c 
             ${PROJECT_SOURCE_DIR}/tree.c 
+            ${PROJECT_SOURCE_DIR}/bloom.c 
+            ${PROJECT_SOURCE_DIR}/city.c 
             ${PROJECT_SOURCE_DIR}/trim.c 
             ${PROJECT_SOURCE_DIR}/fopen_gen.c
             ${PROJECT_SOURCE_DIR}/Lmer.c

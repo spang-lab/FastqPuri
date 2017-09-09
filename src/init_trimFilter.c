@@ -175,7 +175,7 @@ void getarg_trimFilter(int argc, char **argv) {
          adapt = strsplit(optarg, ':');
          if (adapt.N != 3) {
             fprintf(stderr, "--adapter,-A: optionERR. You must pass three \n");
-            fprintf(stderr, "  arguments separated by commas: \n");
+            fprintf(stderr, "  arguments separated by semicolons: \n");
             fprintf(stderr, "   <adapter.fa>:<mismatches>:<threshold>\n");
             fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
             exit(EXIT_FAILURE);
@@ -189,14 +189,16 @@ void getarg_trimFilter(int argc, char **argv) {
       case 'x':
          par_TF.is_idx = true;
          index = strsplit(optarg, ':');
-         if (index.N != 3 || index.N != 2) {
+         if (index.N != 3 && index.N != 2) {
             fprintf(stderr, "--idx,-x: optionERR. You must pass 2 or 3 \n");
-            fprintf(stderr, "  arguments separated by commas: \n");
+            fprintf(stderr, "  arguments separated by semicolons: \n");
             fprintf(stderr, "  <INDEX_FILE.fa>:<score>:<lmer_len>\n");
+            fprintf(stderr, "  and you passed %d\n", index.N);
             fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
             exit(EXIT_FAILURE);
          } 
          par_TF.Iidx = index.s[0];
+         snprintf(par_TF.Iinfo, MAX_FILENAME,"%s.txt",par_TF.Iidx);
          par_TF.score = atof(index.s[1]);
          if (index.N == 3) {
             par_TF.Lmer_len = atoi(index.s[2]);
@@ -207,7 +209,7 @@ void getarg_trimFilter(int argc, char **argv) {
          tree_fa = strsplit(optarg, ':');
          if (tree_fa.N != 3) {
             fprintf(stderr, "--ifa,-a: optionERR. You must pass three \n");
-            fprintf(stderr, "  arguments separated by commas: \n");
+            fprintf(stderr, "  arguments separated by semicolons: \n");
             fprintf(stderr, "  <INPUT.fa>:<score>:<lmer_len>\n");
             fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
             exit(EXIT_FAILURE);

@@ -106,7 +106,8 @@ int main(int argc, char *argv[]) {
   }
   // Loading the index file to look for contaminations
   Tree *ptr_tree = NULL;
-  Bfilter *ptr_bf = NULL; 
+  Bfilter *ptr_bf = NULL;
+  Procs_kmer *procs = NULL; 
   if (par_TF.method) {
     f_cont = fopen_gen(fq_cont, "w");  // open fq_cont file for writing
     if (par_TF.is_fa && par_TF.method == TREE) {
@@ -139,7 +140,9 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Exiting program\n");
         exit(EXIT_FAILURE);
     } else if (par_TF.is_idx && par_TF.method == BLOOM) {
-        ptr_bf  = read_Bfilter(par_TF.Iidx, par_TF.Iidx);   // handle filenames
+        ptr_bf  = read_Bfilter(par_TF.Iidx, par_TF.Iinfo);   // handle filenames
+        procs = init_procs(ptr_bf -> kmersize, ptr_bf -> hashNum); 
+        init_LUTs(); 
         fprintf(stderr, "Method for contaminations detection: BLOOM\n");
         fprintf(stderr, "* DOING: Reading Bloom filter  from %s\n", 
               par_TF.Iidx);
@@ -186,15 +189,18 @@ int main(int argc, char *argv[]) {
               if (stat_TF.filters[CONT] && !discarded) {
                 if (par_TF.method == TREE) {
                   discarded = is_read_inTree(ptr_tree, seq);
-                  if (discarded) {
-                     Nchar = string_seq(seq, char_seq);
-                     buffer_output(f_cont, char_seq, Nchar, CONT);
-                     stat_TF.discarded[CONT]++;
-                  }
-                } else {
-                  fprintf(stderr, "SA, BLOOM options are not supported yet.\n");
+                } else if (par_TF.method == BLOOM) {
+                  discarded = is_read_inBloom(ptr_bf, seq, procs);  
+                }
+                else {
+                  fprintf(stderr, "SA option is not supported yet.\n");
                   fprintf(stderr, "Exiting program\n");
                   exit(EXIT_FAILURE);
+                }
+                if (discarded) {
+                  Nchar = string_seq(seq, char_seq);
+                  buffer_output(f_cont, char_seq, Nchar, CONT);
+                  stat_TF.discarded[CONT]++;
                 }
               }
               if (stat_TF.filters[LOWQ] && !discarded) {

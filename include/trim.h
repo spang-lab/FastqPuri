@@ -35,14 +35,15 @@
 #include "defines.h"
 #include "tree.h"
 #include "init_trimFilter.h"
-// will need them in the future
-//#include SA.h
-//#include bloomfilter.h... 
+#include "bloom.h"
+// Will need them in the future
+// #include SA.h
 
 
 int trim_sequenceN(Fq_read *seq);
 int trim_sequenceQ(Fq_read *seq);
 bool is_read_inTree(Tree *tree_ptr, Fq_read *seq);
+bool is_read_inBloom(Bfilter *tree_ptr, Fq_read *seq, Procs_kmer *procs);
 
 /* static functions
 * static int no_N(Fq_read *seq);

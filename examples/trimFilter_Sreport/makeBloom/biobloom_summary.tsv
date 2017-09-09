@@ -1,0 +1,4 @@
+filter_id	hits	misses	shared	rate_hit	rate_miss	rate_shared
+EColi_biobloom	200009	50010	0	0.799975	0.200025	0
+multiMatch	0	250019	0	0	1	0
+noMatch	50010	200009	0	0.200025	0.799975	0

@@ -214,7 +214,7 @@ void free_procs(Procs_kmer *procs) {
  *
  *
  * */
-static int compact_kmer(const unsigned char *sequence, uint64_t position,
+int compact_kmer(const unsigned char *sequence, uint64_t position,
                        Procs_kmer *procs) {
   unsigned char *m_fw, *m_bw;
   if (procs->kmersize < 4) {
@@ -397,17 +397,14 @@ static int compact_kmer(const unsigned char *sequence, uint64_t position,
         m_fw[idx] |= fw2[sequence[b++]];
         break;
       default:
-         printf("ERROR\n");
-         return 0;
+        fprintf(stderr, "hangingBases = %d \n", procs->hangingBases);
+        fprintf(stderr, "hangingBases can only be: 0,1,2,3.\n");
+        fprintf(stderr, "Exiting program.\n");
+        fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+        exit(EXIT_FAILURE);
+        return 0;
     }
     if ((m_fw[idx] == 0xFF)) {
-      alloc_mem -= (procs -> kmersizeBytes)*sizeof(unsigned char);
-      free(m_fw);
-      fprintf(stderr, "hangingBases = %d \n", procs->hangingBases);
-      fprintf(stderr, "hangingBases can only be: 0,1,2,3.\n");
-      fprintf(stderr, "Exiting program.\n");
-      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
-      exit(EXIT_FAILURE);
       // discards kmers with N's
       free(m_fw);
       alloc_mem -= (procs -> kmersizeBytes)*sizeof(unsigned char);
@@ -425,7 +422,7 @@ static int compact_kmer(const unsigned char *sequence, uint64_t position,
  *
  * The hash values are computed using the CityHash64 hash functions.
  * */
-static void multiHash(Procs_kmer* procs) {
+void multiHash(Procs_kmer* procs) {
   int i;
   for (i=0; i < procs->hashNum; i++) {
      procs -> hashValues[i] = CityHash64WithSeed((const char *)procs->compact,
@@ -446,7 +443,7 @@ static void multiHash(Procs_kmer* procs) {
  * - the bit in position modValue of the filter is set to 1.
  *
  * */
-static bool insert_and_fetch(Bfilter *ptr_bf, Procs_kmer* procs) {
+bool insert_and_fetch(Bfilter *ptr_bf, Procs_kmer* procs) {
   bool result = true;
   int i = 0;
   uint64_t modValue;
@@ -466,7 +463,7 @@ static bool insert_and_fetch(Bfilter *ptr_bf, Procs_kmer* procs) {
  * @return true if all corresponding bits were set to 1 in the filter
  *
  * */
-static bool contains(Bfilter *ptr_bf, Procs_kmer* procs) {
+bool contains(Bfilter *ptr_bf, Procs_kmer* procs) {
   int i = 0;
   uint64_t modValue;
   // iterates through hashed values and check whether they are in the filter
@@ -491,26 +488,14 @@ static bool contains(Bfilter *ptr_bf, Procs_kmer* procs) {
 double score_read_in_filter(unsigned char *read, int L, Procs_kmer *procs,
                         Bfilter *ptr_bf) {
   int position;
-  int maxN = L - ptr_bf -> kmersize + 1;
+  int maxN = L - ptr_bf->kmersize + 1;
   double score = 0;
-  int stretch = 0;
   for (position = 0; position <  maxN; position++) {
     if (compact_kmer(read, position, procs)) {
        multiHash(procs);
        if (contains(ptr_bf, procs)) {
-         // patch for biobloom
-         // if (stretch == 0)
-         //    score+=0.5;
-         // else
-         //    score+=1;
-         // printf("Contained: position: %d \n",position);
-          stretch++;
-          score += 1 - 1.0/(2*stretch);
-       } else {
-          stretch = 0;
-       }
-    } else {
-      stretch = 0;
+          score += 1.0;
+       } 
     }
   }
   return score/maxN;
