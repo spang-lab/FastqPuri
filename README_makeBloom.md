@@ -179,10 +179,10 @@ In the figures below, we can see both the optimal number of bits
 per element and the optimal number of hash functions as a function 
 of the false positive rate. 
 
-<center>
-![false discovery rate](./pics/bloomfilter.png)
-</center>
 
+<p align="center">
+<img src=./pics/bloomfilter.png alt="noimage" title="FDR plots">
+</p>
 As an example, let's assume we want to look for contaminations in a
 genome `~3GB` and want to keep the false positive rate by `2%`. Then,
 we will need a filter of `~3.05GB`. 
