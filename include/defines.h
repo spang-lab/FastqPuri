@@ -29,52 +29,52 @@
 #ifndef DEFINES_H_
 #define DEFINES_H_
 
-// General 
+// General
 #define B_LEN 131072  /**< buffer size */
 #define MAX_FILENAME 300 /**< Maximum # chars in a filename */
-#define bool short  /**< define a bool type */
+#define bool int16_t  /**< define a bool type */
 #define true 1   /**< assign true to 1 */
 #define false 0  /**< assign false to 0 */
 
 #ifndef max
-   #define max( a, b ) ( ((a) > (b)) ? (a) : (b) ) /**< max function */
+  #define max(a, b) (((a) > (b)) ? (a) : (b)) /**< max function */
 #endif
 
 #ifndef min
-   #define min( a, b ) ( ((a) < (b)) ? (a) : (b) ) /**< min function */
+  #define min(a, b) (((a) < (b)) ? (a) : (b)) /**< min function */
 #endif
 
 #ifndef mem_usageMB
-   #define mem_usageMB()  fprintf(stderr, \
+  #define mem_usageMB()  fprintf(stderr, \
          "- Current allocated memory: %ld MB.\n", \
          alloc_mem >> 20)  /**< returns allocated memory in MB */
 #endif
 
 #ifndef mem_usage
-   #define mem_usage()  fprintf(stderr, \
+  #define mem_usage()  fprintf(stderr, \
          "- Current allocated memory: %ld Bytes.\n", \
          alloc_mem) /**< returns allocated memory in Bytes */
 #endif
 
 
 // Q_report, S_report
-#define DEFAULT_MINQ 27   /**< Minimum quality threshold */ 
-#define DEFAULT_NTILES 96 /**< Default number of tiles */ 
-#define DEFAULT_NQ 46 /**< Default number of different quality values */ 
-#define ZEROQ 33 /**< ASCII code of lowest quality value (!) */ 
-#define N_ACGT 5 /**< Number of different nucleotides in the fq file */ 
+#define DEFAULT_MINQ 27   /**< Minimum quality threshold */
+#define DEFAULT_NTILES 96 /**< Default number of tiles */
+#define DEFAULT_NQ 46 /**< Default number of different quality values */
+#define ZEROQ 33 /**< ASCII code of lowest quality value (!) */
+#define N_ACGT 5 /**< Number of different nucleotides in the fq file */
 #define MAX_RCOMMAND  4000 /**< Maximum # chars in R command*/
 
 
 // Fasta files
 #define FA_ENTRY_BUF 20 /**< buffer for fasta entries*/
 
-// Tree 
+// Tree
 #define T_ACGT 4 /**< Number of children per node in tree*/
 #define NPOOL_1D 1048576 /**< Number of Node structs allocated in inner dim */
 #define NPOOL_2D 16  /**< Number of *Node allocated in outer dim */
 #define MAX_FASZ_TREE 1e7 /**< Maximum fasta size for constructing a tree.
-                               DECIDE A SENSIBLE SIZE! */
+                               DECIDE A SENSIBLE SIZE */
 // BloomFilter
 #define BITSPERCHAR 8  /**< number of bits in a char */
 #define BASESPERCHAR 4  /**< number of nucleotides that can fit in a char */
@@ -90,9 +90,9 @@
 #define STRIP 3     /**< Looks for the largest N-free sequence */
 // trimQ only
 #define FRAC  3     /**< Discards a read if it contains > percent lowQ bases*/
-#define ENDSFRAC 4  /**< trims at the ends and discards a read if the 
+#define ENDSFRAC 4  /**< trims at the ends and discards a read if the
                       remaining part has more than > percent lowQ bases */
-#define GLOBAL 5    /**< Trims a fixed # bases from e left and right*/    
+#define GLOBAL 5    /**< Trims a fixed # bases from e left and right*/
 
 #define TREE 1   /**< Use a tree to look for contaminations*/
 #define SA 2     /**< Use a suffix array to look for contaminations*/
@@ -100,7 +100,7 @@
 
 #define ERROR 1000 /**< Encodes an error when reading in trimN, trimQ, method
                      options in trimFilter */
-#define DEFAULT_MINL 25 /**< Default minimum length under which we discard 
+#define DEFAULT_MINL 25 /**< Default minimum length under which we discard
                           the reads */
 
 // Classification of filters
@@ -110,8 +110,8 @@
 #define NNNN 3 /**<  N's presence filter */
 #define GOOD 4 /**<  Good reads */
 
-//Number of filters
-#define NFILTERS 4 /**< total number of filters */ 
+// Number of filters
+#define NFILTERS 4 /**< total number of filters */
 
 #endif // endif DEFINES_H_
 

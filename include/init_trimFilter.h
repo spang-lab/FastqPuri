@@ -30,8 +30,8 @@
 #ifndef INIT_TRIMFILTER_H_
 #define INIT_TRIMFILTER_H_
 
+#include <uintstd.h>
 #include "defines.h"
-
 
 /**
  * @ brief adapter struct

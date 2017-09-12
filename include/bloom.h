@@ -54,6 +54,21 @@ typedef struct _bfilter {
   unsigned char *filter; /**< filter sequence*/
 } Bfilter;
 
+
+/**
+ * @brief global parameters needed for the processed reads
+ *
+ * */
+typedef struct _bloom_par {
+  int kmersize;  /**< kmer size (number of elements)*/
+  int hashNum;  /**< number of hash functions used to construct the filter*/
+  int kmersizeBytes;  /**< Bytes needed to store the kmer (4bases ~ 1byte) */
+  int halfsizeBytes;  /**< half size in bytes(needed to decide whether
+                           to store a kmer or its reverse complement) */
+  int hangingBases;  /**< number of hanging bases that don't complete a byte*/
+  int hasOverhead;  /**< kmer has overhead when kmersize % 4!=0 */
+} Bloom_par;
+
 /**
  * @brief stores a processed kmer (2 bits pro nucleotide)
  *
@@ -76,6 +91,8 @@ Bfilter *init_Bfilter(int kmersize, uint64_t bfsizeBits, int hashNum,
                       double falsePosRate, uint64_t nelem);
 
 void free_Bfilter(Bfilter *ptr_bf);
+
+Procs_kmer *init_procs(int kmersize, int hashNum);
 
 Procs_kmer *init_procs(int kmersize, int hashNum);
 

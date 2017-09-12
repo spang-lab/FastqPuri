@@ -139,6 +139,30 @@ void free_Bfilter(Bfilter * ptr_bf) {
   alloc_mem -= ptr_bf -> bfsizeBytes;
 }
 
+/** 
+ * @brief initializes bloom parameters
+ * @param kmersize number of elements of the kmer
+ * @param hashNum number of hash functions to be computed
+ * @return Bloom_par structure
+ *
+ * */
+Bloom_par init_bloom_par(int kmersize, int hashNum) {
+  Bloom_par res; 
+  res.kmersizeBytes = kmersize / 4;
+  res.halfsizeBytes = kmersize / 8;
+  res.hangingBases = 0;
+  res.hasOverhead = 0;
+  res.hashNum = hashNum;
+  if (kmersize % 8 != 0) {
+      res.halfsizeBytes++;
+      if ((res.hangingBases = kmersize % 4) > 0) {
+            res.kmersizeBytes++;
+            res.hasOverhead = 1;
+      }
+  }
+  return res; 
+}
+
 /**
  * @brief initializes a Procs structure, given the kmersize and the
  *        number of hash functions
@@ -448,7 +472,7 @@ bool insert_and_fetch(Bfilter *ptr_bf, Procs_kmer* procs) {
   int i = 0;
   uint64_t modValue;
   // iterates through hashed values adding it to the filter
-  for (i = 0; i < procs -> hashNum; i++) {
+  for (i = 0; i < ptr_bf -> hashNum; i++) {
      modValue = (procs -> hashValues[i]) % (ptr_bf -> bfsizeBits);
      result &= ((__sync_fetch_and_or(&(ptr_bf->filter[modValue/BITSPERCHAR]),
            bitMask[modValue % BITSPERCHAR]))>>(modValue % BITSPERCHAR)) & 1;
