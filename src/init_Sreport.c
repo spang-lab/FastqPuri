@@ -48,7 +48,7 @@ void printHelpDialog_Sreport() {
      " -h Prints help dialog.\n"
      " -i Input folder containing *bin data (output from Qreport)."
      " Mandatory option.\n"
-     " -t {Q,F} Type of report to be generated: 'Q' for quality summary \n" 
+     " -t {Q,F} Type of report to be generated: 'Q' for quality summary \n"
      "    report, 'F' for filter summary report. Mandatory option,\n"
      " -o Output file (with NO extension). Mandatory option.\n\n";
   fprintf(stderr, "%s", dialog);
@@ -80,11 +80,11 @@ void getarg_Sreport(int argc, char **argv) {
       case 'i':
         par_SR.inputfolder = optarg;
         break;
-      case 't': 
+      case 't':
         if (!strncmp(optarg, "Q", 1)) {
-          par_SR.Rmd_file = RMD_SUMMARY_REPORT; 
+          par_SR.Rmd_file = RMD_SUMMARY_REPORT;
         } else if (!strncmp(optarg, "F", 1)) {
-          par_SR.Rmd_file = RMD_SUMMARY_FILTER_REPORT; 
+          par_SR.Rmd_file = RMD_SUMMARY_FILTER_REPORT;
         }
         break;
       case 'o':

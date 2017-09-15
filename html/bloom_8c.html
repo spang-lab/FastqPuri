@@ -116,28 +116,25 @@ Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bloom_8c.html#a2cd02061aef113067b7cb701b399f502">free_Bfilter</a> (<a class="el" href="bloom_8h.html#a6cb32cf059e8f4efd1ef80938d982836">Bfilter</a> *ptr_bf)</td></tr>
 <tr class="memdesc:a2cd02061aef113067b7cb701b399f502"><td class="mdescLeft">&#160;</td><td class="mdescRight">free Bfilter memory <br /></td></tr>
 <tr class="separator:a2cd02061aef113067b7cb701b399f502"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad66c3b4f481734a97142bc82e9367e12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="bloom_8h.html#a63b80bbec6bbee66eb6797f5312dde6e">Procs_kmer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bloom_8c.html#ad66c3b4f481734a97142bc82e9367e12">init_procs</a> (int kmersize, int hashNum)</td></tr>
-<tr class="memdesc:ad66c3b4f481734a97142bc82e9367e12"><td class="mdescLeft">&#160;</td><td class="mdescRight">initializes a Procs structure, given the kmersize and the number of hash functions  <a href="#ad66c3b4f481734a97142bc82e9367e12">More...</a><br /></td></tr>
-<tr class="separator:ad66c3b4f481734a97142bc82e9367e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7efd5817adc624dcbc27953723c3438"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac7efd5817adc624dcbc27953723c3438"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bloom_8c.html#ac7efd5817adc624dcbc27953723c3438">free_procs</a> (<a class="el" href="bloom_8h.html#a63b80bbec6bbee66eb6797f5312dde6e">Procs_kmer</a> *procs)</td></tr>
-<tr class="memdesc:ac7efd5817adc624dcbc27953723c3438"><td class="mdescLeft">&#160;</td><td class="mdescRight">free Procs_kmer <br /></td></tr>
-<tr class="separator:ac7efd5817adc624dcbc27953723c3438"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ed6e1d9ecfa43cd2db8e886afcf5bf7"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bloom_8c.html#a8ed6e1d9ecfa43cd2db8e886afcf5bf7">compact_kmer</a> (const unsigned char *sequence, uint64_t position, <a class="el" href="bloom_8h.html#a63b80bbec6bbee66eb6797f5312dde6e">Procs_kmer</a> *procs)</td></tr>
-<tr class="memdesc:a8ed6e1d9ecfa43cd2db8e886afcf5bf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">compactifies a kmer for insertion in the bloomfilter  <a href="#a8ed6e1d9ecfa43cd2db8e886afcf5bf7">More...</a><br /></td></tr>
-<tr class="separator:a8ed6e1d9ecfa43cd2db8e886afcf5bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc43e1822fb78a03c9a7ec8a6003873a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bloom_8c.html#acc43e1822fb78a03c9a7ec8a6003873a">multiHash</a> (<a class="el" href="bloom_8h.html#a63b80bbec6bbee66eb6797f5312dde6e">Procs_kmer</a> *procs)</td></tr>
-<tr class="memdesc:acc43e1822fb78a03c9a7ec8a6003873a"><td class="mdescLeft">&#160;</td><td class="mdescRight">obtains the hashNum hashvalues for a compactified kmer  <a href="#acc43e1822fb78a03c9a7ec8a6003873a">More...</a><br /></td></tr>
-<tr class="separator:acc43e1822fb78a03c9a7ec8a6003873a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a138a49ea65d427c5ff0f06135d607441"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="defines_8h.html#abb452686968e48b67397da5f97445f5b">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bloom_8c.html#a138a49ea65d427c5ff0f06135d607441">insert_and_fetch</a> (<a class="el" href="bloom_8h.html#a6cb32cf059e8f4efd1ef80938d982836">Bfilter</a> *ptr_bf, <a class="el" href="bloom_8h.html#a63b80bbec6bbee66eb6797f5312dde6e">Procs_kmer</a> *procs)</td></tr>
-<tr class="memdesc:a138a49ea65d427c5ff0f06135d607441"><td class="mdescLeft">&#160;</td><td class="mdescRight">inserts the hashvalues of a kmer in filter  <a href="#a138a49ea65d427c5ff0f06135d607441">More...</a><br /></td></tr>
-<tr class="separator:a138a49ea65d427c5ff0f06135d607441"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa04cb6f3c02d2ffbf4d5d5687c9ae1ad"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="defines_8h.html#abb452686968e48b67397da5f97445f5b">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bloom_8c.html#aa04cb6f3c02d2ffbf4d5d5687c9ae1ad">contains</a> (<a class="el" href="bloom_8h.html#a6cb32cf059e8f4efd1ef80938d982836">Bfilter</a> *ptr_bf, <a class="el" href="bloom_8h.html#a63b80bbec6bbee66eb6797f5312dde6e">Procs_kmer</a> *procs)</td></tr>
-<tr class="memdesc:aa04cb6f3c02d2ffbf4d5d5687c9ae1ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if kmer is contained in the filter  <a href="#aa04cb6f3c02d2ffbf4d5d5687c9ae1ad">More...</a><br /></td></tr>
-<tr class="separator:aa04cb6f3c02d2ffbf4d5d5687c9ae1ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27438437e9301393d2671645c7ed52eb"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bloom_8c.html#a27438437e9301393d2671645c7ed52eb">score_read_in_filter</a> (unsigned char *read, int L, <a class="el" href="bloom_8h.html#a63b80bbec6bbee66eb6797f5312dde6e">Procs_kmer</a> *procs, <a class="el" href="bloom_8h.html#a6cb32cf059e8f4efd1ef80938d982836">Bfilter</a> *ptr_bf)</td></tr>
-<tr class="memdesc:a27438437e9301393d2671645c7ed52eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">computes a score for a read being in the bloom filter  <a href="#a27438437e9301393d2671645c7ed52eb">More...</a><br /></td></tr>
-<tr class="separator:a27438437e9301393d2671645c7ed52eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a880cf4acfc80f5a7520b13ef5e06771e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="bloom_8h.html#a4bf3f34a321ce545e533d29ce363f569">Bfkmer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bloom_8c.html#a880cf4acfc80f5a7520b13ef5e06771e">init_Bfkmer</a> (int kmersize, int hashNum)</td></tr>
+<tr class="memdesc:a880cf4acfc80f5a7520b13ef5e06771e"><td class="mdescLeft">&#160;</td><td class="mdescRight">initializes a Bfkmer structure, given the kmersize and the number of hash functions  <a href="#a880cf4acfc80f5a7520b13ef5e06771e">More...</a><br /></td></tr>
+<tr class="separator:a880cf4acfc80f5a7520b13ef5e06771e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2f9894d5e5efcc9d2cb1c0cbba4aef1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac2f9894d5e5efcc9d2cb1c0cbba4aef1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bloom_8c.html#ac2f9894d5e5efcc9d2cb1c0cbba4aef1">free_Bfkmer</a> (<a class="el" href="bloom_8h.html#a4bf3f34a321ce545e533d29ce363f569">Bfkmer</a> *ptr_bfkmer)</td></tr>
+<tr class="memdesc:ac2f9894d5e5efcc9d2cb1c0cbba4aef1"><td class="mdescLeft">&#160;</td><td class="mdescRight">free Bfkmer <br /></td></tr>
+<tr class="separator:ac2f9894d5e5efcc9d2cb1c0cbba4aef1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9def2eeca4fab1422ae398b15260398"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bloom_8c.html#ac9def2eeca4fab1422ae398b15260398">compact_kmer</a> (const unsigned char *sequence, uint64_t position, <a class="el" href="bloom_8h.html#a4bf3f34a321ce545e533d29ce363f569">Bfkmer</a> *ptr_bfkmer)</td></tr>
+<tr class="memdesc:ac9def2eeca4fab1422ae398b15260398"><td class="mdescLeft">&#160;</td><td class="mdescRight">compactifies a kmer for insertion in the bloomfilter  <a href="#ac9def2eeca4fab1422ae398b15260398">More...</a><br /></td></tr>
+<tr class="separator:ac9def2eeca4fab1422ae398b15260398"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f4db9f997a1201561fea5f01df997a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bloom_8c.html#a4f4db9f997a1201561fea5f01df997a8">multiHash</a> (<a class="el" href="bloom_8h.html#a4bf3f34a321ce545e533d29ce363f569">Bfkmer</a> *ptr_bfkmer)</td></tr>
+<tr class="memdesc:a4f4db9f997a1201561fea5f01df997a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">obtains the hashNum hashvalues for a compactified kmer  <a href="#a4f4db9f997a1201561fea5f01df997a8">More...</a><br /></td></tr>
+<tr class="separator:a4f4db9f997a1201561fea5f01df997a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80545f536f97a769a0c10cb437a83695"><td class="memItemLeft" align="right" valign="top"><a class="el" href="defines_8h.html#abb452686968e48b67397da5f97445f5b">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bloom_8c.html#a80545f536f97a769a0c10cb437a83695">insert_and_fetch</a> (<a class="el" href="bloom_8h.html#a6cb32cf059e8f4efd1ef80938d982836">Bfilter</a> *ptr_bf, <a class="el" href="bloom_8h.html#a4bf3f34a321ce545e533d29ce363f569">Bfkmer</a> *ptr_bfkmer)</td></tr>
+<tr class="memdesc:a80545f536f97a769a0c10cb437a83695"><td class="mdescLeft">&#160;</td><td class="mdescRight">inserts the hashvalues of a kmer in filter  <a href="#a80545f536f97a769a0c10cb437a83695">More...</a><br /></td></tr>
+<tr class="separator:a80545f536f97a769a0c10cb437a83695"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab19bebeff1057ce39ef079d013421bb7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="defines_8h.html#abb452686968e48b67397da5f97445f5b">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bloom_8c.html#ab19bebeff1057ce39ef079d013421bb7">contains</a> (<a class="el" href="bloom_8h.html#a6cb32cf059e8f4efd1ef80938d982836">Bfilter</a> *ptr_bf, <a class="el" href="bloom_8h.html#a4bf3f34a321ce545e533d29ce363f569">Bfkmer</a> *ptr_bfkmer)</td></tr>
+<tr class="memdesc:ab19bebeff1057ce39ef079d013421bb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if kmer is contained in the filter  <a href="#ab19bebeff1057ce39ef079d013421bb7">More...</a><br /></td></tr>
+<tr class="separator:ab19bebeff1057ce39ef079d013421bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6e5788b92c0547d77425847d413851f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="bloom_8h.html#a6cb32cf059e8f4efd1ef80938d982836">Bfilter</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bloom_8c.html#ad6e5788b92c0547d77425847d413851f">create_Bfilter</a> (<a class="el" href="fa__read_8h.html#a797328b16bc1c1088998cd164aafb09d">Fa_data</a> *ptr_fasta, int kmersize, uint64_t bfsizeBits, int hashNum, double falsePosRate, uint64_t nelem)</td></tr>
 <tr class="memdesc:ad6e5788b92c0547d77425847d413851f"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a bloom filter from a fasta structure.  <a href="#ad6e5788b92c0547d77425847d413851f">More...</a><br /></td></tr>
 <tr class="separator:ad6e5788b92c0547d77425847d413851f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,15 +180,12 @@ static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bw3</b> [25
 <dl class="section author"><dt>Author</dt><dd>Paula Perez <a href="#" onclick="location.href='mai'+'lto:'+'pau'+'la'+'per'+'ez'+'rub'+'io'+'@gm'+'ai'+'l.c'+'om'; return false;">paula<span style="display: none;">.nosp@m.</span>pere<span style="display: none;">.nosp@m.</span>zrubi<span style="display: none;">.nosp@m.</span>o@gm<span style="display: none;">.nosp@m.</span>ail.c<span style="display: none;">.nosp@m.</span>om</a> </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>04.09.2017 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a8ed6e1d9ecfa43cd2db8e886afcf5bf7"></a>
+<a class="anchor" id="ac9def2eeca4fab1422ae398b15260398"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static int compact_kmer </td>
+          <td class="memname">int compact_kmer </td>
           <td>(</td>
           <td class="paramtype">const unsigned char *&#160;</td>
           <td class="paramname"><em>sequence</em>, </td>
@@ -205,8 +199,8 @@ static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bw3</b> [25
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="bloom_8h.html#a63b80bbec6bbee66eb6797f5312dde6e">Procs_kmer</a> *&#160;</td>
-          <td class="paramname"><em>procs</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="bloom_8h.html#a4bf3f34a321ce545e533d29ce363f569">Bfkmer</a> *&#160;</td>
+          <td class="paramname"><em>ptr_bfkmer</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -214,11 +208,6 @@ static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bw3</b> [25
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>compactifies a kmer for insertion in the bloomfilter </p>
@@ -226,7 +215,7 @@ static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bw3</b> [25
   <table class="params">
     <tr><td class="paramname">sequence</td><td>unsigned char DNA sequence (or cDNA) </td></tr>
     <tr><td class="paramname">position</td><td>position in the sequence where the kmer starts </td></tr>
-    <tr><td class="paramname">procs</td><td>initialized Procs_kmer</td></tr>
+    <tr><td class="paramname">ptr_bfkmer</td><td>initialized Bfkmer</td></tr>
   </table>
   </dd>
 </dl>
@@ -252,15 +241,12 @@ static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bw3</b> [25
 
 </div>
 </div>
-<a class="anchor" id="aa04cb6f3c02d2ffbf4d5d5687c9ae1ad"></a>
+<a class="anchor" id="ab19bebeff1057ce39ef079d013421bb7"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="defines_8h.html#abb452686968e48b67397da5f97445f5b">bool</a> contains </td>
+          <td class="memname"><a class="el" href="defines_8h.html#abb452686968e48b67397da5f97445f5b">bool</a> contains </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="bloom_8h.html#a6cb32cf059e8f4efd1ef80938d982836">Bfilter</a> *&#160;</td>
           <td class="paramname"><em>ptr_bf</em>, </td>
@@ -268,8 +254,8 @@ static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bw3</b> [25
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="bloom_8h.html#a63b80bbec6bbee66eb6797f5312dde6e">Procs_kmer</a> *&#160;</td>
-          <td class="paramname"><em>procs</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="bloom_8h.html#a4bf3f34a321ce545e533d29ce363f569">Bfkmer</a> *&#160;</td>
+          <td class="paramname"><em>ptr_bfkmer</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -277,18 +263,13 @@ static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bw3</b> [25
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>check if kmer is contained in the filter </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ptr_bf</td><td>pointer to a Bfilter structure, where a bloomfilter is stored </td></tr>
-    <tr><td class="paramname">procs</td><td>pointer to a Procs_kmer structure containing the hash values </td></tr>
+    <tr><td class="paramname">ptr_bfkmer</td><td>pointer to a Bfkmer structure containing the hash values </td></tr>
   </table>
   </dd>
 </dl>
@@ -418,6 +399,43 @@ static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bw3</b> [25
 
 </div>
 </div>
+<a class="anchor" id="a880cf4acfc80f5a7520b13ef5e06771e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="bloom_8h.html#a4bf3f34a321ce545e533d29ce363f569">Bfkmer</a>* init_Bfkmer </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>kmersize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>hashNum</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initializes a Bfkmer structure, given the kmersize and the number of hash functions </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kmersize</td><td>number of elements of the kmer </td></tr>
+    <tr><td class="paramname">hashNum</td><td>number of hash functions to be computed </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pointer to a Bfkmer structure</dd></dl>
+<p>kmersizeBytes, halfsizeBytes, hangingBases, hasOverhead hashNum are assigned and memory is allocated and set to 0 for compact and hashValues </p>
+
+</div>
+</div>
 <a class="anchor" id="a0cc73db1215bac578f7d6e8df02d9768"></a>
 <div class="memitem">
 <div class="memproto">
@@ -449,52 +467,12 @@ static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bw3</b> [25
 
 </div>
 </div>
-<a class="anchor" id="ad66c3b4f481734a97142bc82e9367e12"></a>
+<a class="anchor" id="a80545f536f97a769a0c10cb437a83695"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="bloom_8h.html#a63b80bbec6bbee66eb6797f5312dde6e">Procs_kmer</a>* init_procs </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>kmersize</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>hashNum</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>initializes a Procs structure, given the kmersize and the number of hash functions </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">kmersize</td><td>number of elements of the kmer </td></tr>
-    <tr><td class="paramname">hashNum</td><td>number of hash functions to be computed </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>pointer to a Procs_kmer structure</dd></dl>
-<p>kmersizeBytes, halfsizeBytes, hangingBases, hasOverhead hashNum are assigned and memory is allocated and set to 0 for compact and hashValues </p>
-
-</div>
-</div>
-<a class="anchor" id="a138a49ea65d427c5ff0f06135d607441"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="defines_8h.html#abb452686968e48b67397da5f97445f5b">bool</a> insert_and_fetch </td>
+          <td class="memname"><a class="el" href="defines_8h.html#abb452686968e48b67397da5f97445f5b">bool</a> insert_and_fetch </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="bloom_8h.html#a6cb32cf059e8f4efd1ef80938d982836">Bfilter</a> *&#160;</td>
           <td class="paramname"><em>ptr_bf</em>, </td>
@@ -502,8 +480,8 @@ static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bw3</b> [25
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="bloom_8h.html#a63b80bbec6bbee66eb6797f5312dde6e">Procs_kmer</a> *&#160;</td>
-          <td class="paramname"><em>procs</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="bloom_8h.html#a4bf3f34a321ce545e533d29ce363f569">Bfkmer</a> *&#160;</td>
+          <td class="paramname"><em>ptr_bfkmer</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -511,18 +489,13 @@ static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bw3</b> [25
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>inserts the hashvalues of a kmer in filter </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ptr_bf</td><td>pointer to Bfilter structure, where we will include the new entry </td></tr>
-    <tr><td class="paramname">procs</td><td>pointer to Procs_kmer structure, where the hashvalues are stored </td></tr>
+    <tr><td class="paramname">ptr_bfkmer</td><td>pointer to Bfkmer structure, where the hashvalues are stored </td></tr>
   </table>
   </dd>
 </dl>
@@ -534,26 +507,18 @@ static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bw3</b> [25
 
 </div>
 </div>
-<a class="anchor" id="acc43e1822fb78a03c9a7ec8a6003873a"></a>
+<a class="anchor" id="a4f4db9f997a1201561fea5f01df997a8"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void multiHash </td>
+          <td class="memname">void multiHash </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="bloom_8h.html#a63b80bbec6bbee66eb6797f5312dde6e">Procs_kmer</a> *&#160;</td>
-          <td class="paramname"><em>procs</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="bloom_8h.html#a4bf3f34a321ce545e533d29ce363f569">Bfkmer</a> *&#160;</td>
+          <td class="paramname"><em>ptr_bfkmer</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>obtains the hashNum hashvalues for a compactified kmer </p>
@@ -646,55 +611,6 @@ static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bw3</b> [25
 
 </div>
 </div>
-<a class="anchor" id="a27438437e9301393d2671645c7ed52eb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double score_read_in_filter </td>
-          <td>(</td>
-          <td class="paramtype">unsigned char *&#160;</td>
-          <td class="paramname"><em>read</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>L</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="bloom_8h.html#a63b80bbec6bbee66eb6797f5312dde6e">Procs_kmer</a> *&#160;</td>
-          <td class="paramname"><em>procs</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="bloom_8h.html#a6cb32cf059e8f4efd1ef80938d982836">Bfilter</a> *&#160;</td>
-          <td class="paramname"><em>ptr_bf</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>computes a score for a read being in the bloom filter </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">read</td><td>sequence from fastq file </td></tr>
-    <tr><td class="paramname">L</td><td>sequence length </td></tr>
-    <tr><td class="paramname">procs</td><td>pointer to Procs structure </td></tr>
-    <tr><td class="paramname">ptr_bf</td><td>pointer to Bfilter The score is computed by ... DECIDE!!! </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a class="anchor" id="a1f18264718e0b1b1be5a1f0ee64431e4"></a>
 <div class="memitem">
@@ -713,7 +629,7 @@ static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>bw3</b> [25
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 8 2017 11:45:54 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 13 2017 12:43:32 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -34,11 +34,11 @@
  * @brief contains a splitted string and the number or splitted fields
  * */
 typedef struct _split {
-  int N;    /**< Number of substrings in which the string was splitted */ 
-  char **s; /**< Substring array containing the splitted substrings */  
-} Split; 
+  int N;    /**< Number of substrings in which the string was splitted */
+  char **s; /**< Substring array containing the splitted substrings */
+} Split;
 
-int strindex(char *s, char *t); 
+int strindex(char *s, char *t);
 
 int count_char(char *s, char c);
 

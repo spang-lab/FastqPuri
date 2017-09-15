@@ -75,7 +75,7 @@ int main(int argc, char *argv[]) {
   // all parameters
   fprintf(stderr, "* STEP 2: Setting parameters for the filter ... \n");
   par_MB.nelem = nkmers(ptr_fa, par_MB.kmersize);
-  
+
   if (fabs(par_MB.falsePosRate) > ZERO_POS_RATE) {
       par_MB.bfsizeBits = (uint64_t)(-log(1.0* par_MB.falsePosRate)
                                      /log(2.0)/log(2.0)*par_MB.nelem);
@@ -86,8 +86,8 @@ int main(int argc, char *argv[]) {
       par_MB.bfsizeBits -= par_MB.bfsizeBits  % BITSPERCHAR;
       par_MB.falsePosRate = (exp(- log(2.0) * par_MB.hashNum));
   } else if (par_MB.bfsizeBits) {
-      par_MB.bfsizeBits -= par_MB.bfsizeBits  % BITSPERCHAR; 
-      par_MB.hashNum = (int) ( par_MB.bfsizeBits * log(2.0) / par_MB.nelem );
+      par_MB.bfsizeBits -= par_MB.bfsizeBits  % BITSPERCHAR;
+      par_MB.hashNum = (int) (par_MB.bfsizeBits * log(2.0) / par_MB.nelem);
       par_MB.falsePosRate = exp(-log(2.0) * par_MB.hashNum);
   } else {
      fprintf(stderr, "Neither falsePosRate, nor hashNum, bfsizeBits found\n");

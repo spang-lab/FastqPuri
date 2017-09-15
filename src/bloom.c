@@ -139,76 +139,53 @@ void free_Bfilter(Bfilter * ptr_bf) {
   alloc_mem -= ptr_bf -> bfsizeBytes;
 }
 
-/** 
- * @brief initializes bloom parameters
- * @param kmersize number of elements of the kmer
- * @param hashNum number of hash functions to be computed
- * @return Bloom_par structure
- *
- * */
-Bloom_par init_bloom_par(int kmersize, int hashNum) {
-  Bloom_par res; 
-  res.kmersizeBytes = kmersize / 4;
-  res.halfsizeBytes = kmersize / 8;
-  res.hangingBases = 0;
-  res.hasOverhead = 0;
-  res.hashNum = hashNum;
-  if (kmersize % 8 != 0) {
-      res.halfsizeBytes++;
-      if ((res.hangingBases = kmersize % 4) > 0) {
-            res.kmersizeBytes++;
-            res.hasOverhead = 1;
-      }
-  }
-  return res; 
-}
 
 /**
- * @brief initializes a Procs structure, given the kmersize and the
+ * @brief initializes a Bfkmer structure, given the kmersize and the
  *        number of hash functions
  * @param kmersize number of elements of the kmer
  * @param hashNum number of hash functions to be computed
- * @return pointer to a Procs_kmer structure
+ * @return pointer to a Bfkmer structure
  *
  *  kmersizeBytes, halfsizeBytes, hangingBases, hasOverhead hashNum are assigned
  *  and memory is allocated and set to 0 for compact and hashValues
  * */
-Procs_kmer *init_procs(int kmersize, int hashNum) {
-  Procs_kmer *procs = malloc(sizeof(Procs_kmer));
-  procs -> kmersize = kmersize;
-  procs -> kmersizeBytes = kmersize / 4;
-  procs -> halfsizeBytes = kmersize / 8;
-  procs -> hangingBases = 0;
-  procs -> hasOverhead = 0;
-  procs -> hashNum = hashNum;
+Bfkmer *init_Bfkmer(int kmersize, int hashNum) {
+  Bfkmer *ptr_bfkmer = malloc(sizeof(Bfkmer));
+  ptr_bfkmer -> kmersize = kmersize;
+  ptr_bfkmer -> kmersizeBytes = kmersize / 4;
+  ptr_bfkmer -> halfsizeBytes = kmersize / 8;
+  ptr_bfkmer -> hangingBases = 0;
+  ptr_bfkmer -> hasOverhead = 0;
+  ptr_bfkmer -> hashNum = hashNum;
   if (kmersize % 8 != 0) {
-      procs -> halfsizeBytes++;
-      if ((procs -> hangingBases = kmersize % 4) > 0) {
-            procs -> kmersizeBytes++;
-            procs -> hasOverhead = 1;
+      ptr_bfkmer -> halfsizeBytes++;
+      if ((ptr_bfkmer -> hangingBases = kmersize % 4) > 0) {
+            ptr_bfkmer -> kmersizeBytes++;
+            ptr_bfkmer -> hasOverhead = 1;
       }
   }
-  procs -> compact = (unsigned char *) calloc(procs -> kmersizeBytes,
+  ptr_bfkmer -> compact = (unsigned char *) calloc(ptr_bfkmer -> kmersizeBytes,
                                                sizeof(unsigned char));
-  procs -> hashValues = (uint64_t *) calloc(hashNum, sizeof(uint64_t));
-  return procs;
+  ptr_bfkmer -> hashValues = (uint64_t *) calloc(hashNum, sizeof(uint64_t));
+  return ptr_bfkmer;
 }
 
 /**
- * @brief free Procs_kmer
+ * @brief free Bfkmer
  * */
-void free_procs(Procs_kmer *procs) {
-  free(procs->compact);
-  free(procs->hashValues);
-  alloc_mem -= procs -> kmersizeBytes * sizeof(unsigned char);
-  alloc_mem -= procs -> hashNum * sizeof(uint64_t);
+void free_Bfkmer(Bfkmer *ptr_bfkmer) {
+  free(ptr_bfkmer->compact);
+  free(ptr_bfkmer->hashValues);
+  alloc_mem -= ptr_bfkmer -> kmersizeBytes * sizeof(unsigned char);
+  alloc_mem -= ptr_bfkmer -> hashNum * sizeof(uint64_t);
 }
 
 /**
  * @brief compactifies a kmer for insertion in the bloomfilter
  * @param sequence  unsigned char DNA sequence (or cDNA)
  * @param position position in the sequence where the kmer starts
- * @param procs initialized Procs_kmer
+ * @param ptr_bfkmer initialized Bfkmer
  *
  * The compactified sequence is computed in the following way:
  * - We start compactifying both, the forward and backward (reverse
@@ -239,27 +216,30 @@ void free_procs(Procs_kmer *procs) {
  *
  * */
 int compact_kmer(const unsigned char *sequence, uint64_t position,
-                       Procs_kmer *procs) {
+                       Bfkmer *ptr_bfkmer) {
   unsigned char *m_fw, *m_bw;
-  if (procs->kmersize < 4) {
+  if (ptr_bfkmer->kmersize < 4) {
     fprintf(stderr, "Kmer length has to be at least four.\n");
     fprintf(stderr, "Exiting program.\n");
     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
     exit(EXIT_FAILURE);
   }
-  m_fw = (unsigned char*)calloc(procs -> kmersizeBytes, sizeof(unsigned char));
-  m_bw = (unsigned char*)calloc(procs -> kmersizeBytes, sizeof(unsigned char));
+  m_fw = (unsigned char*)calloc(ptr_bfkmer -> kmersizeBytes,
+                                sizeof(unsigned char));
+  m_bw = (unsigned char*)calloc(ptr_bfkmer -> kmersizeBytes,
+                               sizeof(unsigned char));
   if (m_fw == NULL || m_bw ==  NULL) {
     fprintf(stderr, "Error when allocating memory for converting kmer.\n");
     fprintf(stderr, "Exiting program.\n");
     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
     exit(EXIT_FAILURE);
   }
-  alloc_mem += 2* (procs -> kmersizeBytes)*sizeof(unsigned char);
+  alloc_mem += 2* (ptr_bfkmer -> kmersizeBytes)*sizeof(unsigned char);
   int idx;  // indexes the compactified
   uint64_t b = position;  // position in sequence
-  uint64_t revb = position + procs->kmersize - 1;  // position in rev sequence
-  for (idx = 0 ; idx < procs -> halfsizeBytes; idx++) {
+  uint64_t revb = position +
+                  ptr_bfkmer->kmersize - 1;  // position in rev sequence
+  for (idx = 0 ; idx < ptr_bfkmer -> halfsizeBytes; idx++) {
     // Forward
     m_fw[idx] |= fw0[sequence[b++]];
     m_fw[idx] |= fw1[sequence[b++]];
@@ -267,7 +247,7 @@ int compact_kmer(const unsigned char *sequence, uint64_t position,
     if ((m_fw[idx] == 0xFF) || (fw3[sequence[b]] == 0xFF)) {
       // discards kmers with N's
       free(m_fw); free(m_bw);
-      alloc_mem -= 2* (procs -> kmersizeBytes)*sizeof(unsigned char);
+      alloc_mem -= 2* (ptr_bfkmer -> kmersizeBytes)*sizeof(unsigned char);
       return 0;
     }
     m_fw[idx] |= fw3[sequence[b++]];
@@ -279,7 +259,7 @@ int compact_kmer(const unsigned char *sequence, uint64_t position,
     if ((m_bw[idx] == 0xFF) || (bw3[sequence[revb]] == 0xFF)) {
       // discards kmers with N's
       free(m_fw); free(m_bw);
-      alloc_mem -= 2* (procs -> kmersizeBytes)*sizeof(unsigned char);
+      alloc_mem -= 2* (ptr_bfkmer -> kmersizeBytes)*sizeof(unsigned char);
       return 0;
     }
     m_bw[idx] |= bw3[sequence[revb--]];
@@ -287,22 +267,22 @@ int compact_kmer(const unsigned char *sequence, uint64_t position,
     // Check which one is lexicographically smaller
     if (m_fw[idx] < m_bw[idx]) {  // go on with forward
        free(m_bw);
-       alloc_mem -= (procs -> kmersizeBytes)*sizeof(unsigned char);
-       for (++idx; idx < (procs->kmersizeBytes-procs->hasOverhead); idx++) {
+       alloc_mem -= (ptr_bfkmer -> kmersizeBytes)*sizeof(unsigned char);
+       for (++idx; idx < (ptr_bfkmer->kmersizeBytes-ptr_bfkmer->hasOverhead);
+            idx++) {
          m_fw[idx] |= fw0[sequence[b++]];
          m_fw[idx] |= fw1[sequence[b++]];
          m_fw[idx] |= fw2[sequence[b++]];
          if ((m_fw[idx] == 0xFF) || (fw3[sequence[b]] == 0xFF)) {
-             ;// discards kmers with N's
+             // discards kmers with N's
              free(m_fw);
-             alloc_mem -= (procs->kmersizeBytes)*sizeof(unsigned char);
+             alloc_mem -= (ptr_bfkmer->kmersizeBytes)*sizeof(unsigned char);
              return 0;
          }
          m_fw[idx] |= fw3[sequence[b++]];
        }
-       if (procs -> hasOverhead) {
-         idx++;
-         switch (procs->hangingBases) {
+       if (ptr_bfkmer -> hasOverhead) {
+         switch (ptr_bfkmer->hangingBases) {
            case 1:
              m_fw[idx] |= fw0[sequence[b++]];
              break;
@@ -316,9 +296,9 @@ int compact_kmer(const unsigned char *sequence, uint64_t position,
              m_fw[idx] |= fw2[sequence[b++]];
              break;
            default:
-             alloc_mem -= (procs -> kmersizeBytes)*sizeof(unsigned char);
+             alloc_mem -= (ptr_bfkmer -> kmersizeBytes)*sizeof(unsigned char);
              free(m_fw);
-             fprintf(stderr, "hangingBases = %d \n", procs->hangingBases);
+             fprintf(stderr, "hangingBases = %d \n", ptr_bfkmer->hangingBases);
              fprintf(stderr, "hangingBases can only be: 0,1,2,3.\n");
              fprintf(stderr, "Exiting program.\n");
              fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
@@ -327,33 +307,33 @@ int compact_kmer(const unsigned char *sequence, uint64_t position,
          }
          if (m_fw[idx] == 0xFF) {
                // discards kmers with N's
-               alloc_mem -= (procs -> kmersizeBytes)*sizeof(unsigned char);
+               alloc_mem -= (ptr_bfkmer -> kmersizeBytes)*sizeof(unsigned char);
                free(m_fw);
                return 0;
          }
-       }  // endif (procs -> hasOverhead)
-       memcpy(procs -> compact, m_fw, procs->kmersizeBytes);
+       }  // endif (ptr_bfkmer -> hasOverhead)
+       memcpy(ptr_bfkmer -> compact, m_fw, ptr_bfkmer->kmersizeBytes);
        free(m_fw);
-       alloc_mem -= (procs -> kmersizeBytes)*sizeof(unsigned char);
+       alloc_mem -= (ptr_bfkmer -> kmersizeBytes)*sizeof(unsigned char);
        return 1;
     } else if (m_fw[idx] > m_bw[idx]) {  // go on with backward
        free(m_fw);
-       alloc_mem -= (procs -> kmersizeBytes)*sizeof(unsigned char);
-       for (++idx; idx < (procs->kmersizeBytes-procs -> hasOverhead); idx++) {
+       alloc_mem -= (ptr_bfkmer -> kmersizeBytes)*sizeof(unsigned char);
+       for (++idx; idx < (ptr_bfkmer->kmersizeBytes-ptr_bfkmer -> hasOverhead);
+            idx++) {
          m_bw[idx] |= bw0[sequence[revb--]];
          m_bw[idx] |= bw1[sequence[revb--]];
          m_bw[idx] |= bw2[sequence[revb--]];
          if ((m_bw[idx] == 0xFF) || (bw3[sequence[revb]] == 0xFF)) {
              // discards kmers with N's
              free(m_bw);
-             alloc_mem -= (procs -> kmersizeBytes)*sizeof(unsigned char);
+             alloc_mem -= (ptr_bfkmer -> kmersizeBytes)*sizeof(unsigned char);
              return 0;
          }
          m_bw[idx] |= bw3[sequence[revb--]];
        }
-       if (procs -> hasOverhead) {
-         idx++;
-         switch (procs->hangingBases) {
+       if (ptr_bfkmer -> hasOverhead) {
+         switch (ptr_bfkmer->hangingBases) {
            case 1:
              m_bw[idx] |= bw0[sequence[revb--]];
              break;
@@ -367,9 +347,9 @@ int compact_kmer(const unsigned char *sequence, uint64_t position,
              m_bw[idx] |= bw2[sequence[revb--]];
              break;
            default:
-             alloc_mem -= (procs -> kmersizeBytes)*sizeof(unsigned char);
+             alloc_mem -= (ptr_bfkmer -> kmersizeBytes)*sizeof(unsigned char);
              free(m_bw);
-             fprintf(stderr, "hangingBases = %d \n", procs->hangingBases);
+             fprintf(stderr, "hangingBases = %d \n", ptr_bfkmer->hangingBases);
              fprintf(stderr, "hangingBases can only be: 0,1,2,3.\n");
              fprintf(stderr, "Exiting program.\n");
              fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
@@ -379,35 +359,35 @@ int compact_kmer(const unsigned char *sequence, uint64_t position,
          if ((m_bw[idx] == 0xFF)) {
            // discards kmers with N's
            free(m_bw);
-           alloc_mem -= (procs -> kmersizeBytes)*sizeof(unsigned char);
+           alloc_mem -= (ptr_bfkmer -> kmersizeBytes)*sizeof(unsigned char);
            return 0;
          }
-       }  // endif procs -> has Overhead
-       memcpy(procs -> compact, m_bw, procs->kmersizeBytes);
+       }  // endif ptr_bfkmer -> has Overhead
+       memcpy(ptr_bfkmer -> compact, m_bw, ptr_bfkmer->kmersizeBytes);
        free(m_bw);
-       alloc_mem -= (procs -> kmersizeBytes)*sizeof(unsigned char);
+       alloc_mem -= (ptr_bfkmer -> kmersizeBytes)*sizeof(unsigned char);
        return 2;
     }
   }  // end for idx
   // If it is a palindrome go on with forward
   free(m_bw);
-  alloc_mem -= (procs -> kmersizeBytes)*sizeof(unsigned char);
-  for (++idx; idx < (procs -> kmersizeBytes - procs -> hasOverhead); idx++) {
+  alloc_mem -= (ptr_bfkmer -> kmersizeBytes)*sizeof(unsigned char);
+  for (++idx; idx < (ptr_bfkmer -> kmersizeBytes - ptr_bfkmer -> hasOverhead);
+       idx++) {
     m_fw[idx] |= fw0[sequence[b++]];
     m_fw[idx] |= fw1[sequence[b++]];
     m_fw[idx] |= fw2[sequence[b++]];
     if ((m_fw[idx] == 0xFF) || (fw3[sequence[b]] == 0xFF)) {
         // discards kmers with N's
         free(m_fw); free(m_bw);
-        alloc_mem -= 2 * (procs -> kmersizeBytes)*sizeof(unsigned char);
+        alloc_mem -= 2 * (ptr_bfkmer -> kmersizeBytes)*sizeof(unsigned char);
         return 0;
     }
     m_fw[idx] |= fw3[sequence[b++]];
   }  // for idx full bytes
   // finish last byte
-  if (procs -> hasOverhead) {
-    idx++;
-    switch (procs->hangingBases) {
+  if (ptr_bfkmer -> hasOverhead) {
+    switch (ptr_bfkmer->hangingBases) {
       case 1:
         m_fw[idx] |= fw0[sequence[b++]];
         break;
@@ -421,7 +401,7 @@ int compact_kmer(const unsigned char *sequence, uint64_t position,
         m_fw[idx] |= fw2[sequence[b++]];
         break;
       default:
-        fprintf(stderr, "hangingBases = %d \n", procs->hangingBases);
+        fprintf(stderr, "hangingBases = %d \n", ptr_bfkmer->hangingBases);
         fprintf(stderr, "hangingBases can only be: 0,1,2,3.\n");
         fprintf(stderr, "Exiting program.\n");
         fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
@@ -431,13 +411,13 @@ int compact_kmer(const unsigned char *sequence, uint64_t position,
     if ((m_fw[idx] == 0xFF)) {
       // discards kmers with N's
       free(m_fw);
-      alloc_mem -= (procs -> kmersizeBytes)*sizeof(unsigned char);
+      alloc_mem -= (ptr_bfkmer -> kmersizeBytes)*sizeof(unsigned char);
       return 0;
     }
   }  // end for idx
-  memcpy(procs -> compact, m_fw, procs->kmersizeBytes);
+  memcpy(ptr_bfkmer -> compact, m_fw, ptr_bfkmer->kmersizeBytes);
   free(m_fw);
-  alloc_mem -= (procs -> kmersizeBytes)*sizeof(unsigned char);
+  alloc_mem -= (ptr_bfkmer -> kmersizeBytes)*sizeof(unsigned char);
   return 3;
 }
 
@@ -446,11 +426,12 @@ int compact_kmer(const unsigned char *sequence, uint64_t position,
  *
  * The hash values are computed using the CityHash64 hash functions.
  * */
-void multiHash(Procs_kmer* procs) {
+void multiHash(Bfkmer* ptr_bfkmer) {
   int i;
-  for (i=0; i < procs->hashNum; i++) {
-     procs -> hashValues[i] = CityHash64WithSeed((const char *)procs->compact,
-         procs -> kmersizeBytes, i);
+  for (i=0; i < ptr_bfkmer->hashNum; i++) {
+     ptr_bfkmer -> hashValues[i] = CityHash64WithSeed(
+         (const char *)ptr_bfkmer->compact,
+         ptr_bfkmer -> kmersizeBytes, i);
   }
 }
 
@@ -458,7 +439,7 @@ void multiHash(Procs_kmer* procs) {
  * @brief inserts the hashvalues of a kmer in filter
  *
  * @param ptr_bf pointer to Bfilter structure, where we will include the new entry
- * @param procs pointer to Procs_kmer structure, where the hashvalues are stored
+ * @param ptr_bfkmer pointer to Bfkmer structure, where the hashvalues are stored
  * @return true if the positions of the hash values were already set to one
  *  previously.
  *
@@ -467,13 +448,13 @@ void multiHash(Procs_kmer* procs) {
  * - the bit in position modValue of the filter is set to 1.
  *
  * */
-bool insert_and_fetch(Bfilter *ptr_bf, Procs_kmer* procs) {
+bool insert_and_fetch(Bfilter *ptr_bf, Bfkmer* ptr_bfkmer) {
   bool result = true;
   int i = 0;
   uint64_t modValue;
   // iterates through hashed values adding it to the filter
   for (i = 0; i < ptr_bf -> hashNum; i++) {
-     modValue = (procs -> hashValues[i]) % (ptr_bf -> bfsizeBits);
+     modValue = (ptr_bfkmer -> hashValues[i]) % (ptr_bf -> bfsizeBits);
      result &= ((__sync_fetch_and_or(&(ptr_bf->filter[modValue/BITSPERCHAR]),
            bitMask[modValue % BITSPERCHAR]))>>(modValue % BITSPERCHAR)) & 1;
   }
@@ -483,46 +464,22 @@ bool insert_and_fetch(Bfilter *ptr_bf, Procs_kmer* procs) {
 /**
  * @brief check if kmer is contained in the filter
  * @param ptr_bf pointer to a Bfilter structure, where a bloomfilter is stored
- * @param procs pointer to a Procs_kmer structure containing the hash values
+ * @param ptr_bfkmer pointer to a Bfkmer structure containing the hash values
  * @return true if all corresponding bits were set to 1 in the filter
  *
  * */
-bool contains(Bfilter *ptr_bf, Procs_kmer* procs) {
+bool contains(Bfilter *ptr_bf, Bfkmer* ptr_bfkmer) {
   int i = 0;
   uint64_t modValue;
   // iterates through hashed values and check whether they are in the filter
-  for (i = 0; i < procs -> hashNum; i++) {
-     modValue = (procs -> hashValues[i]) % (ptr_bf -> bfsizeBits);
+  for (i = 0; i < ptr_bfkmer -> hashNum; i++) {
+     modValue = (ptr_bfkmer -> hashValues[i]) % (ptr_bf -> bfsizeBits);
      unsigned char bit = bitMask[modValue % BITSPERCHAR];
      if (((ptr_bf -> filter)[modValue / BITSPERCHAR] & bit) != bit) {
          return false;
      }
   }
   return true;
-}
-
-/**
- * @brief computes a score for a read being in the bloom filter
- * @param read sequence from fastq file
- * @param L sequence length
- * @param procs pointer to Procs structure
- * @param ptr_bf pointer to Bfilter
- * The score is computed by ... DECIDE!!!
- * */
-double score_read_in_filter(unsigned char *read, int L, Procs_kmer *procs,
-                        Bfilter *ptr_bf) {
-  int position;
-  int maxN = L - ptr_bf->kmersize + 1;
-  double score = 0;
-  for (position = 0; position <  maxN; position++) {
-    if (compact_kmer(read, position, procs)) {
-       multiHash(procs);
-       if (contains(ptr_bf, procs)) {
-          score += 1.0;
-       } 
-    }
-  }
-  return score/maxN;
 }
 
 /**
@@ -542,7 +499,7 @@ Bfilter *create_Bfilter(Fa_data *ptr_fasta, int kmersize, uint64_t bfsizeBits,
                                 falsePosRate, nelem);
   int i, isvalid;
   uint64_t maxN, position;
-  Procs_kmer *procs = init_procs(kmersize, hashNum);
+  Bfkmer *ptr_bfkmer = init_Bfkmer(kmersize, hashNum);
   fprintf(stderr, "Creating a bloomfilter.\n");
   fprintf(stderr, "- false positive rate: %f\n", falsePosRate);
   fprintf(stderr, "- kmersize: %d\n", kmersize);
@@ -550,13 +507,13 @@ Bfilter *create_Bfilter(Fa_data *ptr_fasta, int kmersize, uint64_t bfsizeBits,
   fprintf(stderr, "- number of hash functions used: %d\n", hashNum);
   fprintf(stderr, "- number of elements that will be inserted: %ld\n", nelem);
   for (i=0; i < ptr_fasta -> nentries; i++) {
-    maxN = ptr_fasta -> entry[i].N - kmersize;
+    maxN = ptr_fasta -> entry[i].N - kmersize + 1;
     for (position = 0; position < maxN; position++) {
       isvalid = compact_kmer((unsigned char *)(ptr_fasta -> entry[i].seq),
-                             position, procs);
+                             position, ptr_bfkmer);
       if (isvalid) {
-          multiHash(procs);
-          insert_and_fetch(ptr_bf, procs);
+          multiHash(ptr_bfkmer);
+          insert_and_fetch(ptr_bf, ptr_bfkmer);
       }
       if (!(position % (uint64_t)1e7)) {
         fprintf(stderr, "Covering fasta entry %d, position %ld\n",
@@ -564,7 +521,6 @@ Bfilter *create_Bfilter(Fa_data *ptr_fasta, int kmersize, uint64_t bfsizeBits,
       }
     }
   }
-  free_procs(procs);
   return ptr_bf;
 }
 
@@ -615,7 +571,8 @@ void save_Bfilter(Bfilter *ptr_bf, char *filterfile, char *paramfile) {
 
 /**
  * @brief reads a bloom filter from a file
- * @param inputfile path to input file
+ * @param filterfile path to file containing the filter
+ * @param paramfile path to file containing the filter
  * @return a pointer to a filter structure containing the bloomfilter
  *
  * This function reads two files, the auxiliar inputfile

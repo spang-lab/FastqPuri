@@ -294,12 +294,12 @@ uint64_t size_fasta(Fa_data *ptr_fa) {
  * */
 uint64_t nkmers(Fa_data *ptr_fa, int kmersize) {
   uint64_t n_kmers = 0;
-  int i;  
+  int i;
   for (i = 0; i < ptr_fa -> nentries; i++) {
-    n_kmers += ptr_fa -> entrylen[i] + kmersize - 1; 
-  } 
-  return n_kmers; 
-} 
+    n_kmers += ptr_fa -> entrylen[i] + kmersize - 1;
+  }
+  return n_kmers;
+}
 
 /**
  * @brief free fasta file

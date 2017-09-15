@@ -29,10 +29,10 @@
 #ifndef STATS_INFO_H_
 #define STATS_INFO_H_
 
-#include "fq_read.h"
-#include "defines.h"
 #include <stdint.h>
 #include <stdlib.h>
+#include "fq_read.h"
+#include "defines.h"
 
 
 /**

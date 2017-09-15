@@ -51,8 +51,34 @@ For further details, read the `Doxygen` documentation of the files
 `bloom.c`, `init_makeBloom.c`, `makeBloom.c`
 
 ## Example 
- 
-TODO
+
+ In the folder `../examples/bloomROC/` an example script can be run to 
+test the bloom filter performance.  
+ - The fastq files:
+   * `human_reads.fq.gz`
+   * `EColi_reads.fq.gz`
+   are analyzed. They contain 10e5 reads each generated with dgwin.
+ - STEP1: Create bloom filters for EColi genome  with FPR:
+   `[0.005 0.0075 0.01 0.02]`                                            
+
+ - STEP2: Run trimFilter on both data looking for contaminations from EColi
+          using all filters generated, with `kmersize = 25` and scores ranging
+          from `0.05` to `0.2` by `0.01` intervals. We obtain false/true 
+          positive/negative rates:
+   * FPR: % contaminations detected in human_reads.fq.gz
+   * TNR (specificity): % good reads detected in `human_reads.fq.gz`
+   * FNR: % good reads detected in `EColi_reads.fq.gz`
+   * TPR (sensitivity): % contaminations detected in `EColi_reads.fq.gz`
+                                                                              
+ - STEP3: Create ROC curves for all filters (sensitivity vs FPR).            
+
+The results (`*csv`, `*pdf`) can be compared with `example*pdf`, and
+`example*csv` in the folder (see example for `-p = 0.0075` below). 
+
+<p align="center">
+<img src=./pics/ROC_0p0075_bloom.png alt="noimage" title="ROC plots">
+</p>
+
 
 ## Details on bloom filters
 

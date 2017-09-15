@@ -56,24 +56,10 @@ typedef struct _bfilter {
 
 
 /**
- * @brief global parameters needed for the processed reads
- *
- * */
-typedef struct _bloom_par {
-  int kmersize;  /**< kmer size (number of elements)*/
-  int hashNum;  /**< number of hash functions used to construct the filter*/
-  int kmersizeBytes;  /**< Bytes needed to store the kmer (4bases ~ 1byte) */
-  int halfsizeBytes;  /**< half size in bytes(needed to decide whether
-                           to store a kmer or its reverse complement) */
-  int hangingBases;  /**< number of hanging bases that don't complete a byte*/
-  int hasOverhead;  /**< kmer has overhead when kmersize % 4!=0 */
-} Bloom_par;
-
-/**
  * @brief stores a processed kmer (2 bits pro nucleotide)
  *
  * */
-typedef struct _procs_kmer {
+typedef struct _bfkmer {
   int kmersize;  /**< kmer size (number of elements)*/
   int hashNum;  /**< number of hash functions used to construct the filter*/
   int kmersizeBytes;  /**< Bytes needed to store the kmer (4bases ~ 1byte) */
@@ -83,23 +69,27 @@ typedef struct _procs_kmer {
   int hasOverhead;  /**< kmer has overhead when kmersize % 4!=0 */
   unsigned char *compact;  /**< encoded compactified sequence*/
   uint64_t *hashValues;  /**< Values of the hash functions*/
-} Procs_kmer;
+} Bfkmer;
 
 void init_LUTs();
 
 Bfilter *init_Bfilter(int kmersize, uint64_t bfsizeBits, int hashNum,
                       double falsePosRate, uint64_t nelem);
 
+Bfkmer *init_Bfkmer(int kmersize, int hashNum);
+
 void free_Bfilter(Bfilter *ptr_bf);
 
-Procs_kmer *init_procs(int kmersize, int hashNum);
+void free_Bfkmer(Bfkmer *ptr_bfkmer);
 
-Procs_kmer *init_procs(int kmersize, int hashNum);
+int compact_kmer(const unsigned char *sequence, uint64_t position,
+               Bfkmer *ptr_bfkmer);
 
-void free_procs(Procs_kmer *procs);
+void multiHash(Bfkmer* ptr_bfkmer);
 
-double score_read_in_filter(unsigned char *read, int L, Procs_kmer *procs,
-                         Bfilter *ptr_bf);
+bool insert_and_fetch(Bfilter *pr_bf, Bfkmer* ptr_bfkmer);
+
+bool contains(Bfilter *ptr_bf, Bfkmer* ptr_bfkmer);
 
 Bfilter *create_Bfilter(Fa_data *ptr_fasta, int kmersize, uint64_t bfsizeBits,
                         int hashNum, double falsePosRate, uint64_t nelem);
@@ -108,10 +98,5 @@ void save_Bfilter(Bfilter *ptr_bf, char *filterfile, char *paramfile);
 
 Bfilter *read_Bfilter(char *filterfile, char *paramfile);
 
-int compact_kmer(const unsigned char *sequence, uint64_t position,
-               Procs_kmer *procs);
-void multiHash(Procs_kmer* procs);
-bool insert_and_fetch(Bfilter *pr_bf, Procs_kmer* procs);
-bool contains(Bfilter *ptr_bf, Procs_kmer* procs);
 
 #endif  // endif BLOOM_MAKER_H_

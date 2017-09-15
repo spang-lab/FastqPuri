@@ -35,7 +35,7 @@
 /**
  * @brief  returns index of t in s (start, first occurence)
  * @param s string to be checked.
- * @param t substring to be found in s. 
+ * @param t substring to be found in s.
  * */
 int strindex(char *s, char *t) {
   int i, j, k;

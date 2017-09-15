@@ -75,7 +75,7 @@ void insert_Lmer(Tree *tree_ptr, char *Lmer);
 
 void insert_entry(Tree *tree_ptr, Fa_entry *entry);
 
-double check_path(Tree *tree_ptr, char *read, int Lread); 
+double check_path(Tree *tree_ptr, char *read, int Lread);
 
 Tree *tree_from_fasta(Fa_data *fasta, int L);
 
@@ -83,8 +83,8 @@ void save_tree(Tree *tree_ptr, char * filename);
 
 Tree *read_tree(char *filename);
 
-/* static functions 
+/* static functions
  * check_path(Tree *tree_ptr, char *Lmer, int Lread);
- * */ 
+ * */
 
 #endif  // endif TREE_H_

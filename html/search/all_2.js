@@ -4,6 +4,7 @@ var searchData=
   ['basesperchar',['BASESPERCHAR',['../defines_8h.html#a6722ebf83f6f843343b21592e3cd86ed',1,'defines.h']]],
   ['belongsto',['belongsto',['../stats__info_8c.html#a398c4dad447f1384af6d620500788a0a',1,'stats_info.c']]],
   ['bfilter',['Bfilter',['../bloom_8h.html#a6cb32cf059e8f4efd1ef80938d982836',1,'bloom.h']]],
+  ['bfkmer',['Bfkmer',['../bloom_8h.html#a4bf3f34a321ce545e533d29ce363f569',1,'bloom.h']]],
   ['bfsizebits',['bfsizeBits',['../struct__bfilter.html#adb5c576f93d920a3ad5250781698d6ff',1,'_bfilter::bfsizeBits()'],['../struct__iparam__makeBloom.html#a8a0dac58ee8e9f1d8b29be730a5205a8',1,'_iparam_makeBloom::bfsizeBits()']]],
   ['bfsizebytes',['bfsizeBytes',['../struct__bfilter.html#a61487a85ddb47e6642f8c805f4d2f041',1,'_bfilter']]],
   ['bitmask',['bitMask',['../bloom_8h.html#ae59851bb0bb0e2d66b28d475a0eca5a0',1,'bloom.h']]],

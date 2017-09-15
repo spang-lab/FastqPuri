@@ -1,3 +1,4 @@
 <map id="_iparam_trimFilter" name="_iparam_trimFilter">
-<area shape="rect" id="node2" href="$struct__adapter.html" title="_adapter" alt="" coords="33,5,105,32"/>
+<area shape="rect" id="node2" href="$struct__bfkmer.html" title="stores a processed kmer (2 bits pro nucleotide) " alt="" coords="5,5,75,32"/>
+<area shape="rect" id="node3" href="$struct__adapter.html" title="_adapter" alt="" coords="101,5,173,32"/>
 </map>

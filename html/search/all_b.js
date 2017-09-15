@@ -5,7 +5,6 @@ var searchData=
   ['linelen',['linelen',['../struct__fa__data.html#a3607f37f43d8b2f14ced6a93c6a444ff',1,'_fa_data']]],
   ['lmer_2ec',['Lmer.c',['../Lmer_8c.html',1,'']]],
   ['lmer_2eh',['Lmer.h',['../Lmer_8h.html',1,'']]],
-  ['lmer_5flen',['Lmer_len',['../struct__iparam__trimFilter.html#a8d64cf4832f3c403bd7c505d5a3fee75',1,'_iparam_trimFilter']]],
   ['lmer_5fslmer',['Lmer_sLmer',['../Lmer_8c.html#a3280d056532aa23523d08dfd52b60b51',1,'Lmer_sLmer(char *Lmer, int L):&#160;Lmer.c'],['../Lmer_8h.html#a3280d056532aa23523d08dfd52b60b51',1,'Lmer_sLmer(char *Lmer, int L):&#160;Lmer.c']]],
   ['lowq',['LOWQ',['../defines_8h.html#a88236da90fdc203156cd02218f106f25',1,'defines.h']]],
   ['lowq_5facgt_5ftile',['lowQ_ACGT_tile',['../structstatsinfo.html#ac1a8b88e2e4f486f2767072588adcd2a',1,'statsinfo']]],

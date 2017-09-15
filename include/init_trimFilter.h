@@ -30,8 +30,9 @@
 #ifndef INIT_TRIMFILTER_H_
 #define INIT_TRIMFILTER_H_
 
-#include <uintstd.h>
 #include "defines.h"
+#include "bloom.h"
+
 
 /**
  * @ brief adapter struct
@@ -50,10 +51,11 @@ typedef struct _adapter {
 typedef struct _iparam_trimFilter {
   char *Ifq;  /**< Input fq file */
   char *Ifa;  /**< Input fa file (containing contamination sequences) */
-  char *Iidx;  /**< Input index file (constructed from an input.fa cont file) */
+  char Iidx[MAX_FILENAME];  /**< Input index file (from an input.fa cont file) */
   char Iinfo[MAX_FILENAME]; /**< Input index info file  */
   char *Oprefix;  /**< Output files prefix (PATH/prefix) */
   Adapter ad;  /**< Adapter trimming parameters  */
+  Bfkmer *ptr_bfkmer; /** bloom filter kmer structure */
   int trimQ;   /**< NO(0), FRAC(1), ENDS(2), ENDSFRAC(3), GLOBAL(4) */
   int trimN;   /**< NO(0), ALL(1), ENDS(2), STRIP(3) */
   int method;  /**< TREE(1), SA(2), BLOOM(3), 0, when not looking for cont*/
@@ -65,7 +67,7 @@ typedef struct _iparam_trimFilter {
   int L;  /**<  read length*/
   int minL;  /**<  minimum read length accepted before discarding a read */
   int nlowQ;  /**< maximum number of lowQ bases accepted before discarding */
-  int Lmer_len;  /**< Lmer length to look for contamination */
+  int kmersize;  /**< kmersize to look for contamination */
   int globleft;  /**< number of bases globally trimming from the left */
   int globright;  /**< number of bases globally trimming from the right */
   int percent;  /**< percentage of lowQ bases allowed in a read */
@@ -74,5 +76,11 @@ typedef struct _iparam_trimFilter {
 void printHelpDialog_trimFilter();
 
 void getarg_trimFilter(int argc, char **argv);
+
+/**
+ * @brief frees the allocated memory in Iparam_trimFilter
+ *
+ * */
+void free_parTF(Iparam_trimFilter *ptr_parTF);
 
 #endif  // INIT_TRIMFILTER_H_

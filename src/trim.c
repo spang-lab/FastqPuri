@@ -404,7 +404,7 @@ int trim_sequenceQ(Fq_read *seq) {
 }
 
 /**
- * @brief check if Lread is contained in tree. It computes the score for the 
+ * @brief check if Lread is contained in tree. It computes the score for the
  *        read and its reverse complement; if one ot them exceeds the user
  *        selected threshold, it returns true. Otherwise, it returns false.
  * @param tree_ptr pointer to Tree structure
@@ -424,43 +424,33 @@ bool is_read_inTree(Tree *tree_ptr, Fq_read *seq) {
   }
 }
 
-/** 
- * @brief checks if a read is in Bloom filter. It computes the score for the 
- *        read and returns true if it exceeds the user selected threshold. 
- *        Returns false othersise. 
+/**
+ * @brief checks if a read is in Bloom filter. It computes the score for the
+ *        read and returns true if it exceeds the user selected threshold.
+ *        Returns false othersise.
  * @param ptr_bf pointer to Bfilter
  * @param seq fastq read
- * @param procs pointer to Procs_kmer structure (will store global)
+ * @param ptr_bfkmer pointer to Procs_kmer structure (will store global)
  * @returns true if read was found, false otherwise
  *
  * */
-bool is_read_inBloom(Bfilter *ptr_bf, Fq_read *seq, Procs_kmer *procs) {
-  unsigned char read[seq->L]; 
+bool is_read_inBloom(Bfilter *ptr_bf, Fq_read *seq, Bfkmer *ptr_bfkmer) {
+  unsigned char read[seq->L];
   memcpy(read, seq -> line2, seq -> L);
   int position;
   int maxN = seq -> L - ptr_bf->kmersize + 1;
   if (maxN <= 0) {
-    fprintf(stderr, "WARNING: read was shorter than kmer-size: %d\n", 
+    fprintf(stderr, "WARNING: read was shorter than kmer-size: %d\n",
            ptr_bf -> kmersize);
   }
   double score = 0;
   for (position = 0; position <  maxN; position++) {
-    if (compact_kmer(read, position, procs)) {
-       multiHash(procs);
-     //  int i;
-     //  for (i = 0; i<procs -> kmersizeBytes; i++) {
-     //    printf("%d", procs-> compact[i]);
-     //  }
-     //  printf("\n");
-     //  for (i = 0 ; i < procs -> hashNum; i++ ) {
-     //    printf("%lu ",procs -> hashValues[i]);
-     //  }
-     //  printf ("\n");
-       if (contains(ptr_bf, procs)) {
+    if (compact_kmer(read, position, ptr_bfkmer)) {
+       multiHash(ptr_bfkmer);
+       if (contains(ptr_bf, ptr_bfkmer)) {
           score += 1.0;
-       } 
+       }
     }
   }
-  //printf("score %f\n", score);
   return (score/maxN > par_TF.score);
 }

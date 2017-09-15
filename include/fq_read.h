@@ -39,13 +39,13 @@ typedef struct _fq_read {
   char line3[READ_MAXLEN], line4[READ_MAXLEN];
   int L;     /**< read length*/
   int start; /**< nucleotide position start. Can only be different
-                 from zero if the read has been 
+                 from zero if the read has been
                  filtered with this tool.*/
 } Fq_read;
 
-int get_fqread(Fq_read* seq, char* buffer, int pos1, int pos2, 
+int get_fqread(Fq_read* seq, char* buffer, int pos1, int pos2,
                int nline, int read_len, int filter);
 
-int string_seq(Fq_read *seq, char *char_seq );
+int string_seq(Fq_read *seq, char *char_seq);
 
 #endif  // endif FQ_READ_H_

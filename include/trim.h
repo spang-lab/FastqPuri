@@ -43,7 +43,7 @@
 int trim_sequenceN(Fq_read *seq);
 int trim_sequenceQ(Fq_read *seq);
 bool is_read_inTree(Tree *tree_ptr, Fq_read *seq);
-bool is_read_inBloom(Bfilter *tree_ptr, Fq_read *seq, Procs_kmer *procs);
+bool is_read_inBloom(Bfilter *tree_ptr, Fq_read *seq, Bfkmer *ptr_Bfkmer);
 
 /* static functions
 * static int no_N(Fq_read *seq);

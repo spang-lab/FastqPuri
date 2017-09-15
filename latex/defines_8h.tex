@@ -6,7 +6,17 @@
 Macro definitions.  
 
 
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+Include dependency graph for defines.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=170pt]{defines_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,15 +30,15 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \item 
 \#define \hyperlink{defines_8h_abe0ec333b60117063f9b9fd9f849cb08}{M\+A\+X\+\_\+\+F\+I\+L\+E\+N\+A\+M\+E}~300
 \item 
-\#define \hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool}~short
+\#define \hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool}~int16\+\_\+t
 \item 
 \#define \hyperlink{defines_8h_a41f9c5fb8b08eb5dc3edce4dcb37fee7}{true}~1
 \item 
 \#define \hyperlink{defines_8h_a65e9886d74aaee76545e83dd09011727}{false}~0
 \item 
-\#define \hyperlink{defines_8h_affe776513b24d84b39af8ab0930fef7f}{max}(a, b)~( ((a) $>$ (b)) ? (a) \+: (b) )
+\#define \hyperlink{defines_8h_affe776513b24d84b39af8ab0930fef7f}{max}(a, b)~(((a) $>$ (b)) ? (a) \+: (b))
 \item 
-\#define \hyperlink{defines_8h_ac6afabdc09a49a433ee19d8a9486056d}{min}(a, b)~( ((a) $<$ (b)) ? (a) \+: (b) )
+\#define \hyperlink{defines_8h_ac6afabdc09a49a433ee19d8a9486056d}{min}(a, b)~(((a) $<$ (b)) ? (a) \+: (b))
 \item 
 \#define \hyperlink{defines_8h_afb615637083826bc311382f50b9a112d}{mem\+\_\+usage\+M\+B}()
 \item 
@@ -136,7 +146,7 @@ number of bits in a char \hypertarget{defines_8h_a7dcb6cfd9e186d997dce1d6cabe588
 \subsubsection[{B\+L\+O\+O\+M}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+L\+O\+O\+M~3}}\label{defines_8h_a7dcb6cfd9e186d997dce1d6cabe58898}
 Use a bloom filter to look for contaminations \hypertarget{defines_8h_abb452686968e48b67397da5f97445f5b}{\index{defines.\+h@{defines.\+h}!bool@{bool}}
 \index{bool@{bool}!defines.\+h@{defines.\+h}}
-\subsubsection[{bool}]{\setlength{\rightskip}{0pt plus 5cm}\#define bool~short}}\label{defines_8h_abb452686968e48b67397da5f97445f5b}
+\subsubsection[{bool}]{\setlength{\rightskip}{0pt plus 5cm}\#define bool~int16\+\_\+t}}\label{defines_8h_abb452686968e48b67397da5f97445f5b}
 define a bool type \hypertarget{defines_8h_a60519a721b44bce2b05a70cfa7ae8a1b}{\index{defines.\+h@{defines.\+h}!C\+O\+N\+T@{C\+O\+N\+T}}
 \index{C\+O\+N\+T@{C\+O\+N\+T}!defines.\+h@{defines.\+h}}
 \subsubsection[{C\+O\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+N\+T~1}}\label{defines_8h_a60519a721b44bce2b05a70cfa7ae8a1b}
@@ -192,11 +202,11 @@ Low quality filter \hypertarget{defines_8h_affe776513b24d84b39af8ab0930fef7f}{\i
 \item[{}]{a, }
 \item[{}]{b}
 \end{DoxyParamCaption}
-)~( ((a) $>$ (b)) ? (a) \+: (b) )}}\label{defines_8h_affe776513b24d84b39af8ab0930fef7f}
+)~(((a) $>$ (b)) ? (a) \+: (b))}}\label{defines_8h_affe776513b24d84b39af8ab0930fef7f}
 max function \hypertarget{defines_8h_aba3b47d51c7ee08d2e0e92e58aa07106}{\index{defines.\+h@{defines.\+h}!M\+A\+X\+\_\+\+F\+A\+S\+Z\+\_\+\+T\+R\+E\+E@{M\+A\+X\+\_\+\+F\+A\+S\+Z\+\_\+\+T\+R\+E\+E}}
 \index{M\+A\+X\+\_\+\+F\+A\+S\+Z\+\_\+\+T\+R\+E\+E@{M\+A\+X\+\_\+\+F\+A\+S\+Z\+\_\+\+T\+R\+E\+E}!defines.\+h@{defines.\+h}}
 \subsubsection[{M\+A\+X\+\_\+\+F\+A\+S\+Z\+\_\+\+T\+R\+E\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+F\+A\+S\+Z\+\_\+\+T\+R\+E\+E~1e7}}\label{defines_8h_aba3b47d51c7ee08d2e0e92e58aa07106}
-Maximum fasta size for constructing a tree. D\+E\+C\+I\+D\+E A S\+E\+N\+S\+I\+B\+L\+E S\+I\+Z\+E! \hypertarget{defines_8h_abe0ec333b60117063f9b9fd9f849cb08}{\index{defines.\+h@{defines.\+h}!M\+A\+X\+\_\+\+F\+I\+L\+E\+N\+A\+M\+E@{M\+A\+X\+\_\+\+F\+I\+L\+E\+N\+A\+M\+E}}
+Maximum fasta size for constructing a tree. D\+E\+C\+I\+D\+E A S\+E\+N\+S\+I\+B\+L\+E S\+I\+Z\+E \hypertarget{defines_8h_abe0ec333b60117063f9b9fd9f849cb08}{\index{defines.\+h@{defines.\+h}!M\+A\+X\+\_\+\+F\+I\+L\+E\+N\+A\+M\+E@{M\+A\+X\+\_\+\+F\+I\+L\+E\+N\+A\+M\+E}}
 \index{M\+A\+X\+\_\+\+F\+I\+L\+E\+N\+A\+M\+E@{M\+A\+X\+\_\+\+F\+I\+L\+E\+N\+A\+M\+E}!defines.\+h@{defines.\+h}}
 \subsubsection[{M\+A\+X\+\_\+\+F\+I\+L\+E\+N\+A\+M\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+F\+I\+L\+E\+N\+A\+M\+E~300}}\label{defines_8h_abe0ec333b60117063f9b9fd9f849cb08}
 Maximum \# chars in a filename \hypertarget{defines_8h_ac95fc8ee3f8ffd70f4564bcdc813ae2d}{\index{defines.\+h@{defines.\+h}!M\+A\+X\+\_\+\+R\+C\+O\+M\+M\+A\+N\+D@{M\+A\+X\+\_\+\+R\+C\+O\+M\+M\+A\+N\+D}}
@@ -235,7 +245,7 @@ returns allocated memory in M\+B \hypertarget{defines_8h_ac6afabdc09a49a433ee19d
 \item[{}]{a, }
 \item[{}]{b}
 \end{DoxyParamCaption}
-)~( ((a) $<$ (b)) ? (a) \+: (b) )}}\label{defines_8h_ac6afabdc09a49a433ee19d8a9486056d}
+)~(((a) $<$ (b)) ? (a) \+: (b))}}\label{defines_8h_ac6afabdc09a49a433ee19d8a9486056d}
 min function \hypertarget{defines_8h_a71b6eab2a5d9fd457d48f50869a888f6}{\index{defines.\+h@{defines.\+h}!N\+\_\+\+A\+C\+G\+T@{N\+\_\+\+A\+C\+G\+T}}
 \index{N\+\_\+\+A\+C\+G\+T@{N\+\_\+\+A\+C\+G\+T}!defines.\+h@{defines.\+h}}
 \subsubsection[{N\+\_\+\+A\+C\+G\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+\_\+\+A\+C\+G\+T~5}}\label{defines_8h_a71b6eab2a5d9fd457d48f50869a888f6}

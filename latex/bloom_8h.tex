@@ -9,18 +9,20 @@ functions that implement the bloom filter
 {\ttfamily \#include \char`\"{}city.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}fa\+\_\+read.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\\*
-Include dependency graph for bloom.\+h\+:\nopagebreak
+Include dependency graph for bloom.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=274pt]{bloom_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=260pt]{bloom_8h__dep__incl}
+\includegraphics[width=350pt]{bloom_8h__dep__incl}
 \end{center}
 \end{figure}
 \subsection*{Classes}
@@ -28,7 +30,7 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \item 
 struct \hyperlink{struct__bfilter}{\+\_\+bfilter}
 \begin{DoxyCompactList}\small\item\em Bloom filter structure. \end{DoxyCompactList}\item 
-struct \hyperlink{struct__procs__kmer}{\+\_\+procs\+\_\+kmer}
+struct \hyperlink{struct__bfkmer}{\+\_\+bfkmer}
 \begin{DoxyCompactList}\small\item\em stores a processed kmer (2 bits pro nucleotide) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -36,7 +38,7 @@ struct \hyperlink{struct__procs__kmer}{\+\_\+procs\+\_\+kmer}
 \hypertarget{bloom_8h_a6cb32cf059e8f4efd1ef80938d982836}{typedef struct \hyperlink{struct__bfilter}{\+\_\+bfilter} \hyperlink{bloom_8h_a6cb32cf059e8f4efd1ef80938d982836}{Bfilter}}\label{bloom_8h_a6cb32cf059e8f4efd1ef80938d982836}
 
 \begin{DoxyCompactList}\small\item\em Bloom filter structure. \end{DoxyCompactList}\item 
-\hypertarget{bloom_8h_a63b80bbec6bbee66eb6797f5312dde6e}{typedef struct \hyperlink{struct__procs__kmer}{\+\_\+procs\+\_\+kmer} \hyperlink{bloom_8h_a63b80bbec6bbee66eb6797f5312dde6e}{Procs\+\_\+kmer}}\label{bloom_8h_a63b80bbec6bbee66eb6797f5312dde6e}
+\hypertarget{bloom_8h_a4bf3f34a321ce545e533d29ce363f569}{typedef struct \hyperlink{struct__bfkmer}{\+\_\+bfkmer} \hyperlink{bloom_8h_a4bf3f34a321ce545e533d29ce363f569}{Bfkmer}}\label{bloom_8h_a4bf3f34a321ce545e533d29ce363f569}
 
 \begin{DoxyCompactList}\small\item\em stores a processed kmer (2 bits pro nucleotide) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
@@ -46,16 +48,22 @@ void \hyperlink{bloom_8h_a0cc73db1215bac578f7d6e8df02d9768}{init\+\_\+\+L\+U\+Ts
 \begin{DoxyCompactList}\small\item\em look up table initialization \end{DoxyCompactList}\item 
 \hyperlink{bloom_8h_a6cb32cf059e8f4efd1ef80938d982836}{Bfilter} $\ast$ \hyperlink{bloom_8h_a5e5f24cae575f929614ff14daedab9ac}{init\+\_\+\+Bfilter} (int kmersize, uint64\+\_\+t bfsize\+Bits, int hash\+Num, double false\+Pos\+Rate, uint64\+\_\+t nelem)
 \begin{DoxyCompactList}\small\item\em initialization of a Bfilter structure \end{DoxyCompactList}\item 
+\hyperlink{bloom_8h_a4bf3f34a321ce545e533d29ce363f569}{Bfkmer} $\ast$ \hyperlink{bloom_8h_a880cf4acfc80f5a7520b13ef5e06771e}{init\+\_\+\+Bfkmer} (int kmersize, int hash\+Num)
+\begin{DoxyCompactList}\small\item\em initializes a Bfkmer structure, given the kmersize and the number of hash functions \end{DoxyCompactList}\item 
 \hypertarget{bloom_8h_a2cd02061aef113067b7cb701b399f502}{void \hyperlink{bloom_8h_a2cd02061aef113067b7cb701b399f502}{free\+\_\+\+Bfilter} (\hyperlink{bloom_8h_a6cb32cf059e8f4efd1ef80938d982836}{Bfilter} $\ast$ptr\+\_\+bf)}\label{bloom_8h_a2cd02061aef113067b7cb701b399f502}
 
 \begin{DoxyCompactList}\small\item\em free Bfilter memory \end{DoxyCompactList}\item 
-\hyperlink{bloom_8h_a63b80bbec6bbee66eb6797f5312dde6e}{Procs\+\_\+kmer} $\ast$ \hyperlink{bloom_8h_ad66c3b4f481734a97142bc82e9367e12}{init\+\_\+procs} (int kmersize, int hash\+Num)
-\begin{DoxyCompactList}\small\item\em initializes a Procs structure, given the kmersize and the number of hash functions \end{DoxyCompactList}\item 
-\hypertarget{bloom_8h_ac7efd5817adc624dcbc27953723c3438}{void \hyperlink{bloom_8h_ac7efd5817adc624dcbc27953723c3438}{free\+\_\+procs} (\hyperlink{bloom_8h_a63b80bbec6bbee66eb6797f5312dde6e}{Procs\+\_\+kmer} $\ast$procs)}\label{bloom_8h_ac7efd5817adc624dcbc27953723c3438}
+\hypertarget{bloom_8h_ac2f9894d5e5efcc9d2cb1c0cbba4aef1}{void \hyperlink{bloom_8h_ac2f9894d5e5efcc9d2cb1c0cbba4aef1}{free\+\_\+\+Bfkmer} (\hyperlink{bloom_8h_a4bf3f34a321ce545e533d29ce363f569}{Bfkmer} $\ast$ptr\+\_\+bfkmer)}\label{bloom_8h_ac2f9894d5e5efcc9d2cb1c0cbba4aef1}
 
-\begin{DoxyCompactList}\small\item\em free Procs\+\_\+kmer \end{DoxyCompactList}\item 
-double \hyperlink{bloom_8h_a27438437e9301393d2671645c7ed52eb}{score\+\_\+read\+\_\+in\+\_\+filter} (unsigned char $\ast$read, int L, \hyperlink{bloom_8h_a63b80bbec6bbee66eb6797f5312dde6e}{Procs\+\_\+kmer} $\ast$procs, \hyperlink{bloom_8h_a6cb32cf059e8f4efd1ef80938d982836}{Bfilter} $\ast$ptr\+\_\+bf)
-\begin{DoxyCompactList}\small\item\em computes a score for a read being in the bloom filter \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em free Bfkmer \end{DoxyCompactList}\item 
+int \hyperlink{bloom_8h_ac9def2eeca4fab1422ae398b15260398}{compact\+\_\+kmer} (const unsigned char $\ast$sequence, uint64\+\_\+t position, \hyperlink{bloom_8h_a4bf3f34a321ce545e533d29ce363f569}{Bfkmer} $\ast$ptr\+\_\+bfkmer)
+\begin{DoxyCompactList}\small\item\em compactifies a kmer for insertion in the bloomfilter \end{DoxyCompactList}\item 
+void \hyperlink{bloom_8h_a4f4db9f997a1201561fea5f01df997a8}{multi\+Hash} (\hyperlink{bloom_8h_a4bf3f34a321ce545e533d29ce363f569}{Bfkmer} $\ast$ptr\+\_\+bfkmer)
+\begin{DoxyCompactList}\small\item\em obtains the hash\+Num hashvalues for a compactified kmer \end{DoxyCompactList}\item 
+\hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool} \hyperlink{bloom_8h_a173e707c296966e235598ad87dd60c42}{insert\+\_\+and\+\_\+fetch} (\hyperlink{bloom_8h_a6cb32cf059e8f4efd1ef80938d982836}{Bfilter} $\ast$pr\+\_\+bf, \hyperlink{bloom_8h_a4bf3f34a321ce545e533d29ce363f569}{Bfkmer} $\ast$ptr\+\_\+bfkmer)
+\begin{DoxyCompactList}\small\item\em inserts the hashvalues of a kmer in filter \end{DoxyCompactList}\item 
+\hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool} \hyperlink{bloom_8h_ab19bebeff1057ce39ef079d013421bb7}{contains} (\hyperlink{bloom_8h_a6cb32cf059e8f4efd1ef80938d982836}{Bfilter} $\ast$ptr\+\_\+bf, \hyperlink{bloom_8h_a4bf3f34a321ce545e533d29ce363f569}{Bfkmer} $\ast$ptr\+\_\+bfkmer)
+\begin{DoxyCompactList}\small\item\em check if kmer is contained in the filter \end{DoxyCompactList}\item 
 \hyperlink{bloom_8h_a6cb32cf059e8f4efd1ef80938d982836}{Bfilter} $\ast$ \hyperlink{bloom_8h_ad6e5788b92c0547d77425847d413851f}{create\+\_\+\+Bfilter} (\hyperlink{fa__read_8h_a797328b16bc1c1088998cd164aafb09d}{Fa\+\_\+data} $\ast$ptr\+\_\+fasta, int kmersize, uint64\+\_\+t bfsize\+Bits, int hash\+Num, double false\+Pos\+Rate, uint64\+\_\+t nelem)
 \begin{DoxyCompactList}\small\item\em creates a bloom filter from a fasta structure. \end{DoxyCompactList}\item 
 void \hyperlink{bloom_8h_a48a74d10082ed27381512e23650ba823}{save\+\_\+\+Bfilter} (\hyperlink{bloom_8h_a6cb32cf059e8f4efd1ef80938d982836}{Bfilter} $\ast$ptr\+\_\+bf, char $\ast$filterfile, char $\ast$paramfile)
@@ -81,6 +89,72 @@ Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+
 
 
 \subsection{Function Documentation}
+\hypertarget{bloom_8h_ac9def2eeca4fab1422ae398b15260398}{\index{bloom.\+h@{bloom.\+h}!compact\+\_\+kmer@{compact\+\_\+kmer}}
+\index{compact\+\_\+kmer@{compact\+\_\+kmer}!bloom.\+h@{bloom.\+h}}
+\subsubsection[{compact\+\_\+kmer}]{\setlength{\rightskip}{0pt plus 5cm}int compact\+\_\+kmer (
+\begin{DoxyParamCaption}
+\item[{const unsigned char $\ast$}]{sequence, }
+\item[{uint64\+\_\+t}]{position, }
+\item[{{\bf Bfkmer} $\ast$}]{ptr\+\_\+bfkmer}
+\end{DoxyParamCaption}
+)}}\label{bloom_8h_ac9def2eeca4fab1422ae398b15260398}
+
+
+compactifies a kmer for insertion in the bloomfilter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sequence} & unsigned char D\+N\+A sequence (or c\+D\+N\+A) \\
+\hline
+{\em position} & position in the sequence where the kmer starts \\
+\hline
+{\em ptr\+\_\+bfkmer} & initialized Bfkmer\\
+\hline
+\end{DoxyParams}
+The compactified sequence is computed in the following way\+:
+\begin{DoxyItemize}
+\item We start compactifying both, the forward and backward (reverse complement). The outer loop covers up until half of the sequence.
+\item As soon as one of the two is lexicographically smaller, we continue only with it. In that way, the \char`\"{}smaller\char`\"{} sequence is consistently returned.
+\item If the sequence is palindromic, we continue with the forward sequence.
+\item kmersize should be $>$ 3.
+
+We illustrate the compactification with an example\+: 
+\begin{DoxyCode}
+kmer = TTTT|GGAT
+m\_fw = 00000000 | 00000000 \textcolor{comment}{// 2 bytes}
+m\_bw = 00000000 | 00000000 \textcolor{comment}{// 2 bytes}
+m\_fw[0] |= \hyperlink{bloom_8c_a5b3e90499bde8b37f73fbf4bf414674e}{fw0}[\textcolor{charliteral}{'T'}] = 0xC0|0x00;    m\_bw[0] |= bw0[\textcolor{charliteral}{'T'}] = 0x00|0x00;
+m\_fw[0] |= fw1[\textcolor{charliteral}{'T'}] = 0xF0|0x00;    m\_bw[0] |= bw1[\textcolor{charliteral}{'A'}] = 0x30|0x00;
+m\_fw[0] |= fw2[\textcolor{charliteral}{'T'}] = 0xFC|0x00;    m\_bw[0] |= bw2[\textcolor{charliteral}{'G'}] = 0x34|0x00;
+m\_fw[0] |= fw3[\textcolor{charliteral}{'T'}] = 0xFF|0x00;    m\_bw[0] |= bw3[\textcolor{charliteral}{'G'}] = 0x35|0x00;
+m\_fw[1] |= \hyperlink{bloom_8c_a5b3e90499bde8b37f73fbf4bf414674e}{fw0}[\textcolor{charliteral}{'G'}] = 0xC0|0x80;    m\_bw[1] |= bw0[\textcolor{charliteral}{'T'}] = 0x35|0x00;
+m\_fw[1] |= fw1[\textcolor{charliteral}{'G'}] = 0xF0|0xA0;    m\_bw[1] |= bw1[\textcolor{charliteral}{'T'}] = 0x35|0x00;
+m\_fw[1] |= fw2[\textcolor{charliteral}{'A'}] = 0xFC|0xA0;    m\_bw[1] |= bw2[\textcolor{charliteral}{'T'}] = 0x35|0x00;
+m\_fw[1] |= fw3[\textcolor{charliteral}{'T'}] = 0xFF|0xA3;    m\_bw[1] |= bw3[\textcolor{charliteral}{'T'}] = 0x35|0x00;
+\end{DoxyCode}
+ (In this case, we would store m\+\_\+bw) 
+\end{DoxyItemize}\hypertarget{bloom_8h_ab19bebeff1057ce39ef079d013421bb7}{\index{bloom.\+h@{bloom.\+h}!contains@{contains}}
+\index{contains@{contains}!bloom.\+h@{bloom.\+h}}
+\subsubsection[{contains}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool} contains (
+\begin{DoxyParamCaption}
+\item[{{\bf Bfilter} $\ast$}]{ptr\+\_\+bf, }
+\item[{{\bf Bfkmer} $\ast$}]{ptr\+\_\+bfkmer}
+\end{DoxyParamCaption}
+)}}\label{bloom_8h_ab19bebeff1057ce39ef079d013421bb7}
+
+
+check if kmer is contained in the filter 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ptr\+\_\+bf} & pointer to a Bfilter structure, where a bloomfilter is stored \\
+\hline
+{\em ptr\+\_\+bfkmer} & pointer to a Bfkmer structure containing the hash values \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if all corresponding bits were set to 1 in the filter 
+\end{DoxyReturn}
 \hypertarget{bloom_8h_ad6e5788b92c0547d77425847d413851f}{\index{bloom.\+h@{bloom.\+h}!create\+\_\+\+Bfilter@{create\+\_\+\+Bfilter}}
 \index{create\+\_\+\+Bfilter@{create\+\_\+\+Bfilter}!bloom.\+h@{bloom.\+h}}
 \subsubsection[{create\+\_\+\+Bfilter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bfilter}$\ast$ create\+\_\+\+Bfilter (
@@ -146,7 +220,29 @@ initialization of a Bfilter structure
 \begin{DoxyReturn}{Returns}
 pointer to initialized Bfilter structure
 \end{DoxyReturn}
-Given a kmersize, bfsize\+Bits, number of hash functions, we assign these values to the struture and the two additional values\+: kmersize\+Bytes = (kmersize + B\+A\+S\+E\+S\+I\+N\+C\+H\+A\+R -\/ 1 )/\+B\+A\+S\+E\+S\+I\+N\+C\+H\+A\+R \hypertarget{bloom_8h_a0cc73db1215bac578f7d6e8df02d9768}{\index{bloom.\+h@{bloom.\+h}!init\+\_\+\+L\+U\+Ts@{init\+\_\+\+L\+U\+Ts}}
+Given a kmersize, bfsize\+Bits, number of hash functions, we assign these values to the struture and the two additional values\+: kmersize\+Bytes = (kmersize + B\+A\+S\+E\+S\+I\+N\+C\+H\+A\+R -\/ 1 )/\+B\+A\+S\+E\+S\+I\+N\+C\+H\+A\+R \hypertarget{bloom_8h_a880cf4acfc80f5a7520b13ef5e06771e}{\index{bloom.\+h@{bloom.\+h}!init\+\_\+\+Bfkmer@{init\+\_\+\+Bfkmer}}
+\index{init\+\_\+\+Bfkmer@{init\+\_\+\+Bfkmer}!bloom.\+h@{bloom.\+h}}
+\subsubsection[{init\+\_\+\+Bfkmer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bfkmer}$\ast$ init\+\_\+\+Bfkmer (
+\begin{DoxyParamCaption}
+\item[{int}]{kmersize, }
+\item[{int}]{hash\+Num}
+\end{DoxyParamCaption}
+)}}\label{bloom_8h_a880cf4acfc80f5a7520b13ef5e06771e}
+
+
+initializes a Bfkmer structure, given the kmersize and the number of hash functions 
+
+
+\begin{DoxyParams}{Parameters}
+{\em kmersize} & number of elements of the kmer \\
+\hline
+{\em hash\+Num} & number of hash functions to be computed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to a Bfkmer structure
+\end{DoxyReturn}
+kmersize\+Bytes, halfsize\+Bytes, hanging\+Bases, has\+Overhead hash\+Num are assigned and memory is allocated and set to 0 for compact and hash\+Values \hypertarget{bloom_8h_a0cc73db1215bac578f7d6e8df02d9768}{\index{bloom.\+h@{bloom.\+h}!init\+\_\+\+L\+U\+Ts@{init\+\_\+\+L\+U\+Ts}}
 \index{init\+\_\+\+L\+U\+Ts@{init\+\_\+\+L\+U\+Ts}!bloom.\+h@{bloom.\+h}}
 \subsubsection[{init\+\_\+\+L\+U\+Ts}]{\setlength{\rightskip}{0pt plus 5cm}void init\+\_\+\+L\+U\+Ts (
 \begin{DoxyParamCaption}
@@ -167,29 +263,44 @@ fw1 &0x00 &0x10 &0x20 &0x30 &bw1 &0x30 &0x20 &0x10 &0x00 \\\cline{1-10}
 fw2 &0x00 &0x04 &0x08 &0x0\+C &bw2 &0x0\+C &0x08 &0x04 &0x00 \\\cline{1-10}
 fw3 &0x00 &0x01 &0x02 &0x03 &bw3 &0x03 &0x02 &0x01 &0x00 \\\cline{1-10}
 \end{TabularC}
-With these variables, we will be able to encode a Sequence using 2 bits per nucleotide. \hypertarget{bloom_8h_ad66c3b4f481734a97142bc82e9367e12}{\index{bloom.\+h@{bloom.\+h}!init\+\_\+procs@{init\+\_\+procs}}
-\index{init\+\_\+procs@{init\+\_\+procs}!bloom.\+h@{bloom.\+h}}
-\subsubsection[{init\+\_\+procs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Procs\+\_\+kmer}$\ast$ init\+\_\+procs (
+With these variables, we will be able to encode a Sequence using 2 bits per nucleotide. \hypertarget{bloom_8h_a173e707c296966e235598ad87dd60c42}{\index{bloom.\+h@{bloom.\+h}!insert\+\_\+and\+\_\+fetch@{insert\+\_\+and\+\_\+fetch}}
+\index{insert\+\_\+and\+\_\+fetch@{insert\+\_\+and\+\_\+fetch}!bloom.\+h@{bloom.\+h}}
+\subsubsection[{insert\+\_\+and\+\_\+fetch}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool} insert\+\_\+and\+\_\+fetch (
 \begin{DoxyParamCaption}
-\item[{int}]{kmersize, }
-\item[{int}]{hash\+Num}
+\item[{{\bf Bfilter} $\ast$}]{ptr\+\_\+bf, }
+\item[{{\bf Bfkmer} $\ast$}]{ptr\+\_\+bfkmer}
 \end{DoxyParamCaption}
-)}}\label{bloom_8h_ad66c3b4f481734a97142bc82e9367e12}
+)}}\label{bloom_8h_a173e707c296966e235598ad87dd60c42}
 
 
-initializes a Procs structure, given the kmersize and the number of hash functions 
+inserts the hashvalues of a kmer in filter 
 
 
 \begin{DoxyParams}{Parameters}
-{\em kmersize} & number of elements of the kmer \\
+{\em ptr\+\_\+bf} & pointer to Bfilter structure, where we will include the new entry \\
 \hline
-{\em hash\+Num} & number of hash functions to be computed \\
+{\em ptr\+\_\+bfkmer} & pointer to Bfkmer structure, where the hashvalues are stored \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-pointer to a Procs\+\_\+kmer structure
+true if the positions of the hash values were already set to one previously.
 \end{DoxyReturn}
-kmersize\+Bytes, halfsize\+Bytes, hanging\+Bases, has\+Overhead hash\+Num are assigned and memory is allocated and set to 0 for compact and hash\+Values \hypertarget{bloom_8h_af2418c40c2ff7a69a84aeb4ddde266e0}{\index{bloom.\+h@{bloom.\+h}!read\+\_\+\+Bfilter@{read\+\_\+\+Bfilter}}
+The hash values are inserted in the following way.
+\begin{DoxyItemize}
+\item mod\+Value = hashvalue mod(filter size) is calculated.
+\item the bit in position mod\+Value of the filter is set to 1. 
+\end{DoxyItemize}\hypertarget{bloom_8h_a4f4db9f997a1201561fea5f01df997a8}{\index{bloom.\+h@{bloom.\+h}!multi\+Hash@{multi\+Hash}}
+\index{multi\+Hash@{multi\+Hash}!bloom.\+h@{bloom.\+h}}
+\subsubsection[{multi\+Hash}]{\setlength{\rightskip}{0pt plus 5cm}void multi\+Hash (
+\begin{DoxyParamCaption}
+\item[{{\bf Bfkmer} $\ast$}]{ptr\+\_\+bfkmer}
+\end{DoxyParamCaption}
+)}}\label{bloom_8h_a4f4db9f997a1201561fea5f01df997a8}
+
+
+obtains the hash\+Num hashvalues for a compactified kmer 
+
+The hash values are computed using the City\+Hash64 hash functions. \hypertarget{bloom_8h_af2418c40c2ff7a69a84aeb4ddde266e0}{\index{bloom.\+h@{bloom.\+h}!read\+\_\+\+Bfilter@{read\+\_\+\+Bfilter}}
 \index{read\+\_\+\+Bfilter@{read\+\_\+\+Bfilter}!bloom.\+h@{bloom.\+h}}
 \subsubsection[{read\+\_\+\+Bfilter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bfilter}$\ast$ read\+\_\+\+Bfilter (
 \begin{DoxyParamCaption}
@@ -238,32 +349,7 @@ This function will save the bloomfilter in the path filterfile. The paramfile wi
 \item bfsize\+Bits
 \item false\+Pos\+Rate
 \item nelem 
-\end{DoxyItemize}\hypertarget{bloom_8h_a27438437e9301393d2671645c7ed52eb}{\index{bloom.\+h@{bloom.\+h}!score\+\_\+read\+\_\+in\+\_\+filter@{score\+\_\+read\+\_\+in\+\_\+filter}}
-\index{score\+\_\+read\+\_\+in\+\_\+filter@{score\+\_\+read\+\_\+in\+\_\+filter}!bloom.\+h@{bloom.\+h}}
-\subsubsection[{score\+\_\+read\+\_\+in\+\_\+filter}]{\setlength{\rightskip}{0pt plus 5cm}double score\+\_\+read\+\_\+in\+\_\+filter (
-\begin{DoxyParamCaption}
-\item[{unsigned char $\ast$}]{read, }
-\item[{int}]{L, }
-\item[{{\bf Procs\+\_\+kmer} $\ast$}]{procs, }
-\item[{{\bf Bfilter} $\ast$}]{ptr\+\_\+bf}
-\end{DoxyParamCaption}
-)}}\label{bloom_8h_a27438437e9301393d2671645c7ed52eb}
-
-
-computes a score for a read being in the bloom filter 
-
-
-\begin{DoxyParams}{Parameters}
-{\em read} & sequence from fastq file \\
-\hline
-{\em L} & sequence length \\
-\hline
-{\em procs} & pointer to Procs structure \\
-\hline
-{\em ptr\+\_\+bf} & pointer to Bfilter The score is computed by ... D\+E\+C\+I\+D\+E!!! \\
-\hline
-\end{DoxyParams}
-
+\end{DoxyItemize}
 
 \subsection{Variable Documentation}
 \hypertarget{bloom_8h_ae59851bb0bb0e2d66b28d475a0eca5a0}{\index{bloom.\+h@{bloom.\+h}!bit\+Mask@{bit\+Mask}}

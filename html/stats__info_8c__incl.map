@@ -1,7 +1,7 @@
 <map id="src/stats_info.c" name="src/stats_info.c">
-<area shape="rect" id="node4" href="$stats__info_8h.html" title="Construct the quality report variables and update them. " alt="" coords="305,80,396,107"/>
-<area shape="rect" id="node10" href="$init__Qreport_8h.html" title="Header file: help dialog for Qreport and initialization of the command line arguments. " alt="" coords="181,80,281,107"/>
-<area shape="rect" id="node11" href="$str__manip_8h.html" title="functions that do string manipulation " alt="" coords="420,80,511,107"/>
-<area shape="rect" id="node5" href="$fq__read_8h.html" title="fastq entries manipulations (read/write) " alt="" coords="293,155,369,181"/>
-<area shape="rect" id="node7" href="$defines_8h.html" title="Macro definitions. " alt="" coords="193,155,268,181"/>
+<area shape="rect" id="node4" href="$stats__info_8h.html" title="Construct the quality report variables and update them. " alt="" coords="181,80,272,107"/>
+<area shape="rect" id="node10" href="$init__Qreport_8h.html" title="Header file: help dialog for Qreport and initialization of the command line arguments. " alt="" coords="297,80,397,107"/>
+<area shape="rect" id="node11" href="$str__manip_8h.html" title="functions that do string manipulation " alt="" coords="421,80,512,107"/>
+<area shape="rect" id="node7" href="$fq__read_8h.html" title="fastq entries manipulations (read/write) " alt="" coords="158,155,234,181"/>
+<area shape="rect" id="node9" href="$defines_8h.html" title="Macro definitions. " alt="" coords="309,155,384,181"/>
 </map>

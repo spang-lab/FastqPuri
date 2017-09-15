@@ -12,11 +12,12 @@ trim\+Filter input parameters
 
 
 
-Collaboration diagram for \+\_\+iparam\+\_\+trim\+Filter\+:\nopagebreak
+Collaboration diagram for \+\_\+iparam\+\_\+trim\+Filter\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=175pt]{struct__iparam__trimFilter__coll__graph}
+\includegraphics[width=206pt]{struct__iparam__trimFilter__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Attributes}
@@ -26,11 +27,16 @@ char $\ast$ \hyperlink{struct__iparam__trimFilter_a5147310738277c148ca7109ba7782
 \item 
 char $\ast$ \hyperlink{struct__iparam__trimFilter_a55796cd412ef4ca61a5a799d2f64beec}{Ifa}
 \item 
-char $\ast$ \hyperlink{struct__iparam__trimFilter_a158296e4d37ab3b033c6f9aee1516d71}{Iidx}
+char \hyperlink{struct__iparam__trimFilter_ae0e1c22a522a0f014952d204e8887607}{Iidx} \mbox{[}\hyperlink{defines_8h_abe0ec333b60117063f9b9fd9f849cb08}{M\+A\+X\+\_\+\+F\+I\+L\+E\+N\+A\+M\+E}\mbox{]}
+\item 
+char \hyperlink{struct__iparam__trimFilter_a76e905e2a809d9a659d49fbd388e0c32}{Iinfo} \mbox{[}\hyperlink{defines_8h_abe0ec333b60117063f9b9fd9f849cb08}{M\+A\+X\+\_\+\+F\+I\+L\+E\+N\+A\+M\+E}\mbox{]}
 \item 
 char $\ast$ \hyperlink{struct__iparam__trimFilter_ad24f2902b532a4ff2dfb1122941064b8}{Oprefix}
 \item 
 \hyperlink{init__trimFilter_8h_a3442d07a10a4ab75064687f3c244e370}{Adapter} \hyperlink{struct__iparam__trimFilter_aba4b2762da9029d272905c558986b3f7}{ad}
+\item 
+\hypertarget{struct__iparam__trimFilter_a63b9b54ab69ce2602ec37ececc59e131}{\hyperlink{bloom_8h_a4bf3f34a321ce545e533d29ce363f569}{Bfkmer} $\ast$ {\bfseries ptr\+\_\+bfkmer}}\label{struct__iparam__trimFilter_a63b9b54ab69ce2602ec37ececc59e131}
+
 \item 
 int \hyperlink{struct__iparam__trimFilter_a5b5344041c9313230de07c9485227203}{trim\+Q}
 \item 
@@ -54,7 +60,7 @@ int \hyperlink{struct__iparam__trimFilter_ac2b43664ca0c95a8572f97254893d675}{min
 \item 
 int \hyperlink{struct__iparam__trimFilter_aaeab85398303eada76cb6f32841fa094}{nlow\+Q}
 \item 
-int \hyperlink{struct__iparam__trimFilter_a8d64cf4832f3c403bd7c505d5a3fee75}{Lmer\+\_\+len}
+int \hyperlink{struct__iparam__trimFilter_a6a1118d39cdaa79f48f2d010a6018e5c}{kmersize}
 \item 
 int \hyperlink{struct__iparam__trimFilter_a2e626c5776d4423d20d5ec7606fe9b81}{globleft}
 \item 
@@ -83,10 +89,13 @@ number of bases globally trimming from the right \hypertarget{struct__iparam__tr
 Input fa file (containing contamination sequences) \hypertarget{struct__iparam__trimFilter_a5147310738277c148ca7109ba77829ca}{\index{\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}!Ifq@{Ifq}}
 \index{Ifq@{Ifq}!\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}}
 \subsubsection[{Ifq}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \+\_\+iparam\+\_\+trim\+Filter\+::\+Ifq}}\label{struct__iparam__trimFilter_a5147310738277c148ca7109ba77829ca}
-Input fq file \hypertarget{struct__iparam__trimFilter_a158296e4d37ab3b033c6f9aee1516d71}{\index{\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}!Iidx@{Iidx}}
+Input fq file \hypertarget{struct__iparam__trimFilter_ae0e1c22a522a0f014952d204e8887607}{\index{\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}!Iidx@{Iidx}}
 \index{Iidx@{Iidx}!\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}}
-\subsubsection[{Iidx}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \+\_\+iparam\+\_\+trim\+Filter\+::\+Iidx}}\label{struct__iparam__trimFilter_a158296e4d37ab3b033c6f9aee1516d71}
-Input index file (constructed from an input.\+fa cont file) \hypertarget{struct__iparam__trimFilter_a6d015b5bf1568c362d9ca0ff37b751f8}{\index{\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}!is\+\_\+adapter@{is\+\_\+adapter}}
+\subsubsection[{Iidx}]{\setlength{\rightskip}{0pt plus 5cm}char \+\_\+iparam\+\_\+trim\+Filter\+::\+Iidx\mbox{[}{\bf M\+A\+X\+\_\+\+F\+I\+L\+E\+N\+A\+M\+E}\mbox{]}}}\label{struct__iparam__trimFilter_ae0e1c22a522a0f014952d204e8887607}
+Input index file (from an input.\+fa cont file) \hypertarget{struct__iparam__trimFilter_a76e905e2a809d9a659d49fbd388e0c32}{\index{\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}!Iinfo@{Iinfo}}
+\index{Iinfo@{Iinfo}!\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}}
+\subsubsection[{Iinfo}]{\setlength{\rightskip}{0pt plus 5cm}char \+\_\+iparam\+\_\+trim\+Filter\+::\+Iinfo\mbox{[}{\bf M\+A\+X\+\_\+\+F\+I\+L\+E\+N\+A\+M\+E}\mbox{]}}}\label{struct__iparam__trimFilter_a76e905e2a809d9a659d49fbd388e0c32}
+Input index info file \hypertarget{struct__iparam__trimFilter_a6d015b5bf1568c362d9ca0ff37b751f8}{\index{\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}!is\+\_\+adapter@{is\+\_\+adapter}}
 \index{is\+\_\+adapter@{is\+\_\+adapter}!\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}}
 \subsubsection[{is\+\_\+adapter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool} \+\_\+iparam\+\_\+trim\+Filter\+::is\+\_\+adapter}}\label{struct__iparam__trimFilter_a6d015b5bf1568c362d9ca0ff37b751f8}
 true if filtering adapter sequences \hypertarget{struct__iparam__trimFilter_ac6093d26e41e61f82ffd2aa05f563f9c}{\index{\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}!is\+\_\+fa@{is\+\_\+fa}}
@@ -95,13 +104,13 @@ true if filtering adapter sequences \hypertarget{struct__iparam__trimFilter_ac60
 true if a fasta file was passed as a parameter \hypertarget{struct__iparam__trimFilter_afc50c477a3340ed7befc430d273ff6cb}{\index{\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}!is\+\_\+idx@{is\+\_\+idx}}
 \index{is\+\_\+idx@{is\+\_\+idx}!\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}}
 \subsubsection[{is\+\_\+idx}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool} \+\_\+iparam\+\_\+trim\+Filter\+::is\+\_\+idx}}\label{struct__iparam__trimFilter_afc50c477a3340ed7befc430d273ff6cb}
-true if an index file was passed as a parameter \hypertarget{struct__iparam__trimFilter_a72fcc236d4136d2405a04f155b515894}{\index{\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}!L@{L}}
+true if an index file was passed as a parameter \hypertarget{struct__iparam__trimFilter_a6a1118d39cdaa79f48f2d010a6018e5c}{\index{\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}!kmersize@{kmersize}}
+\index{kmersize@{kmersize}!\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}}
+\subsubsection[{kmersize}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+iparam\+\_\+trim\+Filter\+::kmersize}}\label{struct__iparam__trimFilter_a6a1118d39cdaa79f48f2d010a6018e5c}
+kmersize to look for contamination \hypertarget{struct__iparam__trimFilter_a72fcc236d4136d2405a04f155b515894}{\index{\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}!L@{L}}
 \index{L@{L}!\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}}
 \subsubsection[{L}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+iparam\+\_\+trim\+Filter\+::\+L}}\label{struct__iparam__trimFilter_a72fcc236d4136d2405a04f155b515894}
-read length \hypertarget{struct__iparam__trimFilter_a8d64cf4832f3c403bd7c505d5a3fee75}{\index{\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}!Lmer\+\_\+len@{Lmer\+\_\+len}}
-\index{Lmer\+\_\+len@{Lmer\+\_\+len}!\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}}
-\subsubsection[{Lmer\+\_\+len}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+iparam\+\_\+trim\+Filter\+::\+Lmer\+\_\+len}}\label{struct__iparam__trimFilter_a8d64cf4832f3c403bd7c505d5a3fee75}
-Lmer length to look for contamination \hypertarget{struct__iparam__trimFilter_a0b5f9bed4a7b4e2de8c917b42360f4d3}{\index{\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}!method@{method}}
+read length \hypertarget{struct__iparam__trimFilter_a0b5f9bed4a7b4e2de8c917b42360f4d3}{\index{\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}!method@{method}}
 \index{method@{method}!\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}}
 \subsubsection[{method}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+iparam\+\_\+trim\+Filter\+::method}}\label{struct__iparam__trimFilter_a0b5f9bed4a7b4e2de8c917b42360f4d3}
 \hyperlink{defines_8h_abf5b8fbbeb8255336e401a15a80214a8}{T\+R\+E\+E(1)}, \hyperlink{defines_8h_a1e43924adac4ae865aa0acf79710261c}{S\+A(2)}, \hyperlink{defines_8h_a7dcb6cfd9e186d997dce1d6cabe58898}{B\+L\+O\+O\+M(3)}, 0, when not looking for cont \hypertarget{struct__iparam__trimFilter_ac2b43664ca0c95a8572f97254893d675}{\index{\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}!min\+L@{min\+L}}
@@ -128,7 +137,7 @@ score threshold for matching reads in sequences \hypertarget{struct__iparam__tri
 \hyperlink{defines_8h_a996bde01ecac342918f0a2c4e7ce7bd5}{N\+O(0)}, \hyperlink{defines_8h_a1edd1ea8bddaf4d9c5eb3eae1ee1726a}{A\+L\+L(1)}, \hyperlink{defines_8h_a052e72209cfac2ff9aa78294f0bebea8}{E\+N\+D\+S(2)}, \hyperlink{defines_8h_a53529d9638a1d70f6e5989dedf4c2672}{S\+T\+R\+I\+P(3)} \hypertarget{struct__iparam__trimFilter_a5b5344041c9313230de07c9485227203}{\index{\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}!trim\+Q@{trim\+Q}}
 \index{trim\+Q@{trim\+Q}!\+\_\+iparam\+\_\+trim\+Filter@{\+\_\+iparam\+\_\+trim\+Filter}}
 \subsubsection[{trim\+Q}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+iparam\+\_\+trim\+Filter\+::trim\+Q}}\label{struct__iparam__trimFilter_a5b5344041c9313230de07c9485227203}
-\hyperlink{defines_8h_a996bde01ecac342918f0a2c4e7ce7bd5}{N\+O(0)}, \hyperlink{defines_8h_a653af6bd29f56a2699de26a928820da7}{F\+R\+A\+C(1)}, \hyperlink{defines_8h_a052e72209cfac2ff9aa78294f0bebea8}{E\+N\+D\+S(2)}, \hyperlink{defines_8h_abf0b71573c7ffc4f6746c24c9abc202a}{E\+N\+D\+S\+F\+R\+A\+C(3)}, \hyperlink{defines_8h_a3de33738fd3c7e77bffbcfaefc3e7645}{G\+L\+O\+B\+A\+L(4)} 
+bloom filter kmer structure \hyperlink{defines_8h_a996bde01ecac342918f0a2c4e7ce7bd5}{N\+O(0)}, \hyperlink{defines_8h_a653af6bd29f56a2699de26a928820da7}{F\+R\+A\+C(1)}, \hyperlink{defines_8h_a052e72209cfac2ff9aa78294f0bebea8}{E\+N\+D\+S(2)}, \hyperlink{defines_8h_abf0b71573c7ffc4f6746c24c9abc202a}{E\+N\+D\+S\+F\+R\+A\+C(3)}, \hyperlink{defines_8h_a3de33738fd3c7e77bffbcfaefc3e7645}{G\+L\+O\+B\+A\+L(4)} 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

@@ -306,26 +306,37 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 
 
 ## Test/examples
- The example in folder `examples/trimFilter_SReport/` works in the following
- way (**NOTE**: this has to be MUCH more detailed):
- The code following way (**NOTE**: this has to be MUCH more detailed):
 
- 1. `EColi_rRNA.fq` was created with `./create_fq.sh`. The file contains:
-    * 2e5 reads of length 50 from `EColi_genome.fa` with NO errors.
-    * 5e4 reads of length 50 from `rRNA_modified.fa` with NO errrors
-      (rRNA contaminations).
-    * Artificially generated reads with low quality score (see script).
-    * Artificially generated reads with Ns (see script).
- 2. The code was tested with flags:
-    `../../bin/trimFilter -l 50 --ifq EColi_rRNA.fq.gz --method TREE\
-     --ifa rRNA_CRUnit.fa:0.9:50 --trimQ ENDSFRAC --trimN STRIP`
-    i.e., we check for contaminations from rRNA, trim reads with lowQ at
-    the ends and less than 5% in the remaining part, and strip reads
-    containing N's. Output is stored in `example*.fq.gz` files.
- 3. One can run the example in `./run_example.sh` that will generate the
-    output again with the prefix `tmp` (**WARNING:** do not run
-    `./create_fq.sh` again if you want the same results).
- 4. With this set up, it is possible to run further customized tests.
+ The examples in folder `examples/trimFilter_SReport/` works in the following
+ way:
+
+1. See folder `fa_fq_files`. The file `EColi_rRNA.fq` was created with
+ `create_fq.sh` and contains:                                               
+   * 2e5 reads of length 50 from `EColi_genome.fa` with NO errors. 
+   * 5e4 reads of length 50 from `rRNA_modified.fa` with NO errrors 
+     (rRNA contaminations).                                                  
+   * Artificially generated reads with low quality score (see `create_fq.sh`)
+   * Artificially generated reads with Ns (see `create_fq.sh`).              
+2. `run_example_TREE.sh`: the code was tested with flags:                     
+   ```
+    $ ../../bin/trimFilter -l 50 --ifq PATH/TO/EColi_rRNA.fq.gz 
+    --method TREE --ifa PATH/TO/rRNA_modified.fa:0.9:50 
+    --trimQ ENDSFRAC --trimN STRIP -o tree
+   ```                                  
+   i.e., we check for contaminations from rRNA, trim reads with lowQ at
+   the ends and less than 5% in the remaining part, and strip reads
+   containing N's. The output should coincide with the files `example_TREE*`                 
+3. `run_example_BLOOM.sh`:                                                    
+  * bloom filter is generated for `rRNA_modified.fa` with FPR = 0.0075
+    and `kmersize=25`. The output should coincide with `rRNA_example.bf*`.
+  * trimFilter is run like in 2. but passing a bloom filter to look for
+    contaminations with `score=0.4`. 
+4. `run_example_SA.sh`: TODO                                      
+5. With this set up, it is possible to run further customized tests.         
+                                                                              
+**NOTE:** `rRNA_modified.fa` is the `rRNA_CRUnit.fa` sequence, where we have     
+        removed the lines containing N's for testing purposes.                
+                                                                               
 
 ## Contributors
 

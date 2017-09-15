@@ -29,19 +29,21 @@
 #ifndef DEFINES_H_
 #define DEFINES_H_
 
+#include <stdint.h>
+
 // General
 #define B_LEN 131072  /**< buffer size */
-#define MAX_FILENAME 300 /**< Maximum # chars in a filename */
+#define MAX_FILENAME 300  /**< Maximum # chars in a filename */
 #define bool int16_t  /**< define a bool type */
 #define true 1   /**< assign true to 1 */
 #define false 0  /**< assign false to 0 */
 
 #ifndef max
-  #define max(a, b) (((a) > (b)) ? (a) : (b)) /**< max function */
+  #define max(a, b) (((a) > (b)) ? (a) : (b))  /**< max function */
 #endif
 
 #ifndef min
-  #define min(a, b) (((a) < (b)) ? (a) : (b)) /**< min function */
+  #define min(a, b) (((a) < (b)) ? (a) : (b))  /**< min function */
 #endif
 
 #ifndef mem_usageMB
@@ -53,25 +55,25 @@
 #ifndef mem_usage
   #define mem_usage()  fprintf(stderr, \
          "- Current allocated memory: %ld Bytes.\n", \
-         alloc_mem) /**< returns allocated memory in Bytes */
+         alloc_mem)  /**< returns allocated memory in Bytes */
 #endif
 
 
 // Q_report, S_report
 #define DEFAULT_MINQ 27   /**< Minimum quality threshold */
-#define DEFAULT_NTILES 96 /**< Default number of tiles */
-#define DEFAULT_NQ 46 /**< Default number of different quality values */
-#define ZEROQ 33 /**< ASCII code of lowest quality value (!) */
-#define N_ACGT 5 /**< Number of different nucleotides in the fq file */
-#define MAX_RCOMMAND  4000 /**< Maximum # chars in R command*/
+#define DEFAULT_NTILES 96  /**< Default number of tiles */
+#define DEFAULT_NQ 46  /**< Default number of different quality values */
+#define ZEROQ 33  /**< ASCII code of lowest quality value (!) */
+#define N_ACGT 5  /**< Number of different nucleotides in the fq file */
+#define MAX_RCOMMAND  4000  /**< Maximum # chars in R command*/
 
 
 // Fasta files
-#define FA_ENTRY_BUF 20 /**< buffer for fasta entries*/
+#define FA_ENTRY_BUF 20  /**< buffer for fasta entries*/
 
 // Tree
-#define T_ACGT 4 /**< Number of children per node in tree*/
-#define NPOOL_1D 1048576 /**< Number of Node structs allocated in inner dim */
+#define T_ACGT 4  /**< Number of children per node in tree*/
+#define NPOOL_1D 1048576  /**< Number of Node structs allocated in inner dim */
 #define NPOOL_2D 16  /**< Number of *Node allocated in outer dim */
 #define MAX_FASZ_TREE 1e7 /**< Maximum fasta size for constructing a tree.
                                DECIDE A SENSIBLE SIZE */
@@ -79,8 +81,8 @@
 #define BITSPERCHAR 8  /**< number of bits in a char */
 #define BASESPERCHAR 4  /**< number of nucleotides that can fit in a char */
 #define KMER_LEN 25    /**< default kmer length */
-#define FALSE_POS_RATE 0.05 /**< default false positive rate */
-#define ZERO_POS_RATE 1e-14 /**< 0 threshold for a double */
+#define FALSE_POS_RATE 0.05  /**< default false positive rate */
+#define ZERO_POS_RATE 1e-14  /**< 0 threshold for a double */
 
 // Trimming
 #define NO 0        /**< No trimming */
@@ -98,20 +100,20 @@
 #define SA 2     /**< Use a suffix array to look for contaminations*/
 #define BLOOM 3  /**< Use a bloom filter to look for contaminations*/
 
-#define ERROR 1000 /**< Encodes an error when reading in trimN, trimQ, method
+#define ERROR 1000  /**< Encodes an error when reading in trimN, trimQ, method
                      options in trimFilter */
-#define DEFAULT_MINL 25 /**< Default minimum length under which we discard
+#define DEFAULT_MINL 25  /**< Default minimum length under which we discard
                           the reads */
 
 // Classification of filters
-#define ADAP 0 /**<  Adapter filter */
-#define CONT 1 /**<  Contamination filter */
-#define LOWQ 2 /**<  Low quality filter */
-#define NNNN 3 /**<  N's presence filter */
-#define GOOD 4 /**<  Good reads */
+#define ADAP 0  /**<  Adapter filter */
+#define CONT 1  /**<  Contamination filter */
+#define LOWQ 2  /**<  Low quality filter */
+#define NNNN 3  /**<  N's presence filter */
+#define GOOD 4  /**<  Good reads */
 
 // Number of filters
-#define NFILTERS 4 /**< total number of filters */
+#define NFILTERS 4  /**< total number of filters */
 
-#endif // endif DEFINES_H_
+#endif  // endif DEFINES_H_
 

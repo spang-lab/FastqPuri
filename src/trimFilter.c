@@ -1,21 +1,21 @@
 /****************************************************************************
- * copyright (c) 2017 by paula perez rubio                                  *
+ * Copyright (C) 2017 by Paula Perez Rubio                                  *
  *                                                                          *
- * this file is part of fastqarazketa.                                      *
+ * This file is part of FastqArazketa.                                      *
  *                                                                          *
- *   fastqarazketa is free software: you can redistribute it and/or modify  *
- *   it under the terms of the gnu general public license as                *
- *   published by the free software foundation, either version 3 of the     *
- *   license, or (at your option) any later version.                        *
+ *   FastqArazketa is free software: you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as                *
+ *   published by the Free Software Foundation, either version 3 of the     *
+ *   License, or (at your option) any later version.                        *
  *                                                                          *
- *   fastqarazketa is distributed in the hope that it will be useful,       *
- *   but without any warranty; without even the implied warranty of         *
- *   merchantability or fitness for a particular purpose.  see the          *
- *   gnu general public license for more details.                           *
+ *   FastqArazketa is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of         *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the          *
+ *   GNU General Public License for more details.                           *
  *                                                                          *
- *   you should have received a copy of the gnu general public license      *
- *   along with fastqarazketa.                                              *
- *   if not, see <http://www.gnu.org/licenses/>.                            *
+ *   You should have received a copy of the GNU General Public License      *
+ *   along with FastqArazketa.                                              *
+ *   If not, see <http://www.gnu.org/licenses/>.                            *
  ****************************************************************************/
 
 /**
@@ -91,8 +91,8 @@ int main(int argc, char *argv[]) {
 
   // BODY of the function here!
   // Initializing stat_TF.
-  stat_TF.filters[ADAP] = par_TF.is_adapter; 
-  stat_TF.filters[CONT] = par_TF.method;  
+  stat_TF.filters[ADAP] = par_TF.is_adapter;
+  stat_TF.filters[CONT] = par_TF.method;
   stat_TF.filters[LOWQ] = par_TF.trimQ;
   stat_TF.filters[NNNN] = par_TF.trimN;
 
@@ -107,7 +107,6 @@ int main(int argc, char *argv[]) {
   // Loading the index file to look for contaminations
   Tree *ptr_tree = NULL;
   Bfilter *ptr_bf = NULL;
-  Procs_kmer *procs = NULL; 
   if (par_TF.method) {
     f_cont = fopen_gen(fq_cont, "w");  // open fq_cont file for writing
     if (par_TF.is_fa && par_TF.method == TREE) {
@@ -125,7 +124,7 @@ int main(int argc, char *argv[]) {
        }
        // Constructing tree
        fprintf(stderr, "* DOING: Constructing tree ... \n");
-       ptr_tree = tree_from_fasta(ptr_fa, par_TF.Lmer_len);
+       ptr_tree = tree_from_fasta(ptr_fa, par_TF.kmersize);
        // Free fasta file
        fprintf(stderr, "* DOING: Deallocating fasta file structure...\n");
        free_fasta(ptr_fa);
@@ -141,10 +140,11 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     } else if (par_TF.is_idx && par_TF.method == BLOOM) {
         ptr_bf  = read_Bfilter(par_TF.Iidx, par_TF.Iinfo);   // handle filenames
-        procs = init_procs(ptr_bf -> kmersize, ptr_bf -> hashNum); 
-        init_LUTs(); 
+        par_TF.ptr_bfkmer = init_Bfkmer(ptr_bf -> kmersize, ptr_bf -> hashNum);
+        init_LUTs();
+        init_map();
         fprintf(stderr, "Method for contaminations detection: BLOOM\n");
-        fprintf(stderr, "* DOING: Reading Bloom filter  from %s\n", 
+        fprintf(stderr, "* DOING: Reading Bloom filter  from %s\n",
               par_TF.Iidx);
     } else {
         fprintf(stderr, "OPTION_ERROR: something went wrong with the");
@@ -190,9 +190,8 @@ int main(int argc, char *argv[]) {
                 if (par_TF.method == TREE) {
                   discarded = is_read_inTree(ptr_tree, seq);
                 } else if (par_TF.method == BLOOM) {
-                  discarded = is_read_inBloom(ptr_bf, seq, procs);  
-                }
-                else {
+                  discarded = is_read_inBloom(ptr_bf, seq, par_TF.ptr_bfkmer);
+                } else {
                   fprintf(stderr, "SA option is not supported yet.\n");
                   fprintf(stderr, "Exiting program\n");
                   exit(EXIT_FAILURE);
@@ -258,29 +257,29 @@ int main(int argc, char *argv[]) {
   if (stat_TF.filters[ADAP]) {
     buffer_output(f_adap, NULL, 0, ADAP);
     fclose(f_adap);
-    fprintf(stderr, "- Discarded due to adapter %d, stored in %s\n",
+    fprintf(stderr, "- Discarded due to adapters: %d, stored in %s\n",
           stat_TF.discarded[ADAP], fq_adap);
-    fprintf(stderr, "- Trimmed due to adapters %d\n", stat_TF.trimmed[ADAP]);
+    fprintf(stderr, "- Trimmed due to adapters: %d\n", stat_TF.trimmed[ADAP]);
   }
   if (stat_TF.filters[CONT]) {
     buffer_output(f_cont, NULL, 0, CONT);
     fclose(f_cont);
-    fprintf(stderr, "- Discarded due to cont %d, stored in %s\n",
+    fprintf(stderr, "- Discarded due to cont: %d, stored in %s\n",
           stat_TF.discarded[CONT], fq_cont);
   }
   if (stat_TF.filters[LOWQ]) {
     buffer_output(f_lowq, NULL, 0, LOWQ);
     fclose(f_lowq);
-    fprintf(stderr, "- Discarded due to lowQ %d, stored in %s\n",
+    fprintf(stderr, "- Discarded due to lowQ: %d, stored in %s\n",
           stat_TF.discarded[LOWQ], fq_lowq);
-    fprintf(stderr, "- Trimmed due to lowQ %d\n", stat_TF.trimmed[LOWQ]);
+    fprintf(stderr, "- Trimmed due to lowQ: %d\n", stat_TF.trimmed[LOWQ]);
   }
   if (stat_TF.filters[NNNN]) {
     buffer_output(f_NNNN, NULL, 0, NNNN);
     fclose(f_NNNN);
-    fprintf(stderr, "- Discarded due to N's %d, stored in %s\n",
+    fprintf(stderr, "- Discarded due to N's: %d, stored in %s\n",
           stat_TF.discarded[NNNN], fq_NNNN);
-    fprintf(stderr, "- Trimmed due to N's %d\n", stat_TF.trimmed[NNNN]);
+    fprintf(stderr, "- Trimmed due to N's: %d\n", stat_TF.trimmed[NNNN]);
   }
   // Write summary info file
   fprintf(stderr, "Writing summary data to %s\n", summary);
@@ -292,6 +291,7 @@ int main(int argc, char *argv[]) {
      free_all_nodes(ptr_tree);
   }
   free(buffer);
+  free_parTF(&par_TF);
   // Obtaining elapsed time
   end = clock();
   cpu_time_used = (double)(end - start)/CLOCKS_PER_SEC;

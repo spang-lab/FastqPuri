@@ -97,7 +97,7 @@ Collaboration diagram for _iparam_trimFilter:</div>
 <div class="dyncontent">
 <div class="center"><img src="struct__iparam__trimFilter__coll__graph.png" border="0" usemap="#__iparam__trimFilter_coll__map" alt="Collaboration graph"/></div>
 <map name="__iparam__trimFilter_coll__map" id="__iparam__trimFilter_coll__map">
-<area shape="rect" id="node2" href="struct__adapter.html" title="_adapter" alt="" coords="33,5,105,32"/></map>
+<area shape="rect" id="node2" href="struct__bfkmer.html" title="stores a processed kmer (2 bits pro nucleotide) " alt="" coords="5,5,75,32"/><area shape="rect" id="node3" href="struct__adapter.html" title="_adapter" alt="" coords="101,5,173,32"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -106,12 +106,17 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a5147310738277c148ca7109ba77829ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55796cd412ef4ca61a5a799d2f64beec"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__iparam__trimFilter.html#a55796cd412ef4ca61a5a799d2f64beec">Ifa</a></td></tr>
 <tr class="separator:a55796cd412ef4ca61a5a799d2f64beec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a158296e4d37ab3b033c6f9aee1516d71"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__iparam__trimFilter.html#a158296e4d37ab3b033c6f9aee1516d71">Iidx</a></td></tr>
-<tr class="separator:a158296e4d37ab3b033c6f9aee1516d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0e1c22a522a0f014952d204e8887607"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__iparam__trimFilter.html#ae0e1c22a522a0f014952d204e8887607">Iidx</a> [<a class="el" href="defines_8h.html#abe0ec333b60117063f9b9fd9f849cb08">MAX_FILENAME</a>]</td></tr>
+<tr class="separator:ae0e1c22a522a0f014952d204e8887607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76e905e2a809d9a659d49fbd388e0c32"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__iparam__trimFilter.html#a76e905e2a809d9a659d49fbd388e0c32">Iinfo</a> [<a class="el" href="defines_8h.html#abe0ec333b60117063f9b9fd9f849cb08">MAX_FILENAME</a>]</td></tr>
+<tr class="separator:a76e905e2a809d9a659d49fbd388e0c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad24f2902b532a4ff2dfb1122941064b8"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__iparam__trimFilter.html#ad24f2902b532a4ff2dfb1122941064b8">Oprefix</a></td></tr>
 <tr class="separator:ad24f2902b532a4ff2dfb1122941064b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba4b2762da9029d272905c558986b3f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="init__trimFilter_8h.html#a3442d07a10a4ab75064687f3c244e370">Adapter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__iparam__trimFilter.html#aba4b2762da9029d272905c558986b3f7">ad</a></td></tr>
 <tr class="separator:aba4b2762da9029d272905c558986b3f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63b9b54ab69ce2602ec37ececc59e131"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63b9b54ab69ce2602ec37ececc59e131"></a>
+<a class="el" href="bloom_8h.html#a4bf3f34a321ce545e533d29ce363f569">Bfkmer</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>ptr_bfkmer</b></td></tr>
+<tr class="separator:a63b9b54ab69ce2602ec37ececc59e131"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b5344041c9313230de07c9485227203"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__iparam__trimFilter.html#a5b5344041c9313230de07c9485227203">trimQ</a></td></tr>
 <tr class="separator:a5b5344041c9313230de07c9485227203"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f2d247cc26608ed5cc9e2d6943940d7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__iparam__trimFilter.html#a5f2d247cc26608ed5cc9e2d6943940d7">trimN</a></td></tr>
@@ -134,8 +139,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ac2b43664ca0c95a8572f97254893d675"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaeab85398303eada76cb6f32841fa094"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__iparam__trimFilter.html#aaeab85398303eada76cb6f32841fa094">nlowQ</a></td></tr>
 <tr class="separator:aaeab85398303eada76cb6f32841fa094"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d64cf4832f3c403bd7c505d5a3fee75"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__iparam__trimFilter.html#a8d64cf4832f3c403bd7c505d5a3fee75">Lmer_len</a></td></tr>
-<tr class="separator:a8d64cf4832f3c403bd7c505d5a3fee75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a1118d39cdaa79f48f2d010a6018e5c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__iparam__trimFilter.html#a6a1118d39cdaa79f48f2d010a6018e5c">kmersize</a></td></tr>
+<tr class="separator:a6a1118d39cdaa79f48f2d010a6018e5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e626c5776d4423d20d5ec7606fe9b81"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__iparam__trimFilter.html#a2e626c5776d4423d20d5ec7606fe9b81">globleft</a></td></tr>
 <tr class="separator:a2e626c5776d4423d20d5ec7606fe9b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5fb4ca1786b14cd63a8467187474f51"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__iparam__trimFilter.html#ad5fb4ca1786b14cd63a8467187474f51">globright</a></td></tr>
@@ -211,16 +216,29 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a158296e4d37ab3b033c6f9aee1516d71"></a>
+<a class="anchor" id="ae0e1c22a522a0f014952d204e8887607"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* _iparam_trimFilter::Iidx</td>
+          <td class="memname">char _iparam_trimFilter::Iidx[<a class="el" href="defines_8h.html#abe0ec333b60117063f9b9fd9f849cb08">MAX_FILENAME</a>]</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Input index file (constructed from an input.fa cont file) </p>
+<p>Input index file (from an input.fa cont file) </p>
+
+</div>
+</div>
+<a class="anchor" id="a76e905e2a809d9a659d49fbd388e0c32"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char _iparam_trimFilter::Iinfo[<a class="el" href="defines_8h.html#abe0ec333b60117063f9b9fd9f849cb08">MAX_FILENAME</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Input index info file </p>
 
 </div>
 </div>
@@ -263,6 +281,19 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a6a1118d39cdaa79f48f2d010a6018e5c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _iparam_trimFilter::kmersize</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>kmersize to look for contamination </p>
+
+</div>
+</div>
 <a class="anchor" id="a72fcc236d4136d2405a04f155b515894"></a>
 <div class="memitem">
 <div class="memproto">
@@ -273,19 +304,6 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>read length </p>
-
-</div>
-</div>
-<a class="anchor" id="a8d64cf4832f3c403bd7c505d5a3fee75"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int _iparam_trimFilter::Lmer_len</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Lmer length to look for contamination </p>
 
 </div>
 </div>
@@ -402,7 +420,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p><a class="el" href="defines_8h.html#a996bde01ecac342918f0a2c4e7ce7bd5">NO(0)</a>, <a class="el" href="defines_8h.html#a653af6bd29f56a2699de26a928820da7">FRAC(1)</a>, <a class="el" href="defines_8h.html#a052e72209cfac2ff9aa78294f0bebea8">ENDS(2)</a>, <a class="el" href="defines_8h.html#abf0b71573c7ffc4f6746c24c9abc202a">ENDSFRAC(3)</a>, <a class="el" href="defines_8h.html#a3de33738fd3c7e77bffbcfaefc3e7645">GLOBAL(4)</a> </p>
+<p>bloom filter kmer structure <a class="el" href="defines_8h.html#a996bde01ecac342918f0a2c4e7ce7bd5">NO(0)</a>, <a class="el" href="defines_8h.html#a653af6bd29f56a2699de26a928820da7">FRAC(1)</a>, <a class="el" href="defines_8h.html#a052e72209cfac2ff9aa78294f0bebea8">ENDS(2)</a>, <a class="el" href="defines_8h.html#abf0b71573c7ffc4f6746c24c9abc202a">ENDSFRAC(3)</a>, <a class="el" href="defines_8h.html#a3de33738fd3c7e77bffbcfaefc3e7645">GLOBAL(4)</a> </p>
 
 </div>
 </div>
@@ -412,7 +430,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 8 2017 11:45:55 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 13 2017 12:43:33 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

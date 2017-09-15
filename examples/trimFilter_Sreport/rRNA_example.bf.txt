@@ -1,0 +1,5 @@
+kmersize = 25
+hashNum = 7
+bfsizeBits = 432432
+falsePosRate = 0.007500
+nelem = 42463

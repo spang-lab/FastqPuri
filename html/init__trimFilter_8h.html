@@ -95,12 +95,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>help dialog for trimFilter and initialization of the command line arguments.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="defines_8h_source.html">defines.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bloom_8h_source.html">bloom.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for init_trimFilter.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="init__trimFilter_8h__incl.png" border="0" usemap="#include_2init__trimFilter_8h" alt=""/></div>
 <map name="include_2init__trimFilter_8h" id="include_2init__trimFilter_8h">
-<area shape="rect" id="node2" href="defines_8h.html" title="Macro definitions. " alt="" coords="45,80,119,107"/></map>
+<area shape="rect" id="node2" href="defines_8h.html" title="Macro definitions. " alt="" coords="5,155,80,181"/><area shape="rect" id="node4" href="bloom_8h.html" title="functions that implement the bloom filter " alt="" coords="101,80,169,107"/><area shape="rect" id="node5" href="city_8h.html" title="functions for hashin strings, C translation of cityhash (C++, google) " alt="" coords="205,155,259,181"/><area shape="rect" id="node7" href="fa__read_8h.html" title="reads in and stores fasta files " alt="" coords="105,155,181,181"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -139,6 +140,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="init
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="init__trimFilter_8h.html#a4e5dbdc70417040f72231b5167987b4a">getarg_trimFilter</a> (int argc, char **argv)</td></tr>
 <tr class="memdesc:a4e5dbdc70417040f72231b5167987b4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads in the arguments passed through the command line to trimFilter. and stores them in the global variable par_TF. <br /></td></tr>
 <tr class="separator:a4e5dbdc70417040f72231b5167987b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1bb74f7bfe0b5e3bcbaf09af9cce972"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1bb74f7bfe0b5e3bcbaf09af9cce972"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>free_parTF</b> (<a class="el" href="init__trimFilter_8h.html#aff83806f1ff2b5f3609dc7d4c04b7c19">Iparam_trimFilter</a> *ptr_parTF)</td></tr>
+<tr class="separator:ab1bb74f7bfe0b5e3bcbaf09af9cce972"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>help dialog for trimFilter and initialization of the command line arguments. </p>
@@ -161,7 +165,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="init
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 8 2017 11:45:54 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 13 2017 12:43:32 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

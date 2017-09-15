@@ -1,4 +1,0 @@
-../../../../biobloom/BioBloomCategorizer/biobloomcategorizer -p biobloom --fq -s 0.9 -f EColi_biobloom.bf ../EColi_rRNA.fq.gz 
-../../../bin/trimFilter -f ../EColi_rRNA.fq.gz  -l 50 --method BLOOM --idx Ecoli.bf:0.9
-../../../bin/makeBloom -f ../EColi_genome.fa -m 50753408  -o Ecoli
-../../../../biobloom/BioBloomMaker/biobloommaker -p EColi_biobloom -f 0.01 ../EColi_genome.fa

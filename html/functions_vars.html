@@ -143,7 +143,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="struct__node.html#a7f878e5e9c5c9d2801715c870b9bbc1c">_node</a>
 </li>
 <li>compact
-: <a class="el" href="struct__procs__kmer.html#a2a2f8c0b8848d3d908c253e0e57a31ea">_procs_kmer</a>
+: <a class="el" href="struct__bfkmer.html#a42dcd2ff2a59169fb66f89fd0aa892a9">_bfkmer</a>
 </li>
 </ul>
 
@@ -198,21 +198,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_h"></a>- h -</h3><ul>
 <li>halfsizeBytes
-: <a class="el" href="struct__procs__kmer.html#aa45c7225cd512dec96f9a8745b24c047">_procs_kmer</a>
+: <a class="el" href="struct__bfkmer.html#a8bb57e85f90ed06b9de391be9eeba3e8">_bfkmer</a>
 </li>
 <li>hangingBases
-: <a class="el" href="struct__procs__kmer.html#a39a5e3c54a27bd06061038f8c9628471">_procs_kmer</a>
+: <a class="el" href="struct__bfkmer.html#a151a92f8ca72f2d778f9ad26e96b35ae">_bfkmer</a>
 </li>
 <li>hashNum
 : <a class="el" href="struct__bfilter.html#ab1c41e821137ae9d35a240c67819d51f">_bfilter</a>
+, <a class="el" href="struct__bfkmer.html#a5694e46bd18449baa91d25178d1634bf">_bfkmer</a>
 , <a class="el" href="struct__iparam__makeBloom.html#a0e8c97b918d06b17856569ede06bb2d9">_iparam_makeBloom</a>
-, <a class="el" href="struct__procs__kmer.html#a054cf4233a621787e53874d2c1c4495e">_procs_kmer</a>
 </li>
 <li>hashValues
-: <a class="el" href="struct__procs__kmer.html#ac47c2d17d8a2559b22593e1beb7bb48a">_procs_kmer</a>
+: <a class="el" href="struct__bfkmer.html#afa4bc228a6d89c923dbda0357071187a">_bfkmer</a>
 </li>
 <li>hasOverhead
-: <a class="el" href="struct__procs__kmer.html#a13ad18789320173c1a2ea9c514571cb7">_procs_kmer</a>
+: <a class="el" href="struct__bfkmer.html#a78787413a5bdf782f32ff66a8f21be20">_bfkmer</a>
 </li>
 </ul>
 
@@ -225,7 +225,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="struct__iparam__trimFilter.html#a5147310738277c148ca7109ba77829ca">_iparam_trimFilter</a>
 </li>
 <li>Iidx
-: <a class="el" href="struct__iparam__trimFilter.html#a158296e4d37ab3b033c6f9aee1516d71">_iparam_trimFilter</a>
+: <a class="el" href="struct__iparam__trimFilter.html#ae0e1c22a522a0f014952d204e8887607">_iparam_trimFilter</a>
+</li>
+<li>Iinfo
+: <a class="el" href="struct__iparam__trimFilter.html#a76e905e2a809d9a659d49fbd388e0c32">_iparam_trimFilter</a>
 </li>
 <li>inputfasta
 : <a class="el" href="struct__iparam__makeBloom.html#aaefb007647f548e8f3ffcb5fc83b7040">_iparam_makeBloom</a>
@@ -252,12 +255,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h3><a class="anchor" id="index_k"></a>- k -</h3><ul>
 <li>kmersize
 : <a class="el" href="struct__bfilter.html#aaccbef9fad8a88369249ff0638b2a032">_bfilter</a>
+, <a class="el" href="struct__bfkmer.html#aec3b3cd33fdfbd71f38b7c9a21a00574">_bfkmer</a>
 , <a class="el" href="struct__iparam__makeBloom.html#a6f25cccf64d8ccdad252dcc1a99f0015">_iparam_makeBloom</a>
-, <a class="el" href="struct__procs__kmer.html#acd250ab75fc47fde7d3e9ff1b2977f14">_procs_kmer</a>
+, <a class="el" href="struct__iparam__trimFilter.html#a6a1118d39cdaa79f48f2d010a6018e5c">_iparam_trimFilter</a>
 </li>
 <li>kmersizeBytes
 : <a class="el" href="struct__bfilter.html#aa7612223f56f3bb6cb40d96645bc982e">_bfilter</a>
-, <a class="el" href="struct__procs__kmer.html#a0e08c6a8147fb51c5c891e957d5c7c93">_procs_kmer</a>
+, <a class="el" href="struct__bfkmer.html#aad605c14068200c97520fcd6e49f3e7c">_bfkmer</a>
 </li>
 </ul>
 
@@ -274,9 +278,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>linelen
 : <a class="el" href="struct__fa__data.html#a3607f37f43d8b2f14ced6a93c6a444ff">_fa_data</a>
-</li>
-<li>Lmer_len
-: <a class="el" href="struct__iparam__trimFilter.html#a8d64cf4832f3c403bd7c505d5a3fee75">_iparam_trimFilter</a>
 </li>
 <li>lowQ_ACGT_tile
 : <a class="el" href="structstatsinfo.html#ac1a8b88e2e4f486f2767072588adcd2a">statsinfo</a>
@@ -461,7 +462,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 8 2017 11:45:55 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 13 2017 12:43:34 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

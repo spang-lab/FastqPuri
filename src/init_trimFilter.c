@@ -32,7 +32,6 @@
 #include <string.h>
 #include <getopt.h>
 #include "init_trimFilter.h"
-#include "defines.h"
 #include "str_manip.h"
 #include "config.h"
 
@@ -46,7 +45,7 @@ void printHelpDialog_trimFilter() {
    "Usage: trimFilter --ifq <INPUT_FILE.fq> --length <READ_LENGTH> \n"
    "                  --output [O_PREFIX]\n"
    "                  --adapters [<ADAPTERS.fa>:<mismatches>:<score>]\n"
-   "                  --method [TREE|SA|BLOOM] \n" 
+   "                  --method [TREE|SA|BLOOM] \n"
    "                  (--idx [<INDEX_FILE>:<score>:<lmer_len>] |\n"
    "                   --ifa [<INPUT.fa>:<score>:[lmer_len]])\n"
    "                  --trimQ [NO|ALL|ENDS|FRAC|ENDSFRAC|GLOBAL]\n"
@@ -75,7 +74,7 @@ void printHelpDialog_trimFilter() {
    "               <score>: score threshold to accept a match [0,1],\n"
    "               [lmer_len]: correspond to the length of the lmers to be \n"
    "                        looked for in the reads [1,READ_LENGTH].\n"
-   " -a, --ifa     fasta input file. To be included only with method TREE\n" 
+   " -a, --ifa     fasta input file. To be included only with method TREE\n"
    "               (it excludes the option --idx). Otherwise, an\n"
    "               index file has to be precomputed and given as parameter\n"
    "               (see option --idx). 3 fields separated by colons: \n"
@@ -196,13 +195,13 @@ void getarg_trimFilter(int argc, char **argv) {
             fprintf(stderr, "  and you passed %d\n", index.N);
             fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
             exit(EXIT_FAILURE);
-         } 
-         par_TF.Iidx = index.s[0];
-         snprintf(par_TF.Iinfo, MAX_FILENAME,"%s.txt",par_TF.Iidx);
+         }
+         snprintf(par_TF.Iidx, MAX_FILENAME, "%s", index.s[0]);
+         snprintf(par_TF.Iinfo, MAX_FILENAME, "%s.txt", index.s[0]);
          par_TF.score = atof(index.s[1]);
          if (index.N == 3) {
-            par_TF.Lmer_len = atoi(index.s[2]);
-         } 
+            par_TF.kmersize = atoi(index.s[2]);
+         }
          break;
       case 'a':
          par_TF.is_fa = true;
@@ -216,7 +215,7 @@ void getarg_trimFilter(int argc, char **argv) {
          }
          par_TF.Ifa = tree_fa.s[0];
          par_TF.score = atof(tree_fa.s[1]);
-         par_TF.Lmer_len = atoi(tree_fa.s[2]);
+         par_TF.kmersize = atoi(tree_fa.s[2]);
          break;
       case 'C':
          par_TF.method = (!strncmp(optarg, "TREE", method_len)) ? TREE :
@@ -333,8 +332,15 @@ void getarg_trimFilter(int argc, char **argv) {
         fprintf(stderr, "- Constructing tree on the flight from %s.\n",
               par_TF.Ifa);
         fprintf(stderr, "- Threshold score: %f\n", par_TF.score);
-        fprintf(stderr, "- Lmers length (tree depth): %d\n", par_TF.Lmer_len);
+        fprintf(stderr, "- Lmers length (tree depth): %d\n", par_TF.kmersize);
      } else if (par_TF.is_idx) {
+        if (!strncmp(par_TF.Iidx, "", MAX_FILENAME)) {
+          fprintf(stderr, "OPTION_ERROR: index file name not proper. \n");
+          fprintf(stderr, "                 Revise options with --help. \n");
+          fprintf(stderr, "Exiting program\n");
+          fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+          exit(EXIT_FAILURE);
+        }
         fprintf(stderr, "- Reading tree from file %s.\n",
               par_TF.Iidx);
      } else {
@@ -366,7 +372,7 @@ void getarg_trimFilter(int argc, char **argv) {
         fprintf(stderr, "- Reading SA from file %s.\n",
               par_TF.Iidx);
         fprintf(stderr, "- Threshold score: %f\n", par_TF.score);
-        fprintf(stderr, "- Lmers length: %d \n", par_TF.Lmer_len);
+        fprintf(stderr, "- Lmers length: %d \n", par_TF.kmersize);
      } else {
         fprintf(stderr, "OPTION_ERROR: an index file needs ");
         fprintf(stderr, "to be specified. Revise options with ");
@@ -393,6 +399,14 @@ void getarg_trimFilter(int argc, char **argv) {
         fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
         exit(EXIT_FAILURE);
      } else if (par_TF.is_idx) {
+        if (!strncmp(par_TF.Iidx, "", MAX_FILENAME) ||
+            !strncmp(par_TF.Iinfo, "", MAX_FILENAME)) {
+          fprintf(stderr, "OPTION_ERROR: index file name not proper. \n");
+          fprintf(stderr, "                 Revise options with --help. \n");
+          fprintf(stderr, "Exiting program\n");
+          fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+          exit(EXIT_FAILURE);
+        }
         fprintf(stderr, "- Reading Bloom filter from file %s.\n",
               par_TF.Iidx);
         fprintf(stderr, "- Threshold score: %f\n", par_TF.score);
@@ -499,4 +513,13 @@ void getarg_trimFilter(int argc, char **argv) {
     fprintf(stderr, "- Minimum accepted trimmed read length: %d.\n",
            par_TF.minL);
   }
+}
+
+/**
+ * @brief frees the allocated memory in Iparam_trimFilter
+ *
+ * */
+void free_parTF(Iparam_trimFilter *ptr_parTF) {
+  if (ptr_parTF -> ptr_bfkmer != NULL) 
+     free_Bfkmer(ptr_parTF->ptr_bfkmer);
 }
