@@ -68,12 +68,17 @@ int main(int argc, char *argv[]) {
   strncat(fq_lowq, "_lowq.fq.gz", 15);
   strncat(fq_NNNN, "_NNNN.fq.gz", 15);
   strncat(summary, "_summary.bin", 15);
-  FILE  *fq_in, *f_good, *f_cont, *f_lowq, *f_NNNN, *f_adap;
+  FILE  *fq_in, *f_good; 
+  FILE *f_cont = NULL;
+  FILE *f_lowq = NULL;
+  FILE *f_NNNN = NULL; 
+  FILE *f_adap = NULL;
 
   int newlen;
   int offset = 0;
   char *buffer = malloc(sizeof(char)*(B_LEN + 1));
   Stats_TF stat_TF;
+  memset(&stat_TF, 0, sizeof(Stats_TF));
   int j = 0, nlines = 0, c1 = 0, c2 = -1;
   char char_seq[4*READ_MAXLEN];  // string containing one fq read
   int Nchar;  // length of char_seq

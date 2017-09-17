@@ -93,11 +93,15 @@ message("-- Setting Rmd summary filter report file: ${RMD_SUMMARY_FILTER_REPORT}
 CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/config.h.in 
                ${CMAKE_SOURCE_DIR}/config.h [ESCAPE_QUOTES])
 
+# Set verbose 
+set(CMAKE_VERBOSE_MAKE ON)
+
 # Set compiler flags
-set(CMAKE_C_FLAGS  "-Wall -O3 -march=native -std=c11" 
-    CACHE STRING "set compiler flags")
+set(CMAKE_C_FLAGS  "-Wall -O3 -march=native -std=c11") 
+message("-- Setting compiler flags: ${CMAKE_C_FLAGS}")
 
 # Set linker flags
+set(CMAKE_C_LINK_FLAGS  "" )
 #set(CMAKE_C_LINK_FLAGS  "-lm")
 
 # Include directories
@@ -137,7 +141,7 @@ add_executable(trimFilter ${PROJECT_SOURCE_DIR}/trimFilter.c
             ${PROJECT_SOURCE_DIR}/str_manip.c )
 
 # Set linker flags
-set(CMAKE_C_LINK_FLAGS  "-lm")
+set(CMAKE_C_LINK_FLAGS  "-lm " )
 add_executable(makeBloom ${PROJECT_SOURCE_DIR}/makeBloom.c 
             ${PROJECT_SOURCE_DIR}/init_makeBloom.c 
             ${PROJECT_SOURCE_DIR}/city.c 
