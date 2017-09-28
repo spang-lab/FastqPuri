@@ -1,10 +1,14 @@
 var searchData=
 [
+  ['c1',['c1',['../structds__read.html#a0dfe9d61d741a11022ac55594788f1e6',1,'ds_read']]],
+  ['c1sh',['c1sh',['../structds__read.html#a6e987171fc2d16d2c8de251cbf8e774f',1,'ds_read']]],
+  ['c2',['c2',['../structds__read.html#af26e72b90f742f48a920c32e53be3554',1,'ds_read']]],
   ['catexec',['catExec',['../fopen__gen_8c.html#aaad17dde0a82955fa873b2a8b93c99ae',1,'fopen_gen.c']]],
   ['check_5fpath',['check_path',['../tree_8c.html#a7ea4e8b262dc61c20d94b598bffab181',1,'check_path(Tree *tree_ptr, char *read, int Lread):&#160;tree.c'],['../tree_8h.html#a7ea4e8b262dc61c20d94b598bffab181',1,'check_path(Tree *tree_ptr, char *read, int Lread):&#160;tree.c']]],
   ['children',['children',['../struct__node.html#a7f878e5e9c5c9d2801715c870b9bbc1c',1,'_node']]],
   ['city_2ec',['city.c',['../city_8c.html',1,'']]],
   ['city_2eh',['city.h',['../city_8h.html',1,'']]],
+  ['citycrc_2eh',['citycrc.h',['../citycrc_8h.html',1,'']]],
   ['cmpfunc',['cmpfunc',['../stats__info_8c.html#ac4b64efac6b92ff63774c58b92d0fdb5',1,'stats_info.c']]],
   ['command_5fqreport',['command_Qreport',['../Rcommand__Qreport_8c.html#a336345f346ab2a993022a0ca4862731c',1,'command_Qreport():&#160;Rcommand_Qreport.c'],['../Rcommand__Qreport_8h.html#a336345f346ab2a993022a0ca4862731c',1,'command_Qreport():&#160;Rcommand_Qreport.c']]],
   ['command_5fsreport',['command_Sreport',['../Rcommand__Sreport_8c.html#a843ffc16afb438c7430da804efd8dfaf',1,'command_Sreport():&#160;Rcommand_Sreport.c'],['../Rcommand__Sreport_8h.html#a843ffc16afb438c7430da804efd8dfaf',1,'command_Sreport():&#160;Rcommand_Sreport.c']]],

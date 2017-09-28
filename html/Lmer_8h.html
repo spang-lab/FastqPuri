@@ -97,7 +97,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="Lmer_8h__dep__incl.png" border="0" usemap="#include_2Lmer_8hdep" alt=""/></div>
 <map name="include_2Lmer_8hdep" id="include_2Lmer_8hdep">
-<area shape="rect" id="node2" href="Lmer_8c.html" title="Manipulation of Lmers and sequences. " alt="" coords="5,80,89,107"/><area shape="rect" id="node3" href="tree_8c.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="114,80,191,107"/><area shape="rect" id="node4" href="trim_8h.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="267,80,367,107"/><area shape="rect" id="node5" href="trim_8c.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="190,155,267,181"/><area shape="rect" id="node6" href="trimFilter_8c.html" title="trimFilter main function " alt="" coords="291,155,398,181"/></map>
+<area shape="rect" id="node2" href="adapters_8c.html" title="sequence manipulation for alignment " alt="" coords="5,80,111,107"/><area shape="rect" id="node3" href="Lmer_8c.html" title="Manipulation of Lmers and sequences. " alt="" coords="135,80,219,107"/><area shape="rect" id="node4" href="tree_8c.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="243,80,321,107"/><area shape="rect" id="node5" href="trim_8h.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="344,80,444,107"/><area shape="rect" id="node6" href="trim_8c.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="297,155,374,181"/><area shape="rect" id="node7" href="trimFilter_8c.html" title="trimFilter main function " alt="" coords="398,155,505,181"/></map>
 </div>
 </div>
 <p><a href="Lmer_8h_source.html">Go to the source code of this file.</a></p>
@@ -105,14 +105,14 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a5f1586659681cf692359f7c8c003dd8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Lmer_8h.html#a5f1586659681cf692359f7c8c003dd8b">init_map</a> ()</td></tr>
-<tr class="memdesc:a5f1586659681cf692359f7c8c003dd8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize lookup table LT.  <a href="#a5f1586659681cf692359f7c8c003dd8b">More...</a><br /></td></tr>
+<tr class="memdesc:a5f1586659681cf692359f7c8c003dd8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize lookup table fw_1B.  <a href="#a5f1586659681cf692359f7c8c003dd8b">More...</a><br /></td></tr>
 <tr class="separator:a5f1586659681cf692359f7c8c003dd8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54a9d22589c1235957b6472310280e1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Lmer_8h.html#a54a9d22589c1235957b6472310280e1d">init_map_SA</a> ()</td></tr>
-<tr class="memdesc:a54a9d22589c1235957b6472310280e1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize lookup table LT (for SA)  <a href="#a54a9d22589c1235957b6472310280e1d">More...</a><br /></td></tr>
+<tr class="memdesc:a54a9d22589c1235957b6472310280e1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize lookup table fw_1B (for SA)  <a href="#a54a9d22589c1235957b6472310280e1d">More...</a><br /></td></tr>
 <tr class="separator:a54a9d22589c1235957b6472310280e1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3280d056532aa23523d08dfd52b60b51"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3280d056532aa23523d08dfd52b60b51"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Lmer_8h.html#a3280d056532aa23523d08dfd52b60b51">Lmer_sLmer</a> (char *Lmer, int L)</td></tr>
-<tr class="memdesc:a3280d056532aa23523d08dfd52b60b51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transforms an Lmer to the convention stored in the lookup table LT. <br /></td></tr>
+<tr class="memdesc:a3280d056532aa23523d08dfd52b60b51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transforms an Lmer to the convention stored in the lookup table fw_1B. <br /></td></tr>
 <tr class="separator:a3280d056532aa23523d08dfd52b60b51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4b4f0b75c0a5784ad66d856aed9d39f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae4b4f0b75c0a5784ad66d856aed9d39f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Lmer_8h.html#ae4b4f0b75c0a5784ad66d856aed9d39f">rev_comp</a> (char *sLmer, int L)</td></tr>
@@ -143,7 +143,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Lmer
       </table>
 </div><div class="memdoc">
 
-<p>Initialize lookup table LT. </p>
+<p>Initialize lookup table fw_1B. </p>
 <p>{'a','c','g','t'} &ndash;&gt; {'\000','\001','\002','\003'}, rest '\004'. </p>
 
 </div>
@@ -161,7 +161,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Lmer
       </table>
 </div><div class="memdoc">
 
-<p>Initialize lookup table LT (for SA) </p>
+<p>Initialize lookup table fw_1B (for SA) </p>
 <p>{'a','c','g','t'} &ndash;&gt; {'\001','\002','\003','\004'}, rest '\005'. </p>
 
 </div>
@@ -169,7 +169,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Lmer
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 13 2017 12:43:32 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 28 2017 11:30:46 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

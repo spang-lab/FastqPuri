@@ -96,6 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;string.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="city_8h_source.html">city.h</a>&quot;</code><br />
+<code>#include &lt;byteswap.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for city.c:</div>
 <div class="dyncontent">
@@ -115,6 +116,15 @@ Macros</h2></td></tr>
 <tr class="memitem:affde14445f49f65ff4f5b592e44ee71a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="affde14445f49f65ff4f5b592e44ee71a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>LIKELY</b>(x)&#160;&#160;&#160;(x)</td></tr>
 <tr class="separator:affde14445f49f65ff4f5b592e44ee71a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b854d47c10d6bfe9674b07cc48660dc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b854d47c10d6bfe9674b07cc48660dc"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PERMUTE3</b>(a, b, c)&#160;&#160;&#160;do { std::swap(a, b); std::swap(a, c); } while (0)</td></tr>
+<tr class="separator:a6b854d47c10d6bfe9674b07cc48660dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f481fb776ebae274270e5bc0f74ca49"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9f481fb776ebae274270e5bc0f74ca49"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PERMUTE3_32</b>(a, b, c)&#160;&#160;&#160;do { uint32_t t = a; a = c; c = b; b = t;} while (0)</td></tr>
+<tr class="separator:a9f481fb776ebae274270e5bc0f74ca49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a500faec9f71f09c3ff2281caea99c2a5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a500faec9f71f09c3ff2281caea99c2a5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PERMUTE3_64</b>(a, b, c)&#160;&#160;&#160;do { uint64 t = a; a = c; c = b; b = t;} while (0)</td></tr>
+<tr class="separator:a500faec9f71f09c3ff2281caea99c2a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -130,33 +140,51 @@ static uint64&#160;</td><td class="memItemRight" valign="bottom"><b>Fetch64</b> 
 <tr class="memitem:a83d43dafbc11754766e1727514326b46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83d43dafbc11754766e1727514326b46"></a>
 static uint32&#160;</td><td class="memItemRight" valign="bottom"><b>Fetch32</b> (const char *p)</td></tr>
 <tr class="separator:a83d43dafbc11754766e1727514326b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af884d8e0248c5c2861a67385aa76669c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af884d8e0248c5c2861a67385aa76669c"></a>
-static uint64&#160;</td><td class="memItemRight" valign="bottom"><b>Hash128to64</b> (const <a class="el" href="struct__uint128.html">uint128</a> x)</td></tr>
-<tr class="separator:af884d8e0248c5c2861a67385aa76669c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f54dd6f6c4f03edc8b9ab2911e2cbc3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0f54dd6f6c4f03edc8b9ab2911e2cbc3"></a>
+static uint32&#160;</td><td class="memItemRight" valign="bottom"><b>fmix</b> (uint32 h)</td></tr>
+<tr class="separator:a0f54dd6f6c4f03edc8b9ab2911e2cbc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8ab253cb02d8e765e182cf8989c753c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad8ab253cb02d8e765e182cf8989c753c"></a>
+static uint32&#160;</td><td class="memItemRight" valign="bottom"><b>Rotate32</b> (uint32 val, int shift)</td></tr>
+<tr class="separator:ad8ab253cb02d8e765e182cf8989c753c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac73f381902d3f109e8e5aad365add47f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac73f381902d3f109e8e5aad365add47f"></a>
+static uint32&#160;</td><td class="memItemRight" valign="bottom"><b>Mur</b> (uint32 a, uint32 h)</td></tr>
+<tr class="separator:ac73f381902d3f109e8e5aad365add47f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af512a2fa953a76af904d27b079b0065a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af512a2fa953a76af904d27b079b0065a"></a>
+static uint32&#160;</td><td class="memItemRight" valign="bottom"><b>Hash32Len13to24</b> (const char *s, size_t len)</td></tr>
+<tr class="separator:af512a2fa953a76af904d27b079b0065a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40881ad81d1f0e503b76027567897812"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a40881ad81d1f0e503b76027567897812"></a>
+static uint32&#160;</td><td class="memItemRight" valign="bottom"><b>Hash32Len0to4</b> (const char *s, size_t len)</td></tr>
+<tr class="separator:a40881ad81d1f0e503b76027567897812"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adec14ce03fee79b043244a4fd3a0106b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adec14ce03fee79b043244a4fd3a0106b"></a>
+static uint32&#160;</td><td class="memItemRight" valign="bottom"><b>Hash32Len5to12</b> (const char *s, size_t len)</td></tr>
+<tr class="separator:adec14ce03fee79b043244a4fd3a0106b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66b4e767cfb7995e463e0fd72164c15c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a66b4e767cfb7995e463e0fd72164c15c"></a>
+uint32&#160;</td><td class="memItemRight" valign="bottom"><b>CityHash32</b> (const char *s, size_t len)</td></tr>
+<tr class="separator:a66b4e767cfb7995e463e0fd72164c15c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abff583bd4718081f427dd4f46a411b7f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abff583bd4718081f427dd4f46a411b7f"></a>
 static uint64&#160;</td><td class="memItemRight" valign="bottom"><b>Rotate</b> (uint64 val, int shift)</td></tr>
 <tr class="separator:abff583bd4718081f427dd4f46a411b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59e3c2d10d4aaa543de187033b473fb4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a59e3c2d10d4aaa543de187033b473fb4"></a>
-static uint64&#160;</td><td class="memItemRight" valign="bottom"><b>RotateByAtLeast1</b> (uint64 val, int shift)</td></tr>
-<tr class="separator:a59e3c2d10d4aaa543de187033b473fb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29ffac454b61445d188c0cdb024674ab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29ffac454b61445d188c0cdb024674ab"></a>
 static uint64&#160;</td><td class="memItemRight" valign="bottom"><b>ShiftMix</b> (uint64 val)</td></tr>
 <tr class="separator:a29ffac454b61445d188c0cdb024674ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b04ce5568f91cae31cd97c5cec1b7f5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b04ce5568f91cae31cd97c5cec1b7f5"></a>
 static uint64&#160;</td><td class="memItemRight" valign="bottom"><b>HashLen16</b> (uint64 u, uint64 v)</td></tr>
 <tr class="separator:a6b04ce5568f91cae31cd97c5cec1b7f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b5ee6d287dd04311b3892e945506ea4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b5ee6d287dd04311b3892e945506ea4"></a>
+static uint64&#160;</td><td class="memItemRight" valign="bottom"><b>HashLen16_3a</b> (uint64 u, uint64 v, uint64 mul)</td></tr>
+<tr class="separator:a8b5ee6d287dd04311b3892e945506ea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad97a52e6478913f15f5d4330553f3955"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad97a52e6478913f15f5d4330553f3955"></a>
 static uint64&#160;</td><td class="memItemRight" valign="bottom"><b>HashLen0to16</b> (const char *s, size_t len)</td></tr>
 <tr class="separator:ad97a52e6478913f15f5d4330553f3955"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81339f4a93276e38bf3cfa97b4437509"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a81339f4a93276e38bf3cfa97b4437509"></a>
 static uint64&#160;</td><td class="memItemRight" valign="bottom"><b>HashLen17to32</b> (const char *s, size_t len)</td></tr>
 <tr class="separator:a81339f4a93276e38bf3cfa97b4437509"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33c9a1e124172135327c5426f0d8b47b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a33c9a1e124172135327c5426f0d8b47b"></a>
-<a class="el" href="struct__uint128.html">uint128</a>&#160;</td><td class="memItemRight" valign="bottom"><b>WeakHashLen32WithSeeds6</b> (uint64 w, uint64 x, uint64 y, uint64 z, uint64 a, uint64 b)</td></tr>
-<tr class="separator:a33c9a1e124172135327c5426f0d8b47b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58bbc15d0c1f537c7737b296ca2f6d7c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a58bbc15d0c1f537c7737b296ca2f6d7c"></a>
-<a class="el" href="struct__uint128.html">uint128</a>&#160;</td><td class="memItemRight" valign="bottom"><b>WeakHashLen32WithSeeds</b> (const char *s, uint64 a, uint64 b)</td></tr>
-<tr class="separator:a58bbc15d0c1f537c7737b296ca2f6d7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a014002e70a254a3c7868a6ff085af942"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a014002e70a254a3c7868a6ff085af942"></a>
+<a class="el" href="struct__uint128.html">uint128</a>&#160;</td><td class="memItemRight" valign="bottom"><b>WeakHashLen32WithSeeds</b> (uint64 w, uint64 x, uint64 y, uint64 z, uint64 a, uint64 b)</td></tr>
+<tr class="separator:a014002e70a254a3c7868a6ff085af942"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab54029b4e653995f990893f31dd9cb48"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab54029b4e653995f990893f31dd9cb48"></a>
+<a class="el" href="struct__uint128.html">uint128</a>&#160;</td><td class="memItemRight" valign="bottom"><b>WeakHashLen32WithSeeds_3a</b> (const char *s, uint64 a, uint64 b)</td></tr>
+<tr class="separator:ab54029b4e653995f990893f31dd9cb48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4576c118f6462a3e7dee68efeb9c2921"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4576c118f6462a3e7dee68efeb9c2921"></a>
 static uint64&#160;</td><td class="memItemRight" valign="bottom"><b>HashLen33to64</b> (const char *s, size_t len)</td></tr>
 <tr class="separator:a4576c118f6462a3e7dee68efeb9c2921"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -190,20 +218,23 @@ static const uint64&#160;</td><td class="memItemRight" valign="bottom"><b>k1</b>
 <tr class="memitem:a770262882e2bbb6e86e4e3573e25497e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a770262882e2bbb6e86e4e3573e25497e"></a>
 static const uint64&#160;</td><td class="memItemRight" valign="bottom"><b>k2</b> = 0x9ae16a3b2f90404fULL</td></tr>
 <tr class="separator:a770262882e2bbb6e86e4e3573e25497e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1ea20165613e32c33bd38b0cdbc1581"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1ea20165613e32c33bd38b0cdbc1581"></a>
-static const uint64&#160;</td><td class="memItemRight" valign="bottom"><b>k3</b> = 0xc949d7c7509e6557ULL</td></tr>
-<tr class="separator:ab1ea20165613e32c33bd38b0cdbc1581"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cbb0f7754fc37a3f25504af65d3cced"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3cbb0f7754fc37a3f25504af65d3cced"></a>
+static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>c1</b> = 0xcc9e2d51</td></tr>
+<tr class="separator:a3cbb0f7754fc37a3f25504af65d3cced"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d143b003b4b377cadfbc28e20c800ff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7d143b003b4b377cadfbc28e20c800ff"></a>
+static const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>c2</b> = 0x1b873593</td></tr>
+<tr class="separator:a7d143b003b4b377cadfbc28e20c800ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>functions for hashin strings, C translation of cityhash (C++, google) </p>
-<dl class="section author"><dt>Author</dt><dd>Alexander Nusov </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a href="https://github.com/nusov/cityhash-c">https://github.com/nusov/cityhash-c</a> </dd>
+<dl class="section author"><dt>Author</dt><dd>bdnt </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a href="https://github.com/bdnt/cityhash-c">https://github.com/bdnt/cityhash-c</a> </dd>
 <dd>
 <a href="https://github.com/google/cityhash">https://github.com/google/cityhash</a> </dd></dl>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 13 2017 12:43:32 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 28 2017 11:30:47 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

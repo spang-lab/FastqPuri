@@ -1,8 +1,3 @@
-// citycrc.h - cityhash-c
-// CityHash on C
-// Copyright (c) 2011-2012, Alexander Nusov
-//
-// - original copyright notice -
 // Copyright (c) 2011 Google, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -30,6 +25,14 @@
 //
 // Functions in the CityHash family are not suitable for cryptography.
 
+/**
+ * @file citycrc.h
+ * @author bdnt
+ * @brief functions for hashin strings, C translation of cityhash (C++, google)
+ * @see https://github.com/bdnt/cityhash-c 
+ * @see https://github.com/google/cityhash
+ * */
+
 #ifndef CITY_HASH_CRC_H_
 #define CITY_HASH_CRC_H_
 
@@ -45,5 +48,4 @@ uint128 CityHashCrc128WithSeed(const char *s, size_t len, uint128 seed);
 // Hash function for a byte array.  Sets result[0] ... result[3].
 void CityHashCrc256(const char *s, size_t len, uint64 *result);
 
-#endif  // CITY_HASH_CRC_H_
-
+#endif  // endif  CITY_HASH_CRC_H_

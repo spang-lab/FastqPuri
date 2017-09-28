@@ -157,7 +157,7 @@ void getarg_trimFilter(int argc, char **argv) {
         exit(EXIT_SUCCESS);
         break;
       case 'v':
-        printf("Qreport version %s \nWritten by Paula Perez Rubio\n", VERSION);
+        printf("trimFilter version %s \nWritten by Paula Perez Rubio\n", VERSION);
         exit(EXIT_SUCCESS);
         break;
       case 'f':
@@ -181,7 +181,7 @@ void getarg_trimFilter(int argc, char **argv) {
          }
          par_TF.ad.adapter_fa = adapt.s[0];
          par_TF.ad.mismatches = atoi(adapt.s[1]);
-         par_TF.ad.threshold = atoi(adapt.s[2]);
+         par_TF.ad.threshold = atof(adapt.s[2]);
       case 'q':
          par_TF.minQ = atoi(optarg);
          break;
@@ -300,7 +300,7 @@ void getarg_trimFilter(int argc, char **argv) {
     fprintf(stderr, "- Looking for adapter sequences.\n");
     fprintf(stderr, "   Adapter fasta files: %s \n", par_TF.ad.adapter_fa);
     fprintf(stderr, "   Number of mismatches: %d\n", par_TF.ad.mismatches);
-    fprintf(stderr, "   Score threshold: %d\n", par_TF.ad.threshold);
+    fprintf(stderr, "   Score threshold: %f\n", par_TF.ad.threshold);
   }
   // handling minQ
   if (par_TF.minQ == 0) {
@@ -467,7 +467,7 @@ void getarg_trimFilter(int argc, char **argv) {
   // Consistenty checks
   if ((par_TF.trimQ != ENDS) && (par_TF.trimQ != ENDSFRAC) &&
       (par_TF.percent != 0)) {
-      printf("%d\n", par_TF.percent);
+      fprintf(stderr, "%d\n", par_TF.percent);
       fprintf(stderr, "OPTION_ERROR: --percent passed as an option, but ");
       fprintf(stderr, "neither ENDS nor\n");
       fprintf(stderr, "              ENDSFRAC where passed to --trimQ. \n");

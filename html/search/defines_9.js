@@ -6,5 +6,6 @@ var searchData=
   ['max_5frcommand',['MAX_RCOMMAND',['../defines_8h.html#ac95fc8ee3f8ffd70f4564bcdc813ae2d',1,'defines.h']]],
   ['mem_5fusage',['mem_usage',['../defines_8h.html#a3589a26d6b84700042e948056edb43f6',1,'defines.h']]],
   ['mem_5fusagemb',['mem_usageMB',['../defines_8h.html#afb615637083826bc311382f50b9a112d',1,'defines.h']]],
-  ['min',['min',['../defines_8h.html#ac6afabdc09a49a433ee19d8a9486056d',1,'defines.h']]]
+  ['min',['min',['../defines_8h.html#ac6afabdc09a49a433ee19d8a9486056d',1,'defines.h']]],
+  ['min_5fnmatches',['MIN_NMATCHES',['../defines_8h.html#a464182aecfc9b40d9f1c670054da8bc8',1,'defines.h']]]
 ];

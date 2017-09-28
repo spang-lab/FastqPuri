@@ -71,6 +71,10 @@
 // Fasta files
 #define FA_ENTRY_BUF 20  /**< buffer for fasta entries*/
 
+// Adapters
+#define LOG_4 0.60206    /**< log_10(4) for the adapters alignment score */
+#define MIN_NMATCHES 12  /**< minimum number of matches demanded*/
+
 // Tree
 #define T_ACGT 4  /**< Number of children per node in tree*/
 #define NPOOL_1D 1048576  /**< Number of Node structs allocated in inner dim */

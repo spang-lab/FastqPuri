@@ -2,8 +2,9 @@ var searchData=
 [
   ['n',['N',['../struct__fa__entry.html#a46bfe034cc419f00fccd2d7d174c76e2',1,'_fa_entry::N()'],['../struct__split.html#af3261bd49762652bb67cc1e76300f582',1,'_split::N()']]],
   ['n_5facgt',['N_ACGT',['../defines_8h.html#a71b6eab2a5d9fd457d48f50869a888f6',1,'defines.h']]],
+  ['nad',['Nad',['../struct__adapter.html#aed006c3b66849e781049076b11f297d3',1,'_adapter']]],
   ['nelem',['nelem',['../struct__bfilter.html#afdabad504407bfdee536cf67c66303c4',1,'_bfilter::nelem()'],['../struct__iparam__makeBloom.html#aad19a452126dca34f78bb961dc4cf233',1,'_iparam_makeBloom::nelem()']]],
-  ['nencode',['Nencode',['../Lmer_8c.html#a09f8263f3577dfabc13a037c32504ad3',1,'Nencode():&#160;Lmer.c'],['../trim_8c.html#a09f8263f3577dfabc13a037c32504ad3',1,'Nencode():&#160;Lmer.c']]],
+  ['nencode',['Nencode',['../Lmer_8c.html#a2abce22af1da49bd08cf2baa1d74b939',1,'Nencode():&#160;Lmer.c'],['../trim_8c.html#a2abce22af1da49bd08cf2baa1d74b939',1,'Nencode():&#160;Lmer.c']]],
   ['nentries',['nentries',['../struct__fa__data.html#a2e49d8da3a888d7df62cd887367e2923',1,'_fa_data']]],
   ['new_5fnode_5fbuf',['new_node_buf',['../tree_8c.html#a407b006b6b9c55cc8ef07c670becce33',1,'new_node_buf(Tree *tree_ptr):&#160;tree.c'],['../tree_8h.html#a407b006b6b9c55cc8ef07c670becce33',1,'new_node_buf(Tree *tree_ptr):&#160;tree.c']]],
   ['nfilters',['NFILTERS',['../defines_8h.html#a23f1103d8247781ab0be4b0fba2f085f',1,'defines.h']]],
@@ -11,6 +12,7 @@ var searchData=
   ['nkmers',['nkmers',['../fa__read_8c.html#a73143a443a198eaf51820e5862f8547b',1,'nkmers(Fa_data *ptr_fa, int kmersize):&#160;fa_read.c'],['../fa__read_8h.html#a73143a443a198eaf51820e5862f8547b',1,'nkmers(Fa_data *ptr_fa, int kmersize):&#160;fa_read.c']]],
   ['nlines',['nlines',['../struct__fa__data.html#a49ac64b09307f73104bbf1e650f3c2c5',1,'_fa_data']]],
   ['nlowq',['nlowQ',['../struct__iparam__trimFilter.html#aaeab85398303eada76cb6f32841fa094',1,'_iparam_trimFilter']]],
+  ['nmax',['nmax',['../structds__read.html#ae4cb668ce0d39411b13ed2720743dbf7',1,'ds_read']]],
   ['nnnn',['NNNN',['../defines_8h.html#afdad8e3654b5f02ff4c50fcb88f6eed9',1,'defines.h']]],
   ['nnodes',['nnodes',['../struct__tree.html#abffdcd9dcf0df92df4b5444fb74cc523',1,'_tree']]],
   ['no',['NO',['../defines_8h.html#a996bde01ecac342918f0a2c4e7ce7bd5',1,'defines.h']]],

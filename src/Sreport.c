@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
   fprintf(stderr, "- Output file: %s\n", par_SR.outputfile);
 #ifdef HAVE_RPKG
   char * command = command_Sreport();
-  printf("Running command: %s \n", command);
+  fprintf(stderr, "Running command: %s \n", command);
   int status;
   if ((status = system(command)) != 0) {
       fprintf(stderr, "Something went wrong when executing R script.\n");

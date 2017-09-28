@@ -27,17 +27,15 @@
  * */
 
 #include <string.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include "trim.h"
-#include "Lmer.h"
 #include "str_manip.h"
 #include "defines.h"
 #include "config.h"
 
 
-extern char LT[256]; /**< global variable. Lookup table. */
-extern char Nencode;
+extern uint8_t fw_1B[256]; /**< global variable. Lookup table.  DOn't need it*/
+extern uint8_t Nencode;
 extern Iparam_trimFilter par_TF;
 
 #define TRIM_STRING 20 /**< maximal length of trimming info string.*/
@@ -326,18 +324,19 @@ static int Qtrim_endsfrac(Fq_read *seq, int minQ, int minL, int nlowQ ) {
  * @param seq fastq read
  * @param left number of nucleotides to be trimmed from the left
  * @param right number of nucleotides to be trimmed from the right
+ * @param type char indicating the type of trimming (Q,A).
  * @return 2, since they are all accepted and trim
  *
  * */
-static int Qtrim_global(Fq_read *seq, int left, int right ) {
-  int t_end = seq ->L - left;
+static int Qtrim_global(Fq_read *seq, int left, int right, char type) {
+  int t_end = seq ->L - right;
   (seq -> L) -= (left+right);
   memmove(seq -> line4, seq -> line4 + left, seq -> L);
   memmove(seq -> line2, seq -> line2 + left, seq -> L);
   seq -> line4[seq -> L] = '\0';
   seq -> line2[seq -> L] = '\0';
   char add[TRIM_STRING];
-  snprintf(add, TRIM_STRING, " TRIMQ:%d:%d", left, t_end);
+  snprintf(add, TRIM_STRING, " TRIM%c:%d:%d", type, left, t_end);
   if (strlen(add) + strlen(seq -> line3) > READ_MAXLEN) {
     fprintf(stderr, "Cannot append  %s to %s.\n", add, seq -> line3);
     fprintf(stderr, "sequence exceeds the predifined limit.\n");
@@ -348,6 +347,266 @@ static int Qtrim_global(Fq_read *seq, int left, int right ) {
   }
   strncat(seq -> line3, add, TRIM_STRING);
   return 2;
+}
+
+/**
+ * @brief alignment search between a fq read, and an adapter sequence,
+ *        with a seed of 8 nucleotides.
+ *
+ *  This function checks whether there is adapter contamination in a given
+ *  read. It works stand alone if the adapter is shorter than 16 nucleotides,
+ *  and is called from align_uint64 when no 16-nucleotides long seeds are
+ *  found. The criteria are the same as in align_uint64, the seed length
+ *  being 8-nucleotides long instead of 16. See the <b>align_uint64</b>
+ *  documentation for more details.
+ *
+ * @param seq pointer to <b>Fq_read</b>
+ * @param adap_list array of  <b>Ad_seq</b>
+ * @param all true if the whole read has to be sweeped, false if only
+ *        the ends. When this function is called from align_uint64, only
+ *        the ends need to be considered.
+ * @return -1 error, 0 discarded, 1 accepted as is, 2 accepted and trimmed
+ * @note Global input parameters from par_TF are also used
+ * @see Adapter
+ * @see Iparam_trimFilter
+ * @see align_uint64
+ * @see pack_adapter
+ * @see obtain_score
+ *
+ * */
+static int align_uint32(Fq_read *seq, Ad_seq *ptr_adap, bool all) {
+  uint32_t j, n;
+  int pos;
+  uint16_t Wlimit = sizeof(uint64_t) - sizeof(uint32_t);
+  uint16_t Nwindows = seq -> Lhalf - sizeof(uint32_t) + 1;
+  double score = 0;
+  double threshold = par_TF.ad.threshold;
+  int mismatches = par_TF.ad.mismatches;
+  int minL = par_TF.minL;
+  uint32_t ad, adsh, read32 = 0, cmp32 = 0;
+  memcpy(&ad, ptr_adap->pack, sizeof(uint32_t));
+  memcpy(&adsh, ptr_adap->pack_sh, sizeof(uint32_t));
+  if (all) {
+     Wlimit = Nwindows;
+  }
+  pos = seq -> L - 2 * sizeof(uint32_t) + (seq ->L % 2)+1;
+  for (j=0; j < Nwindows; j++) {
+    memcpy(&read32, seq->pack+Nwindows-1-j, sizeof(uint32_t) );
+    cmp32 = (adsh ^ read32);
+    n = __builtin_popcount(cmp32);
+    if ((n>>1) <= mismatches) {
+      score = obtain_score(seq, pos, ptr_adap, 0);
+      if (score > threshold) break;
+    }
+    pos--;
+    cmp32 = (ad ^ read32);
+    n = __builtin_popcount(cmp32);
+    if ((n>>1) <= mismatches) {
+      score =  obtain_score(seq, pos, ptr_adap, 0);
+      if (score > threshold) break;
+    }
+    pos--;
+    // jump if coming from align_uint64
+    if (j == Wlimit) {
+       j = Nwindows-1;
+    }
+  }
+  if (score > threshold) {
+    return((pos < minL) ? 0 : Qtrim_global(seq, 0, seq->L+1-pos, 'A'));
+  }
+  // Controlar bytes al inicio del read
+  // loop done on the adapter sequence  without considering the first
+  Nwindows = ptr_adap -> Lpack - sizeof(uint32_t);
+  pos = ptr_adap->L - 2*sizeof(uint32_t) + (ptr_adap->L%2);
+  for (j = Nwindows; j > 0; j--) {
+    memcpy(&ad, ptr_adap->pack + j, sizeof(uint32_t));
+    memcpy(&adsh, ptr_adap->pack_sh + j, sizeof(uint32_t));
+    cmp32 = (ad ^ read32);
+    n = __builtin_popcount(cmp32);
+    if ((n>>1) <= mismatches) {
+       score = obtain_score(seq, 0, ptr_adap, pos);
+       if (score > threshold) break;
+    }
+    pos--;
+    cmp32 = (adsh ^ read32);
+    n = __builtin_popcount(cmp32);
+    if ((n>>1) <= mismatches) {
+       score = obtain_score(seq, 0, ptr_adap, pos);
+       if (score > threshold) break;
+    }
+    pos--;
+  }
+  if (score > threshold) {
+    return((pos < minL) ? 0 : Qtrim_global(seq, 0, seq->L+1-pos, 'A'));
+  }
+  return 1;
+}
+
+/**
+ * @brief Alignment search between a fq read, and an adapter sequence, w
+ *        with a seed of 8 nucleotides.
+ * @param seq pointer to <b>Fq_read</b>
+ * @param adap_list array of  <b>Ad_seq</b>
+ * @return -1 error, 0 discarded, 1 accepted as is, 2 accepted and trimmed
+ * @note Global input parameters from par_TF are used
+ * @see Adapter
+ * @see Iparam_trimFilter
+ * @see align_uint32
+ * @see pack_adapter
+ * @see obtain_score
+ *
+ *  This function checks whether there is adapter contamination in a given
+ *  read. We start by looking for 16-nucleotides long seeds, where
+ *  a user defined number of mismatches is allowed. If found, a score
+ *  is computed. If the score is larger than the user defined threshold
+ *  and the number of matched nucleotides exceeds MIN_NMATCHES (12), then
+ *  the read is trimmed if the remaining part is longer than minL (user
+ *  defined) and discarded otherwise. If no 16-nucleotides long seeds are
+ *  found, we proceed with 8-nucleotides long seeds (see <b>align_uint32</b>) 
+ *  and apply the same criteria to trim/discard a read. A list of possible
+ *  situations follows, to illustrate how it works (minL=25, mismatches=2):
+ *
+ *  @code
+ *  ADAPTER: CAAGCAGAAGACGGCATACGAG
+ *  REV_COM: AGATCGGAAGAGCTCGTATGCC
+ *
+ *  CASE1A:  CACAGTCGATCAGCGAGCAGGCATTCATGCTGAGATCGGAAGAGATCGTATG
+ *                                           ||||||||||||X|||----
+ *                                           AGATCGGAAGAGCTCGTATG
+ *           - Seed: 16 Nucleotides
+ *           - Return: 2, TRIMA:0:31
+ *  CASE1B:  CACATCATCGCTAGCTATCGATCGATCGATGCTATGCAAGATCGGAAGAGCT
+ *                                                 ||||||||------
+ *                                                 AGATCGGAAGAGCT
+ *           - Seed: 8 Nucleotides
+ *           - Return: 2, TRIMA:0:37
+ *  CASE1C:  CACATCATCGCTAGCTATCGATCGATCGATGCTATGCACGAAGATCGGAAGA
+ *                                                    ||||||||---
+ *                                                    AGATCGGAAGA
+ *           - Seed: 8 Nucleotides
+ *           - Return: 1, reason: Match length < 12
+ *  CASE2A:  CATACATCACGAGCTAGCTAGAGATCGGAAGAGCTCGTATGCCCAGCATCGA
+ *                                 ||||||||||||||||------
+ *                                 AGATCGGAAGAGCTCGTATGCC
+ *           - Seed: 16 Nucleotides
+ *           - Return: 0, reason: remaining read too short.
+ *  CASE2B:  CCACAGTACAATACATCACGAGCTAGCTAGAGATCGGAAGAGCTCGTATGCA
+ *                                       ||||||||||||||||||||||
+ *                                       AGATCGGAAGAGCTCGTATGCC
+ *           - Seed: 16 Nucleotides
+ *           - Return: 2, TRIMA:0:28
+ *  CASE3A:  TATGCCGTCTTCTGCTTGCAGTGCATGCTGATGCATGCTGCATGCTAGCTGC
+ *           ||||||||||||||||--
+ *           TATGCCGTCTTCTGCTTG
+ *           - Seed: 16 Nucleotides
+ *           - Return: 0, reason: remaining read too short
+ *  CASE3B:  CGTCTTCTGCTTGCCGATCGATGCTAGCTACGATCGTCGAGCTAGCTACGTG
+ *           ||||||||-----
+ *           CGTCTTCTGCTTG
+ *           - Seed: 8 Nucleotides
+ *           - Return: 0, reason: remaining read too short
+ *  CASE3C:  TCTTCTGCTTGCCGATCGATGCTAGCTACGATCGTCGAGCTAGCTACGTGCG
+ *           ||||||||---
+ *           TCTTCTGCTTG
+ *           - Seed: 8 Nucleotides
+ *           - Return: 1, reason: Match length < 12
+ * @endcode
+ *
+ * */
+static int align_uint64(Fq_read *seq, Ad_seq *ptr_adap) {
+  uint64_t j, n;
+  int pos, Nwindows;
+  double score = 0;
+  double threshold = par_TF.ad.threshold;
+  int mismatches = par_TF.ad.mismatches;
+  int minL = par_TF.minL;
+  uint64_t ad, adsh, read64 = 0, cmp64 = 0;
+  memcpy(&ad, ptr_adap->pack, sizeof(uint64_t));
+  memcpy(&adsh, ptr_adap->pack_sh, sizeof(uint64_t));
+  Nwindows = seq -> Lhalf - sizeof(uint64_t) + 1;
+  pos = seq->L - 2*sizeof(uint64_t) + (seq->L%2) + 1;
+  for (j=0; j < Nwindows ; j++) {
+    memcpy(&read64, seq->pack + Nwindows-1-j, sizeof(uint64_t) );
+    cmp64 = (adsh ^ read64);
+    n = __builtin_popcount(cmp64);
+    if ((n>>1) <= mismatches) {
+      score = obtain_score(seq, pos, ptr_adap, 0);
+      if (score > threshold) break;
+    }
+    pos--;
+    cmp64 = (ad ^ read64);
+    n = __builtin_popcount(cmp64);
+    if ((n>>1) <= mismatches) {
+      score =  obtain_score(seq, pos, ptr_adap, 0);
+      if (score > threshold) break;
+    }
+    pos--;
+  }
+  if (score > threshold) {
+    return((pos < minL) ? 0 : Qtrim_global(seq, 0, seq->L+1-pos, 'A'));
+  }
+  // Controlar bytes al inicio del read
+  // loop done on the adapter sequence  without considering the first
+  Nwindows = ptr_adap -> Lpack - sizeof(uint64_t);
+  pos = ptr_adap->L - 2*sizeof(uint64_t) + (ptr_adap->L%2);
+  for (j = Nwindows; j > 0; j--) {
+    memcpy(&ad, ptr_adap -> pack + j, sizeof(uint64_t));
+    memcpy(&adsh, ptr_adap -> pack_sh + j, sizeof(uint64_t));
+    cmp64 = (ad ^ read64);
+    n = __builtin_popcount(cmp64);
+    if ((n>>1) <= mismatches) {
+       score = obtain_score(seq, 0, ptr_adap, pos);
+       if (score > threshold) break;
+    }
+    pos--;
+    cmp64 = (adsh ^ read64);
+    n = __builtin_popcount(cmp64);
+    if ((n>>1) <= mismatches) {
+       score = obtain_score(seq, 0, ptr_adap, pos);
+       if (score > threshold) break;
+    }
+    pos--;
+  }
+  if (score > threshold) {
+    return((pos < minL) ? 0 : Qtrim_global(seq, 0, seq->L+1-pos, 'A'));
+  }
+  return align_uint32(seq, ptr_adap, false);
+}
+
+/**
+ * @brief trims sequence based on presence of N nucleotides
+ *
+ *  if (adapter length < 16) -> search for seeds 8 nucleotides long
+ *  else -> search for seeds 16 nucleotides long
+ *    if (seed found) -> calculate score
+ *       if score > threshold -> aligner found, trim / discard and exit.
+ *    else -> search for seeds 8 nucleotides long
+ * @param seq pointer to <b>Fq_read</b>
+ * @param adap_list array of  <b>Ad_seq</b>
+ * @return -1 error, 0 discarded, 1 accepted as is, 2 accepted and trimmed
+ * @note Global input parameters from par_TF are also used
+ *
+ * */
+int trim_adapter(Fq_read *seq, Ad_seq *adap_list) {
+  int i;
+  int Nad = par_TF.ad.Nad;
+  double threshold = par_TF.ad.threshold;
+  seq->Lhalf = process_seq(seq->pack, (unsigned char *)seq->line2,
+                           seq->L, 0, 0);
+  int ret = 0;
+  for (i = 0; i < Nad; i++) {
+    if (adap_list[i].L >= 16) {
+      if ((ret = align_uint64(seq, adap_list + i))  != 1) {
+         return ret;
+      }
+    } else if ((adap_list[i].L < 16) && (adap_list[i].L >= 8) &&
+               (threshold < LOG_4*16)) {
+      if ((ret = align_uint32(seq, adap_list + i, true)) != 1) {
+         return ret;
+      }
+    }
+  }
+  return 1;
 }
 
 /**
@@ -400,7 +659,7 @@ int trim_sequenceQ(Fq_read *seq) {
          (par_TF.trimQ == ENDSFRAC) ?
                 Qtrim_endsfrac(seq, par_TF.minQ, par_TF.minL, par_TF.nlowQ):
          (par_TF.trimQ == GLOBAL) ?
-                Qtrim_global(seq, par_TF.globleft, par_TF.globright): -1;
+                Qtrim_global(seq, par_TF.globleft, par_TF.globright, 'Q'): -1;
 }
 
 /**
@@ -413,7 +672,7 @@ int trim_sequenceQ(Fq_read *seq) {
  *
  * */
 bool is_read_inTree(Tree *tree_ptr, Fq_read *seq) {
-  char read[seq->L];
+  char *read = malloc(seq->L);
   memcpy(read, seq -> line2, seq -> L+1);
   Lmer_sLmer(read, seq -> L);
   if (check_path(tree_ptr, read, seq -> L) > par_TF.score) {
@@ -422,6 +681,7 @@ bool is_read_inTree(Tree *tree_ptr, Fq_read *seq) {
      rev_comp(read, seq -> L);
      return (check_path(tree_ptr, read, seq -> L) > par_TF.score);
   }
+  free(read);
 }
 
 /**

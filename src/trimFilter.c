@@ -43,9 +43,8 @@
 #include "bloom.h"
 #include "trim.h"
 
-
 uint64_t alloc_mem = 0;  /**< global variable. Memory allocated in the heap.*/
-Iparam_trimFilter par_TF;  /**< global variable: Input parameters of makeTree.*/
+Iparam_trimFilter par_TF;  /**< global variable: Input parameters trimFilter.*/
 
 /**
  * @brief makeTree main function
@@ -68,10 +67,10 @@ int main(int argc, char *argv[]) {
   strncat(fq_lowq, "_lowq.fq.gz", 15);
   strncat(fq_NNNN, "_NNNN.fq.gz", 15);
   strncat(summary, "_summary.bin", 15);
-  FILE  *fq_in, *f_good; 
+  FILE  *fq_in, *f_good;
   FILE *f_cont = NULL;
   FILE *f_lowq = NULL;
-  FILE *f_NNNN = NULL; 
+  FILE *f_NNNN = NULL;
   FILE *f_adap = NULL;
 
   int newlen;
@@ -87,6 +86,7 @@ int main(int argc, char *argv[]) {
   double cpu_time_used;
   time_t rawtime;
   struct tm * timeinfo;
+  Ad_seq *adap_list = NULL;
 
   // Start the clock
   start = clock();
@@ -101,13 +101,21 @@ int main(int argc, char *argv[]) {
   stat_TF.filters[LOWQ] = par_TF.trimQ;
   stat_TF.filters[NNNN] = par_TF.trimN;
 
+  // Allocating memory for the fastq structure
+  Fq_read* seq = malloc(sizeof(Fq_read));
+
   // Loading the adapters file if the option is activated
   if (par_TF.is_adapter) {
     f_adap = fopen_gen(fq_adap, "w");  // open fq_adap  file for writing
+    init_alLUTs();
+    init_map();
+    Fa_data *ptr_fa_ad = malloc(sizeof(Fa_data));
+    read_fasta(par_TF.ad.adapter_fa, ptr_fa_ad);
+    adap_list = pack_adapter(ptr_fa_ad);
+    par_TF.ad.Nad = ptr_fa_ad -> nentries;
+    free_fasta(ptr_fa_ad);
+    // Alocate memory for the packed sequence
     fprintf(stderr, "Adapters removal is activated!\n");
-    fprintf(stderr, "WARNING: this option is WORK IN PROGRESS!!\n");
-    fprintf(stderr, "Exiting program\n");
-    exit(EXIT_FAILURE);
   }
   // Loading the index file to look for contaminations
   Tree *ptr_tree = NULL;
@@ -173,7 +181,6 @@ int main(int argc, char *argv[]) {
   f_good = fopen_gen(fq_good, "w");
 
   // Loop over the fastq file
-  Fq_read* seq = malloc(sizeof *seq);
   while ( (newlen = fread(buffer+offset, 1, B_LEN-offset, fq_in)) > 0 ) {
     newlen += offset;
     buffer[newlen++] =  '\0';
@@ -187,9 +194,15 @@ int main(int argc, char *argv[]) {
               bool discarded = false;
               int trim;
               if (stat_TF.filters[ADAP] && !discarded) {
-                  fprintf(stderr, "Adapter filtering is not supported yet.\n");
-                  fprintf(stderr, "Exiting program\n");
-                  exit(EXIT_FAILURE);
+                trim = trim_adapter(seq, adap_list);
+                discarded = (!trim);
+                if (discarded) {
+                   Nchar = string_seq(seq, char_seq);
+                   buffer_output(f_adap, char_seq, Nchar, ADAP);
+                   stat_TF.discarded[ADAP]++;
+                } else if (trim == 2) {
+                   stat_TF.trimmed[ADAP]++;
+                }
               }
               if (stat_TF.filters[CONT] && !discarded) {
                 if (par_TF.method == TREE) {
@@ -248,7 +261,7 @@ int main(int argc, char *argv[]) {
     c2 = -1;
     c1 = 0;
   }  // end while
-  printf("Number of lines in fq_file %d\n", nlines);
+  fprintf(stderr, "- Number of lines in fq_file %d\n", nlines);
   // Printing the rest of the buffer outputs and closing file
   fprintf(stderr, "- Finished reading fq file.\n");
   fprintf(stderr, "- Closing files.\n");
@@ -290,7 +303,7 @@ int main(int argc, char *argv[]) {
   fprintf(stderr, "Writing summary data to %s\n", summary);
   write_summary_TF(stat_TF, summary);
 
-
+  free(seq);
   if (ptr_tree != NULL) {
      fprintf(stderr, "- Deallocating tree\n");
      free_all_nodes(ptr_tree);

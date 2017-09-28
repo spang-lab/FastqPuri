@@ -1,11 +1,13 @@
 <map id="include/city.h" name="include/city.h">
-<area shape="rect" id="node2" href="$bloom_8h.html" title="functions that implement the bloom filter " alt="" coords="191,80,305,107"/>
-<area shape="rect" id="node10" href="$city_8c.html" title="functions for hashin strings, C translation of cityhash (C++, google) " alt="" coords="329,80,405,107"/>
-<area shape="rect" id="node3" href="$bloom_8c.html" title="functions that implement the bloom filter " alt="" coords="5,155,96,181"/>
-<area shape="rect" id="node4" href="$init__trimFilter_8h.html" title="help dialog for trimFilter and initialization of the command line arguments. " alt="" coords="171,155,325,181"/>
-<area shape="rect" id="node6" href="$trim_8h.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="41,229,141,256"/>
-<area shape="rect" id="node8" href="$trimFilter_8c.html" title="trimFilter main function " alt="" coords="279,304,385,331"/>
-<area shape="rect" id="node9" href="$makeBloom_8c.html" title="makeBloom main function " alt="" coords="421,155,545,181"/>
-<area shape="rect" id="node5" href="$init__trimFilter_8c.html" title="help dialog for trimFilter and initialization of the command line arguments. " alt="" coords="164,229,295,256"/>
-<area shape="rect" id="node7" href="$trim_8c.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="52,304,129,331"/>
+<area shape="rect" id="node2" href="$bloom_8h.html" title="functions that implement the bloom filter " alt="" coords="240,80,353,107"/>
+<area shape="rect" id="node11" href="$city_8c.html" title="functions for hashin strings, C translation of cityhash (C++, google) " alt="" coords="377,80,453,107"/>
+<area shape="rect" id="node12" href="$citycrc_8h.html" title="functions for hashin strings, C translation of cityhash (C++, google) " alt="" coords="478,80,595,107"/>
+<area shape="rect" id="node3" href="$bloom_8c.html" title="functions that implement the bloom filter " alt="" coords="54,155,145,181"/>
+<area shape="rect" id="node4" href="$init__trimFilter_8h.html" title="help dialog for trimFilter and initialization of the command line arguments. " alt="" coords="220,155,373,181"/>
+<area shape="rect" id="node6" href="$trim_8h.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="5,229,105,256"/>
+<area shape="rect" id="node8" href="$trimFilter_8c.html" title="trimFilter main function " alt="" coords="243,304,350,331"/>
+<area shape="rect" id="node10" href="$makeBloom_8c.html" title="makeBloom main function " alt="" coords="535,155,659,181"/>
+<area shape="rect" id="node5" href="$init__trimFilter_8c.html" title="help dialog for trimFilter and initialization of the command line arguments. " alt="" coords="129,229,259,256"/>
+<area shape="rect" id="node9" href="$trimFilterDS_8c.html" title="trimFilterDS main function " alt="" coords="334,229,459,256"/>
+<area shape="rect" id="node7" href="$trim_8c.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="17,304,94,331"/>
 </map>

@@ -41,7 +41,8 @@
 typedef struct _adapter {
   char *adapter_fa; /**< fasta file containing adapters*/
   int mismatches;   /**< Number of allowed mismatches*/
-  int threshold;  /**< Score threshold*/
+  double threshold;  /**< Score threshold*/
+  int Nad;  /**< Number of adapters*/
 } Adapter;
 
 /**

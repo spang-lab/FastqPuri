@@ -147,7 +147,7 @@ int main(int argc, char *argv[]) {
   fprintf(stderr, "Creating html output in file: %s\n", par_QR.outputfilehtml);
 #ifdef HAVE_RPKG
   char * command = command_Qreport();
-  printf("Running command: %s \n", command);
+  fprintf(stderr, "Running command: %s \n", command);
   int status;
   if ((status = system(command)) != 0) {
       fprintf(stderr, "Something went wrong when executing R script.\n");

@@ -13,8 +13,8 @@ trims/filter sequences after Quality, N's contaminations.
 {\ttfamily \#include \char`\"{}tree.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}init\+\_\+trim\+Filter.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}bloom.\+h\char`\"{}}\\*
-Include dependency graph for trim.\+h\+:
-\nopagebreak
+{\ttfamily \#include \char`\"{}adapters.\+h\char`\"{}}\\*
+Include dependency graph for trim.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -31,6 +31,8 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+int \hyperlink{trim_8h_aed995029d7181d69875b2dee0d7b6ce9}{trim\+\_\+adapter} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, \hyperlink{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}{Ad\+\_\+seq} $\ast$adap\+\_\+list)
+\begin{DoxyCompactList}\small\item\em trims sequence based on presence of N nucleotides \end{DoxyCompactList}\item 
 int \hyperlink{trim_8h_af23d3685193b624b72a6969a49903a97}{trim\+\_\+sequence\+N} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq)
 \begin{DoxyCompactList}\small\item\em trims sequence based on presence of N nucleotides \end{DoxyCompactList}\item 
 int \hyperlink{trim_8h_ae5ab2bb79068d8a7e0d72686c1f50320}{trim\+\_\+sequence\+Q} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq)
@@ -59,7 +61,7 @@ Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+
 \begin{DoxyParamCaption}
 \item[{{\bf Bfilter} $\ast$}]{ptr\+\_\+bf, }
 \item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
-\item[{{\bf Bfkmer} $\ast$}]{ptr\+\_\+\+Bfkmer}
+\item[{{\bf Bfkmer} $\ast$}]{ptr\+\_\+bfkmer}
 \end{DoxyParamCaption}
 )}}\label{trim_8h_a02011bb5b87bf75ee8073eaff6d02fb6}
 
@@ -72,7 +74,7 @@ checks if a read is in Bloom filter. It computes the score for the read and retu
 \hline
 {\em seq} & fastq read \\
 \hline
-{\em procs} & pointer to Procs\+\_\+kmer structure (will store global) \\
+{\em ptr\+\_\+bfkmer} & pointer to Procs\+\_\+kmer structure (will store global) \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -100,6 +102,31 @@ check if Lread is contained in tree. It computes the score for the read and its 
 \begin{DoxyReturn}{Returns}
 true if read was found, false otherwise 
 \end{DoxyReturn}
+\hypertarget{trim_8h_aed995029d7181d69875b2dee0d7b6ce9}{\index{trim.\+h@{trim.\+h}!trim\+\_\+adapter@{trim\+\_\+adapter}}
+\index{trim\+\_\+adapter@{trim\+\_\+adapter}!trim.\+h@{trim.\+h}}
+\subsubsection[{trim\+\_\+adapter}]{\setlength{\rightskip}{0pt plus 5cm}int trim\+\_\+adapter (
+\begin{DoxyParamCaption}
+\item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
+\item[{{\bf Ad\+\_\+seq} $\ast$}]{adap\+\_\+list}
+\end{DoxyParamCaption}
+)}}\label{trim_8h_aed995029d7181d69875b2dee0d7b6ce9}
+
+
+trims sequence based on presence of N nucleotides 
+
+if (adapter length $<$ 16) -\/$>$ search for seeds 8 nucleotides long else -\/$>$ search for seeds 16 nucleotides long if (seed found) -\/$>$ calculate score if score $>$ threshold -\/$>$ aligner found, trim / discard and exit. else -\/$>$ search for seeds 8 nucleotides long 
+\begin{DoxyParams}{Parameters}
+{\em seq} & pointer to {\bfseries Fq\+\_\+read} \\
+\hline
+{\em adap\+\_\+list} & array of {\bfseries Ad\+\_\+seq} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/1 error, 0 discarded, 1 accepted as is, 2 accepted and trimmed 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Global input parameters from par\+\_\+\+T\+F are also used 
+\end{DoxyNote}
 \hypertarget{trim_8h_af23d3685193b624b72a6969a49903a97}{\index{trim.\+h@{trim.\+h}!trim\+\_\+sequence\+N@{trim\+\_\+sequence\+N}}
 \index{trim\+\_\+sequence\+N@{trim\+\_\+sequence\+N}!trim.\+h@{trim.\+h}}
 \subsubsection[{trim\+\_\+sequence\+N}]{\setlength{\rightskip}{0pt plus 5cm}int trim\+\_\+sequence\+N (

@@ -41,6 +41,8 @@ typedef struct _fq_read {
   int start; /**< nucleotide position start. Can only be different
                  from zero if the read has been
                  filtered with this tool.*/
+  int Lhalf;     /**< half of read length*/
+  unsigned char pack[(READ_MAXLEN+1)/2];
 } Fq_read;
 
 int get_fqread(Fq_read* seq, char* buffer, int pos1, int pos2,

@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['_5fad_5fseq',['_ad_seq',['../struct__ad__seq.html',1,'']]],
   ['_5fadapter',['_adapter',['../struct__adapter.html',1,'']]],
   ['_5fbfilter',['_bfilter',['../struct__bfilter.html',1,'']]],
   ['_5fbfkmer',['_bfkmer',['../struct__bfkmer.html',1,'']]],

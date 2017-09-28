@@ -94,6 +94,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>Manipulation of Lmers and sequences.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="Lmer_8h_source.html">Lmer.h</a>&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Lmer.c:</div>
@@ -106,14 +108,14 @@ Include dependency graph for Lmer.c:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a5f1586659681cf692359f7c8c003dd8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Lmer_8c.html#a5f1586659681cf692359f7c8c003dd8b">init_map</a> ()</td></tr>
-<tr class="memdesc:a5f1586659681cf692359f7c8c003dd8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize lookup table LT.  <a href="#a5f1586659681cf692359f7c8c003dd8b">More...</a><br /></td></tr>
+<tr class="memdesc:a5f1586659681cf692359f7c8c003dd8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize lookup table fw_1B.  <a href="#a5f1586659681cf692359f7c8c003dd8b">More...</a><br /></td></tr>
 <tr class="separator:a5f1586659681cf692359f7c8c003dd8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54a9d22589c1235957b6472310280e1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Lmer_8c.html#a54a9d22589c1235957b6472310280e1d">init_map_SA</a> ()</td></tr>
-<tr class="memdesc:a54a9d22589c1235957b6472310280e1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize lookup table LT (for SA)  <a href="#a54a9d22589c1235957b6472310280e1d">More...</a><br /></td></tr>
+<tr class="memdesc:a54a9d22589c1235957b6472310280e1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize lookup table fw_1B (for SA)  <a href="#a54a9d22589c1235957b6472310280e1d">More...</a><br /></td></tr>
 <tr class="separator:a54a9d22589c1235957b6472310280e1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3280d056532aa23523d08dfd52b60b51"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3280d056532aa23523d08dfd52b60b51"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Lmer_8c.html#a3280d056532aa23523d08dfd52b60b51">Lmer_sLmer</a> (char *Lmer, int L)</td></tr>
-<tr class="memdesc:a3280d056532aa23523d08dfd52b60b51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transforms an Lmer to the convention stored in the lookup table LT. <br /></td></tr>
+<tr class="memdesc:a3280d056532aa23523d08dfd52b60b51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transforms an Lmer to the convention stored in the lookup table fw_1B. <br /></td></tr>
 <tr class="separator:a3280d056532aa23523d08dfd52b60b51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4b4f0b75c0a5784ad66d856aed9d39f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae4b4f0b75c0a5784ad66d856aed9d39f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Lmer_8c.html#ae4b4f0b75c0a5784ad66d856aed9d39f">rev_comp</a> (char *sLmer, int L)</td></tr>
@@ -126,10 +128,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Lmer
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:abecb1b17de58b71ea7da6803df2486ae"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Lmer_8c.html#abecb1b17de58b71ea7da6803df2486ae">LT</a> [256]</td></tr>
-<tr class="separator:abecb1b17de58b71ea7da6803df2486ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09f8263f3577dfabc13a037c32504ad3"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Lmer_8c.html#a09f8263f3577dfabc13a037c32504ad3">Nencode</a></td></tr>
-<tr class="separator:a09f8263f3577dfabc13a037c32504ad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c94b467d7dec9ee2a642ee537d5e967"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Lmer_8c.html#a4c94b467d7dec9ee2a642ee537d5e967">fw_1B</a> [256]</td></tr>
+<tr class="separator:a4c94b467d7dec9ee2a642ee537d5e967"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00e6ed67c83d15ff1bbad3b85e75ee09"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Lmer_8c.html#a00e6ed67c83d15ff1bbad3b85e75ee09">bw_1B</a> [256]</td></tr>
+<tr class="separator:a00e6ed67c83d15ff1bbad3b85e75ee09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2abce22af1da49bd08cf2baa1d74b939"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Lmer_8c.html#a2abce22af1da49bd08cf2baa1d74b939">Nencode</a></td></tr>
+<tr class="separator:a2abce22af1da49bd08cf2baa1d74b939"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manipulation of Lmers and sequences. </p>
@@ -149,7 +153,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initialize lookup table LT. </p>
+<p>Initialize lookup table fw_1B. </p>
 <p>{'a','c','g','t'} &ndash;&gt; {'\000','\001','\002','\003'}, rest '\004'. </p>
 
 </div>
@@ -167,18 +171,18 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initialize lookup table LT (for SA) </p>
+<p>Initialize lookup table fw_1B (for SA) </p>
 <p>{'a','c','g','t'} &ndash;&gt; {'\001','\002','\003','\004'}, rest '\005'. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="abecb1b17de58b71ea7da6803df2486ae"></a>
+<a class="anchor" id="a00e6ed67c83d15ff1bbad3b85e75ee09"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char LT[256]</td>
+          <td class="memname">uint8_t bw_1B[256]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -186,12 +190,25 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a09f8263f3577dfabc13a037c32504ad3"></a>
+<a class="anchor" id="a4c94b467d7dec9ee2a642ee537d5e967"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char Nencode</td>
+          <td class="memname">uint8_t fw_1B[256]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>global variable. Lookup table. </p>
+
+</div>
+</div>
+<a class="anchor" id="a2abce22af1da49bd08cf2baa1d74b939"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Nencode</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -202,7 +219,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 13 2017 12:43:33 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 28 2017 11:30:47 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

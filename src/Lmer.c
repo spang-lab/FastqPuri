@@ -27,34 +27,36 @@
  * */
 
 #include "Lmer.h"
+#include <string.h>
+#include <stdint.h>
 #include <stdio.h>
 
-char LT[256]; /**< global variable. Lookup table. */
-char Nencode; /**< global variable. Encoding for N's(\004, or \005) */
+uint8_t fw_1B[256]; /**< global variable. Lookup table. */
+uint8_t bw_1B[256]; /**< global variable. Lookup table. */
+uint8_t Nencode; /**< global variable. Encoding for N's(\004, or \005) */
 
 /**
- * @brief Initialize lookup table LT.
+ * @brief Initialize lookup table fw_1B.
  *
  * {'a','c','g','t'}  --> {'\000','\001','\002','\003'}, rest '\004'.
  *
  * */
 void init_map() {
-  int i;
-  for (i = 0; i < 256; i++)
-     LT[i] = 4;
-  LT['a'] = 0;
-  LT['c'] = 1;
-  LT['g'] = 2;
-  LT['t'] = 3;
-  LT['A'] = 0;
-  LT['C'] = 1;
-  LT['G'] = 2;
-  LT['T'] = 3;
+  memset(fw_1B, 0x04, 256);
+  memset(bw_1B, 0x04, 256);
+  fw_1B['a'] = 0;  fw_1B['c'] = 1;
+  fw_1B['A'] = 0;  fw_1B['C'] = 1;
+  fw_1B['g'] = 2;  fw_1B['t'] = 3;
+  fw_1B['G'] = 2;  fw_1B['T'] = 3;
+  bw_1B['a'] = 3;  bw_1B['c'] = 2;
+  bw_1B['A'] = 3;  bw_1B['C'] = 2;
+  bw_1B['g'] = 1;  bw_1B['t'] = 0;
+  bw_1B['G'] = 1;  bw_1B['T'] = 0;
   Nencode = '\004';
 }
 
 /**
- * @brief Initialize lookup table LT (for SA)
+ * @brief Initialize lookup table fw_1B (for SA)
  *
  * {'a','c','g','t'}  --> {'\001','\002','\003','\004'}, rest '\005'.
  *
@@ -62,26 +64,26 @@ void init_map() {
 void init_map_SA() {
   int i;
   for (i = 0; i < 256; i++)
-     LT[i] = 5;
-  LT['a'] = 1;
-  LT['c'] = 2;
-  LT['g'] = 3;
-  LT['t'] = 4;
-  LT['A'] = 1;
-  LT['C'] = 2;
-  LT['G'] = 3;
-  LT['T'] = 4;
+     fw_1B[i] = 5;
+  fw_1B['a'] = 1;
+  fw_1B['c'] = 2;
+  fw_1B['g'] = 3;
+  fw_1B['t'] = 4;
+  fw_1B['A'] = 1;
+  fw_1B['C'] = 2;
+  fw_1B['G'] = 3;
+  fw_1B['T'] = 4;
   Nencode = '\005';
 }
 
 /**
- * @brief Transforms an Lmer to the convention stored in the lookup table LT.
+ * @brief Transforms an Lmer to the convention stored in the lookup table fw_1B.
  *
  * */
 void Lmer_sLmer(char* Lmer, int L) {
   unsigned int i;
   for (i = 0; i < L; i++) {
-     Lmer[i] = LT[(unsigned char)Lmer[i]];
+     Lmer[i] = fw_1B[(unsigned char)Lmer[i]];
   }
 }
 

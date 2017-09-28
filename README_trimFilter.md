@@ -92,7 +92,7 @@ Options:
 ## Output description
 
 - `O_PREFIX_good.fq.gz`: contains reads that passed all filters (maybe trimmed).
-- `O_PREFIX_adap.fq.gz`: contains discarded due to the presence of adapters.
+- `O_PREFIX_adap.fq.gz`: contains reads discarded due to the presence of adapters.
 - `O_PREFIX_cont.fq.gz`: contains contamination reads.
 - `O_PREFIX_lowQ.fq.gz`: contains reads discarded due to low quality issues.
 - `O_PREFIX_NNNN.fq.gz`: contains reads discarded due to *N*'s issues.
@@ -118,7 +118,64 @@ Options:
 
 #### Adapters
 
-TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
+Technical sequences within the reads are detected if the option
+`--adapters <ADAPTERS.fa>:<mismatches>:<score>` is given. The
+adapter(s) sequence(s) are read from the fasta file, and the 
+search is done using an 'seed and extend' approach. It starts by looking for
+16-nucleotides long seeds, for which a user defined number of mismatches is
+allowed (`mismatches`). If found, a score is computed. If the score is larger 
+than the user defined threshold (`score`) and the number of matched 
+nucleotides exceeds 12, then the read is trimmed if the remaining part is 
+longer than `MINL` (user defined) and discarded otherwise. If no 
+16-nucleotides long seeds are found, we proceed with 8-nucleotides long seeds 
+and apply the same criteria to trim/discard a read. A list of possible
+situations follows, to illustrate how it works (`MINL=25`, `mismatches=2`):
+
+```
+ADAPTER: CAAGCAGAAGACGGCATACGAG
+REV_COM: AGATCGGAAGAGCTCGTATGCC
+
+CASE1A:  CACAGTCGATCAGCGAGCAGGCATTCATGCTGAGATCGGAAGAGATCGTATG
+                                         ||||||||||||X|||----
+                                         AGATCGGAAGAGCTCGTATG
+         - Seed: 16 Nucleotides
+         - Return: trimmed, TRIMA:0:31
+CASE1B:  CACATCATCGCTAGCTATCGATCGATCGATGCTATGCAAGATCGGAAGAGCT
+                                               ||||||||------
+                                               AGATCGGAAGAGCT
+         - Seed: 8 Nucleotides
+         - Return: trimmed, TRIMA:0:37
+CASE1C:  CACATCATCGCTAGCTATCGATCGATCGATGCTATGCACGAAGATCGGAAGA
+                                                  ||||||||---
+                                                  AGATCGGAAGA
+         - Seed: 8 Nucleotides
+         - Return: nothing done, reason: Match length < 12
+CASE2A:  CATACATCACGAGCTAGCTAGAGATCGGAAGAGCTCGTATGCCCAGCATCGA
+                               ||||||||||||||||------
+                               AGATCGGAAGAGCTCGTATGCC
+         - Seed: 16 Nucleotides
+         - Return: discarded, reason: remaining read too short.
+CASE2B:  CCACAGTACAATACATCACGAGCTAGCTAGAGATCGGAAGAGCTCGTATGCA
+                                     ||||||||||||||||||||||
+                                     AGATCGGAAGAGCTCGTATGCC
+         - Seed: 16 Nucleotides
+         - Return: trimmed, TRIMA:0:28
+CASE3A:  TATGCCGTCTTCTGCTTGCAGTGCATGCTGATGCATGCTGCATGCTAGCTGC
+         ||||||||||||||||--
+         TATGCCGTCTTCTGCTTG
+         - Seed: 16 Nucleotides
+         - Return: discarded, reason: remaining read too short
+CASE3B:  CGTCTTCTGCTTGCCGATCGATGCTAGCTACGATCGTCGAGCTAGCTACGTG
+         ||||||||-----
+         CGTCTTCTGCTTG
+         - Seed: 8 Nucleotides
+         - Return: discarded, reason: remaining read too short
+CASE3C:  TCTTCTGCTTGCCGATCGATGCTAGCTACGATCGTCGAGCTAGCTACGTGCG
+         ||||||||---
+         TCTTCTGCTTG
+         - Seed: 8 Nucleotides
+         - Return: nothing done, reason: Match length < 12
+```
 
 #### Impurities
 
@@ -307,17 +364,32 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 
 ## Test/examples
 
- The examples in folder `examples/trimFilter_SReport/` works in the following
+ The examples in folder `examples/trimFilter_SReport/` work in the following
  way:
 
-1. See folder `fa_fq_files`. The file `EColi_rRNA.fq` was created with
+1. See folder `examples/fa_fq_files`. The file `EColi_rRNA.fq` was created with
  `create_fq.sh` and contains:                                               
    * 2e5 reads of length 50 from `EColi_genome.fa` with NO errors. 
    * 5e4 reads of length 50 from `rRNA_modified.fa` with NO errrors 
      (rRNA contaminations).                                                  
    * Artificially generated reads with low quality score (see `create_fq.sh`)
-   * Artificially generated reads with Ns (see `create_fq.sh`).              
-2. `run_example_TREE.sh`: the code was tested with flags:                     
+   * Artificially generated reads with Ns (see `create_fq.sh`).
+   * Adapter files: `adapter_even_long.fa`, `adapter_odd_long.fa`, 
+   `adapter_even_short.fa`, `adapter_odd_short.fa`. Fasta files containing 
+    one adapter sequence each, longer/shorter than 16 nucleotides and with 
+    an even/odd length. 
+   * Example files to test the adapter contamination searchs:
+   `human_[even/odd]_wad_[even/odd]_[long/short].fq`. Short fastq files where
+    adapters contaminations have been inserted in all possible ways:
+    even/odd positions, at the beginning/middle/end of the reads. Read 
+    lengths are even or odd as the first suffix indicates. The adapter 
+    contaminations included are suggested by the second even/odd suffix, 
+    and the long/short suffix. 
+2. `adapters/run_example.sh`: runs examples of reads containing adapters
+   contaminations. A set of different possibilities is covered. 
+   See README file inside the folder `adapters`
+
+3. `run_example_TREE.sh`: the code was tested with flags:                     
    ```
     $ ../../bin/trimFilter -l 50 --ifq PATH/TO/EColi_rRNA.fq.gz 
     --method TREE --ifa PATH/TO/rRNA_modified.fa:0.9:50 
@@ -326,13 +398,13 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
    i.e., we check for contaminations from rRNA, trim reads with lowQ at
    the ends and less than 5% in the remaining part, and strip reads
    containing N's. The output should coincide with the files `example_TREE*`                 
-3. `run_example_BLOOM.sh`:                                                    
+4. `run_example_BLOOM.sh`:                                                    
   * bloom filter is generated for `rRNA_modified.fa` with FPR = 0.0075
     and `kmersize=25`. The output should coincide with `rRNA_example.bf*`.
   * trimFilter is run like in 2. but passing a bloom filter to look for
     contaminations with `score=0.4`. 
-4. `run_example_SA.sh`: TODO                                      
-5. With this set up, it is possible to run further customized tests.         
+5. `run_example_SA.sh`: TODO                                      
+6. With this set up, it is possible to run further customized tests.         
                                                                               
 **NOTE:** `rRNA_modified.fa` is the `rRNA_CRUnit.fa` sequence, where we have     
         removed the lines containing N's for testing purposes.                

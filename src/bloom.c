@@ -153,12 +153,12 @@ void free_Bfilter(Bfilter * ptr_bf) {
 Bfkmer *init_Bfkmer(int kmersize, int hashNum) {
   Bfkmer *ptr_bfkmer = malloc(sizeof(Bfkmer));
   ptr_bfkmer -> kmersize = kmersize;
-  ptr_bfkmer -> kmersizeBytes = kmersize / 4;
-  ptr_bfkmer -> halfsizeBytes = kmersize / 8;
+  ptr_bfkmer -> kmersizeBytes = kmersize / BASESPERCHAR;
+  ptr_bfkmer -> halfsizeBytes = kmersize / BITSPERCHAR;
   ptr_bfkmer -> hangingBases = 0;
   ptr_bfkmer -> hasOverhead = 0;
   ptr_bfkmer -> hashNum = hashNum;
-  if (kmersize % 8 != 0) {
+  if (kmersize % BITSPERCHAR != 0) {
       ptr_bfkmer -> halfsizeBytes++;
       if ((ptr_bfkmer -> hangingBases = kmersize % 4) > 0) {
             ptr_bfkmer -> kmersizeBytes++;
@@ -428,17 +428,17 @@ int compact_kmer(const unsigned char *sequence, uint64_t position,
  * */
 void multiHash(Bfkmer* ptr_bfkmer) {
   int i;
-  printf("%d  ", ptr_bfkmer -> kmersize);
-  for (i = 0; i < ptr_bfkmer -> kmersizeBytes; i++) {
-   printf("%2x ",ptr_bfkmer -> compact[i]);
-  }
+//  printf("%d  ", ptr_bfkmer -> kmersize);
+//  for (i = 0; i < ptr_bfkmer -> kmersizeBytes; i++) {
+//   printf("%2x ",ptr_bfkmer -> compact[i]);
+//  }
   for (i=0; i < ptr_bfkmer->hashNum; i++) {
      ptr_bfkmer -> hashValues[i] = CityHash64WithSeed(
          (const char *)ptr_bfkmer->compact,
          ptr_bfkmer -> kmersizeBytes, i);
-     printf("%20lu ", ptr_bfkmer -> hashValues[i]);
+     //printf("%20lu ", ptr_bfkmer -> hashValues[i]);
   }
-  printf("\n");
+//  printf("\n");
 }
 
 /**

@@ -42,7 +42,7 @@
  * on the value of <b>filter</b>, information about whether
  * the read was trimmed is stored.
  *
- * @param *seq pointer to <b>Fq_read</b>, where the info will be stored.
+ * @param seq pointer to <b>Fq_read</b>, where the info will be stored.
  * @param buffer variable where the file being read is stored.
  * @param pos1 buffer start position of the line.
  * @param pos2 buffer end position of the line.
@@ -82,6 +82,7 @@ int get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline,
             fprintf(stderr, "Read length exceeds predefined length.\n");
             fprintf(stderr, "Revise your settings.\n");
             fprintf(stderr, "Check that you fq has NO trailing characters\n");
+            fprintf(stderr, "Check that --length is correct. \n");
             fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
             fprintf(stderr, "Exiting program.\n");
             exit(EXIT_FAILURE);
@@ -110,10 +111,10 @@ int get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline,
          if ((pos2 - pos1) != seq -> L) {
            fprintf(stderr, "Qual_len: %d Read_len: %d in line = %d\n",
                  pos2-pos1, seq -> L, nline);
-           fprintf(stderr, "Found read with unequal read and quality\n");
+           fprintf(stderr, "Found read with unequal read length and quality\n");
            fprintf(stderr, "Check that you fq has NO trailing characters\n");
            fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
-           fprintf(stderr, "lengths\n. Exiting program");
+           fprintf(stderr, "Exiting program.\n");
            exit(EXIT_FAILURE);
          }
          memcpy(seq -> line4 , buffer + pos1, pos2 - pos1);
@@ -125,7 +126,7 @@ int get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline,
 
 /**
  * @brief writes the fq entry in a string
- * @param *seq pointer to <b>Fq_read</b>, where the info will be stored.
+ * @param seq pointer to <b>Fq_read</b>, where the info will be stored.
  * @param char_seq: pointer to buffer, where the sequence will be stored
  * @warning change the call to sprintf to snprintf
  */
@@ -133,5 +134,3 @@ int string_seq(Fq_read *seq, char *char_seq ) {
   return(snprintf(char_seq, 4*READ_MAXLEN, "%s\n%s\n%s\n%s\n", seq -> line1,
           seq -> line2, seq -> line3, seq -> line4));
 }
-
-

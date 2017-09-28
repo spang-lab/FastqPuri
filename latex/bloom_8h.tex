@@ -9,16 +9,14 @@ functions that implement the bloom filter
 {\ttfamily \#include \char`\"{}city.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}fa\+\_\+read.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\\*
-Include dependency graph for bloom.\+h\+:
-\nopagebreak
+Include dependency graph for bloom.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=274pt]{bloom_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -314,7 +312,9 @@ reads a bloom filter from a file
 
 
 \begin{DoxyParams}{Parameters}
-{\em inputfile} & path to input file \\
+{\em filterfile} & path to file containing the filter \\
+\hline
+{\em paramfile} & path to file containing the filter \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

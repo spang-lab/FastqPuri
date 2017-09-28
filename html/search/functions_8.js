@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['print_5finfo',['print_info',['../stats__info_8c.html#a76d353cb30ac4cd4bc55362e7359976d',1,'print_info(Info *res, char *infofile):&#160;stats_info.c'],['../stats__info_8h.html#a76d353cb30ac4cd4bc55362e7359976d',1,'print_info(Info *res, char *infofile):&#160;stats_info.c']]],
-  ['printhelpdialog_5fmakebloom',['printHelpDialog_makeBloom',['../init__makeBloom_8c.html#adcf8265adeda11b495d5fe370f6f4a21',1,'printHelpDialog_makeBloom():&#160;init_makeBloom.c'],['../init__makeBloom_8h.html#adcf8265adeda11b495d5fe370f6f4a21',1,'printHelpDialog_makeBloom():&#160;init_makeBloom.c']]],
-  ['printhelpdialog_5fmaketree',['printHelpDialog_makeTree',['../init__makeTree_8c.html#a51fb8fb2c64bc9dca004b0e0ecb3997a',1,'printHelpDialog_makeTree():&#160;init_makeTree.c'],['../init__makeTree_8h.html#a51fb8fb2c64bc9dca004b0e0ecb3997a',1,'printHelpDialog_makeTree():&#160;init_makeTree.c']]],
-  ['printhelpdialog_5fqreport',['printHelpDialog_Qreport',['../init__Qreport_8c.html#a48be775a109c8bf8672933494d67f30f',1,'printHelpDialog_Qreport():&#160;init_Qreport.c'],['../init__Qreport_8h.html#a48be775a109c8bf8672933494d67f30f',1,'printHelpDialog_Qreport():&#160;init_Qreport.c']]],
-  ['printhelpdialog_5fsreport',['printHelpDialog_Sreport',['../init__Sreport_8c.html#a80638b0730feac5c7634c29c6f08ee9e',1,'printHelpDialog_Sreport():&#160;init_Sreport.c'],['../init__Sreport_8h.html#a80638b0730feac5c7634c29c6f08ee9e',1,'printHelpDialog_Sreport():&#160;init_Sreport.c']]],
-  ['printhelpdialog_5ftrimfilter',['printHelpDialog_trimFilter',['../init__trimFilter_8c.html#acb1b66de50f5bfccd87b52851f8de3cc',1,'printHelpDialog_trimFilter():&#160;init_trimFilter.c'],['../init__trimFilter_8h.html#acb1b66de50f5bfccd87b52851f8de3cc',1,'printHelpDialog_trimFilter():&#160;init_trimFilter.c']]]
+  ['new_5fnode_5fbuf',['new_node_buf',['../tree_8c.html#a407b006b6b9c55cc8ef07c670becce33',1,'new_node_buf(Tree *tree_ptr):&#160;tree.c'],['../tree_8h.html#a407b006b6b9c55cc8ef07c670becce33',1,'new_node_buf(Tree *tree_ptr):&#160;tree.c']]],
+  ['nfree_5flmer',['Nfree_Lmer',['../trim_8c.html#a7006063272037ceb080150136d24e898',1,'trim.c']]],
+  ['nkmers',['nkmers',['../fa__read_8c.html#a73143a443a198eaf51820e5862f8547b',1,'nkmers(Fa_data *ptr_fa, int kmersize):&#160;fa_read.c'],['../fa__read_8h.html#a73143a443a198eaf51820e5862f8547b',1,'nkmers(Fa_data *ptr_fa, int kmersize):&#160;fa_read.c']]],
+  ['no_5flowq',['no_lowQ',['../trim_8c.html#ae11fa52547dfdb0cf2af554eafbba1fc',1,'trim.c']]],
+  ['no_5fn',['no_N',['../trim_8c.html#aa1ba5f740cba7b39672dc588b9a5deb7',1,'trim.c']]],
+  ['ntrim_5fends',['Ntrim_ends',['../trim_8c.html#ae2aeb2e7303c53e2a10009ee4e20e40e',1,'trim.c']]]
 ];

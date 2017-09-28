@@ -99,12 +99,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;<a class="el" href="tree_8h_source.html">tree.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="init__trimFilter_8h_source.html">init_trimFilter.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="bloom_8h_source.html">bloom.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="adapters_8h_source.html">adapters.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for trim.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="trim_8h__incl.png" border="0" usemap="#include_2trim_8h" alt=""/></div>
 <map name="include_2trim_8h" id="include_2trim_8h">
-<area shape="rect" id="node3" href="Lmer_8h.html" title="Manipulation of Lmers and sequences. " alt="" coords="91,80,154,107"/><area shape="rect" id="node4" href="fq__read_8h.html" title="fastq entries manipulations (read/write) " alt="" coords="178,80,254,107"/><area shape="rect" id="node6" href="defines_8h.html" title="Macro definitions. " alt="" coords="396,229,471,256"/><area shape="rect" id="node8" href="tree_8h.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="514,155,569,181"/><area shape="rect" id="node10" href="init__trimFilter_8h.html" title="help dialog for trimFilter and initialization of the command line arguments. " alt="" coords="330,80,438,107"/><area shape="rect" id="node11" href="bloom_8h.html" title="functions that implement the bloom filter " alt="" coords="319,155,387,181"/><area shape="rect" id="node9" href="fa__read_8h.html" title="reads in and stores fasta files " alt="" coords="495,229,571,256"/><area shape="rect" id="node12" href="city_8h.html" title="functions for hashin strings, C translation of cityhash (C++, google) " alt="" coords="317,229,371,256"/></map>
+<area shape="rect" id="node3" href="Lmer_8h.html" title="Manipulation of Lmers and sequences. " alt="" coords="91,80,154,107"/><area shape="rect" id="node4" href="fq__read_8h.html" title="fastq entries manipulations (read/write) " alt="" coords="139,155,215,181"/><area shape="rect" id="node6" href="defines_8h.html" title="Macro definitions. " alt="" coords="405,229,480,256"/><area shape="rect" id="node8" href="tree_8h.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="291,155,346,181"/><area shape="rect" id="node10" href="init__trimFilter_8h.html" title="help dialog for trimFilter and initialization of the command line arguments. " alt="" coords="453,80,561,107"/><area shape="rect" id="node11" href="bloom_8h.html" title="functions that implement the bloom filter " alt="" coords="523,155,591,181"/><area shape="rect" id="node14" href="adapters_8h.html" title="sequence manipulation for alignment " alt="" coords="229,80,312,107"/><area shape="rect" id="node9" href="fa__read_8h.html" title="reads in and stores fasta files " alt="" coords="254,229,330,256"/><area shape="rect" id="node12" href="city_8h.html" title="functions for hashin strings, C translation of cityhash (C++, google) " alt="" coords="521,229,575,256"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -118,6 +119,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:aed995029d7181d69875b2dee0d7b6ce9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="trim_8h.html#aed995029d7181d69875b2dee0d7b6ce9">trim_adapter</a> (<a class="el" href="fq__read_8h.html#a9af37aa81397c9531c66863d4e97f034">Fq_read</a> *seq, <a class="el" href="adapters_8h.html#ad1465e8f3bc3d3b1fc010a1e72436c56">Ad_seq</a> *adap_list)</td></tr>
+<tr class="memdesc:aed995029d7181d69875b2dee0d7b6ce9"><td class="mdescLeft">&#160;</td><td class="mdescRight">trims sequence based on presence of N nucleotides  <a href="#aed995029d7181d69875b2dee0d7b6ce9">More...</a><br /></td></tr>
+<tr class="separator:aed995029d7181d69875b2dee0d7b6ce9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af23d3685193b624b72a6969a49903a97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="trim_8h.html#af23d3685193b624b72a6969a49903a97">trim_sequenceN</a> (<a class="el" href="fq__read_8h.html#a9af37aa81397c9531c66863d4e97f034">Fq_read</a> *seq)</td></tr>
 <tr class="memdesc:af23d3685193b624b72a6969a49903a97"><td class="mdescLeft">&#160;</td><td class="mdescRight">trims sequence based on presence of N nucleotides  <a href="#af23d3685193b624b72a6969a49903a97">More...</a><br /></td></tr>
 <tr class="separator:af23d3685193b624b72a6969a49903a97"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,7 +160,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="bloom_8h.html#a4bf3f34a321ce545e533d29ce363f569">Bfkmer</a> *&#160;</td>
-          <td class="paramname"><em>ptr_Bfkmer</em>&#160;</td>
+          <td class="paramname"><em>ptr_bfkmer</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -171,7 +175,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">ptr_bf</td><td>pointer to Bfilter </td></tr>
     <tr><td class="paramname">seq</td><td>fastq read </td></tr>
-    <tr><td class="paramname">procs</td><td>pointer to Procs_kmer structure (will store global) </td></tr>
+    <tr><td class="paramname">ptr_bfkmer</td><td>pointer to Procs_kmer structure (will store global) </td></tr>
   </table>
   </dd>
 </dl>
@@ -212,6 +216,43 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if read was found, false otherwise </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aed995029d7181d69875b2dee0d7b6ce9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int trim_adapter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="fq__read_8h.html#a9af37aa81397c9531c66863d4e97f034">Fq_read</a> *&#160;</td>
+          <td class="paramname"><em>seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="adapters_8h.html#ad1465e8f3bc3d3b1fc010a1e72436c56">Ad_seq</a> *&#160;</td>
+          <td class="paramname"><em>adap_list</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>trims sequence based on presence of N nucleotides </p>
+<p>if (adapter length &lt; 16) -&gt; search for seeds 8 nucleotides long else -&gt; search for seeds 16 nucleotides long if (seed found) -&gt; calculate score if score &gt; threshold -&gt; aligner found, trim / discard and exit. else -&gt; search for seeds 8 nucleotides long </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seq</td><td>pointer to <b>Fq_read</b> </td></tr>
+    <tr><td class="paramname">adap_list</td><td>array of <b>Ad_seq</b> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-1 error, 0 discarded, 1 accepted as is, 2 accepted and trimmed </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Global input parameters from par_TF are also used </dd></dl>
 
 </div>
 </div>
@@ -281,7 +322,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 13 2017 12:43:32 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 28 2017 11:30:46 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

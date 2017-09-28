@@ -94,7 +94,7 @@ CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/config.h.in
                ${CMAKE_SOURCE_DIR}/config.h [ESCAPE_QUOTES])
 
 # Set verbose 
-set(CMAKE_VERBOSE_MAKE ON)
+#set(CMAKE_VERBOSE_MAKE ON)
 
 # Set compiler flags
 set(CMAKE_C_FLAGS  "-Wall -O3 -march=native -std=c11") 
@@ -132,6 +132,7 @@ add_executable(trimFilter ${PROJECT_SOURCE_DIR}/trimFilter.c
             ${PROJECT_SOURCE_DIR}/io_trimFilter.c 
             ${PROJECT_SOURCE_DIR}/fa_read.c 
             ${PROJECT_SOURCE_DIR}/fq_read.c 
+            ${PROJECT_SOURCE_DIR}/adapters.c 
             ${PROJECT_SOURCE_DIR}/tree.c 
             ${PROJECT_SOURCE_DIR}/bloom.c 
             ${PROJECT_SOURCE_DIR}/city.c 
@@ -140,6 +141,24 @@ add_executable(trimFilter ${PROJECT_SOURCE_DIR}/trimFilter.c
             ${PROJECT_SOURCE_DIR}/Lmer.c
             ${PROJECT_SOURCE_DIR}/str_manip.c )
 
+
+add_executable(trimFilterDS ${PROJECT_SOURCE_DIR}/trimFilterDS.c 
+            ${PROJECT_SOURCE_DIR}/init_trimFilter.c 
+            ${PROJECT_SOURCE_DIR}/io_trimFilter.c 
+            ${PROJECT_SOURCE_DIR}/fa_read.c 
+            ${PROJECT_SOURCE_DIR}/ds_read.c 
+            ${PROJECT_SOURCE_DIR}/fq_read.c 
+            ${PROJECT_SOURCE_DIR}/tree.c 
+            ${PROJECT_SOURCE_DIR}/bloom.c 
+            ${PROJECT_SOURCE_DIR}/city.c 
+            ${PROJECT_SOURCE_DIR}/adapters.c 
+            ${PROJECT_SOURCE_DIR}/trim.c 
+            ${PROJECT_SOURCE_DIR}/fopen_gen.c
+            ${PROJECT_SOURCE_DIR}/Lmer.c
+            ${PROJECT_SOURCE_DIR}/str_manip.c )
+
+
+         
 # Set linker flags
 set(CMAKE_C_LINK_FLAGS  "-lm " )
 add_executable(makeBloom ${PROJECT_SOURCE_DIR}/makeBloom.c 

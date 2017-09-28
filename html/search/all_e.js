@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['obtain_5fscore',['obtain_score',['../adapters_8c.html#adc47abb63194fec1a3ec9d83991a1340',1,'obtain_score(Fq_read *seq, int pos_seq, Ad_seq *ptr_adap, int pos_ad):&#160;adapters.c'],['../adapters_8h.html#adc47abb63194fec1a3ec9d83991a1340',1,'obtain_score(Fq_read *seq, int pos_seq, Ad_seq *ptr_adap, int pos_ad):&#160;adapters.c']]],
   ['one_5fread_5flen',['one_read_len',['../struct__iparam__Qreport.html#a0a09c5cc791e625b948acb45b39164e6',1,'_iparam_Qreport']]],
   ['oprefix',['Oprefix',['../struct__iparam__trimFilter.html#ad24f2902b532a4ff2dfb1122941064b8',1,'_iparam_trimFilter']]],
   ['outputfile',['outputfile',['../struct__iparam__makeTree.html#a9506dbea307f1fda5cc22c84bc4d035f',1,'_iparam_makeTree::outputfile()'],['../struct__iparam__Sreport.html#aab71d9b5647daf65a8ba9ba6f7a35ee5',1,'_iparam_Sreport::outputfile()']]],

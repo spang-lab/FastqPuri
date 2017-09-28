@@ -107,7 +107,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="city_8h__dep__incl.png" border="0" usemap="#include_2city_8hdep" alt=""/></div>
 <map name="include_2city_8hdep" id="include_2city_8hdep">
-<area shape="rect" id="node2" href="bloom_8h.html" title="functions that implement the bloom filter " alt="" coords="191,80,305,107"/><area shape="rect" id="node10" href="city_8c.html" title="functions for hashin strings, C translation of cityhash (C++, google) " alt="" coords="329,80,405,107"/><area shape="rect" id="node3" href="bloom_8c.html" title="functions that implement the bloom filter " alt="" coords="5,155,96,181"/><area shape="rect" id="node4" href="init__trimFilter_8h.html" title="help dialog for trimFilter and initialization of the command line arguments. " alt="" coords="171,155,325,181"/><area shape="rect" id="node6" href="trim_8h.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="41,229,141,256"/><area shape="rect" id="node8" href="trimFilter_8c.html" title="trimFilter main function " alt="" coords="279,304,385,331"/><area shape="rect" id="node9" href="makeBloom_8c.html" title="makeBloom main function " alt="" coords="421,155,545,181"/><area shape="rect" id="node5" href="init__trimFilter_8c.html" title="help dialog for trimFilter and initialization of the command line arguments. " alt="" coords="164,229,295,256"/><area shape="rect" id="node7" href="trim_8c.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="52,304,129,331"/></map>
+<area shape="rect" id="node2" href="bloom_8h.html" title="functions that implement the bloom filter " alt="" coords="240,80,353,107"/><area shape="rect" id="node11" href="city_8c.html" title="functions for hashin strings, C translation of cityhash (C++, google) " alt="" coords="377,80,453,107"/><area shape="rect" id="node12" href="citycrc_8h.html" title="functions for hashin strings, C translation of cityhash (C++, google) " alt="" coords="478,80,595,107"/><area shape="rect" id="node3" href="bloom_8c.html" title="functions that implement the bloom filter " alt="" coords="54,155,145,181"/><area shape="rect" id="node4" href="init__trimFilter_8h.html" title="help dialog for trimFilter and initialization of the command line arguments. " alt="" coords="220,155,373,181"/><area shape="rect" id="node6" href="trim_8h.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="5,229,105,256"/><area shape="rect" id="node8" href="trimFilter_8c.html" title="trimFilter main function " alt="" coords="243,304,350,331"/><area shape="rect" id="node10" href="makeBloom_8c.html" title="makeBloom main function " alt="" coords="535,155,659,181"/><area shape="rect" id="node5" href="init__trimFilter_8c.html" title="help dialog for trimFilter and initialization of the command line arguments. " alt="" coords="129,229,259,256"/><area shape="rect" id="node9" href="trimFilterDS_8c.html" title="trimFilterDS main function " alt="" coords="334,229,459,256"/><area shape="rect" id="node7" href="trim_8c.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="17,304,94,331"/></map>
 </div>
 </div>
 <p><a href="city_8h_source.html">Go to the source code of this file.</a></p>
@@ -131,6 +131,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a33a5e996e7a90acefb8b1c0bea47e365"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a33a5e996e7a90acefb8b1c0bea47e365"></a>
 typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>uint8</b></td></tr>
 <tr class="separator:a33a5e996e7a90acefb8b1c0bea47e365"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2a9e79eb120216f855626495b7bd18a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac2a9e79eb120216f855626495b7bd18a"></a>
+typedef uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>uint16</b></td></tr>
+<tr class="separator:ac2a9e79eb120216f855626495b7bd18a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbd4acd0d29e2d6c43104827f77d9cd2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acbd4acd0d29e2d6c43104827f77d9cd2"></a>
 typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>uint32</b></td></tr>
 <tr class="separator:acbd4acd0d29e2d6c43104827f77d9cd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,32 +146,38 @@ typedef struct <a class="el" href="struct__uint128.html">_uint128</a>&#160;</td>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad1bd1546443b3e43413429c5b81d7c5e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1bd1546443b3e43413429c5b81d7c5e"></a>
-uint64&#160;</td><td class="memItemRight" valign="bottom"><b>CityHash64</b> (const char *buf, size_t len)</td></tr>
-<tr class="separator:ad1bd1546443b3e43413429c5b81d7c5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b875a47b3845075412f32d28c29f3cd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b875a47b3845075412f32d28c29f3cd"></a>
-uint64&#160;</td><td class="memItemRight" valign="bottom"><b>CityHash64WithSeed</b> (const char *buf, size_t len, uint64 seed)</td></tr>
-<tr class="separator:a8b875a47b3845075412f32d28c29f3cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6379aabcc4d80f0c495829430c2b682"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad6379aabcc4d80f0c495829430c2b682"></a>
-uint64&#160;</td><td class="memItemRight" valign="bottom"><b>CityHash64WithSeeds</b> (const char *buf, size_t len, uint64 seed0, uint64 seed1)</td></tr>
-<tr class="separator:ad6379aabcc4d80f0c495829430c2b682"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3574877c8e2267849ccceca63982d2f5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3574877c8e2267849ccceca63982d2f5"></a>
+uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>CityHash64</b> (const char *buf, size_t len)</td></tr>
+<tr class="separator:a3574877c8e2267849ccceca63982d2f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45cf0563975eb482ef8ab3183beef9ee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45cf0563975eb482ef8ab3183beef9ee"></a>
+uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>CityHash64WithSeed</b> (const char *buf, size_t len, uint64_t seed)</td></tr>
+<tr class="separator:a45cf0563975eb482ef8ab3183beef9ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9f2fecc9a7f8d66c5b34a22abc69af6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9f2fecc9a7f8d66c5b34a22abc69af6"></a>
+uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>CityHash64WithSeeds</b> (const char *buf, size_t len, uint64_t seed0, uint64_t seed1)</td></tr>
+<tr class="separator:aa9f2fecc9a7f8d66c5b34a22abc69af6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad487ffee003419a5c1394dc4117e6847"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad487ffee003419a5c1394dc4117e6847"></a>
 <a class="el" href="struct__uint128.html">uint128</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CityHash128</b> (const char *s, size_t len)</td></tr>
 <tr class="separator:ad487ffee003419a5c1394dc4117e6847"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe254b73fecfa7a0b9ceb61f6d713c8d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abe254b73fecfa7a0b9ceb61f6d713c8d"></a>
 <a class="el" href="struct__uint128.html">uint128</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CityHash128WithSeed</b> (const char *s, size_t len, <a class="el" href="struct__uint128.html">uint128</a> seed)</td></tr>
 <tr class="separator:abe254b73fecfa7a0b9ceb61f6d713c8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89d60d6b297bd424061712286c897286"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a89d60d6b297bd424061712286c897286"></a>
+uint32&#160;</td><td class="memItemRight" valign="bottom"><b>CityHash32</b> (const char *buf, size_t len)</td></tr>
+<tr class="separator:a89d60d6b297bd424061712286c897286"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acec9c3938445c3c95e49056aae23fdfc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acec9c3938445c3c95e49056aae23fdfc"></a>
+static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>Hash128to64</b> (const <a class="el" href="struct__uint128.html">uint128</a> x)</td></tr>
+<tr class="separator:acec9c3938445c3c95e49056aae23fdfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>functions for hashin strings, C translation of cityhash (C++, google) </p>
-<dl class="section author"><dt>Author</dt><dd>Alexander Nusov </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a href="https://github.com/nusov/cityhash-c">https://github.com/nusov/cityhash-c</a> </dd>
+<dl class="section author"><dt>Author</dt><dd>bdnt </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a href="https://github.com/bdnt/cityhash-c">https://github.com/bdnt/cityhash-c</a> </dd>
 <dd>
 <a href="https://github.com/google/cityhash">https://github.com/google/cityhash</a> </dd></dl>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 13 2017 12:43:31 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 28 2017 11:30:46 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

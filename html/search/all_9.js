@@ -6,6 +6,7 @@ var searchData=
   ['iidx',['Iidx',['../struct__iparam__trimFilter.html#ae0e1c22a522a0f014952d204e8887607',1,'_iparam_trimFilter']]],
   ['iinfo',['Iinfo',['../struct__iparam__trimFilter.html#a76e905e2a809d9a659d49fbd388e0c32',1,'_iparam_trimFilter']]],
   ['info',['Info',['../stats__info_8h.html#a2671cb2f7634ad56ed3dc27446796ef1',1,'stats_info.h']]],
+  ['init_5falluts',['init_alLUTs',['../adapters_8c.html#a9a9287b7f80371c4102747564c9b70c2',1,'init_alLUTs():&#160;adapters.c'],['../adapters_8h.html#a9a9287b7f80371c4102747564c9b70c2',1,'init_alLUTs():&#160;adapters.c']]],
   ['init_5fbfilter',['init_Bfilter',['../bloom_8c.html#a5e5f24cae575f929614ff14daedab9ac',1,'init_Bfilter(int kmersize, uint64_t bfsizeBits, int hashNum, double falsePosRate, uint64_t nelem):&#160;bloom.c'],['../bloom_8h.html#a5e5f24cae575f929614ff14daedab9ac',1,'init_Bfilter(int kmersize, uint64_t bfsizeBits, int hashNum, double falsePosRate, uint64_t nelem):&#160;bloom.c']]],
   ['init_5fbfkmer',['init_Bfkmer',['../bloom_8c.html#a880cf4acfc80f5a7520b13ef5e06771e',1,'init_Bfkmer(int kmersize, int hashNum):&#160;bloom.c'],['../bloom_8h.html#a880cf4acfc80f5a7520b13ef5e06771e',1,'init_Bfkmer(int kmersize, int hashNum):&#160;bloom.c']]],
   ['init_5fentries',['init_entries',['../fa__read_8c.html#a58dddba8afcef6229172d7e5e11d6d77',1,'fa_read.c']]],
@@ -40,6 +41,6 @@ var searchData=
   ['is_5fadapter',['is_adapter',['../struct__iparam__trimFilter.html#a6d015b5bf1568c362d9ca0ff37b751f8',1,'_iparam_trimFilter']]],
   ['is_5ffa',['is_fa',['../struct__iparam__trimFilter.html#ac6093d26e41e61f82ffd2aa05f563f9c',1,'_iparam_trimFilter']]],
   ['is_5fidx',['is_idx',['../struct__iparam__trimFilter.html#afc50c477a3340ed7befc430d273ff6cb',1,'_iparam_trimFilter']]],
-  ['is_5fread_5finbloom',['is_read_inBloom',['../trim_8c.html#a3aac870b48cdc630a85e17bdf0be9430',1,'is_read_inBloom(Bfilter *ptr_bf, Fq_read *seq, Bfkmer *ptr_Bfkmer):&#160;trim.c'],['../trim_8h.html#a02011bb5b87bf75ee8073eaff6d02fb6',1,'is_read_inBloom(Bfilter *tree_ptr, Fq_read *seq, Bfkmer *ptr_Bfkmer):&#160;trim.c']]],
+  ['is_5fread_5finbloom',['is_read_inBloom',['../trim_8c.html#a6206f2c21429fd2ff36010b71989696d',1,'is_read_inBloom(Bfilter *ptr_bf, Fq_read *seq, Bfkmer *ptr_bfkmer):&#160;trim.c'],['../trim_8h.html#a02011bb5b87bf75ee8073eaff6d02fb6',1,'is_read_inBloom(Bfilter *tree_ptr, Fq_read *seq, Bfkmer *ptr_Bfkmer):&#160;trim.c']]],
   ['is_5fread_5fintree',['is_read_inTree',['../trim_8c.html#a7e2b4015298659b7e21a80d4bb031e2f',1,'is_read_inTree(Tree *tree_ptr, Fq_read *seq):&#160;trim.c'],['../trim_8h.html#a7e2b4015298659b7e21a80d4bb031e2f',1,'is_read_inTree(Tree *tree_ptr, Fq_read *seq):&#160;trim.c']]]
 ];

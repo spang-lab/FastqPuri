@@ -5,7 +5,7 @@ var searchData=
   ['save_5fbfilter',['save_Bfilter',['../bloom_8c.html#a48a74d10082ed27381512e23650ba823',1,'save_Bfilter(Bfilter *ptr_bf, char *filterfile, char *paramfile):&#160;bloom.c'],['../bloom_8h.html#a48a74d10082ed27381512e23650ba823',1,'save_Bfilter(Bfilter *ptr_bf, char *filterfile, char *paramfile):&#160;bloom.c']]],
   ['save_5ftree',['save_tree',['../tree_8c.html#a3b6ea3f3ef0c84a182e93a58ea417aea',1,'save_tree(Tree *tree_ptr, char *filename):&#160;tree.c'],['../tree_8h.html#a3b6ea3f3ef0c84a182e93a58ea417aea',1,'save_tree(Tree *tree_ptr, char *filename):&#160;tree.c']]],
   ['score',['score',['../struct__iparam__trimFilter.html#a193ef2030f6eb8db0b75afbbd152d6a1',1,'_iparam_trimFilter']]],
-  ['seq',['seq',['../struct__fa__entry.html#a6c548e86ed6ce8bb33bd1fcdcd56abbe',1,'_fa_entry']]],
+  ['seq',['seq',['../struct__ad__seq.html#ad8ea16c086e40f863d19754edab9d67e',1,'_ad_seq::seq()'],['../struct__fa__entry.html#a6c548e86ed6ce8bb33bd1fcdcd56abbe',1,'_fa_entry::seq()']]],
   ['size_5ffasta',['size_fasta',['../fa__read_8c.html#a0e6b9d47a8472d0768270afbdbf17d4e',1,'size_fasta(Fa_data *ptr_fa):&#160;fa_read.c'],['../fa__read_8h.html#a0e6b9d47a8472d0768270afbdbf17d4e',1,'size_fasta(Fa_data *ptr_fa):&#160;fa_read.c']]],
   ['split',['Split',['../str__manip_8h.html#aeff63a40ce3fff0c51bd207baeba2013',1,'str_manip.h']]],
   ['sreport_2ec',['Sreport.c',['../Sreport_8c.html',1,'']]],

@@ -117,45 +117,47 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="tree_8h.html">tree.h</a>&quot;</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="init__trimFilter_8h.html">init_trimFilter.h</a>&quot;</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="bloom_8h.html">bloom.h</a>&quot;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">// Will need them in the future</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">// #include SA.h</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">int</span> <a class="code" href="trim_8h.html#af23d3685193b624b72a6969a49903a97">trim_sequenceN</a>(<a class="code" href="struct__fq__read.html">Fq_read</a> *seq);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">int</span> <a class="code" href="trim_8h.html#ae5ab2bb79068d8a7e0d72686c1f50320">trim_sequenceQ</a>(<a class="code" href="struct__fq__read.html">Fq_read</a> *seq);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="trim_8h.html#a7e2b4015298659b7e21a80d4bb031e2f">is_read_inTree</a>(<a class="code" href="struct__tree.html">Tree</a> *tree_ptr, <a class="code" href="struct__fq__read.html">Fq_read</a> *seq);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="trim_8h.html#a02011bb5b87bf75ee8073eaff6d02fb6">is_read_inBloom</a>(<a class="code" href="struct__bfilter.html">Bfilter</a> *tree_ptr, <a class="code" href="struct__fq__read.html">Fq_read</a> *seq, <a class="code" href="struct__bfkmer.html">Bfkmer</a> *ptr_Bfkmer);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/* static functions</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">* static int no_N(Fq_read *seq);</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">* static int Nfree_Lmer(Fq_read *seq, int minL);</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">* static int Ntrim_ends(Fq_read *seq, int minL);</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">* static int no_lowQ(Fq_read *seq, int minQ);</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">* static int Qtrim_ends(Fq_read *seq, int minQ, int minL);</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">* static int Qtrim_frac(Fq_read *seq, int minQ ,int nlowQ );</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">* static int Qtrim_endsfrac(Fq_read *seq, int minQ, int minL, int nlowQ );</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">* static int Qtrim_global(Fq_read *seq, int left, int right );</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#endif  // TRIM_H_</span></div>
-<div class="ttc" id="trim_8h_html_ae5ab2bb79068d8a7e0d72686c1f50320"><div class="ttname"><a href="trim_8h.html#ae5ab2bb79068d8a7e0d72686c1f50320">trim_sequenceQ</a></div><div class="ttdeci">int trim_sequenceQ(Fq_read *seq)</div><div class="ttdoc">trims sequence based on lowQ base callings </div><div class="ttdef"><b>Definition:</b> trim.c:395</div></div>
-<div class="ttc" id="trim_8h_html_a02011bb5b87bf75ee8073eaff6d02fb6"><div class="ttname"><a href="trim_8h.html#a02011bb5b87bf75ee8073eaff6d02fb6">is_read_inBloom</a></div><div class="ttdeci">bool is_read_inBloom(Bfilter *tree_ptr, Fq_read *seq, Bfkmer *ptr_Bfkmer)</div><div class="ttdoc">checks if a read is in Bloom filter. It computes the score for the read and returns true if it exceed...</div><div class="ttdef"><b>Definition:</b> trim.c:437</div></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="adapters_8h.html">adapters.h</a>&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">int</span> <a class="code" href="trim_8h.html#aed995029d7181d69875b2dee0d7b6ce9">trim_adapter</a>(<a class="code" href="struct__fq__read.html">Fq_read</a> *seq, <a class="code" href="struct__ad__seq.html">Ad_seq</a> *adap_list); </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">int</span> <a class="code" href="trim_8h.html#af23d3685193b624b72a6969a49903a97">trim_sequenceN</a>(<a class="code" href="struct__fq__read.html">Fq_read</a> *seq);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">int</span> <a class="code" href="trim_8h.html#ae5ab2bb79068d8a7e0d72686c1f50320">trim_sequenceQ</a>(<a class="code" href="struct__fq__read.html">Fq_read</a> *seq);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="trim_8h.html#a7e2b4015298659b7e21a80d4bb031e2f">is_read_inTree</a>(<a class="code" href="struct__tree.html">Tree</a> *tree_ptr, <a class="code" href="struct__fq__read.html">Fq_read</a> *seq);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="trim_8h.html#a02011bb5b87bf75ee8073eaff6d02fb6">is_read_inBloom</a>(<a class="code" href="struct__bfilter.html">Bfilter</a> *tree_ptr, <a class="code" href="struct__fq__read.html">Fq_read</a> *seq, <a class="code" href="struct__bfkmer.html">Bfkmer</a> *ptr_Bfkmer);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/* static functions</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">* static int no_N(Fq_read *seq);</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">* static int Nfree_Lmer(Fq_read *seq, int minL);</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">* static int Ntrim_ends(Fq_read *seq, int minL);</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">* static int no_lowQ(Fq_read *seq, int minQ);</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">* static int Qtrim_ends(Fq_read *seq, int minQ, int minL);</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">* static int Qtrim_frac(Fq_read *seq, int minQ ,int nlowQ );</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">* static int Qtrim_endsfrac(Fq_read *seq, int minQ, int minL, int nlowQ );</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">* static int Qtrim_global(Fq_read *seq, int left, int right );</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#endif  // TRIM_H_</span></div>
+<div class="ttc" id="trim_8h_html_ae5ab2bb79068d8a7e0d72686c1f50320"><div class="ttname"><a href="trim_8h.html#ae5ab2bb79068d8a7e0d72686c1f50320">trim_sequenceQ</a></div><div class="ttdeci">int trim_sequenceQ(Fq_read *seq)</div><div class="ttdoc">trims sequence based on lowQ base callings </div><div class="ttdef"><b>Definition:</b> trim.c:654</div></div>
+<div class="ttc" id="adapters_8h_html"><div class="ttname"><a href="adapters_8h.html">adapters.h</a></div><div class="ttdoc">sequence manipulation for alignment </div></div>
+<div class="ttc" id="trim_8h_html_a02011bb5b87bf75ee8073eaff6d02fb6"><div class="ttname"><a href="trim_8h.html#a02011bb5b87bf75ee8073eaff6d02fb6">is_read_inBloom</a></div><div class="ttdeci">bool is_read_inBloom(Bfilter *tree_ptr, Fq_read *seq, Bfkmer *ptr_Bfkmer)</div><div class="ttdoc">checks if a read is in Bloom filter. It computes the score for the read and returns true if it exceed...</div><div class="ttdef"><b>Definition:</b> trim.c:697</div></div>
 <div class="ttc" id="bloom_8h_html"><div class="ttname"><a href="bloom_8h.html">bloom.h</a></div><div class="ttdoc">functions that implement the bloom filter </div></div>
 <div class="ttc" id="struct__fq__read_html"><div class="ttname"><a href="struct__fq__read.html">_fq_read</a></div><div class="ttdoc">stores a fastq entry </div><div class="ttdef"><b>Definition:</b> fq_read.h:37</div></div>
 <div class="ttc" id="init__trimFilter_8h_html"><div class="ttname"><a href="init__trimFilter_8h.html">init_trimFilter.h</a></div><div class="ttdoc">help dialog for trimFilter and initialization of the command line arguments. </div></div>
 <div class="ttc" id="tree_8h_html"><div class="ttname"><a href="tree_8h.html">tree.h</a></div><div class="ttdoc">Construction of tree, check paths, write tree, read in tree. </div></div>
+<div class="ttc" id="trim_8h_html_aed995029d7181d69875b2dee0d7b6ce9"><div class="ttname"><a href="trim_8h.html#aed995029d7181d69875b2dee0d7b6ce9">trim_adapter</a></div><div class="ttdeci">int trim_adapter(Fq_read *seq, Ad_seq *adap_list)</div><div class="ttdoc">trims sequence based on presence of N nucleotides </div><div class="ttdef"><b>Definition:</b> trim.c:590</div></div>
 <div class="ttc" id="Lmer_8h_html"><div class="ttname"><a href="Lmer_8h.html">Lmer.h</a></div><div class="ttdoc">Manipulation of Lmers and sequences. </div></div>
 <div class="ttc" id="defines_8h_html"><div class="ttname"><a href="defines_8h.html">defines.h</a></div><div class="ttdoc">Macro definitions. </div></div>
-<div class="ttc" id="trim_8h_html_a7e2b4015298659b7e21a80d4bb031e2f"><div class="ttname"><a href="trim_8h.html#a7e2b4015298659b7e21a80d4bb031e2f">is_read_inTree</a></div><div class="ttdeci">bool is_read_inTree(Tree *tree_ptr, Fq_read *seq)</div><div class="ttdoc">check if Lread is contained in tree. It computes the score for the read and its reverse complement; i...</div><div class="ttdef"><b>Definition:</b> trim.c:415</div></div>
+<div class="ttc" id="trim_8h_html_a7e2b4015298659b7e21a80d4bb031e2f"><div class="ttname"><a href="trim_8h.html#a7e2b4015298659b7e21a80d4bb031e2f">is_read_inTree</a></div><div class="ttdeci">bool is_read_inTree(Tree *tree_ptr, Fq_read *seq)</div><div class="ttdoc">check if Lread is contained in tree. It computes the score for the read and its reverse complement; i...</div><div class="ttdef"><b>Definition:</b> trim.c:674</div></div>
 <div class="ttc" id="struct__bfilter_html"><div class="ttname"><a href="struct__bfilter.html">_bfilter</a></div><div class="ttdoc">Bloom filter structure. </div><div class="ttdef"><b>Definition:</b> bloom.h:46</div></div>
+<div class="ttc" id="struct__ad__seq_html"><div class="ttname"><a href="struct__ad__seq.html">_ad_seq</a></div><div class="ttdoc">stores an adapter entry </div><div class="ttdef"><b>Definition:</b> adapters.h:38</div></div>
 <div class="ttc" id="fq__read_8h_html"><div class="ttname"><a href="fq__read_8h.html">fq_read.h</a></div><div class="ttdoc">fastq entries manipulations (read/write) </div></div>
-<div class="ttc" id="trim_8h_html_af23d3685193b624b72a6969a49903a97"><div class="ttname"><a href="trim_8h.html#af23d3685193b624b72a6969a49903a97">trim_sequenceN</a></div><div class="ttdeci">int trim_sequenceN(Fq_read *seq)</div><div class="ttdoc">trims sequence based on presence of N nucleotides </div><div class="ttdef"><b>Definition:</b> trim.c:368</div></div>
+<div class="ttc" id="trim_8h_html_af23d3685193b624b72a6969a49903a97"><div class="ttname"><a href="trim_8h.html#af23d3685193b624b72a6969a49903a97">trim_sequenceN</a></div><div class="ttdeci">int trim_sequenceN(Fq_read *seq)</div><div class="ttdoc">trims sequence based on presence of N nucleotides </div><div class="ttdef"><b>Definition:</b> trim.c:627</div></div>
 <div class="ttc" id="struct__bfkmer_html"><div class="ttname"><a href="struct__bfkmer.html">_bfkmer</a></div><div class="ttdoc">stores a processed kmer (2 bits pro nucleotide) </div><div class="ttdef"><b>Definition:</b> bloom.h:62</div></div>
 <div class="ttc" id="struct__tree_html"><div class="ttname"><a href="struct__tree.html">_tree</a></div><div class="ttdoc">structure containing a T_ACGT-tree. </div><div class="ttdef"><b>Definition:</b> tree.h:60</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 13 2017 12:43:31 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 28 2017 11:30:46 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
