@@ -92,7 +92,7 @@ computes score of a possible alignment, after having found a seed.
 The score is computed as follows\+:
 \begin{DoxyItemize}
 \item matching bases\+: score += log\+\_\+10(4)
-\item unmatching bases\+: score -\/= 10$\ast$\+Q, where Quality is the quality score.
+\item unmatching bases\+: score -\/= Q/10, where Q is the quality score.
 \end{DoxyItemize}
 
 

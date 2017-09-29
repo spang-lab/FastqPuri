@@ -375,7 +375,8 @@ static int Qtrim_global(Fq_read *seq, int left, int right, char type) {
  *
  * */
 static int align_uint32(Fq_read *seq, Ad_seq *ptr_adap, bool all) {
-  uint32_t j, n;
+  uint32_t j; 
+  int n;
   int pos;
   uint16_t Wlimit = sizeof(uint64_t) - sizeof(uint32_t);
   uint16_t Nwindows = seq -> Lhalf - sizeof(uint32_t) + 1;
@@ -393,15 +394,15 @@ static int align_uint32(Fq_read *seq, Ad_seq *ptr_adap, bool all) {
   for (j=0; j < Nwindows; j++) {
     memcpy(&read32, seq->pack+Nwindows-1-j, sizeof(uint32_t) );
     cmp32 = (adsh ^ read32);
-    n = __builtin_popcount(cmp32);
-    if ((n>>1) <= mismatches) {
+    n = __builtin_popcount(cmp32 >> 4);
+    if (n <= 2*mismatches) {
       score = obtain_score(seq, pos, ptr_adap, 0);
       if (score > threshold) break;
     }
     pos--;
     cmp32 = (ad ^ read32);
     n = __builtin_popcount(cmp32);
-    if ((n>>1) <= mismatches) {
+    if (n <= 2*mismatches) {
       score =  obtain_score(seq, pos, ptr_adap, 0);
       if (score > threshold) break;
     }
@@ -409,6 +410,7 @@ static int align_uint32(Fq_read *seq, Ad_seq *ptr_adap, bool all) {
     // jump if coming from align_uint64
     if (j == Wlimit) {
        j = Nwindows-1;
+       pos -= 2*(Nwindows - 1 - Wlimit) ; 
     }
   }
   if (score > threshold) {
@@ -418,19 +420,20 @@ static int align_uint32(Fq_read *seq, Ad_seq *ptr_adap, bool all) {
   // loop done on the adapter sequence  without considering the first
   Nwindows = ptr_adap -> Lpack - sizeof(uint32_t);
   pos = ptr_adap->L - 2*sizeof(uint32_t) + (ptr_adap->L%2);
+  memcpy(&read32, seq->pack, sizeof(uint32_t) );
   for (j = Nwindows; j > 0; j--) {
     memcpy(&ad, ptr_adap->pack + j, sizeof(uint32_t));
     memcpy(&adsh, ptr_adap->pack_sh + j, sizeof(uint32_t));
     cmp32 = (ad ^ read32);
     n = __builtin_popcount(cmp32);
-    if ((n>>1) <= mismatches) {
+    if ( n <= 2*mismatches) {
        score = obtain_score(seq, 0, ptr_adap, pos);
        if (score > threshold) break;
     }
     pos--;
     cmp32 = (adsh ^ read32);
-    n = __builtin_popcount(cmp32);
-    if ((n>>1) <= mismatches) {
+    n = __builtin_popcount(cmp32>>2);
+    if (n <= 2*mismatches) {
        score = obtain_score(seq, 0, ptr_adap, pos);
        if (score > threshold) break;
     }
@@ -514,7 +517,8 @@ static int align_uint32(Fq_read *seq, Ad_seq *ptr_adap, bool all) {
  *
  * */
 static int align_uint64(Fq_read *seq, Ad_seq *ptr_adap) {
-  uint64_t j, n;
+  uint32_t j;
+  int n;
   int pos, Nwindows;
   double score = 0;
   double threshold = par_TF.ad.threshold;
@@ -528,15 +532,15 @@ static int align_uint64(Fq_read *seq, Ad_seq *ptr_adap) {
   for (j=0; j < Nwindows ; j++) {
     memcpy(&read64, seq->pack + Nwindows-1-j, sizeof(uint64_t) );
     cmp64 = (adsh ^ read64);
-    n = __builtin_popcount(cmp64);
-    if ((n>>1) <= mismatches) {
+    n = __builtin_popcount(cmp64 >> 4);
+    if ( n <= 2*mismatches) {
       score = obtain_score(seq, pos, ptr_adap, 0);
       if (score > threshold) break;
     }
     pos--;
     cmp64 = (ad ^ read64);
     n = __builtin_popcount(cmp64);
-    if ((n>>1) <= mismatches) {
+    if ( n <= 2*mismatches) {
       score =  obtain_score(seq, pos, ptr_adap, 0);
       if (score > threshold) break;
     }
@@ -554,14 +558,14 @@ static int align_uint64(Fq_read *seq, Ad_seq *ptr_adap) {
     memcpy(&adsh, ptr_adap -> pack_sh + j, sizeof(uint64_t));
     cmp64 = (ad ^ read64);
     n = __builtin_popcount(cmp64);
-    if ((n>>1) <= mismatches) {
+    if ( n <= 2*mismatches) {
        score = obtain_score(seq, 0, ptr_adap, pos);
        if (score > threshold) break;
     }
     pos--;
     cmp64 = (adsh ^ read64);
-    n = __builtin_popcount(cmp64);
-    if ((n>>1) <= mismatches) {
+    n = __builtin_popcount(cmp64 >> 4);
+    if (n <= 2*mismatches) {
        score = obtain_score(seq, 0, ptr_adap, pos);
        if (score > threshold) break;
     }

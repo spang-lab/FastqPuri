@@ -141,7 +141,7 @@ Ad_seq *pack_adapter(Fa_data *ptr_fa) {
  *
  * The score is computed as follows:
  *  - matching bases: score += log_10(4)
- *  - unmatching bases: score -= 10*Q, where Quality is the quality score.
+ *  - unmatching bases: score -= Q/10, where Q is the quality score.
  *
  * @param seq pointer to <b>Fq_read</b>.
  * @param pos_seq  read starting position of the alignment
@@ -167,6 +167,5 @@ double obtain_score(Fq_read *seq, int pos_seq, Ad_seq *ptr_adap, int pos_ad) {
       score -= (seq->line4[pos_seq + i] - ZEROQ)/10.0;
     }
   }
-  printf("\n score: %f\n", score);
   return ((Nmatches < MIN_NMATCHES) ? -1.0 : score);
 }

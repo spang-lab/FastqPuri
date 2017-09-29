@@ -177,6 +177,12 @@ CASE3C:  TCTTCTGCTTGCCGATCGATGCTAGCTACGATCGTCGAGCTAGCTACGTGCG
          - Return: nothing done, reason: Match length < 12
 ```
 
+The score is calculated as follows: 
+ *  - matching bases: `score += log_10(4)`
+ *  - unmatching bases: `score -= Q/10`, where Q is the quality score.
+
+
+
 #### Impurities
 
  Contaminations are removed if a fasta file is given as an input.

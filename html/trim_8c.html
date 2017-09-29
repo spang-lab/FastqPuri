@@ -302,7 +302,7 @@ Variables</h2></td></tr>
 <a class="el" href="adapters_8h.html#a474bb2a439e8396fe33f6998af243eee" title="reads a Fa_data with adapters and stores them in an array of Ad_seq structs. ">pack_adapter</a> </dd>
 <dd>
 <a class="el" href="adapters_8h.html#adc47abb63194fec1a3ec9d83991a1340" title="computes score of a possible alignment, after having found a seed. ">obtain_score</a></dd></dl>
-<p>This function checks whether there is adapter contamination in a given read. We start by looking for 16-nucleotides long seeds, where a user defined number of mismatches is allowed. If found, a score is computed. If the score is larger than the user defined threshold and the number of matched nucleotides exceeds MIN_NMATCHES (12), then the read is trimmed if the remaining part is longer than minL (user defined) and discarded otherwise. If no 16-nucleotides long seeds are found, we proceed with 8-nucleotides long seeds (see align_uint64) and apply the same criteria to trim/discard a read. A list of possible situations follows, to illustrate how it works (minL=25, mismatches=2):</p>
+<p>This function checks whether there is adapter contamination in a given read. We start by looking for 16-nucleotides long seeds, where a user defined number of mismatches is allowed. If found, a score is computed. If the score is larger than the user defined threshold and the number of matched nucleotides exceeds MIN_NMATCHES (12), then the read is trimmed if the remaining part is longer than minL (user defined) and discarded otherwise. If no 16-nucleotides long seeds are found, we proceed with 8-nucleotides long seeds (see <b>align_uint32</b>) and apply the same criteria to trim/discard a read. A list of possible situations follows, to illustrate how it works (minL=25, mismatches=2):</p>
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;ADAPTER: CAAGCAGAAGACGGCATACGAG</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;REV_COM: AGATCGGAAGAGCTCGTATGCC</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
@@ -952,7 +952,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Sep 28 2017 11:30:47 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 29 2017 10:14:52 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

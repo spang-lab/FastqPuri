@@ -163,7 +163,7 @@ Global input parameters from par\+\_\+\+T\+F are used
 
 \hyperlink{adapters_8h_adc47abb63194fec1a3ec9d83991a1340}{obtain\+\_\+score}
 \end{DoxySeeAlso}
-This function checks whether there is adapter contamination in a given read. We start by looking for 16-\/nucleotides long seeds, where a user defined number of mismatches is allowed. If found, a score is computed. If the score is larger than the user defined threshold and the number of matched nucleotides exceeds M\+I\+N\+\_\+\+N\+M\+A\+T\+C\+H\+E\+S (12), then the read is trimmed if the remaining part is longer than min\+L (user defined) and discarded otherwise. If no 16-\/nucleotides long seeds are found, we proceed with 8-\/nucleotides long seeds (see align\+\_\+uint64) and apply the same criteria to trim/discard a read. A list of possible situations follows, to illustrate how it works (min\+L=25, mismatches=2)\+:
+This function checks whether there is adapter contamination in a given read. We start by looking for 16-\/nucleotides long seeds, where a user defined number of mismatches is allowed. If found, a score is computed. If the score is larger than the user defined threshold and the number of matched nucleotides exceeds M\+I\+N\+\_\+\+N\+M\+A\+T\+C\+H\+E\+S (12), then the read is trimmed if the remaining part is longer than min\+L (user defined) and discarded otherwise. If no 16-\/nucleotides long seeds are found, we proceed with 8-\/nucleotides long seeds (see {\bfseries align\+\_\+uint32}) and apply the same criteria to trim/discard a read. A list of possible situations follows, to illustrate how it works (min\+L=25, mismatches=2)\+:
 
 
 \begin{DoxyCode}
