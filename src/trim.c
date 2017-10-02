@@ -493,9 +493,9 @@ static int align_uint32(Fq_read *seq, Ad_seq *ptr_adap, bool all) {
  *                                 AGATCGGAAGAGCTCGTATGCC
  *           - Seed: 16 Nucleotides
  *           - Return: 0, reason: remaining read too short.
- *  CASE2B:  CCACAGTACAATACATCACGAGCTAGCTAGAGATCGGAAGAGCTCGTATGCA
- *                                       ||||||||||||||||||||||
- *                                       AGATCGGAAGAGCTCGTATGCC
+ *  CASE2B:  CCACAGTACAATACATCACGAGCTAGCTAGAGATCGGAAGAGCTCGTATGCC
+ *                                         ||||||||||||||||||||||
+ *                                         AGATCGGAAGAGCTCGTATGCC
  *           - Seed: 16 Nucleotides
  *           - Return: 2, TRIMA:0:28
  *  CASE3A:  TATGCCGTCTTCTGCTTGCAGTGCATGCTGATGCATGCTGCATGCTAGCTGC

@@ -155,9 +155,9 @@ CASE2A:  CATACATCACGAGCTAGCTAGAGATCGGAAGAGCTCGTATGCCCAGCATCGA
                                AGATCGGAAGAGCTCGTATGCC
          - Seed: 16 Nucleotides
          - Return: discarded, reason: remaining read too short.
-CASE2B:  CCACAGTACAATACATCACGAGCTAGCTAGAGATCGGAAGAGCTCGTATGCA
-                                     ||||||||||||||||||||||
-                                     AGATCGGAAGAGCTCGTATGCC
+CASE2B:  CCACAGTACAATACATCACGAGCTAGCTAGAGATCGGAAGAGCTCGTATGCC
+                                       ||||||||||||||||||||||
+                                       AGATCGGAAGAGCTCGTATGCC
          - Seed: 16 Nucleotides
          - Return: trimmed, TRIMA:0:28
 CASE3A:  TATGCCGTCTTCTGCTTGCAGTGCATGCTGATGCATGCTGCATGCTAGCTGC
@@ -185,7 +185,7 @@ The score is calculated as follows:
 
 #### Impurities
 
- Contaminations are removed if a fasta file is given as an input.
+ Contaminations are removed if a fasta or an index file are given as an input.
  Three methods have been implemented to check for contaminations:
 
 - **TREE**: this method is designed to identify impurities from
