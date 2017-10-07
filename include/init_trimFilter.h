@@ -32,56 +32,11 @@
 
 #include "defines.h"
 #include "bloom.h"
+#include "struct_trimFilter.h"
 
-
-/**
- * @ brief adapter struct
- * @ note UNFINISHED!
- * */
-typedef struct _adapter {
-  char *adapter_fa; /**< fasta file containing adapters*/
-  int mismatches;   /**< Number of allowed mismatches*/
-  double threshold;  /**< Score threshold*/
-  int Nad;  /**< Number of adapters*/
-} Adapter;
-
-/**
- * @brief trimFilter input parameters
- *
- * */
-typedef struct _iparam_trimFilter {
-  char *Ifq;  /**< Input fq file */
-  char *Ifa;  /**< Input fa file (containing contamination sequences) */
-  char Iidx[MAX_FILENAME];  /**< Input index file (from an input.fa cont file) */
-  char Iinfo[MAX_FILENAME]; /**< Input index info file  */
-  char *Oprefix;  /**< Output files prefix (PATH/prefix) */
-  Adapter ad;  /**< Adapter trimming parameters  */
-  Bfkmer *ptr_bfkmer; /** bloom filter kmer structure */
-  int trimQ;   /**< NO(0), FRAC(1), ENDS(2), ENDSFRAC(3), GLOBAL(4) */
-  int trimN;   /**< NO(0), ALL(1), ENDS(2), STRIP(3) */
-  int method;  /**< TREE(1), SA(2), BLOOM(3), 0, when not looking for cont*/
-  bool is_fa;  /**< true if a fasta file was passed as a parameter*/
-  bool is_idx;  /**< true if an index file was passed as a parameter */
-  bool is_adapter;  /**< true if filtering adapter sequences*/
-  double score;  /**< score threshold for matching reads in sequences */
-  int minQ;  /**<  minimum quality threshold*/
-  int L;  /**<  read length*/
-  int minL;  /**<  minimum read length accepted before discarding a read */
-  int nlowQ;  /**< maximum number of lowQ bases accepted before discarding */
-  int kmersize;  /**< kmersize to look for contamination */
-  int globleft;  /**< number of bases globally trimming from the left */
-  int globright;  /**< number of bases globally trimming from the right */
-  int percent;  /**< percentage of lowQ bases allowed in a read */
-} Iparam_trimFilter;
 
 void printHelpDialog_trimFilter();
 
 void getarg_trimFilter(int argc, char **argv);
-
-/**
- * @brief frees the allocated memory in Iparam_trimFilter
- *
- * */
-void free_parTF(Iparam_trimFilter *ptr_parTF);
 
 #endif  // INIT_TRIMFILTER_H_

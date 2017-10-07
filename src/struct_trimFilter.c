@@ -19,34 +19,32 @@
  ****************************************************************************/
 
 /**
- * @file ds_read.h
+ * @file struct_trimFilter.c
  * @author Paula Perez <paulaperezrubio@gmail.com>
- * @date 20.09.2017
- * @brief fastq entries manipulations (read/write)
+ * @date 07.10.2017
+ * @brief help dialog for trimFilterDS and initialization of the
+ * command line arguments.
  *
  * */
 
-#include "fq_read.h"
-#include "config.h"
+#include "struct_trimFilter.h"
 
-#define COMPACT 2
-#define READ_HALFLEN READ_MAXLEN/2
-
-/*
- * @brief  stores two paired fastq entries, r1, r2.
+/**
+ * @brief frees the allocated memory in Iparam_trimFilter
  *
  * */
-typedef struct ds_read {
-   Fq_read *r1;  /** Fq_read struct containing read1  */
-   Fq_read *r2;  /** Fq_read struct containing read2  */
-   int Lhalf1;    /** length of the compactified strings read1*/ 
-   int Lhalf2;    /** length of the compactified strings read2*/ 
-   unsigned char c1[READ_HALFLEN]; /** compact string encoding read1 */
-   unsigned char c1sh[READ_HALFLEN]; /** compact string encoding read1 shifted*/
-   unsigned char c2[READ_HALFLEN]; /** compact string encoding read2 */ 
-   int nmax; /** Maximum number of matches*/ 
-   int posmax; /** Position of palindromic match*/
-} DS_read;
+void free_parTF(Iparam_trimFilter *ptr_parTF) {
+  if (ptr_parTF -> ptr_bfkmer != NULL) 
+     free_Bfkmer(ptr_parTF->ptr_bfkmer);
+  if (ptr_parTF -> Iidx != NULL) {
+     free(ptr_parTF -> Iidx);
+  }
+  if (ptr_parTF -> Iinfo != NULL) {
+     free(ptr_parTF -> Iinfo);
+  }
+  if (ptr_parTF -> Ifq2 != NULL) {
+     free(ptr_parTF -> Ifq); 
+     free(ptr_parTF -> Ifq2);
+  }
+}
 
-void init_dsLUTs(); 
-void match_dsread(Fq_read *r1, Fq_read *r2, DS_read *ptr_dsread);

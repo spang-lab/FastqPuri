@@ -55,19 +55,25 @@ int main(int argc, char *argv[]) {
   getarg_trimFilter(argc, argv);
 
   // Output filenames
-  char fq_good[MAX_FILENAME]; strncpy(fq_good, par_TF.Oprefix, MAX_FILENAME);
-  char fq_adap[MAX_FILENAME]; strncpy(fq_adap, par_TF.Oprefix, MAX_FILENAME);
-  char fq_cont[MAX_FILENAME]; strncpy(fq_cont, par_TF.Oprefix, MAX_FILENAME);
-  char fq_lowq[MAX_FILENAME]; strncpy(fq_lowq, par_TF.Oprefix, MAX_FILENAME);
-  char fq_NNNN[MAX_FILENAME]; strncpy(fq_NNNN, par_TF.Oprefix, MAX_FILENAME);
-  char summary[MAX_FILENAME]; strncpy(summary, par_TF.Oprefix, MAX_FILENAME);
+  char *fq_good = malloc(MAX_FILENAME);
+  char *fq_adap = malloc(MAX_FILENAME);
+  char *fq_cont = malloc(MAX_FILENAME);
+  char *fq_lowq = malloc(MAX_FILENAME);
+  char *fq_NNNN = malloc(MAX_FILENAME);
+  char *summary = malloc(MAX_FILENAME);
+  strncpy(fq_good, par_TF.Oprefix, MAX_FILENAME);
+  strncpy(fq_adap, par_TF.Oprefix, MAX_FILENAME);
+  strncpy(fq_cont, par_TF.Oprefix, MAX_FILENAME);
+  strncpy(fq_lowq, par_TF.Oprefix, MAX_FILENAME);
+  strncpy(fq_NNNN, par_TF.Oprefix, MAX_FILENAME);
+  strncpy(summary, par_TF.Oprefix, MAX_FILENAME);
   strncat(fq_good, "_good.fq.gz", 15);
   strncat(fq_adap, "_adap.fq.gz", 15);
   strncat(fq_cont, "_cont.fq.gz", 15);
   strncat(fq_lowq, "_lowq.fq.gz", 15);
   strncat(fq_NNNN, "_NNNN.fq.gz", 15);
   strncat(summary, "_summary.bin", 15);
-  FILE  *fq_in, *f_good;
+  FILE *fq_in, *f_good;
   FILE *f_cont = NULL;
   FILE *f_lowq = NULL;
   FILE *f_NNNN = NULL;
@@ -110,13 +116,13 @@ int main(int argc, char *argv[]) {
     init_alLUTs();
     init_map();
     Fa_data *ptr_fa_ad = malloc(sizeof(Fa_data));
-    read_fasta(par_TF.ad.adapter_fa, ptr_fa_ad);
+    read_fasta(par_TF.ad.ad_fa, ptr_fa_ad);
     adap_list = pack_adapter(ptr_fa_ad);
     par_TF.ad.Nad = ptr_fa_ad -> nentries;
     free_fasta(ptr_fa_ad);
     // Alocate memory for the packed sequence
     fprintf(stderr, "Adapters removal is activated!\n");
-  }
+  } // endif par_TF.is adapter
   // Loading the index file to look for contaminations
   Tree *ptr_tree = NULL;
   Bfilter *ptr_bf = NULL;
@@ -167,6 +173,7 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
   }  // endif par_TF.method
+
   if (par_TF.trimQ) {
      f_lowq = fopen_gen(fq_lowq, "w");  // open fq_lowq file for writing
   }  // endif par_TF.trimQ

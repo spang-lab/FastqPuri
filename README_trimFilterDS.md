@@ -17,8 +17,8 @@ Usage `C` executable (in folder `bin`):
 
 ```
 Usage: trimFilter --ifq <INPUT1.fq>:<INPUT2.fq> --length <READ_LENGTH>
-                  --output [O_PREFIX]
-                  --adapters [<ADAPTERS.fa>:<mismatches>:<score>]
+                  --output [O_PREFIX1:O_PREFIX2]
+                  --adapter [<AD1.fa>:<AD2.fa>:<mismatches>:<score>]
                   --method [TREE|SA|BLOOM]
                   (--idx [<INDEX_FILE>:<score>:<lmer_len>] |
                    --ifa [<INPUT.fa>:<score>:[lmer_len]])
@@ -38,13 +38,13 @@ If one read is removed, its corresponding paired read is removed as well.
 Options:
  -v, --version prints package version.
  -h, --help    prints help dialog.
- -f, --ifq     2 fastq input files separated by colons [*fq|*fq.gz|*fq.bz2], mandatory option.
+ -f, --ifq     2 fastq input files [*fq|*fq.gz|*fq.bz2] separated by colons, mandatory option.
  -l, --length  read length: length of the reads, mandatory option.
  -o, --output  output prefix (with path), optional (default ./out). Output 
  
  -A, --adapter adapter input four fields separated by colons:
-               <ADAPTERS1.fa>: fasta file containing adapters from read 1,
-               <ADAPTERS2.fa>: fasta file containing adapters from read 2,
+               <AD1.fa>: fasta file containing adapters from read 1,
+               <AD2.fa>: fasta file containing adapters from read 2,
                <mismatches>: maximum mismatch count allowed,
                <score>: score threshold  for the aligner.
  -x, --idx     index input file. To be included with any method. 3 fields

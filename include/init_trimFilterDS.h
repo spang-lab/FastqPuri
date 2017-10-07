@@ -19,39 +19,23 @@
  ****************************************************************************/
 
 /**
- * @file fq_read.h
+ * @file init_trimFilterDS.h
  * @author Paula Perez <paulaperezrubio@gmail.com>
- * @date 03.08.2017
- * @brief fastq entries manipulations (read/write)
+ * @date 07.10.2017
+ * @brief help dialog for trimFilterDS and initialization of the
+ * command line arguments.
  *
  * */
 
-#ifndef FQ_READ_H_
-#define FQ_READ_H_
+#ifndef INIT_TRIMFILTERDS_H_
+#define INIT_TRIMFILTERDS_H_
 
-#include "config.h"
+#include "defines.h"
+#include "bloom.h"
+#include "struct_trimFilter.h"
 
-/**
- * @brief stores a fastq entry
- * */
-typedef struct _fq_read {
-  char line1[READ_MAXLEN], line2[READ_MAXLEN];
-  char line3[READ_MAXLEN], line4[READ_MAXLEN];
-  int L;     /**< read length*/
-  int start; /**< nucleotide position start. Can only be different
-                 from zero if the read has been
-                 filtered with this tool.*/
-  int Lhalf;     /**< half of read length*/
-  char extended[READ_MAXLEN];
-  unsigned char pack[(READ_MAXLEN+1)/2], packsh[(READ_MAXLEN+1)/2]; 
-  int L_ad; 
-  int L_ext;  
-  int L_pack, L_packsh;
-} Fq_read;
+void printHelpDialog_trimFilterDS();
 
-int get_fqread(Fq_read* seq, char* buffer, int pos1, int pos2,
-               int nline, int read_len, int filter);
+void getarg_trimFilterDS(int argc, char **argv);
 
-int string_seq(Fq_read *seq, char *char_seq);
-
-#endif  // endif FQ_READ_H_
+#endif  // INIT_TRIMFILTERDS_H_

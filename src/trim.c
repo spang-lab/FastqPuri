@@ -32,10 +32,9 @@
 #include "str_manip.h"
 #include "defines.h"
 #include "config.h"
+#include "struct_trimFilter.h"
 
-
-extern uint8_t fw_1B[256]; /**< global variable. Lookup table.  DOn't need it*/
-extern uint8_t Nencode;
+extern int Nencode;
 extern Iparam_trimFilter par_TF;
 
 #define TRIM_STRING 20 /**< maximal length of trimming info string.*/
@@ -328,7 +327,7 @@ static int Qtrim_endsfrac(Fq_read *seq, int minQ, int minL, int nlowQ ) {
  * @return 2, since they are all accepted and trim
  *
  * */
-static int Qtrim_global(Fq_read *seq, int left, int right, char type) {
+int Qtrim_global(Fq_read *seq, int left, int right, char type) {
   int t_end = seq ->L - right;
   (seq -> L) -= (left+right);
   memmove(seq -> line4, seq -> line4 + left, seq -> L);

@@ -119,5 +119,20 @@
 // Number of filters
 #define NFILTERS 4  /**< total number of filters */
 
+// Double stranded: classification of filters
+#define ADAP1 0  /**<  Adapter filter read1 */
+#define CONT1 1  /**<  Contamination filter read1 */
+#define LOWQ1 2  /**<  Low quality filter read1*/
+#define NNNN1 3  /**<  N's presence filter read1*/
+#define GOOD1 4  /**<  Good reads read1*/
+#define ADAP2 5  /**<  Adapter filter read2 */
+#define CONT2 6  /**<  Contamination filter read2 */
+#define LOWQ2 7  /**<  Low quality filter read2*/
+#define NNNN2 8  /**<  N's presence filter read2*/
+#define GOOD2 9  /**<  Good reads read2*/
+
+// Double stranded: number of outputfiles 
+#define NFILES_DS 10  /**< number of outputfiles in double stranded case */
+
 #endif  // endif DEFINES_H_
 

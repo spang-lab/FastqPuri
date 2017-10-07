@@ -19,39 +19,35 @@
  ****************************************************************************/
 
 /**
- * @file fq_read.h
+ * @file DStrim.h 
  * @author Paula Perez <paulaperezrubio@gmail.com>
- * @date 03.08.2017
- * @brief fastq entries manipulations (read/write)
+ * @date 05.10.2017
+ * @brief trim adapters from double stranded data
  *
  * */
 
-#ifndef FQ_READ_H_
-#define FQ_READ_H_
+#ifndef _DSTRIM_H
+#define _DSTRIM_H
 
-#include "config.h"
+#include "fq_read.h"
+#include "defines.h"
 
-/**
- * @brief stores a fastq entry
- * */
-typedef struct _fq_read {
-  char line1[READ_MAXLEN], line2[READ_MAXLEN];
-  char line3[READ_MAXLEN], line4[READ_MAXLEN];
-  int L;     /**< read length*/
-  int start; /**< nucleotide position start. Can only be different
-                 from zero if the read has been
-                 filtered with this tool.*/
-  int Lhalf;     /**< half of read length*/
-  char extended[READ_MAXLEN];
-  unsigned char pack[(READ_MAXLEN+1)/2], packsh[(READ_MAXLEN+1)/2]; 
-  int L_ad; 
-  int L_ext;  
-  int L_pack, L_packsh;
-} Fq_read;
+typedef struct _ds_adap {
+  char ad1[READ_MAXLEN];
+  char ad2[READ_MAXLEN];
+  int L1, L2;
+} DS_adap; 
 
-int get_fqread(Fq_read* seq, char* buffer, int pos1, int pos2,
-               int nline, int read_len, int filter);
+DS_adap init_DSadap(char *ad1, char *ad2, int L1, int L2);
 
-int string_seq(Fq_read *seq, char *char_seq);
+void pack_reads(DS_adap *ptr_DSad, Fq_read *r1, Fq_read *r2);
 
-#endif  // endif FQ_READ_H_
+int QtrimDS(Fq_read *r1, Fq_read *r2, int L);
+
+double obtain_scoreDS(Fq_read *r1, int pos1, Fq_read *r2, int pos2);
+
+int alignDS_uint64(Fq_read *r1, Fq_read *r2);  
+
+int trim_adapterDS(DS_adap *ptr_DSad, Fq_read *r1, Fq_read *r2); 
+
+#endif

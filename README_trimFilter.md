@@ -15,7 +15,7 @@ Usage `C` executable (in folder `bin`):
 ```
 Usage: trimFilter --ifq <INPUT_FILE.fq> --length <READ_LENGTH>
                   --output [O_PREFIX]
-                  --adapters [<ADAPTERS.fa>:<mismatches>:<score>]
+                  --adapter [<ADAPTERS.fa>:<mismatches>:<score>]
                   --method [TREE|SA|BLOOM]
                   (--idx [<INDEX_FILE>:<score>:<lmer_len>] |
                    --ifa [<INPUT.fa>:<score>:[lmer_len]])

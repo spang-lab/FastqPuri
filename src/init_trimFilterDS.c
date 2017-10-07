@@ -19,10 +19,10 @@
  ****************************************************************************/
 
 /**
- * @file init_trimFilter.c
+ * @file init_trimFilterDS.c
  * @author Paula Perez <paulaperezrubio@gmail.com>
- * @date 24.08.2017
- * @brief help dialog for trimFilter and initialization of the
+ * @date 07.10.2017
+ * @brief help dialog for trimFilterDS and initialization of the
  * command line arguments.
  *
  * */
@@ -31,20 +31,20 @@
 #include <stdio.h>
 #include <string.h>
 #include <getopt.h>
-#include "init_trimFilter.h"
+#include "init_trimFilterDS.h"
 #include "str_manip.h"
 #include "config.h"
 
 extern Iparam_trimFilter par_TF; /**< Input parameters of makeTree */
 
 /**
- * @brief Function that prints trimFilter help dialog when called.
+ * @brief Function that prints trimFilterDS help dialog when called.
 */
-void printHelpDialog_trimFilter() {
+void printHelpDialog_trimFilterDS() {
   const char dialog[] =
-   "Usage: trimFilter --ifq <INPUT_FILE.fq> --length <READ_LENGTH> \n"
+   "Usage: trimFilterDS --ifq <INPUT1.fq>:<INPUT2.fq> --length <READ_LENGTH> \n"
    "                  --output [O_PREFIX]\n"
-   "                  --adapter [<ADAPTERS.fa>:<mismatches>:<score>]\n"
+   "                  --adapter [<AD1.fa>:<AD2.fa>:<mismatches>:<score>]\n"
    "                  --method [TREE|SA|BLOOM] \n"
    "                  (--idx [<INDEX_FILE>:<score>:<lmer_len>] |\n"
    "                   --ifa [<INPUT.fa>:<score>:[lmer_len]])\n"
@@ -52,20 +52,24 @@ void printHelpDialog_trimFilter() {
    "                  --minL [MINL]  --minQ [MINQ]\n"
    "                  (--percent [percent] | --global [n1:n2])\n"
    "                  --trimN [NO|ALL|ENDS|STRIP]  \n"
-   "Reads in a fq file (gz, bz2, z formats also accepted) and removes: \n"
+   "Reads in paired end fq files (gz, bz2, z formats also accepted) "
+   "and removes:\n"
    "  * low quality reads,\n"
    "  * reads containing N base callings,\n"
    "  * reads representing contaminations, belonging to sequences in INPUT.fa\n"
-   "Outputs 4 [O_PREFIX]_fq.gz files containing: \"good\" reads, discarded \n"
+   "Outputs 8 [O_PREFIX][1|2]_fq.gz files containing: \"good\" reads, "
+   "discarded \n"
    "low Q reads discarded reads containing N's, discarded contaminations.\n"
    "Options:\n"
    " -v, --version prints package version.\n"
    " -h, --help    prints help dialog.\n"
-   " -f, --ifq     fastq input file [*fq|*fq.gz|*fq.bz2], mandatory option.\n"
+   " -f, --ifq     2 fastq input files [*fq|*fq.gz|*fq.bz2] separated by\n"
+   "               colons, mandatory option.\n"
    " -l, --length  read length: length of the reads, mandatory option.\n"
    " -o, --output  output prefix (with path), optional (default ./out).\n"
-   " -A, --adapter adapter input three fields separated by colons:\n"
-   "               <ADAPTERS.fa>: fasta file containing adapters,\n"
+   " -A, --adapter adapter input four fields separated by colons:\n"
+   "               <AD1.fa>: fasta file containing adapters,\n"
+   "               <AD2.fa>: fasta file containing adapters,\n"
    "               <mismatches>: maximum mismatch count allowed,\n"
    "               <score>: score threshold  for the aligner.\n"
    " -x, --idx     index input file. To be included with any method. 3 fields\n"
@@ -119,13 +123,13 @@ void printHelpDialog_trimFilter() {
 }
 
 /**
- * @brief Reads in the arguments passed through the command line to trimFilter.
+ * @brief Reads in the arguments passed through the command line to trimFilterDS.
  *   and stores them in the global variable par_TF.
 */
-void getarg_trimFilter(int argc, char **argv) {
+void getarg_trimFilterDS(int argc, char **argv) {
   if ( argc != 2 && (argc > 23 || argc % 2 == 0 || argc == 1) ) {
      fprintf(stderr, "Not adequate number of arguments\n");
-     printHelpDialog_trimFilter();
+     printHelpDialog_trimFilterDS();
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
@@ -148,20 +152,32 @@ void getarg_trimFilter(int argc, char **argv) {
   };
   int option;
   int method_len = 20;
-  Split globTrim, adapt, tree_fa, index;
+  Split globTrim, adapt, tree_fa, index, in_fq;
   while ((option = getopt_long(argc, argv, "hvf:l:o:A:q:x:a:C:Q:m:p:g:N:",
         long_options, 0)) != -1) {
     switch (option) {
       case 'h':
-        printHelpDialog_trimFilter();
+        printHelpDialog_trimFilterDS();
         exit(EXIT_SUCCESS);
         break;
       case 'v':
-        printf("trimFilter version %s\nWritten by Paula Perez Rubio", VERSION);
+        printf("trimFilterDS version %s \nWritten by Paula Perez Rubio\n", 
+              VERSION);
         exit(EXIT_SUCCESS);
         break;
       case 'f':
-         par_TF.Ifq = optarg;
+         in_fq = strsplit(optarg, ':');
+         if (in_fq.N != 2) {
+            fprintf(stderr, "--ifq, -f: optionERR. You must pass two \n");
+            fprintf(stderr, "  arguments separated by semicolons: \n");
+            fprintf(stderr, "  <INPUT1.fq>:<INPUT2.fq>\n");
+            fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+            exit(EXIT_FAILURE);
+         }
+         par_TF.Ifq = (char*) malloc(MAX_FILENAME*sizeof(char));
+         par_TF.Ifq2 = (char*) malloc(MAX_FILENAME*sizeof(char));
+         strncpy(par_TF.Ifq, in_fq.s[0], MAX_FILENAME);
+         strncpy(par_TF.Ifq2, in_fq.s[1], MAX_FILENAME);
          break;
       case 'l':
          par_TF.L = atoi(optarg);
@@ -172,7 +188,7 @@ void getarg_trimFilter(int argc, char **argv) {
       case 'A':
          par_TF.is_adapter = true;
          adapt = strsplit(optarg, ':');
-         if (adapt.N != 3) {
+         if (adapt.N != 4) {
             fprintf(stderr, "--adapter,-A: optionERR. You must pass three \n");
             fprintf(stderr, "  arguments separated by semicolons: \n");
             fprintf(stderr, "   <adapter.fa>:<mismatches>:<threshold>\n");
@@ -180,8 +196,9 @@ void getarg_trimFilter(int argc, char **argv) {
             exit(EXIT_FAILURE);
          }
          par_TF.ad.ad_fa = adapt.s[0];
-         par_TF.ad.mismatches = atoi(adapt.s[1]);
-         par_TF.ad.threshold = atof(adapt.s[2]);
+         par_TF.ad.ad2_fa = adapt.s[1];
+         par_TF.ad.mismatches = atoi(adapt.s[2]);
+         par_TF.ad.threshold = atof(adapt.s[3]);
       case 'q':
          par_TF.minQ = atoi(optarg);
          break;
@@ -209,7 +226,7 @@ void getarg_trimFilter(int argc, char **argv) {
          par_TF.is_fa = true;
          tree_fa = strsplit(optarg, ':');
          if (tree_fa.N != 3) {
-            fprintf(stderr, "--ifa,-a: optionERR. You must pass three \n");
+            fprintf(stderr, "--ifa,-a: optionERR. You must pass four \n");
             fprintf(stderr, "  arguments separated by semicolons: \n");
             fprintf(stderr, "  <INPUT.fa>:<score>:<lmer_len>\n");
             fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
@@ -258,7 +275,7 @@ void getarg_trimFilter(int argc, char **argv) {
       default:
         fprintf(stderr, "%s: option `-%c' is invalid: ignored\n",
                            argv[0], optopt);
-        printHelpDialog_trimFilter();
+        printHelpDialog_trimFilterDS();
         fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
         exit(EXIT_FAILURE);
         break;
@@ -267,21 +284,22 @@ void getarg_trimFilter(int argc, char **argv) {
   fprintf(stderr, "Starting trim Filter.\n");
   // Checking the input
   // Ifq is a mandatory argument
-  if (par_TF.Ifq == NULL) {
-    printHelpDialog_trimFilter();
-    fprintf(stderr, "Input *fq file name was not properly initialized and \n");
-    fprintf(stderr, "is a mandatory option. (--ifq <INPUT_FILE.fq>)\n");
+  if (par_TF.Ifq == NULL || par_TF.Ifq2==NULL) {
+    printHelpDialog_trimFilterDS();
+    fprintf(stderr, "Input *fq filenames were not properly initialized and \n");
+    fprintf(stderr, "is a mandatory option. (--ifq <INPUT1.fq>:<INPUT2.fq>)\n");
     fprintf(stderr, "Exiting program\n");
     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
     exit(EXIT_FAILURE);
   } else {
-    fprintf(stderr, "- Fastq input file: %s \n", par_TF.Ifq);
+    fprintf(stderr, "- Fastq input file1: %s \n", par_TF.Ifq);
+    fprintf(stderr, "- Fastq input file2: %s \n", par_TF.Ifq2);
   }
   // Read length is a mandatory argument
   if (par_TF.L == 0) {
-    printHelpDialog_trimFilter();
+    printHelpDialog_trimFilterDS();
     fprintf(stderr, "Read length  was not properly initialized and \n");
-    fprintf(stderr, "is a mandatory option. (--length <READ_LENGTH>)\n");
+    fprintf(stderr, "is a mandatory option. (|--length <READ_LENGTH>)\n");
     fprintf(stderr, "Exiting program\n");
     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
     exit(EXIT_FAILURE);
@@ -291,16 +309,18 @@ void getarg_trimFilter(int argc, char **argv) {
   // handling output prefix
   if (par_TF.Oprefix == NULL) {
     par_TF.Oprefix = "./out";
-    fprintf(stderr, "- Output prefix: %s (default value).\n", par_TF.Oprefix);
+    fprintf(stderr, "- Output prefix:  %s (default value).\n", 
+          par_TF.Oprefix);
   } else {
     fprintf(stderr, "- Output prefix: %s.\n", par_TF.Oprefix);
   }
   // handling adapters
-  if (par_TF.ad.ad_fa == NULL) {
+  if (par_TF.ad.ad_fa == NULL || par_TF.ad.ad2_fa == NULL) {
     fprintf(stderr, "- Not looking for adapter sequences.\n");
   } else {
     fprintf(stderr, "- Looking for adapter sequences.\n");
-    fprintf(stderr, "   Adapter fasta files: %s \n", par_TF.ad.ad_fa);
+    fprintf(stderr, "   Adapter fasta files: %s %s \n", par_TF.ad.ad_fa, 
+           par_TF.ad.ad2_fa);
     fprintf(stderr, "   Number of mismatches: %d\n", par_TF.ad.mismatches);
     fprintf(stderr, "   Score threshold: %f\n", par_TF.ad.threshold);
   }
@@ -342,9 +362,10 @@ void getarg_trimFilter(int argc, char **argv) {
           fprintf(stderr, "Exiting program\n");
           fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
           exit(EXIT_FAILURE);
-        }
-        fprintf(stderr, "- Reading tree from file %s.\n",
+        } else {
+          fprintf(stderr, "- Reading tree from file %s.\n",
               par_TF.Iidx);
+        }
      } else {
         fprintf(stderr, "OPTION_ERROR: a fasta file or an index file need \n");
         fprintf(stderr, "              to be specified. Revise options with ");
@@ -516,3 +537,4 @@ void getarg_trimFilter(int argc, char **argv) {
            par_TF.minL);
   }
 }
+

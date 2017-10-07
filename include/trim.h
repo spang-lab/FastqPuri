@@ -34,7 +34,7 @@
 #include "fq_read.h"
 #include "defines.h"
 #include "tree.h"
-#include "init_trimFilter.h"
+//#include "init_trimFilter.h"
 #include "bloom.h"
 #include "adapters.h"
 
@@ -43,6 +43,7 @@ int trim_sequenceN(Fq_read *seq);
 int trim_sequenceQ(Fq_read *seq);
 bool is_read_inTree(Tree *tree_ptr, Fq_read *seq);
 bool is_read_inBloom(Bfilter *tree_ptr, Fq_read *seq, Bfkmer *ptr_Bfkmer);
+int Qtrim_global(Fq_read *seq, int left, int right, char type);
 
 /* static functions
 * static int no_N(Fq_read *seq);
@@ -52,7 +53,6 @@ bool is_read_inBloom(Bfilter *tree_ptr, Fq_read *seq, Bfkmer *ptr_Bfkmer);
 * static int Qtrim_ends(Fq_read *seq, int minQ, int minL);
 * static int Qtrim_frac(Fq_read *seq, int minQ ,int nlowQ );
 * static int Qtrim_endsfrac(Fq_read *seq, int minQ, int minL, int nlowQ );
-* static int Qtrim_global(Fq_read *seq, int left, int right );
 */
 
 #endif  // TRIM_H_

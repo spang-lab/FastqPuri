@@ -19,39 +19,33 @@
  ****************************************************************************/
 
 /**
- * @file fq_read.h
+ * @file io_trimFilterDS.h 
+ * @brief buffer fq output, write summary file
  * @author Paula Perez <paulaperezrubio@gmail.com>
- * @date 03.08.2017
- * @brief fastq entries manipulations (read/write)
+ * @date 06.10.2017
  *
- * */
+ */
 
-#ifndef FQ_READ_H_
-#define FQ_READ_H_
+#ifndef IO_TRIMFILTERDS_H_
+#define IO_TRIMFILTERDS_H_
 
-#include "config.h"
+#include <stdio.h>
+#include "defines.h"
 
 /**
- * @brief stores a fastq entry
+ * @brief collects stats info from the filtering procedure
  * */
-typedef struct _fq_read {
-  char line1[READ_MAXLEN], line2[READ_MAXLEN];
-  char line3[READ_MAXLEN], line4[READ_MAXLEN];
-  int L;     /**< read length*/
-  int start; /**< nucleotide position start. Can only be different
-                 from zero if the read has been
-                 filtered with this tool.*/
-  int Lhalf;     /**< half of read length*/
-  char extended[READ_MAXLEN];
-  unsigned char pack[(READ_MAXLEN+1)/2], packsh[(READ_MAXLEN+1)/2]; 
-  int L_ad; 
-  int L_ext;  
-  int L_pack, L_packsh;
-} Fq_read;
+typedef struct _stats_TFDS {
+  int filters[NFILTERS];  /**< Using filters for: ADAP, CONT, LOWQ, NNNN */
+  int trimmed1[NFILTERS];  /**< \# trimmed reads by: ADAP, CONT, LOWQ, NNNN */
+  int trimmed2[NFILTERS];  /**< \# trimmed reads by: ADAP, CONT, LOWQ, NNNN */
+  int discarded[NFILTERS];  /**< \# discarded reads: ADAP, CONT, LOWQ, NNNN */
+  int good;  /**< \# good reads */
+  int nreads;  /**< total number of reads in the fq file */
+} Stats_TFDS;
 
-int get_fqread(Fq_read* seq, char* buffer, int pos1, int pos2,
-               int nline, int read_len, int filter);
+void buffer_outputDS(FILE *fout, const char *a, const int len, const int fd_i);
 
-int string_seq(Fq_read *seq, char *char_seq);
+void write_summary_TFDS(Stats_TFDS tfds_stats, char *filename);
 
-#endif  // endif FQ_READ_H_
+#endif  // IO_TRIMFILTERDS_H_
