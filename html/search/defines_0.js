@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['adap',['ADAP',['../defines_8h.html#a50b2092be2f53229fda4d54644214af7',1,'defines.h']]],
-  ['all',['ALL',['../defines_8h.html#a1edd1ea8bddaf4d9c5eb3eae1ee1726a',1,'defines.h']]]
+  ['_5f_5fisascii_5fc',['__isascii_c',['../str__manip_8c.html#a416997b774a83987635e942c52952226',1,'str_manip.c']]]
 ];

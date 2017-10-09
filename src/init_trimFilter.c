@@ -45,7 +45,7 @@ void printHelpDialog_trimFilter() {
    "Usage: trimFilter --ifq <INPUT_FILE.fq> --length <READ_LENGTH> \n"
    "                  --output [O_PREFIX]\n"
    "                  --adapter [<ADAPTERS.fa>:<mismatches>:<score>]\n"
-   "                  --method [TREE|SA|BLOOM] \n"
+   "                  --method [TREE|BLOOM] \n"
    "                  (--idx [<INDEX_FILE>:<score>:<lmer_len>] |\n"
    "                   --ifa [<INPUT.fa>:<score>:[lmer_len]])\n"
    "                  --trimQ [NO|ALL|ENDS|FRAC|ENDSFRAC|GLOBAL]\n"
@@ -70,7 +70,7 @@ void printHelpDialog_trimFilter() {
    "               <score>: score threshold  for the aligner.\n"
    " -x, --idx     index input file. To be included with any method. 3 fields\n"
    "               3 fields separated by colons: \n"
-   "               <INDEX_FILE>: output of makeTree makeSA, makeBloom,\n"
+   "               <INDEX_FILE>: output of makeTree, makeBloom,\n"
    "               <score>: score threshold to accept a match [0,1],\n"
    "               [lmer_len]: correspond to the length of the lmers to be \n"
    "                        looked for in the reads [1,READ_LENGTH].\n"
@@ -85,7 +85,6 @@ void printHelpDialog_trimFilter() {
    "                        looked for in the reads.\n"
    " -C, --method  method used to look for contaminations: \n"
    "               TREE:  uses a 4-ary tree. Index file optional,\n"
-   "               SA:    uses a suffix array. Index file mandatory,\n"
    "               BLOOM: uses a bloom filter. Index file mandatory.\n"
    " -Q, --trimQ   NO:       does nothing to low quality reads (default),\n"
    "               ALL:      removes all reads containing at least one low\n"
@@ -120,7 +119,7 @@ void printHelpDialog_trimFilter() {
 
 /**
  * @brief Reads in the arguments passed through the command line to trimFilter.
- *   and stores them in the global variable par_TF.
+ *        and stores them in the global variable par_TF.
 */
 void getarg_trimFilter(int argc, char **argv) {
   if ( argc != 2 && (argc > 23 || argc % 2 == 0 || argc == 1) ) {
@@ -128,6 +127,17 @@ void getarg_trimFilter(int argc, char **argv) {
      printHelpDialog_trimFilter();
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
+  }
+  int i;
+  for (i = 0; i < argc; i++) {
+    if (!str_isascii(argv[i])) {
+      fprintf(stderr, "input parameter %s contains non ASCII chars.\n",
+              argv[i]);
+      fprintf(stderr, "only ASCII characters allowed in the input. ");
+      fprintf(stderr, "Please correct for that.\n");
+      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+      exit(EXIT_FAILURE);
+    }
   }
   static struct option long_options[] = {
      {"version", no_argument, 0, 'v'},
@@ -164,6 +174,7 @@ void getarg_trimFilter(int argc, char **argv) {
          par_TF.Ifq = optarg;
          break;
       case 'l':
+
          par_TF.L = atoi(optarg);
          break;
       case 'o':
@@ -221,7 +232,6 @@ void getarg_trimFilter(int argc, char **argv) {
          break;
       case 'C':
          par_TF.method = (!strncmp(optarg, "TREE", method_len)) ? TREE :
-            (!strncmp(optarg, "SA", method_len)) ? SA :
             (!strncmp(optarg, "BLOOM", method_len)) ? BLOOM : ERROR;
          break;
       case 'Q':
@@ -353,36 +363,6 @@ void getarg_trimFilter(int argc, char **argv) {
         fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
         exit(EXIT_FAILURE);
      }
-  } else if (par_TF.method == SA) {
-     fprintf(stderr, "- Looking for contaminations with a suffix array.\n");
-     if (par_TF.is_fa && par_TF.is_idx) {
-        fprintf(stderr, "OPTION_ERROR: a fasta inputfile and an index input");
-        fprintf(stderr, "file given\n");
-        fprintf(stderr, "Mutually exclusive, revise options with --help\n");
-        fprintf(stderr, "Exiting program\n");
-        fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
-        exit(EXIT_FAILURE);
-     } else if (par_TF.is_fa) {
-        fprintf(stderr, "OPTION_ERROR: fasta file passed as an argument. \n");
-        fprintf(stderr, "              SA not computed on the flight.\n");
-        fprintf(stderr, "              an index file needs to be provided.\n");
-        fprintf(stderr, "              Revise your options with --help.\n");
-        fprintf(stderr, "Exiting program\n");
-        fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
-        exit(EXIT_FAILURE);
-     } else if (par_TF.is_idx) {
-        fprintf(stderr, "- Reading SA from file %s.\n",
-              par_TF.Iidx);
-        fprintf(stderr, "- Threshold score: %f\n", par_TF.score);
-        fprintf(stderr, "- Lmers length: %d \n", par_TF.kmersize);
-     } else {
-        fprintf(stderr, "OPTION_ERROR: an index file needs ");
-        fprintf(stderr, "to be specified. Revise options with ");
-        fprintf(stderr, "--help.\n");
-        fprintf(stderr, "Exiting program\n");
-        fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
-        exit(EXIT_FAILURE);
-     }
   } else if (par_TF.method == BLOOM) {
      fprintf(stderr, "- Looking for contaminations with a bloom filter.\n");
      if (par_TF.is_fa && par_TF.is_idx) {
@@ -422,7 +402,7 @@ void getarg_trimFilter(int argc, char **argv) {
      }
   } else {
      fprintf(stderr, "OPTION_ERROR: Invalid --method option.\n");
-     fprintf(stderr, "              Possible options: TREE, SA, BLOOM\n");
+     fprintf(stderr, "              Possible options: TREE, BLOOM\n");
      fprintf(stderr, "              Revise your options with --help.\n");
      fprintf(stderr, "Exiting program\n");
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);

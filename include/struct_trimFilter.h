@@ -22,8 +22,8 @@
  * @file struct_trimFilter.h
  * @author Paula Perez <paulaperezrubio@gmail.com>
  * @date 07.10.2017
- * @brief help dialog for trimFilterDS and initialization of the
- * command line arguments.
+ * @brief structure where the input arguments of trimFilter and trimFilterDS 
+ *        will be stored and function to free the memory of it. 
  *
  * */
 
@@ -35,11 +35,10 @@
 
 /**
  * @ brief adapter struct
- * @ note UNFINISHED!
  * */
 typedef struct _adapter {
-  char *ad_fa; /**< fasta file containing adapters*/
-  char *ad2_fa; /**< fasta file containing adapters from read 2*/
+  char *ad_fa;   /**< fasta file containing adapters*/
+  char *ad2_fa;  /**< fasta file containing adapters from read 2*/
   int mismatches;   /**< Number of allowed mismatches*/
   double threshold;  /**< Score threshold*/
   int Nad;  /**< Number of adapters*/
@@ -57,10 +56,10 @@ typedef struct _iparam_trimFilter {
   char *Iinfo; /**< Input index info file  */
   char *Oprefix;  /**< Output files prefix for single str (PATH/prefix) */
   Adapter ad;  /**< AdapterDS trimming parameters  */
-  Bfkmer *ptr_bfkmer; /** bloom filter kmer structure */
+  Bfkmer *ptr_bfkmer; /**< bloom filter kmer structure */
   int trimQ;   /**< NO(0), FRAC(1), ENDS(2), ENDSFRAC(3), GLOBAL(4) */
   int trimN;   /**< NO(0), ALL(1), ENDS(2), STRIP(3) */
-  int method;  /**< TREE(1), SA(2), BLOOM(3), 0, when not looking for cont*/
+  int method;  /**< TREE(1), BLOOM(2), 0, when not looking for cont*/
   bool is_fa;  /**< true if a fasta file was passed as a parameter*/
   bool is_idx;  /**< true if an index file was passed as a parameter */
   bool is_adapter;  /**< true if filtering adapter sequences*/
@@ -77,4 +76,4 @@ typedef struct _iparam_trimFilter {
 
 void free_parTF(Iparam_trimFilter *ptr_parTF);
 
-#endif  // INIT_TRIMFILTERDS_H_
+#endif  // endif _STRUCT_TRIMFILTER_H_

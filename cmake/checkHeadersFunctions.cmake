@@ -13,6 +13,12 @@ if (NOT  HAVE_ASSERT_H)
    message(FATAL_ERROR "Header file: <stdio.h> not found. Exiting.")
 endif()
 
+# <byteswap.h>
+check_include_files(byteswap.h HAVE_BYTESWAP_H)
+if (NOT  HAVE_BYTESWAP_H)
+   message(FATAL_ERROR "Header file: <byteswap.h> not found. Exiting.")
+endif()
+
 # <fcntl.h>
 check_include_files(fcntl.h HAVE_FCNTL_H)
 if (NOT  HAVE_FCNTL_H)
@@ -25,16 +31,34 @@ if (NOT  HAVE_GETOPT_H)
    message(FATAL_ERROR "Header file: <getopt.h> not found. Exiting.")
 endif()
 
-# <stdio.h>
-check_include_files(stdio.h HAVE_STDIO_H)
-if (NOT  HAVE_STDIO_H)
-   message(FATAL_ERROR "Header file: <stdio.h> not found. Exiting.")
+# <limits.h>
+check_include_files(limits.h HAVE_LIMITS_H)
+if (NOT  HAVE_LIMITS_H)
+   message(FATAL_ERROR "Header file: <limits.h> not found. Exiting.")
+endif()
+
+# <math.h>
+check_include_files(math.h HAVE_MATH_H)
+if (NOT  HAVE_MATH_H)
+   message(FATAL_ERROR "Header file: <math.h> not found. Exiting.")
+endif()
+
+# <nmmintrin.h>
+check_include_files(nmmintrin.h HAVE_NMMINTRIN_H)
+if (NOT  HAVE_NMMINTRIN_H)
+   message(FATAL_ERROR "Header file: <nmmintrin.h> not found. Exiting.")
 endif()
 
 # <stdint.h>
 check_include_files(stdint.h HAVE_STDINT_H)
 if (NOT  HAVE_STDINT_H)
    message(FATAL_ERROR "Header file: <stdint.h> not found. Exiting.")
+endif()
+
+# <stdio.h>
+check_include_files(stdio.h HAVE_STDIO_H)
+if (NOT  HAVE_STDIO_H)
+   message(FATAL_ERROR "Header file: <stdio.h> not found. Exiting.")
 endif()
 
 # <stdlib.h>
@@ -67,9 +91,24 @@ if (NOT  HAVE_UNISTD_H)
    message(FATAL_ERROR "Header file: <unistd.h> not found. Exiting.")
 endif()
 
+
 #---------------------------------------------------------------
 # Check standard library functions exist
 #---------------------------------------------------------------
+#__builtin_popcount
+
+#__sync_fetch_and_or 
+#check_function_exists(__sync_fetch_and_or HAVE__SYNC_FETCH_AND_OR)
+#if(NOT HAVE__SYNC_FETCH_AND_OR)
+#   message(FATAL_ERROR "Function __sync_fetch_and_or not found. Exiting.")
+#endif(NOT HAVE__SYNC_FETCH_AND_OR)
+#
+# _builtin_popcount
+#check_function_exists(__builtin_popcount HAVE__BUILTIN_POPCOUNT)
+#if(NOT HAVE__BUILTIN_POPCOUNT)
+#   message(FATAL_ERROR "Function __builtin_popcount not found. Exiting.")
+#endif(NOT HAVE__BUILTIN_POPCOUNT)
+
 # _exit 
 check_function_exists(_exit HAVE__EXIT)
 if(NOT HAVE__EXIT)
@@ -142,11 +181,35 @@ if(NOT HAVE_FPRINTF)
    message(FATAL_ERROR "Function fprintf not found. Exiting.")
 endif(NOT HAVE_FPRINTF)
 
+# fread 
+check_function_exists(fread HAVE_FREAD)
+if(NOT HAVE_FREAD)
+   message(FATAL_ERROR "Function fread not found. Exiting.")
+endif(NOT HAVE_FREAD)
+
 # free 
 check_function_exists(free HAVE_FREE)
 if(NOT HAVE_FREE)
    message(FATAL_ERROR "Function free not found. Exiting.")
 endif(NOT HAVE_FREE)
+
+# fseek 
+check_function_exists(fseek HAVE_FSEEK)
+if(NOT HAVE_FSEEK)
+   message(FATAL_ERROR "Function fseek not found. Exiting.")
+endif(NOT HAVE_FSEEK)
+
+# ftell 
+check_function_exists(ftell HAVE_FTELL)
+if(NOT HAVE_FTELL)
+   message(FATAL_ERROR "Function ftell not found. Exiting.")
+endif(NOT HAVE_FTELL)
+
+# fwrite 
+check_function_exists(fwrite HAVE_FWRITE)
+if(NOT HAVE_FWRITE)
+   message(FATAL_ERROR "Function fwrite not found. Exiting.")
+endif(NOT HAVE_FWRITE)
 
 # getopt 
 check_function_exists(getopt HAVE_GETOPT)
@@ -171,6 +234,12 @@ check_function_exists(memcpy HAVE_MEMCPY)
 if(NOT HAVE_MEMCPY)
    message(FATAL_ERROR "Function memcpy not found. Exiting.")
 endif(NOT HAVE_MEMCPY)
+
+# memset 
+check_function_exists(memset HAVE_MEMSET)
+if(NOT HAVE_MEMSET)
+   message(FATAL_ERROR "Function memset not found. Exiting.")
+endif(NOT HAVE_MEMSET)
 
 # perror 
 check_function_exists(perror HAVE_PERROR)
@@ -208,6 +277,12 @@ if(NOT HAVE_SPRINTF)
    message(FATAL_ERROR "Function sprintf not found. Exiting.")
 endif(NOT HAVE_SPRINTF)
 
+# snprintf 
+check_function_exists(sprintf HAVE_SNPRINTF)
+if(NOT HAVE_SNPRINTF)
+   message(FATAL_ERROR "Function snprintf not found. Exiting.")
+endif(NOT HAVE_SNPRINTF)
+
 # sscanf 
 check_function_exists(sscanf HAVE_SSCANF)
 if(NOT HAVE_SSCANF)
@@ -220,11 +295,35 @@ if(NOT HAVE_STRCAT)
    message(FATAL_ERROR "Function strcat not found. Exiting.")
 endif(NOT HAVE_STRCAT)
 
+# strncat
+check_function_exists(strncat HAVE_STRNCAT)
+if(NOT HAVE_STRNCAT)
+   message(FATAL_ERROR "Function strncat not found. Exiting.")
+endif(NOT HAVE_STRNCAT)
+
 # strcmp 
 check_function_exists(strcmp HAVE_STRCMP)
 if(NOT HAVE_STRCMP)
    message(FATAL_ERROR "Function strcmp not found. Exiting.")
 endif(NOT HAVE_STRCMP)
+
+# strncmp 
+check_function_exists(strncmp HAVE_STRNCMP)
+if(NOT HAVE_STRNCMP)
+   message(FATAL_ERROR "Function strncmp not found. Exiting.")
+endif(NOT HAVE_STRNCMP)
+
+# strcpy 
+check_function_exists(strcpy HAVE_STRCPY)
+if(NOT HAVE_STRCPY)
+   message(FATAL_ERROR "Function strcpy not found. Exiting.")
+endif(NOT HAVE_STRCPY)
+
+# strncpy 
+check_function_exists(strncpy HAVE_STRNCPY)
+if(NOT HAVE_STRNCPY)
+   message(FATAL_ERROR "Function strncpy not found. Exiting.")
+endif(NOT HAVE_STRNCPY)
 
 # strlen 
 check_function_exists(strlen HAVE_STRLEN)
@@ -273,6 +372,14 @@ if (NOT HAVE_UINT8_T)
 else ()
    message("-- uint8_t size: ${HAVE_UINT8_T} bytes")
 endif(NOT HAVE_UINT8_T)
+
+# uint16
+check_type_size(uint16_t HAVE_UINT16_T)
+if (NOT HAVE_UINT16_T)
+   message(FATAL_ERROR " uint16_t not found. Exiting.")
+else ()
+   message("-- uint16_t size: ${HAVE_UINT16_T} bytes")
+endif(NOT HAVE_UINT16_T)
 
 # uint32
 check_type_size(uint32_t HAVE_UINT32_T)

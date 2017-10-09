@@ -11,7 +11,6 @@ trims/filter sequences after Quality, N's contaminations.
 {\ttfamily \#include \char`\"{}fq\+\_\+read.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}tree.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}init\+\_\+trim\+Filter.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}bloom.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}adapters.\+h\char`\"{}}\\*
 Include dependency graph for trim.\+h\+:\nopagebreak
@@ -25,7 +24,7 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=236pt]{trim_8h__dep__incl}
+\includegraphics[width=350pt]{trim_8h__dep__incl}
 \end{center}
 \end{figure}
 \subsection*{Functions}
@@ -40,7 +39,9 @@ int \hyperlink{trim_8h_ae5ab2bb79068d8a7e0d72686c1f50320}{trim\+\_\+sequence\+Q}
 \hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool} \hyperlink{trim_8h_a7e2b4015298659b7e21a80d4bb031e2f}{is\+\_\+read\+\_\+in\+Tree} (\hyperlink{tree_8h_a50a06950fa1e82738ad9a6bd85914900}{Tree} $\ast$tree\+\_\+ptr, \hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq)
 \begin{DoxyCompactList}\small\item\em check if Lread is contained in tree. It computes the score for the read and its reverse complement; if one ot them exceeds the user selected threshold, it returns true. Otherwise, it returns false. \end{DoxyCompactList}\item 
 \hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool} \hyperlink{trim_8h_a02011bb5b87bf75ee8073eaff6d02fb6}{is\+\_\+read\+\_\+in\+Bloom} (\hyperlink{bloom_8h_a6cb32cf059e8f4efd1ef80938d982836}{Bfilter} $\ast$tree\+\_\+ptr, \hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, \hyperlink{bloom_8h_a4bf3f34a321ce545e533d29ce363f569}{Bfkmer} $\ast$ptr\+\_\+\+Bfkmer)
-\begin{DoxyCompactList}\small\item\em checks if a read is in Bloom filter. It computes the score for the read and returns true if it exceeds the user selected threshold. Returns false othersise. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em checks if a read is in Bloom filter. It computes the score for the read and returns true if it exceeds the user selected threshold. Returns false othersise. \end{DoxyCompactList}\item 
+int \hyperlink{trim_8h_ad2fbad2c77c70be922a30e940367cda7}{Qtrim\+\_\+global} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, int left, int right, char type)
+\begin{DoxyCompactList}\small\item\em trims left from the left and right from the right \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -101,6 +102,34 @@ check if Lread is contained in tree. It computes the score for the read and its 
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 true if read was found, false otherwise 
+\end{DoxyReturn}
+\hypertarget{trim_8h_ad2fbad2c77c70be922a30e940367cda7}{\index{trim.\+h@{trim.\+h}!Qtrim\+\_\+global@{Qtrim\+\_\+global}}
+\index{Qtrim\+\_\+global@{Qtrim\+\_\+global}!trim.\+h@{trim.\+h}}
+\subsubsection[{Qtrim\+\_\+global}]{\setlength{\rightskip}{0pt plus 5cm}int Qtrim\+\_\+global (
+\begin{DoxyParamCaption}
+\item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
+\item[{int}]{left, }
+\item[{int}]{right, }
+\item[{char}]{type}
+\end{DoxyParamCaption}
+)}}\label{trim_8h_ad2fbad2c77c70be922a30e940367cda7}
+
+
+trims left from the left and right from the right 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seq} & fastq read \\
+\hline
+{\em left} & number of nucleotides to be trimmed from the left \\
+\hline
+{\em right} & number of nucleotides to be trimmed from the right \\
+\hline
+{\em type} & char indicating the type of trimming (Q,A). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+2, since they are all accepted and trim 
 \end{DoxyReturn}
 \hypertarget{trim_8h_aed995029d7181d69875b2dee0d7b6ce9}{\index{trim.\+h@{trim.\+h}!trim\+\_\+adapter@{trim\+\_\+adapter}}
 \index{trim\+\_\+adapter@{trim\+\_\+adapter}!trim.\+h@{trim.\+h}}

@@ -360,7 +360,7 @@ int Qtrim_global(Fq_read *seq, int left, int right, char type) {
  *  documentation for more details.
  *
  * @param seq pointer to <b>Fq_read</b>
- * @param adap_list array of  <b>Ad_seq</b>
+ * @param ptr_adap pointer to  <b>Ad_seq</b>
  * @param all true if the whole read has to be sweeped, false if only
  *        the ends. When this function is called from align_uint64, only
  *        the ends need to be considered.
@@ -374,7 +374,7 @@ int Qtrim_global(Fq_read *seq, int left, int right, char type) {
  *
  * */
 static int align_uint32(Fq_read *seq, Ad_seq *ptr_adap, bool all) {
-  uint32_t j; 
+  uint32_t j;
   int n;
   int pos;
   uint16_t Wlimit = sizeof(uint64_t) - sizeof(uint32_t);
@@ -409,7 +409,7 @@ static int align_uint32(Fq_read *seq, Ad_seq *ptr_adap, bool all) {
     // jump if coming from align_uint64
     if (j == Wlimit) {
        j = Nwindows-1;
-       pos -= 2*(Nwindows - 1 - Wlimit) ; 
+       pos -= 2*(Nwindows - 1 - Wlimit);
     }
   }
   if (score > threshold) {
@@ -425,7 +425,7 @@ static int align_uint32(Fq_read *seq, Ad_seq *ptr_adap, bool all) {
     memcpy(&adsh, ptr_adap->pack_sh + j, sizeof(uint32_t));
     cmp32 = (ad ^ read32);
     n = __builtin_popcount(cmp32);
-    if ( n <= 2*mismatches) {
+    if (n <= 2*mismatches) {
        score = obtain_score(seq, 0, ptr_adap, pos);
        if (score > threshold) break;
     }
@@ -448,7 +448,7 @@ static int align_uint32(Fq_read *seq, Ad_seq *ptr_adap, bool all) {
  * @brief Alignment search between a fq read, and an adapter sequence, w
  *        with a seed of 8 nucleotides.
  * @param seq pointer to <b>Fq_read</b>
- * @param adap_list array of  <b>Ad_seq</b>
+ * @param ptr_adap pointer to   <b>Ad_seq</b>
  * @return -1 error, 0 discarded, 1 accepted as is, 2 accepted and trimmed
  * @note Global input parameters from par_TF are used
  * @see Adapter
@@ -464,7 +464,7 @@ static int align_uint32(Fq_read *seq, Ad_seq *ptr_adap, bool all) {
  *  and the number of matched nucleotides exceeds MIN_NMATCHES (12), then
  *  the read is trimmed if the remaining part is longer than minL (user
  *  defined) and discarded otherwise. If no 16-nucleotides long seeds are
- *  found, we proceed with 8-nucleotides long seeds (see <b>align_uint32</b>) 
+ *  found, we proceed with 8-nucleotides long seeds (see <b>align_uint32</b>)
  *  and apply the same criteria to trim/discard a read. A list of possible
  *  situations follows, to illustrate how it works (minL=25, mismatches=2):
  *
@@ -532,14 +532,14 @@ static int align_uint64(Fq_read *seq, Ad_seq *ptr_adap) {
     memcpy(&read64, seq->pack + Nwindows-1-j, sizeof(uint64_t) );
     cmp64 = (adsh ^ read64);
     n = __builtin_popcount(cmp64 >> 4);
-    if ( n <= 2*mismatches) {
+    if (n <= 2*mismatches) {
       score = obtain_score(seq, pos, ptr_adap, 0);
       if (score > threshold) break;
     }
     pos--;
     cmp64 = (ad ^ read64);
     n = __builtin_popcount(cmp64);
-    if ( n <= 2*mismatches) {
+    if (n <= 2*mismatches) {
       score =  obtain_score(seq, pos, ptr_adap, 0);
       if (score > threshold) break;
     }
@@ -557,7 +557,7 @@ static int align_uint64(Fq_read *seq, Ad_seq *ptr_adap) {
     memcpy(&adsh, ptr_adap -> pack_sh + j, sizeof(uint64_t));
     cmp64 = (ad ^ read64);
     n = __builtin_popcount(cmp64);
-    if ( n <= 2*mismatches) {
+    if (n <= 2*mismatches) {
        score = obtain_score(seq, 0, ptr_adap, pos);
        if (score > threshold) break;
     }

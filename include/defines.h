@@ -23,7 +23,7 @@
  * @brief Macro definitions
  * @author Paula Perez <paulaperezrubio@gmail.com>
  * @date 07.08.2017
- * 
+ *
  */
 
 #ifndef DEFINES_H_
@@ -101,8 +101,7 @@
 #define GLOBAL 5    /**< Trims a fixed # bases from e left and right*/
 
 #define TREE 1   /**< Use a tree to look for contaminations*/
-#define SA 2     /**< Use a suffix array to look for contaminations*/
-#define BLOOM 3  /**< Use a bloom filter to look for contaminations*/
+#define BLOOM 2  /**< Use a bloom filter to look for contaminations*/
 
 #define ERROR 1000  /**< Encodes an error when reading in trimN, trimQ, method
                      options in trimFilter */
@@ -120,18 +119,13 @@
 #define NFILTERS 4  /**< total number of filters */
 
 // Double stranded: classification of filters
-#define ADAP1 0  /**<  Adapter filter read1 */
-#define CONT1 1  /**<  Contamination filter read1 */
-#define LOWQ1 2  /**<  Low quality filter read1*/
-#define NNNN1 3  /**<  N's presence filter read1*/
-#define GOOD1 4  /**<  Good reads read1*/
 #define ADAP2 5  /**<  Adapter filter read2 */
 #define CONT2 6  /**<  Contamination filter read2 */
 #define LOWQ2 7  /**<  Low quality filter read2*/
 #define NNNN2 8  /**<  N's presence filter read2*/
 #define GOOD2 9  /**<  Good reads read2*/
 
-// Double stranded: number of outputfiles 
+// Double stranded: number of outputfiles
 #define NFILES_DS 10  /**< number of outputfiles in double stranded case */
 
 #endif  // endif DEFINES_H_

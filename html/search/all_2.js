@@ -14,5 +14,6 @@ var searchData=
   ['bloom_2eh',['bloom.h',['../bloom_8h.html',1,'']]],
   ['bool',['bool',['../defines_8h.html#abb452686968e48b67397da5f97445f5b',1,'defines.h']]],
   ['buffer_5foutput',['buffer_output',['../io__trimFilter_8c.html#a9bb3b28738f1a022ccbf4a75bdceea90',1,'buffer_output(FILE *fout, const char *str, const int len, const int fd_i):&#160;io_trimFilter.c'],['../io__trimFilter_8h.html#aded957d5c9c0bb7e6479a578c949c7ac',1,'buffer_output(FILE *fout, const char *a, const int len, const int fd_i):&#160;io_trimFilter.c']]],
-  ['bw_5f1b',['bw_1B',['../adapters_8c.html#a00e6ed67c83d15ff1bbad3b85e75ee09',1,'bw_1B():&#160;Lmer.c'],['../Lmer_8c.html#a00e6ed67c83d15ff1bbad3b85e75ee09',1,'bw_1B():&#160;Lmer.c']]]
+  ['buffer_5foutputds',['buffer_outputDS',['../io__trimFilterDS_8h.html#a0ccc95aa7893f0d0a3e4ef8128416d64',1,'io_trimFilterDS.c']]],
+  ['bw_5f1b',['bw_1B',['../adapters_8c.html#a00e6ed67c83d15ff1bbad3b85e75ee09',1,'bw_1B():&#160;Lmer.c'],['../Lmer_8c.html#a00e6ed67c83d15ff1bbad3b85e75ee09',1,'bw_1B():&#160;Lmer.c'],['../trimDS_8c.html#a00e6ed67c83d15ff1bbad3b85e75ee09',1,'bw_1B():&#160;Lmer.c']]]
 ];

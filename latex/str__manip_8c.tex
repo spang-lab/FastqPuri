@@ -17,9 +17,17 @@ Include dependency graph for str\+\_\+manip.\+c\+:\nopagebreak
 \includegraphics[width=346pt]{str__manip_8c__incl}
 \end{center}
 \end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{str__manip_8c_a416997b774a83987635e942c52952226}{\+\_\+\+\_\+isascii\+\_\+c}(c)~(((c) \& $\sim$0x7f) == 0)
+\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+\hypertarget{str__manip_8c_a15e8cbc96aa4cea159dbc59d1c01ffaa}{int \hyperlink{str__manip_8c_a15e8cbc96aa4cea159dbc59d1c01ffaa}{str\+\_\+isascii} (char $\ast$s)}\label{str__manip_8c_a15e8cbc96aa4cea159dbc59d1c01ffaa}
+
+\begin{DoxyCompactList}\small\item\em return nonzero iff all elements in the string are in the A\+S\+C\+I\+I set. \end{DoxyCompactList}\item 
 int \hyperlink{str__manip_8c_a8108ab52dfbc1af644bf7682c1bbe33f}{strindex} (char $\ast$s, char $\ast$t)
 \begin{DoxyCompactList}\small\item\em returns index of t in s (start, first occurence) \end{DoxyCompactList}\item 
 \hypertarget{str__manip_8c_a9790090291ece4c0a93c6c337dd528c1}{int \hyperlink{str__manip_8c_a9790090291ece4c0a93c6c337dd528c1}{count\+\_\+char} (char $\ast$str, char sep)}\label{str__manip_8c_a9790090291ece4c0a93c6c337dd528c1}
@@ -41,6 +49,16 @@ Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+
 03.\+08.\+2017 
 \end{DoxyDate}
 
+
+\subsection{Macro Definition Documentation}
+\hypertarget{str__manip_8c_a416997b774a83987635e942c52952226}{\index{str\+\_\+manip.\+c@{str\+\_\+manip.\+c}!\+\_\+\+\_\+isascii\+\_\+c@{\+\_\+\+\_\+isascii\+\_\+c}}
+\index{\+\_\+\+\_\+isascii\+\_\+c@{\+\_\+\+\_\+isascii\+\_\+c}!str\+\_\+manip.\+c@{str\+\_\+manip.\+c}}
+\subsubsection[{\+\_\+\+\_\+isascii\+\_\+c}]{\setlength{\rightskip}{0pt plus 5cm}\#define \+\_\+\+\_\+isascii\+\_\+c(
+\begin{DoxyParamCaption}
+\item[{}]{c}
+\end{DoxyParamCaption}
+)~(((c) \& $\sim$0x7f) == 0)}}\label{str__manip_8c_a416997b774a83987635e942c52952226}
+If C is a 7 bit value. 
 
 \subsection{Function Documentation}
 \hypertarget{str__manip_8c_a8108ab52dfbc1af644bf7682c1bbe33f}{\index{str\+\_\+manip.\+c@{str\+\_\+manip.\+c}!strindex@{strindex}}

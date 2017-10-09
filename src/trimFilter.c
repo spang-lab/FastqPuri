@@ -24,7 +24,7 @@
  * @date 25.08.2017
  * @brief trimFilter main function
  *
- * This file contains the trimFilter main function. BLA BLA
+ * This file contains the trimFilter main function.
  * See README_trimFilter.md for more details.
  *
  */
@@ -47,7 +47,7 @@ uint64_t alloc_mem = 0;  /**< global variable. Memory allocated in the heap.*/
 Iparam_trimFilter par_TF;  /**< global variable: Input parameters trimFilter.*/
 
 /**
- * @brief makeTree main function
+ * @brief trimFilter main function
  *
  * */
 int main(int argc, char *argv[]) {
@@ -122,7 +122,7 @@ int main(int argc, char *argv[]) {
     free_fasta(ptr_fa_ad);
     // Alocate memory for the packed sequence
     fprintf(stderr, "Adapters removal is activated!\n");
-  } // endif par_TF.is adapter
+  }  // endif par_TF.is adapter
   // Loading the index file to look for contaminations
   Tree *ptr_tree = NULL;
   Bfilter *ptr_bf = NULL;
@@ -152,11 +152,6 @@ int main(int argc, char *argv[]) {
        fprintf(stderr, "* DOING: Reading tree structure from %s ... \n",
                         par_TF.Iidx);
        ptr_tree = read_tree(par_TF.Iidx);
-    } else if (par_TF.is_idx && par_TF.method == SA) {
-        fprintf(stderr, "Method for contaminations detection: SA\n");
-        fprintf(stderr, "WARNING: this option is WORK IN PROGRESS!!\n");
-        fprintf(stderr, "Exiting program\n");
-        exit(EXIT_FAILURE);
     } else if (par_TF.is_idx && par_TF.method == BLOOM) {
         ptr_bf  = read_Bfilter(par_TF.Iidx, par_TF.Iinfo);   // handle filenames
         par_TF.ptr_bfkmer = init_Bfkmer(ptr_bf -> kmersize, ptr_bf -> hashNum);
@@ -216,11 +211,7 @@ int main(int argc, char *argv[]) {
                   discarded = is_read_inTree(ptr_tree, seq);
                 } else if (par_TF.method == BLOOM) {
                   discarded = is_read_inBloom(ptr_bf, seq, par_TF.ptr_bfkmer);
-                } else {
-                  fprintf(stderr, "SA option is not supported yet.\n");
-                  fprintf(stderr, "Exiting program\n");
-                  exit(EXIT_FAILURE);
-                }
+                } 
                 if (discarded) {
                   Nchar = string_seq(seq, char_seq);
                   buffer_output(f_cont, char_seq, Nchar, CONT);

@@ -2,7 +2,9 @@
 <area shape="rect" id="node2" href="$adapters_8c.html" title="sequence manipulation for alignment " alt="" coords="5,80,111,107"/>
 <area shape="rect" id="node3" href="$Lmer_8c.html" title="Manipulation of Lmers and sequences. " alt="" coords="135,80,219,107"/>
 <area shape="rect" id="node4" href="$tree_8c.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="243,80,321,107"/>
-<area shape="rect" id="node5" href="$trim_8h.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="344,80,444,107"/>
-<area shape="rect" id="node6" href="$trim_8c.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="297,155,374,181"/>
-<area shape="rect" id="node7" href="$trimFilter_8c.html" title="trimFilter main function " alt="" coords="398,155,505,181"/>
+<area shape="rect" id="node5" href="$trim_8h.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="396,80,496,107"/>
+<area shape="rect" id="node7" href="$trimDS_8c.html" title="trim adapters from double stranded data " alt="" coords="229,155,325,181"/>
+<area shape="rect" id="node9" href="$trimFilterDS_8c.html" title="trimFilterDS main function " alt="" coords="581,155,706,181"/>
+<area shape="rect" id="node6" href="$trim_8c.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="349,155,426,181"/>
+<area shape="rect" id="node8" href="$trimFilter_8c.html" title="trimFilter main function " alt="" coords="450,155,557,181"/>
 </map>

@@ -19,7 +19,7 @@
  ****************************************************************************/
 
 /**
- * @file io_trimFilter.c 
+ * @file io_trimFilter.c
  * @brief buffer fq output, write summary file
  * @author Paula Perez <paulaperezrubio@gmail.com>
  * @date 29.08.2017
@@ -38,9 +38,9 @@
  * @param fout FILE pointer where we might write to disk;
  * @param str string we want to add
  * @param len length of the string we want to add
- * @param fd_i identifier: GOOD1, ADAP1, CONT1, LOWQ1, NNNN1, 
+ * @param fd_i identifier: GOOD1, ADAP1, CONT1, LOWQ1, NNNN1,
  *                         GOOD2, ADAP2, CONT2, LOWQ2, NNNN2
- *                            
+ *
  *
  * */
 void buffer_outputDS(FILE *fout, const char *str, const int len, const int fd_i) {

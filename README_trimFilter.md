@@ -4,7 +4,7 @@
  to the following criteria:
  - Discard/trims reads containing adapter remnants.
  - Discards reads matching contaminations (sequences collected in a `fasta`
-   file or in an `idx` file created by `makeTree`, `makeSA`, `makeBloom`
+   file or in an `idx` file created by `makeTree`,  `makeBloom`
  - Discards/trims low quality reads.
  - Discards/trims reads containing N base callings.
 
@@ -16,7 +16,7 @@ Usage `C` executable (in folder `bin`):
 Usage: trimFilter --ifq <INPUT_FILE.fq> --length <READ_LENGTH>
                   --output [O_PREFIX]
                   --adapter [<ADAPTERS.fa>:<mismatches>:<score>]
-                  --method [TREE|SA|BLOOM]
+                  --method [TREE|BLOOM]
                   (--idx [<INDEX_FILE>:<score>:<lmer_len>] |
                    --ifa [<INPUT.fa>:<score>:[lmer_len]])
                   --trimQ [NO|ALL|ENDS|FRAC|ENDSFRAC|GLOBAL]
@@ -41,7 +41,7 @@ Options:
                <score>: score threshold  for the aligner.
  -x, --idx     index input file. To be included with any method. 3 fields
                3 fields separated by colons:
-               <INDEX_FILE>: output of makeTree makeSA, makeBloom,
+               <INDEX_FILE>: output of makeTree, makeBloom,
                <score>: score threshold to accept a match [0,1],
                [lmer_len]: correspond to the length of the lmers to be
                         looked for in the reads [1,READ_LENGTH].
@@ -56,7 +56,6 @@ Options:
                         looked for in the reads.
  -C, --method  method used to look for contaminations:
                TREE:  uses a 4-ary tree. Index file optional,
-               SA:    uses a suffix array. Index file mandatory,
                BLOOM: uses a bloom filter. Index file mandatory.
  -Q, --trimQ   NO:       does nothing to low quality reads (default),
                ALL:      removes all reads containing at least one low
@@ -101,10 +100,10 @@ Options:
     * filters, `4*sizeof(int)  Bytes`: array of int with entries
        `i = {ADAP(0), CONT(1), LOWQ(2), NNNN(3)}`. A given entry takes
        the value of the filter it was applied to and 0 otherwise.
-       `filters[ADAPT] = {0,1}`, `filters[CONT] = {NO(0), TREE(1), SA(2), 
-        BLOOM(3)}`, `filters[LOWQ] = {NO(0), ALL(1), ENDS(2), FRAC(3), 
-        ENDSFRAC(4), GLOBAL(5)}`, `filters[trimN] = {NO(0), ALL(1), 
-        ENDS(2), STRIPS(2)}`.
+       `filters[ADAPT] = {0,1}`, `filters[CONT] = {NO(0), TREE(1), BLOOM(2)}`,  
+       `filters[LOWQ] = {NO(0), ALL(1), ENDS(2), FRAC(3), 
+       ENDSFRAC(4), GLOBAL(5)}`, `filters[trimN] = {NO(0), ALL(1), 
+       ENDS(2), STRIPS(2)}`.
     * trimmed, `4*sizeof(int) Bytes`: array of integers with entries
        i = {ADAP(0), CONT(1), LOWQ(2), NNNN(3)}, containing how many
        reads were trimmed due to the corresponding filter.
@@ -151,8 +150,8 @@ CASE1C:  CACATCATCGCTAGCTATCGATCGATCGATGCTATGCACGAAGATCGGAAGA
          - Seed: 8 Nucleotides
          - Return: nothing done, reason: Match length < 12
 CASE2A:  CATACATCACGAGCTAGCTAGAGATCGGAAGAGCTCGTATGCCCAGCATCGA
-                               ||||||||||||||||------
-                               AGATCGGAAGAGCTCGTATGCC
+                              ||||||||||||||||------
+                              AGATCGGAAGAGCTCGTATGCC
          - Seed: 16 Nucleotides
          - Return: discarded, reason: remaining read too short.
 CASE2B:  CCACAGTACAATACATCACGAGCTAGCTAGAGATCGGAAGAGCTCGTATGCC
@@ -205,18 +204,6 @@ The score is calculated as follows:
    that is why most of the times it might be not worth it to create the
    index file and then read it for every sample. Nevertheless, both
    options are provided.
-- **SA**: this method is designed for sequences of medium size (several
-  hundreds of MB). An index file has to be precomputed in a previous
-  step, using `makeSA`, so that we do not have to compute it for
-  every sample. The following option has to be passed:
-   - `--idx <INDEX_FILE>:<score>:<lmer_len>`
-  indicating the index file name, the score threshold and the
-  length of the Lmers. A suffix array is constructed using an analogous
-  strategy to that of `STAR` (see more details in `README_makeSA.md`),
-  and then a binary search for exact matches is performed with the help
-  of a predix index of `m` bases, so that we do not have to jump so much
-  within a binary search. The complexity of a search is: `O(log(Lgenome)*2*L)`,
-  where L is the read length. **WORK IN PROGRESS**
 - **BLOOM**: this method is designed for large sequences up to 4GB. An
   index is precomputed, using `makeBloom`, so that it is computed only
   once for all samples. The index file name and the threshold score have
@@ -409,8 +396,7 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
     and `kmersize=25`. The output should coincide with `rRNA_example.bf*`.
   * trimFilter is run like in 2. but passing a bloom filter to look for
     contaminations with `score=0.4`. 
-5. `run_example_SA.sh`: TODO                                      
-6. With this set up, it is possible to run further customized tests.         
+5. With this set up, it is possible to run further customized tests.         
                                                                               
 **NOTE:** `rRNA_modified.fa` is the `rRNA_CRUnit.fa` sequence, where we have     
         removed the lines containing N's for testing purposes.                

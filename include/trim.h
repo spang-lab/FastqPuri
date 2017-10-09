@@ -34,11 +34,10 @@
 #include "fq_read.h"
 #include "defines.h"
 #include "tree.h"
-//#include "init_trimFilter.h"
 #include "bloom.h"
 #include "adapters.h"
 
-int trim_adapter(Fq_read *seq, Ad_seq *adap_list); 
+int trim_adapter(Fq_read *seq, Ad_seq *adap_list);
 int trim_sequenceN(Fq_read *seq);
 int trim_sequenceQ(Fq_read *seq);
 bool is_read_inTree(Tree *tree_ptr, Fq_read *seq);

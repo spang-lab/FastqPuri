@@ -1,0 +1,7 @@
+<map id="src/struct_trimFilter.c" name="src/struct_trimFilter.c">
+<area shape="rect" id="node2" href="$struct__trimFilter_8h.html" title="structure where the input arguments of trimFilter and trimFilterDS will be stored and function to fre..." alt="" coords="33,80,157,107"/>
+<area shape="rect" id="node3" href="$defines_8h.html" title="Macro definitions. " alt="" coords="5,229,80,256"/>
+<area shape="rect" id="node5" href="$bloom_8h.html" title="functions that implement the bloom filter " alt="" coords="101,155,169,181"/>
+<area shape="rect" id="node6" href="$city_8h.html" title="functions for hashin strings, C translation of cityhash (C++, google) " alt="" coords="205,229,259,256"/>
+<area shape="rect" id="node8" href="$fa__read_8h.html" title="reads in and stores fasta files " alt="" coords="105,229,181,256"/>
+</map>

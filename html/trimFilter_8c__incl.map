@@ -1,14 +1,15 @@
 <map id="src/trimFilter.c" name="src/trimFilter.c">
-<area shape="rect" id="node6" href="$fq__read_8h.html" title="fastq entries manipulations (read/write) " alt="" coords="740,229,816,256"/>
-<area shape="rect" id="node8" href="$fopen__gen_8h.html" title="Uncompress/compress input/output files using pipes. " alt="" coords="58,80,151,107"/>
-<area shape="rect" id="node9" href="$defines_8h.html" title="Macro definitions. " alt="" coords="372,304,447,331"/>
-<area shape="rect" id="node11" href="$init__trimFilter_8h.html" title="help dialog for trimFilter and initialization of the command line arguments. " alt="" coords="273,155,381,181"/>
-<area shape="rect" id="node12" href="$bloom_8h.html" title="functions that implement the bloom filter " alt="" coords="529,229,597,256"/>
-<area shape="rect" id="node15" href="$io__trimFilter_8h.html" title="buffer fq output, write summary file " alt="" coords="175,80,276,107"/>
-<area shape="rect" id="node16" href="$tree_8h.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="308,229,362,256"/>
-<area shape="rect" id="node17" href="$trim_8h.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="438,80,493,107"/>
-<area shape="rect" id="node13" href="$city_8h.html" title="functions for hashin strings, C translation of cityhash (C++, google) " alt="" coords="572,304,626,331"/>
-<area shape="rect" id="node14" href="$fa__read_8h.html" title="reads in and stores fasta files " alt="" coords="472,304,548,331"/>
-<area shape="rect" id="node18" href="$Lmer_8h.html" title="Manipulation of Lmers and sequences. " alt="" coords="405,155,468,181"/>
-<area shape="rect" id="node19" href="$adapters_8h.html" title="sequence manipulation for alignment " alt="" coords="644,155,727,181"/>
+<area shape="rect" id="node6" href="$fq__read_8h.html" title="fastq entries manipulations (read/write) " alt="" coords="810,304,886,331"/>
+<area shape="rect" id="node8" href="$fopen__gen_8h.html" title="Uncompress/compress input/output files using pipes. " alt="" coords="71,80,164,107"/>
+<area shape="rect" id="node9" href="$defines_8h.html" title="Macro definitions. " alt="" coords="390,304,464,331"/>
+<area shape="rect" id="node11" href="$init__trimFilter_8h.html" title="help dialog for trimFilter and initialization of the command line arguments. " alt="" coords="420,80,528,107"/>
+<area shape="rect" id="node12" href="$bloom_8h.html" title="functions that implement the bloom filter " alt="" coords="406,229,474,256"/>
+<area shape="rect" id="node16" href="$io__trimFilter_8h.html" title="buffer fq output, write summary file " alt="" coords="206,155,307,181"/>
+<area shape="rect" id="node17" href="$tree_8h.html" title="Construction of tree, check paths, write tree, read in tree. " alt="" coords="744,229,798,256"/>
+<area shape="rect" id="node18" href="$trim_8h.html" title="trims/filter sequences after Quality, N&#39;s contaminations. " alt="" coords="633,155,688,181"/>
+<area shape="rect" id="node15" href="$struct__trimFilter_8h.html" title="structure where the input arguments of trimFilter and trimFilterDS will be stored and function to fre..." alt="" coords="382,155,506,181"/>
+<area shape="rect" id="node13" href="$city_8h.html" title="functions for hashin strings, C translation of cityhash (C++, google) " alt="" coords="489,304,544,331"/>
+<area shape="rect" id="node14" href="$fa__read_8h.html" title="reads in and stores fasta files " alt="" coords="568,304,644,331"/>
+<area shape="rect" id="node19" href="$Lmer_8h.html" title="Manipulation of Lmers and sequences. " alt="" coords="657,229,720,256"/>
+<area shape="rect" id="node20" href="$adapters_8h.html" title="sequence manipulation for alignment " alt="" coords="550,229,632,256"/>
 </map>

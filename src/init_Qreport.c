@@ -31,6 +31,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "init_Qreport.h"
+#include "str_manip.h"
 #include "config.h"
 #include "defines.h"
 
@@ -74,6 +75,18 @@ void getarg_Qreport(int argc, char **argv) {
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }
+  int i;
+  for (i = 0; i < argc; i++) {
+    if (!str_isascii(argv[i])) {
+      fprintf(stderr, "input parameter %s contains non ASCII chars.\n",
+              argv[i]);
+      fprintf(stderr, "only ASCII characters allowed in the input. ");
+      fprintf(stderr, "Please correct for that.\n");
+      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+      exit(EXIT_FAILURE);
+    }
+  }
+
   // Assigning default parameters
   par_QR.minQ = DEFAULT_MINQ;
   par_QR.nQ = DEFAULT_NQ;

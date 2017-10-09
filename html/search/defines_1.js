@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['b_5flen',['B_LEN',['../defines_8h.html#a4419cb9bb22330d00cfd4727a05060dd',1,'defines.h']]],
-  ['basesperchar',['BASESPERCHAR',['../defines_8h.html#a6722ebf83f6f843343b21592e3cd86ed',1,'defines.h']]],
-  ['bitsperchar',['BITSPERCHAR',['../defines_8h.html#acd2baa2e68a76c64752672c201fff29a',1,'defines.h']]],
-  ['bloom',['BLOOM',['../defines_8h.html#a7dcb6cfd9e186d997dce1d6cabe58898',1,'defines.h']]],
-  ['bool',['bool',['../defines_8h.html#abb452686968e48b67397da5f97445f5b',1,'defines.h']]]
+  ['adap',['ADAP',['../defines_8h.html#a50b2092be2f53229fda4d54644214af7',1,'defines.h']]],
+  ['adap2',['ADAP2',['../defines_8h.html#ab43153e53bf3d3709a460c9afb967e5d',1,'defines.h']]],
+  ['all',['ALL',['../defines_8h.html#a1edd1ea8bddaf4d9c5eb3eae1ee1726a',1,'defines.h']]]
 ];

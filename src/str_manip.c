@@ -26,11 +26,24 @@
  *
  * */
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "str_manip.h"
+
+#define __isascii_c(c)    (((c) & ~0x7f) == 0)  /**< If C is a 7 bit value. */
+
+/**
+ * @brief return nonzero iff all elements in the string are in the ASCII set.
+ * */
+int str_isascii(char* s) {
+  int L = strlen(s);
+  int i;
+  for (i=0; i < L; i++) {
+     if (!__isascii_c(s[i])) return 0;
+  }
+  return 1;
+}
 
 /**
  * @brief  returns index of t in s (start, first occurence)

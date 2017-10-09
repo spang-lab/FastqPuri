@@ -13,17 +13,13 @@ stores a fastq entry
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{struct__fq__read_a7a643c49516b3a35f221d0fcda7f9ff3}{char {\bfseries line1} \mbox{[}R\+E\+A\+D\+\_\+\+M\+A\+X\+L\+E\+N\mbox{]}}\label{struct__fq__read_a7a643c49516b3a35f221d0fcda7f9ff3}
-
+char \hyperlink{struct__fq__read_a7a643c49516b3a35f221d0fcda7f9ff3}{line1} \mbox{[}R\+E\+A\+D\+\_\+\+M\+A\+X\+L\+E\+N\mbox{]}
 \item 
-\hypertarget{struct__fq__read_af2502a6f97e9508936c1b9f08890cc84}{char {\bfseries line2} \mbox{[}R\+E\+A\+D\+\_\+\+M\+A\+X\+L\+E\+N\mbox{]}}\label{struct__fq__read_af2502a6f97e9508936c1b9f08890cc84}
-
+char \hyperlink{struct__fq__read_af2502a6f97e9508936c1b9f08890cc84}{line2} \mbox{[}R\+E\+A\+D\+\_\+\+M\+A\+X\+L\+E\+N\mbox{]}
 \item 
-\hypertarget{struct__fq__read_a3df48e8dc31e47dc36c371002dba1bb5}{char {\bfseries line3} \mbox{[}R\+E\+A\+D\+\_\+\+M\+A\+X\+L\+E\+N\mbox{]}}\label{struct__fq__read_a3df48e8dc31e47dc36c371002dba1bb5}
-
+char \hyperlink{struct__fq__read_a3df48e8dc31e47dc36c371002dba1bb5}{line3} \mbox{[}R\+E\+A\+D\+\_\+\+M\+A\+X\+L\+E\+N\mbox{]}
 \item 
-\hypertarget{struct__fq__read_a8074fd734cb7e3d4b87454417aea569a}{char {\bfseries line4} \mbox{[}R\+E\+A\+D\+\_\+\+M\+A\+X\+L\+E\+N\mbox{]}}\label{struct__fq__read_a8074fd734cb7e3d4b87454417aea569a}
-
+char \hyperlink{struct__fq__read_a8074fd734cb7e3d4b87454417aea569a}{line4} \mbox{[}R\+E\+A\+D\+\_\+\+M\+A\+X\+L\+E\+N\mbox{]}
 \item 
 int \hyperlink{struct__fq__read_a746efa9093b5223e85ffb7274e7693ef}{L}
 \item 
@@ -31,8 +27,19 @@ int \hyperlink{struct__fq__read_a0b8deb6c25c72026b4928b17e3f12ade}{start}
 \item 
 int \hyperlink{struct__fq__read_a9cf08b81f1e78553e08fb597d30192b6}{Lhalf}
 \item 
-\hypertarget{struct__fq__read_afd023930012710b1a015ef78a02b3721}{unsigned char {\bfseries pack} \mbox{[}(R\+E\+A\+D\+\_\+\+M\+A\+X\+L\+E\+N+1)/2\mbox{]}}\label{struct__fq__read_afd023930012710b1a015ef78a02b3721}
-
+char \hyperlink{struct__fq__read_aae3ecb937cbba51f91baa391d8d84826}{extended} \mbox{[}R\+E\+A\+D\+\_\+\+M\+A\+X\+L\+E\+N\mbox{]}
+\item 
+unsigned char \hyperlink{struct__fq__read_afd023930012710b1a015ef78a02b3721}{pack} \mbox{[}(R\+E\+A\+D\+\_\+\+M\+A\+X\+L\+E\+N+1)/2\mbox{]}
+\item 
+unsigned char \hyperlink{struct__fq__read_a8c9786c5779078561abe5ec2e06c7ff9}{packsh} \mbox{[}(R\+E\+A\+D\+\_\+\+M\+A\+X\+L\+E\+N+1)/2\mbox{]}
+\item 
+int \hyperlink{struct__fq__read_a61c338fcae059e8581b02ec1b2cdcdc6}{L\+\_\+ad}
+\item 
+int \hyperlink{struct__fq__read_acf9a80768c42f71a975d602058e2ab52}{L\+\_\+ext}
+\item 
+int \hyperlink{struct__fq__read_a84f64405e7a9bbc055dd4f5534041782}{L\+\_\+pack}
+\item 
+int \hyperlink{struct__fq__read_a1303e633bdb4a7e31083d849a92fcbcc}{L\+\_\+packsh}
 \end{DoxyCompactItemize}
 
 
@@ -40,13 +47,46 @@ int \hyperlink{struct__fq__read_a9cf08b81f1e78553e08fb597d30192b6}{Lhalf}
 stores a fastq entry 
 
 \subsection{Member Data Documentation}
-\hypertarget{struct__fq__read_a746efa9093b5223e85ffb7274e7693ef}{\index{\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}!L@{L}}
+\hypertarget{struct__fq__read_aae3ecb937cbba51f91baa391d8d84826}{\index{\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}!extended@{extended}}
+\index{extended@{extended}!\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}}
+\subsubsection[{extended}]{\setlength{\rightskip}{0pt plus 5cm}char \+\_\+fq\+\_\+read\+::extended\mbox{[}R\+E\+A\+D\+\_\+\+M\+A\+X\+L\+E\+N\mbox{]}}}\label{struct__fq__read_aae3ecb937cbba51f91baa391d8d84826}
+extended sequence, adapter added to 5' end \hypertarget{struct__fq__read_a746efa9093b5223e85ffb7274e7693ef}{\index{\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}!L@{L}}
 \index{L@{L}!\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}}
 \subsubsection[{L}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+fq\+\_\+read\+::\+L}}\label{struct__fq__read_a746efa9093b5223e85ffb7274e7693ef}
-read length \hypertarget{struct__fq__read_a9cf08b81f1e78553e08fb597d30192b6}{\index{\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}!Lhalf@{Lhalf}}
+read length \hypertarget{struct__fq__read_a61c338fcae059e8581b02ec1b2cdcdc6}{\index{\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}!L\+\_\+ad@{L\+\_\+ad}}
+\index{L\+\_\+ad@{L\+\_\+ad}!\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}}
+\subsubsection[{L\+\_\+ad}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+fq\+\_\+read\+::\+L\+\_\+ad}}\label{struct__fq__read_a61c338fcae059e8581b02ec1b2cdcdc6}
+length of adapter sequence \hypertarget{struct__fq__read_acf9a80768c42f71a975d602058e2ab52}{\index{\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}!L\+\_\+ext@{L\+\_\+ext}}
+\index{L\+\_\+ext@{L\+\_\+ext}!\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}}
+\subsubsection[{L\+\_\+ext}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+fq\+\_\+read\+::\+L\+\_\+ext}}\label{struct__fq__read_acf9a80768c42f71a975d602058e2ab52}
+length of extended sequence \hypertarget{struct__fq__read_a84f64405e7a9bbc055dd4f5534041782}{\index{\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}!L\+\_\+pack@{L\+\_\+pack}}
+\index{L\+\_\+pack@{L\+\_\+pack}!\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}}
+\subsubsection[{L\+\_\+pack}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+fq\+\_\+read\+::\+L\+\_\+pack}}\label{struct__fq__read_a84f64405e7a9bbc055dd4f5534041782}
+length of packed sequence \hypertarget{struct__fq__read_a1303e633bdb4a7e31083d849a92fcbcc}{\index{\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}!L\+\_\+packsh@{L\+\_\+packsh}}
+\index{L\+\_\+packsh@{L\+\_\+packsh}!\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}}
+\subsubsection[{L\+\_\+packsh}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+fq\+\_\+read\+::\+L\+\_\+packsh}}\label{struct__fq__read_a1303e633bdb4a7e31083d849a92fcbcc}
+length of packed sequence (shifted) \hypertarget{struct__fq__read_a9cf08b81f1e78553e08fb597d30192b6}{\index{\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}!Lhalf@{Lhalf}}
 \index{Lhalf@{Lhalf}!\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}}
 \subsubsection[{Lhalf}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+fq\+\_\+read\+::\+Lhalf}}\label{struct__fq__read_a9cf08b81f1e78553e08fb597d30192b6}
-half of read length \hypertarget{struct__fq__read_a0b8deb6c25c72026b4928b17e3f12ade}{\index{\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}!start@{start}}
+half of read length \hypertarget{struct__fq__read_a7a643c49516b3a35f221d0fcda7f9ff3}{\index{\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}!line1@{line1}}
+\index{line1@{line1}!\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}}
+\subsubsection[{line1}]{\setlength{\rightskip}{0pt plus 5cm}char \+\_\+fq\+\_\+read\+::line1\mbox{[}R\+E\+A\+D\+\_\+\+M\+A\+X\+L\+E\+N\mbox{]}}}\label{struct__fq__read_a7a643c49516b3a35f221d0fcda7f9ff3}
+Line 1 in fastq entry \hypertarget{struct__fq__read_af2502a6f97e9508936c1b9f08890cc84}{\index{\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}!line2@{line2}}
+\index{line2@{line2}!\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}}
+\subsubsection[{line2}]{\setlength{\rightskip}{0pt plus 5cm}char \+\_\+fq\+\_\+read\+::line2\mbox{[}R\+E\+A\+D\+\_\+\+M\+A\+X\+L\+E\+N\mbox{]}}}\label{struct__fq__read_af2502a6f97e9508936c1b9f08890cc84}
+Line 2 in fastq entry \hypertarget{struct__fq__read_a3df48e8dc31e47dc36c371002dba1bb5}{\index{\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}!line3@{line3}}
+\index{line3@{line3}!\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}}
+\subsubsection[{line3}]{\setlength{\rightskip}{0pt plus 5cm}char \+\_\+fq\+\_\+read\+::line3\mbox{[}R\+E\+A\+D\+\_\+\+M\+A\+X\+L\+E\+N\mbox{]}}}\label{struct__fq__read_a3df48e8dc31e47dc36c371002dba1bb5}
+Line 3 in fastq entry \hypertarget{struct__fq__read_a8074fd734cb7e3d4b87454417aea569a}{\index{\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}!line4@{line4}}
+\index{line4@{line4}!\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}}
+\subsubsection[{line4}]{\setlength{\rightskip}{0pt plus 5cm}char \+\_\+fq\+\_\+read\+::line4\mbox{[}R\+E\+A\+D\+\_\+\+M\+A\+X\+L\+E\+N\mbox{]}}}\label{struct__fq__read_a8074fd734cb7e3d4b87454417aea569a}
+Line 4 in fastq entry \hypertarget{struct__fq__read_afd023930012710b1a015ef78a02b3721}{\index{\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}!pack@{pack}}
+\index{pack@{pack}!\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}}
+\subsubsection[{pack}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char \+\_\+fq\+\_\+read\+::pack\mbox{[}(R\+E\+A\+D\+\_\+\+M\+A\+X\+L\+E\+N+1)/2\mbox{]}}}\label{struct__fq__read_afd023930012710b1a015ef78a02b3721}
+pack sequence \hypertarget{struct__fq__read_a8c9786c5779078561abe5ec2e06c7ff9}{\index{\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}!packsh@{packsh}}
+\index{packsh@{packsh}!\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}}
+\subsubsection[{packsh}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char \+\_\+fq\+\_\+read\+::packsh\mbox{[}(R\+E\+A\+D\+\_\+\+M\+A\+X\+L\+E\+N+1)/2\mbox{]}}}\label{struct__fq__read_a8c9786c5779078561abe5ec2e06c7ff9}
+pack sequence with shift \hypertarget{struct__fq__read_a0b8deb6c25c72026b4928b17e3f12ade}{\index{\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}!start@{start}}
 \index{start@{start}!\+\_\+fq\+\_\+read@{\+\_\+fq\+\_\+read}}
 \subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+fq\+\_\+read\+::start}}\label{struct__fq__read_a0b8deb6c25c72026b4928b17e3f12ade}
 nucleotide position start. Can only be different from zero if the read has been filtered with this tool. 

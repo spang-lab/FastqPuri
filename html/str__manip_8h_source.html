@@ -116,24 +116,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="struct__split.html#a84d5273295857f35a812eeab15ae607f">   38</a></span>&#160;  <span class="keywordtype">char</span> **<a class="code" href="struct__split.html#a84d5273295857f35a812eeab15ae607f">s</a>; </div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;} <a class="code" href="str__manip_8h.html#aeff63a40ce3fff0c51bd207baeba2013">Split</a>;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">int</span> <a class="code" href="str__manip_8h.html#a8108ab52dfbc1af644bf7682c1bbe33f">strindex</a>(<span class="keywordtype">char</span> *s, <span class="keywordtype">char</span> *t);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">int</span> <a class="code" href="str__manip_8h.html#af8d13ec7edfe3ca8a03f48bd7e3b1d83">count_char</a>(<span class="keywordtype">char</span> *s, <span class="keywordtype">char</span> c);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<a class="code" href="struct__split.html">Split</a> <a class="code" href="str__manip_8h.html#a245675aede3b8bedd8ce6c8c2aa70ec0">strsplit</a>(<span class="keywordtype">char</span> *str, <span class="keywordtype">char</span> sep);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif  // endif STR_MANIP_H_</span></div>
-<div class="ttc" id="str__manip_8h_html_af8d13ec7edfe3ca8a03f48bd7e3b1d83"><div class="ttname"><a href="str__manip_8h.html#af8d13ec7edfe3ca8a03f48bd7e3b1d83">count_char</a></div><div class="ttdeci">int count_char(char *s, char c)</div><div class="ttdoc">returns the # of occurences of char c in string s </div><div class="ttdef"><b>Definition:</b> str_manip.c:54</div></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">int</span> <a class="code" href="str__manip_8h.html#a15e8cbc96aa4cea159dbc59d1c01ffaa">str_isascii</a>(<span class="keywordtype">char</span>* s);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">int</span> <a class="code" href="str__manip_8h.html#a8108ab52dfbc1af644bf7682c1bbe33f">strindex</a>(<span class="keywordtype">char</span> *s, <span class="keywordtype">char</span> *t);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">int</span> <a class="code" href="str__manip_8h.html#af8d13ec7edfe3ca8a03f48bd7e3b1d83">count_char</a>(<span class="keywordtype">char</span> *s, <span class="keywordtype">char</span> c);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<a class="code" href="struct__split.html">Split</a> <a class="code" href="str__manip_8h.html#a245675aede3b8bedd8ce6c8c2aa70ec0">strsplit</a>(<span class="keywordtype">char</span> *str, <span class="keywordtype">char</span> sep);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif  // endif STR_MANIP_H_</span></div>
+<div class="ttc" id="str__manip_8h_html_af8d13ec7edfe3ca8a03f48bd7e3b1d83"><div class="ttname"><a href="str__manip_8h.html#af8d13ec7edfe3ca8a03f48bd7e3b1d83">count_char</a></div><div class="ttdeci">int count_char(char *s, char c)</div><div class="ttdoc">returns the # of occurences of char c in string s </div><div class="ttdef"><b>Definition:</b> str_manip.c:69</div></div>
 <div class="ttc" id="struct__split_html"><div class="ttname"><a href="struct__split.html">_split</a></div><div class="ttdoc">contains a splitted string and the number or splitted fields </div><div class="ttdef"><b>Definition:</b> str_manip.h:36</div></div>
 <div class="ttc" id="str__manip_8h_html_aeff63a40ce3fff0c51bd207baeba2013"><div class="ttname"><a href="str__manip_8h.html#aeff63a40ce3fff0c51bd207baeba2013">Split</a></div><div class="ttdeci">struct _split Split</div><div class="ttdoc">contains a splitted string and the number or splitted fields </div></div>
 <div class="ttc" id="struct__split_html_a84d5273295857f35a812eeab15ae607f"><div class="ttname"><a href="struct__split.html#a84d5273295857f35a812eeab15ae607f">_split::s</a></div><div class="ttdeci">char ** s</div><div class="ttdef"><b>Definition:</b> str_manip.h:38</div></div>
-<div class="ttc" id="str__manip_8h_html_a245675aede3b8bedd8ce6c8c2aa70ec0"><div class="ttname"><a href="str__manip_8h.html#a245675aede3b8bedd8ce6c8c2aa70ec0">strsplit</a></div><div class="ttdeci">Split strsplit(char *str, char sep)</div><div class="ttdoc">Separates strings by a separator. </div><div class="ttdef"><b>Definition:</b> str_manip.c:81</div></div>
-<div class="ttc" id="str__manip_8h_html_a8108ab52dfbc1af644bf7682c1bbe33f"><div class="ttname"><a href="str__manip_8h.html#a8108ab52dfbc1af644bf7682c1bbe33f">strindex</a></div><div class="ttdeci">int strindex(char *s, char *t)</div><div class="ttdoc">returns index of t in s (start, first occurence) </div><div class="ttdef"><b>Definition:</b> str_manip.c:40</div></div>
+<div class="ttc" id="str__manip_8h_html_a245675aede3b8bedd8ce6c8c2aa70ec0"><div class="ttname"><a href="str__manip_8h.html#a245675aede3b8bedd8ce6c8c2aa70ec0">strsplit</a></div><div class="ttdeci">Split strsplit(char *str, char sep)</div><div class="ttdoc">Separates strings by a separator. </div><div class="ttdef"><b>Definition:</b> str_manip.c:96</div></div>
+<div class="ttc" id="str__manip_8h_html_a8108ab52dfbc1af644bf7682c1bbe33f"><div class="ttname"><a href="str__manip_8h.html#a8108ab52dfbc1af644bf7682c1bbe33f">strindex</a></div><div class="ttdeci">int strindex(char *s, char *t)</div><div class="ttdoc">returns index of t in s (start, first occurence) </div><div class="ttdef"><b>Definition:</b> str_manip.c:55</div></div>
 <div class="ttc" id="struct__split_html_af3261bd49762652bb67cc1e76300f582"><div class="ttname"><a href="struct__split.html#af3261bd49762652bb67cc1e76300f582">_split::N</a></div><div class="ttdeci">int N</div><div class="ttdef"><b>Definition:</b> str_manip.h:37</div></div>
+<div class="ttc" id="str__manip_8h_html_a15e8cbc96aa4cea159dbc59d1c01ffaa"><div class="ttname"><a href="str__manip_8h.html#a15e8cbc96aa4cea159dbc59d1c01ffaa">str_isascii</a></div><div class="ttdeci">int str_isascii(char *s)</div><div class="ttdoc">return nonzero iff all elements in the string are in the ASCII set. </div><div class="ttdef"><b>Definition:</b> str_manip.c:39</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 29 2017 10:14:49 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Oct 9 2017 11:40:05 for FastqArazketa by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

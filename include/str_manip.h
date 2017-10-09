@@ -38,6 +38,9 @@ typedef struct _split {
   char **s; /**< Substring array containing the splitted substrings */
 } Split;
 
+
+int str_isascii(char* s);
+
 int strindex(char *s, char *t);
 
 int count_char(char *s, char c);

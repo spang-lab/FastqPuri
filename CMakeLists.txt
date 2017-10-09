@@ -113,11 +113,13 @@ add_executable(Qreport ${PROJECT_SOURCE_DIR}/Qreport.c
             ${PROJECT_SOURCE_DIR}/fq_read.c
             ${PROJECT_SOURCE_DIR}/init_Qreport.c
             ${PROJECT_SOURCE_DIR}/stats_info.c
+            ${PROJECT_SOURCE_DIR}/str_manip.c 
             ${PROJECT_SOURCE_DIR}/Rcommand_Qreport.c
             ${PROJECT_SOURCE_DIR}/str_manip.c )
 
 add_executable(Sreport ${PROJECT_SOURCE_DIR}/Sreport.c
             ${PROJECT_SOURCE_DIR}/init_Sreport.c
+            ${PROJECT_SOURCE_DIR}/str_manip.c 
             ${PROJECT_SOURCE_DIR}/Rcommand_Sreport.c)
 
 add_executable(makeTree ${PROJECT_SOURCE_DIR}/makeTree.c 
@@ -125,6 +127,7 @@ add_executable(makeTree ${PROJECT_SOURCE_DIR}/makeTree.c
             ${PROJECT_SOURCE_DIR}/fa_read.c 
             ${PROJECT_SOURCE_DIR}/tree.c 
             ${PROJECT_SOURCE_DIR}/fopen_gen.c
+            ${PROJECT_SOURCE_DIR}/str_manip.c 
             ${PROJECT_SOURCE_DIR}/Lmer.c)
 
 add_executable(trimFilter ${PROJECT_SOURCE_DIR}/trimFilter.c 
@@ -167,6 +170,7 @@ add_executable(makeBloom ${PROJECT_SOURCE_DIR}/makeBloom.c
             ${PROJECT_SOURCE_DIR}/init_makeBloom.c 
             ${PROJECT_SOURCE_DIR}/city.c 
             ${PROJECT_SOURCE_DIR}/fa_read.c 
+            ${PROJECT_SOURCE_DIR}/str_manip.c 
             ${PROJECT_SOURCE_DIR}/bloom.c 
             ${PROJECT_SOURCE_DIR}/fopen_gen.c
             ${PROJECT_SOURCE_DIR}/Lmer.c)

@@ -50,12 +50,14 @@ The executables will be created in the folder `bin`.
 * `Sreport`: creates a summary report in html format on a set of samples, 
    regarding either the original files or the filtering process
    (see `README_Sreport.md`),
-* `makeSA`: work in progress,
-* `makeBloomFilter`: work in progress,
+* `makeBloom`: creates a  bloom filter from a fata file of a certain size,
+   and stores it in a file (see `README_makeBloom.md`)
 * `makeTree`: creates a tree of a certain depth from a fasta file and stores
  it in a file (see `README_makeTree.md`),
 * `trimFilter`: performs the filtering process for single end data 
    (see `README_trimFilter.md`).
+* `trimFilter`: performs the filtering process for double stranded data 
+   (see `README_trimFilterDS.md`).
 
 ## Documentation of the code
 

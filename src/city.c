@@ -31,7 +31,7 @@
  * @file city.c
  * @author bdnt
  * @brief functions for hashin strings, C translation of cityhash (C++, google)
- * @see https://github.com/bdnt/cityhash-c 
+ * @see https://github.com/bdnt/cityhash-c
  * @see https://github.com/google/cityhash
  * */
 
@@ -442,7 +442,7 @@ static uint128 CityMurmur(const char *s, size_t len, uint128 seed) {
   uint128 result;
   result.first = (uint64) (a ^ b);
   result.second = (uint64) (HashLen16(b,a));
-  return result;  
+  return result;
 }
 
 uint128 CityHash128WithSeed(const char *s, size_t len, uint128 seed) {
@@ -471,7 +471,7 @@ uint128 CityHash128WithSeed(const char *s, size_t len, uint128 seed) {
     z = Rotate(z + w.first, 33) * k1;
     v = WeakHashLen32WithSeeds_3a(s, v.second * k1, x + w.first);
     w = WeakHashLen32WithSeeds_3a(s + 32, z + w.second, y + Fetch64(s + 16));
-    
+
     temp = z;
     z = x;
     x = temp;
@@ -484,7 +484,7 @@ uint128 CityHash128WithSeed(const char *s, size_t len, uint128 seed) {
     z = Rotate(z + w.first, 33) * k1;
     v = WeakHashLen32WithSeeds_3a(s, v.second * k1, x + w.first);
     w = WeakHashLen32WithSeeds_3a(s + 32, z + w.second, y + Fetch64(s + 16));
-    
+
     temp = z;
     z = x;
     x = temp;
@@ -652,7 +652,7 @@ uint128 CityHashCrc128WithSeed(const char *s, size_t len, uint128 seed) {
     CityHashCrc256(s, len, result);
     uint64 u = Uint128High64(seed) + result[0];
     uint64 v = Uint128Low64(seed) + result[1];
-     
+
     uint128 r;
     r.first = HashLen16(u, v + result[2]);
     r.second = HashLen16(Rotate(v, 32), u * k0 + result[3]);

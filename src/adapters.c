@@ -33,7 +33,10 @@
 #include "Lmer.h"
 
 
-static uint8_t alfw0[256], alfw1[256], albw0[256], albw1[256];
+static uint8_t alfw0[256]; /**< variable for forward packing, first half */
+static uint8_t alfw1[256]; /**< variable for forward packing, second half */
+static uint8_t albw0[256]; /**< variable for brackward packing, first half */
+static uint8_t albw1[256]; /**< variable for brackward packing, second half */
 extern uint8_t fw_1B[256];
 extern uint8_t bw_1B[256];
 
@@ -156,13 +159,13 @@ double obtain_score(Fq_read *seq, int pos_seq, Ad_seq *ptr_adap, int pos_ad) {
   }
   int Nbases = min(seq->L-pos_seq, ptr_adap->L-pos_ad);
   int i;
-  int Nmatches = 0; 
+  int Nmatches = 0;
   double score = 0.0;
   for (i=0; i < Nbases; i++) {
     if (fw_1B[(uint8_t)(seq->line2[pos_seq + i])] ==
         bw_1B[(uint8_t)(ptr_adap->seq[ptr_adap->L-1-i-pos_ad])]) {
       score += LOG_4;
-      Nmatches++; 
+      Nmatches++;
     } else {
       score -= (seq->line4[pos_seq + i] - ZEROQ)/10.0;
     }

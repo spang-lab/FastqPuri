@@ -30,6 +30,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "str_manip.h"
 #include "init_Sreport.h"
 #include "config.h"
 
@@ -65,6 +66,17 @@ void getarg_Sreport(int argc, char **argv) {
      printHelpDialog_Sreport();
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
+  }
+  int i;
+  for (i = 0; i < argc; i++) {
+    if (!str_isascii(argv[i])) {
+      fprintf(stderr, "input parameter %s contains non ASCII chars.\n",
+              argv[i]);
+      fprintf(stderr, "only ASCII characters allowed in the input. ");
+      fprintf(stderr, "Please correct for that.\n");
+      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+      exit(EXIT_FAILURE);
+    }
   }
   char option;
   while ((option = getopt(argc, argv, "hvi:o:t:")) != -1) {

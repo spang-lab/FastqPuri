@@ -32,6 +32,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "init_makeTree.h"
+#include "str_manip.h"
 #include "config.h"
 
 extern Iparam_makeTree par_MT; /**< Input parameters of makeTree */
@@ -74,6 +75,17 @@ void getarg_makeTree(int argc, char **argv) {
       {"depth", required_argument, 0, 'l'},
       {"output", required_argument, 0, 'o'}
   };
+  int i;
+  for (i = 0; i < argc; i++) {
+    if (!str_isascii(argv[i])) {
+      fprintf(stderr, "input parameter %s contains non ASCII chars.\n",
+              argv[i]);
+      fprintf(stderr, "only ASCII characters allowed in the input. ");
+      fprintf(stderr, "Please correct for that.\n");
+      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+      exit(EXIT_FAILURE);
+    }
+  }
   char options;
   while ((options = getopt_long(argc, argv, "hvf:l:o:", long_options, 0))
         != -1) {

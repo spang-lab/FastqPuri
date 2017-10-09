@@ -35,7 +35,7 @@
 #include <string.h>
 #include "defines.h"
 #include "config.h"
-#include "fopen_gen.h" 
+#include "fopen_gen.h"
 #include "trimDS.h"
 #include "trim.h"
 #include "tree.h"
@@ -43,12 +43,18 @@
 #include "Lmer.h"
 #include "adapters.h"
 #include "fq_read.h"
-#include "io_trimFilterDS.h" 
-#include "init_trimFilterDS.h" 
+#include "io_trimFilterDS.h"
+#include "init_trimFilterDS.h"
 
 uint64_t alloc_mem = 0;  /**< global variable. Memory allocated in the heap.*/
 Iparam_trimFilter par_TF;  /**< global variable: Input parameters of makeTree.*/
 
+
+/**
+ * @brief contains trimfilterDS main function. See README_trimFilterDS.md
+ *        for more details.
+ *
+ * */
 int main(int argc, char *argv[]) {
   // Read in command line arguments
   getarg_trimFilterDS(argc, argv);
@@ -94,13 +100,11 @@ int main(int argc, char *argv[]) {
   char char_seq2[4*READ_MAXLEN];  // string containing one fq read
   int Nchar1, Nchar2;  // length of char_seq
 
-
-
   clock_t start, end;
   double cpu_time_used;
   time_t rawtime;
   struct tm * timeinfo;
-  DS_adap *adap_list = NULL; 
+  DS_adap *adap_list = NULL;
 
   // Start the clock
   start = clock();
@@ -115,10 +119,10 @@ int main(int argc, char *argv[]) {
   stat_TFDS.filters[LOWQ] = par_TF.trimQ;
   stat_TFDS.filters[NNNN] = par_TF.trimN;
 
-  // Allocating memory for the fastq structure, 
+  // Allocating memory for the fastq structure,
   Fq_read  *seq1 = malloc(sizeof(Fq_read));
   Fq_read  *seq2 = malloc(sizeof(Fq_read));
-  
+
   // Loading the adapters file if the option is activated
   if (par_TF.is_adapter) {
     f_adap1 = fopen_gen(fq_adap1, "w");  // open fq_adap1  file for writing
@@ -129,17 +133,17 @@ int main(int argc, char *argv[]) {
     read_fasta(par_TF.ad.ad2_fa, ad2);
     par_TF.ad.Nad = ad1 -> nentries;
     adap_list = malloc(sizeof(DS_adap)*ad1->nentries);
-    int i; 
+    int i;
     for (i = 0; i < ad1->nentries; i++) {
-       adap_list[i] = init_DSadap(ad1->entry[i].seq, ad2->entry[i].seq, 
+       adap_list[i] = init_DSadap(ad1->entry[i].seq, ad2->entry[i].seq,
                                   ad1->entry[i].N, ad2->entry[i].N);
-    } 
+    }
     init_alLUTs();
-    init_map(); 
+    init_map();
     free_fasta(ad1);
     free_fasta(ad2);
     fprintf(stderr, "Adapters removal is activated!\n");
-  } // endif par_TF.is adapter
+  }  // endif par_TF.is adapter
   Tree *ptr_tree = NULL;
   Bfilter *ptr_bf = NULL;
   if (par_TF.method) {
@@ -169,11 +173,6 @@ int main(int argc, char *argv[]) {
        fprintf(stderr, "* DOING: Reading tree structure from %s ... \n",
                         par_TF.Iidx);
        ptr_tree = read_tree(par_TF.Iidx);
-    } else if (par_TF.is_idx && par_TF.method == SA) {
-        fprintf(stderr, "Method for contaminations detection: SA\n");
-        fprintf(stderr, "WARNING: this option is WORK IN PROGRESS!!\n");
-        fprintf(stderr, "Exiting program\n");
-        exit(EXIT_FAILURE);
     } else if (par_TF.is_idx && par_TF.method == BLOOM) {
         ptr_bf  = read_Bfilter(par_TF.Iidx, par_TF.Iinfo);   // handle filenames
         par_TF.ptr_bfkmer = init_Bfkmer(ptr_bf -> kmersize, ptr_bf -> hashNum);
@@ -208,24 +207,20 @@ int main(int argc, char *argv[]) {
   f_good1 = fopen_gen(fq_good1, "w");
   f_good2 = fopen_gen(fq_good2, "w");
 
-
-//  char fq_in1[MAX_FILENAME] ="/misc/compdiag/user/pep04706/my_programs/C++/FastqArazketa/examples/fa_fq_files/testDS.read1.fq";
-//  char fq_r2[MAX_FILENAME] ="/misc/compdiag/user/pep04706/my_programs/C++/FastqArazketa/examples/fa_fq_files/testDS.read2.fq";
-//  char fa_1[MAX_FILENAME] = "/misc/compdiag/user/pep04706/my_programs/C++/FastqArazketa/examples/fa_fq_files/ad_read1.fa";
-//  char fa_2[MAX_FILENAME] = "/misc/compdiag/user/pep04706/my_programs/C++/FastqArazketa/examples/fa_fq_files/ad_read2.fa";
-  int newl1=0, newl2=0; 
+  int newl1 = 0, newl2 = 0;
   int offset1 = 0, offset2 = 0;
-  int l1_i=0, l1_f=0, l2_i=0, l2_f=0; 
-  int j1=0, j2=0; 
-  int nl1=0, nl2=0; 
-  int stop1=0, stop2=0;  
+  int l1_i = 0, l1_f = 0, l2_i = 0, l2_f = 0;
+  int j1 = 0, j2 = 0;
+  int i_ad = 0;
+  int nl1 = 0, nl2 = 0;
+  int stop1 = 0, stop2 = 0;
   char *buffer1 = malloc(sizeof(char)*(B_LEN + 1));
   char *buffer2 = malloc(sizeof(char)*(B_LEN + 1));
   do {
     newl1 = fread(buffer1+offset1, 1, B_LEN-offset1, fq_in1);
     newl2 = fread(buffer2+offset2, 1, B_LEN-offset2, fq_in2);
-     newl1 += offset1; 
-     newl2 += offset2; 
+     newl1 += offset1;
+     newl2 += offset2;
      buffer1[newl1] = '\0';
      buffer2[newl2] = '\0';
      while (buffer1[j1] != 0 ||  buffer2[j2] != 0) {
@@ -239,25 +234,28 @@ int main(int argc, char *argv[]) {
           l1_i = l1_f + 1;
         }
         if (buffer2[j2] == '\n') {
-          l2_f = j2; 
-          get_fqread(seq2, buffer2, l2_i, l2_f, nl2, par_TF.L, 0); 
+          l2_f = j2;
+          get_fqread(seq2, buffer2, l2_i, l2_f, nl2, par_TF.L, 0);
           if ((nl2++ % 4 == 3)) {
              stop2 = 1;
              j2++;
           }
-          l2_i = l2_f + 1; 
+          l2_i = l2_f + 1;
         }
-        if (stop1 && stop2 ) { // Do the stuff!! 
+        if (stop1 && stop2) {  // Do the stuff!!
            stat_TFDS.nreads++;
-           bool discarded = false; 
-           int trim; 
+           bool discarded = false;
+           int trim, trim2;
            if (stat_TFDS.filters[ADAP] && !discarded) {
-              trim = trim_adapterDS(&adap_list[0], seq1, seq2); //modify this LOOP
-              discarded = (!trim);
+              for (i_ad=0; i_ad < par_TF.ad.Nad; i_ad++) {
+                trim = trim_adapterDS(&adap_list[i_ad], seq1, seq2);
+                discarded = (!trim);
+                if (trim != 1) break;
+              }
               if (discarded) {
                  Nchar1 = string_seq(seq1, char_seq1);
                  Nchar2 = string_seq(seq2, char_seq2);
-                 buffer_outputDS(f_adap1, char_seq1, Nchar1, ADAP1);
+                 buffer_outputDS(f_adap1, char_seq1, Nchar1, ADAP);
                  buffer_outputDS(f_adap2, char_seq2, Nchar2, ADAP2);
                  stat_TFDS.discarded[ADAP]++;
               } else if (trim == 2) {
@@ -265,28 +263,58 @@ int main(int argc, char *argv[]) {
                  stat_TFDS.trimmed2[ADAP]++;
               }
            }
- 
-//           match_dsread(seq1, seq2, ptr_dsread);
-//           strncpy(r1a,(char *)seq1 -> line2, ptr_dsread -> posmax - 1);
-//           strncpy(r2a,(char *)seq2 -> line2, ptr_dsread -> posmax - 1);
-//           r1a[ptr_dsread-> posmax-1] = '\0'; 
-//           r2a[ptr_dsread-> posmax-1] = '\0';
-//           printf( "\t\t\t\t\t\t\t READ N %d  \n", nentries);
-//           printf("READ1: %s || ", seq1 -> line2);
-//           printf("READ2: %s\n", seq2 -> line2);
-//           if(ptr_dsread -> nmax > 60) {
-//             printf("READ1: %s|", r1a);
-//             printf("\033[32;1m%s\033[0m || ", seq1 -> line2 + ptr_dsread -> posmax);
-//             printf("READ2: %s|", r2a);
-//             printf("\033[32;1m%s\033[0m ", seq2 -> line2 + ptr_dsread -> posmax );
-//             printf("Match in pos: %d\n", ptr_dsread -> posmax);
-//           }  else {
-//           printf( "\t\t\t\t\t\t\t NO MATCH FOUND  \n");
-//           }
+           if (stat_TFDS.filters[CONT] && !discarded) {
+             if (par_TF.method == TREE) {
+               discarded = (is_read_inTree(ptr_tree, seq1) ||
+                             is_read_inTree(ptr_tree, seq2));
+             } else if (par_TF.method == BLOOM) {
+               discarded =(is_read_inBloom(ptr_bf, seq1, par_TF.ptr_bfkmer) ||
+                          is_read_inBloom(ptr_bf, seq2, par_TF.ptr_bfkmer));
+             } 
+             if (discarded) {
+               Nchar1 = string_seq(seq1, char_seq1);
+               Nchar2 = string_seq(seq2, char_seq1);
+               buffer_outputDS(f_cont1, char_seq1, Nchar1, CONT);
+               buffer_outputDS(f_cont2, char_seq2, Nchar2, CONT2);
+               stat_TFDS.discarded[CONT]++;
+             }
+           }
+           if (stat_TFDS.filters[LOWQ] && !discarded) {
+             trim = trim_sequenceQ(seq1);
+             trim2 = trim_sequenceQ(seq2);
+             discarded = (!trim) || (!trim2);
+             if (discarded) {
+                Nchar1 = string_seq(seq1, char_seq1);
+                buffer_outputDS(f_lowq1, char_seq1, Nchar1, LOWQ);
+                Nchar2 = string_seq(seq2, char_seq2);
+                buffer_outputDS(f_lowq2, char_seq2, Nchar2, LOWQ2);
+                stat_TFDS.discarded[LOWQ]++;
+             } else if (trim == 2) {
+                stat_TFDS.trimmed1[LOWQ]++;
+             } else if (trim2 == 2) {
+                stat_TFDS.trimmed2[LOWQ]++;
+             }
+           }
+           if (stat_TFDS.filters[NNNN] && !discarded) {
+             trim = trim_sequenceN(seq1);
+             trim2 = trim_sequenceN(seq2);
+             discarded = (!trim) || (!trim2);
+             if (discarded) {
+                Nchar1 = string_seq(seq1, char_seq1);
+                buffer_outputDS(f_NNNN1, char_seq1, Nchar1, NNNN);
+                Nchar2 = string_seq(seq2, char_seq2);
+                buffer_outputDS(f_NNNN1, char_seq2, Nchar2, NNNN2);
+                stat_TFDS.discarded[NNNN]++;
+             } else if (trim == 2) {
+                stat_TFDS.trimmed1[NNNN]++;
+             } else if (trim2 == 2) {
+                stat_TFDS.trimmed2[NNNN]++;
+             }
+           }
            if (!discarded) {
               Nchar1 = string_seq(seq1, char_seq1);
               Nchar2 = string_seq(seq2, char_seq2);
-              buffer_outputDS(f_good1, char_seq1, Nchar1, GOOD1);
+              buffer_outputDS(f_good1, char_seq1, Nchar1, GOOD);
               buffer_outputDS(f_good2, char_seq2, Nchar2, GOOD2);
               stat_TFDS.good++;
            }
@@ -294,15 +322,15 @@ int main(int argc, char *argv[]) {
               fprintf(stderr, "  %10d reads have been read.\n",
                       stat_TFDS.nreads);
            // reset stop
-           stop1 = 0; 
-           stop2 = 0; 
-        } else if (stop1 && !stop2 ) {
+           stop1 = 0;
+           stop2 = 0;
+        } else if (stop1 && !stop2) {
            j2++;
         } else if (!stop1 && stop2) {
            j1++;
         } else {
-           j1++; 
-           j2++;   
+           j1++;
+           j2++;
         }
      }  // end buffer loop
      offset1 = newl1 - l1_i;
@@ -316,21 +344,21 @@ int main(int argc, char *argv[]) {
      l2_f = -1;
      l2_i = 0;
   }  while ((newl1 > offset1) || (newl2 > offset2));  // end read buffer
-  
+
   // Check that the number of lines of both input files is the same
   if (nl1 != nl2) {
-   fprintf(stderr, "ERROR: Input fq files contain different number of lines\n");
-   fprintf(stderr, "%s contains %d lines \n", par_TF.Ifq, nl1);
-   fprintf(stderr, "%s contains %d lines \n", par_TF.Ifq2, nl2);
-   fprintf(stderr, "Exiting program\n");
-   fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
-   exit(EXIT_FAILURE);
+    fprintf(stderr, "ERROR: Input fq's contain different number of lines\n");
+    fprintf(stderr, "%s contains %d lines \n", par_TF.Ifq, nl1);
+    fprintf(stderr, "%s contains %d lines \n", par_TF.Ifq2, nl2);
+    fprintf(stderr, "Exiting program\n");
+    fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+    exit(EXIT_FAILURE);
   }
   fprintf(stderr, "- Number of lines in fq_files %d\n", nl1);
   // Printing the rest of the buffer outputs and closing file
   fprintf(stderr, "- Finished reading fq file.\n");
   fprintf(stderr, "- Closing files.\n");
-  buffer_outputDS(f_good1, NULL, 0, GOOD1);
+  buffer_outputDS(f_good1, NULL, 0, GOOD);
   buffer_outputDS(f_good2, NULL, 0, GOOD2);
   fclose(f_good1);
   fclose(f_good2);
@@ -342,19 +370,19 @@ int main(int argc, char *argv[]) {
 
   // Writing remaining buffers
   if (stat_TFDS.filters[ADAP]) {
-    buffer_outputDS(f_adap1, NULL, 0, ADAP1);
+    buffer_outputDS(f_adap1, NULL, 0, ADAP);
     fclose(f_adap1);
     buffer_outputDS(f_adap1, NULL, 0, ADAP2);
     fclose(f_adap2);
     fprintf(stderr, "- Discarded due to adapters: %d, stored in %s, %s\n",
           stat_TFDS.discarded[ADAP], fq_adap1, fq_adap2);
-    fprintf(stderr, "- Trimmed from read 1 due to adapters: %d\n", 
+    fprintf(stderr, "- Trimmed from read 1 due to adapters: %d\n",
           stat_TFDS.trimmed1[ADAP]);
-    fprintf(stderr, "- Trimmed from read 2 due to adapters: %d\n", 
+    fprintf(stderr, "- Trimmed from read 2 due to adapters: %d\n",
           stat_TFDS.trimmed2[ADAP]);
   }
   if (stat_TFDS.filters[CONT]) {
-    buffer_outputDS(f_cont1, NULL, 0, CONT1);
+    buffer_outputDS(f_cont1, NULL, 0, CONT);
     fclose(f_cont1);
     buffer_outputDS(f_cont2, NULL, 0, CONT2);
     fclose(f_cont2);
@@ -362,27 +390,27 @@ int main(int argc, char *argv[]) {
           stat_TFDS.discarded[CONT], fq_cont1, fq_cont2);
   }
   if (stat_TFDS.filters[LOWQ]) {
-    buffer_outputDS(f_lowq1, NULL, 0, LOWQ1);
+    buffer_outputDS(f_lowq1, NULL, 0, LOWQ);
     fclose(f_lowq1);
     buffer_outputDS(f_lowq2, NULL, 0, LOWQ2);
     fclose(f_lowq2);
     fprintf(stderr, "- Discarded due to lowQ: %d, stored in %s, %s\n",
           stat_TFDS.discarded[LOWQ], fq_lowq1, fq_lowq2);
-    fprintf(stderr, "- Trimmed from read 1 due to lowQ: %d\n", 
+    fprintf(stderr, "- Trimmed from read 1 due to lowQ: %d\n",
           stat_TFDS.trimmed1[LOWQ]);
-    fprintf(stderr, "- Trimmed from read 2 due to lowQ: %d\n", 
+    fprintf(stderr, "- Trimmed from read 2 due to lowQ: %d\n",
           stat_TFDS.trimmed2[LOWQ]);
   }
   if (stat_TFDS.filters[NNNN]) {
-    buffer_outputDS(f_NNNN1, NULL, 0, NNNN1);
+    buffer_outputDS(f_NNNN1, NULL, 0, NNNN);
     fclose(f_NNNN1);
     buffer_outputDS(f_NNNN2, NULL, 0, NNNN2);
     fclose(f_NNNN2);
     fprintf(stderr, "- Discarded due to N's: %d, stored in %s, %s\n",
           stat_TFDS.discarded[NNNN], fq_NNNN1, fq_NNNN2);
-    fprintf(stderr, "- Trimmed from read 1 due to N's: %d\n", 
+    fprintf(stderr, "- Trimmed from read 1 due to N's: %d\n",
           stat_TFDS.trimmed1[NNNN]);
-    fprintf(stderr, "- Trimmed from read 1 due to N's: %d\n", 
+    fprintf(stderr, "- Trimmed from read 1 due to N's: %d\n",
           stat_TFDS.trimmed2[NNNN]);
   }
   // Write summary info file
@@ -406,5 +434,4 @@ int main(int argc, char *argv[]) {
   fprintf(stderr, "Finishing program at: %s", asctime(timeinfo) );
   fprintf(stderr, "Time elapsed: %f s.\n", cpu_time_used);
   return 0;
-
 }

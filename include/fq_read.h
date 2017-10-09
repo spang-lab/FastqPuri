@@ -35,18 +35,21 @@
  * @brief stores a fastq entry
  * */
 typedef struct _fq_read {
-  char line1[READ_MAXLEN], line2[READ_MAXLEN];
-  char line3[READ_MAXLEN], line4[READ_MAXLEN];
-  int L;     /**< read length*/
-  int start; /**< nucleotide position start. Can only be different
-                 from zero if the read has been
-                 filtered with this tool.*/
-  int Lhalf;     /**< half of read length*/
-  char extended[READ_MAXLEN];
-  unsigned char pack[(READ_MAXLEN+1)/2], packsh[(READ_MAXLEN+1)/2]; 
-  int L_ad; 
-  int L_ext;  
-  int L_pack, L_packsh;
+  char line1[READ_MAXLEN];  /**< Line 1 in fastq entry*/
+  char line2[READ_MAXLEN];  /**< Line 2 in fastq entry*/
+  char line3[READ_MAXLEN];  /**< Line 3 in fastq entry*/
+  char line4[READ_MAXLEN];  /**< Line 4 in fastq entry*/
+  int L;      /**< read length*/
+  int start;  /**< nucleotide position start. Can only be different from zero
+                   if the read has been filtered with this tool.*/
+  int Lhalf;  /**< half of read length*/
+  char extended[READ_MAXLEN];  /**< extended sequence, adapter added to 5' end*/
+  unsigned char pack[(READ_MAXLEN+1)/2];  /**< pack sequence*/
+  unsigned char packsh[(READ_MAXLEN+1)/2];  /**< pack sequence with shift*/
+  int L_ad;      /**< length of adapter sequence */
+  int L_ext;     /**< length of extended sequence */
+  int L_pack;    /**< length of packed sequence */
+  int L_packsh;  /**< length of packed sequence (shifted) */
 } Fq_read;
 
 int get_fqread(Fq_read* seq, char* buffer, int pos1, int pos2,

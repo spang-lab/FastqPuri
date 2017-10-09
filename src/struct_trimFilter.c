@@ -22,8 +22,8 @@
  * @file struct_trimFilter.c
  * @author Paula Perez <paulaperezrubio@gmail.com>
  * @date 07.10.2017
- * @brief help dialog for trimFilterDS and initialization of the
- * command line arguments.
+ * @brief function that frees the memory of parTF (structure storing the 
+ *        trimFilter/trimFilterDS input arguments). 
  *
  * */
 
@@ -34,7 +34,7 @@
  *
  * */
 void free_parTF(Iparam_trimFilter *ptr_parTF) {
-  if (ptr_parTF -> ptr_bfkmer != NULL) 
+  if (ptr_parTF -> ptr_bfkmer != NULL)
      free_Bfkmer(ptr_parTF->ptr_bfkmer);
   if (ptr_parTF -> Iidx != NULL) {
      free(ptr_parTF -> Iidx);
@@ -43,7 +43,7 @@ void free_parTF(Iparam_trimFilter *ptr_parTF) {
      free(ptr_parTF -> Iinfo);
   }
   if (ptr_parTF -> Ifq2 != NULL) {
-     free(ptr_parTF -> Ifq); 
+     free(ptr_parTF -> Ifq);
      free(ptr_parTF -> Ifq2);
   }
 }

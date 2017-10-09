@@ -33,7 +33,7 @@
 
 uint8_t fw_1B[256]; /**< global variable. Lookup table. */
 uint8_t bw_1B[256]; /**< global variable. Lookup table. */
-uint8_t Nencode; /**< global variable. Encoding for N's(\004, or \005) */
+uint8_t Nencode; /**< global variable. Encoding for N's(\004) */
 
 /**
  * @brief Initialize lookup table fw_1B.
@@ -53,27 +53,6 @@ void init_map() {
   bw_1B['g'] = 1;  bw_1B['t'] = 0;
   bw_1B['G'] = 1;  bw_1B['T'] = 0;
   Nencode = '\004';
-}
-
-/**
- * @brief Initialize lookup table fw_1B (for SA)
- *
- * {'a','c','g','t'}  --> {'\001','\002','\003','\004'}, rest '\005'.
- *
- * */
-void init_map_SA() {
-  int i;
-  for (i = 0; i < 256; i++)
-     fw_1B[i] = 5;
-  fw_1B['a'] = 1;
-  fw_1B['c'] = 2;
-  fw_1B['g'] = 3;
-  fw_1B['t'] = 4;
-  fw_1B['A'] = 1;
-  fw_1B['C'] = 2;
-  fw_1B['G'] = 3;
-  fw_1B['T'] = 4;
-  Nencode = '\005';
 }
 
 /**
@@ -103,18 +82,3 @@ void rev_comp(char *sLmer, int L) {
   }
 }
 
-/**
- * @brief Obtains the reverse complement, for {'\001','\002','\003','\004'}.
- * */
-void rev_comp2(char *sLmer, int L) {
-  char RC[5]= {4, 3, 2, 1, 5};
-  int c, i, j;
-  for (i = 0, j = L-1; i < j; i++, j--) {
-     c = RC[(unsigned char) sLmer[i] -1];
-     sLmer[i] = RC[(unsigned char) sLmer[j]-1];
-     sLmer[j] = c;
-  }
-  if (i == j) {
-     sLmer[i] = RC[(unsigned char) sLmer[j]-1];
-  }
-}

@@ -19,7 +19,7 @@
  ****************************************************************************/
 
 /**
- * @file DStrim.h 
+ * @file trimDS.h 
  * @author Paula Perez <paulaperezrubio@gmail.com>
  * @date 05.10.2017
  * @brief trim adapters from double stranded data
@@ -32,22 +32,25 @@
 #include "fq_read.h"
 #include "defines.h"
 
+/** 
+ * @brief structure containing an adapter pair  (for read 1 and read 2)
+ * */
 typedef struct _ds_adap {
-  char ad1[READ_MAXLEN];
-  char ad2[READ_MAXLEN];
-  int L1, L2;
+  char ad1[READ_MAXLEN];  /**< read 1 associated adapter sequence*/
+  char ad2[READ_MAXLEN];  /**< read 2 associated adapter sequence*/
+  int L1;  /**< adapter 1 sequence length */
+  int L2;  /**< adapter 2 sequence length */
 } DS_adap; 
 
 DS_adap init_DSadap(char *ad1, char *ad2, int L1, int L2);
 
-void pack_reads(DS_adap *ptr_DSad, Fq_read *r1, Fq_read *r2);
-
-int QtrimDS(Fq_read *r1, Fq_read *r2, int L);
-
-double obtain_scoreDS(Fq_read *r1, int pos1, Fq_read *r2, int pos2);
-
-int alignDS_uint64(Fq_read *r1, Fq_read *r2);  
-
 int trim_adapterDS(DS_adap *ptr_DSad, Fq_read *r1, Fq_read *r2); 
 
-#endif
+/** static functions
+double obtain_scoreDS(Fq_read *r1, int pos1, Fq_read *r2, int pos2);
+void pack_reads(DS_adap *ptr_DSad, Fq_read *r1, Fq_read *r2);
+int alignDS_uint64(Fq_read *r1, Fq_read *r2);  
+int QtrimDS(Fq_read *r1, Fq_read *r2, int L);
+**/
+
+#endif  // endif _DSTRIM_H

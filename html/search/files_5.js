@@ -10,6 +10,9 @@ var searchData=
   ['init_5fsreport_2eh',['init_Sreport.h',['../init__Sreport_8h.html',1,'']]],
   ['init_5ftrimfilter_2ec',['init_trimFilter.c',['../init__trimFilter_8c.html',1,'']]],
   ['init_5ftrimfilter_2eh',['init_trimFilter.h',['../init__trimFilter_8h.html',1,'']]],
+  ['init_5ftrimfilterds_2ec',['init_trimFilterDS.c',['../init__trimFilterDS_8c.html',1,'']]],
+  ['init_5ftrimfilterds_2eh',['init_trimFilterDS.h',['../init__trimFilterDS_8h.html',1,'']]],
   ['io_5ftrimfilter_2ec',['io_trimFilter.c',['../io__trimFilter_8c.html',1,'']]],
-  ['io_5ftrimfilter_2eh',['io_trimFilter.h',['../io__trimFilter_8h.html',1,'']]]
+  ['io_5ftrimfilter_2eh',['io_trimFilter.h',['../io__trimFilter_8h.html',1,'']]],
+  ['io_5ftrimfilterds_2eh',['io_trimFilterDS.h',['../io__trimFilterDS_8h.html',1,'']]]
 ];

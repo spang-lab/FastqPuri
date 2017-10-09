@@ -428,17 +428,11 @@ int compact_kmer(const unsigned char *sequence, uint64_t position,
  * */
 void multiHash(Bfkmer* ptr_bfkmer) {
   int i;
-//  printf("%d  ", ptr_bfkmer -> kmersize);
-//  for (i = 0; i < ptr_bfkmer -> kmersizeBytes; i++) {
-//   printf("%2x ",ptr_bfkmer -> compact[i]);
-//  }
   for (i=0; i < ptr_bfkmer->hashNum; i++) {
      ptr_bfkmer -> hashValues[i] = CityHash64WithSeed(
          (const char *)ptr_bfkmer->compact,
          ptr_bfkmer -> kmersizeBytes, i);
-     //printf("%20lu ", ptr_bfkmer -> hashValues[i]);
   }
-//  printf("\n");
 }
 
 /**

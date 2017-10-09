@@ -4,7 +4,7 @@
 according to the following criteria:
  - Discard/trims reads containing adapter remnants.
  - Discards reads matching contaminations (sequences collected in a `fasta`
-   file or in an `idx` file created by `makeTree`, `makeSA`, `makeBloom`
+   file or in an `idx` file created by `makeTree`, `makeBloom`
  - Discards/trims low quality reads.
  - Discards/trims reads containing N base callings.
 
@@ -19,7 +19,7 @@ Usage `C` executable (in folder `bin`):
 Usage: trimFilter --ifq <INPUT1.fq>:<INPUT2.fq> --length <READ_LENGTH>
                   --output [O_PREFIX1:O_PREFIX2]
                   --adapter [<AD1.fa>:<AD2.fa>:<mismatches>:<score>]
-                  --method [TREE|SA|BLOOM]
+                  --method [TREE|BLOOM]
                   (--idx [<INDEX_FILE>:<score>:<lmer_len>] |
                    --ifa [<INPUT.fa>:<score>:[lmer_len]])
                   --trimQ [NO|ALL|ENDS|FRAC|ENDSFRAC|GLOBAL]
@@ -49,7 +49,7 @@ Options:
                <score>: score threshold  for the aligner.
  -x, --idx     index input file. To be included with any method. 3 fields
                3 fields separated by colons:
-               <INDEX_FILE>: output of makeTree makeSA, makeBloom,
+               <INDEX_FILE>: output of makeTree, makeBloom,
                <score>: score threshold to accept a match [0,1],
                [lmer_len]: correspond to the length of the lmers to be
                         looked for in the reads [1,READ_LENGTH].
@@ -64,7 +64,6 @@ Options:
                         looked for in the reads.
  -C, --method  method used to look for contaminations:
                TREE:  uses a 4-ary tree. Index file optional,
-               SA:    uses a suffix array. Index file mandatory,
                BLOOM: uses a bloom filter. Index file mandatory.
  -Q, --trimQ   NO:       does nothing to low quality reads (default),
                ALL:      removes all reads containing at least one low
@@ -109,8 +108,8 @@ Options:
     * filters, `4*sizeof(int)  Bytes`: array of int with entries
        `i = {ADAP(0), CONT(1), LOWQ(2), NNNN(3)}`. A given entry takes
        the value of the filter it was applied to and 0 otherwise.
-       `filters[ADAPT] = {0,1}`, `filters[CONT] = {NO(0), TREE(1), SA(2), 
-        BLOOM(3)}`, `filters[LOWQ] = {NO(0), ALL(1), ENDS(2), FRAC(3), 
+       `filters[ADAPT] = {0,1}`, `filters[CONT] = {NO(0), TREE(1), 
+        BLOOM(2)}`, `filters[LOWQ] = {NO(0), ALL(1), ENDS(2), FRAC(3), 
         ENDSFRAC(4), GLOBAL(5)}`, `filters[trimN] = {NO(0), ALL(1), 
         ENDS(2), STRIPS(2)}`.
     * trimmed, `4*sizeof(int) Bytes`: array of integers with entries
@@ -137,7 +136,7 @@ trimmed, removed or left as is. The following figure describes possible
 cases: 
 
 <p align="center">
-<img src=./pics/adapters/palindrome.png alt="noimage" title="Adapters identification">
+<img src=./pics/adapters/palindrome_new.png alt="noimage" title="Adapters identification">
 </p>
 
 

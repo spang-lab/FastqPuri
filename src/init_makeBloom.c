@@ -32,6 +32,7 @@
 #include <getopt.h>
 #include <math.h>
 #include "init_makeBloom.h"
+#include "str_manip.h"
 #include "config.h"
 
 
@@ -90,6 +91,17 @@ void getarg_makeBloom(int argc, char **argv) {
       {"hashNum", required_argument, 0, 'g'},
       {"bfsizeBits", required_argument, 0, 'm'}
   };
+  int i;
+  for (i = 0; i < argc; i++) {
+    if (!str_isascii(argv[i])) {
+      fprintf(stderr, "input parameter %s contains non ASCII chars.\n",
+              argv[i]);
+      fprintf(stderr, "only ASCII characters allowed in the input. ");
+      fprintf(stderr, "Please correct for that.\n");
+      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+      exit(EXIT_FAILURE);
+    }
+  }
   char options;
   while ((options = getopt_long(argc, argv, "hvf:o:k:p:g:m:", long_options, 0))
         != -1) {
