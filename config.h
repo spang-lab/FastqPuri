@@ -5,3 +5,4 @@
 #define RMD_QUALITY_REPORT "/nfs/compdiag/user/pep04706/my_programs/C++/FastqArazketa/R/quality_report.Rmd"
 #define RMD_SUMMARY_REPORT "/nfs/compdiag/user/pep04706/my_programs/C++/FastqArazketa/R/summary_report.Rmd"
 #define RMD_SUMMARY_FILTER_REPORT "/nfs/compdiag/user/pep04706/my_programs/C++/FastqArazketa/R/summary_filter_report.Rmd"
+#define RMD_SUMMARY_FILTER_REPORTDS "/misc/compdiag/user/pep04706/my_programs/C++/FastqArazketa/R/summary_filter_reportDS.Rmd"

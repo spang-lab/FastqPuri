@@ -73,15 +73,22 @@ endif(RSCRIPT_EXEC AND HAVE_PANDOC)
 #---------------------------------------------------------------
 set(READ_MAXLEN 400 CACHE STRING "Illumina maximum read length")
 message("-- Setting Illumina maximum read length: READ_MAXLEN ${READ_MAXLEN}")
+
 set(RMD_QUALITY_REPORT ${PROJECT_R_DIR}/quality_report.Rmd CACHE STRING 
    "Rmd quality report file")
 message("-- Setting Rmd quality report file: ${RMD_QUALITY_REPORT}")
+
 set(RMD_SUMMARY_REPORT ${PROJECT_R_DIR}/summary_report.Rmd CACHE STRING 
    "Rmd summary report file")
 message("-- Setting Rmd summary report file: ${RMD_SUMMARY_REPORT}")
+
 set(RMD_SUMMARY_FILTER_REPORT ${PROJECT_R_DIR}/summary_filter_report.Rmd 
    CACHE STRING  "Rmd summary filter report file")
 message("-- Setting Rmd summary filter report file: ${RMD_SUMMARY_FILTER_REPORT}")
+
+set(RMD_SUMMARY_FILTER_REPORTDS ${PROJECT_R_DIR}/summary_filter_reportDS.Rmd 
+   CACHE STRING  "Rmd summary filter report file for DS data")
+message("-- Setting Rmd summary filter report file for DS data: ${RMD_SUMMARY_FILTER_REPORTDS}")
 #MISSING SETTING MEMORY ROOF!!! 
 
 

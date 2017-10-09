@@ -11,6 +11,10 @@ Creates two types of summary reports in html format
    of `fastq` files. It will analyze all files with extension `*bin` inside
    the folder specified in the input and will expect them to have the
    appropriate format, (output from `trimFilter`).
+ - **D** (Filter): report of the filtering process (`trimFilterDS`) of a set
+   of double stranded `fastq` files. It will analyze all files with extension 
+   `*bin` inside the folder specified in the input and will expect them to have the
+   appropriate format, (output from `trimFilterDS`).
 
 
 ## Running the program
@@ -25,11 +29,11 @@ Options:
  -v Prints package version.
  -h Prints help dialog.
  -i Input folder containing *bin data (output from Qreport). Mandatory option.
- -t {Q,F} Type of report to be generated: 'Q' for quality summary
-    report, 'F' for filter summary report. Mandatory option,
+ -t {Q,F,D} Type of report to be generated: 'Q' for quality summary
+    report, 'F' for filter summary report, and 'D' for double stranded
+    data filter summary report. Mandatory option,
  -o Output file (with NO extension). Mandatory option.
 ```
-
 
 ## Output description
 
@@ -43,6 +47,12 @@ Options:
      setups, this table is ambiguous and is therefore not created.
    * Table with : `Nreads`, `Naccepted`, `%disc Ad`, `%cont`, `%disc lowQ`,
    `%disc N’s`, `%trim Ad`,`%trim N’s`,`%trim lowQ` for all samples.
+- **D** (html output):
+   * Table with .trimFilterDS setup. If there were samples with different
+     setups, this table is ambiguous and is therefore not created.
+   * Table with : `Nreads`, `Naccepted`, `%disc Ad`, `%cont`, `%disc lowQ`,
+   `%disc N’s`, `%trim Ad`,`%trim1 N’s`,`%trim1 lowQ`, `%trim2 N’s`, 
+   `%trim2 lowQ` for all samples.
 
 ## Example
 
@@ -71,6 +81,11 @@ It can be reproduced if you run:
 ```
 $ ../../bin/Sreport -i .bin_files/ -o ./bin_files/filter_Sreport_new -t F
 ```
+
+###  Option `-t D` 
+
+TODOTODOTODOTODOTODOTODO
+
 
 ## Contributors
 
