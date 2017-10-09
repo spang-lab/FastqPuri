@@ -1,4 +1,4 @@
-# trimFilter user manual
+# trimFilterDS user manual
 
  This program reads two paired end `fastq` files as an input and filters them 
 according to the following criteria:
