@@ -217,14 +217,15 @@ int main(int argc, char *argv[]) {
   char *buffer1 = malloc(sizeof(char)*(B_LEN + 1));
   char *buffer2 = malloc(sizeof(char)*(B_LEN + 1));
   do {
-    newl1 = fread(buffer1+offset1, 1, B_LEN-offset1, fq_in1);
-    newl2 = fread(buffer2+offset2, 1, B_LEN-offset2, fq_in2);
+     newl1 = fread(buffer1+offset1, 1, B_LEN-offset1, fq_in1);
+     newl2 = fread(buffer2+offset2, 1, B_LEN-offset2, fq_in2);
      newl1 += offset1;
      newl2 += offset2;
      buffer1[newl1] = '\0';
      buffer2[newl2] = '\0';
-     while (buffer1[j1] != 0 ||  buffer2[j2] != 0) {
-        if (buffer1[j1] == '\n') {
+     j1=0; j2=0;
+     while (j1 < newl1 && j2 < newl2) {
+        if (buffer1[j1] == '\n' ) {
           l1_f = j1;
           get_fqread(seq1, buffer1, l1_i, l1_f, nl1, par_TF.L, 0);
           if ((nl1++ % 4 == 3)) {
@@ -235,6 +236,12 @@ int main(int argc, char *argv[]) {
         }
         if (buffer2[j2] == '\n') {
           l2_f = j2;
+          if ( (l2_f-l2_i) > READ_MAXLEN){
+            printf("It is here!!\n");
+            printf("nl1= %d, nl2= %d\n",nl1, nl2);
+            printf("l2_f= %d, l2_i= %d, B_LEN= %d, j2= %d\n", 
+                  l2_f, l2_i, B_LEN, j2);
+          }
           get_fqread(seq2, buffer2, l2_i, l2_f, nl2, par_TF.L, 0);
           if ((nl2++ % 4 == 3)) {
              stop2 = 1;
@@ -242,10 +249,17 @@ int main(int argc, char *argv[]) {
           }
           l2_i = l2_f + 1;
         }
-        if (stop1 && stop2) {  // Do the stuff!!
+        if (stop1 && !stop2) {
+           j2++;
+        } else if (!stop1 && stop2) {
+           j1++;
+        } else if (!stop1 && !stop2) {
+           j1++;
+           j2++;
+        } else if (stop1 && stop2) {  // Do the stuff!!
            stat_TFDS.nreads++;
            bool discarded = false;
-           int trim, trim2;
+           int trim = 0, trim2 =0;
            if (stat_TFDS.filters[ADAP] && !discarded) {
               for (i_ad=0; i_ad < par_TF.ad.Nad; i_ad++) {
                 trim = trim_adapterDS(&adap_list[i_ad], seq1, seq2);
@@ -324,23 +338,16 @@ int main(int argc, char *argv[]) {
            // reset stop
            stop1 = 0;
            stop2 = 0;
-        } else if (stop1 && !stop2) {
-           j2++;
-        } else if (!stop1 && stop2) {
-           j1++;
-        } else {
-           j1++;
-           j2++;
         }
      }  // end buffer loop
      offset1 = newl1 - l1_i;
      if (offset1 > -1)
-       memcpy(buffer1, buffer1 + l1_i, offset1);
+       memmove(buffer1, buffer1 + l1_i, offset1);
      l1_f = -1;
      l1_i = 0;
      offset2 = newl1 - l2_i;
      if (offset2 > -1)
-       memcpy(buffer2, buffer2 + l2_i, offset2);
+       memmove(buffer2, buffer2 + l2_i, offset2);
      l2_f = -1;
      l2_i = 0;
   }  while ((newl1 > offset1) || (newl2 > offset2));  // end read buffer
@@ -372,7 +379,7 @@ int main(int argc, char *argv[]) {
   if (stat_TFDS.filters[ADAP]) {
     buffer_outputDS(f_adap1, NULL, 0, ADAP);
     fclose(f_adap1);
-    buffer_outputDS(f_adap1, NULL, 0, ADAP2);
+    buffer_outputDS(f_adap2, NULL, 0, ADAP2);
     fclose(f_adap2);
     fprintf(stderr, "- Discarded due to adapters: %d, stored in %s, %s\n",
           stat_TFDS.discarded[ADAP], fq_adap1, fq_adap2);

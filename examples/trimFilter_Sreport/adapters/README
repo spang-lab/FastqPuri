@@ -2,7 +2,7 @@
 #  trimFilter examples (adapters contamination):                               #
 ################################################################################
 #                                                                              # 
-# The script `run_examples.sh` runs trimFilter with the option `--adapters`    # 
+# The script `run_examples.sh` runs trimFilter with the option `--adapter`     # 
 # for 8 different `fq` files, covering all combinations of the following       #
 # options:                                                                     #
 #  - read length even/odd.                                                     #

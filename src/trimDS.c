@@ -50,6 +50,8 @@ DS_adap init_DSadap(char *ad1, char *ad2, int L1, int L2) {
   DS_adap *ptr_DSad = malloc(sizeof(DS_adap));
   strncpy(ptr_DSad -> ad1, ad1, L1);
   strncpy(ptr_DSad -> ad2, ad2, L2);
+  ptr_DSad->ad1[L1] = '\0';
+  ptr_DSad->ad2[L2] = '\0';
   ptr_DSad -> L1 = L1;
   ptr_DSad -> L2 = L2;
   return (*ptr_DSad);
@@ -70,10 +72,10 @@ static void pack_reads(DS_adap *ptr_DSad, Fq_read *r1, Fq_read *r2) {
   r2->L_ad = ptr_DSad->L2;
   r1->L_ext = r1->L + ptr_DSad->L1;
   r2->L_ext = r2->L + ptr_DSad->L2;
-  strncpy(r1->extended, ptr_DSad->ad1, ptr_DSad->L1);
-  strncpy(r2->extended, ptr_DSad->ad2, ptr_DSad->L2);
-  strncat(r1->extended, r1->line2, r1->L);
-  strncat(r2->extended, r2->line2, r2->L);
+  strncpy(r1->extended, ptr_DSad->ad1, ptr_DSad->L1+1);
+  strncpy(r2->extended, ptr_DSad->ad2, ptr_DSad->L2+1);
+  strncat(r1->extended, r1->line2, r1->L+1);
+  strncat(r2->extended, r2->line2, r2->L+1);
   r1 -> L_pack =  process_seq(r1->pack, (unsigned char *)r1->extended,
                              r1->L_ext, false, false);
   r2 -> L_pack = process_seq(r2->pack, (unsigned char *)r2->extended,
@@ -91,7 +93,6 @@ static void pack_reads(DS_adap *ptr_DSad, Fq_read *r1, Fq_read *r2) {
  *
  * */
 static int QtrimDS(Fq_read *r1, Fq_read *r2, int L) {
-  printf("This is L %d \n", L);
   Qtrim_global(r1, 0, r1->L - L, 'A');
   Qtrim_global(r2, 0, r2->L - L, 'A');
   return(2);
@@ -116,27 +117,39 @@ static int QtrimDS(Fq_read *r1, Fq_read *r2, int L) {
  * */
 static double obtain_scoreDS(Fq_read *r1, int pos1, Fq_read *r2, int pos2 ) {
   int Nbases = min(r1 -> L_ext - pos1, r2 -> L_ext - pos2);
-  int i;
+  int i, p1, p2;
   double score = 0.0;
   int Nmatches = 0;
+  //printf("%s  %s \n", r1->line4, r2->line4);
   for (i=0; i < Nbases; i++) {
-    if (fw_1B[(uint8_t)(r1->extended[pos1 + i] )] ==
-        bw_1B[(uint8_t)(r2->extended)[r2->L_ext - 1 - i - pos2]]) {
+    p1 = pos1 + i;
+    p2 = r2->L_ext - 1 - i - pos2;
+    if (fw_1B[(uint8_t)(r1->extended[p1] )] ==
+        bw_1B[(uint8_t)(r2->extended)[p2]]) {
         score += LOG_4;
         Nmatches++;
     } else {
-      if ((pos1 + i) < r1 -> L) {
-         score -= (r2->line4[pos2 + i] - ZEROQ)/10.0;
-      } else if ((pos2 + i) > r2 -> L) {
-         score -= (r1->line4[pos1 + i] - ZEROQ)/10.0;
-      } else {
-         score -= max((r1->line4[pos1 + i] - ZEROQ)/10.0,
-               (r2->line4[pos2 + i] - ZEROQ)/10.0);
+      p1-=r1 -> L_ad;
+      p2-=r2 -> L_ad;
+      if( (p1 > r1 -> L) || (p2 > r2 -> L )) {
+         fprintf(stderr, "ERROR.Report this bug.\n");
+         fprintf(stderr, "Exiting program.\n");
+         fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+      } else if (p1 > 0 || p2 > 0) { 
+         if (p1 < 0 ) {
+            score -= (r2->line4[p2] - ZEROQ)/10.0;
+         } else if (p2 < 0)  {
+            score -= (r1->line4[p1] - ZEROQ)/10.0;
+         } else {
+            score -= max((r1->line4[p1] - ZEROQ)/10.0,
+                  (r2->line4[p2] - ZEROQ)/10.0);
+         }
       }
     }
   }
-  printf("score = %f \n", score);
-  printf("obtain_scoreDS to be implemented\n");
+  if(score > par_TF.ad.threshold) 
+     printf("this is the score: %f, Nbases %d, log4*Nbases %f\n", 
+           score, Nbases, LOG_4*Nbases);
   return ((Nmatches < MIN_NMATCHES) ? -1.0 : score);
 }
 
@@ -160,15 +173,10 @@ static int alignDS_uint64(Fq_read *r1, Fq_read *r2) {
   memcpy(&r2u64, r2->pack, sizeof(uint64_t));
   memcpy(&r2shu64, r2->packsh, sizeof(uint64_t));
   Nwindows = (r1 -> L_ad + 1)/2;
-  for (j = 0; j < r1->L_pack; j++) {
-     printf("%2x ", r1 -> pack[j]);
-  }
-  printf("\n");
   for (j = 0; j < Nwindows; j++) {
     memcpy(&r1u64, r1->pack + Nwindows - 1 - j, sizeof(uint64_t));
     cmpu64 = (r2shu64 ^ r1u64);
     n = __builtin_popcount(cmpu64 >> 4);
-    printf("pos: %2d, n = %2d, r1= %lx, r2=%lx \n", pos1, n, r2shu64, r1u64);
     if (n <= 2*par_TF.ad.mismatches) {
       score = obtain_scoreDS(r1, pos1, r2, pos2);
       if (score > par_TF.ad.threshold) break;
@@ -176,7 +184,6 @@ static int alignDS_uint64(Fq_read *r1, Fq_read *r2) {
     pos1--;
     cmpu64 = (r2u64 ^ r1u64);
     n = __builtin_popcount(cmpu64);
-    printf("pos: %2d, n = %2d, r1= %lx, r2=%lx \n", pos1, n, r2u64, r1u64);
     if (n <= 2*par_TF.ad.mismatches) {
       score = obtain_scoreDS(r1, pos1, r2, pos2);
       if (score > par_TF.ad.threshold) break;
@@ -189,9 +196,11 @@ static int alignDS_uint64(Fq_read *r1, Fq_read *r2) {
   }
   // Controlar bytes al inicio del read
   // loop done on the adapter sequence  without considering the first
-  Nwindows = r2 -> L_pack - sizeof(uint64_t);
+  Nwindows = r2 -> L_pack - (r2 -> L_ad)/2 - sizeof(uint64_t);
   pos1 = 0;
-  pos2 = r2->L_ext - 2*sizeof(uint64_t) + (r2->L_ext%2);
+  // BE CAREFUL WITH THAT
+  //pos2 = r2->L_ext - 2*sizeof(uint64_t) + (r2->L_ext%2);
+  pos2 = r2->L - 2*sizeof(uint64_t) + (r2->L_ext%2);
   memcpy(&r1u64, r1->pack, sizeof(uint64_t));
   for (j = Nwindows; j > 0; j--) {
     memcpy(&r2u64, r2 -> pack + j, sizeof(uint64_t));

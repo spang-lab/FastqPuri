@@ -25,6 +25,7 @@
 #    b) trimFilter is run like in 2. but passing a bloom filter to look for    # 
 #       contaminations with `score=0.4`.                                       #
 # 4. With this set up, it is possible to run further customized tests.         #
+# 5. See the folder `adapters` for examples on adapter contaminations.         #
 #                                                                              # 
 # NOTE: `rRNA_modified.fa` is the `rRNA_CRUnit.fa` sequence, where we have     #
 #        removed the lines containing N's for testing purposes.                #

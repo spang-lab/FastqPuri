@@ -139,9 +139,9 @@ getFilterStats <- function(path) {
   res$discarded <- readBin(to.read, integer(), n=NFILTER)
   res$good <- readBin(to.read, integer())
   res$nreads <- readBin(to.read, integer())
-  if (res$good > 0) {
-     res$trimmed <- res$trimmed/res$good*100
-     res$discarded <- res$discarded/res$good*100
+  if (res$nreads > 0) {
+     res$trimmed <- res$trimmed/res$nreads*100
+     res$discarded <- res$discarded/res$nreads*100
   } else {
      stop("All reads were discarded")
   }
@@ -164,10 +164,10 @@ getFilterStatsDS <- function(path) {
   res$discarded <- readBin(to.read, integer(), n=NFILTER)
   res$good <- readBin(to.read, integer())
   res$nreads <- readBin(to.read, integer())
-  if (res$good > 0) {
-     res$trimmed1 <- res$trimmed1/res$good*100
-     res$trimmed2 <- res$trimmed2/res$good*100
-     res$discarded <- res$discarded/res$good*100
+  if (res$nreads > 0) {
+     res$trimmed1 <- res$trimmed1/res$nreads*100
+     res$trimmed2 <- res$trimmed2/res$nreads*100
+     res$discarded <- res$discarded/res$nreads*100
   } else {
      stop("All reads were discarded")
   }
@@ -234,7 +234,7 @@ getFilterTablesDS <- function(inputfolder) {
    files <- list.files(inputfolder,pattern="bin$")
    nombres <- gsub('_summary\\.bin$', '', files)
    Ns <- length(files)
-   table <- matrix(nrow = Ns, ncol = 9,
+   table <- matrix(nrow = Ns, ncol = 11,
             dimnames = list(nombres,c("Nreads","Naccepted", "%disc Ad", 
                                       "%cont", "%disc lowQ", "%disc N's", 
                                       "%trim Ad", "%trim1 N's", "%trim1 lowQ", 
