@@ -223,9 +223,9 @@ int main(int argc, char *argv[]) {
      newl2 += offset2;
      buffer1[newl1] = '\0';
      buffer2[newl2] = '\0';
-     j1=0; j2=0;
-     while (j1 < newl1 && j2 < newl2) {
-        if (buffer1[j1] == '\n' ) {
+     j1 = 0; j2 = 0;
+     while ((j1 <= newl1 && j2 <= newl2) && (newl1 ||  newl2)) {
+        if ((buffer1[j1] == '\n') && (j1 < newl1)) {
           l1_f = j1;
           get_fqread(seq1, buffer1, l1_i, l1_f, nl1, par_TF.L, 0);
           if ((nl1++ % 4 == 3)) {
@@ -234,14 +234,8 @@ int main(int argc, char *argv[]) {
           }
           l1_i = l1_f + 1;
         }
-        if (buffer2[j2] == '\n') {
+        if ((buffer1[j2] == '\n') && (j2 < newl2)) {
           l2_f = j2;
-          if ( (l2_f-l2_i) > READ_MAXLEN){
-            printf("It is here!!\n");
-            printf("nl1= %d, nl2= %d\n",nl1, nl2);
-            printf("l2_f= %d, l2_i= %d, B_LEN= %d, j2= %d\n", 
-                  l2_f, l2_i, B_LEN, j2);
-          }
           get_fqread(seq2, buffer2, l2_i, l2_f, nl2, par_TF.L, 0);
           if ((nl2++ % 4 == 3)) {
              stop2 = 1;
@@ -259,7 +253,7 @@ int main(int argc, char *argv[]) {
         } else if (stop1 && stop2) {  // Do the stuff!!
            stat_TFDS.nreads++;
            bool discarded = false;
-           int trim = 0, trim2 =0;
+           int trim = 0, trim2 = 0;
            if (stat_TFDS.filters[ADAP] && !discarded) {
               for (i_ad=0; i_ad < par_TF.ad.Nad; i_ad++) {
                 trim = trim_adapterDS(&adap_list[i_ad], seq1, seq2);
@@ -284,10 +278,10 @@ int main(int argc, char *argv[]) {
              } else if (par_TF.method == BLOOM) {
                discarded =(is_read_inBloom(ptr_bf, seq1, par_TF.ptr_bfkmer) ||
                           is_read_inBloom(ptr_bf, seq2, par_TF.ptr_bfkmer));
-             } 
+             }
              if (discarded) {
                Nchar1 = string_seq(seq1, char_seq1);
-               Nchar2 = string_seq(seq2, char_seq1);
+               Nchar2 = string_seq(seq2, char_seq2);
                buffer_outputDS(f_cont1, char_seq1, Nchar1, CONT);
                buffer_outputDS(f_cont2, char_seq2, Nchar2, CONT2);
                stat_TFDS.discarded[CONT]++;
@@ -350,7 +344,7 @@ int main(int argc, char *argv[]) {
        memmove(buffer2, buffer2 + l2_i, offset2);
      l2_f = -1;
      l2_i = 0;
-  }  while ((newl1 > offset1) || (newl2 > offset2));  // end read buffer
+  }  while ((newl1 > offset1) ||  (newl2 > offset2));  // end read buffer
 
   // Check that the number of lines of both input files is the same
   if (nl1 != nl2) {
@@ -359,6 +353,7 @@ int main(int argc, char *argv[]) {
     fprintf(stderr, "%s contains %d lines \n", par_TF.Ifq2, nl2);
     fprintf(stderr, "Exiting program\n");
     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+    printf("stop1 %d, stop2 %d \n", stop1, stop2);
     exit(EXIT_FAILURE);
   }
   fprintf(stderr, "- Number of lines in fq_files %d\n", nl1);

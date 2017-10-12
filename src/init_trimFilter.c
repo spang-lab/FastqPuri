@@ -174,7 +174,6 @@ void getarg_trimFilter(int argc, char **argv) {
          par_TF.Ifq = optarg;
          break;
       case 'l':
-
          par_TF.L = atoi(optarg);
          break;
       case 'o':
@@ -193,6 +192,7 @@ void getarg_trimFilter(int argc, char **argv) {
          par_TF.ad.ad_fa = adapt.s[0];
          par_TF.ad.mismatches = atoi(adapt.s[1]);
          par_TF.ad.threshold = atof(adapt.s[2]);
+         break;
       case 'q':
          par_TF.minQ = atoi(optarg);
          break;

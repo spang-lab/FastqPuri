@@ -41,7 +41,7 @@ extern Iparam_Sreport par_SR;
 */
 void printHelpDialog_Sreport() {
   const char dialog[] =
-    "Usage: ./Sreport -i <INPUT_FOLDER> -t <Q|T> -o <OUTPUT_FILE> \n"
+    "Usage: ./Sreport -i <INPUT_FOLDER> -t <Q|T|D> -o <OUTPUT_FILE> \n"
     "Uses all *bin files found in a folder (output of Qreport|trimFilter)\n"
     "and generates a summary report in html format (of Qreport|trimFilter).\n"
     "Options:\n"

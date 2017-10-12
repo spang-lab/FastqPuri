@@ -1,6 +1,6 @@
 # trimFilterDS user manual
 
- This program reads two paired end `fastq` files as an input and filters them 
+ This program reads two paired end `fastq` files as an input and filters them
 according to the following criteria:
  - Discard/trims reads containing adapter remnants.
  - Discards reads matching contaminations (sequences collected in a `fasta`
@@ -8,12 +8,12 @@ according to the following criteria:
  - Discards/trims low quality reads.
  - Discards/trims reads containing N base callings.
 
-If one of the two rads is discarded, the corresponding paired read is 
-automatically discarded. 
+If one of the two rads is discarded, the corresponding paired read is
+automatically discarded.
 
 ## Running the program
 
-Usage `C` executable (in folder `bin`): 
+Usage `C` executable (in folder `bin`):
 
 ```
 Usage: trimFilter --ifq <INPUT1.fq>:<INPUT2.fq> --length <READ_LENGTH>
@@ -30,18 +30,18 @@ Reads in paired end fq files (gz, bz2, z formats also accepted) and removes:
   * low quality reads,
   * reads containing N base callings,
   * reads representing contaminations, belonging to sequences in INPUT.fa
-Outputs 4 [O_PREFIX]_fq.gz files per input fastq file containing: "good" reads, 
+Outputs 4 [O_PREFIX]_fq.gz files per input fastq file containing: "good" reads,
 discarded low Q reads discarded reads containing N's, discarded contaminations.
 
-If one read is removed, its corresponding paired read is removed as well. 
+If one read is removed, its corresponding paired read is removed as well.
 
 Options:
  -v, --version prints package version.
  -h, --help    prints help dialog.
  -f, --ifq     2 fastq input files [*fq|*fq.gz|*fq.bz2] separated by colons, mandatory option.
  -l, --length  read length: length of the reads, mandatory option.
- -o, --output  output prefix (with path), optional (default ./out). Output 
- 
+ -o, --output  output prefix (with path), optional (default ./out). Output
+
  -A, --adapter adapter input four fields separated by colons:
                <AD1.fa>: fasta file containing adapters from read 1,
                <AD2.fa>: fasta file containing adapters from read 2,
@@ -108,9 +108,9 @@ Options:
     * filters, `4*sizeof(int)  Bytes`: array of int with entries
        `i = {ADAP(0), CONT(1), LOWQ(2), NNNN(3)}`. A given entry takes
        the value of the filter it was applied to and 0 otherwise.
-       `filters[ADAPT] = {0,1}`, `filters[CONT] = {NO(0), TREE(1), 
-        BLOOM(2)}`, `filters[LOWQ] = {NO(0), ALL(1), ENDS(2), FRAC(3), 
-        ENDSFRAC(4), GLOBAL(5)}`, `filters[trimN] = {NO(0), ALL(1), 
+       `filters[ADAPT] = {0,1}`, `filters[CONT] = {NO(0), TREE(1),
+        BLOOM(2)}`, `filters[LOWQ] = {NO(0), ALL(1), ENDS(2), FRAC(3),
+        ENDSFRAC(4), GLOBAL(5)}`, `filters[trimN] = {NO(0), ALL(1),
         ENDS(2), STRIPS(2)}`.
     * trimmed, `4*sizeof(int) Bytes`: array of integers with entries
        i = {ADAP(0), CONT(1), LOWQ(2), NNNN(3)}, containing how many
@@ -126,14 +126,14 @@ Options:
 #### Adapters
 
 Technical sequences within the reads are detected if the option
-`--adapters <ADAPTERS1.fa>:<ADAPTERS2.fa>:<mismatches>:<score>` is given. 
+`--adapters <ADAPTERS1.fa>:<ADAPTERS2.fa>:<mismatches>:<score>` is given.
 The adapter(s) sequence(s) are read from the fasta files, and then prepended
-to their respective reads. Then, a 'seed and extend' approach is used 
+to their respective reads. Then, a 'seed and extend' approach is used
 to look for overlaps following the same rules followed in the single end case.
-See `README_trimFilter.md` for details on how two matching subsequences are 
-detected and how the score is computed. The paired reads are correspondingly 
-trimmed, removed or left as is. The following figure describes possible 
-cases: 
+See `README_trimFilter.md` for details on how two matching subsequences are
+detected and how the score is computed. The paired reads are correspondingly
+trimmed, removed or left as is. The following figure describes possible
+cases:
 
 <p align="center">
 <img src=./pics/adapters/palindrome_new.png alt="noimage" title="Adapters identification">
@@ -142,17 +142,17 @@ cases:
 
 #### Impurities
 
- Contaminations are removed if a fasta file or an index file are given as an 
-input. The methods provided to look for contaminations work in the very same 
-way as they work for single end data. If one of the reads is discarded, 
+ Contaminations are removed if a fasta file or an index file are given as an
+input. The methods provided to look for contaminations work in the very same
+way as they work for single end data. If one of the reads is discarded,
 then, the other read is discarded as well. See `README_trimFilter.md` for more
-details on how the contaminations are handled.   
+details on how the contaminations are handled.
 
 #### LowQ
 
- Again, the detection and trimming/removal of reads containing low quality 
-nucleotides is done following the same procedure as for single end data. 
-We list the options below, see `README_trimFilter.md` for more details. 
+ Again, the detection and trimming/removal of reads containing low quality
+nucleotides is done following the same procedure as for single end data.
+We list the options below, see `README_trimFilter.md` for more details.
 
 - `--trimQ NO` or flag absent: nothing is done to the reads with low quality.
 - `--trimQ ALL`: all reads containing at least one low quality nucleotide are
@@ -180,7 +180,7 @@ Adjust the values for a different convention.
 
 #### N trimming
 
-We allow for the following options (see README_trimFilter.md for 
+We allow for the following options (see README_trimFilter.md for
 examples and more details):
 
 - `--trimN NO` (or flag absent): Nothing is done to the reads containing N's.
@@ -190,11 +190,38 @@ examples and more details):
   otherwise. If the trimmed read length is smaller than MINL, it is discarded.
 - `--trimN STRIP`: Obtain the largest N free subsequence of the read. Accept it
    if is longer than the half of the original read length, redirect it to
-   `*_NNNN.fq.gz` otherwise. 
+   `*_NNNN.fq.gz` otherwise.
 
 ## Test/examples
 
-TODOTODOTODOTODOTODO
+ The examples in folder `examples/trimFilterDS_SReport/` work in the following
+ way:
+ 1. See folder `fa_fq_files`. The files `EColi_rRNA_DS.read1.fq.gz` and
+    `EColi_rRNA_DS.read2.fq.gz` were created with `create_fq.sh` and contain:
+    * 1000 reads of length 50 from `EColi_genome.fa` with NO errors.
+    * 5000 reads of length 50 from `rRNA_modified.fa` with NO errrors
+      (rRNA contaminations).
+    * Artificially generated reads with low quality score (see `create_fq.sh`)
+    * Artificially generated reads with Ns (see `create_fq.sh`).
+ 2. `run_example_TREE.sh`: the code was tested with flags:
+    `../../bin/trimFilter -l 50 --ifq\
+      --ifq ../fa_fq_files/EColi_rRNA_DS.read1.fq.gz:../fa_fq_files/EColi_rRNA_DS.read1.fq.gz
+     --method TREE --ifa ../fa_fq_files/rRNA_modified.fa:0.2:30 \
+     --trimQ ENDSFRAC --trimN ENDS -o treeDS --adapters \
+     ../fa_fq_files/ad_read1.fa:../fa_fq_files/ad_read2.fa:2:40
+    i.e., we check for contaminations from rRNA, trim reads with lowQ at
+    the ends and less than 5% in the remaining part, and strip reads
+    containing N's at the ends.
+ 3. `run_example_BLOOM.sh`:
+    trimFilterDS is run like in 2. but passing a bloom filter to look for
+       contaminations with `score=0.4` and the --trimN STRIP option.
+ 4. With this set up, it is possible to run further customized tests.
+ 5. See the folder `adapters` for examples on adapter contaminations (and its
+    corresponding README file).
+
+ NOTE: `rRNA_modified.fa` is the `rRNA_CRUnit.fa` sequence, where we have
+        removed the lines containing N's for testing purposes.
+
 
 ## Contributors
 

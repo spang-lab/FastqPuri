@@ -4,10 +4,10 @@
 #                                                                              # 
 # The examples work in the  following way:                                     #
 #                                                                              #
-# 1. See folder `fa_fq_files`. The file `EColi_rRNA.fq` was created with       #
+# 1. See folder `fa_fq_files`. The file `EColi_rRNA.fq.gz` was created with    #
 #    `create_fq.sh` and contains:                                              # 
-#    * 2e5 reads of length 50 from `EColi_genome.fa` with NO errors.           #
-#    * 5e4 reads of length 50 from `rRNA_modified.fa` with NO errrors          #
+#    * 2e4 reads of length 50 from `EColi_genome.fa` with NO errors.           #
+#    * 5e3 reads of length 50 from `rRNA_modified.fa` with NO errrors          #
 #      (rRNA contaminations).                                                  #
 #    * Artificially generated reads with low quality score (see `create_fq.sh`)#
 #    * Artificially generated reads with Ns (see `create_fq.sh`).              #

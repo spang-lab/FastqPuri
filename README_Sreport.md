@@ -22,7 +22,7 @@ Creates two types of summary reports in html format
 Usage `C` executable (in folder `bin`):
 
 ```
-Usage: ./Sreport -i <INPUT_FOLDER> -t <Q|T> -o <OUTPUT_FILE>
+Usage: ./Sreport -i <INPUT_FOLDER> -t <Q|T|D> -o <OUTPUT_FILE>
 Uses all *bin files found in a folder (output of Qreport|trimFilter)
 and generates a summary report in html format (of Qreport|trimFilter).
 Options:
@@ -84,8 +84,15 @@ $ ../../bin/Sreport -i .bin_files/ -o ./bin_files/filter_Sreport_new -t F
 
 ###  Option `-t D` 
 
-TODOTODOTODOTODOTODOTODO
+In folder `.examples/trimFilterDS_Sreport/bin_files`, 30 fake
+`./trimFilterDS` binary output files were generated (with the `R` script
+`create_fake_bins.R`). An html output was created out of them
+(`.examples/trimFilterDS_Sreport/bin_files/DS_Sreport_example.html`).
+It can be reproduced if you run:
 
+```
+$ ../../bin/Sreport -i .bin_files/ -o ./bin_files/DS_Sreport_new -t F
+```
 
 ## Contributors
 

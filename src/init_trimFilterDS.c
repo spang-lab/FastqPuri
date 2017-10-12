@@ -209,6 +209,7 @@ void getarg_trimFilterDS(int argc, char **argv) {
          par_TF.ad.ad2_fa = adapt.s[1];
          par_TF.ad.mismatches = atoi(adapt.s[2]);
          par_TF.ad.threshold = atof(adapt.s[3]);
+         break;
       case 'q':
          par_TF.minQ = atoi(optarg);
          break;

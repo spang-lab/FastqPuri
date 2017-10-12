@@ -1,7 +1,7 @@
-FastqArazketa, a fq quality control and filter tool 
+FastqArazketa, an fq quality control and filter tool 
 =========
 
-Software and source code of `FastqArazketa`. Creates quality 
+Software and source code of `FastqArazketa`. It creates quality 
 reports of `fastq` files and filters them removing low quality 
 reads, reads containing too many N's or contamination reads 
 (unwanted rRNA reads, impurities coming from another organism, ...).

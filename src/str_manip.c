@@ -101,8 +101,9 @@ Split strsplit(char *str, char sep) {
     if (idx2 == -1) {
        idx2 = strlen(str) -idx1;
      }
-    res.s[i] = malloc(sizeof(char)*(idx2));
+    res.s[i] = malloc(sizeof(char)*(idx2+1));
     memcpy(res.s[i], str+idx1, idx2);
+    *(res.s[i] + idx2) =  '\0';  // null terminate string
     idx1 += idx2+1;
   }
   return res;

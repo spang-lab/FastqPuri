@@ -93,8 +93,8 @@ static void pack_reads(DS_adap *ptr_DSad, Fq_read *r1, Fq_read *r2) {
  *
  * */
 static int QtrimDS(Fq_read *r1, Fq_read *r2, int L) {
-  Qtrim_global(r1, 0, r1->L - L, 'A');
-  Qtrim_global(r2, 0, r2->L - L, 'A');
+  Qtrim_global(r1, 0, r1->L - L + 1, 'A');
+  Qtrim_global(r2, 0, r2->L - L + 1, 'A');
   return(2);
 }
 
@@ -135,7 +135,7 @@ static double obtain_scoreDS(Fq_read *r1, int pos1, Fq_read *r2, int pos2 ) {
          fprintf(stderr, "ERROR.Report this bug.\n");
          fprintf(stderr, "Exiting program.\n");
          fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
-      } else if (p1 > 0 || p2 > 0) { 
+      } else if (p1 > 0 || p2 > 0) {
          if (p1 < 0 ) {
             score -= (r2->line4[p2] - ZEROQ)/10.0;
          } else if (p2 < 0)  {
@@ -147,9 +147,10 @@ static double obtain_scoreDS(Fq_read *r1, int pos1, Fq_read *r2, int pos2 ) {
       }
     }
   }
-  if(score > par_TF.ad.threshold) 
-     printf("this is the score: %f, Nbases %d, log4*Nbases %f\n", 
-           score, Nbases, LOG_4*Nbases);
+// if(score > par_TF.ad.threshold)
+//  printf("This is the score: %f, Nbases %d, log4*Nbases %f pos1 %d pos2 %d\n",
+//             score, Nbases, LOG_4*Nbases, pos1-r1->L_ad, r2->L-pos2- 1);
+
   return ((Nmatches < MIN_NMATCHES) ? -1.0 : score);
 }
 
@@ -199,7 +200,7 @@ static int alignDS_uint64(Fq_read *r1, Fq_read *r2) {
   Nwindows = r2 -> L_pack - (r2 -> L_ad)/2 - sizeof(uint64_t);
   pos1 = 0;
   // BE CAREFUL WITH THAT
-  //pos2 = r2->L_ext - 2*sizeof(uint64_t) + (r2->L_ext%2);
+  // pos2 = r2->L_ext - 2*sizeof(uint64_t) + (r2->L_ext%2);
   pos2 = r2->L - 2*sizeof(uint64_t) + (r2->L_ext%2);
   memcpy(&r1u64, r1->pack, sizeof(uint64_t));
   for (j = Nwindows; j > 0; j--) {
@@ -208,6 +209,7 @@ static int alignDS_uint64(Fq_read *r1, Fq_read *r2) {
     cmpu64 = (r2u64 ^ r1u64);
     n = __builtin_popcount(cmpu64);
     if (n <= 2*par_TF.ad.mismatches) {
+//      printf("pos2 = %d n = %d %d \n", pos2, n, 2*par_TF.ad.mismatches);
        score = obtain_scoreDS(r1, pos1, r2, pos2);
        if (score > par_TF.ad.threshold) break;
     }

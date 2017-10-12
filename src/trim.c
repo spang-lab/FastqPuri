@@ -108,7 +108,20 @@ static int Nfree_Lmer(Fq_read *seq, int minL) {
      seq -> line4[len_max] = '\0';
      seq -> L = len_max;
      char add[TRIM_STRING];
-     snprintf(add, TRIM_STRING, " TRIMN:%d:%d", pos, pos+len_max);
+     int init;
+     int t_start = pos; 
+     int t_end = pos + len_max -1; 
+     if ((init = strindex(seq->line3, "TRIM")) == -1) {
+        snprintf(add, TRIM_STRING, " TRIMQ:%d:%d", t_start, t_end);
+     } else {
+        init += 6;  // length of TRIMN: or TRIMQ: or TRIMA: or TRIMX:
+        int told_start, told_end;
+        sscanf(&(seq -> line3[init]), "%d:%d", &told_start, &told_end);
+        t_start += told_start;
+        t_end += told_start;
+        seq -> line3[init - 6] = '\0';
+        snprintf(add, TRIM_STRING, " TRIMX:%d:%d", t_start, t_end);
+     }
      if (strlen(add) + strlen(seq -> line3) > READ_MAXLEN) {
        fprintf(stderr, "Cannot append  %s to %s.\n", add, seq -> line3);
        fprintf(stderr, "sequence exceeds the predifined limit.\n");
@@ -235,7 +248,6 @@ static int Qtrim_ends(Fq_read *seq, int minQ, int minL) {
      seq -> line3[init - 6] = '\0';
      snprintf(add, TRIM_STRING, " TRIMX:%d:%d", t_start, t_end);
   }
-  snprintf(add, TRIM_STRING, " TRIMQ:%d:%d", t_start, t_end);
   if (strlen(add) + strlen(seq -> line3) > READ_MAXLEN) {
     fprintf(stderr, "Cannot append  %s to %s.\n", add, seq -> line3);
     fprintf(stderr, "sequence exceeds the predifined limit.\n");
@@ -264,7 +276,7 @@ static int Qtrim_frac(Fq_read *seq, int minQ, int nlowQ) {
   return (ilowQ == nlowQ) ? 0: 1;
 }
 
-/**
+/*
  * @brief trims the ends for lowQ. The rest is kept if it contains < nlowQ lowQ
  * @param seq fastq read
  * @param minQ minimum accepted quality value
@@ -305,7 +317,18 @@ static int Qtrim_endsfrac(Fq_read *seq, int minQ, int minL, int nlowQ ) {
   seq -> line4[seq -> L] = '\0';
   seq -> line2[seq -> L] = '\0';
   char add[TRIM_STRING];
-  snprintf(add, TRIM_STRING, " TRIMQ:%d:%d", t_start, t_end);
+  int init;
+  if ((init = strindex(seq->line3, "TRIM")) == -1) {
+     snprintf(add, TRIM_STRING, " TRIMQ:%d:%d", t_start, t_end);
+  } else {
+     init += 6;  // length of TRIMN: or TRIMQ: or TRIMA: or TRIMX:
+     int told_start, told_end;
+     sscanf(&(seq -> line3[init]), "%d:%d", &told_start, &told_end);
+     t_start += told_start;
+     t_end += told_start;
+     seq -> line3[init - 6] = '\0';
+     snprintf(add, TRIM_STRING, " TRIMX:%d:%d", t_start, t_end);
+  }
   if (strlen(add) + strlen(seq -> line3) > READ_MAXLEN) {
     fprintf(stderr, "Cannot append  %s to %s.\n", add, seq -> line3);
     fprintf(stderr, "sequence exceeds the predifined limit.\n");
@@ -328,6 +351,7 @@ static int Qtrim_endsfrac(Fq_read *seq, int minQ, int minL, int nlowQ ) {
  *
  * */
 int Qtrim_global(Fq_read *seq, int left, int right, char type) {
+  int t_start = left; 
   int t_end = seq ->L - right;
   (seq -> L) -= (left+right);
   memmove(seq -> line4, seq -> line4 + left, seq -> L);
@@ -335,7 +359,18 @@ int Qtrim_global(Fq_read *seq, int left, int right, char type) {
   seq -> line4[seq -> L] = '\0';
   seq -> line2[seq -> L] = '\0';
   char add[TRIM_STRING];
-  snprintf(add, TRIM_STRING, " TRIM%c:%d:%d", type, left, t_end);
+  int init;
+  if ((init = strindex(seq->line3, "TRIM")) == -1) {
+     snprintf(add, TRIM_STRING, " TRIMQ:%d:%d", t_start, t_end);
+  } else {
+     init += 6;  // length of TRIMN: or TRIMQ: or TRIMA: or TRIMX:
+     int told_start, told_end;
+     sscanf(&(seq -> line3[init]), "%d:%d", &told_start, &told_end);
+     t_start += told_start;
+     t_end += told_start;
+     seq -> line3[init - 6] = '\0';
+     snprintf(add, TRIM_STRING, " TRIMX:%d:%d", t_start, t_end);
+  }
   if (strlen(add) + strlen(seq -> line3) > READ_MAXLEN) {
     fprintf(stderr, "Cannot append  %s to %s.\n", add, seq -> line3);
     fprintf(stderr, "sequence exceeds the predifined limit.\n");

@@ -12,5 +12,5 @@ $makeBloom -f $sequence -o rRNA -p 0.0075
 
 # STEP2: run bloom Filter on EColu+rRNA.gq.gz data
 $trimFilter -f $fastq -l 50 --method BLOOM --idx rRNA.bf:0.4\
-           --trimQ ENDSFRAC --trimN STRIP -o bloom 
+           --trimQ ENDSFRAC --trimN ENDS -o bloom 
 
