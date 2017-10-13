@@ -160,7 +160,7 @@ l2_r2=`adsubst $l2_r2 67`
 fqread "\${l1}" "\${l2_r1}" "\${l3}" "\${l4}" >> $file1
 fqread "\${l1}" "\${l2_r2}" "\${l3}" "\${l4}" >> $file2
 
-# Read 8, CASE 3 overlap, contamination, with 2 errora in read2 (seed), TRIM
+# Read 8, CASE 3 overlap, contamination, with 2 errors in read2 (seed), TRIM
 N1=50
 N2=$(($N - $N1)) 
 l1="@READ08, CASE 3, overlap in read, contamination,  with 2 error in read2 (seed) TRIMA:0:$(($N1-1))"
@@ -170,7 +170,7 @@ l2_r2=`adsubst $l2_r2 60 64`
 fqread "\${l1}" "\${l2_r1}" "\${l3}" "\${l4}" >> $file1
 fqread "\${l1}" "\${l2_r2}" "\${l3}" "\${l4}" >> $file2
 
-# Read 9, CASE 3 overlap, contamination, with 3 errors in read2 (seed), TRIM
+# Read 9, CASE 3 overlap, contamination, with 3 errors in read2 (seed), UNCHANGED
 N1=50
 N2=$(($N - $N1)) 
 l1="@READ09, CASE 3, overlap in read, contamination, UNCHANGED"
@@ -253,7 +253,7 @@ N2=$(($N -$Nad1))
 l1="@READ16, CASE 5, No read, 1 error in read 2 (seed) DISCARDED"
 l2_r1=$Ad2bw`cutstr $f1fw 1 $N1`
 l2_r2=$Ad1bw`cutstr $f2fw 1 $N2`
-l2_r1=`adsubst $l2_r1 28 `
+l2_r2=`adsubst $l2_r2 28 `
 fqread "\${l1}" "\${l2_r1}" "\${l3}" "\${l4}" >> $file1
 fqread "\${l1}" "\${l2_r2}" "\${l3}" "\${l4}" >> $file2
 
@@ -263,7 +263,7 @@ N2=$(($N -$Nad1))
 l1="@READ17, CASE 5, No read, 2 errors in read 2 (seed) DISCARDED"
 l2_r1=$Ad2bw`cutstr $f1fw 1 $N1`
 l2_r2=$Ad1bw`cutstr $f2fw 1 $N2`
-l2_r1=`adsubst $l2_r1 28 29`
+l2_r2=`adsubst $l2_r2 28 29`
 fqread "\${l1}" "\${l2_r1}" "\${l3}" "\${l4}" >> $file1
 fqread "\${l1}" "\${l2_r2}" "\${l3}" "\${l4}" >> $file2
 
@@ -273,7 +273,8 @@ N2=$(($N -$Nad1))
 l1="@READ18, CASE 5, No read, 3 errors in read 2 (seed) UNCHANGED"
 l2_r1=$Ad2bw`cutstr $f1fw 1 $N1`
 l2_r2=$Ad1bw`cutstr $f2fw 5 $(($N2+4))`
-l2_r2=`adsubst $l2_r2 28 29 30`
+
+l2_r2=`adsubst $l2_r2 25 26 27`
 fqread "\${l1}" "\${l2_r1}" "\${l3}" "\${l4}" >> $file1
 fqread "\${l1}" "\${l2_r2}" "\${l3}" "\${l4}" >> $file2
 

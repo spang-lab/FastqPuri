@@ -361,7 +361,7 @@ int Qtrim_global(Fq_read *seq, int left, int right, char type) {
   char add[TRIM_STRING];
   int init;
   if ((init = strindex(seq->line3, "TRIM")) == -1) {
-     snprintf(add, TRIM_STRING, " TRIMQ:%d:%d", t_start, t_end);
+     snprintf(add, TRIM_STRING, " TRIM%c:%d:%d", type, t_start, t_end);
   } else {
      init += 6;  // length of TRIMN: or TRIMQ: or TRIMA: or TRIMX:
      int told_start, told_end;
@@ -566,14 +566,14 @@ static int align_uint64(Fq_read *seq, Ad_seq *ptr_adap) {
   for (j=0; j < Nwindows ; j++) {
     memcpy(&read64, seq->pack + Nwindows-1-j, sizeof(uint64_t) );
     cmp64 = (adsh ^ read64);
-    n = __builtin_popcount(cmp64 >> 4);
+    n = __builtin_popcountl(cmp64 >> 4);
     if (n <= 2*mismatches) {
       score = obtain_score(seq, pos, ptr_adap, 0);
       if (score > threshold) break;
     }
     pos--;
     cmp64 = (ad ^ read64);
-    n = __builtin_popcount(cmp64);
+    n = __builtin_popcountl(cmp64);
     if (n <= 2*mismatches) {
       score =  obtain_score(seq, pos, ptr_adap, 0);
       if (score > threshold) break;

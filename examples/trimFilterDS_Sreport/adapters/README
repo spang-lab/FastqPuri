@@ -30,9 +30,9 @@
 #   * 04, CASE 4 full overlap + garbage, DISCARDED                             #
 #   * 05, CASE 4 full overlap + garbage, too short, DISCARDED                  #
 #   * 06, CASE 5 full overlap + garbage, DISCARDED                             #
-#   * 07, CASE 3 overlap, contamination, with 1 error in both reads, TRIM      #
-#   * 08, CASE 3 overlap, contamination, with 2 errors in read2 (seed), TRIM   #
-#   * 09, CASE 3 overlap, contamination, with 3 errors in read2 (seed), TRIM   #
+#   * 07, CASE 3 overlap, contamination, 1 error in both reads, TRIM           #
+#   * 08, CASE 3 overlap, contamination, 2 errors in read2 (seed), TRIM        #
+#   * 09, CASE 3 overlap, contamination, 3 errors in read2 (seed), UNCHANGED   #
 #   * 10, CASE 4 full overlap + garbage, 1 error both reads, TRIM              #
 #   * 11, CASE 4 full overlap + garbage, 2 errors in read2 (seed), TRIM        #
 #   * 12, CASE 4 full overlap + garbage, 3 errors in read2(seed), UNCHANGED    #
