@@ -12,6 +12,7 @@ reads, reads containing too many N's or contamination reads
 Clone the repository, or download the source. Make sure that 
 your system supplies the following dependencies for FastqArazketa.
 
+- OS: Linux, freeBSD (**testing**), Mac OS (**testing**), OpenBSD (**testing**)
 - `cmake` (at least version 2.8), 
 - a `C` compiler supporting the `c11` standard 
   (change the compiler flags otherwise),
@@ -44,6 +45,11 @@ using the option -D followed by the variable name. This variables are,
 
 The executables will be created in the folder `bin`. 
 
+**WARNING:** do not move the executables that depend on `R` scripts, 
+anywhere else, unless you also move the corresponding `R` scripts respecting
+the local folder structure. 
+
+
 ## Executables
 
 * `Qreport`: creates a quality report in html format (see `README_Qreport.md`),
@@ -54,9 +60,9 @@ The executables will be created in the folder `bin`.
    and stores it in a file (see `README_makeBloom.md`)
 * `makeTree`: creates a tree of a certain depth from a fasta file and stores
  it in a file (see `README_makeTree.md`),
-* `trimFilter`: performs the filtering process for single end data 
+* `trimFilter`: performs the filtering process for single-end data 
    (see `README_trimFilter.md`).
-* `trimFilter`: performs the filtering process for double stranded data 
+* `trimFilterDS`: performs the filtering process for double stranded data 
    (see `README_trimFilterDS.md`).
 
 ## Documentation of the code

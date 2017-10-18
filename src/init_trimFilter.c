@@ -43,7 +43,7 @@ extern Iparam_trimFilter par_TF; /**< Input parameters of makeTree */
 void printHelpDialog_trimFilter() {
   const char dialog[] =
    "Usage: trimFilter --ifq <INPUT_FILE.fq> --length <READ_LENGTH> \n"
-   "                  --output [O_PREFIX]\n"
+   "                  --output [O_PREFIX] --gzip [y|n]\n"
    "                  --adapter [<ADAPTERS.fa>:<mismatches>:<score>]\n"
    "                  --method [TREE|BLOOM] \n"
    "                  (--idx [<INDEX_FILE>:<score>:<lmer_len>] |\n"
@@ -64,6 +64,7 @@ void printHelpDialog_trimFilter() {
    " -f, --ifq     fastq input file [*fq|*fq.gz|*fq.bz2], mandatory option.\n"
    " -l, --length  read length: length of the reads, mandatory option.\n"
    " -o, --output  output prefix (with path), optional (default ./out).\n"
+   " -z, --gzip    gzips output files: yes or no (default yes)\n"
    " -A, --adapter adapter input three fields separated by colons:\n"
    "               <ADAPTERS.fa>: fasta file containing adapters,\n"
    "               <mismatches>: maximum mismatch count allowed,\n"
@@ -122,7 +123,7 @@ void printHelpDialog_trimFilter() {
  *        and stores them in the global variable par_TF.
 */
 void getarg_trimFilter(int argc, char **argv) {
-  if ( argc != 2 && (argc > 23 || argc % 2 == 0 || argc == 1) ) {
+  if ( argc != 2 && (argc > 25 || argc % 2 == 0 || argc == 1) ) {
      fprintf(stderr, "Not adequate number of arguments\n");
      printHelpDialog_trimFilter();
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
@@ -145,6 +146,7 @@ void getarg_trimFilter(int argc, char **argv) {
      {"ifq", required_argument, 0, 'f'},
      {"length", required_argument, 0, 'l'},
      {"output", required_argument, 0, 'o'},
+     {"gzip", required_argument, 0, 'z'},
      {"adapter", required_argument, 0, 'A'},
      {"minQ", required_argument, 0, 'q'},
      {"idx", required_argument, 0, 'x'},
@@ -159,7 +161,7 @@ void getarg_trimFilter(int argc, char **argv) {
   int option;
   int method_len = 20;
   Split globTrim, adapt, tree_fa, index;
-  while ((option = getopt_long(argc, argv, "hvf:l:o:A:q:x:a:C:Q:m:p:g:N:",
+  while ((option = getopt_long(argc, argv, "hvf:l:o:z:A:q:x:a:C:Q:m:p:g:N:",
         long_options, 0)) != -1) {
     switch (option) {
       case 'h':
@@ -178,6 +180,22 @@ void getarg_trimFilter(int argc, char **argv) {
          break;
       case 'o':
          par_TF.Oprefix = optarg;
+         break;
+      case 'z':
+         if (!strncmp(optarg,"no",3) || !strncmp(optarg,"n",2) || 
+            !strncmp(optarg,"NO",3) || !strncmp(optarg,"N",2)) {
+            par_TF.uncompress = 1; 
+         } else if (!strncmp(optarg,"yes",4) || !strncmp(optarg,"y",2) || 
+            !strncmp(optarg,"YES",4) || !strncmp(optarg,"Y",2)) {
+            par_TF.uncompress = 1; 
+         } else {
+            fprintf(stderr, "--compress,-z: optionERR. You must pass  \n");
+            fprintf(stderr, "one of the following options: \n");
+            fprintf(stderr, "y|Y|yes|YES|n|N|no|NO");
+            fprintf(stderr, "and you passed %s\n", optarg);
+            fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+            exit(EXIT_FAILURE);
+         }
          break;
       case 'A':
          par_TF.is_adapter = true;
@@ -304,6 +322,11 @@ void getarg_trimFilter(int argc, char **argv) {
     fprintf(stderr, "- Output prefix: %s (default value).\n", par_TF.Oprefix);
   } else {
     fprintf(stderr, "- Output prefix: %s.\n", par_TF.Oprefix);
+  }
+  if (par_TF.uncompress) {
+    fprintf(stderr, "- Output files will not be compressed.\n");
+  } else {
+    fprintf(stderr, "- Output files will be compressed.\n");
   }
   // handling adapters
   if (par_TF.ad.ad_fa == NULL) {

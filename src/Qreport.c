@@ -56,7 +56,6 @@ int main(int argc, char *argv[]) {
   double cpu_time_used;
   time_t rawtime;
   struct tm * timeinfo;
-
   // Start the clock
   start = clock();
   time(&rawtime);

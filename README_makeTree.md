@@ -5,14 +5,7 @@ depth `DEPTH` and saves it to a file.
 
 **NOTE**: computing a tree from a fasta file is very memory 
 intensive. The program will not compute a tree if the length of the 
-sequences in the fasta file exceeds 10 MB. Nevertheless, be 
-careful with the `DEPTH`. The longer the `DEPTH`, the larger the tree
-structure. The memory roof for the tree was set to XXXXXXXXXXXXX. 
-If you want to change it, you can set the variable when calling 
-`cmake` by passing the option `-DMEM_ROOF=<yourmemoryroof>`
-
-**NOTE:** I might improve this. I have to decide how to set the 
-memory roof!
+sequences in the fasta file exceeds 10 MB. 
 
 ## Running the program
 
@@ -28,7 +21,6 @@ Options:
  -f, --fasta   Input folder containing *bin data (output from Qreport). Mandatory option.
  -l, --depth depth of the tree structure
  -o, --output Output file. If the extension is not *gz, it is added. Mandatory option.
- -o Output file (with NO extension). Mandatory option.
 ```
 
 
@@ -39,7 +31,7 @@ read the `Doxygen` documentation of the file `tree.c`, function `save_tree`.
 
 ## Example 
  
-TODO
+TODOTODOTODOTODOTODO (It was tested somewhere!!)
 
 ## Contributors
 

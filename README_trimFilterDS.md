@@ -16,8 +16,8 @@ automatically discarded.
 Usage `C` executable (in folder `bin`):
 
 ```
-Usage: trimFilter --ifq <INPUT1.fq>:<INPUT2.fq> --length <READ_LENGTH>
-                  --output [O_PREFIX1:O_PREFIX2]
+Usage: trimFilterDS --ifq <INPUT1.fq>:<INPUT2.fq> --length <READ_LENGTH>
+                  --output [O_PREFIX] --gzip [y|n]
                   --adapter [<AD1.fa>:<AD2.fa>:<mismatches>:<score>]
                   --method [TREE|BLOOM]
                   (--idx [<INDEX_FILE>:<score>:<lmer_len>] |
@@ -41,7 +41,7 @@ Options:
  -f, --ifq     2 fastq input files [*fq|*fq.gz|*fq.bz2] separated by colons, mandatory option.
  -l, --length  read length: length of the reads, mandatory option.
  -o, --output  output prefix (with path), optional (default ./out). Output
-
+ -z, --gzip    gzips output files: yes or no (default yes).
  -A, --adapter adapter input four fields separated by colons:
                <AD1.fa>: fasta file containing adapters from read 1,
                <AD2.fa>: fasta file containing adapters from read 2,

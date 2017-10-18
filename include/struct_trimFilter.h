@@ -55,6 +55,7 @@ typedef struct _iparam_trimFilter {
   char *Iidx;  /**< Input index file (from an input.fa cont file) */
   char *Iinfo; /**< Input index info file  */
   char *Oprefix;  /**< Output files prefix for single str (PATH/prefix) */
+  bool uncompress;  /**< true if output uncompressed, false otherwise */
   Adapter ad;  /**< AdapterDS trimming parameters  */
   Bfkmer *ptr_bfkmer; /**< bloom filter kmer structure */
   int trimQ;   /**< NO(0), FRAC(1), ENDS(2), ENDSFRAC(3), GLOBAL(4) */

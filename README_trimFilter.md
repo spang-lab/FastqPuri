@@ -14,7 +14,7 @@ Usage `C` executable (in folder `bin`):
 
 ```
 Usage: trimFilter --ifq <INPUT_FILE.fq> --length <READ_LENGTH>
-                  --output [O_PREFIX]
+                  --output [O_PREFIX] --gzip [y|n]
                   --adapter [<ADAPTERS.fa>:<mismatches>:<score>]
                   --method [TREE|BLOOM]
                   (--idx [<INDEX_FILE>:<score>:<lmer_len>] |
@@ -35,6 +35,7 @@ Options:
  -f, --ifq     fastq input file [*fq|*fq.gz|*fq.bz2], mandatory option.
  -l, --length  read length: length of the reads, mandatory option.
  -o, --output  output prefix (with path), optional (default ./out).
+ -z, --gzip    gzips output files: yes or no (default yes).
  -A, --adapter adapter input three fields separated by colons:
                <ADAPTERS.fa>: fasta file containing adapters,
                <mismatches>: maximum mismatch count allowed,
@@ -131,7 +132,7 @@ and apply the same criteria to trim/discard a read. A list of possible
 situations follows, to illustrate how it works (`MINL=25`, `mismatches=2`):
 
 ```
-ADAPTER: CAAGCAGAAGACGGCATACGAG
+ADAPTER: GGCATACGAGCTCTTCCGATCT
 REV_COM: AGATCGGAAGAGCTCGTATGCC
 
 CASE1A:  CACAGTCGATCAGCGAGCAGGCATTCATGCTGAGATCGGAAGAGATCGTATG
@@ -209,7 +210,7 @@ The score is calculated as follows:
   once for all samples. The index file name and the threshold score have
   to be specified through the following option:
    - `--idx <INDEX_FILE>:<score>`
-  The score is computed as for the previous options. **WORK IN PROGRESS**
+  The score is computed as for the previous options. 
 
 #### LowQ
 
@@ -220,7 +221,7 @@ The score is calculated as follows:
   beginning and at the end of the read. Trim them at both ends until the
   quality is above the threshold. Keep the read in `*_good.fq.gz`
   and annotate in the fourth line where the read has been trimmed (starting to
-  count from 0) if the length of the remaining part is larger than `MINL`.
+  count from 0) if the length of the remaining part at least `MINL`.
   Redirect the read to `*_lowq.fq.gz` otherwise.
     Examples (-q 27 [<] -m 25):
  ```
@@ -243,7 +244,7 @@ The score is calculated as follows:
  999999999999999IIIIIIII9IIIIIIIII9II99999999999999
  ```
 
-- `--trim FRAC [--percent p]`: redirect  the read to `*_lowq.fq.gz` if
+- `--trimQ FRAC [--percent p]`: redirect  the read to `*_lowq.fq.gz` if
    there are more than `p%` nucleotides whose quality lies below the threshold.
    `p=5` per default.
     Examples (-q 27 [<] -m 25 -p 5):
@@ -266,7 +267,7 @@ The score is calculated as follows:
  +position: -3336785
  999999999999999IIIIIIII9IIIIIIIII9II99999999999999
  ```
-- `--trim ENDSFRAC --percent p`: first trim the ends as in the `ENDS` option.
+- `--trimQ ENDSFRAC --percent p`: first trim the ends as in the `ENDS` option.
    Accept the trimmed read if the number of low quality nucleotides does not
    exceed `p%` (default  `p = 5`).
    Redirect the read to `*_lowq.fq.gz` otherwise.
@@ -292,7 +293,7 @@ The score is calculated as follows:
  999999999999999IIIIIIII9IIIIIIIII9II99999999999999
  ```
 
-- `--trim GLOBAL --global n1:n2`: cut all read globally `n1` nucleotides from
+- `--trimQ GLOBAL --global n1:n2`: cut all reads globally `n1` nucleotides from
    the left and `n2` from the right.
 
 **Note:** qualities are evaluated assuming the reads to follow the
@@ -332,7 +333,7 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIIIIIIIIIIIII
 
 
 - `--trimN STRIP`: Obtain the largest N free subsequence of the read. Accept it
-   if is longer than the half of the original read length, redirect it to
+   if is at least MINL nucleotides long, redirect it to
    `*_NNNN.fq.gz` otherwise. Example:
 ```
 ORIGINAL                                           FILTERED

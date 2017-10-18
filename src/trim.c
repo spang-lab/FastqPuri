@@ -710,7 +710,7 @@ int trim_sequenceQ(Fq_read *seq) {
  *
  * */
 bool is_read_inTree(Tree *tree_ptr, Fq_read *seq) {
-  char *read = malloc(seq->L);
+  char read[seq->L];
   memcpy(read, seq -> line2, seq -> L+1);
   Lmer_sLmer(read, seq -> L);
   if (check_path(tree_ptr, read, seq -> L) > par_TF.score) {
@@ -719,7 +719,6 @@ bool is_read_inTree(Tree *tree_ptr, Fq_read *seq) {
      rev_comp(read, seq -> L);
      return (check_path(tree_ptr, read, seq -> L) > par_TF.score);
   }
-  free(read);
 }
 
 /**

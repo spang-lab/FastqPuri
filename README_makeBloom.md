@@ -57,7 +57,7 @@ test the bloom filter performance.
  - The fastq files:
    * `human_reads.fq.gz`
    * `EColi_reads.fq.gz`
-   are analyzed. They contain 10e5 reads each generated with dgwin.
+   are analyzed. They contain 10e5 reads each generated with `dgwsim`.
  - STEP1: Create bloom filters for EColi genome  with FPR:
    `[0.005 0.0075 0.01 0.02]`                                            
 
@@ -107,7 +107,6 @@ the set **S**, we compute **H<sub>i</sub> (s<sub>&beta;</sub>) &forall;
 i &isin; {1,...,g}** and check whether all coresponding positions in the 
 filter are set to `1`, in which case we can say that **s<sub>&beta;</sub>** 
 might be in the set. Otherwise it is definitely not in the set. 
-[fdsa](http://www.google.es)
 
 ### Parameters. 
 
@@ -147,14 +146,14 @@ p(g, n, m) = (1 - (1 - <sup>1</sup>&frasl;<sub>m</sub>)<sup>gn</sup>)<sup>g</sup
 = (1 - e<sup> - <sup>gn</sup>&frasl;<sub>m</sub> </sup>)<sup>g</sup>
 </b></p>
 
-For a giben `n` and `m` the value of `g` that minimizes `p` is, 
+For a given `n` and `m` the value of `g` that minimizes `p` is, 
 
 <p align="center"><b>
 <sup>dp(g, n, m)</sup>&frasl;<sub>dg</sub> = 0 &rArr; 
 g = <sup>m</sup>&frasl;<sub>n</sub> log(2)
 </b></p>
 
-The requiered number of bits `m` for the desired positive rate given 
+The required number of bits `m` for the desired positive rate given 
 `n` number of elements and assuming the optimal number of hash functions 
 being used is, 
 
@@ -201,7 +200,7 @@ number of bits per element is
 <sub>log<sup>2</sup>(2)</sub>.
 </b></p>
 
-In the figures below, we can see both the optimal number of bits 
+In the figures below, we can see both,  the optimal number of bits 
 per element and the optimal number of hash functions as a function 
 of the false positive rate. 
 
@@ -221,7 +220,8 @@ or errors in the base calling procedure, since the filter itself
 does not allow for false negatives. 
 
 To increase **specificity** (true negative rate, TN/(TN + FP)), you can increase
-the score threshold (`-s`) or, obviusly reduce the positive rate, (`-p`). 
+the score threshold (`-s`) or, obviously reduce the positive rate, (`-p`). 
+
 
 
 

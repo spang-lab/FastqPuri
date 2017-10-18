@@ -27,6 +27,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include "Rcommand_Sreport.h"
 #include "init_Sreport.h"
@@ -54,7 +55,7 @@ extern Iparam_Sreport par_SR; /**< input parameters Sreport*/
  * @endcode
  * */
 char *command_Sreport(){
-  char command[MAX_RCOMMAND];
+  char *command = calloc(MAX_RCOMMAND, sizeof(char));
   char cwd[1024];
   if (getcwd(cwd, sizeof(cwd)) != NULL)
       fprintf(stdout, "Current working dir: %s\n", cwd);
@@ -72,6 +73,5 @@ rmarkdown::render('%s', params = list(inputfolder = inputfolder, \
 version = '%s'), output_file = output_file)\"",
         RSCRIPT_EXEC, par_SR.inputfolder,
         par_SR.outputfile, cwd, par_SR.Rmd_file, VERSION);
-  char *str_command = command;
-  return str_command;
+  return command;
 }

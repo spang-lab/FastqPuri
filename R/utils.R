@@ -118,10 +118,10 @@ my_boxplot <- function(data,...){
 
 my_plot <- function(data){
     L <- ncol(data$Q_boxes)
-    my_boxplot(data,ylim=c(0,40),xlab="Position in read",
+    my_boxplot(data,ylim=c(0,42),xlab="Position in read",
       ylab="Quality",xaxt="n",yaxt="n")
     axis(1,1:L,1:L,cex.axis=0.6)
-    axis(2,data$qualities,data$qualities)
+    axis(2,data$qualities,data$qualities, cex.axis=0.6)
 
 }
 

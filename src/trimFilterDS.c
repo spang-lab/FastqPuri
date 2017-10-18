@@ -77,17 +77,30 @@ int main(int argc, char *argv[]) {
   strncpy(fq_cont2, par_TF.Oprefix, MAX_FILENAME);
   strncpy(fq_lowq2, par_TF.Oprefix, MAX_FILENAME);
   strncpy(fq_NNNN2, par_TF.Oprefix, MAX_FILENAME);
-  strncat(fq_good1, "1_good.fq.gz", 15);
-  strncat(fq_adap1, "1_adap.fq.gz", 15);
-  strncat(fq_cont1, "1_cont.fq.gz", 15);
-  strncat(fq_lowq1, "1_lowq.fq.gz", 15);
-  strncat(fq_NNNN1, "1_NNNN.fq.gz", 15);
+  if (!par_TF.uncompress) {
+     strncat(fq_good1, "1_good.fq.gz", 15);
+     strncat(fq_adap1, "1_adap.fq.gz", 15);
+     strncat(fq_cont1, "1_cont.fq.gz", 15);
+     strncat(fq_lowq1, "1_lowq.fq.gz", 15);
+     strncat(fq_NNNN1, "1_NNNN.fq.gz", 15);
+     strncat(fq_good2, "2_good.fq.gz", 15);
+     strncat(fq_adap2, "2_adap.fq.gz", 15);
+     strncat(fq_cont2, "2_cont.fq.gz", 15);
+     strncat(fq_lowq2, "2_lowq.fq.gz", 15);
+     strncat(fq_NNNN2, "2_NNNN.fq.gz", 15);
+  } else {
+     strncat(fq_good1, "1_good.fq", 15);
+     strncat(fq_adap1, "1_adap.fq", 15);
+     strncat(fq_cont1, "1_cont.fq", 15);
+     strncat(fq_lowq1, "1_lowq.fq", 15);
+     strncat(fq_NNNN1, "1_NNNN.fq", 15);
+     strncat(fq_good2, "2_good.fq", 15);
+     strncat(fq_adap2, "2_adap.fq", 15);
+     strncat(fq_cont2, "2_cont.fq", 15);
+     strncat(fq_lowq2, "2_lowq.fq", 15);
+     strncat(fq_NNNN2, "2_NNNN.fq", 15);
+  }
   strncat(summary, "_summary.bin", 15);
-  strncat(fq_good2, "2_good.fq.gz", 15);
-  strncat(fq_adap2, "2_adap.fq.gz", 15);
-  strncat(fq_cont2, "2_cont.fq.gz", 15);
-  strncat(fq_lowq2, "2_lowq.fq.gz", 15);
-  strncat(fq_NNNN2, "2_NNNN.fq.gz", 15);
   FILE *fq_in1, *f_good1, *fq_in2, *f_good2;
   FILE *f_cont1 = NULL, *f_cont2 = NULL;
   FILE *f_lowq1 = NULL, *f_lowq2 = NULL;

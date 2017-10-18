@@ -515,10 +515,6 @@ Bfilter *create_Bfilter(Fa_data *ptr_fasta, int kmersize, uint64_t bfsizeBits,
           multiHash(ptr_bfkmer);
           insert_and_fetch(ptr_bf, ptr_bfkmer);
       }
-      if (!(position % (uint64_t)1e7)) {
-        fprintf(stderr, "Covering fasta entry %d, position %ld\n",
-                i, position);
-      }
     }
   }
   return ptr_bf;

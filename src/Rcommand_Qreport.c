@@ -27,6 +27,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include "Rcommand_Qreport.h"
 #include "init_Qreport.h"
@@ -39,7 +40,7 @@ extern Iparam_Qreport par_QR; /**< input parameters Qreport*/
  * @brief returns Rscript command that generates the quality report in html
  * */
 char *command_Qreport() {
-  char command[MAX_RCOMMAND];
+  char *command = calloc(MAX_RCOMMAND,sizeof(char));
   char cwd[1024];
   if (getcwd(cwd, sizeof(cwd)) != NULL)
       fprintf(stdout, "Current working dir: %s\n", cwd);
@@ -58,7 +59,6 @@ rmarkdown::render('%s', params = list(inputfile = inputfile, filter=%d, \
  version = '%s'), output_file = output_file)\"", RSCRIPT_EXEC,
        par_QR.outputfilebin, par_QR.outputfilehtml, cwd,
        RMD_QUALITY_REPORT, par_QR.filter, VERSION);
-  char *str_command = command;
-  return str_command;
+  return command;
 }
 

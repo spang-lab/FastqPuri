@@ -67,12 +67,21 @@ int main(int argc, char *argv[]) {
   strncpy(fq_lowq, par_TF.Oprefix, MAX_FILENAME);
   strncpy(fq_NNNN, par_TF.Oprefix, MAX_FILENAME);
   strncpy(summary, par_TF.Oprefix, MAX_FILENAME);
-  strncat(fq_good, "_good.fq.gz", 15);
-  strncat(fq_adap, "_adap.fq.gz", 15);
-  strncat(fq_cont, "_cont.fq.gz", 15);
-  strncat(fq_lowq, "_lowq.fq.gz", 15);
-  strncat(fq_NNNN, "_NNNN.fq.gz", 15);
+  if (!par_TF.uncompress) {
+     strncat(fq_good, "_good.fq.gz", 15);
+     strncat(fq_adap, "_adap.fq.gz", 15);
+     strncat(fq_cont, "_cont.fq.gz", 15);
+     strncat(fq_lowq, "_lowq.fq.gz", 15);
+     strncat(fq_NNNN, "_NNNN.fq.gz", 15);
+  } else {
+     strncat(fq_good, "_good.fq", 15);
+     strncat(fq_adap, "_adap.fq", 15);
+     strncat(fq_cont, "_cont.fq", 15);
+     strncat(fq_lowq, "_lowq.fq", 15);
+     strncat(fq_NNNN, "_NNNN.fq", 15);
+  }
   strncat(summary, "_summary.bin", 15);
+
   FILE *fq_in, *f_good;
   FILE *f_cont = NULL;
   FILE *f_lowq = NULL;
