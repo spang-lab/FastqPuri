@@ -64,6 +64,13 @@ static uint32 UNALIGNED_LOAD32(const char *p) {
 #define bswap_32(x) OSSwapInt32(x)
 #define bswap_64(x) OSSwapInt64(x)
 
+#elif defined(__OpenBSD__)
+
+// OpenBSD 
+#include <endian.h>
+#define bswap_32(x) swap32(x)
+#define bswap_64(x) swap64(x)
+
 #else
 
 #include <byteswap.h>

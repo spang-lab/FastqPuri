@@ -100,7 +100,8 @@ message("-- Setting Rmd summary filter report file for DS data: ${RMD_SUMMARY_FI
 CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/config.h.in ${CMAKE_SOURCE_DIR}/config.h)
 
 # Set verbose 
-#set(CMAKE_VERBOSE_MAKE ON)
+set(CMAKE_VERBOSE_MAKEFILE ON)
+
 
 # Set compiler flags
 set(CMAKE_C_FLAGS  "-Wall -O3 -march=native -std=c11") 

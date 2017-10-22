@@ -61,6 +61,7 @@ char *command_Sreport(){
       fprintf(stdout, "Current working dir: %s\n", cwd);
   else
       perror("getcwd() error");
+#ifdef HAVE_RPKG
   snprintf(command, MAX_RCOMMAND, "%s -e \" inputfolder = normalizePath('%s', \
 mustWork = TRUE); output = '%s';\
 output_file = gsub('.*/', '', output);\
@@ -73,5 +74,6 @@ rmarkdown::render('%s', params = list(inputfolder = inputfolder, \
 version = '%s'), output_file = output_file)\"",
         RSCRIPT_EXEC, par_SR.inputfolder,
         par_SR.outputfile, cwd, par_SR.Rmd_file, VERSION);
+#endif
   return command;
 }
