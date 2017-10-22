@@ -46,7 +46,7 @@ char *command_Qreport() {
       fprintf(stdout, "Current working dir: %s\n", cwd);
   else
       perror("getcwd() error");
-
+#ifdef HAVE_RPKG
   snprintf(command, MAX_RCOMMAND,"%s -e \" inputfile = normalizePath('%s', \
  mustWork = TRUE) ; output = '%s';\
 output_file = gsub('.*/', '', output);\
@@ -59,6 +59,7 @@ rmarkdown::render('%s', params = list(inputfile = inputfile, filter=%d, \
  version = '%s'), output_file = output_file)\"", RSCRIPT_EXEC,
        par_QR.outputfilebin, par_QR.outputfilehtml, cwd,
        RMD_QUALITY_REPORT, par_QR.filter, VERSION);
+#endif
   return command;
 }
 
