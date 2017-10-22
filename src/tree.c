@@ -133,7 +133,7 @@ void free_all_nodes(Tree *tree_ptr) {
   tree_ptr -> pool_available = 0;
   tree_ptr -> nnodes = 0;
   tree_ptr -> L = 0;
-  fprintf(stderr, "%ld Bytes deallocated.\n", dealloc_mem);
+  fprintf(stderr, "%" PRIu64 " Bytes deallocated.\n", dealloc_mem);
   alloc_mem -= dealloc_mem;
   mem_usageMB();
 }
@@ -355,7 +355,7 @@ Tree* read_tree(char *filename) {
      }
      alloc_mem += sizeof(Node)*sz;
   }
-  fprintf(stderr, "- Allocating %ld bytes.\n",
+  fprintf(stderr, "- Allocating %" PRIu64 " bytes.\n",
          (uint64_t)(sizeof(Node)*sz + sizeof(Node*))*(tree_ptr -> pool_count));
   // Reconstructing addresses
   for (i = 0; i < tree_ptr -> pool_count; i++) {

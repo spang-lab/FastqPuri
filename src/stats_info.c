@@ -245,14 +245,16 @@ void print_info(Info* res, char *infofile) {
              res -> lane_tags[0]);
   fprintf(f, "- Min Quality: %d\n", res -> minQ);
   fprintf(f, "- Number of ACGT in the first tile: \n");
-  fprintf(f, "  A = %ld, C = %ld, G = %ld, T = %ld , N = %ld\n",
+  fprintf(f, "  A = %" PRIu64 ", C = %" PRIu64 ", G = %" PRIu64 
+        ", T = %" PRIu64 " , N = %" PRIu64 "\n",
         res -> ACGT_tile[0],
         res -> ACGT_tile[1],
         res -> ACGT_tile[2],
         res -> ACGT_tile[3],
         res -> ACGT_tile[4]);
   fprintf(f, "\n- Number of ACGT with low Quality in the first tile:\n");
-  fprintf(f, "  A = %ld, C = %ld, G = %ld, T = %ld, N = %ld\n",
+  fprintf(f, "  A = %" PRIu64 ", C = %" PRIu64 ", G = %" PRIu64 
+        ", T = %" PRIu64 " , N = %" PRIu64 "\n",
         res -> lowQ_ACGT_tile[0],
         res -> lowQ_ACGT_tile[1],
         res -> lowQ_ACGT_tile[2],
@@ -266,13 +268,15 @@ void print_info(Info* res, char *infofile) {
   for (i = 0; i < (res -> nQ); i++) {
      fprintf(f, "  Q = %c : ", (char) (res -> qual_tags[i] + ZEROQ));
      for (j = 0 ; j< res -> read_len; j++) {
-        fprintf(f, "%ld ", res -> QPosTile_table[i*(res -> read_len) +j]);
+        fprintf(f, "%" PRIu64, 
+              res -> QPosTile_table[i*(res -> read_len) +j]);
      }
-     fprintf(f, "\n");
+     fprintf(f, " \n");
   }
   fprintf(f, "\n- Number of reads with M low quality nucleotides: \n");
   for (i = 0; i < (res -> read_len +1); i++) {
-     fprintf(f, "  M lowQ = %2d,  Nreads = %ld \n", i, res -> reads_MlowQ[i]);
+     fprintf(f, "  M lowQ = %2d,  Nreads = %" PRIu64 "\n", 
+             i, res -> reads_MlowQ[i]);
      if (res -> reads_MlowQ[i] > max && i >0) max = res -> reads_MlowQ[i];
   }
   fprintf(f, "\n- Histogram with M low quality nucleotides in tile 1: \n\n");
@@ -290,7 +294,8 @@ void print_info(Info* res, char *infofile) {
   fprintf(f, "\n- Number of nucleotides per position: \n\n");
   fprintf(f, "         A       C       G       T       N   \n");
   for (j =  0; j < res -> read_len; j++) {
-     fprintf(f, "%3d: %7ld %7ld %7ld %7ld %7ld \n", j+1,
+     fprintf(f, "%3d: %7" PRIu64 " %7" PRIu64 " %7" PRIu64 
+           " %7" PRIu64 " %7" PRIu64 " \n", j+1,
           res -> ACGT_pos[N_ACGT *j ],
           res -> ACGT_pos[N_ACGT *j+ 1 ],
           res -> ACGT_pos[N_ACGT *j+ 2 ],

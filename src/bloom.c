@@ -37,6 +37,12 @@
 static uint8_t fw0[256], fw1[256], fw2[256], fw3[256];
 static uint8_t bw0[256], bw1[256], bw2[256], bw3[256];
 
+/**
+ * @brief bitMask, ith bit set to 1 in position i
+ * */
+static const unsigned char bitMask[0x08] = {0x01, 0x02, 0x04, 0x08,
+                                            0x10, 0x20, 0x40, 0x80};
+
 extern uint64_t alloc_mem; /**< allocated memory */
 
 /**
@@ -503,9 +509,9 @@ Bfilter *create_Bfilter(Fa_data *ptr_fasta, int kmersize, uint64_t bfsizeBits,
   fprintf(stderr, "Creating a bloomfilter.\n");
   fprintf(stderr, "- false positive rate: %f\n", falsePosRate);
   fprintf(stderr, "- kmersize: %d\n", kmersize);
-  fprintf(stderr, "- size of bloom filter (in bits): %ld\n", bfsizeBits);
+  fprintf(stderr, "- size of bloom filter (in bits): %" PRIu64 "\n", bfsizeBits);
   fprintf(stderr, "- number of hash functions used: %d\n", hashNum);
-  fprintf(stderr, "- number of elements that will be inserted: %ld\n", nelem);
+  fprintf(stderr, "- number of elements that will be inserted: %" PRIu64 "\n", nelem);
   for (i=0; i < ptr_fasta -> nentries; i++) {
     maxN = ptr_fasta -> entry[i].N - kmersize + 1;
     for (position = 0; position < maxN; position++) {
@@ -538,7 +544,7 @@ Bfilter *create_Bfilter(Fa_data *ptr_fasta, int kmersize, uint64_t bfsizeBits,
 void save_Bfilter(Bfilter *ptr_bf, char *filterfile, char *paramfile) {
   fprintf(stderr, "Store a bloom filter in: %s (filter), %s (param) \n",
           filterfile, paramfile);
-  fprintf(stderr, "Bloom filter size in bytes, %ld\n", ptr_bf -> bfsizeBytes);
+  fprintf(stderr, "Bloom filter size in bytes, %" PRIu64 "\n", ptr_bf -> bfsizeBytes);
   FILE *fout = fopen(filterfile, "wb");
   if (fout == NULL) {
      free_Bfilter(ptr_bf);
@@ -559,9 +565,9 @@ void save_Bfilter(Bfilter *ptr_bf, char *filterfile, char *paramfile) {
   }
   fprintf(fout, "kmersize = %d\n", ptr_bf -> kmersize);
   fprintf(fout, "hashNum = %d\n", ptr_bf -> hashNum);
-  fprintf(fout, "bfsizeBits = %ld\n", ptr_bf -> bfsizeBits);
+  fprintf(fout, "bfsizeBits = %" PRIu64  "\n", ptr_bf -> bfsizeBits);
   fprintf(fout, "falsePosRate = %lf\n", ptr_bf -> falsePosRate);
-  fprintf(fout, "nelem = %ld\n", ptr_bf -> nelem);
+  fprintf(fout, "nelem = %" PRIu64 "\n", ptr_bf -> nelem);
   fclose(fout);
 }
 
@@ -594,9 +600,9 @@ Bfilter *read_Bfilter(char *filterfile, char *paramfile) {
   char tmp1[30], tmp2[30];
   fscanf(fin, "%s %s %d", tmp1, tmp2, &kmersize);
   fscanf(fin, "%s %s %d", tmp1, tmp2, &hashNum);
-  fscanf(fin, "%s %s %ld", tmp1, tmp2, &bfsizeBits);
+  fscanf(fin, "%s %s %" SCNu64 , tmp1, tmp2, &bfsizeBits);
   fscanf(fin, "%s %s %lf", tmp1, tmp2, &falsePosRate);
-  fscanf(fin, "%s %s %ld", tmp1, tmp2, &nelem);
+  fscanf(fin, "%s %s %" SCNu64 ,tmp1, tmp2, &nelem);
   fclose(fin);
   Bfilter *ptr_bf = init_Bfilter(kmersize, bfsizeBits, hashNum,
                              falsePosRate, nelem);
@@ -620,7 +626,7 @@ Bfilter *read_Bfilter(char *filterfile, char *paramfile) {
   }
   if (ftell(fin) != ptr_bf -> bfsizeBytes) {
      free_Bfilter(ptr_bf);
-     fprintf(stderr, "Expected bfsizeBytes (%ld) != real bfsizeBytes.(%ld)\n",
+     fprintf(stderr, "Expected bfsizeBytes (%" PRIu64 ") != real bfsizeBytes.(%ld)\n",
              ptr_bf -> bfsizeBytes, ftell(fin));
      fprintf(stderr, "Exiting program.\n");
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
@@ -639,10 +645,10 @@ Bfilter *read_Bfilter(char *filterfile, char *paramfile) {
           filterfile, paramfile);
   fprintf(stderr, "kmersize = %d\n", ptr_bf -> kmersize);
   fprintf(stderr, "hashNum = %d\n", ptr_bf -> hashNum);
-  fprintf(stderr, "bfsizeBits = %ld\n", ptr_bf -> bfsizeBits);
-  fprintf(stderr, "bfsizeBytes: %ld\n", ptr_bf -> bfsizeBytes);
+  fprintf(stderr, "bfsizeBits = %" PRIu64 "\n", ptr_bf -> bfsizeBits);
+  fprintf(stderr, "bfsizeBytes: %" PRIu64 "\n", ptr_bf -> bfsizeBytes);
   fprintf(stderr, "falsePosRate: %lf\n", ptr_bf -> falsePosRate);
-  fprintf(stderr, "nelem: %ld\n", ptr_bf -> nelem);
+  fprintf(stderr, "nelem: %" PRIu64 "\n", ptr_bf -> nelem);
   fread(ptr_bf -> filter, sizeof(char), ptr_bf -> bfsizeBytes, fin);
   fclose(fin);
   return ptr_bf;

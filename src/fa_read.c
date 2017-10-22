@@ -216,14 +216,14 @@ int read_fasta(char *filename, Fa_data * ptr_fa) {
   fprintf(stderr, "- Allocating memory to store the contents of %s.\n",
           filename);
   mem_usageMB();
-  fprintf(stderr, " * Number of lines: %ld\n", ptr_fa -> nlines);
+  fprintf(stderr, " * Number of lines: %" PRIu64 "\n", ptr_fa -> nlines);
   fprintf(stderr, " * Number of entries: %d\n", ptr_fa -> nentries);
   fprintf(stderr, " * Length of lines: %d\n", ptr_fa -> linelen);
   fprintf(stderr, " * Length of sequences in entries : [  ");
   fflush(stderr);
   int i;
   for (i = 0; i < ptr_fa -> nentries ; i++)
-     fprintf(stderr, "%ld ", ptr_fa -> entrylen[i]);
+     fprintf(stderr, "%" PRIu64, ptr_fa -> entrylen[i]);
   fprintf(stderr, "].\n");
   FILE *fa_in;
   fa_in = fopen_gen(filename, "r");
@@ -233,12 +233,12 @@ int read_fasta(char *filename, Fa_data * ptr_fa) {
      exit(EXIT_FAILURE);
   }
   // Allocate memory to read the file in one step
-  fprintf(stderr, "- Fasta file size: %ld bytes. \n", sz);
-  fprintf(stderr, "- Allocating %ld bytes in the buffer. \n", sz);
+  fprintf(stderr, "- Fasta file size: %" PRIu64 "bytes. \n", sz);
+  fprintf(stderr, "- Allocating %" PRIu64 "bytes in the buffer. \n", sz);
   char*  buffer  =  (char *) malloc(sizeof(char)*sz);
   if (buffer == NULL) {
-    fprintf(stderr, "Error occured. Could not allocate %ld  Bytes.\n",
-          sizeof(char)*sz);
+    fprintf(stderr, "Error occured. Could not allocate %" PRIu64 " Bytes.\n",
+          sz*sizeof(char));
     fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
     fprintf(stderr, "Exiting program.\n");
     exit(EXIT_FAILURE);
@@ -322,7 +322,7 @@ void free_fasta(Fa_data *ptr_fa) {
   mem_freed += sizeof(uint64_t) * (ptr_fa -> nentries);
   free(ptr_fa);
   mem_freed += sizeof(Fa_data);
-  fprintf(stderr, " %ld bytes freed\n", mem_freed);
+  fprintf(stderr, " %" PRIu64 "bytes freed\n", mem_freed);
   alloc_mem -= mem_freed;
   mem_usageMB();
 }

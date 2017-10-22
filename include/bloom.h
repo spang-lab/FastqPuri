@@ -35,11 +35,6 @@
 
 
 /**
- * @brief bitMask, ith bit set to 1 in position i
- * */
-static const unsigned char bitMask[0x08] = {0x01, 0x02, 0x04, 0x08,
-                                            0x10, 0x20, 0x40, 0x80};
-/**
 * @brief Bloom filter structure
 *
 */

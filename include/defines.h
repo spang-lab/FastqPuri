@@ -30,6 +30,7 @@
 #define DEFINES_H_
 
 #include <stdint.h>
+#include <inttypes.h>
 
 // General
 #define B_LEN 131072  /**< buffer size */
@@ -48,13 +49,13 @@
 
 #ifndef mem_usageMB
   #define mem_usageMB()  fprintf(stderr, \
-         "- Current allocated memory: %lu MB.\n", \
+         "- Current allocated memory: %" PRIu64 "MB.\n", \
          alloc_mem >> 20)  /**< returns allocated memory in MB */
 #endif
 
 #ifndef mem_usage
   #define mem_usage()  fprintf(stderr, \
-         "- Current allocated memory: %lu Bytes.\n", \
+         "- Current allocated memory: %" PRIu64 "Bytes.\n", \
          alloc_mem)  /**< returns allocated memory in Bytes */
 #endif
 
