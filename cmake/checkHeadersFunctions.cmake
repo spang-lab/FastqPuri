@@ -14,10 +14,10 @@ if (NOT  HAVE_ASSERT_H)
 endif()
 
 # <byteswap.h>
-check_include_files(byteswap.h HAVE_BYTESWAP_H)
-if (NOT  HAVE_BYTESWAP_H)
-   message(FATAL_ERROR "Header file: <byteswap.h> not found. Exiting.")
-endif()
+#check_include_files(byteswap.h HAVE_BYTESWAP_H)
+#if (NOT  HAVE_BYTESWAP_H)
+#   message(FATAL_ERROR "Header file: <byteswap.h> not found. Exiting.")
+#endif()
 
 # <fcntl.h>
 check_include_files(fcntl.h HAVE_FCNTL_H)
@@ -44,10 +44,10 @@ if (NOT  HAVE_MATH_H)
 endif()
 
 # <nmmintrin.h>
-check_include_files(nmmintrin.h HAVE_NMMINTRIN_H)
-if (NOT  HAVE_NMMINTRIN_H)
-   message(FATAL_ERROR "Header file: <nmmintrin.h> not found. Exiting.")
-endif()
+#check_include_files(nmmintrin.h HAVE_NMMINTRIN_H)
+#if (NOT  HAVE_NMMINTRIN_H)
+#   message(FATAL_ERROR "Header file: <nmmintrin.h> not found. Exiting.")
+#endif()
 
 # <stdint.h>
 check_include_files(stdint.h HAVE_STDINT_H)
