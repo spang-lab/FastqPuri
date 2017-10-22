@@ -160,7 +160,7 @@ static uint32 Hash32Len13to24(const char *s, size_t len) {
 static uint32 Hash32Len0to4(const char *s, size_t len) {
   uint32 b = 0;
   uint32 c = 9;
-  int i;
+  size_t i;
   for (i = 0; i < len; i++) {
     b = b * c1 + s[i];
     c ^= b;

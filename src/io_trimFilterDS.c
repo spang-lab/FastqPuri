@@ -49,7 +49,7 @@ void buffer_outputDS(FILE *fout, const char *str, const int len, const int fd_i)
   static int count[NFILES_DS] = {0};
   // empties the buffer if there is no "str" or buffer is full or len == 0
   if (count[fd_i] + len >= B_LEN || str == NULL ||
-      strlen(str) != len || len == 0) {
+     (int)(strlen(str)) != len || len == 0) {
      fwrite(buf[fd_i], 1, count[fd_i], fout);
      count[fd_i] = 0;
   }

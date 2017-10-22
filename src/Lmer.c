@@ -60,7 +60,7 @@ void init_map() {
  *
  * */
 void Lmer_sLmer(char* Lmer, int L) {
-  unsigned int i;
+  int i;
   for (i = 0; i < L; i++) {
      Lmer[i] = fw_1B[(unsigned char)Lmer[i]];
   }

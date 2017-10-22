@@ -143,7 +143,7 @@ void free_all_nodes(Tree *tree_ptr) {
  *
  * */
 void insert_Lmer(Tree *tree_ptr, char *Lmer) {
-  int i = 0;
+  uint32_t i = 0;
   Node *current = tree_ptr -> pool_2D[0];
   for (i = 0; i < tree_ptr -> L; i++) {
     if ((unsigned char)Lmer[i] >= T_ACGT) {
@@ -160,7 +160,7 @@ void insert_Lmer(Tree *tree_ptr, char *Lmer) {
  * @brief fasta entry insertion in the tree (depth L).
  * */
 void insert_entry(Tree *tree_ptr, Fa_entry *entry) {
-  int i;
+  uint32_t i;
   Lmer_sLmer(entry->seq, entry->N);
   // Run over all L-mers
   for (i = 0; i < (entry->N - tree_ptr->L + 1); i++) {
@@ -197,7 +197,8 @@ Tree *tree_from_fasta(Fa_data *fasta, int L) {
  *
  * */
 double check_path(Tree *tree_ptr, char *read, int Lread) {
-  int L = min(tree_ptr -> L, Lread);  // Maximum depth
+  int L = (int)tree_ptr -> L; 
+  L = min(L, Lread);  // Maximum depth
   int N = Lread - L + 1;   // number of checks we have to do
   int Nsuccess = 0;
   int i, j;
@@ -306,7 +307,7 @@ void save_tree(Tree *tree_ptr, char *filename) {
  * assigns addresses to the children of every given node.
  * */
 Tree* read_tree(char *filename) {
-  int i, j, k;
+  uint32_t i, j, k;
   fprintf(stderr, "- Reading a tree structure from %s\n", filename);
   FILE *f = fopen_gen(filename, "r");
   if (f == NULL) {

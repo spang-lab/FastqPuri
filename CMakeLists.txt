@@ -104,7 +104,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 
 
 # Set compiler flags
-set(CMAKE_C_FLAGS  "-Wall -O3 -march=native -std=c11") 
+set(CMAKE_C_FLAGS  "-Wall -Wextra -O3 -march=native -std=c11") 
 message("-- Setting compiler flags: ${CMAKE_C_FLAGS}")
 
 # Set linker flags

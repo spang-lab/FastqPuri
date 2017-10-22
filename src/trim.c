@@ -551,7 +551,7 @@ static int align_uint32(Fq_read *seq, Ad_seq *ptr_adap, bool all) {
  *
  * */
 static int align_uint64(Fq_read *seq, Ad_seq *ptr_adap) {
-  uint32_t j;
+  int j;
   int n;
   int pos, Nwindows;
   double score = 0;

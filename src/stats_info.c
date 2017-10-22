@@ -232,8 +232,9 @@ void write_info(Info *res, char *file) {
  * @brief print Info to a textfile
  */
 void print_info(Info* res, char *infofile) {
-  int i, j;
-  uint64_t max = 0;
+  int i;
+  uint32_t j;
+  uint64_t  maxi = 0;
   FILE *f;
   f = fopen(infofile, "w");
   fprintf(f, "- Read length: %d\n", res -> read_len);
@@ -263,11 +264,11 @@ void print_info(Info* res, char *infofile) {
   fprintf(f, "\n- Number of nucleotides of quality (row) in position (col) ");
   fprintf(f, "in the first tile\n ");
   fprintf(f, "  Position: ");
-  for (j = 1 ; j <= res -> read_len; j++) fprintf(f, "%d ", j);
+  for (j = 1 ; j <= (uint32_t)(res -> read_len); j++) fprintf(f, "%d ", j);
   fprintf(f, "\n");
   for (i = 0; i < (res -> nQ); i++) {
      fprintf(f, "  Q = %c : ", (char) (res -> qual_tags[i] + ZEROQ));
-     for (j = 0 ; j< res -> read_len; j++) {
+     for (j = 0 ; j< (uint32_t)(res -> read_len); j++) {
         fprintf(f, "%" PRIu64, 
               res -> QPosTile_table[i*(res -> read_len) +j]);
      }
@@ -277,13 +278,13 @@ void print_info(Info* res, char *infofile) {
   for (i = 0; i < (res -> read_len +1); i++) {
      fprintf(f, "  M lowQ = %2d,  Nreads = %" PRIu64 "\n", 
              i, res -> reads_MlowQ[i]);
-     if (res -> reads_MlowQ[i] > max && i >0) max = res -> reads_MlowQ[i];
+     if (res -> reads_MlowQ[i] > maxi && i >0) maxi = res -> reads_MlowQ[i];
   }
   fprintf(f, "\n- Histogram with M low quality nucleotides in tile 1: \n\n");
-  if (max > 0) {
+  if (maxi > 0) {
      for (i = 1; i < (res -> read_len +1); i++) {
         fprintf(f, "MlowQ = %2d| ", i);
-        for ( j = 0 ; j < ( res -> reads_MlowQ[i]*80)/max; j++)
+        for ( j = 0 ; j < ( res -> reads_MlowQ[i]*80)/maxi; j++)
            fprintf(f, "*");
         fprintf(f, "\n");
      }
@@ -293,8 +294,8 @@ void print_info(Info* res, char *infofile) {
   }
   fprintf(f, "\n- Number of nucleotides per position: \n\n");
   fprintf(f, "         A       C       G       T       N   \n");
-  for (j =  0; j < res -> read_len; j++) {
-     fprintf(f, "%3d: %7" PRIu64 " %7" PRIu64 " %7" PRIu64 
+  for (j =  0; j < (uint32_t)(res -> read_len); j++) {
+     fprintf(f, "%3u: %7" PRIu64 " %7" PRIu64 " %7" PRIu64 
            " %7" PRIu64 " %7" PRIu64 " \n", j+1,
           res -> ACGT_pos[N_ACGT *j ],
           res -> ACGT_pos[N_ACGT *j+ 1 ],
@@ -347,7 +348,7 @@ void update_info(Info* res, Fq_read* seq) {
   }
   if ( Ns > 0 ) res -> reads_wN++;
   update_QPosTile_table(res, seq);
-  update_ACGT_pos(res -> ACGT_pos, seq, res -> read_len);
+  update_ACGT_pos(res -> ACGT_pos, seq);
   res -> reads_MlowQ[lowQ]++;
   res -> nreads++;
 }
@@ -409,7 +410,7 @@ void update_QPosTile_table(Info *res, Fq_read *seq) {
 /**
  * @brief update ACGT_pos
  * */
-void update_ACGT_pos(uint64_t* ACGT_pos, Fq_read *seq, int read_len) {
+void update_ACGT_pos(uint64_t* ACGT_pos, Fq_read *seq) {
   int pos = seq -> start;
   int i = 0;
   while (seq -> line2[i] != '\0') {

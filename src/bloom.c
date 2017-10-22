@@ -624,7 +624,7 @@ Bfilter *read_Bfilter(char *filterfile, char *paramfile) {
      exit(EXIT_FAILURE);
      return NULL;
   }
-  if (ftell(fin) != ptr_bf -> bfsizeBytes) {
+  if ( (uint64_t)(ftell(fin)) != ptr_bf -> bfsizeBytes) {
      free_Bfilter(ptr_bf);
      fprintf(stderr, "Expected bfsizeBytes (%" PRIu64 ") != real bfsizeBytes.(%ld)\n",
              ptr_bf -> bfsizeBytes, ftell(fin));
