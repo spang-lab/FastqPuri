@@ -132,7 +132,7 @@ void getarg_makeBloom(int argc, char **argv) {
         par_MB.hashNum = atoi(optarg);
         break;
       case 'm':
-        sscanf(optarg, "%ld", &par_MB.bfsizeBits);
+        sscanf(optarg, "%" SCNu64, &par_MB.bfsizeBits);
         break;
       default:
         fprintf(stderr, "%s: option `-%c' is invalid: ignored\n",
@@ -186,7 +186,7 @@ void getarg_makeBloom(int argc, char **argv) {
        fprintf(stderr, "Other parameters inferred from it\n");
     } else if (!par_MB.hashNum && par_MB.bfsizeBits &&
                (fabs(par_MB.falsePosRate) < ZERO_POS_RATE)) {
-       fprintf(stderr, "Input parameter: bfsizeBits = %ld\n",
+       fprintf(stderr, "Input parameter: bfsizeBits = %" PRIu64 "\n",
                par_MB.bfsizeBits);
        fprintf(stderr, "Other parameters inferred from it\n");
        if (par_MB.bfsizeBits % BITSPERCHAR != 0) {

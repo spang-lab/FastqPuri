@@ -123,7 +123,7 @@ Bfilter *init_Bfilter(int kmersize, uint64_t bfsizeBits, int hashNum,
   ptr_bf -> bfsizeBits = bfsizeBits;
   ptr_bf -> bfsizeBytes = bfsizeBits/BITSPERCHAR;
   ptr_bf -> nelem = nelem;
-  fprintf(stderr, "Allocating %lu bytes of memory to 0.\n",
+  fprintf(stderr, "Allocating %" PRIu64 " bytes of memory to 0.\n",
           ptr_bf -> bfsizeBytes);
   ptr_bf -> filter = (unsigned char *) calloc(ptr_bf ->  bfsizeBytes,
                                            sizeof(unsigned char));

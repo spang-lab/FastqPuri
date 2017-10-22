@@ -108,7 +108,7 @@ static void init_entries(Fa_data *ptr_fa) {
     ptr_fa -> entry[i].seq =  malloc(sizeof(char) *
          (ptr_fa -> entrylen[i]));
     if (ptr_fa -> entry == NULL) {
-      fprintf(stderr, "Error occured when trying to allocate %ld Bytes.\n",
+      fprintf(stderr, "Error occured when trying to allocate %" PRIu64 " Bytes.\n",
           sizeof(char) * (ptr_fa -> entrylen[i]));
       fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
       fprintf(stderr, "Exiting program.\n");
