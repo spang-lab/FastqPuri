@@ -205,7 +205,7 @@ double check_path(Tree *tree_ptr, char *read, int Lread) {
     Node* current = tree_ptr -> pool_2D[0];
     bool found = true;
     for (j = 0; j < L; j++) {
-      if ((current->children[(unsigned char)read[i+j]] == NULL)) {
+      if (current->children[(unsigned char)read[i+j]] == NULL) {
           found = false;
           break;
       } else {

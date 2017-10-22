@@ -362,7 +362,7 @@ int compact_kmer(const unsigned char *sequence, uint64_t position,
              exit(EXIT_FAILURE);
              return 0;
          }
-         if ((m_bw[idx] == 0xFF)) {
+         if (m_bw[idx] == 0xFF) {
            // discards kmers with N's
            free(m_bw);
            alloc_mem -= (ptr_bfkmer -> kmersizeBytes)*sizeof(unsigned char);
@@ -414,7 +414,7 @@ int compact_kmer(const unsigned char *sequence, uint64_t position,
         exit(EXIT_FAILURE);
         return 0;
     }
-    if ((m_fw[idx] == 0xFF)) {
+    if (m_fw[idx] == 0xFF) {
       // discards kmers with N's
       free(m_fw);
       alloc_mem -= (ptr_bfkmer -> kmersizeBytes)*sizeof(unsigned char);
