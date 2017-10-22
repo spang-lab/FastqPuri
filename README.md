@@ -12,7 +12,7 @@ reads, reads containing too many N's or contamination reads
 Clone the repository, or download the source. Make sure that 
 your system supplies the following dependencies for FastqArazketa.
 
-- OS: Linux, freeBSD (**testing**), Mac OS (**testing**), OpenBSD (**testing**)
+- OS: Linux (clang, gcc), Mac OS (clang, gcc), OpenBSD (clang)
 - `cmake` (at least version 2.8), 
 - a `C` compiler supporting the `c11` standard 
   (change the compiler flags otherwise),
