@@ -62,7 +62,7 @@ An example is given in the folder `examples/QReport_Sreport`. To run an
 example, type,
 
 ```
-    $ cd example/run_test/
+    $ cd example/Qreport_Sreport/run_test/
     $ ../../../bin/SReport -i ./ -o my_test_summary_report
 ```
  and compare it with the provided run example, as specified in the README
