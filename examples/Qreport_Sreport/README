@@ -24,7 +24,7 @@
 # Run the example again in your created folder.                                #
 #                                                                              #
 # 1. Run the C executable                                                      #
-#  ../../../bin/Sreport -i ./ -o my_test_summary_report                        # 
+#  ../../../bin/Sreport -i ./ -o my_test_summary_report -t Q                   # 
 #                                                                              #
 # 2. Compare the files                                                         #
 #  - ../test_summary_report.html <-> my_test_summary_report.html               #

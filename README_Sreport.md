@@ -63,7 +63,7 @@ example, type,
 
 ```
     $ cd example/Qreport_Sreport/run_test/
-    $ ../../../bin/SReport -i ./ -o my_test_summary_report
+    $ ../../../bin/SReport -i ./ -t Q -o my_test_summary_report
 ```
  and compare it with the provided run example, as specified in the README
  file under `./examples/QReport_Sreport`

@@ -14,7 +14,7 @@ Usage `C` executable (in folder `bin`):
 
 ```
 Usage: trimFilter --ifq <INPUT_FILE.fq> --length <READ_LENGTH>
-                  --output [O_PREFIX] --gzip [y|n]
+q                  --output [O_PREFIX] --gzip [y|n]
                   --adapter [<ADAPTERS.fa>:<mismatches>:<score>]
                   --method [TREE|BLOOM]
                   (--idx [<INDEX_FILE>:<score>:<lmer_len>] |
