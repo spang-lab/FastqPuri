@@ -77,7 +77,7 @@ An example is given in the folder `examples/QReport_Sreport`. To run an
 example, type, 
 
 ``` 
-    $ cd example
+    $ cd example/Qreport_Sreport
     $ mkdir run_test
     $ cd run_test
     $ ../../../bin/QReport -i ../test.fq.bz2 -l 51 -o my_test_output

@@ -65,6 +65,15 @@ the local folder structure.
 * `trimFilterDS`: performs the filtering process for double stranded data 
    (see `README_trimFilterDS.md`).
 
+An exemplar work flow could be:
+
+* `Qreport`
+* `Sreport`
+* `makeBloom`
+* `trimFilter` or `trimFilterDS`
+* `Qreport`
+* `Sreport`
+
 ## Documentation of the code
 
 A Doxygen documentation of the code is available: 
