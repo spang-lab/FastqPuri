@@ -202,8 +202,10 @@ if(all(lowQ==0)){
 ```{r, echo = F}
    x <- 1:data$read_len
    nreads_pos <- colSums(data$ACGT_pos)
+   y_min=min(data$ACGT_pos[1:4,]/nreads_pos)
+   y_max=max(data$ACGT_pos[1:4,]/nreads_pos)
    plot(x,data$ACGT_pos[1,]/nreads_pos,type="l",lwd=1.5,col="green",
-       xlab="Position in read",ylab="nucleotide content" )
+        ylim=c(y_min, y_max), xlab="Position in read",ylab="nucleotide content" )
    lines(x, data$ACGT_pos[2,]/nreads_pos,type="l",lwd=1.5,col="blue")
    lines(x, data$ACGT_pos[3,]/nreads_pos,type="l",lwd=1.5,col="black")
    lines(x, data$ACGT_pos[4,]/nreads_pos,type="l",lwd=1.5,col="red")

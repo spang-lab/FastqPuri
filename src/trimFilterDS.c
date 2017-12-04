@@ -209,6 +209,7 @@ int main(int argc, char *argv[]) {
   }  // endif par_TF.trimQ
 
   if (par_TF.trimN) {
+     init_map();
      f_NNNN1 = fopen_gen(fq_NNNN1, "w");  // open fq_lowq file for writing
      f_NNNN2 = fopen_gen(fq_NNNN2, "w");  // open fq_lowq file for writing
   }  // endif par_TF.trimQ

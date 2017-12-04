@@ -2,6 +2,7 @@
 *.o
 *.a
 *.swp
+config.h
 bin/
 build/
 obj/
