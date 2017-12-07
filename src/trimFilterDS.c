@@ -353,7 +353,7 @@ int main(int argc, char *argv[]) {
        memmove(buffer1, buffer1 + l1_i, offset1);
      l1_f = -1;
      l1_i = 0;
-     offset2 = newl1 - l2_i;
+     offset2 = newl2 - l2_i;
      if (offset2 > -1)
        memmove(buffer2, buffer2 + l2_i, offset2);
      l2_f = -1;
