@@ -109,8 +109,10 @@ int main(int argc, char *argv[]) {
 
   Stats_TFDS stat_TFDS;
   memset(&stat_TFDS, 0, sizeof(Stats_TFDS));
-  char char_seq1[4*READ_MAXLEN];  // string containing one fq read
-  char char_seq2[4*READ_MAXLEN];  // string containing one fq read
+  //char char_seq1[4*READ_MAXLEN];  // string containing one fq read
+  //char char_seq2[4*READ_MAXLEN];  // string containing one fq read
+  char *char_seq1 = calloc(4*READ_MAXLEN, sizeof(char));  // string containing one fq read
+  char *char_seq2 = calloc(4*READ_MAXLEN, sizeof(char));  // string containing one fq read
   int Nchar1, Nchar2;  // length of char_seq
 
   clock_t start, end;
@@ -248,7 +250,7 @@ int main(int argc, char *argv[]) {
           }
           l1_i = l1_f + 1;
         }
-        if ((buffer1[j2] == '\n') && (j2 < newl2)) {
+        if ((buffer2[j2] == '\n') && (j2 < newl2)) {
           l2_f = j2;
           get_fqread(seq2, buffer2, l2_i, l2_f, nl2, par_TF.L, 0);
           if ((nl2++ % 4 == 3)) {

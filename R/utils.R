@@ -237,8 +237,8 @@ getFilterTablesDS <- function(inputfolder) {
    table <- matrix(nrow = Ns, ncol = 11,
             dimnames = list(nombres,c("Nreads","Naccepted", "%disc Ad", 
                                       "%cont", "%disc lowQ", "%disc N's", 
-                                      "%trim Ad", "%trim1 N's", "%trim1 lowQ", 
-                                      "%trim2 N's", "%trim2 lowQ")))
+                                      "%trim Ad", "%trim1 lowQ", "%trim1 N's", 
+                                      "%trim2 lowQ", "%trim2 N's")))
    i = 1
    for (f in files) {
       st_f <- getFilterStatsDS(paste0(inputfolder,"/",f)) 
