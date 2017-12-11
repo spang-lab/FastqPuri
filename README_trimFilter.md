@@ -88,6 +88,11 @@ Options:
                All reads are discarded if they are shorter than minL.
 ```
 
+NOTE: the parameters -l or --length are meant to identify the length
+of the reads in the input data. Actually, `trimFilter` also copes with
+data holding reads with different lengths. The length parameter must
+hold the length of the longest read in the dataset.
+
 
 ## Output description
 
