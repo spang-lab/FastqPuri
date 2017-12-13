@@ -39,6 +39,6 @@
 # generated (with the `R` script `create_fake_bins.R`). An html output was     #
 # created out of them (`./bin_files/filter_Sreport_example.html`). It can      # 
 # re reproduced if you run:                                                    #
-#   ../../bin/Sreport -i .bin_files/ -o ./bin_files/filter_Sreport_new -t F    #
+#   ../../bin/Sreport -i ./bin_files/ -o ./bin_files/filter_Sreport_new -t F    #
 #                                                                              #
 ################################################################################
