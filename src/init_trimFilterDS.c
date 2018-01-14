@@ -272,6 +272,7 @@ void getarg_trimFilterDS(int argc, char **argv) {
          break;
       case 'Q':
          par_TF.trimQ = (!strncmp(optarg, "NO", method_len)) ? NO :
+            (!strncmp(optarg, "ALL", method_len)) ? ALL :
             (!strncmp(optarg, "FRAC", method_len)) ? FRAC :
             (!strncmp(optarg, "ENDS", method_len)) ? ENDS :
             (!strncmp(optarg, "ENDSFRAC", method_len)) ? ENDSFRAC :
