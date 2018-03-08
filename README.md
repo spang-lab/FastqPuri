@@ -1,7 +1,7 @@
-FastqArazketa, an fq quality control and filter tool 
+FastqPuri, an fq quality control and filter tool 
 =========
 
-Software and source code of `FastqArazketa`. It creates quality 
+Software and source code of `FastqPuri`. It creates quality 
 reports of `fastq` files and filters them removing low quality 
 reads, reads containing too many N's or contamination reads 
 (unwanted rRNA reads, impurities coming from another organism, ...).
@@ -10,7 +10,7 @@ reads, reads containing too many N's or contamination reads
 ## Installation
 
 Clone the repository, or download the source. Make sure that 
-your system supplies the following dependencies for FastqArazketa.
+your system supplies the following dependencies for FastqPuri.
 
 - OS: Linux (clang, gcc), Mac OS (clang, gcc), OpenBSD (clang)
 - `cmake` (at least version 2.8), 
@@ -23,7 +23,7 @@ your system supplies the following dependencies for FastqArazketa.
    * `knitr`
    * `rmarkdown`
 
-**NOTE:**  FastqArazketa will work without the optional dependencies 
+**NOTE:**  FastqPuri will work without the optional dependencies 
 but will skip creating html reports if they are not available.
 
 ```

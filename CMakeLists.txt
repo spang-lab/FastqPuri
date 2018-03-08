@@ -9,7 +9,7 @@ cmake_minimum_required(VERSION 2.8)
 set(CMAKE_C_COMPILER "gcc" CACHE STRING "default C compiler")
 
 # Project's name
-project(FastqArazketa)
+project(FastqPuri)
 
 # Project's version
 set(VERSION "1.0")
