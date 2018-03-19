@@ -20,7 +20,6 @@ var searchData=
   ['init_5fmaketree_2ec',['init_makeTree.c',['../init__makeTree_8c.html',1,'']]],
   ['init_5fmaketree_2eh',['init_makeTree.h',['../init__makeTree_8h.html',1,'']]],
   ['init_5fmap',['init_map',['../Lmer_8c.html#a5f1586659681cf692359f7c8c003dd8b',1,'init_map():&#160;Lmer.c'],['../Lmer_8h.html#a5f1586659681cf692359f7c8c003dd8b',1,'init_map():&#160;Lmer.c']]],
-  ['init_5fmap_5fsa',['init_map_SA',['../Lmer_8c.html#a54a9d22589c1235957b6472310280e1d',1,'init_map_SA():&#160;Lmer.c'],['../Lmer_8h.html#a54a9d22589c1235957b6472310280e1d',1,'init_map_SA():&#160;Lmer.c']]],
   ['init_5fqreport_2ec',['init_Qreport.c',['../init__Qreport_8c.html',1,'']]],
   ['init_5fqreport_2eh',['init_Qreport.h',['../init__Qreport_8h.html',1,'']]],
   ['init_5fsreport_2ec',['init_Sreport.c',['../init__Sreport_8c.html',1,'']]],

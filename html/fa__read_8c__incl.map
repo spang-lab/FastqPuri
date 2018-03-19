@@ -1,5 +1,5 @@
 <map id="src/fa_read.c" name="src/fa_read.c">
-<area shape="rect" id="node4" href="$fa__read_8h.html" title="reads in and stores fasta files " alt="" coords="183,80,259,107"/>
-<area shape="rect" id="node6" href="$defines_8h.html" title="Macro definitions. " alt="" coords="284,80,359,107"/>
-<area shape="rect" id="node7" href="$fopen__gen_8h.html" title="Uncompress/compress input/output files using pipes. " alt="" coords="383,80,476,107"/>
+<area shape="rect" id="node4" href="$fa__read_8h.html" title="reads in and stores fasta files " alt="" coords="195,80,278,107"/>
+<area shape="rect" id="node6" href="$defines_8h.html" title="Macro definitions. " alt="" coords="303,80,384,107"/>
+<area shape="rect" id="node8" href="$fopen__gen_8h.html" title="Uncompress/compress input/output files using pipes. " alt="" coords="408,80,511,107"/>
 </map>

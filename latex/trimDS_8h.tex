@@ -1,44 +1,45 @@
-\hypertarget{trimDS_8h}{\section{include/trim\+D\+S.h File Reference}
+\hypertarget{trimDS_8h}{}\section{include/trim\+DS.h File Reference}
 \label{trimDS_8h}\index{include/trim\+D\+S.\+h@{include/trim\+D\+S.\+h}}
-}
 
 
 trim adapters from double stranded data  
 
 
-{\ttfamily \#include \char`\"{}fq\+\_\+read.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\\*
-Include dependency graph for trim\+D\+S.\+h\+:\nopagebreak
+{\ttfamily \#include \char`\"{}fq\+\_\+read.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\newline
+Include dependency graph for trim\+D\+S.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=212pt]{trimDS_8h__incl}
+\includegraphics[width=297pt]{trimDS_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=264pt]{trimDS_8h__dep__incl}
+\includegraphics[width=274pt]{trimDS_8h__dep__incl}
 \end{center}
 \end{figure}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{struct__ds__adap}{\+\_\+ds\+\_\+adap}
+struct \mbox{\hyperlink{struct__ds__adap}{\+\_\+ds\+\_\+adap}}
 \begin{DoxyCompactList}\small\item\em structure containing an adapter pair (for read 1 and read 2) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{trimDS_8h_ac4ea86da3f921412f4d0e321231ac1b4}{typedef struct \hyperlink{struct__ds__adap}{\+\_\+ds\+\_\+adap} \hyperlink{trimDS_8h_ac4ea86da3f921412f4d0e321231ac1b4}{D\+S\+\_\+adap}}\label{trimDS_8h_ac4ea86da3f921412f4d0e321231ac1b4}
-
+\mbox{\Hypertarget{trimDS_8h_ac4ea86da3f921412f4d0e321231ac1b4}\label{trimDS_8h_ac4ea86da3f921412f4d0e321231ac1b4}} 
+typedef struct \mbox{\hyperlink{struct__ds__adap}{\+\_\+ds\+\_\+adap}} \mbox{\hyperlink{trimDS_8h_ac4ea86da3f921412f4d0e321231ac1b4}{D\+S\+\_\+adap}}
 \begin{DoxyCompactList}\small\item\em structure containing an adapter pair (for read 1 and read 2) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{trimDS_8h_ac4ea86da3f921412f4d0e321231ac1b4}{D\+S\+\_\+adap} \hyperlink{trimDS_8h_a7a8624ae317f7b9786232cb8c00c66ba}{init\+\_\+\+D\+Sadap} (char $\ast$ad1, char $\ast$ad2, int L1, int L2)
+\mbox{\hyperlink{trimDS_8h_ac4ea86da3f921412f4d0e321231ac1b4}{D\+S\+\_\+adap}} \mbox{\hyperlink{trimDS_8h_a7a8624ae317f7b9786232cb8c00c66ba}{init\+\_\+\+D\+Sadap}} (char $\ast$ad1, char $\ast$ad2, int L1, int L2)
 \begin{DoxyCompactList}\small\item\em initialization of a D\+S\+\_\+adap structure \end{DoxyCompactList}\item 
-int \hyperlink{trimDS_8h_a5ef20574bf1d6c15feaad3ffb91398f6}{trim\+\_\+adapter\+D\+S} (\hyperlink{trimDS_8h_ac4ea86da3f921412f4d0e321231ac1b4}{D\+S\+\_\+adap} $\ast$ptr\+\_\+\+D\+Sad, \hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$r1, \hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$r2)
+int \mbox{\hyperlink{trimDS_8h_a5ef20574bf1d6c15feaad3ffb91398f6}{trim\+\_\+adapter\+DS}} (\mbox{\hyperlink{trimDS_8h_ac4ea86da3f921412f4d0e321231ac1b4}{D\+S\+\_\+adap}} $\ast$ptr\+\_\+\+D\+Sad, \mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$r1, \mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$r2)
 \begin{DoxyCompactList}\small\item\em trim the sequences, discard them or keep them unchanged depending on them having adapters remnants. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -54,16 +55,12 @@ Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+
 
 
 \subsection{Function Documentation}
-\hypertarget{trimDS_8h_a7a8624ae317f7b9786232cb8c00c66ba}{\index{trim\+D\+S.\+h@{trim\+D\+S.\+h}!init\+\_\+\+D\+Sadap@{init\+\_\+\+D\+Sadap}}
+\mbox{\Hypertarget{trimDS_8h_a7a8624ae317f7b9786232cb8c00c66ba}\label{trimDS_8h_a7a8624ae317f7b9786232cb8c00c66ba}} 
+\index{trim\+D\+S.\+h@{trim\+D\+S.\+h}!init\+\_\+\+D\+Sadap@{init\+\_\+\+D\+Sadap}}
 \index{init\+\_\+\+D\+Sadap@{init\+\_\+\+D\+Sadap}!trim\+D\+S.\+h@{trim\+D\+S.\+h}}
-\subsubsection[{init\+\_\+\+D\+Sadap}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\+S\+\_\+adap} init\+\_\+\+D\+Sadap (
-\begin{DoxyParamCaption}
-\item[{char $\ast$}]{ad1, }
-\item[{char $\ast$}]{ad2, }
-\item[{int}]{L1, }
-\item[{int}]{L2}
-\end{DoxyParamCaption}
-)}}\label{trimDS_8h_a7a8624ae317f7b9786232cb8c00c66ba}
+\subsubsection{\texorpdfstring{init\+\_\+\+D\+Sadap()}{init\_DSadap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{trimDS_8h_ac4ea86da3f921412f4d0e321231ac1b4}{D\+S\+\_\+adap}} init\+\_\+\+D\+Sadap (\begin{DoxyParamCaption}\item[{char $\ast$}]{ad1,  }\item[{char $\ast$}]{ad2,  }\item[{int}]{L1,  }\item[{int}]{L2 }\end{DoxyParamCaption})}
+
 
 
 initialization of a D\+S\+\_\+adap structure 
@@ -82,15 +79,12 @@ initialization of a D\+S\+\_\+adap structure
 \begin{DoxyReturn}{Returns}
 initialized D\+S\+\_\+adap structure 
 \end{DoxyReturn}
-\hypertarget{trimDS_8h_a5ef20574bf1d6c15feaad3ffb91398f6}{\index{trim\+D\+S.\+h@{trim\+D\+S.\+h}!trim\+\_\+adapter\+D\+S@{trim\+\_\+adapter\+D\+S}}
-\index{trim\+\_\+adapter\+D\+S@{trim\+\_\+adapter\+D\+S}!trim\+D\+S.\+h@{trim\+D\+S.\+h}}
-\subsubsection[{trim\+\_\+adapter\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}int trim\+\_\+adapter\+D\+S (
-\begin{DoxyParamCaption}
-\item[{{\bf D\+S\+\_\+adap} $\ast$}]{ptr\+\_\+\+D\+Sad, }
-\item[{{\bf Fq\+\_\+read} $\ast$}]{r1, }
-\item[{{\bf Fq\+\_\+read} $\ast$}]{r2}
-\end{DoxyParamCaption}
-)}}\label{trimDS_8h_a5ef20574bf1d6c15feaad3ffb91398f6}
+\mbox{\Hypertarget{trimDS_8h_a5ef20574bf1d6c15feaad3ffb91398f6}\label{trimDS_8h_a5ef20574bf1d6c15feaad3ffb91398f6}} 
+\index{trim\+D\+S.\+h@{trim\+D\+S.\+h}!trim\+\_\+adapter\+DS@{trim\+\_\+adapter\+DS}}
+\index{trim\+\_\+adapter\+DS@{trim\+\_\+adapter\+DS}!trim\+D\+S.\+h@{trim\+D\+S.\+h}}
+\subsubsection{\texorpdfstring{trim\+\_\+adapter\+D\+S()}{trim\_adapterDS()}}
+{\footnotesize\ttfamily int trim\+\_\+adapter\+DS (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{trimDS_8h_ac4ea86da3f921412f4d0e321231ac1b4}{D\+S\+\_\+adap}} $\ast$}]{ptr\+\_\+\+D\+Sad,  }\item[{\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$}]{r1,  }\item[{\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$}]{r2 }\end{DoxyParamCaption})}
+
 
 
 trim the sequences, discard them or keep them unchanged depending on them having adapters remnants. 

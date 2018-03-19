@@ -1,5 +1,5 @@
 <map id="include/init_Sreport.h" name="include/init_Sreport.h">
-<area shape="rect" id="node2" href="$init__Sreport_8c.html" title="Help dialog for Sreport and initialization of the command line arguments. " alt="" coords="5,80,127,107"/>
-<area shape="rect" id="node3" href="$Rcommand__Sreport_8c.html" title="get Rscript command for Sreport " alt="" coords="151,80,322,107"/>
-<area shape="rect" id="node4" href="$Sreport_8c.html" title="Sreport main function. " alt="" coords="347,80,444,107"/>
+<area shape="rect" id="node2" href="$init__Sreport_8c.html" title="Help dialog for Sreport and initialization of the command line arguments. " alt="" coords="5,80,136,107"/>
+<area shape="rect" id="node3" href="$Rcommand__Sreport_8c.html" title="get Rscript command for Sreport " alt="" coords="160,80,344,107"/>
+<area shape="rect" id="node4" href="$Sreport_8c.html" title="Sreport main function. " alt="" coords="369,80,471,107"/>
 </map>

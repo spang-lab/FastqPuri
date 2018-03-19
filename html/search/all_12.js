@@ -1,7 +1,6 @@
 var searchData=
 [
   ['s',['s',['../struct__split.html#a84d5273295857f35a812eeab15ae607f',1,'_split']]],
-  ['sa',['SA',['../defines_8h.html#a1e43924adac4ae865aa0acf79710261c',1,'defines.h']]],
   ['save_5fbfilter',['save_Bfilter',['../bloom_8c.html#a48a74d10082ed27381512e23650ba823',1,'save_Bfilter(Bfilter *ptr_bf, char *filterfile, char *paramfile):&#160;bloom.c'],['../bloom_8h.html#a48a74d10082ed27381512e23650ba823',1,'save_Bfilter(Bfilter *ptr_bf, char *filterfile, char *paramfile):&#160;bloom.c']]],
   ['save_5ftree',['save_tree',['../tree_8c.html#a3b6ea3f3ef0c84a182e93a58ea417aea',1,'save_tree(Tree *tree_ptr, char *filename):&#160;tree.c'],['../tree_8h.html#a3b6ea3f3ef0c84a182e93a58ea417aea',1,'save_tree(Tree *tree_ptr, char *filename):&#160;tree.c']]],
   ['score',['score',['../struct__iparam__trimFilter.html#a193ef2030f6eb8db0b75afbbd152d6a1',1,'_iparam_trimFilter']]],

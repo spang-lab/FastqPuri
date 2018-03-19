@@ -1,18 +1,19 @@
-\hypertarget{Rcommand__Sreport_8c}{\section{src/\+Rcommand\+\_\+\+Sreport.c File Reference}
+\hypertarget{Rcommand__Sreport_8c}{}\section{src/\+Rcommand\+\_\+\+Sreport.c File Reference}
 \label{Rcommand__Sreport_8c}\index{src/\+Rcommand\+\_\+\+Sreport.\+c@{src/\+Rcommand\+\_\+\+Sreport.\+c}}
-}
 
 
 get Rscript command for Sreport  
 
 
-{\ttfamily \#include $<$stdio.\+h$>$}\\*
-{\ttfamily \#include $<$unistd.\+h$>$}\\*
-{\ttfamily \#include \char`\"{}Rcommand\+\_\+\+Sreport.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}init\+\_\+\+Sreport.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
-Include dependency graph for Rcommand\+\_\+\+Sreport.\+c\+:\nopagebreak
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Rcommand\+\_\+\+Sreport.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}init\+\_\+\+Sreport.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\newline
+Include dependency graph for Rcommand\+\_\+\+Sreport.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -22,12 +23,12 @@ Include dependency graph for Rcommand\+\_\+\+Sreport.\+c\+:\nopagebreak
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-char $\ast$ \hyperlink{Rcommand__Sreport_8c_a843ffc16afb438c7430da804efd8dfaf}{command\+\_\+\+Sreport} ()
+char $\ast$ \mbox{\hyperlink{Rcommand__Sreport_8c_a843ffc16afb438c7430da804efd8dfaf}{command\+\_\+\+Sreport}} ()
 \begin{DoxyCompactList}\small\item\em returns Rscript command that generates the summary report in html \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{init__Sreport_8h_ae7c35fd710a54db5b21f5c6b04fe9a5d}{Iparam\+\_\+\+Sreport} \hyperlink{Rcommand__Sreport_8c_aa230276b7e03d43430c998def780682e}{par\+\_\+\+S\+R}
+\mbox{\hyperlink{init__Sreport_8h_ae7c35fd710a54db5b21f5c6b04fe9a5d}{Iparam\+\_\+\+Sreport}} \mbox{\hyperlink{Rcommand__Sreport_8c_aa230276b7e03d43430c998def780682e}{par\+\_\+\+SR}}
 \end{DoxyCompactItemize}
 
 
@@ -43,37 +44,39 @@ Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+
 
 
 \subsection{Function Documentation}
-\hypertarget{Rcommand__Sreport_8c_a843ffc16afb438c7430da804efd8dfaf}{\index{Rcommand\+\_\+\+Sreport.\+c@{Rcommand\+\_\+\+Sreport.\+c}!command\+\_\+\+Sreport@{command\+\_\+\+Sreport}}
+\mbox{\Hypertarget{Rcommand__Sreport_8c_a843ffc16afb438c7430da804efd8dfaf}\label{Rcommand__Sreport_8c_a843ffc16afb438c7430da804efd8dfaf}} 
+\index{Rcommand\+\_\+\+Sreport.\+c@{Rcommand\+\_\+\+Sreport.\+c}!command\+\_\+\+Sreport@{command\+\_\+\+Sreport}}
 \index{command\+\_\+\+Sreport@{command\+\_\+\+Sreport}!Rcommand\+\_\+\+Sreport.\+c@{Rcommand\+\_\+\+Sreport.\+c}}
-\subsubsection[{command\+\_\+\+Sreport}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ command\+\_\+\+Sreport (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}}\label{Rcommand__Sreport_8c_a843ffc16afb438c7430da804efd8dfaf}
+\subsubsection{\texorpdfstring{command\+\_\+\+Sreport()}{command\_Sreport()}}
+{\footnotesize\ttfamily char$\ast$ command\+\_\+\+Sreport (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 
 
 returns Rscript command that generates the summary report in html 
 
 
 \begin{DoxyCode}
-1 # To run between quotation marks after:  Rscript\_RBioC -e (Rscript)
-2 inputfolder = normalizePath( <par.SR.inputfolder>, mustWork = TRUE);
-3 output = <par\_SR.outputfile>;
-4 output\_file = gsub('.* /', '', output);
-5 path = gsub('[^/]+$', '', output);
-6 if (path != '') \{
-7   outputfile = paste0(normalizePath(path, mustWork = TRUE), '/', outputfile);
-8 \} else \{
-9   outputfile = paste0(cwd, '/', output\_file); # cwd: current working dir
-10 \}; 
-11 rmarkdown::render(<par\_SR.Rmd\_file>, 
-12                   params = list(inputfolder = inputfolder, version= VERSION),
-13                   output\_file = output\_file)
+# To run between quotation marks after:  Rscript\_RBioC -e (Rscript)
+inputfolder = normalizePath( <par.SR.inputfolder>, mustWork = TRUE);
+output = <par\_SR.outputfile>;
+output\_file = gsub('.* /', '', output);
+path = gsub('[^/]+$', '', output);
+if (path != '') \{
+  outputfile = paste0(normalizePath(path, mustWork = TRUE), '/', outputfile);
+\} else \{
+  outputfile = paste0(cwd, '/', output\_file); # cwd: current working dir
+\}; 
+rmarkdown::render(<par\_SR.Rmd\_file>, 
+                  params = list(inputfolder = inputfolder, version= VERSION),
+                  output\_file = output\_file)
 \end{DoxyCode}
  
 
 \subsection{Variable Documentation}
-\hypertarget{Rcommand__Sreport_8c_aa230276b7e03d43430c998def780682e}{\index{Rcommand\+\_\+\+Sreport.\+c@{Rcommand\+\_\+\+Sreport.\+c}!par\+\_\+\+S\+R@{par\+\_\+\+S\+R}}
-\index{par\+\_\+\+S\+R@{par\+\_\+\+S\+R}!Rcommand\+\_\+\+Sreport.\+c@{Rcommand\+\_\+\+Sreport.\+c}}
-\subsubsection[{par\+\_\+\+S\+R}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Iparam\+\_\+\+Sreport} par\+\_\+\+S\+R}}\label{Rcommand__Sreport_8c_aa230276b7e03d43430c998def780682e}
+\mbox{\Hypertarget{Rcommand__Sreport_8c_aa230276b7e03d43430c998def780682e}\label{Rcommand__Sreport_8c_aa230276b7e03d43430c998def780682e}} 
+\index{Rcommand\+\_\+\+Sreport.\+c@{Rcommand\+\_\+\+Sreport.\+c}!par\+\_\+\+SR@{par\+\_\+\+SR}}
+\index{par\+\_\+\+SR@{par\+\_\+\+SR}!Rcommand\+\_\+\+Sreport.\+c@{Rcommand\+\_\+\+Sreport.\+c}}
+\subsubsection{\texorpdfstring{par\+\_\+\+SR}{par\_SR}}
+{\footnotesize\ttfamily \mbox{\hyperlink{init__Sreport_8h_ae7c35fd710a54db5b21f5c6b04fe9a5d}{Iparam\+\_\+\+Sreport}} par\+\_\+\+SR}
+
 input parameters Sreport 

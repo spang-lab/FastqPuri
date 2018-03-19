@@ -6,6 +6,5 @@ var searchData=
   ['read_5ftree',['read_tree',['../tree_8c.html#a58f15d601ef34104e008d0ff8cb28bee',1,'read_tree(char *filename):&#160;tree.c'],['../tree_8h.html#a58f15d601ef34104e008d0ff8cb28bee',1,'read_tree(char *filename):&#160;tree.c']]],
   ['realloc_5ffa',['realloc_fa',['../fa__read_8c.html#a5c08d4c247d5c3e55bb572fb8d6a11bd',1,'fa_read.c']]],
   ['resize_5finfo',['resize_info',['../stats__info_8c.html#a8ca7ce52d36a35e78b8c0bde089aedcf',1,'resize_info(Info *res):&#160;stats_info.c'],['../stats__info_8h.html#a8ca7ce52d36a35e78b8c0bde089aedcf',1,'resize_info(Info *res):&#160;stats_info.c']]],
-  ['rev_5fcomp',['rev_comp',['../Lmer_8c.html#ae4b4f0b75c0a5784ad66d856aed9d39f',1,'rev_comp(char *sLmer, int L):&#160;Lmer.c'],['../Lmer_8h.html#ae4b4f0b75c0a5784ad66d856aed9d39f',1,'rev_comp(char *sLmer, int L):&#160;Lmer.c']]],
-  ['rev_5fcomp2',['rev_comp2',['../Lmer_8c.html#a6adc3e6b4aa23ade6c889592c50c2963',1,'rev_comp2(char *sLmer, int L):&#160;Lmer.c'],['../Lmer_8h.html#a6adc3e6b4aa23ade6c889592c50c2963',1,'rev_comp2(char *sLmer, int L):&#160;Lmer.c']]]
+  ['rev_5fcomp',['rev_comp',['../Lmer_8c.html#ae4b4f0b75c0a5784ad66d856aed9d39f',1,'rev_comp(char *sLmer, int L):&#160;Lmer.c'],['../Lmer_8h.html#ae4b4f0b75c0a5784ad66d856aed9d39f',1,'rev_comp(char *sLmer, int L):&#160;Lmer.c']]]
 ];

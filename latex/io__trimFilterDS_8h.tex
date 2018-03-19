@@ -1,45 +1,46 @@
-\hypertarget{io__trimFilterDS_8h}{\section{include/io\+\_\+trim\+Filter\+D\+S.h File Reference}
+\hypertarget{io__trimFilterDS_8h}{}\section{include/io\+\_\+trim\+Filter\+DS.h File Reference}
 \label{io__trimFilterDS_8h}\index{include/io\+\_\+trim\+Filter\+D\+S.\+h@{include/io\+\_\+trim\+Filter\+D\+S.\+h}}
-}
 
 
 buffer fq output, write summary file  
 
 
-{\ttfamily \#include $<$stdio.\+h$>$}\\*
-{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\\*
-Include dependency graph for io\+\_\+trim\+Filter\+D\+S.\+h\+:\nopagebreak
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\newline
+Include dependency graph for io\+\_\+trim\+Filter\+D\+S.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=205pt]{io__trimFilterDS_8h__incl}
+\includegraphics[width=256pt]{io__trimFilterDS_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=204pt]{io__trimFilterDS_8h__dep__incl}
+\includegraphics[width=216pt]{io__trimFilterDS_8h__dep__incl}
 \end{center}
 \end{figure}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{struct__stats__TFDS}{\+\_\+stats\+\_\+\+T\+F\+D\+S}
+struct \mbox{\hyperlink{struct__stats__TFDS}{\+\_\+stats\+\_\+\+T\+F\+DS}}
 \begin{DoxyCompactList}\small\item\em collects stats info from the filtering procedure \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{io__trimFilterDS_8h_aa6af9fe811b327b9a1a23264787b876c}{typedef struct \hyperlink{struct__stats__TFDS}{\+\_\+stats\+\_\+\+T\+F\+D\+S} \hyperlink{io__trimFilterDS_8h_aa6af9fe811b327b9a1a23264787b876c}{Stats\+\_\+\+T\+F\+D\+S}}\label{io__trimFilterDS_8h_aa6af9fe811b327b9a1a23264787b876c}
-
+\mbox{\Hypertarget{io__trimFilterDS_8h_aa6af9fe811b327b9a1a23264787b876c}\label{io__trimFilterDS_8h_aa6af9fe811b327b9a1a23264787b876c}} 
+typedef struct \mbox{\hyperlink{struct__stats__TFDS}{\+\_\+stats\+\_\+\+T\+F\+DS}} \mbox{\hyperlink{io__trimFilterDS_8h_aa6af9fe811b327b9a1a23264787b876c}{Stats\+\_\+\+T\+F\+DS}}
 \begin{DoxyCompactList}\small\item\em collects stats info from the filtering procedure \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{io__trimFilterDS_8h_a0ccc95aa7893f0d0a3e4ef8128416d64}{buffer\+\_\+output\+D\+S} (F\+I\+L\+E $\ast$fout, const char $\ast$a, const int len, const int fd\+\_\+i)
+void \mbox{\hyperlink{io__trimFilterDS_8h_a0ccc95aa7893f0d0a3e4ef8128416d64}{buffer\+\_\+output\+DS}} (F\+I\+LE $\ast$fout, const char $\ast$a, const int len, const int fd\+\_\+i)
 \begin{DoxyCompactList}\small\item\em buffers the output before writing to disk \end{DoxyCompactList}\item 
-\hypertarget{io__trimFilterDS_8h_afb3c51ae1e6980d6a87504158850647a}{void \hyperlink{io__trimFilterDS_8h_afb3c51ae1e6980d6a87504158850647a}{write\+\_\+summary\+\_\+\+T\+F\+D\+S} (\hyperlink{io__trimFilterDS_8h_aa6af9fe811b327b9a1a23264787b876c}{Stats\+\_\+\+T\+F\+D\+S} tfds\+\_\+stats, char $\ast$filename)}\label{io__trimFilterDS_8h_afb3c51ae1e6980d6a87504158850647a}
-
+\mbox{\Hypertarget{io__trimFilterDS_8h_afb3c51ae1e6980d6a87504158850647a}\label{io__trimFilterDS_8h_afb3c51ae1e6980d6a87504158850647a}} 
+void \mbox{\hyperlink{io__trimFilterDS_8h_afb3c51ae1e6980d6a87504158850647a}{write\+\_\+summary\+\_\+\+T\+F\+DS}} (\mbox{\hyperlink{io__trimFilterDS_8h_aa6af9fe811b327b9a1a23264787b876c}{Stats\+\_\+\+T\+F\+DS}} tfds\+\_\+stats, char $\ast$filename)
 \begin{DoxyCompactList}\small\item\em writes stats of filtering to summary file (binary) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -55,23 +56,19 @@ Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+
 
 
 \subsection{Function Documentation}
-\hypertarget{io__trimFilterDS_8h_a0ccc95aa7893f0d0a3e4ef8128416d64}{\index{io\+\_\+trim\+Filter\+D\+S.\+h@{io\+\_\+trim\+Filter\+D\+S.\+h}!buffer\+\_\+output\+D\+S@{buffer\+\_\+output\+D\+S}}
-\index{buffer\+\_\+output\+D\+S@{buffer\+\_\+output\+D\+S}!io\+\_\+trim\+Filter\+D\+S.\+h@{io\+\_\+trim\+Filter\+D\+S.\+h}}
-\subsubsection[{buffer\+\_\+output\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}void buffer\+\_\+output\+D\+S (
-\begin{DoxyParamCaption}
-\item[{F\+I\+L\+E $\ast$}]{fout, }
-\item[{const char $\ast$}]{str, }
-\item[{const int}]{len, }
-\item[{const int}]{fd\+\_\+i}
-\end{DoxyParamCaption}
-)}}\label{io__trimFilterDS_8h_a0ccc95aa7893f0d0a3e4ef8128416d64}
+\mbox{\Hypertarget{io__trimFilterDS_8h_a0ccc95aa7893f0d0a3e4ef8128416d64}\label{io__trimFilterDS_8h_a0ccc95aa7893f0d0a3e4ef8128416d64}} 
+\index{io\+\_\+trim\+Filter\+D\+S.\+h@{io\+\_\+trim\+Filter\+D\+S.\+h}!buffer\+\_\+output\+DS@{buffer\+\_\+output\+DS}}
+\index{buffer\+\_\+output\+DS@{buffer\+\_\+output\+DS}!io\+\_\+trim\+Filter\+D\+S.\+h@{io\+\_\+trim\+Filter\+D\+S.\+h}}
+\subsubsection{\texorpdfstring{buffer\+\_\+output\+D\+S()}{buffer\_outputDS()}}
+{\footnotesize\ttfamily void buffer\+\_\+output\+DS (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fout,  }\item[{const char $\ast$}]{str,  }\item[{const int}]{len,  }\item[{const int}]{fd\+\_\+i }\end{DoxyParamCaption})}
+
 
 
 buffers the output before writing to disk 
 
 
 \begin{DoxyParams}{Parameters}
-{\em fout} & F\+I\+L\+E pointer where we might write to disk; \\
+{\em fout} & F\+I\+LE pointer where we might write to disk; \\
 \hline
 {\em str} & string we want to add \\
 \hline

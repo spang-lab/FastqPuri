@@ -1,30 +1,30 @@
-\hypertarget{io__trimFilter_8c}{\section{src/io\+\_\+trim\+Filter.c File Reference}
+\hypertarget{io__trimFilter_8c}{}\section{src/io\+\_\+trim\+Filter.c File Reference}
 \label{io__trimFilter_8c}\index{src/io\+\_\+trim\+Filter.\+c@{src/io\+\_\+trim\+Filter.\+c}}
-}
 
 
 buffer fq output, write summary file  
 
 
-{\ttfamily \#include $<$stdio.\+h$>$}\\*
-{\ttfamily \#include $<$stdlib.\+h$>$}\\*
-{\ttfamily \#include $<$string.\+h$>$}\\*
-{\ttfamily \#include \char`\"{}io\+\_\+trim\+Filter.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\\*
-Include dependency graph for io\+\_\+trim\+Filter.\+c\+:\nopagebreak
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}io\+\_\+trim\+Filter.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\newline
+Include dependency graph for io\+\_\+trim\+Filter.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=326pt]{io__trimFilter_8c__incl}
+\includegraphics[width=350pt]{io__trimFilter_8c__incl}
 \end{center}
 \end{figure}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{io__trimFilter_8c_a9bb3b28738f1a022ccbf4a75bdceea90}{buffer\+\_\+output} (F\+I\+L\+E $\ast$fout, const char $\ast$str, const int len, const int fd\+\_\+i)
+void \mbox{\hyperlink{io__trimFilter_8c_a9bb3b28738f1a022ccbf4a75bdceea90}{buffer\+\_\+output}} (F\+I\+LE $\ast$fout, const char $\ast$str, const int len, const int fd\+\_\+i)
 \begin{DoxyCompactList}\small\item\em buffers the output before writing to disk, writes out summary \end{DoxyCompactList}\item 
-\hypertarget{io__trimFilter_8c_a4091d7483c30847a4bea4dabe00c4ffb}{void \hyperlink{io__trimFilter_8c_a4091d7483c30847a4bea4dabe00c4ffb}{write\+\_\+summary\+\_\+\+T\+F} (\hyperlink{io__trimFilter_8h_a9b921e335cd93e3ad72901eca22b7758}{Stats\+\_\+\+T\+F} tf\+\_\+stats, char $\ast$filename)}\label{io__trimFilter_8c_a4091d7483c30847a4bea4dabe00c4ffb}
-
+\mbox{\Hypertarget{io__trimFilter_8c_a4091d7483c30847a4bea4dabe00c4ffb}\label{io__trimFilter_8c_a4091d7483c30847a4bea4dabe00c4ffb}} 
+void \mbox{\hyperlink{io__trimFilter_8c_a4091d7483c30847a4bea4dabe00c4ffb}{write\+\_\+summary\+\_\+\+TF}} (\mbox{\hyperlink{io__trimFilter_8h_a9b921e335cd93e3ad72901eca22b7758}{Stats\+\_\+\+TF}} tf\+\_\+stats, char $\ast$filename)
 \begin{DoxyCompactList}\small\item\em writes stats of filtering to summary file (binary) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -40,28 +40,24 @@ Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+
 
 
 \subsection{Function Documentation}
-\hypertarget{io__trimFilter_8c_a9bb3b28738f1a022ccbf4a75bdceea90}{\index{io\+\_\+trim\+Filter.\+c@{io\+\_\+trim\+Filter.\+c}!buffer\+\_\+output@{buffer\+\_\+output}}
+\mbox{\Hypertarget{io__trimFilter_8c_a9bb3b28738f1a022ccbf4a75bdceea90}\label{io__trimFilter_8c_a9bb3b28738f1a022ccbf4a75bdceea90}} 
+\index{io\+\_\+trim\+Filter.\+c@{io\+\_\+trim\+Filter.\+c}!buffer\+\_\+output@{buffer\+\_\+output}}
 \index{buffer\+\_\+output@{buffer\+\_\+output}!io\+\_\+trim\+Filter.\+c@{io\+\_\+trim\+Filter.\+c}}
-\subsubsection[{buffer\+\_\+output}]{\setlength{\rightskip}{0pt plus 5cm}void buffer\+\_\+output (
-\begin{DoxyParamCaption}
-\item[{F\+I\+L\+E $\ast$}]{fout, }
-\item[{const char $\ast$}]{str, }
-\item[{const int}]{len, }
-\item[{const int}]{fd\+\_\+i}
-\end{DoxyParamCaption}
-)}}\label{io__trimFilter_8c_a9bb3b28738f1a022ccbf4a75bdceea90}
+\subsubsection{\texorpdfstring{buffer\+\_\+output()}{buffer\_output()}}
+{\footnotesize\ttfamily void buffer\+\_\+output (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fout,  }\item[{const char $\ast$}]{str,  }\item[{const int}]{len,  }\item[{const int}]{fd\+\_\+i }\end{DoxyParamCaption})}
+
 
 
 buffers the output before writing to disk, writes out summary 
 
 
 \begin{DoxyParams}{Parameters}
-{\em fout} & F\+I\+L\+E pointer where we might write to disk; \\
+{\em fout} & F\+I\+LE pointer where we might write to disk; \\
 \hline
 {\em str} & string we want to add \\
 \hline
 {\em len} & length of the string we want to add \\
 \hline
-{\em fd\+\_\+i} & identifier\+: G\+O\+O\+D, A\+D\+A\+P, C\+O\+N\+T, L\+O\+W\+Q, N\+N\+N\+N \\
+{\em fd\+\_\+i} & identifier\+: G\+O\+OD, A\+D\+AP, C\+O\+NT, L\+O\+WQ, N\+N\+NN \\
 \hline
 \end{DoxyParams}

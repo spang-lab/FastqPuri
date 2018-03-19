@@ -1,20 +1,21 @@
-\hypertarget{fq__read_8h}{\section{include/fq\+\_\+read.h File Reference}
+\hypertarget{fq__read_8h}{}\section{include/fq\+\_\+read.h File Reference}
 \label{fq__read_8h}\index{include/fq\+\_\+read.\+h@{include/fq\+\_\+read.\+h}}
-}
 
 
 fastq entries manipulations (read/write)  
 
 
-{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
-Include dependency graph for fq\+\_\+read.\+h\+:\nopagebreak
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\newline
+Include dependency graph for fq\+\_\+read.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=171pt]{fq__read_8h__incl}
+\includegraphics[width=181pt]{fq__read_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -24,20 +25,20 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{struct__fq__read}{\+\_\+fq\+\_\+read}
+struct \mbox{\hyperlink{struct__fq__read}{\+\_\+fq\+\_\+read}}
 \begin{DoxyCompactList}\small\item\em stores a fastq entry \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{typedef struct \hyperlink{struct__fq__read}{\+\_\+fq\+\_\+read} \hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}}\label{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}
-
+\mbox{\Hypertarget{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}\label{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}} 
+typedef struct \mbox{\hyperlink{struct__fq__read}{\+\_\+fq\+\_\+read}} \mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}}
 \begin{DoxyCompactList}\small\item\em stores a fastq entry \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{fq__read_8h_af0d30098d51bea3d11c442c3dd60e15f}{get\+\_\+fqread} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, char $\ast$buffer, int pos1, int pos2, int nline, int read\+\_\+len, int filter)
+int \mbox{\hyperlink{fq__read_8h_af0d30098d51bea3d11c442c3dd60e15f}{get\+\_\+fqread}} (\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$seq, char $\ast$buffer, int pos1, int pos2, int nline, int read\+\_\+len, int filter)
 \begin{DoxyCompactList}\small\item\em reads fastq line from a buffer \end{DoxyCompactList}\item 
-int \hyperlink{fq__read_8h_ae58e185777143cd1fc4c75fccd5c647a}{string\+\_\+seq} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, char $\ast$char\+\_\+seq)
+int \mbox{\hyperlink{fq__read_8h_ae58e185777143cd1fc4c75fccd5c647a}{string\+\_\+seq}} (\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$seq, char $\ast$char\+\_\+seq)
 \begin{DoxyCompactList}\small\item\em writes the fq entry in a string \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -53,19 +54,12 @@ Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+
 
 
 \subsection{Function Documentation}
-\hypertarget{fq__read_8h_af0d30098d51bea3d11c442c3dd60e15f}{\index{fq\+\_\+read.\+h@{fq\+\_\+read.\+h}!get\+\_\+fqread@{get\+\_\+fqread}}
+\mbox{\Hypertarget{fq__read_8h_af0d30098d51bea3d11c442c3dd60e15f}\label{fq__read_8h_af0d30098d51bea3d11c442c3dd60e15f}} 
+\index{fq\+\_\+read.\+h@{fq\+\_\+read.\+h}!get\+\_\+fqread@{get\+\_\+fqread}}
 \index{get\+\_\+fqread@{get\+\_\+fqread}!fq\+\_\+read.\+h@{fq\+\_\+read.\+h}}
-\subsubsection[{get\+\_\+fqread}]{\setlength{\rightskip}{0pt plus 5cm}int get\+\_\+fqread (
-\begin{DoxyParamCaption}
-\item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
-\item[{char $\ast$}]{buffer, }
-\item[{int}]{pos1, }
-\item[{int}]{pos2, }
-\item[{int}]{nline, }
-\item[{int}]{read\+\_\+len, }
-\item[{int}]{filter}
-\end{DoxyParamCaption}
-)}}\label{fq__read_8h_af0d30098d51bea3d11c442c3dd60e15f}
+\subsubsection{\texorpdfstring{get\+\_\+fqread()}{get\_fqread()}}
+{\footnotesize\ttfamily int get\+\_\+fqread (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$}]{seq,  }\item[{char $\ast$}]{buffer,  }\item[{int}]{pos1,  }\item[{int}]{pos2,  }\item[{int}]{nline,  }\item[{int}]{read\+\_\+len,  }\item[{int}]{filter }\end{DoxyParamCaption})}
+
 
 
 reads fastq line from a buffer 
@@ -89,14 +83,12 @@ a fastq line is read from a buffer and the relevant information is stored in a s
 {\em filter} & 0 original file, 1 file filtered with filter\+\_\+trim, 2 file filtered with another tool \\
 \hline
 \end{DoxyParams}
-\hypertarget{fq__read_8h_ae58e185777143cd1fc4c75fccd5c647a}{\index{fq\+\_\+read.\+h@{fq\+\_\+read.\+h}!string\+\_\+seq@{string\+\_\+seq}}
+\mbox{\Hypertarget{fq__read_8h_ae58e185777143cd1fc4c75fccd5c647a}\label{fq__read_8h_ae58e185777143cd1fc4c75fccd5c647a}} 
+\index{fq\+\_\+read.\+h@{fq\+\_\+read.\+h}!string\+\_\+seq@{string\+\_\+seq}}
 \index{string\+\_\+seq@{string\+\_\+seq}!fq\+\_\+read.\+h@{fq\+\_\+read.\+h}}
-\subsubsection[{string\+\_\+seq}]{\setlength{\rightskip}{0pt plus 5cm}int string\+\_\+seq (
-\begin{DoxyParamCaption}
-\item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
-\item[{char $\ast$}]{char\+\_\+seq}
-\end{DoxyParamCaption}
-)}}\label{fq__read_8h_ae58e185777143cd1fc4c75fccd5c647a}
+\subsubsection{\texorpdfstring{string\+\_\+seq()}{string\_seq()}}
+{\footnotesize\ttfamily int string\+\_\+seq (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$}]{seq,  }\item[{char $\ast$}]{char\+\_\+seq }\end{DoxyParamCaption})}
+
 
 
 writes the fq entry in a string 

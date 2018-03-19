@@ -4,7 +4,7 @@ var searchData=
   ['threshold',['threshold',['../struct__adapter.html#a2d1273cfaa0d51c79f331b92ed2342b4',1,'_adapter']]],
   ['tile_5fpos',['tile_pos',['../structstatsinfo.html#a740378fa01d92f6e0b2c50a26889fefd',1,'statsinfo']]],
   ['tile_5ftags',['tile_tags',['../structstatsinfo.html#a25f475c79fa4d5aa1255b8c543d8a731',1,'statsinfo']]],
-  ['tree',['TREE',['../defines_8h.html#abf5b8fbbeb8255336e401a15a80214a8',1,'TREE():&#160;defines.h'],['../tree_8h.html#a50a06950fa1e82738ad9a6bd85914900',1,'Tree():&#160;tree.h']]],
+  ['tree',['Tree',['../tree_8h.html#a50a06950fa1e82738ad9a6bd85914900',1,'Tree():&#160;tree.h'],['../defines_8h.html#abf5b8fbbeb8255336e401a15a80214a8',1,'TREE():&#160;defines.h']]],
   ['tree_2ec',['tree.c',['../tree_8c.html',1,'']]],
   ['tree_2eh',['tree.h',['../tree_8h.html',1,'']]],
   ['tree_5ffrom_5ffasta',['tree_from_fasta',['../tree_8c.html#a3cec782fc1e0ae4063a34c641b463f89',1,'tree_from_fasta(Fa_data *fasta, int L):&#160;tree.c'],['../tree_8h.html#a3cec782fc1e0ae4063a34c641b463f89',1,'tree_from_fasta(Fa_data *fasta, int L):&#160;tree.c']]],

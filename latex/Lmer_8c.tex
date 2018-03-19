@@ -1,46 +1,41 @@
-\hypertarget{Lmer_8c}{\section{src/\+Lmer.c File Reference}
+\hypertarget{Lmer_8c}{}\section{src/\+Lmer.c File Reference}
 \label{Lmer_8c}\index{src/\+Lmer.\+c@{src/\+Lmer.\+c}}
-}
 
 
 Manipulation of Lmers and sequences.  
 
 
-{\ttfamily \#include \char`\"{}Lmer.\+h\char`\"{}}\\*
-{\ttfamily \#include $<$string.\+h$>$}\\*
-{\ttfamily \#include $<$stdint.\+h$>$}\\*
-{\ttfamily \#include $<$stdio.\+h$>$}\\*
-Include dependency graph for Lmer.\+c\+:\nopagebreak
+{\ttfamily \#include \char`\"{}Lmer.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+Include dependency graph for Lmer.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=326pt]{Lmer_8c__incl}
+\includegraphics[width=341pt]{Lmer_8c__incl}
 \end{center}
 \end{figure}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{Lmer_8c_a5f1586659681cf692359f7c8c003dd8b}{init\+\_\+map} ()
-\begin{DoxyCompactList}\small\item\em Initialize lookup table fw\+\_\+1\+B. \end{DoxyCompactList}\item 
-void \hyperlink{Lmer_8c_a54a9d22589c1235957b6472310280e1d}{init\+\_\+map\+\_\+\+S\+A} ()
-\begin{DoxyCompactList}\small\item\em Initialize lookup table fw\+\_\+1\+B (for S\+A) \end{DoxyCompactList}\item 
-\hypertarget{Lmer_8c_a3280d056532aa23523d08dfd52b60b51}{void \hyperlink{Lmer_8c_a3280d056532aa23523d08dfd52b60b51}{Lmer\+\_\+s\+Lmer} (char $\ast$Lmer, int L)}\label{Lmer_8c_a3280d056532aa23523d08dfd52b60b51}
-
-\begin{DoxyCompactList}\small\item\em Transforms an Lmer to the convention stored in the lookup table fw\+\_\+1\+B. \end{DoxyCompactList}\item 
-\hypertarget{Lmer_8c_ae4b4f0b75c0a5784ad66d856aed9d39f}{void \hyperlink{Lmer_8c_ae4b4f0b75c0a5784ad66d856aed9d39f}{rev\+\_\+comp} (char $\ast$s\+Lmer, int L)}\label{Lmer_8c_ae4b4f0b75c0a5784ad66d856aed9d39f}
-
-\begin{DoxyCompactList}\small\item\em Obtains the reverse complement, for \{'\textbackslash{}000','\textbackslash{}001','\textbackslash{}002','\textbackslash{}003'\}. \end{DoxyCompactList}\item 
-\hypertarget{Lmer_8c_a6adc3e6b4aa23ade6c889592c50c2963}{void \hyperlink{Lmer_8c_a6adc3e6b4aa23ade6c889592c50c2963}{rev\+\_\+comp2} (char $\ast$s\+Lmer, int L)}\label{Lmer_8c_a6adc3e6b4aa23ade6c889592c50c2963}
-
-\begin{DoxyCompactList}\small\item\em Obtains the reverse complement, for \{'\textbackslash{}001','\textbackslash{}002','\textbackslash{}003','\textbackslash{}004'\}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{Lmer_8c_a5f1586659681cf692359f7c8c003dd8b}{init\+\_\+map}} ()
+\begin{DoxyCompactList}\small\item\em Initialize lookup table fw\+\_\+1B. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Lmer_8c_a3280d056532aa23523d08dfd52b60b51}\label{Lmer_8c_a3280d056532aa23523d08dfd52b60b51}} 
+void \mbox{\hyperlink{Lmer_8c_a3280d056532aa23523d08dfd52b60b51}{Lmer\+\_\+s\+Lmer}} (char $\ast$Lmer, int L)
+\begin{DoxyCompactList}\small\item\em Transforms an Lmer to the convention stored in the lookup table fw\+\_\+1B. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Lmer_8c_ae4b4f0b75c0a5784ad66d856aed9d39f}\label{Lmer_8c_ae4b4f0b75c0a5784ad66d856aed9d39f}} 
+void \mbox{\hyperlink{Lmer_8c_ae4b4f0b75c0a5784ad66d856aed9d39f}{rev\+\_\+comp}} (char $\ast$s\+Lmer, int L)
+\begin{DoxyCompactList}\small\item\em Obtains the reverse complement, for \{\textquotesingle{}\textbackslash{}000\textquotesingle{},\textquotesingle{}\textbackslash{}001\textquotesingle{},\textquotesingle{}\textbackslash{}002\textquotesingle{},\textquotesingle{}\textbackslash{}003\textquotesingle{}\}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-uint8\+\_\+t \hyperlink{Lmer_8c_a4c94b467d7dec9ee2a642ee537d5e967}{fw\+\_\+1\+B} \mbox{[}256\mbox{]}
+uint8\+\_\+t \mbox{\hyperlink{Lmer_8c_a4c94b467d7dec9ee2a642ee537d5e967}{fw\+\_\+1B}} \mbox{[}256\mbox{]}
 \item 
-uint8\+\_\+t \hyperlink{Lmer_8c_a00e6ed67c83d15ff1bbad3b85e75ee09}{bw\+\_\+1\+B} \mbox{[}256\mbox{]}
+uint8\+\_\+t \mbox{\hyperlink{Lmer_8c_a00e6ed67c83d15ff1bbad3b85e75ee09}{bw\+\_\+1B}} \mbox{[}256\mbox{]}
 \item 
-uint8\+\_\+t \hyperlink{Lmer_8c_a2abce22af1da49bd08cf2baa1d74b939}{Nencode}
+uint8\+\_\+t \mbox{\hyperlink{Lmer_8c_a2abce22af1da49bd08cf2baa1d74b939}{Nencode}}
 \end{DoxyCompactItemize}
 
 
@@ -56,38 +51,35 @@ Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+
 
 
 \subsection{Function Documentation}
-\hypertarget{Lmer_8c_a5f1586659681cf692359f7c8c003dd8b}{\index{Lmer.\+c@{Lmer.\+c}!init\+\_\+map@{init\+\_\+map}}
+\mbox{\Hypertarget{Lmer_8c_a5f1586659681cf692359f7c8c003dd8b}\label{Lmer_8c_a5f1586659681cf692359f7c8c003dd8b}} 
+\index{Lmer.\+c@{Lmer.\+c}!init\+\_\+map@{init\+\_\+map}}
 \index{init\+\_\+map@{init\+\_\+map}!Lmer.\+c@{Lmer.\+c}}
-\subsubsection[{init\+\_\+map}]{\setlength{\rightskip}{0pt plus 5cm}void init\+\_\+map (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}}\label{Lmer_8c_a5f1586659681cf692359f7c8c003dd8b}
+\subsubsection{\texorpdfstring{init\+\_\+map()}{init\_map()}}
+{\footnotesize\ttfamily void init\+\_\+map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
-Initialize lookup table fw\+\_\+1\+B. 
 
-\{'a','c','g','t'\} --$>$ \{'\textbackslash{}000','\textbackslash{}001','\textbackslash{}002','\textbackslash{}003'\}, rest '\textbackslash{}004'. \hypertarget{Lmer_8c_a54a9d22589c1235957b6472310280e1d}{\index{Lmer.\+c@{Lmer.\+c}!init\+\_\+map\+\_\+\+S\+A@{init\+\_\+map\+\_\+\+S\+A}}
-\index{init\+\_\+map\+\_\+\+S\+A@{init\+\_\+map\+\_\+\+S\+A}!Lmer.\+c@{Lmer.\+c}}
-\subsubsection[{init\+\_\+map\+\_\+\+S\+A}]{\setlength{\rightskip}{0pt plus 5cm}void init\+\_\+map\+\_\+\+S\+A (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}}\label{Lmer_8c_a54a9d22589c1235957b6472310280e1d}
+Initialize lookup table fw\+\_\+1B. 
 
-
-Initialize lookup table fw\+\_\+1\+B (for S\+A) 
-
-\{'a','c','g','t'\} --$>$ \{'\textbackslash{}001','\textbackslash{}002','\textbackslash{}003','\textbackslash{}004'\}, rest '\textbackslash{}005'. 
+\{\textquotesingle{}a\textquotesingle{},\textquotesingle{}c\textquotesingle{},\textquotesingle{}g\textquotesingle{},\textquotesingle{}t\textquotesingle{}\} --$>$ \{\textquotesingle{}\textbackslash{}000\textquotesingle{},\textquotesingle{}\textbackslash{}001\textquotesingle{},\textquotesingle{}\textbackslash{}002\textquotesingle{},\textquotesingle{}\textbackslash{}003\textquotesingle{}\}, rest \textquotesingle{}\textbackslash{}004\textquotesingle{}. 
 
 \subsection{Variable Documentation}
-\hypertarget{Lmer_8c_a00e6ed67c83d15ff1bbad3b85e75ee09}{\index{Lmer.\+c@{Lmer.\+c}!bw\+\_\+1\+B@{bw\+\_\+1\+B}}
-\index{bw\+\_\+1\+B@{bw\+\_\+1\+B}!Lmer.\+c@{Lmer.\+c}}
-\subsubsection[{bw\+\_\+1\+B}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t bw\+\_\+1\+B\mbox{[}256\mbox{]}}}\label{Lmer_8c_a00e6ed67c83d15ff1bbad3b85e75ee09}
-global variable. Lookup table. \hypertarget{Lmer_8c_a4c94b467d7dec9ee2a642ee537d5e967}{\index{Lmer.\+c@{Lmer.\+c}!fw\+\_\+1\+B@{fw\+\_\+1\+B}}
-\index{fw\+\_\+1\+B@{fw\+\_\+1\+B}!Lmer.\+c@{Lmer.\+c}}
-\subsubsection[{fw\+\_\+1\+B}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t fw\+\_\+1\+B\mbox{[}256\mbox{]}}}\label{Lmer_8c_a4c94b467d7dec9ee2a642ee537d5e967}
-global variable. Lookup table. \hypertarget{Lmer_8c_a2abce22af1da49bd08cf2baa1d74b939}{\index{Lmer.\+c@{Lmer.\+c}!Nencode@{Nencode}}
+\mbox{\Hypertarget{Lmer_8c_a00e6ed67c83d15ff1bbad3b85e75ee09}\label{Lmer_8c_a00e6ed67c83d15ff1bbad3b85e75ee09}} 
+\index{Lmer.\+c@{Lmer.\+c}!bw\+\_\+1B@{bw\+\_\+1B}}
+\index{bw\+\_\+1B@{bw\+\_\+1B}!Lmer.\+c@{Lmer.\+c}}
+\subsubsection{\texorpdfstring{bw\+\_\+1B}{bw\_1B}}
+{\footnotesize\ttfamily uint8\+\_\+t bw\+\_\+1B\mbox{[}256\mbox{]}}
+
+global variable. Lookup table. \mbox{\Hypertarget{Lmer_8c_a4c94b467d7dec9ee2a642ee537d5e967}\label{Lmer_8c_a4c94b467d7dec9ee2a642ee537d5e967}} 
+\index{Lmer.\+c@{Lmer.\+c}!fw\+\_\+1B@{fw\+\_\+1B}}
+\index{fw\+\_\+1B@{fw\+\_\+1B}!Lmer.\+c@{Lmer.\+c}}
+\subsubsection{\texorpdfstring{fw\+\_\+1B}{fw\_1B}}
+{\footnotesize\ttfamily uint8\+\_\+t fw\+\_\+1B\mbox{[}256\mbox{]}}
+
+global variable. Lookup table. \mbox{\Hypertarget{Lmer_8c_a2abce22af1da49bd08cf2baa1d74b939}\label{Lmer_8c_a2abce22af1da49bd08cf2baa1d74b939}} 
+\index{Lmer.\+c@{Lmer.\+c}!Nencode@{Nencode}}
 \index{Nencode@{Nencode}!Lmer.\+c@{Lmer.\+c}}
-\subsubsection[{Nencode}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t Nencode}}\label{Lmer_8c_a2abce22af1da49bd08cf2baa1d74b939}
-global variable. Encoding for N's(\textbackslash{}004, or \textbackslash{}005) 
+\subsubsection{\texorpdfstring{Nencode}{Nencode}}
+{\footnotesize\ttfamily uint8\+\_\+t Nencode}
+
+global variable. Encoding for N\textquotesingle{}s(\textbackslash{}004) 

@@ -1,19 +1,19 @@
-\hypertarget{trim_8c}{\section{src/trim.c File Reference}
+\hypertarget{trim_8c}{}\section{src/trim.c File Reference}
 \label{trim_8c}\index{src/trim.\+c@{src/trim.\+c}}
-}
 
 
-trims/filter sequences after Quality, N's contaminations.  
+trims/filter sequences after Quality, N\textquotesingle{}s contaminations.  
 
 
-{\ttfamily \#include $<$string.\+h$>$}\\*
-{\ttfamily \#include $<$stdlib.\+h$>$}\\*
-{\ttfamily \#include \char`\"{}trim.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}str\+\_\+manip.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}struct\+\_\+trim\+Filter.\+h\char`\"{}}\\*
-Include dependency graph for trim.\+c\+:\nopagebreak
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}trim.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}str\+\_\+manip.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}struct\+\_\+trim\+Filter.\+h\char`\"{}}\newline
+Include dependency graph for trim.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,52 +23,53 @@ Include dependency graph for trim.\+c\+:\nopagebreak
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{trim_8c_aaeb5f4dc06b2ca1b46fa5212b6b8a203}{T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+N\+G}~20
+\#define \mbox{\hyperlink{trim_8c_aaeb5f4dc06b2ca1b46fa5212b6b8a203}{T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+NG}}~20
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-static int \hyperlink{trim_8c_aa1ba5f740cba7b39672dc588b9a5deb7}{no\+\_\+\+N} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq)
-\begin{DoxyCompactList}\small\item\em checks if a sequence contains any non standard base callings (N's) \end{DoxyCompactList}\item 
-static int \hyperlink{trim_8c_a7006063272037ceb080150136d24e898}{Nfree\+\_\+\+Lmer} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, int min\+L)
-\begin{DoxyCompactList}\small\item\em Finds the largest Nfree sub-\/seq and keeps it if larger than min\+L. \end{DoxyCompactList}\item 
-static int \hyperlink{trim_8c_ae2aeb2e7303c53e2a10009ee4e20e40e}{Ntrim\+\_\+ends} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, int min\+L)
-\begin{DoxyCompactList}\small\item\em trims a read if N's are at the ends and the remaining sub-\/seq $>$= min\+L \end{DoxyCompactList}\item 
-static int \hyperlink{trim_8c_ae11fa52547dfdb0cf2af554eafbba1fc}{no\+\_\+low\+Q} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, int min\+Q)
-\begin{DoxyCompactList}\small\item\em checks if a sequence contains low\+Q nucleotides \end{DoxyCompactList}\item 
-static int \hyperlink{trim_8c_a03d11622e683d103cec196c42dd654dd}{Qtrim\+\_\+ends} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, int min\+Q, int min\+L)
-\begin{DoxyCompactList}\small\item\em trims a read if low\+Qs are at the ends and remaining sub-\/seq $>$= min\+L \end{DoxyCompactList}\item 
-static int \hyperlink{trim_8c_af3167128b208288e71c0c50f15e66e89}{Qtrim\+\_\+frac} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, int min\+Q, int nlow\+Q)
-\begin{DoxyCompactList}\small\item\em accepts the sequence as is if there are less than nlow\+Q \end{DoxyCompactList}\item 
-static int \hyperlink{trim_8c_aeef0fcb68dba0ae69ef81bd330a037ad}{Qtrim\+\_\+endsfrac} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, int min\+Q, int min\+L, int nlow\+Q)
-\begin{DoxyCompactList}\small\item\em trims the ends for low\+Q. The rest is kept if it contains $<$ nlow\+Q low\+Q \end{DoxyCompactList}\item 
-int \hyperlink{trim_8c_ad2fbad2c77c70be922a30e940367cda7}{Qtrim\+\_\+global} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, int left, int right, char type)
+static int \mbox{\hyperlink{trim_8c_aa1ba5f740cba7b39672dc588b9a5deb7}{no\+\_\+N}} (\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$seq)
+\begin{DoxyCompactList}\small\item\em checks if a sequence contains any non standard base callings (N\textquotesingle{}s) \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{trim_8c_a7006063272037ceb080150136d24e898}{Nfree\+\_\+\+Lmer}} (\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$seq, int minL)
+\begin{DoxyCompactList}\small\item\em Finds the largest Nfree sub-\/seq and keeps it if larger than minL. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{trim_8c_ae2aeb2e7303c53e2a10009ee4e20e40e}{Ntrim\+\_\+ends}} (\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$seq, int minL)
+\begin{DoxyCompactList}\small\item\em trims a read if N\textquotesingle{}s are at the ends and the remaining sub-\/seq $>$= minL \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{trim_8c_ae11fa52547dfdb0cf2af554eafbba1fc}{no\+\_\+lowQ}} (\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$seq, int minQ)
+\begin{DoxyCompactList}\small\item\em checks if a sequence contains lowQ nucleotides \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{trim_8c_a03d11622e683d103cec196c42dd654dd}{Qtrim\+\_\+ends}} (\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$seq, int minQ, int minL)
+\begin{DoxyCompactList}\small\item\em trims a read if low\+Qs are at the ends and remaining sub-\/seq $>$= minL \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{trim_8c_af3167128b208288e71c0c50f15e66e89}{Qtrim\+\_\+frac}} (\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$seq, int minQ, int nlowQ)
+\begin{DoxyCompactList}\small\item\em accepts the sequence as is if there are less than nlowQ \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{trim_8c_aeef0fcb68dba0ae69ef81bd330a037ad}\label{trim_8c_aeef0fcb68dba0ae69ef81bd330a037ad}} 
+static int {\bfseries Qtrim\+\_\+endsfrac} (\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$seq, int minQ, int minL, int nlowQ)
+\item 
+int \mbox{\hyperlink{trim_8c_ad2fbad2c77c70be922a30e940367cda7}{Qtrim\+\_\+global}} (\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$seq, int left, int right, char type)
 \begin{DoxyCompactList}\small\item\em trims left from the left and right from the right \end{DoxyCompactList}\item 
-static int \hyperlink{trim_8c_a03005207176057abeac4d0ab60afbf93}{align\+\_\+uint32} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, \hyperlink{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}{Ad\+\_\+seq} $\ast$ptr\+\_\+adap, \hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool} all)
+static int \mbox{\hyperlink{trim_8c_a03005207176057abeac4d0ab60afbf93}{align\+\_\+uint32}} (\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$seq, \mbox{\hyperlink{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}{Ad\+\_\+seq}} $\ast$ptr\+\_\+adap, \mbox{\hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool}} all)
 \begin{DoxyCompactList}\small\item\em alignment search between a fq read, and an adapter sequence, with a seed of 8 nucleotides. \end{DoxyCompactList}\item 
-static int \hyperlink{trim_8c_acb771cbd1c3867505712a6f302ec0d2d}{align\+\_\+uint64} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, \hyperlink{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}{Ad\+\_\+seq} $\ast$ptr\+\_\+adap)
+static int \mbox{\hyperlink{trim_8c_acb771cbd1c3867505712a6f302ec0d2d}{align\+\_\+uint64}} (\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$seq, \mbox{\hyperlink{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}{Ad\+\_\+seq}} $\ast$ptr\+\_\+adap)
 \begin{DoxyCompactList}\small\item\em Alignment search between a fq read, and an adapter sequence, w with a seed of 8 nucleotides. \end{DoxyCompactList}\item 
-int \hyperlink{trim_8c_aed995029d7181d69875b2dee0d7b6ce9}{trim\+\_\+adapter} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, \hyperlink{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}{Ad\+\_\+seq} $\ast$adap\+\_\+list)
+int \mbox{\hyperlink{trim_8c_aed995029d7181d69875b2dee0d7b6ce9}{trim\+\_\+adapter}} (\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$seq, \mbox{\hyperlink{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}{Ad\+\_\+seq}} $\ast$adap\+\_\+list)
 \begin{DoxyCompactList}\small\item\em trims sequence based on presence of N nucleotides \end{DoxyCompactList}\item 
-int \hyperlink{trim_8c_af23d3685193b624b72a6969a49903a97}{trim\+\_\+sequence\+N} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq)
+int \mbox{\hyperlink{trim_8c_af23d3685193b624b72a6969a49903a97}{trim\+\_\+sequenceN}} (\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$seq)
 \begin{DoxyCompactList}\small\item\em trims sequence based on presence of N nucleotides \end{DoxyCompactList}\item 
-int \hyperlink{trim_8c_ae5ab2bb79068d8a7e0d72686c1f50320}{trim\+\_\+sequence\+Q} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq)
-\begin{DoxyCompactList}\small\item\em trims sequence based on low\+Q base callings \end{DoxyCompactList}\item 
-\hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool} \hyperlink{trim_8c_a7e2b4015298659b7e21a80d4bb031e2f}{is\+\_\+read\+\_\+in\+Tree} (\hyperlink{tree_8h_a50a06950fa1e82738ad9a6bd85914900}{Tree} $\ast$tree\+\_\+ptr, \hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq)
+int \mbox{\hyperlink{trim_8c_ae5ab2bb79068d8a7e0d72686c1f50320}{trim\+\_\+sequenceQ}} (\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$seq)
+\begin{DoxyCompactList}\small\item\em trims sequence based on lowQ base callings \end{DoxyCompactList}\item 
+\mbox{\hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool}} \mbox{\hyperlink{trim_8c_a7e2b4015298659b7e21a80d4bb031e2f}{is\+\_\+read\+\_\+in\+Tree}} (\mbox{\hyperlink{tree_8h_a50a06950fa1e82738ad9a6bd85914900}{Tree}} $\ast$tree\+\_\+ptr, \mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$seq)
 \begin{DoxyCompactList}\small\item\em check if Lread is contained in tree. It computes the score for the read and its reverse complement; if one ot them exceeds the user selected threshold, it returns true. Otherwise, it returns false. \end{DoxyCompactList}\item 
-\hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool} \hyperlink{trim_8c_a6206f2c21429fd2ff36010b71989696d}{is\+\_\+read\+\_\+in\+Bloom} (\hyperlink{bloom_8h_a6cb32cf059e8f4efd1ef80938d982836}{Bfilter} $\ast$ptr\+\_\+bf, \hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, \hyperlink{bloom_8h_a4bf3f34a321ce545e533d29ce363f569}{Bfkmer} $\ast$ptr\+\_\+bfkmer)
+\mbox{\hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool}} \mbox{\hyperlink{trim_8c_a6206f2c21429fd2ff36010b71989696d}{is\+\_\+read\+\_\+in\+Bloom}} (\mbox{\hyperlink{bloom_8h_a6cb32cf059e8f4efd1ef80938d982836}{Bfilter}} $\ast$ptr\+\_\+bf, \mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$seq, \mbox{\hyperlink{bloom_8h_a4bf3f34a321ce545e533d29ce363f569}{Bfkmer}} $\ast$ptr\+\_\+bfkmer)
 \begin{DoxyCompactList}\small\item\em checks if a read is in Bloom filter. It computes the score for the read and returns true if it exceeds the user selected threshold. Returns false othersise. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{trim_8c_a4716e1b3151ae984ab8b42b54e7abdd6}{Nencode}
+int \mbox{\hyperlink{trim_8c_a4716e1b3151ae984ab8b42b54e7abdd6}{Nencode}}
 \item 
-\hyperlink{struct__trimFilter_8h_aff83806f1ff2b5f3609dc7d4c04b7c19}{Iparam\+\_\+trim\+Filter} \hyperlink{trim_8c_aed14b08f25fd6aa9a6cffb8c0074c953}{par\+\_\+\+T\+F}
+\mbox{\hyperlink{struct__trimFilter_8h_aff83806f1ff2b5f3609dc7d4c04b7c19}{Iparam\+\_\+trim\+Filter}} \mbox{\hyperlink{trim_8c_aed14b08f25fd6aa9a6cffb8c0074c953}{par\+\_\+\+TF}}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-trims/filter sequences after Quality, N's contaminations. 
+trims/filter sequences after Quality, N\textquotesingle{}s contaminations. 
 
 \begin{DoxyAuthor}{Author}
 Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+com} 
@@ -79,21 +80,21 @@ Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+
 
 
 \subsection{Macro Definition Documentation}
-\hypertarget{trim_8c_aaeb5f4dc06b2ca1b46fa5212b6b8a203}{\index{trim.\+c@{trim.\+c}!T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+N\+G@{T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+N\+G}}
-\index{T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+N\+G@{T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+N\+G}!trim.\+c@{trim.\+c}}
-\subsubsection[{T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+N\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+N\+G~20}}\label{trim_8c_aaeb5f4dc06b2ca1b46fa5212b6b8a203}
+\mbox{\Hypertarget{trim_8c_aaeb5f4dc06b2ca1b46fa5212b6b8a203}\label{trim_8c_aaeb5f4dc06b2ca1b46fa5212b6b8a203}} 
+\index{trim.\+c@{trim.\+c}!T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+NG@{T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+NG}}
+\index{T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+NG@{T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+NG}!trim.\+c@{trim.\+c}}
+\subsubsection{\texorpdfstring{T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+NG}{TRIM\_STRING}}
+{\footnotesize\ttfamily \#define T\+R\+I\+M\+\_\+\+S\+T\+R\+I\+NG~20}
+
 maximal length of trimming info string. 
 
 \subsection{Function Documentation}
-\hypertarget{trim_8c_a03005207176057abeac4d0ab60afbf93}{\index{trim.\+c@{trim.\+c}!align\+\_\+uint32@{align\+\_\+uint32}}
+\mbox{\Hypertarget{trim_8c_a03005207176057abeac4d0ab60afbf93}\label{trim_8c_a03005207176057abeac4d0ab60afbf93}} 
+\index{trim.\+c@{trim.\+c}!align\+\_\+uint32@{align\+\_\+uint32}}
 \index{align\+\_\+uint32@{align\+\_\+uint32}!trim.\+c@{trim.\+c}}
-\subsubsection[{align\+\_\+uint32}]{\setlength{\rightskip}{0pt plus 5cm}static int align\+\_\+uint32 (
-\begin{DoxyParamCaption}
-\item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
-\item[{{\bf Ad\+\_\+seq} $\ast$}]{ptr\+\_\+adap, }
-\item[{{\bf bool}}]{all}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{trim_8c_a03005207176057abeac4d0ab60afbf93}
+\subsubsection{\texorpdfstring{align\+\_\+uint32()}{align\_uint32()}}
+{\footnotesize\ttfamily static int align\+\_\+uint32 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$}]{seq,  }\item[{\mbox{\hyperlink{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}{Ad\+\_\+seq}} $\ast$}]{ptr\+\_\+adap,  }\item[{\mbox{\hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool}}}]{all }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 
 
 alignment search between a fq read, and an adapter sequence, with a seed of 8 nucleotides. 
@@ -113,27 +114,25 @@ This function checks whether there is adapter contamination in a given read. It 
 -\/1 error, 0 discarded, 1 accepted as is, 2 accepted and trimmed 
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
-Global input parameters from par\+\_\+\+T\+F are also used 
+Global input parameters from par\+\_\+\+TF are also used 
 \end{DoxyNote}
 \begin{DoxySeeAlso}{See also}
-\hyperlink{struct__trimFilter_8h_a3442d07a10a4ab75064687f3c244e370}{Adapter} 
+\mbox{\hyperlink{struct__trimFilter_8h_a3442d07a10a4ab75064687f3c244e370}{Adapter}} 
 
-\hyperlink{struct__trimFilter_8h_aff83806f1ff2b5f3609dc7d4c04b7c19}{Iparam\+\_\+trim\+Filter} 
+\mbox{\hyperlink{struct__trimFilter_8h_aff83806f1ff2b5f3609dc7d4c04b7c19}{Iparam\+\_\+trim\+Filter}} 
 
-\hyperlink{trim_8c_acb771cbd1c3867505712a6f302ec0d2d}{align\+\_\+uint64} 
+\mbox{\hyperlink{trim_8c_acb771cbd1c3867505712a6f302ec0d2d}{align\+\_\+uint64}} 
 
-\hyperlink{adapters_8h_a474bb2a439e8396fe33f6998af243eee}{pack\+\_\+adapter} 
+\mbox{\hyperlink{adapters_8h_a474bb2a439e8396fe33f6998af243eee}{pack\+\_\+adapter}} 
 
-\hyperlink{adapters_8h_adc47abb63194fec1a3ec9d83991a1340}{obtain\+\_\+score} 
+\mbox{\hyperlink{adapters_8h_adc47abb63194fec1a3ec9d83991a1340}{obtain\+\_\+score}} 
 \end{DoxySeeAlso}
-\hypertarget{trim_8c_acb771cbd1c3867505712a6f302ec0d2d}{\index{trim.\+c@{trim.\+c}!align\+\_\+uint64@{align\+\_\+uint64}}
+\mbox{\Hypertarget{trim_8c_acb771cbd1c3867505712a6f302ec0d2d}\label{trim_8c_acb771cbd1c3867505712a6f302ec0d2d}} 
+\index{trim.\+c@{trim.\+c}!align\+\_\+uint64@{align\+\_\+uint64}}
 \index{align\+\_\+uint64@{align\+\_\+uint64}!trim.\+c@{trim.\+c}}
-\subsubsection[{align\+\_\+uint64}]{\setlength{\rightskip}{0pt plus 5cm}static int align\+\_\+uint64 (
-\begin{DoxyParamCaption}
-\item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
-\item[{{\bf Ad\+\_\+seq} $\ast$}]{ptr\+\_\+adap}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{trim_8c_acb771cbd1c3867505712a6f302ec0d2d}
+\subsubsection{\texorpdfstring{align\+\_\+uint64()}{align\_uint64()}}
+{\footnotesize\ttfamily static int align\+\_\+uint64 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$}]{seq,  }\item[{\mbox{\hyperlink{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}{Ad\+\_\+seq}} $\ast$}]{ptr\+\_\+adap }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 
 
 Alignment search between a fq read, and an adapter sequence, w with a seed of 8 nucleotides. 
@@ -149,76 +148,73 @@ Alignment search between a fq read, and an adapter sequence, w with a seed of 8 
 -\/1 error, 0 discarded, 1 accepted as is, 2 accepted and trimmed 
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
-Global input parameters from par\+\_\+\+T\+F are used 
+Global input parameters from par\+\_\+\+TF are used 
 \end{DoxyNote}
 \begin{DoxySeeAlso}{See also}
-\hyperlink{struct__trimFilter_8h_a3442d07a10a4ab75064687f3c244e370}{Adapter} 
+\mbox{\hyperlink{struct__trimFilter_8h_a3442d07a10a4ab75064687f3c244e370}{Adapter}} 
 
-\hyperlink{struct__trimFilter_8h_aff83806f1ff2b5f3609dc7d4c04b7c19}{Iparam\+\_\+trim\+Filter} 
+\mbox{\hyperlink{struct__trimFilter_8h_aff83806f1ff2b5f3609dc7d4c04b7c19}{Iparam\+\_\+trim\+Filter}} 
 
-\hyperlink{trim_8c_a03005207176057abeac4d0ab60afbf93}{align\+\_\+uint32} 
+\mbox{\hyperlink{trim_8c_a03005207176057abeac4d0ab60afbf93}{align\+\_\+uint32}} 
 
-\hyperlink{adapters_8h_a474bb2a439e8396fe33f6998af243eee}{pack\+\_\+adapter} 
+\mbox{\hyperlink{adapters_8h_a474bb2a439e8396fe33f6998af243eee}{pack\+\_\+adapter}} 
 
-\hyperlink{adapters_8h_adc47abb63194fec1a3ec9d83991a1340}{obtain\+\_\+score}
+\mbox{\hyperlink{adapters_8h_adc47abb63194fec1a3ec9d83991a1340}{obtain\+\_\+score}}
 \end{DoxySeeAlso}
-This function checks whether there is adapter contamination in a given read. We start by looking for 16-\/nucleotides long seeds, where a user defined number of mismatches is allowed. If found, a score is computed. If the score is larger than the user defined threshold and the number of matched nucleotides exceeds M\+I\+N\+\_\+\+N\+M\+A\+T\+C\+H\+E\+S (12), then the read is trimmed if the remaining part is longer than min\+L (user defined) and discarded otherwise. If no 16-\/nucleotides long seeds are found, we proceed with 8-\/nucleotides long seeds (see {\bfseries align\+\_\+uint32}) and apply the same criteria to trim/discard a read. A list of possible situations follows, to illustrate how it works (min\+L=25, mismatches=2)\+:
+This function checks whether there is adapter contamination in a given read. We start by looking for 16-\/nucleotides long seeds, where a user defined number of mismatches is allowed. If found, a score is computed. If the score is larger than the user defined threshold and the number of matched nucleotides exceeds M\+I\+N\+\_\+\+N\+M\+A\+T\+C\+H\+ES (12), then the read is trimmed if the remaining part is longer than minL (user defined) and discarded otherwise. If no 16-\/nucleotides long seeds are found, we proceed with 8-\/nucleotides long seeds (see {\bfseries align\+\_\+uint32}) and apply the same criteria to trim/discard a read. A list of possible situations follows, to illustrate how it works (minL=25, mismatches=2)\+:
 
 
 \begin{DoxyCode}
-1 ADAPTER: CAAGCAGAAGACGGCATACGAG
-2 REV\_COM: AGATCGGAAGAGCTCGTATGCC
-3 
-4 CASE1A:  CACAGTCGATCAGCGAGCAGGCATTCATGCTGAGATCGGAAGAGATCGTATG
-5                                          ||||||||||||X|||----
-6                                          AGATCGGAAGAGCTCGTATG
-7          - Seed: 16 Nucleotides
-8          - Return: 2, TRIMA:0:31
-9 CASE1B:  CACATCATCGCTAGCTATCGATCGATCGATGCTATGCAAGATCGGAAGAGCT
-10                                                ||||||||------
-11                                                AGATCGGAAGAGCT
-12          - Seed: 8 Nucleotides
-13          - Return: 2, TRIMA:0:37
-14 CASE1C:  CACATCATCGCTAGCTATCGATCGATCGATGCTATGCACGAAGATCGGAAGA
-15                                                   ||||||||---
-16                                                   AGATCGGAAGA
-17          - Seed: 8 Nucleotides
-18          - Return: 1, reason: Match length < 12
-19 CASE2A:  CATACATCACGAGCTAGCTAGAGATCGGAAGAGCTCGTATGCCCAGCATCGA
-20                                ||||||||||||||||------
-21                                AGATCGGAAGAGCTCGTATGCC
-22          - Seed: 16 Nucleotides
-23          - Return: 0, reason: remaining read too short.
-24 CASE2B:  CCACAGTACAATACATCACGAGCTAGCTAGAGATCGGAAGAGCTCGTATGCC
-25                                        ||||||||||||||||||||||
-26                                        AGATCGGAAGAGCTCGTATGCC
-27          - Seed: 16 Nucleotides
-28          - Return: 2, TRIMA:0:28
-29 CASE3A:  TATGCCGTCTTCTGCTTGCAGTGCATGCTGATGCATGCTGCATGCTAGCTGC
-30          ||||||||||||||||--
-31          TATGCCGTCTTCTGCTTG
-32          - Seed: 16 Nucleotides
-33          - Return: 0, reason: remaining read too short
-34 CASE3B:  CGTCTTCTGCTTGCCGATCGATGCTAGCTACGATCGTCGAGCTAGCTACGTG
-35          ||||||||-----
-36          CGTCTTCTGCTTG
-37          - Seed: 8 Nucleotides
-38          - Return: 0, reason: remaining read too short
-39 CASE3C:  TCTTCTGCTTGCCGATCGATGCTAGCTACGATCGTCGAGCTAGCTACGTGCG
-40          ||||||||---
-41          TCTTCTGCTTG
-42          - Seed: 8 Nucleotides
-43          - Return: 1, reason: Match length < 12
+ADAPTER: CAAGCAGAAGACGGCATACGAG
+REV\_COM: AGATCGGAAGAGCTCGTATGCC
+
+CASE1A:  CACAGTCGATCAGCGAGCAGGCATTCATGCTGAGATCGGAAGAGATCGTATG
+                                         ||||||||||||X|||----
+                                         AGATCGGAAGAGCTCGTATG
+         - Seed: 16 Nucleotides
+         - Return: 2, TRIMA:0:31
+CASE1B:  CACATCATCGCTAGCTATCGATCGATCGATGCTATGCAAGATCGGAAGAGCT
+                                               ||||||||------
+                                               AGATCGGAAGAGCT
+         - Seed: 8 Nucleotides
+         - Return: 2, TRIMA:0:37
+CASE1C:  CACATCATCGCTAGCTATCGATCGATCGATGCTATGCACGAAGATCGGAAGA
+                                                  ||||||||---
+                                                  AGATCGGAAGA
+         - Seed: 8 Nucleotides
+         - Return: 1, reason: Match length < 12
+CASE2A:  CATACATCACGAGCTAGCTAGAGATCGGAAGAGCTCGTATGCCCAGCATCGA
+                               ||||||||||||||||------
+                               AGATCGGAAGAGCTCGTATGCC
+         - Seed: 16 Nucleotides
+         - Return: 0, reason: remaining read too \textcolor{keywordtype}{short}.
+CASE2B:  CCACAGTACAATACATCACGAGCTAGCTAGAGATCGGAAGAGCTCGTATGCC
+                                       ||||||||||||||||||||||
+                                       AGATCGGAAGAGCTCGTATGCC
+         - Seed: 16 Nucleotides
+         - Return: 2, TRIMA:0:28
+CASE3A:  TATGCCGTCTTCTGCTTGCAGTGCATGCTGATGCATGCTGCATGCTAGCTGC
+         ||||||||||||||||--
+         TATGCCGTCTTCTGCTTG
+         - Seed: 16 Nucleotides
+         - Return: 0, reason: remaining read too \textcolor{keywordtype}{short}
+CASE3B:  CGTCTTCTGCTTGCCGATCGATGCTAGCTACGATCGTCGAGCTAGCTACGTG
+         ||||||||-----
+         CGTCTTCTGCTTG
+         - Seed: 8 Nucleotides
+         - Return: 0, reason: remaining read too \textcolor{keywordtype}{short}
+CASE3C:  TCTTCTGCTTGCCGATCGATGCTAGCTACGATCGTCGAGCTAGCTACGTGCG
+         ||||||||---
+         TCTTCTGCTTG
+         - Seed: 8 Nucleotides
+         - Return: 1, reason: Match length < 12
 \end{DoxyCode}
- \hypertarget{trim_8c_a6206f2c21429fd2ff36010b71989696d}{\index{trim.\+c@{trim.\+c}!is\+\_\+read\+\_\+in\+Bloom@{is\+\_\+read\+\_\+in\+Bloom}}
+ \mbox{\Hypertarget{trim_8c_a6206f2c21429fd2ff36010b71989696d}\label{trim_8c_a6206f2c21429fd2ff36010b71989696d}} 
+\index{trim.\+c@{trim.\+c}!is\+\_\+read\+\_\+in\+Bloom@{is\+\_\+read\+\_\+in\+Bloom}}
 \index{is\+\_\+read\+\_\+in\+Bloom@{is\+\_\+read\+\_\+in\+Bloom}!trim.\+c@{trim.\+c}}
-\subsubsection[{is\+\_\+read\+\_\+in\+Bloom}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool} is\+\_\+read\+\_\+in\+Bloom (
-\begin{DoxyParamCaption}
-\item[{{\bf Bfilter} $\ast$}]{ptr\+\_\+bf, }
-\item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
-\item[{{\bf Bfkmer} $\ast$}]{ptr\+\_\+bfkmer}
-\end{DoxyParamCaption}
-)}}\label{trim_8c_a6206f2c21429fd2ff36010b71989696d}
+\subsubsection{\texorpdfstring{is\+\_\+read\+\_\+in\+Bloom()}{is\_read\_inBloom()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool}} is\+\_\+read\+\_\+in\+Bloom (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bloom_8h_a6cb32cf059e8f4efd1ef80938d982836}{Bfilter}} $\ast$}]{ptr\+\_\+bf,  }\item[{\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$}]{seq,  }\item[{\mbox{\hyperlink{bloom_8h_a4bf3f34a321ce545e533d29ce363f569}{Bfkmer}} $\ast$}]{ptr\+\_\+bfkmer }\end{DoxyParamCaption})}
+
 
 
 checks if a read is in Bloom filter. It computes the score for the read and returns true if it exceeds the user selected threshold. Returns false othersise. 
@@ -235,14 +231,12 @@ checks if a read is in Bloom filter. It computes the score for the read and retu
 \begin{DoxyReturn}{Returns}
 true if read was found, false otherwise 
 \end{DoxyReturn}
-\hypertarget{trim_8c_a7e2b4015298659b7e21a80d4bb031e2f}{\index{trim.\+c@{trim.\+c}!is\+\_\+read\+\_\+in\+Tree@{is\+\_\+read\+\_\+in\+Tree}}
+\mbox{\Hypertarget{trim_8c_a7e2b4015298659b7e21a80d4bb031e2f}\label{trim_8c_a7e2b4015298659b7e21a80d4bb031e2f}} 
+\index{trim.\+c@{trim.\+c}!is\+\_\+read\+\_\+in\+Tree@{is\+\_\+read\+\_\+in\+Tree}}
 \index{is\+\_\+read\+\_\+in\+Tree@{is\+\_\+read\+\_\+in\+Tree}!trim.\+c@{trim.\+c}}
-\subsubsection[{is\+\_\+read\+\_\+in\+Tree}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bool} is\+\_\+read\+\_\+in\+Tree (
-\begin{DoxyParamCaption}
-\item[{{\bf Tree} $\ast$}]{tree\+\_\+ptr, }
-\item[{{\bf Fq\+\_\+read} $\ast$}]{seq}
-\end{DoxyParamCaption}
-)}}\label{trim_8c_a7e2b4015298659b7e21a80d4bb031e2f}
+\subsubsection{\texorpdfstring{is\+\_\+read\+\_\+in\+Tree()}{is\_read\_inTree()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool}} is\+\_\+read\+\_\+in\+Tree (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tree_8h_a50a06950fa1e82738ad9a6bd85914900}{Tree}} $\ast$}]{tree\+\_\+ptr,  }\item[{\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$}]{seq }\end{DoxyParamCaption})}
+
 
 
 check if Lread is contained in tree. It computes the score for the read and its reverse complement; if one ot them exceeds the user selected threshold, it returns true. Otherwise, it returns false. 
@@ -257,174 +251,129 @@ check if Lread is contained in tree. It computes the score for the read and its 
 \begin{DoxyReturn}{Returns}
 true if read was found, false otherwise 
 \end{DoxyReturn}
-\hypertarget{trim_8c_a7006063272037ceb080150136d24e898}{\index{trim.\+c@{trim.\+c}!Nfree\+\_\+\+Lmer@{Nfree\+\_\+\+Lmer}}
+\mbox{\Hypertarget{trim_8c_a7006063272037ceb080150136d24e898}\label{trim_8c_a7006063272037ceb080150136d24e898}} 
+\index{trim.\+c@{trim.\+c}!Nfree\+\_\+\+Lmer@{Nfree\+\_\+\+Lmer}}
 \index{Nfree\+\_\+\+Lmer@{Nfree\+\_\+\+Lmer}!trim.\+c@{trim.\+c}}
-\subsubsection[{Nfree\+\_\+\+Lmer}]{\setlength{\rightskip}{0pt plus 5cm}static int Nfree\+\_\+\+Lmer (
-\begin{DoxyParamCaption}
-\item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
-\item[{int}]{min\+L}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{trim_8c_a7006063272037ceb080150136d24e898}
+\subsubsection{\texorpdfstring{Nfree\+\_\+\+Lmer()}{Nfree\_Lmer()}}
+{\footnotesize\ttfamily static int Nfree\+\_\+\+Lmer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$}]{seq,  }\item[{int}]{minL }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
-Finds the largest Nfree sub-\/seq and keeps it if larger than min\+L. 
+
+Finds the largest Nfree sub-\/seq and keeps it if larger than minL. 
 
 
 \begin{DoxyParams}{Parameters}
 {\em seq} & fastq read \\
 \hline
-{\em min\+L} & minimum accepted trimmed length \\
+{\em minL} & minimum accepted trimmed length \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 0 if not used, 1 if accepted as is, 2 if accepted and trimmed 
 \end{DoxyReturn}
-\hypertarget{trim_8c_ae11fa52547dfdb0cf2af554eafbba1fc}{\index{trim.\+c@{trim.\+c}!no\+\_\+low\+Q@{no\+\_\+low\+Q}}
-\index{no\+\_\+low\+Q@{no\+\_\+low\+Q}!trim.\+c@{trim.\+c}}
-\subsubsection[{no\+\_\+low\+Q}]{\setlength{\rightskip}{0pt plus 5cm}static int no\+\_\+low\+Q (
-\begin{DoxyParamCaption}
-\item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
-\item[{int}]{min\+Q}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{trim_8c_ae11fa52547dfdb0cf2af554eafbba1fc}
+\mbox{\Hypertarget{trim_8c_ae11fa52547dfdb0cf2af554eafbba1fc}\label{trim_8c_ae11fa52547dfdb0cf2af554eafbba1fc}} 
+\index{trim.\+c@{trim.\+c}!no\+\_\+lowQ@{no\+\_\+lowQ}}
+\index{no\+\_\+lowQ@{no\+\_\+lowQ}!trim.\+c@{trim.\+c}}
+\subsubsection{\texorpdfstring{no\+\_\+low\+Q()}{no\_lowQ()}}
+{\footnotesize\ttfamily static int no\+\_\+lowQ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$}]{seq,  }\item[{int}]{minQ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
-checks if a sequence contains low\+Q nucleotides 
+
+checks if a sequence contains lowQ nucleotides 
 
 
 \begin{DoxyParams}{Parameters}
 {\em seq} & fastq read \\
 \hline
-{\em min\+Q} & minimum accepted quality value \\
+{\em minQ} & minimum accepted quality value \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-0 if seq contains low\+Q nucleotides, 1 otherwise 
+0 if seq contains lowQ nucleotides, 1 otherwise 
 \end{DoxyReturn}
-\hypertarget{trim_8c_aa1ba5f740cba7b39672dc588b9a5deb7}{\index{trim.\+c@{trim.\+c}!no\+\_\+\+N@{no\+\_\+\+N}}
-\index{no\+\_\+\+N@{no\+\_\+\+N}!trim.\+c@{trim.\+c}}
-\subsubsection[{no\+\_\+\+N}]{\setlength{\rightskip}{0pt plus 5cm}static int no\+\_\+\+N (
-\begin{DoxyParamCaption}
-\item[{{\bf Fq\+\_\+read} $\ast$}]{seq}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{trim_8c_aa1ba5f740cba7b39672dc588b9a5deb7}
+\mbox{\Hypertarget{trim_8c_aa1ba5f740cba7b39672dc588b9a5deb7}\label{trim_8c_aa1ba5f740cba7b39672dc588b9a5deb7}} 
+\index{trim.\+c@{trim.\+c}!no\+\_\+N@{no\+\_\+N}}
+\index{no\+\_\+N@{no\+\_\+N}!trim.\+c@{trim.\+c}}
+\subsubsection{\texorpdfstring{no\+\_\+\+N()}{no\_N()}}
+{\footnotesize\ttfamily static int no\+\_\+N (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$}]{seq }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
-checks if a sequence contains any non standard base callings (N's) 
+
+checks if a sequence contains any non standard base callings (N\textquotesingle{}s) 
 
 \begin{DoxyReturn}{Returns}
-0 if no N's found, 1 if N's found
+0 if no N\textquotesingle{}s found, 1 if N\textquotesingle{}s found
 \end{DoxyReturn}
-This function checks if any of the base callings in a given fastq read is different from A, C, G, T. Basically, any char different from the former ones is classified as N. \hypertarget{trim_8c_ae2aeb2e7303c53e2a10009ee4e20e40e}{\index{trim.\+c@{trim.\+c}!Ntrim\+\_\+ends@{Ntrim\+\_\+ends}}
+This function checks if any of the base callings in a given fastq read is different from A, C, G, T. Basically, any char different from the former ones is classified as N. \mbox{\Hypertarget{trim_8c_ae2aeb2e7303c53e2a10009ee4e20e40e}\label{trim_8c_ae2aeb2e7303c53e2a10009ee4e20e40e}} 
+\index{trim.\+c@{trim.\+c}!Ntrim\+\_\+ends@{Ntrim\+\_\+ends}}
 \index{Ntrim\+\_\+ends@{Ntrim\+\_\+ends}!trim.\+c@{trim.\+c}}
-\subsubsection[{Ntrim\+\_\+ends}]{\setlength{\rightskip}{0pt plus 5cm}static int Ntrim\+\_\+ends (
-\begin{DoxyParamCaption}
-\item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
-\item[{int}]{min\+L}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{trim_8c_ae2aeb2e7303c53e2a10009ee4e20e40e}
+\subsubsection{\texorpdfstring{Ntrim\+\_\+ends()}{Ntrim\_ends()}}
+{\footnotesize\ttfamily static int Ntrim\+\_\+ends (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$}]{seq,  }\item[{int}]{minL }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
-trims a read if N's are at the ends and the remaining sub-\/seq $>$= min\+L 
+
+trims a read if N\textquotesingle{}s are at the ends and the remaining sub-\/seq $>$= minL 
 
 
 \begin{DoxyParams}{Parameters}
 {\em seq} & fastq read \\
 \hline
-{\em min\+L} & minimum accepted trimmed length \\
+{\em minL} & minimum accepted trimmed length \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-0 if not used, 1 no N's found, 2 if accepted and trimmed 
+0 if not used, 1 no N\textquotesingle{}s found, 2 if accepted and trimmed 
 \end{DoxyReturn}
-\hypertarget{trim_8c_a03d11622e683d103cec196c42dd654dd}{\index{trim.\+c@{trim.\+c}!Qtrim\+\_\+ends@{Qtrim\+\_\+ends}}
+\mbox{\Hypertarget{trim_8c_a03d11622e683d103cec196c42dd654dd}\label{trim_8c_a03d11622e683d103cec196c42dd654dd}} 
+\index{trim.\+c@{trim.\+c}!Qtrim\+\_\+ends@{Qtrim\+\_\+ends}}
 \index{Qtrim\+\_\+ends@{Qtrim\+\_\+ends}!trim.\+c@{trim.\+c}}
-\subsubsection[{Qtrim\+\_\+ends}]{\setlength{\rightskip}{0pt plus 5cm}static int Qtrim\+\_\+ends (
-\begin{DoxyParamCaption}
-\item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
-\item[{int}]{min\+Q, }
-\item[{int}]{min\+L}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{trim_8c_a03d11622e683d103cec196c42dd654dd}
+\subsubsection{\texorpdfstring{Qtrim\+\_\+ends()}{Qtrim\_ends()}}
+{\footnotesize\ttfamily static int Qtrim\+\_\+ends (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$}]{seq,  }\item[{int}]{minQ,  }\item[{int}]{minL }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
-trims a read if low\+Qs are at the ends and remaining sub-\/seq $>$= min\+L 
+
+trims a read if low\+Qs are at the ends and remaining sub-\/seq $>$= minL 
 
 
 \begin{DoxyParams}{Parameters}
 {\em seq} & fastq read \\
 \hline
-{\em min\+Q} & minimum accepted quality value \\
+{\em minQ} & minimum accepted quality value \\
 \hline
-{\em min\+L} & minimum accepted trimmed length \\
+{\em minL} & minimum accepted trimmed length \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 0 if not used, 1 if accepted as is, 2 if accepted and trimmed 
 \end{DoxyReturn}
-\hypertarget{trim_8c_aeef0fcb68dba0ae69ef81bd330a037ad}{\index{trim.\+c@{trim.\+c}!Qtrim\+\_\+endsfrac@{Qtrim\+\_\+endsfrac}}
-\index{Qtrim\+\_\+endsfrac@{Qtrim\+\_\+endsfrac}!trim.\+c@{trim.\+c}}
-\subsubsection[{Qtrim\+\_\+endsfrac}]{\setlength{\rightskip}{0pt plus 5cm}static int Qtrim\+\_\+endsfrac (
-\begin{DoxyParamCaption}
-\item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
-\item[{int}]{min\+Q, }
-\item[{int}]{min\+L, }
-\item[{int}]{nlow\+Q}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{trim_8c_aeef0fcb68dba0ae69ef81bd330a037ad}
-
-
-trims the ends for low\+Q. The rest is kept if it contains $<$ nlow\+Q low\+Q 
-
-
-\begin{DoxyParams}{Parameters}
-{\em seq} & fastq read \\
-\hline
-{\em min\+Q} & minimum accepted quality value \\
-\hline
-{\em min\+L} & minimum accepted trimmed length \\
-\hline
-{\em nlow\+Q} & threshold on low\+Q nucleotides ($>$= N\+O\+T allowed) \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-0 if not used, 1 if accepted as is
-\end{DoxyReturn}
-Trims the ends if there are low\+Q bases. From the remaining part, it counts how many low\+Q bases there are and keeps it if there are less than nlow\+Q. \hypertarget{trim_8c_af3167128b208288e71c0c50f15e66e89}{\index{trim.\+c@{trim.\+c}!Qtrim\+\_\+frac@{Qtrim\+\_\+frac}}
+\mbox{\Hypertarget{trim_8c_af3167128b208288e71c0c50f15e66e89}\label{trim_8c_af3167128b208288e71c0c50f15e66e89}} 
+\index{trim.\+c@{trim.\+c}!Qtrim\+\_\+frac@{Qtrim\+\_\+frac}}
 \index{Qtrim\+\_\+frac@{Qtrim\+\_\+frac}!trim.\+c@{trim.\+c}}
-\subsubsection[{Qtrim\+\_\+frac}]{\setlength{\rightskip}{0pt plus 5cm}static int Qtrim\+\_\+frac (
-\begin{DoxyParamCaption}
-\item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
-\item[{int}]{min\+Q, }
-\item[{int}]{nlow\+Q}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{trim_8c_af3167128b208288e71c0c50f15e66e89}
+\subsubsection{\texorpdfstring{Qtrim\+\_\+frac()}{Qtrim\_frac()}}
+{\footnotesize\ttfamily static int Qtrim\+\_\+frac (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$}]{seq,  }\item[{int}]{minQ,  }\item[{int}]{nlowQ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
-accepts the sequence as is if there are less than nlow\+Q 
+
+accepts the sequence as is if there are less than nlowQ 
 
 
 \begin{DoxyParams}{Parameters}
 {\em seq} & fastq read \\
 \hline
-{\em min\+Q} & minimum accepted quality value \\
+{\em minQ} & minimum accepted quality value \\
 \hline
-{\em nlow\+Q} & threshold on low\+Q nucleotides ($>$= N\+O\+T allowed) \\
+{\em nlowQ} & threshold on lowQ nucleotides ($>$= N\+OT allowed) \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 0 if not used, 1 if accepted as is 
 \end{DoxyReturn}
-\hypertarget{trim_8c_ad2fbad2c77c70be922a30e940367cda7}{\index{trim.\+c@{trim.\+c}!Qtrim\+\_\+global@{Qtrim\+\_\+global}}
+\mbox{\Hypertarget{trim_8c_ad2fbad2c77c70be922a30e940367cda7}\label{trim_8c_ad2fbad2c77c70be922a30e940367cda7}} 
+\index{trim.\+c@{trim.\+c}!Qtrim\+\_\+global@{Qtrim\+\_\+global}}
 \index{Qtrim\+\_\+global@{Qtrim\+\_\+global}!trim.\+c@{trim.\+c}}
-\subsubsection[{Qtrim\+\_\+global}]{\setlength{\rightskip}{0pt plus 5cm}int Qtrim\+\_\+global (
-\begin{DoxyParamCaption}
-\item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
-\item[{int}]{left, }
-\item[{int}]{right, }
-\item[{char}]{type}
-\end{DoxyParamCaption}
-)}}\label{trim_8c_ad2fbad2c77c70be922a30e940367cda7}
+\subsubsection{\texorpdfstring{Qtrim\+\_\+global()}{Qtrim\_global()}}
+{\footnotesize\ttfamily int Qtrim\+\_\+global (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$}]{seq,  }\item[{int}]{left,  }\item[{int}]{right,  }\item[{char}]{type }\end{DoxyParamCaption})}
+
 
 
 trims left from the left and right from the right 
@@ -443,14 +392,12 @@ trims left from the left and right from the right
 \begin{DoxyReturn}{Returns}
 2, since they are all accepted and trim 
 \end{DoxyReturn}
-\hypertarget{trim_8c_aed995029d7181d69875b2dee0d7b6ce9}{\index{trim.\+c@{trim.\+c}!trim\+\_\+adapter@{trim\+\_\+adapter}}
+\mbox{\Hypertarget{trim_8c_aed995029d7181d69875b2dee0d7b6ce9}\label{trim_8c_aed995029d7181d69875b2dee0d7b6ce9}} 
+\index{trim.\+c@{trim.\+c}!trim\+\_\+adapter@{trim\+\_\+adapter}}
 \index{trim\+\_\+adapter@{trim\+\_\+adapter}!trim.\+c@{trim.\+c}}
-\subsubsection[{trim\+\_\+adapter}]{\setlength{\rightskip}{0pt plus 5cm}int trim\+\_\+adapter (
-\begin{DoxyParamCaption}
-\item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
-\item[{{\bf Ad\+\_\+seq} $\ast$}]{adap\+\_\+list}
-\end{DoxyParamCaption}
-)}}\label{trim_8c_aed995029d7181d69875b2dee0d7b6ce9}
+\subsubsection{\texorpdfstring{trim\+\_\+adapter()}{trim\_adapter()}}
+{\footnotesize\ttfamily int trim\+\_\+adapter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$}]{seq,  }\item[{\mbox{\hyperlink{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}{Ad\+\_\+seq}} $\ast$}]{adap\+\_\+list }\end{DoxyParamCaption})}
+
 
 
 trims sequence based on presence of N nucleotides 
@@ -466,15 +413,14 @@ if (adapter length $<$ 16) -\/$>$ search for seeds 8 nucleotides long else -\/$>
 -\/1 error, 0 discarded, 1 accepted as is, 2 accepted and trimmed 
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
-Global input parameters from par\+\_\+\+T\+F are also used 
+Global input parameters from par\+\_\+\+TF are also used 
 \end{DoxyNote}
-\hypertarget{trim_8c_af23d3685193b624b72a6969a49903a97}{\index{trim.\+c@{trim.\+c}!trim\+\_\+sequence\+N@{trim\+\_\+sequence\+N}}
-\index{trim\+\_\+sequence\+N@{trim\+\_\+sequence\+N}!trim.\+c@{trim.\+c}}
-\subsubsection[{trim\+\_\+sequence\+N}]{\setlength{\rightskip}{0pt plus 5cm}int trim\+\_\+sequence\+N (
-\begin{DoxyParamCaption}
-\item[{{\bf Fq\+\_\+read} $\ast$}]{seq}
-\end{DoxyParamCaption}
-)}}\label{trim_8c_af23d3685193b624b72a6969a49903a97}
+\mbox{\Hypertarget{trim_8c_af23d3685193b624b72a6969a49903a97}\label{trim_8c_af23d3685193b624b72a6969a49903a97}} 
+\index{trim.\+c@{trim.\+c}!trim\+\_\+sequenceN@{trim\+\_\+sequenceN}}
+\index{trim\+\_\+sequenceN@{trim\+\_\+sequenceN}!trim.\+c@{trim.\+c}}
+\subsubsection{\texorpdfstring{trim\+\_\+sequence\+N()}{trim\_sequenceN()}}
+{\footnotesize\ttfamily int trim\+\_\+sequenceN (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$}]{seq }\end{DoxyParamCaption})}
+
 
 
 trims sequence based on presence of N nucleotides 
@@ -487,22 +433,21 @@ trims sequence based on presence of N nucleotides
 \begin{DoxyReturn}{Returns}
 -\/1 error, 0 discarded, 1 accepted as is, 2 accepted and trimmed
 \end{DoxyReturn}
-This function calls a different function depending on the method passed as input par\+\_\+\+T\+F.\+trim\+N\+:
+This function calls a different function depending on the method passed as input par\+\_\+\+T\+F.\+trimN\+:
 \begin{DoxyItemize}
-\item \hyperlink{defines_8h_a996bde01ecac342918f0a2c4e7ce7bd5}{N\+O(0)}\+: accepts it as is, (1),
-\item \hyperlink{defines_8h_a1edd1ea8bddaf4d9c5eb3eae1ee1726a}{A\+L\+L(1)}\+: accepts it as is if N\+O N's found (1), rejects it otherwise (0),
-\item \hyperlink{defines_8h_a052e72209cfac2ff9aa78294f0bebea8}{E\+N\+D\+S(2)}\+: trims the ends and accepts it if it is longer than min\+L (2 if trimming, 1 if no trimming), rejects it otherwise (0),
-\item \hyperlink{defines_8h_a53529d9638a1d70f6e5989dedf4c2672}{S\+T\+R\+I\+P(3)}\+: finds the longest N-\/free subsequence and trims it if it is at least min\+L nucleotides long (2 if trimming, 1 if no N's are found), rejects it otherwise (0). 
-\end{DoxyItemize}\hypertarget{trim_8c_ae5ab2bb79068d8a7e0d72686c1f50320}{\index{trim.\+c@{trim.\+c}!trim\+\_\+sequence\+Q@{trim\+\_\+sequence\+Q}}
-\index{trim\+\_\+sequence\+Q@{trim\+\_\+sequence\+Q}!trim.\+c@{trim.\+c}}
-\subsubsection[{trim\+\_\+sequence\+Q}]{\setlength{\rightskip}{0pt plus 5cm}int trim\+\_\+sequence\+Q (
-\begin{DoxyParamCaption}
-\item[{{\bf Fq\+\_\+read} $\ast$}]{seq}
-\end{DoxyParamCaption}
-)}}\label{trim_8c_ae5ab2bb79068d8a7e0d72686c1f50320}
+\item \mbox{\hyperlink{defines_8h_a996bde01ecac342918f0a2c4e7ce7bd5}{N\+O(0)}}\+: accepts it as is, (1),
+\item \mbox{\hyperlink{defines_8h_a1edd1ea8bddaf4d9c5eb3eae1ee1726a}{A\+L\+L(1)}}\+: accepts it as is if NO N\textquotesingle{}s found (1), rejects it otherwise (0),
+\item \mbox{\hyperlink{defines_8h_a052e72209cfac2ff9aa78294f0bebea8}{E\+N\+D\+S(2)}}\+: trims the ends and accepts it if it is longer than minL (2 if trimming, 1 if no trimming), rejects it otherwise (0),
+\item \mbox{\hyperlink{defines_8h_a53529d9638a1d70f6e5989dedf4c2672}{S\+T\+R\+I\+P(3)}}\+: finds the longest N-\/free subsequence and trims it if it is at least minL nucleotides long (2 if trimming, 1 if no N\textquotesingle{}s are found), rejects it otherwise (0). 
+\end{DoxyItemize}\mbox{\Hypertarget{trim_8c_ae5ab2bb79068d8a7e0d72686c1f50320}\label{trim_8c_ae5ab2bb79068d8a7e0d72686c1f50320}} 
+\index{trim.\+c@{trim.\+c}!trim\+\_\+sequenceQ@{trim\+\_\+sequenceQ}}
+\index{trim\+\_\+sequenceQ@{trim\+\_\+sequenceQ}!trim.\+c@{trim.\+c}}
+\subsubsection{\texorpdfstring{trim\+\_\+sequence\+Q()}{trim\_sequenceQ()}}
+{\footnotesize\ttfamily int trim\+\_\+sequenceQ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$}]{seq }\end{DoxyParamCaption})}
 
 
-trims sequence based on low\+Q base callings 
+
+trims sequence based on lowQ base callings 
 
 
 \begin{DoxyParams}{Parameters}
@@ -512,22 +457,28 @@ trims sequence based on low\+Q base callings
 \begin{DoxyReturn}{Returns}
 -\/1 error, 0 discarded, 1 accepted as is, 2 accepted and trimmed
 \end{DoxyReturn}
-This function calls a different function depending on the method passed as input par\+\_\+\+T\+F.\+trim\+Q\+:
+This function calls a different function depending on the method passed as input par\+\_\+\+T\+F.\+trimQ\+:
 \begin{DoxyItemize}
-\item \hyperlink{defines_8h_a996bde01ecac342918f0a2c4e7ce7bd5}{N\+O(0)}\+: accepts is as is , (1),
-\item \hyperlink{defines_8h_a653af6bd29f56a2699de26a928820da7}{F\+R\+A\+C(1)}\+: accepts it if less than par\+\_\+\+T\+F.\+nlow\+Q are found (1), rejects it otherwise (0),
-\item \hyperlink{defines_8h_a052e72209cfac2ff9aa78294f0bebea8}{E\+N\+D\+S(2)}\+: trims the ends and accepts it if it is longer than min\+L (2 if triming, 1 if no trimming), rejects it otherwise (0),
-\item \hyperlink{defines_8h_abf0b71573c7ffc4f6746c24c9abc202a}{E\+N\+D\+S\+F\+R\+A\+C(3)}\+: trims the ends and accepts if the remaining sequence is at least min\+L bases long and if it contains less than nlow\+Q low\+Q nucleotides (2 if trimming, 1 if no trimming). Otherwise, it is rejected, (0).
-\item \hyperlink{defines_8h_a3de33738fd3c7e77bffbcfaefc3e7645}{G\+L\+O\+B\+A\+L(4)}\+: it trims globally globleft nucleotides from the left and globright from the right, (returns 2). 
+\item \mbox{\hyperlink{defines_8h_a996bde01ecac342918f0a2c4e7ce7bd5}{N\+O(0)}}\+: accepts is as is , (1),
+\item \mbox{\hyperlink{defines_8h_a653af6bd29f56a2699de26a928820da7}{F\+R\+A\+C(1)}}\+: accepts it if less than par\+\_\+\+T\+F.\+nlowQ are found (1), rejects it otherwise (0),
+\item \mbox{\hyperlink{defines_8h_a052e72209cfac2ff9aa78294f0bebea8}{E\+N\+D\+S(2)}}\+: trims the ends and accepts it if it is longer than minL (2 if triming, 1 if no trimming), rejects it otherwise (0),
+\item \mbox{\hyperlink{defines_8h_abf0b71573c7ffc4f6746c24c9abc202a}{E\+N\+D\+S\+F\+R\+A\+C(3)}}\+: trims the ends and accepts if the remaining sequence is at least minL bases long and if it contains less than nlowQ lowQ nucleotides (2 if trimming, 1 if no trimming). Otherwise, it is rejected, (0).
+\item \mbox{\hyperlink{defines_8h_a3de33738fd3c7e77bffbcfaefc3e7645}{G\+L\+O\+B\+A\+L(4)}}\+: it trims globally globleft nucleotides from the left and globright from the right, (returns 2). 
 \end{DoxyItemize}
 
 \subsection{Variable Documentation}
-\hypertarget{trim_8c_a4716e1b3151ae984ab8b42b54e7abdd6}{\index{trim.\+c@{trim.\+c}!Nencode@{Nencode}}
+\mbox{\Hypertarget{trim_8c_a4716e1b3151ae984ab8b42b54e7abdd6}\label{trim_8c_a4716e1b3151ae984ab8b42b54e7abdd6}} 
+\index{trim.\+c@{trim.\+c}!Nencode@{Nencode}}
 \index{Nencode@{Nencode}!trim.\+c@{trim.\+c}}
-\subsubsection[{Nencode}]{\setlength{\rightskip}{0pt plus 5cm}int Nencode}}\label{trim_8c_a4716e1b3151ae984ab8b42b54e7abdd6}
-global variable. Encoding for N's(\textbackslash{}004, or \textbackslash{}005) \hypertarget{trim_8c_aed14b08f25fd6aa9a6cffb8c0074c953}{\index{trim.\+c@{trim.\+c}!par\+\_\+\+T\+F@{par\+\_\+\+T\+F}}
-\index{par\+\_\+\+T\+F@{par\+\_\+\+T\+F}!trim.\+c@{trim.\+c}}
-\subsubsection[{par\+\_\+\+T\+F}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Iparam\+\_\+trim\+Filter} par\+\_\+\+T\+F}}\label{trim_8c_aed14b08f25fd6aa9a6cffb8c0074c953}
+\subsubsection{\texorpdfstring{Nencode}{Nencode}}
+{\footnotesize\ttfamily int Nencode}
+
+global variable. Encoding for N\textquotesingle{}s(\textbackslash{}004) \mbox{\Hypertarget{trim_8c_aed14b08f25fd6aa9a6cffb8c0074c953}\label{trim_8c_aed14b08f25fd6aa9a6cffb8c0074c953}} 
+\index{trim.\+c@{trim.\+c}!par\+\_\+\+TF@{par\+\_\+\+TF}}
+\index{par\+\_\+\+TF@{par\+\_\+\+TF}!trim.\+c@{trim.\+c}}
+\subsubsection{\texorpdfstring{par\+\_\+\+TF}{par\_TF}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct__trimFilter_8h_aff83806f1ff2b5f3609dc7d4c04b7c19}{Iparam\+\_\+trim\+Filter}} par\+\_\+\+TF}
+
 global variable\+: Input parameters trim\+Filter.
 
 global variable\+: Input parameters of make\+Tree. 

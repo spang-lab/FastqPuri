@@ -1,8 +1,8 @@
 <map id="src/Qreport.c" name="src/Qreport.c">
-<area shape="rect" id="node6" href="$init__Qreport_8h.html" title="Header file: help dialog for Qreport and initialization of the command line arguments. " alt="" coords="339,80,439,107"/>
-<area shape="rect" id="node9" href="$fopen__gen_8h.html" title="Uncompress/compress input/output files using pipes. " alt="" coords="5,80,99,107"/>
-<area shape="rect" id="node10" href="$fq__read_8h.html" title="fastq entries manipulations (read/write) " alt="" coords="422,155,498,181"/>
-<area shape="rect" id="node12" href="$stats__info_8h.html" title="Construct the quality report variables and update them. " alt="" coords="224,80,315,107"/>
-<area shape="rect" id="node13" href="$Rcommand__Qreport_8h.html" title="get Rscript command for Qreport " alt="" coords="689,80,839,107"/>
-<area shape="rect" id="node7" href="$defines_8h.html" title="Macro definitions. " alt="" coords="307,155,381,181"/>
+<area shape="rect" id="node6" href="$init__Qreport_8h.html" title="Header file: help dialog for Qreport and initialization of the command line arguments. " alt="" coords="235,80,345,107"/>
+<area shape="rect" id="node10" href="$fopen__gen_8h.html" title="Uncompress/compress input/output files using pipes. " alt="" coords="5,80,108,107"/>
+<area shape="rect" id="node11" href="$fq__read_8h.html" title="fastq entries manipulations (read/write) " alt="" coords="465,155,547,181"/>
+<area shape="rect" id="node13" href="$stats__info_8h.html" title="Construct the quality report variables and update them. " alt="" coords="370,80,469,107"/>
+<area shape="rect" id="node14" href="$Rcommand__Qreport_8h.html" title="get Rscript command for Qreport " alt="" coords="728,80,892,107"/>
+<area shape="rect" id="node7" href="$defines_8h.html" title="Macro definitions. " alt="" coords="281,155,363,181"/>
 </map>

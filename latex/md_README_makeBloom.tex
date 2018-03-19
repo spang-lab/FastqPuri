@@ -1,0 +1,164 @@
+Reads a {\ttfamily fasta} file, creates a bloom filter with a predefined\+:
+\begin{DoxyItemize}
+\item size (bits).
+\item number of hash functions.
+\item false positive rate. and saves it to a file.
+\end{DoxyItemize}
+
+\subsection*{Running the program}
+
+Usage {\ttfamily C} executable (in folder {\ttfamily bin})\+:
+
+
+\begin{DoxyCode}
+Usage: ./makeBloom --fasta <FASTA\_INPUT> --output <FILTERFILE> --kmersize [KMERSIZE] 
+ (--fal\_pos\_rate [p] | --hashNum [HASHNUM] | --bfsizeBits [SIZEBITS])
+Options: 
+ -v, --version      Prints package version.
+ -h, --help         Prints help dialog.
+ -f, --fasta        Fasta input file. Mandatory option.
+ -o, --output       Output file, with NO extension. Mandatory option.
+ -k, --kmersize     kmer size, number or elements. Optional(default = 25)
+ -p, --fal\_pos\_rate false positive rate. Optional (default = 0.05)
+ -g, --hashNum      number of hash functions used. Optional (default
+                    value computed from the false positive rate).
+ -m, --bfsizeBits   size of the filter in bits. It will be forced to be
+                    a multiple of 8. Optional (default value computed
+                    from the false positive rate).
+NOTE: the options -p, -n, -m are mutually exclusive. The program 
+      will give an error if more than one of them are passed as input.
+      It is recommended to pass the false positive rate and let the 
+      program compute the other variables (excepting singular situations)
+      If none of them are passed, the false positive rate will default
+      to 0.05 and the other variables will be computed respecting this
+      requirement. See documentation and supplementary material for 
+      more details.
+\end{DoxyCode}
+
+
+\subsection*{Output description}
+
+Two files are created as output\+:
+\begin{DoxyItemize}
+\item {\ttfamily $<$F\+I\+L\+T\+E\+R\+F\+I\+LE$>$.bf}\+: contains the filter (binary file).
+\item {\ttfamily $<$F\+I\+L\+T\+E\+R\+F\+I\+LE$>$.txt}\+: contains the following information\+:
+\begin{DoxyItemize}
+\item {\ttfamily kmersize}\+: length of the kmers inserted in the filter,
+\item {\ttfamily bfsize\+Bits}\+: size of Bloom filter in bits,
+\item {\ttfamily hash\+Num}\+: number of hash functions used in the filter,
+\item {\ttfamily false\+Pos\+Rate\+:} false positive rate,
+\item {\ttfamily nelem}\+: number of elemens (kmers in the sequece) contained in the filter.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+For further details, read the {\ttfamily Doxygen} documentation of the files {\ttfamily bloom.\+c}, {\ttfamily init\+\_\+make\+Bloom.\+c}, {\ttfamily make\+Bloom.\+c}
+
+\subsection*{Example}
+
+In the folder {\ttfamily ../examples/bloom\+R\+O\+C/} an example script can be run to test the bloom filter performance. ~\newline
+ -\/ The fastq files\+:
+\begin{DoxyItemize}
+\item {\ttfamily human\+\_\+reads.\+fq.\+gz}
+\item {\ttfamily E\+Coli\+\_\+reads.\+fq.\+gz} are analyzed. They contain 10e5 reads each generated with {\ttfamily dgwsim}.
+\end{DoxyItemize}
+
+S\+T\+E\+P1\+: Create bloom filters for E\+Coli genome with F\+PR\+: {\ttfamily \mbox{[}0.\+005 0.\+0075 0.\+01 0.\+02\mbox{]}} ~\newline
+
+\begin{DoxyItemize}
+\item S\+T\+E\+P2\+: Run trim\+Filter on both data looking for contaminations from E\+Coli using all filters generated, with {\ttfamily kmersize = 25} and scores ranging from {\ttfamily 0.\+05} to {\ttfamily 0.\+2} by {\ttfamily 0.\+01} intervals. We obtain false/true positive/negative rates\+:
+\begin{DoxyItemize}
+\item F\+PR\+: \% contaminations detected in human\+\_\+reads.\+fq.\+gz
+\item T\+NR (specificity)\+: \% good reads detected in {\ttfamily human\+\_\+reads.\+fq.\+gz}
+\item F\+NR\+: \% good reads detected in {\ttfamily E\+Coli\+\_\+reads.\+fq.\+gz}
+\item T\+PR (sensitivity)\+: \% contaminations detected in {\ttfamily E\+Coli\+\_\+reads.\+fq.\+gz}
+\end{DoxyItemize}
+\item S\+T\+E\+P3\+: Create R\+OC curves for all filters (sensitivity vs F\+PR). ~\newline
+ The results ({\ttfamily $\ast$csv}, {\ttfamily $\ast$pdf}) can be compared with {\ttfamily example$\ast$pdf}, and {\ttfamily example$\ast$csv} in the folder (see example for {\ttfamily -\/p = 0.\+0075} below).
+\end{DoxyItemize}
+
+ 
+
+\subsection*{Details on bloom filters}
+
+{\bfseries N\+O\+TE}\+: For further details, read the {\ttfamily Doxygen} documentation of the files {\ttfamily bloom.\+c}, {\ttfamily init\+\_\+make\+Bloom.\+c}, {\ttfamily make\+Bloom.\+c} and the supplementary material.
+
+A bloom filter is a probabilistic data structure used to test if an element is a member of a set. False positive matches are possible but false negative are not. For a given set of {\ttfamily n} elements, we proceed as follows\+:
+
+
+\begin{DoxyItemize}
+\item decide on the number {\ttfamily g} of hash functions we will use for the construction of the filter and the length of the filter {\ttfamily m} (number of bits). This choice will be made based on the false positive rate we want to achieve (see Parameters)
+\item we create an empty bloom filter, {\ttfamily B}, i.\+e. an array of {\ttfamily m} bits set to {\ttfamily 0}. For every element in the set, {\bfseries s\textsubscript{{$\alpha$}} {$\in$} S}, compute the {\ttfamily g} hash functions, {\bfseries H\textsubscript{i} (s\textsubscript{{$\alpha$}}) {$\forall$} i {$\in$} \{1,...,g\}} and set the corresponding bits to {\ttfamily 1} in the filter, i.\+e., {\bfseries B\mbox{[}H\textsubscript{i} (s\textsubscript{{$\alpha$}}) mod m\mbox{]} = 1 {$\forall$} i {$\in$} \{1,...,g\}} and {\ttfamily 0} otherwise.
+\end{DoxyItemize}
+
+Then, if we want to check whether an element {\bfseries s\textsubscript{{$\beta$}}} is in the set {\bfseries S}, we compute {\bfseries H\textsubscript{i} (s\textsubscript{{$\beta$}}) {$\forall$} i {$\in$} \{1,...,g\}} and check whether all coresponding positions in the filter are set to {\ttfamily 1}, in which case we can say that {\bfseries s\textsubscript{{$\beta$}}} might be in the set. Otherwise it is definitely not in the set.
+
+\subsubsection*{Parameters.}
+
+We choose the parameters so that the desired false positive rate is achieved. Alternatively, we can pass the filter size, and then the number of hash functions to be used is tuned so that the false positive rate is minimized.
+
+We assume the hash functions select all positions with the same probability. The probability that an bit in the filter {\ttfamily B} is not set to {\ttfamily 1} after inserting an element using {\ttfamily g} hash functions is\+:
+
+{\bfseries  (1 -\/ \textsuperscript{1}/\textsubscript{m})\textsuperscript{g} }
+
+where {\ttfamily m} is the number of bits of the filter. If we insert {\ttfamily n} elements, the probability that an element is still 0 is\+:
+
+{\bfseries  p\textsubscript{0} = (1 -\/ \textsuperscript{1}/\textsubscript{m})\textsuperscript{gn} }
+
+The probability that a bit is {\ttfamily 1} is then,
+
+{\bfseries  p\textsubscript{1} = 1 -\/ (1 -\/ \textsuperscript{1}/\textsubscript{m})\textsuperscript{gn} }
+
+Now, let\textquotesingle{}s compute the false positive rate, i.\+e., that probability that an element that is not in the set is classified as belonging to it. This is the probability that all positions computed from the hash functions being {\ttfamily 1} is,
+
+{\bfseries  p(g, n, m) = (1 -\/ (1 -\/ \textsuperscript{1}/\textsubscript{m})\textsuperscript{gn})\textsuperscript{g} = (1 -\/ e\textsuperscript{ -\/ \textsuperscript{gn}/\textsubscript{m} })\textsuperscript{g} }
+
+For a given {\ttfamily n} and {\ttfamily m} the value of {\ttfamily g} that minimizes {\ttfamily p} is,
+
+{\bfseries  \textsuperscript{dp(g, n, m)}/\textsubscript{dg} = 0 {$\Rightarrow$} g = \textsuperscript{m}/\textsubscript{n} log(2) }
+
+The required number of bits {\ttfamily m} for the desired positive rate given {\ttfamily n} number of elements and assuming the optimal number of hash functions being used is,
+
+{\bfseries  m = -\/ \textsuperscript{n log (p)}/\textsubscript{log\textsuperscript{2}(2)}. }
+
+\subsubsection*{Creating a bloom filter from a {\ttfamily fasta} file}
+
+Given a {\ttfamily fasta} file, the elements to be inserted in the bloom filter are all possible {\ttfamily k}-\/mers contained in the {\ttfamily fasta} file. The length {\ttfamily k} of the {\ttfamily k}-\/mers can be given by the user as an input parameter and is chosen to be {\ttfamily 25} by default. All {\ttfamily k}-\/mers containing nucleotides different from {\ttfamily \{A,C,G,T\}} will not be consiedered and they are encoded such that every nucleotide takes only 2-\/bits memory. Wee look into the reverse complement and insert only the one that is lexycographically smaller.
+
+Once the {\ttfamily k}-\/mer has been processed, the hash functions are computed an the positions of the output values are set to {\ttfamily 1} in the filter.
+
+\subsubsection*{Checking ir a read in a {\ttfamily fastq} file is in the filter}
+
+To check whether a {\ttfamily fastq} read of length {\ttfamily L} is in the filter, we proceed as follows\+:
+
+
+\begin{DoxyEnumerate}
+\item Start with a score {\ttfamily score = 0}.
+\item Construct and process all {\ttfamily k}-\/mers of length {\ttfamily k} in the read, {\ttfamily (L -\/ k + 1)} (note that {\ttfamily L}{$\ge$}{\ttfamily k})
+\item For each {\ttfamily k}-\/mer, compute the {\ttfamily g} hash functions and check whether all bits in the corresponding positions in the filter are set to {\ttfamily 1}. If so, add $\ast$$\ast$\textsuperscript{1}/\textsubscript{(L -\/ k + 1)}$\ast$$\ast$ to the score.
+\end{DoxyEnumerate}
+
+If the score is above the user predefined threshold ({\ttfamily -\/s}), the read is classified as belonging to the set, and not otherwise.
+
+\subsubsection*{Memory usage, sensitivity and specificity}
+
+The {\bfseries memory usage} will be determined by {\ttfamily m}, the size of the filter. The optimal number of bits per element is
+
+{\bfseries  \textsuperscript{m}/\textsubscript{n} = -\/ \textsuperscript{ log (p)}/ \textsubscript{log\textsuperscript{2}(2)}. }
+
+In the figures below, we can see both, the optimal number of bits per element and the optimal number of hash functions as a function of the false positive rate.
+
+ 
+
+As an example, let\textquotesingle{}s assume we want to look for contaminations in a genome {\ttfamily $\sim$3\+GB} and want to keep the false positive rate by {\ttfamily 2\%}. Then, we will need a filter of {\ttfamily $\sim$3.05\+GB}.
+
+{\bfseries Sensitivity} (true positive rate, T\+P/(TP + FN)) can be increased by decreasing the {\ttfamily k}-\/mer size ({\ttfamily -\/k}) and the score threshold. False negatives only occur in the presence of mismatches due to variants, or errors in the base calling procedure, since the filter itself does not allow for false negatives.
+
+To increase {\bfseries specificity} (true negative rate, T\+N/(TN + FP)), you can increase the score threshold ({\ttfamily -\/s}) or, obviously reduce the positive rate, ({\ttfamily -\/p}).
+
+\subsection*{Contributors}
+
+Paula Pérez Rubio
+
+\subsection*{License}
+
+G\+PL v3 (see L\+I\+C\+E\+N\+S\+E.\+txt) 

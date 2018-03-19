@@ -1,19 +1,19 @@
-\hypertarget{fopen__gen_8c}{\section{src/fopen\+\_\+gen.c File Reference}
+\hypertarget{fopen__gen_8c}{}\section{src/fopen\+\_\+gen.c File Reference}
 \label{fopen__gen_8c}\index{src/fopen\+\_\+gen.\+c@{src/fopen\+\_\+gen.\+c}}
-}
 
 
 Uncompress/compress input/output files using pipes.  
 
 
-{\ttfamily \#include $<$stdlib.\+h$>$}\\*
-{\ttfamily \#include $<$string.\+h$>$}\\*
-{\ttfamily \#include $<$unistd.\+h$>$}\\*
-{\ttfamily \#include $<$assert.\+h$>$}\\*
-{\ttfamily \#include $<$sys/types.\+h$>$}\\*
-{\ttfamily \#include $<$fcntl.\+h$>$}\\*
-{\ttfamily \#include \char`\"{}fopen\+\_\+gen.\+h\char`\"{}}\\*
-Include dependency graph for fopen\+\_\+gen.\+c\+:\nopagebreak
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}fopen\+\_\+gen.\+h\char`\"{}}\newline
+Include dependency graph for fopen\+\_\+gen.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,24 +23,24 @@ Include dependency graph for fopen\+\_\+gen.\+c\+:\nopagebreak
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{fopen__gen_8c_a103afa931e1ef96c23ac490151b64036}{static const char $\ast$ {\bfseries zcat\+Exec} (const char $\ast$path)}\label{fopen__gen_8c_a103afa931e1ef96c23ac490151b64036}
-
+\mbox{\Hypertarget{fopen__gen_8c_a103afa931e1ef96c23ac490151b64036}\label{fopen__gen_8c_a103afa931e1ef96c23ac490151b64036}} 
+static const char $\ast$ {\bfseries zcat\+Exec} (const char $\ast$path)
 \item 
-\hypertarget{fopen__gen_8c_aaad17dde0a82955fa873b2a8b93c99ae}{static const char $\ast$ \hyperlink{fopen__gen_8c_aaad17dde0a82955fa873b2a8b93c99ae}{cat\+Exec} (const char $\ast$path)}\label{fopen__gen_8c_aaad17dde0a82955fa873b2a8b93c99ae}
-
+\mbox{\Hypertarget{fopen__gen_8c_aaad17dde0a82955fa873b2a8b93c99ae}\label{fopen__gen_8c_aaad17dde0a82955fa873b2a8b93c99ae}} 
+static const char $\ast$ \mbox{\hyperlink{fopen__gen_8c_aaad17dde0a82955fa873b2a8b93c99ae}{cat\+Exec}} (const char $\ast$path)
 \begin{DoxyCompactList}\small\item\em Commands to compress files. To be done in output. \end{DoxyCompactList}\item 
-static int \hyperlink{fopen__gen_8c_ad91f7120fe65477ca4ccc599808434e6}{uncompress} (const char $\ast$path)
+static int \mbox{\hyperlink{fopen__gen_8c_ad91f7120fe65477ca4ccc599808434e6}{uncompress}} (const char $\ast$path)
 \begin{DoxyCompactList}\small\item\em Open a pipe to uncompress file. Open a pipe to uncompress the specified file. Not thread safe. \end{DoxyCompactList}\item 
-static int \hyperlink{fopen__gen_8c_a1d546df97e4f524a9a23e4e5bb92cff9}{compress} (const char $\ast$path)
+static int \mbox{\hyperlink{fopen__gen_8c_a1d546df97e4f524a9a23e4e5bb92cff9}{compress}} (const char $\ast$path)
 \begin{DoxyCompactList}\small\item\em Open a pipe to compress output. Open a pipe to uncompress the specified file. Not thread safe. \end{DoxyCompactList}\item 
-\hypertarget{fopen__gen_8c_ae59755703d84f781f127762acf2deb6d}{int {\bfseries set\+Cloexec} (int fd)}\label{fopen__gen_8c_ae59755703d84f781f127762acf2deb6d}
-
+\mbox{\Hypertarget{fopen__gen_8c_ae59755703d84f781f127762acf2deb6d}\label{fopen__gen_8c_ae59755703d84f781f127762acf2deb6d}} 
+int {\bfseries set\+Cloexec} (int fd)
 \item 
-static F\+I\+L\+E $\ast$ \hyperlink{fopen__gen_8c_a97fe7a7fd381b9f81e4adbdeab902766}{funcompress} (const char $\ast$path)
+static F\+I\+LE $\ast$ \mbox{\hyperlink{fopen__gen_8c_a97fe7a7fd381b9f81e4adbdeab902766}{funcompress}} (const char $\ast$path)
 \begin{DoxyCompactList}\small\item\em Open a pipe to uncompress the specified file. \end{DoxyCompactList}\item 
-static F\+I\+L\+E $\ast$ \hyperlink{fopen__gen_8c_a86f9e75b840d00dce91e44cf880f730d}{fcompress} (const char $\ast$path)
+static F\+I\+LE $\ast$ \mbox{\hyperlink{fopen__gen_8c_a86f9e75b840d00dce91e44cf880f730d}{fcompress}} (const char $\ast$path)
 \begin{DoxyCompactList}\small\item\em Open a pipe to compress the specified file. \end{DoxyCompactList}\item 
-F\+I\+L\+E $\ast$ \hyperlink{fopen__gen_8c_ae03fc1b9180f740dcb577fdb00072fb3}{fopen\+\_\+gen} (const char $\ast$path, const char $\ast$mode)
+F\+I\+LE $\ast$ \mbox{\hyperlink{fopen__gen_8c_ae03fc1b9180f740dcb577fdb00072fb3}{fopen\+\_\+gen}} (const char $\ast$path, const char $\ast$mode)
 \begin{DoxyCompactList}\small\item\em Generalized fopen function. fopen\+\_\+gen is to be used as fopen. Can be used in read and in write mode. When used in read mode with a compressed extension, the file will be first decompressed and then read. When used in write mode with a compressed extension, the output will be compressed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -59,18 +59,18 @@ Paula Perez \href{mailto:paulaperezrubio@gmail.com}{\tt paulaperezrubio@gmail.\+
 vfork vs fork to be checked! 
 \end{DoxyWarning}
 \begin{DoxyNote}{Note}
--\/ original copyright note -\/ (reading mode, original C++ code) author\+: Shaun Jackman \href{mailto:sjackman@bcgsc.ca}{\tt sjackman@bcgsc.\+ca}, \href{https://github.com/bcgsc,}{\tt https\+://github.\+com/bcgsc,} filename\+: Uncompress.\+cpp 
+-\/ original copyright note -\/ (reading mode, original C++ code) author\+: Shaun Jackman \href{mailto:sjackman@bcgsc.ca}{\tt sjackman@bcgsc.\+ca}, \href{https://github.com/bcgsc,}{\tt https\+://github.\+com/bcgsc,} ~\newline
+filename\+: Uncompress.\+cpp 
 \end{DoxyNote}
 
 
 \subsection{Function Documentation}
-\hypertarget{fopen__gen_8c_a1d546df97e4f524a9a23e4e5bb92cff9}{\index{fopen\+\_\+gen.\+c@{fopen\+\_\+gen.\+c}!compress@{compress}}
+\mbox{\Hypertarget{fopen__gen_8c_a1d546df97e4f524a9a23e4e5bb92cff9}\label{fopen__gen_8c_a1d546df97e4f524a9a23e4e5bb92cff9}} 
+\index{fopen\+\_\+gen.\+c@{fopen\+\_\+gen.\+c}!compress@{compress}}
 \index{compress@{compress}!fopen\+\_\+gen.\+c@{fopen\+\_\+gen.\+c}}
-\subsubsection[{compress}]{\setlength{\rightskip}{0pt plus 5cm}static int compress (
-\begin{DoxyParamCaption}
-\item[{const char $\ast$}]{path}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{fopen__gen_8c_a1d546df97e4f524a9a23e4e5bb92cff9}
+\subsubsection{\texorpdfstring{compress()}{compress()}}
+{\footnotesize\ttfamily static int compress (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 
 
 Open a pipe to compress output. Open a pipe to uncompress the specified file. Not thread safe. 
@@ -78,56 +78,51 @@ Open a pipe to compress output. Open a pipe to uncompress the specified file. No
 \begin{DoxyReturn}{Returns}
 a file descriptor 
 \end{DoxyReturn}
-\hypertarget{fopen__gen_8c_a86f9e75b840d00dce91e44cf880f730d}{\index{fopen\+\_\+gen.\+c@{fopen\+\_\+gen.\+c}!fcompress@{fcompress}}
+\mbox{\Hypertarget{fopen__gen_8c_a86f9e75b840d00dce91e44cf880f730d}\label{fopen__gen_8c_a86f9e75b840d00dce91e44cf880f730d}} 
+\index{fopen\+\_\+gen.\+c@{fopen\+\_\+gen.\+c}!fcompress@{fcompress}}
 \index{fcompress@{fcompress}!fopen\+\_\+gen.\+c@{fopen\+\_\+gen.\+c}}
-\subsubsection[{fcompress}]{\setlength{\rightskip}{0pt plus 5cm}static F\+I\+L\+E$\ast$ fcompress (
-\begin{DoxyParamCaption}
-\item[{const char $\ast$}]{path}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{fopen__gen_8c_a86f9e75b840d00dce91e44cf880f730d}
+\subsubsection{\texorpdfstring{fcompress()}{fcompress()}}
+{\footnotesize\ttfamily static F\+I\+LE$\ast$ fcompress (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 
 
 Open a pipe to compress the specified file. 
 
 \begin{DoxyReturn}{Returns}
-a F\+I\+L\+E pointer 
+a F\+I\+LE pointer 
 \end{DoxyReturn}
-\hypertarget{fopen__gen_8c_ae03fc1b9180f740dcb577fdb00072fb3}{\index{fopen\+\_\+gen.\+c@{fopen\+\_\+gen.\+c}!fopen\+\_\+gen@{fopen\+\_\+gen}}
+\mbox{\Hypertarget{fopen__gen_8c_ae03fc1b9180f740dcb577fdb00072fb3}\label{fopen__gen_8c_ae03fc1b9180f740dcb577fdb00072fb3}} 
+\index{fopen\+\_\+gen.\+c@{fopen\+\_\+gen.\+c}!fopen\+\_\+gen@{fopen\+\_\+gen}}
 \index{fopen\+\_\+gen@{fopen\+\_\+gen}!fopen\+\_\+gen.\+c@{fopen\+\_\+gen.\+c}}
-\subsubsection[{fopen\+\_\+gen}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+L\+E$\ast$ fopen\+\_\+gen (
-\begin{DoxyParamCaption}
-\item[{const char $\ast$}]{path, }
-\item[{const char $\ast$}]{mode}
-\end{DoxyParamCaption}
-)}}\label{fopen__gen_8c_ae03fc1b9180f740dcb577fdb00072fb3}
+\subsubsection{\texorpdfstring{fopen\+\_\+gen()}{fopen\_gen()}}
+{\footnotesize\ttfamily F\+I\+LE$\ast$ fopen\+\_\+gen (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path,  }\item[{const char $\ast$}]{mode }\end{DoxyParamCaption})}
+
 
 
 Generalized fopen function. fopen\+\_\+gen is to be used as fopen. Can be used in read and in write mode. When used in read mode with a compressed extension, the file will be first decompressed and then read. When used in write mode with a compressed extension, the output will be compressed. 
 
 \begin{DoxyReturn}{Returns}
-a F\+I\+L\+E pointer 
+a F\+I\+LE pointer 
 \end{DoxyReturn}
-\hypertarget{fopen__gen_8c_a97fe7a7fd381b9f81e4adbdeab902766}{\index{fopen\+\_\+gen.\+c@{fopen\+\_\+gen.\+c}!funcompress@{funcompress}}
+\mbox{\Hypertarget{fopen__gen_8c_a97fe7a7fd381b9f81e4adbdeab902766}\label{fopen__gen_8c_a97fe7a7fd381b9f81e4adbdeab902766}} 
+\index{fopen\+\_\+gen.\+c@{fopen\+\_\+gen.\+c}!funcompress@{funcompress}}
 \index{funcompress@{funcompress}!fopen\+\_\+gen.\+c@{fopen\+\_\+gen.\+c}}
-\subsubsection[{funcompress}]{\setlength{\rightskip}{0pt plus 5cm}static F\+I\+L\+E$\ast$ funcompress (
-\begin{DoxyParamCaption}
-\item[{const char $\ast$}]{path}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{fopen__gen_8c_a97fe7a7fd381b9f81e4adbdeab902766}
+\subsubsection{\texorpdfstring{funcompress()}{funcompress()}}
+{\footnotesize\ttfamily static F\+I\+LE$\ast$ funcompress (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 
 
 Open a pipe to uncompress the specified file. 
 
 \begin{DoxyReturn}{Returns}
-a F\+I\+L\+E pointer 
+a F\+I\+LE pointer 
 \end{DoxyReturn}
-\hypertarget{fopen__gen_8c_ad91f7120fe65477ca4ccc599808434e6}{\index{fopen\+\_\+gen.\+c@{fopen\+\_\+gen.\+c}!uncompress@{uncompress}}
+\mbox{\Hypertarget{fopen__gen_8c_ad91f7120fe65477ca4ccc599808434e6}\label{fopen__gen_8c_ad91f7120fe65477ca4ccc599808434e6}} 
+\index{fopen\+\_\+gen.\+c@{fopen\+\_\+gen.\+c}!uncompress@{uncompress}}
 \index{uncompress@{uncompress}!fopen\+\_\+gen.\+c@{fopen\+\_\+gen.\+c}}
-\subsubsection[{uncompress}]{\setlength{\rightskip}{0pt plus 5cm}static int uncompress (
-\begin{DoxyParamCaption}
-\item[{const char $\ast$}]{path}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{fopen__gen_8c_ad91f7120fe65477ca4ccc599808434e6}
+\subsubsection{\texorpdfstring{uncompress()}{uncompress()}}
+{\footnotesize\ttfamily static int uncompress (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 
 
 Open a pipe to uncompress file. Open a pipe to uncompress the specified file. Not thread safe. 

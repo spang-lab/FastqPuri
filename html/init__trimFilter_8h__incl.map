@@ -1,7 +1,7 @@
 <map id="include/init_trimFilter.h" name="include/init_trimFilter.h">
-<area shape="rect" id="node2" href="$defines_8h.html" title="Macro definitions. " alt="" coords="12,229,86,256"/>
-<area shape="rect" id="node4" href="$bloom_8h.html" title="functions that implement the bloom filter " alt="" coords="115,155,183,181"/>
-<area shape="rect" id="node8" href="$struct__trimFilter_8h.html" title="structure where the input arguments of trimFilter and trimFilterDS will be stored and function to fre..." alt="" coords="27,80,151,107"/>
-<area shape="rect" id="node5" href="$city_8h.html" title="functions for hashin strings, C translation of cityhash (C++, google) " alt="" coords="211,229,266,256"/>
-<area shape="rect" id="node7" href="$fa__read_8h.html" title="reads in and stores fasta files " alt="" coords="111,229,187,256"/>
+<area shape="rect" id="node2" href="$defines_8h.html" title="Macro definitions. " alt="" coords="10,229,91,256"/>
+<area shape="rect" id="node5" href="$bloom_8h.html" title="functions that implement the bloom filter " alt="" coords="120,155,195,181"/>
+<area shape="rect" id="node9" href="$struct__trimFilter_8h.html" title="structure where the input arguments of trimFilter and trimFilterDS will be stored and function to fre..." alt="" coords="27,80,163,107"/>
+<area shape="rect" id="node6" href="$city_8h.html" title="functions for hashin strings, C translation of cityhash (C++, google) " alt="" coords="223,229,279,256"/>
+<area shape="rect" id="node8" href="$fa__read_8h.html" title="reads in and stores fasta files " alt="" coords="116,229,199,256"/>
 </map>

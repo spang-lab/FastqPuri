@@ -1,22 +1,23 @@
-\hypertarget{adapters_8h}{\section{include/adapters.h File Reference}
+\hypertarget{adapters_8h}{}\section{include/adapters.h File Reference}
 \label{adapters_8h}\index{include/adapters.\+h@{include/adapters.\+h}}
-}
 
 
 sequence manipulation for alignment  
 
 
-{\ttfamily \#include \char`\"{}fq\+\_\+read.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}fa\+\_\+read.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\\*
-Include dependency graph for adapters.\+h\+:\nopagebreak
+{\ttfamily \#include \char`\"{}fq\+\_\+read.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fa\+\_\+read.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\newline
+Include dependency graph for adapters.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=287pt]{adapters_8h__incl}
+\includegraphics[width=304pt]{adapters_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -26,24 +27,24 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{struct__ad__seq}{\+\_\+ad\+\_\+seq}
+struct \mbox{\hyperlink{struct__ad__seq}{\+\_\+ad\+\_\+seq}}
 \begin{DoxyCompactList}\small\item\em stores an adapter entry \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}{typedef struct \hyperlink{struct__ad__seq}{\+\_\+ad\+\_\+seq} \hyperlink{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}{Ad\+\_\+seq}}\label{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}
-
+\mbox{\Hypertarget{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}\label{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}} 
+typedef struct \mbox{\hyperlink{struct__ad__seq}{\+\_\+ad\+\_\+seq}} \mbox{\hyperlink{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}{Ad\+\_\+seq}}
 \begin{DoxyCompactList}\small\item\em stores an adapter entry \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{adapters_8h_a9a9287b7f80371c4102747564c9b70c2}{init\+\_\+al\+L\+U\+Ts} ()
+void \mbox{\hyperlink{adapters_8h_a9a9287b7f80371c4102747564c9b70c2}{init\+\_\+al\+L\+U\+Ts}} ()
 \begin{DoxyCompactList}\small\item\em look up table initialization for alignment (used for adapters) \end{DoxyCompactList}\item 
-int \hyperlink{adapters_8h_a81e569a26b585501f063770d760b050a}{process\+\_\+seq} (unsigned char $\ast$packed, unsigned char $\ast$read, int L, \hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool} shift, \hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool} isreverse)
+int \mbox{\hyperlink{adapters_8h_a81e569a26b585501f063770d760b050a}{process\+\_\+seq}} (unsigned char $\ast$packed, unsigned char $\ast$read, int L, \mbox{\hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool}} shift, \mbox{\hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool}} isreverse)
 \begin{DoxyCompactList}\small\item\em Packs a sequence using alfw0, alfw1, albw0, albw1. \end{DoxyCompactList}\item 
-\hyperlink{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}{Ad\+\_\+seq} $\ast$ \hyperlink{adapters_8h_a474bb2a439e8396fe33f6998af243eee}{pack\+\_\+adapter} (\hyperlink{fa__read_8h_a797328b16bc1c1088998cd164aafb09d}{Fa\+\_\+data} $\ast$ptr\+\_\+fa)
+\mbox{\hyperlink{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}{Ad\+\_\+seq}} $\ast$ \mbox{\hyperlink{adapters_8h_a474bb2a439e8396fe33f6998af243eee}{pack\+\_\+adapter}} (\mbox{\hyperlink{fa__read_8h_a797328b16bc1c1088998cd164aafb09d}{Fa\+\_\+data}} $\ast$ptr\+\_\+fa)
 \begin{DoxyCompactList}\small\item\em reads a {\bfseries Fa\+\_\+data} with adapters and stores them in an array of {\bfseries Ad\+\_\+seq} structs. \end{DoxyCompactList}\item 
-double \hyperlink{adapters_8h_adc47abb63194fec1a3ec9d83991a1340}{obtain\+\_\+score} (\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read} $\ast$seq, int pos\+\_\+seq, \hyperlink{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}{Ad\+\_\+seq} $\ast$ptr\+\_\+adap, int pos\+\_\+ad)
+double \mbox{\hyperlink{adapters_8h_adc47abb63194fec1a3ec9d83991a1340}{obtain\+\_\+score}} (\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$seq, int pos\+\_\+seq, \mbox{\hyperlink{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}{Ad\+\_\+seq}} $\ast$ptr\+\_\+adap, int pos\+\_\+ad)
 \begin{DoxyCompactList}\small\item\em computes score of a possible alignment, after having found a seed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -56,35 +57,39 @@ sequence manipulation for alignment
 
 
 \subsection{Function Documentation}
-\hypertarget{adapters_8h_a9a9287b7f80371c4102747564c9b70c2}{\index{adapters.\+h@{adapters.\+h}!init\+\_\+al\+L\+U\+Ts@{init\+\_\+al\+L\+U\+Ts}}
+\mbox{\Hypertarget{adapters_8h_a9a9287b7f80371c4102747564c9b70c2}\label{adapters_8h_a9a9287b7f80371c4102747564c9b70c2}} 
+\index{adapters.\+h@{adapters.\+h}!init\+\_\+al\+L\+U\+Ts@{init\+\_\+al\+L\+U\+Ts}}
 \index{init\+\_\+al\+L\+U\+Ts@{init\+\_\+al\+L\+U\+Ts}!adapters.\+h@{adapters.\+h}}
-\subsubsection[{init\+\_\+al\+L\+U\+Ts}]{\setlength{\rightskip}{0pt plus 5cm}void init\+\_\+al\+L\+U\+Ts (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}}\label{adapters_8h_a9a9287b7f80371c4102747564c9b70c2}
+\subsubsection{\texorpdfstring{init\+\_\+al\+L\+U\+Ts()}{init\_alLUTs()}}
+{\footnotesize\ttfamily void init\+\_\+al\+L\+U\+Ts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 
 
 look up table initialization for alignment (used for adapters) 
 
-It initializes\+: fw\+\_\+1\+B, bw\+\_\+1\+B. They are uint8\+\_\+t arrays with 256 elements. All elements are set to 0x\+F\+F excepting the ones corresponding to 'a', 'A', 'c', 'C', 'g', 'G', 't', 'T'\+:
+It initializes\+: fw\+\_\+1B, bw\+\_\+1B. They are uint8\+\_\+t arrays with 256 elements. All elements are set to 0x\+FF excepting the ones corresponding to \textquotesingle{}a\textquotesingle{}, \textquotesingle{}A\textquotesingle{}, \textquotesingle{}c\textquotesingle{}, \textquotesingle{}C\textquotesingle{}, \textquotesingle{}g\textquotesingle{}, \textquotesingle{}G\textquotesingle{}, \textquotesingle{}t\textquotesingle{}, \textquotesingle{}T\textquotesingle{}\+:
 
-\begin{TabularC}{10}
+\tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{10}{|X[-1]}|}
 \hline
-\rowcolor{lightgray}{\bf Var }&{\bf a,A }&{\bf c,C }&{\bf g,G }&{\bf t,T }&{\bf Var }&{\bf a,A }&{\bf c,C }&{\bf g,G }&{\bf t,T  }\\\cline{1-10}
-alfw0 &0x01 &0x02 &0x04 &0x08 &albw0 &0x08 &0x04 &0x02 &0x01 \\\cline{1-10}
-alfw1 &0x10 &0x20 &0x40 &0x80 &albw1 &0x80 &0x40 &0x20 &0x10 \\\cline{1-10}
-\end{TabularC}
-With this variables we will encode sequences that can be compared later on. Using the bitwise X\+O\+R operator, every mismatch will amount to two bits set to 1. \hypertarget{adapters_8h_adc47abb63194fec1a3ec9d83991a1340}{\index{adapters.\+h@{adapters.\+h}!obtain\+\_\+score@{obtain\+\_\+score}}
+\rowcolor{\tableheadbgcolor}\textbf{ Var  }&\textbf{ a,A  }&\textbf{ c,C  }&\textbf{ g,G  }&\textbf{ t,T  }&\textbf{ Var  }&\textbf{ a,A  }&\textbf{ c,C  }&\textbf{ g,G  }&\textbf{ t,T   }\\\cline{1-10}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ Var  }&\textbf{ a,A  }&\textbf{ c,C  }&\textbf{ g,G  }&\textbf{ t,T  }&\textbf{ Var  }&\textbf{ a,A  }&\textbf{ c,C  }&\textbf{ g,G  }&\textbf{ t,T   }\\\cline{1-10}
+\endhead
+alfw0  &0x01  &0x02  &0x04  &0x08  &albw0  &0x08  &0x04  &0x02  &0x01   \\\cline{1-10}
+alfw1  &0x10  &0x20  &0x40  &0x80  &albw1  &0x80  &0x40  &0x20  &0x10   \\\cline{1-10}
+\end{longtabu}
+
+
+With this variables we will encode sequences that can be compared later on. Using the bitwise X\+OR operator, every mismatch will amount to two bits set to 1. \mbox{\Hypertarget{adapters_8h_adc47abb63194fec1a3ec9d83991a1340}\label{adapters_8h_adc47abb63194fec1a3ec9d83991a1340}} 
+\index{adapters.\+h@{adapters.\+h}!obtain\+\_\+score@{obtain\+\_\+score}}
 \index{obtain\+\_\+score@{obtain\+\_\+score}!adapters.\+h@{adapters.\+h}}
-\subsubsection[{obtain\+\_\+score}]{\setlength{\rightskip}{0pt plus 5cm}double obtain\+\_\+score (
-\begin{DoxyParamCaption}
-\item[{{\bf Fq\+\_\+read} $\ast$}]{seq, }
-\item[{int}]{pos\+\_\+seq, }
-\item[{{\bf Ad\+\_\+seq} $\ast$}]{ptr\+\_\+adap, }
-\item[{int}]{pos\+\_\+ad}
-\end{DoxyParamCaption}
-)}}\label{adapters_8h_adc47abb63194fec1a3ec9d83991a1340}
+\subsubsection{\texorpdfstring{obtain\+\_\+score()}{obtain\_score()}}
+{\footnotesize\ttfamily double obtain\+\_\+score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fq__read_8h_a9af37aa81397c9531c66863d4e97f034}{Fq\+\_\+read}} $\ast$}]{seq,  }\item[{int}]{pos\+\_\+seq,  }\item[{\mbox{\hyperlink{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}{Ad\+\_\+seq}} $\ast$}]{ptr\+\_\+adap,  }\item[{int}]{pos\+\_\+ad }\end{DoxyParamCaption})}
+
 
 
 computes score of a possible alignment, after having found a seed. 
@@ -109,13 +114,12 @@ The score is computed as follows\+:
 \begin{DoxyReturn}{Returns}
 score of the alignment 
 \end{DoxyReturn}
-\hypertarget{adapters_8h_a474bb2a439e8396fe33f6998af243eee}{\index{adapters.\+h@{adapters.\+h}!pack\+\_\+adapter@{pack\+\_\+adapter}}
+\mbox{\Hypertarget{adapters_8h_a474bb2a439e8396fe33f6998af243eee}\label{adapters_8h_a474bb2a439e8396fe33f6998af243eee}} 
+\index{adapters.\+h@{adapters.\+h}!pack\+\_\+adapter@{pack\+\_\+adapter}}
 \index{pack\+\_\+adapter@{pack\+\_\+adapter}!adapters.\+h@{adapters.\+h}}
-\subsubsection[{pack\+\_\+adapter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Ad\+\_\+seq}$\ast$ pack\+\_\+adapter (
-\begin{DoxyParamCaption}
-\item[{{\bf Fa\+\_\+data} $\ast$}]{ptr\+\_\+fa}
-\end{DoxyParamCaption}
-)}}\label{adapters_8h_a474bb2a439e8396fe33f6998af243eee}
+\subsubsection{\texorpdfstring{pack\+\_\+adapter()}{pack\_adapter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{adapters_8h_ad1465e8f3bc3d3b1fc010a1e72436c56}{Ad\+\_\+seq}}$\ast$ pack\+\_\+adapter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{fa__read_8h_a797328b16bc1c1088998cd164aafb09d}{Fa\+\_\+data}} $\ast$}]{ptr\+\_\+fa }\end{DoxyParamCaption})}
+
 
 
 reads a {\bfseries Fa\+\_\+data} with adapters and stores them in an array of {\bfseries Ad\+\_\+seq} structs. 
@@ -128,17 +132,12 @@ It reads the fasta structure. For every entry, an {\bfseries Ad\+\_\+seq} struct
 \begin{DoxyReturn}{Returns}
 pointer to {\bfseries Ad\+\_\+seq}, where the information is stored. 
 \end{DoxyReturn}
-\hypertarget{adapters_8h_a81e569a26b585501f063770d760b050a}{\index{adapters.\+h@{adapters.\+h}!process\+\_\+seq@{process\+\_\+seq}}
+\mbox{\Hypertarget{adapters_8h_a81e569a26b585501f063770d760b050a}\label{adapters_8h_a81e569a26b585501f063770d760b050a}} 
+\index{adapters.\+h@{adapters.\+h}!process\+\_\+seq@{process\+\_\+seq}}
 \index{process\+\_\+seq@{process\+\_\+seq}!adapters.\+h@{adapters.\+h}}
-\subsubsection[{process\+\_\+seq}]{\setlength{\rightskip}{0pt plus 5cm}int process\+\_\+seq (
-\begin{DoxyParamCaption}
-\item[{unsigned char $\ast$}]{packed, }
-\item[{unsigned char $\ast$}]{sequence, }
-\item[{int}]{L, }
-\item[{{\bf bool}}]{shift, }
-\item[{{\bf bool}}]{isreverse}
-\end{DoxyParamCaption}
-)}}\label{adapters_8h_a81e569a26b585501f063770d760b050a}
+\subsubsection{\texorpdfstring{process\+\_\+seq()}{process\_seq()}}
+{\footnotesize\ttfamily int process\+\_\+seq (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{packed,  }\item[{unsigned char $\ast$}]{sequence,  }\item[{int}]{L,  }\item[{\mbox{\hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool}}}]{shift,  }\item[{\mbox{\hyperlink{defines_8h_abb452686968e48b67397da5f97445f5b}{bool}}}]{isreverse }\end{DoxyParamCaption})}
+
 
 
 Packs a sequence using alfw0, alfw1, albw0, albw1. 
