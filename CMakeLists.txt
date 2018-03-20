@@ -153,7 +153,7 @@ add_executable(trimFilter ${PROJECT_SOURCE_DIR}/trimFilter.c
             ${PROJECT_SOURCE_DIR}/str_manip.c )
 
 
-add_executable(trimFilterDS ${PROJECT_SOURCE_DIR}/trimFilterDS.c 
+add_executable(trimFilterPE ${PROJECT_SOURCE_DIR}/trimFilterDS.c 
             ${PROJECT_SOURCE_DIR}/init_trimFilterDS.c 
             ${PROJECT_SOURCE_DIR}/struct_trimFilter.c 
             ${PROJECT_SOURCE_DIR}/io_trimFilterDS.c 
