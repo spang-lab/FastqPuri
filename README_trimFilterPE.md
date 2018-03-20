@@ -1,4 +1,4 @@
-# trimFilterDS user manual
+# trimFilterPE user manual
 
  This program reads two paired end `fastq` files as an input and filters them
 according to the following criteria:
@@ -16,7 +16,7 @@ automatically discarded.
 Usage `C` executable (in folder `bin`):
 
 ```
-Usage: trimFilterDS --ifq <INPUT1.fq>:<INPUT2.fq> --length <READ_LENGTH>
+Usage: trimFilterPE --ifq <INPUT1.fq>:<INPUT2.fq> --length <READ_LENGTH>
                   --output [O_PREFIX] --gzip [y|n]
                   --adapter [<AD1.fa>:<AD2.fa>:<mismatches>:<score>]
                   --method [TREE|BLOOM]
@@ -96,7 +96,7 @@ Options:
 ```
 
 NOTE: the parameters -l or --length are meant to identify the length
-of the reads in the input data.  Actually, `trimFilterDS` also copes with
+of the reads in the input data.  Actually, `trimFilterPE` also copes with
 data holding reads with different lengths. The length parameter must
 hold the length of the longest read in the dataset.
 
@@ -198,7 +198,7 @@ examples and more details):
 
 ## Test/examples
 
- The examples in folder `examples/trimFilterDS_SReport/` work in the following
+ The examples in folder `examples/trimFilterPE_SReport/` work in the following
  way:
  1. See folder `fa_fq_files`. The files `EColi_rRNA_DS.read1.fq.gz` and
     `EColi_rRNA_DS.read2.fq.gz` were created with `create_fq.sh` and contain:
@@ -217,7 +217,7 @@ examples and more details):
     the ends and less than 5% in the remaining part, and strip reads
     containing N's at the ends.
  3. `run_example_BLOOM.sh`:
-    trimFilterDS is run like in 2. but passing a bloom filter to look for
+    trimFilterPE is run like in 2. but passing a bloom filter to look for
        contaminations with `score=0.4` and the --trimN STRIP option.
  4. With this set up, it is possible to run further customized tests.
  5. See the folder `adapters` for examples on adapter contaminations (and its

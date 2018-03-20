@@ -11,10 +11,10 @@ Creates two types of summary reports in html format
    of `fastq` files. It will analyze all files with extension `*bin` inside
    the folder specified in the input and will expect them to have the
    appropriate format, (output from `trimFilter`).
- - **D** (Filter): report of the filtering process (`trimFilterDS`) of a set
+ - **D** (Filter): report of the filtering process (`trimFilterPE`) of a set
    of double stranded `fastq` files. It will analyze all files with extension 
    `*bin` inside the folder specified in the input and will expect them to have the
-   appropriate format, (output from `trimFilterDS`).
+   appropriate format, (output from `trimFilterPE`).
 
 
 ## Running the program
@@ -48,7 +48,7 @@ Options:
    * Table with : `Nreads`, `Naccepted`, `%disc Ad`, `%cont`, `%disc lowQ`,
    `%disc N’s`, `%trim Ad`,`%trim N’s`,`%trim lowQ` for all samples.
 - **D** (html output):
-   * Table with .trimFilterDS setup. If there were samples with different
+   * Table with .trimFilterPE setup. If there were samples with different
      setups, this table is ambiguous and is therefore not created.
    * Table with : `Nreads`, `Naccepted`, `%disc Ad`, `%cont`, `%disc lowQ`,
    `%disc N’s`, `%trim Ad`,`%trim1 N’s`,`%trim1 lowQ`, `%trim2 N’s`, 
@@ -84,10 +84,10 @@ $ ../../bin/Sreport -i .bin_files/ -o ./bin_files/filter_Sreport_new -t F
 
 ###  Option `-t D` 
 
-In folder `.examples/trimFilterDS_Sreport/bin_files`, 30 fake
-`./trimFilterDS` binary output files were generated (with the `R` script
+In folder `.examples/trimFilterPE_Sreport/bin_files`, 30 fake
+`./trimFilterPE` binary output files were generated (with the `R` script
 `create_fake_bins.R`). An html output was created out of them
-(`.examples/trimFilterDS_Sreport/bin_files/DS_Sreport_example.html`).
+(`.examples/trimFilterPE_Sreport/bin_files/DS_Sreport_example.html`).
 It can be reproduced if you run:
 
 ```

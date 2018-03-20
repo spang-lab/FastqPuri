@@ -62,15 +62,15 @@ the local folder structure.
  it in a file (see `README_makeTree.md`),
 * `trimFilter`: performs the filtering process for single-end data 
    (see `README_trimFilter.md`).
-* `trimFilterDS`: performs the filtering process for double stranded data 
-   (see `README_trimFilterDS.md`).
+* `trimFilterPE`: performs the filtering process for double stranded data 
+   (see `README_trimFilterPE.md`).
 
 An exemplar work flow could be:
 
 * `Qreport`
 * `Sreport`
 * `makeBloom`
-* `trimFilter` or `trimFilterDS`
+* `trimFilter` or `trimFilterPE`
 * `Qreport`
 * `Sreport`
 
