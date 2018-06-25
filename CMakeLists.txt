@@ -108,8 +108,9 @@ set(CMAKE_C_FLAGS  "-Wall -Wextra -O3 -march=native -std=c11")
 message("-- Setting compiler flags: ${CMAKE_C_FLAGS}")
 
 # Set linker flags
-set(CMAKE_C_LINK_FLAGS  "" )
+#set(CMAKE_C_LINK_FLAGS  "" )
 #set(CMAKE_C_LINK_FLAGS  "-lm")
+set(CMAKE_C_STANDARD_LIBRARIES "-lm")
 
 # Include directories
 include_directories("${CMAKE_SOURCE_DIR}/include" "${CMAKE_SOURCE_DIR}")
