@@ -1,6 +1,6 @@
 # QReport user manual
 
-Obtains statistics from the reads quality of a fastq file. 
+Obtains statistics from the read qualities of a fastq file. 
 The binary output is then read by an `Rmd` script that generates a 
 html visualization of the data. 
 
@@ -22,7 +22,7 @@ Options:
  -i Input file [*fq|*fq.gz|*fq.bz2]. Mandatory option.
  -l Read length. Length of the reads. Mandatory option.
  -o Output file prefix (with NO extension). Mandatory option.
- -t Number of tiles. Optional (default 96).
+ -t Number of tiles. Can be obtained from Illumina's `Run Summary` (see https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Vault/Informatics/Sequencing_Analysis/BS/swSEQ_mBS_ViewRunSamplesList.htm). It is usually 96 for flow cells used on HiSeq and NextSeq machines, and 19 for flow cells for the MiSeq with v3 chemistry. Multiply by the number of lanes, if data comes from more than one lane. Optional (default 96).
  -q Minimum quality allowed. Optional (default 27).
  -n Number of different quality values allowed. Optional (default 46).
  -f Filter status: 0 original file, 1 file filtered with trimFilter,
@@ -69,7 +69,7 @@ Options:
    * Plot 7: Nucleotide content per position
 
 **NOTE** If the data were sequenced on more than one lane, in Plots 3, 4 and 5 
-there will be a heatmap pro lane.
+there will be one heatmap per lane.
 
 ## Example 
 
@@ -83,7 +83,7 @@ example, type,
     $ ../../../bin/QReport -i ../test.fq.bz2 -l 51 -o my_test_output
 ```
  and compare it with the provided run example, as specified in the README
- file under `./example/QReport_Sreport`
+ file under `./example/QReport_Sreport`.
 
   
 ## Contributors

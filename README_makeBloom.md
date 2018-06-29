@@ -28,10 +28,10 @@ Options:
 NOTE: the options -p, -n, -m are mutually exclusive. The program 
       will give an error if more than one of them are passed as input.
       It is recommended to pass the false positive rate and let the 
-      program compute the other variables (excepting singular situations)
+      program compute the other variables (excepting singular situations).
       If none of them are passed, the false positive rate will default
       to 0.05 and the other variables will be computed respecting this
-      requirement. See documentation and supplementary material for 
+      requirement. See the `Doxygen` documentation and supplementary material for 
       more details.
 ```
 
@@ -45,7 +45,7 @@ Two files are created as output:
    * `bfsizeBits`: size of Bloom filter in bits,
    * `hashNum`: number of hash functions used in the filter, 
    * `falsePosRate:` false positive rate,
-   * `nelem`: number of elemens (kmers in the sequece) contained in the filter.
+   * `nelem`: number of elements (kmers in the sequece) contained in the filter.
 
 For further details, read the `Doxygen` documentation of the files
 `bloom.c`, `init_makeBloom.c`, `makeBloom.c`
@@ -58,12 +58,12 @@ test the bloom filter performance.
    * `human_reads.fq.gz`
    * `EColi_reads.fq.gz`
    are analyzed. They contain 10e5 reads each generated with `dgwsim`.
- - STEP1: Create bloom filters for EColi genome  with FPR:
+ - STEP1: Create bloom filters for the E.coli genome  with FPR:
    `[0.005 0.0075 0.01 0.02]`                                            
 
- - STEP2: Run trimFilter on both data looking for contaminations from EColi
-          using all filters generated, with `kmersize = 25` and scores ranging
-          from `0.05` to `0.2` by `0.01` intervals. We obtain false/true 
+ - STEP2: Run trimFilter on both data looking for contaminations from E.coli
+          using all filters generated with `kmersize = 25` and scores ranging
+          from `0.05` to `0.2` in `0.01` intervals. We obtain false/true 
           positive/negative rates:
    * FPR: % contaminations detected in human_reads.fq.gz
    * TNR (specificity): % good reads detected in `human_reads.fq.gz`
@@ -92,7 +92,7 @@ are not. For a given set of `n` elements, we proceed as follows:
 - decide on the number `g` of hash functions we will use for the construction
 of the filter and the length of the filter `m` (number of bits). This choice 
 will be made based on the false positive rate we want to 
-achieve (see Parameters)
+achieve (see Parameters).
 
 - we create an empty bloom filter, `B`, i.e. an array of `m` bits set 
 to `0`. For every element in the set,  **s<sub>&alpha;</sub> &isin; S**, compute 
@@ -108,7 +108,7 @@ i &isin; {1,...,g}** and check whether all coresponding positions in the
 filter are set to `1`, in which case we can say that **s<sub>&beta;</sub>** 
 might be in the set. Otherwise it is definitely not in the set. 
 
-### Parameters. 
+### Parameters 
 
 We choose the parameters so that the desired false positive rate is 
 achieved. Alternatively, we can pass the filter size, and then the 
@@ -116,7 +116,7 @@ number of hash functions to be used is tuned so that the false positive
 rate is minimized. 
 
 We assume the hash functions select all positions with the same 
-probability. The probability that an bit in the filter `B` is not 
+probability. The probability that a bit in the filter `B` is not 
 set to `1` after inserting an element using `g` hash functions is: 
 
 <p align="center"><b>
@@ -167,15 +167,15 @@ Given a `fasta` file, the elements to be inserted in the bloom filter are
 all possible `k`-mers contained in the `fasta` file. The length `k` of the 
 `k`-mers can be given by the user as an input parameter and is chosen to 
 be `25` by default. All `k`-mers containing nucleotides different from 
-`{A,C,G,T}` will not be consiedered and they are encoded such that every
-nucleotide takes only 2-bits memory. Wee look into the reverse complement 
-and insert only the one that is lexycographically smaller. 
+`{A,C,G,T}` will not be considered and they are encoded such that every
+nucleotide takes only 2-bits memory. We look into the reverse complement 
+and insert only the one that is lexicographically smaller. 
 
- Once the `k`-mer has been processed, the hash functions are computed an the 
+Once the `k`-mer has been processed, the hash functions are computed and the 
 positions of the output values are set to `1` in the filter. 
 
 
-### Checking ir a read in a `fastq` file is in the filter
+### Checking if a read in a `fastq` file is in the filter
 
 To check whether a `fastq` read of length `L` is in the filter, we 
 proceed as follows: 
@@ -200,7 +200,7 @@ number of bits per element is
 <sub>log<sup>2</sup>(2)</sub>.
 </b></p>
 
-In the figures below, we can see both,  the optimal number of bits 
+In the figures below, we can see both, the optimal number of bits 
 per element and the optimal number of hash functions as a function 
 of the false positive rate. 
 
@@ -210,7 +210,7 @@ of the false positive rate.
 </p>
 
 As an example, let's assume we want to look for contaminations in a
-genome `~3GB` and want to keep the false positive rate by `2%`. Then,
+genome of `~3GB` and want to keep the false positive rate at `2%`. Then,
 we will need a filter of `~3.05GB`. 
 
 **Sensitivity** (true positive rate,  TP/(TP + FN)) can be increased 
@@ -221,7 +221,6 @@ does not allow for false negatives.
 
 To increase **specificity** (true negative rate, TN/(TN + FP)), you can increase
 the score threshold (`-s`) or, obviously reduce the positive rate, (`-p`). 
-
 
 
 
