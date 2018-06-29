@@ -186,9 +186,11 @@ if(all(lowQ==0)){
    cat( "\t\t NO LOW QUALITY NUCLEOTIDES FOUND. NOT PLOTTING HEATMAP.\n")
 
 } else {
-   sec_max <- unique(lowQ_prop[3,])[order(unique(lowQ_prop[3,]))[2]]
-   breaks <- seq(0,sec_max+0.1,length=length(color))
-   breaks <- c(breaks,1)
+# modifications by Julia to have color scale range from 0 to 1:
+#   sec_max <- unique(lowQ_prop[3,])[order(unique(lowQ_prop[3,]))[2]]
+#   breaks <- seq(0,sec_max+0.1,length=length(color))
+#   breaks <- c(breaks,1)
+   breaks <- seq(0,1,length=length(color))
    pheatmap(lowQ_prop,cluster_cols=F, cluster_rows=F,  
          fontsize_row=6, fontsize_col=6,color=color,breaks = breaks, 
          cellheight=30)
