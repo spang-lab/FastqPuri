@@ -56,10 +56,10 @@ void printHelpDialog_trimFilterDS() {
    "and removes:\n"
    "  * low quality reads,\n"
    "  * reads containing N base callings,\n"
-   "  * reads representing contaminations, belonging to sequences in INPUT.fa\n"
+   "  * reads representing contaminations, belonging to sequences in INPUT.fa.\n"
    "Outputs 8 [O_PREFIX][1|2]_fq.gz files containing: \"good\" reads, "
    "discarded \n"
-   "low Q reads discarded reads containing N's, discarded contaminations.\n"
+   "low Q reads, discarded reads containing N's, discarded contaminations.\n"
    "Options:\n"
    " -v, --version prints package version.\n"
    " -h, --help    prints help dialog.\n"
@@ -67,26 +67,27 @@ void printHelpDialog_trimFilterDS() {
    "               colons, mandatory option.\n"
    " -l, --length  read length: length of the reads, mandatory option.\n"
    " -o, --output  output prefix (with path), optional (default ./out).\n"
-   " -z, --gzip    gzips output files: yes or no (default yes)\n"
-   " -A, --adapter adapter input four fields separated by colons:\n"
+   " -z, --gzip    gzip output files: yes or no (default yes)\n"
+   " -A, --adapter adapter input. Four fields separated by colons:\n"
    "               <AD1.fa>: fasta file containing adapters,\n"
    "               <AD2.fa>: fasta file containing adapters,\n"
    "               <mismatches>: maximum mismatch count allowed,\n"
    "               <score>: score threshold  for the aligner.\n"
-   " -x, --idx     index input file. To be included with any method. 3 fields\n"
-   "               3 fields separated by colons: \n"
+   " -x, --idx     index input file. To be included with any methods to remove.\n"
+   "               contaminations (TREE, BLOOM). 3 fields separated by colons: \n"
    "               <INDEX_FILE>: output of makeTree, makeBloom,\n"
    "               <score>: score threshold to accept a match [0,1],\n"
-   "               [lmer_len]: correspond to the length of the lmers to be \n"
+   "               [lmer_len]: the length of the lmers to be \n"
    "                        looked for in the reads [1,READ_LENGTH].\n"
-   " -a, --ifa     fasta input file. To be included only with method TREE\n"
+   " -a, --ifa     fasta input file of potential contaminations.\n" 
+   "               To be included only with method TREE\n"
    "               (it excludes the option --idx). Otherwise, an\n"
    "               index file has to be precomputed and given as parameter\n"
    "               (see option --idx). 3 fields separated by colons: \n"
    "               <INPUT.fa>: fasta input file [*fa|*fa.gz|*fa.bz2],\n"
    "               <score>: score threshold to accept a match [0,1],\n"
-   "               <lmer_len>: depth of the tree: [1,READ_LENGTH]. It will \n"
-   "                        correspond to the length of the lmers to be \n"
+   "               <lmer_len>: depth of the tree: [1,READ_LENGTH]. \n"
+   "                        Corresponds to the length of the lmers to be \n"
    "                        looked for in the reads.\n"
    " -C, --method  method used to look for contaminations: \n"
    "               TREE:  uses a 4-ary tree. Index file optional,\n"
@@ -96,29 +97,30 @@ void printHelpDialog_trimFilterDS() {
    "                         quality nucleotide.\n"
    "               ENDS:     trims the ends of the read if their quality is\n"
    "                         below the threshold -q,\n"
-   "               FRAC:     discards a read if the fraction of bases whose\n"
-   "                         quality lies below \n"
-   "                         the threshold -q is over 5 percent or a user \n"
-   "                         defined percentage in -p.\n"
+   "               FRAC:     discards a read if the fraction of bases with\n"
+   "                         low quality scores (below -q) is over 5 percent \n"
+   "                         or a user defined percentage (-p). \n"
    "               ENDSFRAC: trims the ends and then discards the read if \n"
-   "                         there are more low quality nucleotides than the\n"
+   "                         there are more low quality nucleotides than \n"
    "                         allowed by the option -p.\n"
    "               GLOBAL:   removes n1 cycles on the left and n2 on the \n"
    "                         right, specified in -g.\n"
-   "               All reads are discarded if they are shorter than MINL.\n"
+   "               All reads are discarded if they are shorter than MINL\n"
+   "               (specified with -m or --minL).\n "   
    " -m, --minL    minimum length allowed for a read before it is discarded\n"
    "               (default 25).\n"
    " -q, --minQ    minimum quality allowed (int), optional (default 27).\n"
-   " -p, --percent percentage of low quality bases to be admitted before \n"
+   " -p, --percent percentage of low quality bases tolerated before \n"
    "               discarding a read (default 5), \n"
    " -g, --global  required option if --trimQ GLOBAL is passed. Two int,\n"
-   "               n1:n2, have to be passed specifying the number of cycles \n"
+   "               n1:n2, have to be passed specifying the number of bases \n"
    "               to be globally cut from the left and right, respectively.\n"
    " -N, --trimN   NO:     does nothing to reads containing N's,\n"
    "               ALL:    removes all reads containing N's,\n"
    "               ENDS:   trims ends of reads with N's,\n"
    "               STRIPS: looks for the largest substring with no N's.\n"
-   "               All reads are discarded if they are shorter than minL.\n";
+   "               All reads are discarded if they are shorter than the\n"
+   "               sequence length specified by -m/--minL.\n";
   fprintf(stderr, "%s", dialog);
 }
 
@@ -128,7 +130,7 @@ void printHelpDialog_trimFilterDS() {
 */
 void getarg_trimFilterDS(int argc, char **argv) {
   if ( argc != 2 && (argc > 25 || argc % 2 == 0 || argc == 1) ) {
-     fprintf(stderr, "Not adequate number of arguments\n");
+     fprintf(stderr, "Not an adequate number of arguments\n");
      printHelpDialog_trimFilterDS();
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
@@ -173,7 +175,7 @@ void getarg_trimFilterDS(int argc, char **argv) {
         exit(EXIT_SUCCESS);
         break;
       case 'v':
-        printf("trimFilterDS version %s \nWritten by Paula Perez Rubio\n",
+        printf("trimFilterPE version %s \nWritten by Paula Perez Rubio\n",
               VERSION);
         exit(EXIT_SUCCESS);
         break;
@@ -311,7 +313,7 @@ void getarg_trimFilterDS(int argc, char **argv) {
         break;
     }
   }
-  fprintf(stderr, "Starting trim Filter.\n");
+  fprintf(stderr, "Starting trimFilter.\n");
   // Checking the input
   // Ifq is a mandatory argument
   if (par_TF.Ifq == NULL || par_TF.Ifq2 == NULL) {
