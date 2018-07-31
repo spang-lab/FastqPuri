@@ -23,7 +23,7 @@
  * @author Paula Perez <paulaperezrubio@gmail.com>
  * @date 07.10.2017
  * @brief function that frees the memory of parTF (structure storing the 
- *        trimFilter/trimFilterDS input arguments). 
+ *        trimFilter/trimFilterPE input arguments). 
  *
  * */
 

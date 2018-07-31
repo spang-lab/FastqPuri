@@ -22,7 +22,7 @@
  * @file init_trimFilterDS.c
  * @author Paula Perez <paulaperezrubio@gmail.com>
  * @date 07.10.2017
- * @brief help dialog for trimFilterDS and initialization of the
+ * @brief help dialog for trimFilterPE and initialization of the
  * command line arguments.
  *
  * */
@@ -38,11 +38,11 @@
 extern Iparam_trimFilter par_TF; /**< Input parameters of makeTree */
 
 /**
- * @brief Function that prints trimFilterDS help dialog when called.
+ * @brief Function that prints trimFilterPE help dialog when called.
 */
 void printHelpDialog_trimFilterDS() {
   const char dialog[] =
-   "Usage: trimFilterDS --ifq <INPUT1.fq>:<INPUT2.fq> --length <READ_LENGTH> \n"
+   "Usage: trimFilterPE --ifq <INPUT1.fq>:<INPUT2.fq> --length <READ_LENGTH> \n"
    "                  --output [O_PREFIX] --gzip [y|n]\n"
    "                  --adapter [<AD1.fa>:<AD2.fa>:<mismatches>:<score>]\n"
    "                  --method [TREE|BLOOM] \n"
@@ -125,7 +125,7 @@ void printHelpDialog_trimFilterDS() {
 }
 
 /**
- * @brief Reads in the arguments passed through the command line to trimFilterDS
+ * @brief Reads in the arguments passed through the command line to trimFilterPE
  *        and stores them in the global variable par_TF.
 */
 void getarg_trimFilterDS(int argc, char **argv) {

@@ -27,7 +27,7 @@ your system supplies the following dependencies for FastqPuri.
 but will skip creating html reports if they are not available.
 
 ```
-$ cmake -H. -Bbuild/ [-DRSCRIPT=/path/to/my/R/bin/Rscriptexec ... ]
+$ cmake -H. -Bbuild/ [-DRSCRIPT=/path/to/my/R/bin/Rscript ... ]
 $ cd build 
 $ make 
 ```
