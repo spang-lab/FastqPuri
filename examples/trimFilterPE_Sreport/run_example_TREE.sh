@@ -1,8 +1,10 @@
+#!/bin/bash
+
 # This script calls the executable and saves the output 
 fastq1=../fa_fq_files/EColi_rRNA_DS.read1.fq.gz
 fastq2=../fa_fq_files/EColi_rRNA_DS.read2.fq.gz
 fasta=../fa_fq_files/rRNA_modified.fa
-trimFilterDS=../../bin/trimFilterDS
+trimFilterDS=../../bin/trimFilterPE
 ad1=../fa_fq_files/ad_read1.fa
 ad2=../fa_fq_files/ad_read2.fa
 

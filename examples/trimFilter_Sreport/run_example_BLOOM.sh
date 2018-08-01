@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # This script creates a bloom filter from rRNA (FPR 0.0075), and runs trimFilter 
 # as in the example trimFilter_Sreport/ but using the bloom filter with a score
 # of 0.4 instead of the tree.
