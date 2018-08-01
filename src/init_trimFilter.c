@@ -205,7 +205,7 @@ void getarg_trimFilter(int argc, char **argv) {
          if (adapt.N != 3) {
             fprintf(stderr, "--adapter,-A: optionERR. You must pass three \n");
             fprintf(stderr, "  arguments separated by semicolons: \n");
-            fprintf(stderr, "   <adapter.fa>:<mismatches>:<threshold>\n");
+            fprintf(stderr, "   <ADAPTERS.fa>:<mismatches>:<threshold>\n");
             fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
             exit(EXIT_FAILURE);
          }

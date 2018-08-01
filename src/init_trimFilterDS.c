@@ -220,9 +220,9 @@ void getarg_trimFilterDS(int argc, char **argv) {
          par_TF.is_adapter = true;
          adapt = strsplit(optarg, ':');
          if (adapt.N != 4) {
-            fprintf(stderr, "--adapter,-A: optionERR. You must pass three \n");
+            fprintf(stderr, "--adapter,-A: optionERR. You must pass four \n");
             fprintf(stderr, "  arguments separated by semicolons: \n");
-            fprintf(stderr, "   <adapter.fa>:<mismatches>:<threshold>\n");
+            fprintf(stderr, "   <AD1.fa>:<AD2.fa>:<mismatches>:<threshold>\n");
             fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
             exit(EXIT_FAILURE);
          }
