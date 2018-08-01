@@ -130,7 +130,7 @@ my_plot <- function(data){
 getFilterStats <- function(path) {
   to.read = file(path, "rb")
   if (file.info(path)$size != 56) {
-    stop("File size is not 56 Bytes as expected. Exiting.")
+    stop("In file ", path, " size is ", file.info(path)$size, " instead of 56 bytes as expected. Exiting.")
   }
   NFILTER <- 4
   res <- list()
@@ -154,7 +154,7 @@ getFilterStats <- function(path) {
 getFilterStatsDS <- function(path) {
   to.read = file(path, "rb")
   if (file.info(path)$size != 72) {
-    stop("File size is not 72 Bytes as expected. Exiting.")
+    stop("In file ", path, " size is ", file.info(path)$size, " instead of 72 bytes as expected. Exiting.")
   }
   NFILTER <- 4
   res <- list()
@@ -186,7 +186,7 @@ getFilterTables <- function(inputfolder) {
    trimQ <- c("NONE", "ALL", "ENDS", "FRAC", "ENDSFRAC", "GLOBAL")
    trimN <- c("NONE", "ALL", "ENDS", "STRIPS")
    applied <- c("NO", "YES", "YES", "YES", "YES", "YES")
-   files <- list.files(inputfolder,pattern="bin$")
+   files <- list.files(inputfolder,pattern="_summary\\.bin$")
    nombres <- gsub('_summary\\.bin$', '', files)
    Ns <- length(files)
    table <- matrix(nrow = Ns, ncol = 9,
@@ -231,7 +231,7 @@ getFilterTablesDS <- function(inputfolder) {
    trimQ <- c("NONE", "ALL", "ENDS", "FRAC", "ENDSFRAC", "GLOBAL")
    trimN <- c("NONE", "ALL", "ENDS", "STRIPS")
    applied <- c("NO", "YES", "YES", "YES", "YES", "YES")
-   files <- list.files(inputfolder,pattern="bin$")
+   files <- list.files(inputfolder,pattern="_summary\\.bin$")
    nombres <- gsub('_summary\\.bin$', '', files)
    Ns <- length(files)
    table <- matrix(nrow = Ns, ncol = 11,
