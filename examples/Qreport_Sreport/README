@@ -14,7 +14,7 @@
 #                                                                              #
 # 3. Compare the files:                                                        #
 #  - ../test_output.bin      <-> my_test_output.bin                            #
-#  - ../test_output.bin.info <-> my_test_output.bin.info                       #
+#  - ../test_output.info <-> my_test_output.info                       #
 #  - ../test_output.html     <-> my_test_output.html                           #
 ################################################################################
 ################################################################################
