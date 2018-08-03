@@ -50,8 +50,8 @@ void printHelpDialog_Sreport() {
      " -i Input folder containing *bin data (output from Qreport)."
      " Mandatory option.\n"
      " -t {Q,F,P} Type of report to be generated: 'Q' for quality summary\n"
-     "     report, 'F' for filter summary report (single end reads), and \n"
-     "     'P' for filter summary report (paired end reads)\n"
+     "     report, 'F' for filter summary report (single-end reads), and \n"
+     "     'P' for filter summary report (paired-end reads)\n"
      "    data filter summary report. Mandatory option,\n"
      " -o Output file (with NO extension). Mandatory option.\n\n";
   fprintf(stderr, "%s", dialog);
