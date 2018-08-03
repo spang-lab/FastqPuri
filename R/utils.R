@@ -130,7 +130,7 @@ my_plot <- function(data){
 getFilterStats <- function(path) {
   to.read = file(path, "rb")
   if (file.info(path)$size != 56) {
-    stop("In file ", path, " size is ", file.info(path)$size, " instead of 56 bytes as expected. Exiting.")
+      stop("In file ", path, " size is ", file.info(path)$size, " instead of 56 bytes as expected. Exiting.")
   }
   NFILTER <- 4
   res <- list()
@@ -186,7 +186,9 @@ getFilterTables <- function(inputfolder) {
    trimQ <- c("NONE", "ALL", "ENDS", "FRAC", "ENDSFRAC", "GLOBAL")
    trimN <- c("NONE", "ALL", "ENDS", "STRIPS")
    applied <- c("NO", "YES", "YES", "YES", "YES", "YES")
-   files <- list.files(inputfolder,pattern="_summary\\.bin$")
+   files <- list.files(inputfolder,pattern=".bin$")
+   fsizes <- sapply(files, function(f) file.info(paste0(inputfolder,"/", f))$size)
+   files <- files[fsizes == 56]
    nombres <- gsub('_summary\\.bin$', '', files)
    Ns <- length(files)
    table <- matrix(nrow = Ns, ncol = 9,
@@ -232,6 +234,8 @@ getFilterTablesDS <- function(inputfolder) {
    trimN <- c("NONE", "ALL", "ENDS", "STRIPS")
    applied <- c("NO", "YES", "YES", "YES", "YES", "YES")
    files <- list.files(inputfolder,pattern="_summary\\.bin$")
+   fsizes <- sapply(files, function(f) file.info(paste0(inputfolder, "/", f))$size)
+   files <- files[fsizes == 72]
    nombres <- gsub('_summary\\.bin$', '', files)
    Ns <- length(files)
    table <- matrix(nrow = Ns, ncol = 11,

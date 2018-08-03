@@ -41,16 +41,17 @@ extern Iparam_Sreport par_SR;
 */
 void printHelpDialog_Sreport() {
   const char dialog[] =
-    "Usage: ./Sreport -i <INPUT_FOLDER> -t <Q|T|D> -o <OUTPUT_FILE> \n"
-    "Uses all *bin files found in a folder (output of Qreport|trimFilter)\n"
-    "and generates a summary report in html format (of Qreport|trimFilter).\n"
+    "Usage: ./Sreport -i <INPUT_FOLDER> -t <Q|F|P> -o <OUTPUT_FILE> \n"
+    "Uses all *bin files found in a folder (output of Qreport|trimFilter|trimFilterPE)\n"
+    "and generates a summary report in html format (of Qreport|trimFilter|trimFilterPE).\n"
     "Options:\n"
      " -v Prints package version.\n"
      " -h Prints help dialog.\n"
      " -i Input folder containing *bin data (output from Qreport)."
      " Mandatory option.\n"
-     " -t {Q,F,D} Type of report to be generated: 'Q' for quality summary \n"
-     "    report, 'F' for filter summary report, and 'D' for double stranded\n"
+     " -t {Q,F,P} Type of report to be generated: 'Q' for quality summary\n"
+     "     report, 'F' for filter summary report (single end reads), and \n"
+     "     'P' for filter summary report (paired end reads)\n"
      "    data filter summary report. Mandatory option,\n"
      " -o Output file (with NO extension). Mandatory option.\n\n";
   fprintf(stderr, "%s", dialog);
@@ -98,7 +99,7 @@ void getarg_Sreport(int argc, char **argv) {
           par_SR.Rmd_file = RMD_SUMMARY_REPORT;
         } else if (!strncmp(optarg, "F", 1)) {
           par_SR.Rmd_file = RMD_SUMMARY_FILTER_REPORT;
-        } else if (!strncmp(optarg, "D", 1)) {
+        } else if (!strncmp(optarg, "P", 1)) {
           par_SR.Rmd_file = RMD_SUMMARY_FILTER_REPORTDS;
         }
         break;
@@ -136,4 +137,3 @@ void getarg_Sreport(int argc, char **argv) {
      exit(EXIT_FAILURE);
   }
 }
-
