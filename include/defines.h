@@ -64,6 +64,7 @@
 #define DEFAULT_MINQ 27   /**< Minimum quality threshold */
 #define DEFAULT_NTILES 96  /**< Default number of tiles */
 #define DEFAULT_NQ 46  /**< Default number of different quality values */
+#define DEFAULT_FILTER_STATE 0 /** Default is non filtered */
 #define ZEROQ 33  /**< ASCII code of lowest quality value (!) */
 #define N_ACGT 5  /**< Number of different nucleotides in the fq file */
 #define MAX_RCOMMAND  4000  /**< Maximum # chars in R command*/

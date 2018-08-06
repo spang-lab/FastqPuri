@@ -71,8 +71,7 @@ int main(int argc, char *argv[]) {
   fprintf(stderr, "- Output bin file : %s\n", par_QR.outputfilebin);
   fprintf(stderr, "- Output html file : %s\n", par_QR.outputfilehtml);
   fprintf(stderr, "- Output info file: %s\n", par_QR.outputfileinfo);
-  fprintf(stderr, "- Reading a filtered file? %s.\n",
-                     par_QR.filter?"yes":"no");
+  fprintf(stderr, "- Reading a filtered file? %s.\n", par_QR.filter?"yes":"no");
   if (par_QR.filter)
      fprintf(stderr, "- Data filtered with trimFilter? %s.\n",
                        (par_QR.filter-1)?"yes":"no");

@@ -91,6 +91,7 @@ void getarg_Qreport(int argc, char **argv) {
   par_QR.minQ = DEFAULT_MINQ;
   par_QR.nQ = DEFAULT_NQ;
   par_QR.ntiles = DEFAULT_NTILES;
+  par_QR.filter = DEFAULT_FILTER_STATE;
   par_QR.one_read_len = 1;
   char option;
   while ((option = getopt(argc, argv, "hvi:l:t:q:n:o:f:")) != -1) {

@@ -61,7 +61,7 @@ void get_tile_lane(char *line1, int *tile, int *lane) {
      sscanf(line1, "%100[^:]:%d:%40[^:]:%d:%d:%s",
              aux_str1, &aux_int, aux_str2, lane , tile, end_str);
   } else {
-    fprintf(stderr, "Error encountered when trying to obtain tile number.\n");
+    fprintf(stderr, "Error encountered when trying to obtain tile number in the following line:\n%s", line1);
     fprintf(stderr, "This code only supports Illumina sequence identifiers:\n");
     fprintf(stderr, "@HWUSI-EAS100R:6:73:941:1973#0/1\n");
     fprintf(stderr, "@EAS139:136:FC706VJ:2:2104:15343:197393 1:Y:18:ATCACG\n");
@@ -328,7 +328,7 @@ void update_info(Info* res, Fq_read* seq) {
      (res -> tile_pos)++;
      if ( (res -> tile_pos) == (res -> ntiles) ) {
        fprintf(stderr, "Expected number of tiles = %d \n", res -> ntiles);
-       fprintf(stderr, "It seems like your input file has more tiles.\n");
+       fprintf(stderr, "It seems like your input file has more tiles, tile_pos: %d, ntiles %d.\n", res->tile_pos, res->ntiles);
        fprintf(stderr, "Maybe more than one lane?\n");
        fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
        fprintf(stderr, "Exiting program.\n");
