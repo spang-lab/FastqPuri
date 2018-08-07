@@ -90,27 +90,24 @@ int main(int argc, char *argv[]) {
 
   // Read the fastq file
   while ( (newlen = fread(buffer+offset, 1, B_LEN-offset, f) ) > 0 ) {
-     newlen += offset;
-     buffer[newlen++] =  '\0';
-     for (j = 0 ; buffer[j] != '\0' ; j++) {
-        if (buffer[j] == '\n') {
-          c2 = j;
-          par_QR.one_read_len &= get_fqread(seq, buffer, c1, c2, nlines,
-                                   par_QR.read_len, par_QR.filter);
-          if ( (nlines % 4) == 3 ) {
-             // printf("Nreads: %d \n",res -> nreads);
-             if (res -> nreads == 0) get_first_tile(res, seq);
-             update_info(res, seq);
-             if (res -> nreads % 1000000 == 0)
-              fprintf(stderr, "  %10d reads have been read.\n", res -> nreads);
-          }
-          c1 = c2 + 1;
-          nlines++;
+    newlen += offset;
+    buffer[newlen++] =  '\0';
+    for (j = 0 ; buffer[j] != '\0' ; j++) {
+      if (buffer[j] == '\n') {
+        c2 = j;
+        par_QR.one_read_len &= get_fqread(seq, buffer, c1, c2, nlines,  par_QR.read_len, par_QR.filter);
+        if ( (nlines % 4) == 3 ) {
+          if (res -> nreads == 0) get_first_tile(res, seq);
+          update_info(res, seq);
+          if (res -> nreads % 1000000 == 0)
+            fprintf(stderr, "  %10d reads have been read.\n", res -> nreads);
         }
+        c1 = c2 + 1;
+        nlines++;
+      }
     }
     offset = newlen - c1 -1;
-    if (offset >  -1)
-      memcpy(buffer, buffer+c1, offset);
+    if (offset >  -1) memcpy(buffer, buffer+c1, offset);
     c2 = -1;
     c1 = 0;
   }  // end while
@@ -132,7 +129,6 @@ int main(int argc, char *argv[]) {
 
   // Free memory
   free_info(res);
-
 
   // Read struct from disk (binary)
   //   res  = malloc(sizeof *res);

@@ -320,37 +320,51 @@ void update_info(Info* res, Fq_read* seq) {
   int i;
   uint64_t  lowQ = 0;
   int min_quality = ZEROQ + (res -> minQ);
-  int tile, lane;
+  int tile, lane, curr_tile_pos;
   get_tile_lane(seq -> line1, &tile, &lane);
+
+  // check if tile/lane exists already
+  //fprintf(stderr, "Search for tile/lane %d/%d, current tile_pos %d\n", tile, lane, res->tile_pos);
+  curr_tile_pos = res->tile_pos;
+  for (i = res->tile_pos; i >= 0; i--) {
+    //fprintf(stderr, "- Check tile position %d with %d/%d\n",  i, res->tile_tags[i], res->lane_tags[i]);
+    if (res->tile_tags[i] == tile && res->lane_tags[i] == lane) {
+      //fprintf(stderr, " !! tile/lane already found\n");
+      curr_tile_pos = i;
+      break;
+    }
+  }
+  //fprintf(stderr, "Tile/lane %d/%d is found in %d (%d/%d)\n", tile, lane, curr_tile_pos, res->tile_tags[curr_tile_pos], res->lane_tags[curr_tile_pos]);
+  //if (res->tile_tags[curr_tile_pos] != tile || res->lane_tags[curr_tile_pos] != lane) {
+  //  fprintf(stderr, " !! tile/lane not yet found, curr_tile_pos %d == %d ?\n", curr_tile_pos, res->tile_pos);
+  //}
+
   int Ns = 0;
-  if (res -> tile_tags[res -> tile_pos ] != tile ||
-      res -> lane_tags[res -> tile_pos ] != lane) {
-     (res -> tile_pos)++;
-     if ( (res -> tile_pos) == (res -> ntiles) ) {
-       fprintf(stderr, "Expected number of tiles = %d \n", res -> ntiles);
-       fprintf(stderr, "It seems like your input file has more tiles, tile_pos: %d, ntiles %d.\n", res->tile_pos, res->ntiles);
-       fprintf(stderr, "Maybe more than one lane?\n");
-       fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
-       fprintf(stderr, "Exiting program.\n");
-       exit(EXIT_FAILURE);
-     }
-     res -> tile_tags[res -> tile_pos] = tile;
-     res -> lane_tags[res -> tile_pos] = lane;
+  if (res->tile_tags[curr_tile_pos] != tile || res->lane_tags[curr_tile_pos] != lane) {
+    (res->tile_pos)++; curr_tile_pos++;
+    if ((res->tile_pos) == (res->ntiles)) {
+      fprintf(stderr, "Expected number of tiles is %d \n", res->ntiles);
+      fprintf(stderr, "Yur input file seems to have more tiles. Maybe more than one lane?\n");
+      fprintf(stderr, "You can try to adapt Qreport using the parameter -t.\n");
+      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+      fprintf(stderr, "Exiting program.\n");
+      exit(EXIT_FAILURE);
+    }
+    res->tile_tags[res->tile_pos] = tile;
+    res->lane_tags[res->tile_pos] = lane;
   }
-  for (i = 0 ; i < seq -> L; i++) {
-     Ns += update_ACGT_counts(res -> ACGT_tile + (res -> tile_pos)*N_ACGT,
-           seq -> line2[i]);
-     if (seq -> line4[i] < min_quality) {
-        update_ACGT_counts(res -> lowQ_ACGT_tile + (res -> tile_pos)*N_ACGT,
-              seq -> line2[i]);
-        lowQ++;
-     }
+  for (i = 0; i < seq->L; i++) {
+    Ns += update_ACGT_counts(res->ACGT_tile + curr_tile_pos*N_ACGT, seq->line2[i]);
+    if (seq->line4[i] < min_quality) {
+      update_ACGT_counts(res->lowQ_ACGT_tile + curr_tile_pos*N_ACGT, seq->line2[i]);
+      lowQ++;
+    }
   }
-  if ( Ns > 0 ) res -> reads_wN++;
+  if (Ns > 0) res->reads_wN++;
   update_QPosTile_table(res, seq);
-  update_ACGT_pos(res -> ACGT_pos, seq);
-  res -> reads_MlowQ[lowQ]++;
-  res -> nreads++;
+  update_ACGT_pos(res->ACGT_pos, seq);
+  res->reads_MlowQ[lowQ]++;
+  res->nreads++;
 }
 
 /**
