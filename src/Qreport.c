@@ -79,8 +79,7 @@ int main(int argc, char *argv[]) {
   // Opening file
   f = fopen_gen(par_QR.inputfile, "r");
   if (f == NULL) {
-     fprintf(stderr, "File %s not found. Exiting program.\n",
-           par_QR.inputfile);
+     fprintf(stderr, "File %s not found. Exiting program.\n", par_QR.inputfile);
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   }

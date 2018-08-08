@@ -29,7 +29,6 @@ Running on version `r params$version`
 `r warn`
 
 ```{r, echo = F}
-#source("../R/utils.R")
 source("utils.R")
 library(pheatmap)
 library(knitr)

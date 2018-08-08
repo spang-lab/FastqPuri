@@ -310,7 +310,7 @@ void print_info(Info* res, char *infofile) {
  * @brief gets first tile
  * */
 void get_first_tile(Info* res, Fq_read* seq) {
-  get_tile_lane(seq ->line1, res->tile_tags, res->lane_tags);
+  get_tile_lane(seq->line1, res->tile_tags, res->lane_tags);
 }
 
 /**

@@ -76,13 +76,21 @@ int get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline,
          seq -> L = pos2 - pos1;
          // Exit programm if seq -> L > read_len
          if ((seq -> L) > read_len) {
-            fprintf(stderr, "Predefined read length %d\n", read_len);
-            fprintf(stderr, "A read in line %d  was found with length: %d\n",
-                  nline, seq -> L);
-            fprintf(stderr, "Read length exceeds predefined length.\n");
-            fprintf(stderr, "Revise your settings.\n");
-            fprintf(stderr, "Check that you fq has NO trailing characters\n");
-            fprintf(stderr, "Check that --length is correct. \n");
+            fprintf(stderr, "Predefined read length is %d ", read_len);
+            fprintf(stderr, "but read in line %d has length %d.\n", nline, seq->L);
+            fprintf(stderr, "Read length exceeds predefined length. Revise your settings.\n");
+            fprintf(stderr, "Check that -l is correct.\n");
+            fprintf(stderr, "Check that you fq has NO trailing characters.\n");
+            fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+            fprintf(stderr, "Exiting program.\n");
+            exit(EXIT_FAILURE);
+         }
+         // Exit programm if seq -> L < read_len
+         if ((seq -> L) < read_len) {
+            fprintf(stderr, "Predefined read length is %d ", read_len);
+            fprintf(stderr, "but read in line %d has length %d.\n", nline, seq->L);
+            fprintf(stderr, "Predefined length exceeds a read length. Revise your settings.\n");
+            fprintf(stderr, "Check that -l is correct.\n");
             fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
             fprintf(stderr, "Exiting program.\n");
             exit(EXIT_FAILURE);
