@@ -11,8 +11,8 @@ Usage `C` executable (in folder `bin`):
 
 ```
 Usage: ./Qreport -i <INPUT_FILE.fq> -l <READ_LENGTH>
-       -o <OUTPUT_FILE> -t [NUMBER_OF_TILES] -q [MINQ]
-       -n [#_QUALITY_VALUES] -f [FILTER_STATUS]
+       -o <OUTPUT_FILE> [-t <NUMBER_OF_TILES>] [-q <MINQ>]
+        [-n <#_QUALITY_VALUES>] [-f <FILTER_STATUS>] [-0 <ZEROQ>]
 Reads in a fq file (gz, bz2, z formats also accepted) and creates a
 quality report (html file) along with the necessary data to create it
 stored in binary format.

@@ -37,7 +37,7 @@ color <- colorRampPalette(c("white", "red"))( 50 )
 color2 <- colorRampPalette(c("white", "blue"))( 50 )
 qualities <- ""
 for (i in data$qual_tags){
-   qualities <- paste0(qualities, sprintf("%d (%s), ",i, intToUtf8(i+33) ))
+   qualities <- paste0(qualities, sprintf("%d (%s), ",i, intToUtf8(i+data$zeroQ) ))
 }
 
 qualities <- substr(qualities,1,nchar(qualities)-2) 

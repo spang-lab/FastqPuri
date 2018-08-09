@@ -128,6 +128,7 @@ void init_info(Info *res) {
 
   // Initializations
   res -> nQ = par_QR.nQ;
+  res -> zeroQ = par_QR.zeroQ;
   res -> read_len = par_QR.read_len;
   res -> ntiles = par_QR.ntiles;
   res -> tile_pos = 0;
@@ -161,6 +162,7 @@ void read_info(Info *res, char *file) {
   fread(&(res -> ntiles), sizeof(int), 1, f);
   fread(&(res -> minQ), sizeof(int), 1, f);
   fread(&(res -> nQ), sizeof(int), 1, f);
+  fread(&(res -> zeroQ), sizeof(int), 1, f);
   fread(&(res -> nreads), sizeof(int), 1, f);
   fread(&(res -> reads_wN), sizeof(int), 1, f);
   fread(&(res -> sz_lowQ_ACGT_tile), sizeof(size_t), 1, f);
@@ -207,6 +209,7 @@ void write_info(Info *res, char *file) {
   fwrite(&(res -> ntiles), sizeof(int), 1, f);
   fwrite(&(res -> minQ), sizeof(int), 1, f);
   fwrite(&(res -> nQ), sizeof(int), 1, f);
+  fwrite(&(res -> zeroQ), sizeof(int), 1, f);
   fwrite(&(res -> nreads), sizeof(int), 1, f);
   fwrite(&(res -> reads_wN), sizeof(int), 1, f);
 
@@ -267,7 +270,7 @@ void print_info(Info* res, char *infofile) {
   for (j = 1 ; j <= (uint32_t)(res -> read_len); j++) fprintf(f, "%d ", j);
   fprintf(f, "\n");
   for (i = 0; i < (res -> nQ); i++) {
-     fprintf(f, "  Q = %c : ", (char) (res -> qual_tags[i] + ZEROQ));
+     fprintf(f, "  Q = %c : ", (char) (res->qual_tags[i] + res->zeroQ));
      for (j = 0 ; j< (uint32_t)(res -> read_len); j++) {
         fprintf(f, "%" PRIu64, 
               res -> QPosTile_table[i*(res -> read_len) +j]);
@@ -319,7 +322,7 @@ void get_first_tile(Info* res, Fq_read* seq) {
 void update_info(Info* res, Fq_read* seq) {
   int i;
   uint64_t  lowQ = 0;
-  int min_quality = ZEROQ + (res -> minQ);
+  int min_quality = res->zeroQ + (res->minQ);
   int tile, lane, curr_tile_pos;
   get_tile_lane(seq -> line1, &tile, &lane);
 
@@ -406,10 +409,17 @@ void update_QPosTile_table(Info *res, Fq_read *seq) {
   int quality = 0;
   // Mucha atencion con los 'indices
   while (seq -> line4[i] != '\0') {
-     quality = ((int)seq -> line4[i] - ZEROQ);
-     if ( quality >= res -> nQ ) {
-        fprintf(stderr, "Quality is too large, %d.\n", quality);
-        fprintf(stderr, "Are your data Phred+33? Redefine ZEROQ otherwise\n");
+     quality = ((int)seq -> line4[i] - res->zeroQ);
+     if ( quality >= res->nQ ) {
+        fprintf(stderr, "Quality score %d detected is too large given tge highest expected quality value (%d).\n", quality, res->nQ);
+        fprintf(stderr, "Is your data Phred+%d? Consider redefining ZEROQ, e.g. by -0 64.\n", res->zeroQ);
+        fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+        fprintf(stderr, "Exiting program\n");
+        exit(EXIT_FAILURE);
+     }
+     if ( quality < 0 ) {
+        fprintf(stderr, "Quality score %d detected is negative. ", quality);
+        fprintf(stderr, "Is your data Phred+%d? Consider redefining ZEROQ, e.g. by -0 33.\n", res->zeroQ);
         fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
         fprintf(stderr, "Exiting program\n");
         exit(EXIT_FAILURE);

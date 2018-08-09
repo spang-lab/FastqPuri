@@ -7,6 +7,7 @@ getQualStats <- function(path){
    res$ntiles <- readBin(to.read, integer())
    res$minQ <- readBin(to.read, integer())
    res$nQ <- readBin(to.read, integer())
+   res$zeroQ <- readBin(to.read, integer())
    res$nreads <- readBin(to.read, integer())
    res$reads_wN <- readBin(to.read, integer())
   

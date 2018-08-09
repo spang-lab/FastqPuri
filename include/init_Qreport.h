@@ -40,7 +40,9 @@ typedef struct _iparam_Qreport {
   char outputfilehtml[MAX_FILENAME]; /**< html outputfile name */
   char outputfileinfo[MAX_FILENAME]; /**< Info outputfile name */
   int nQ;        /**< \# different quality values (default is 46) */
-  int ntiles;    /**< \# tiles (default is 96, corresponding to one lane on an Illumina flow cell of HiSeq or NextSeq machines. If data comes from multiple lanes, multiply ntiles of one flow cell by the number of lanes.) */
+  int zeroQ;     /**< \# ASCII value for phred zero (default is 33) */
+  int ntiles;    /**< \# tiles (default is 96, corresponding to one lane on an Illumina flow cell of HiSeq or NextSeq machines. */
+                 /**< \# If data comes from multiple lanes, multiply ntiles of one flow cell by the number of lanes.) */
   int minQ;      /**< minimum Quality allowed 0 - 45 */
   int read_len;  /**< original read length  */
   int filter;    /**< 0 original data,

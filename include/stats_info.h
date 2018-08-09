@@ -42,6 +42,7 @@ typedef struct statsinfo {
   int read_len;   /**< Maximum length of a read */
   int ntiles;     /**< \# tiles */
   int nQ;         /**< \# possible quality values */
+  int zeroQ;      /**< \# ASCII integer for phred zero */
   int minQ;       /**< Minimum quality threshold */
   int tile_pos;   /**< current tile position */
   int nreads;     /**< \# reads read till current position. */

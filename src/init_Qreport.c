@@ -43,8 +43,8 @@ extern Iparam_Qreport par_QR; /**< Input parameters  of Qreport*/
 void printHelpDialog_Qreport() {
   const char dialog[] =
     "Usage: ./Qreport -i <INPUT_FILE.fq> -l <READ_LENGTH> \n"
-    "       -o <OUTPUT_FILE> -t [NUMBER_OF_TILES] -q [MINQ]\n"
-    "       -n [#_QUALITY_VALUES] -f [FILTER_STATUS]\n"
+    "       -o <OUTPUT_FILE> [-t <NUMBER_OF_TILES>] [-q <MINQ>]\n"
+    "       [-n <#_QUALITY_VALUES>] [-f <FILTER_STATUS>] [-0 <ZEROQ>\n"
     "Reads in a fq file (gz, bz2, z formats also accepted) and creates a \n"
     "quality report (html file) along with the necessary data to create it\n"
     "stored in binary format.\n"
@@ -58,7 +58,8 @@ void printHelpDialog_Qreport() {
      " -q Minimum quality allowed. Optional (default 27).\n"
      " -n Number of different quality values allowed. Optional (default 46).\n"
      " -f Filter status: 0 original file, 1 file filtered with filter_trim, \n"
-     "    2 file filtered with another tool. Optional (default 0).\n\n";
+     "    2 file filtered with another tool. Optional (default 0).\n\n"
+     " -0 ASCII value for quality score 0. Optional (default 33).\n";
   fprintf(stderr, "%s", dialog);
 }
 
@@ -90,11 +91,12 @@ void getarg_Qreport(int argc, char **argv) {
   // Assigning default parameters
   par_QR.minQ = DEFAULT_MINQ;
   par_QR.nQ = DEFAULT_NQ;
+  par_QR.zeroQ = DEFAULT_ZEROQ;
   par_QR.ntiles = DEFAULT_NTILES;
   par_QR.filter = DEFAULT_FILTER_STATE;
   par_QR.one_read_len = 1;
   char option;
-  while ((option = getopt(argc, argv, "hvi:l:t:q:n:o:f:")) != -1) {
+  while ((option = getopt(argc, argv, "hvi:l:t:q:n:o:f:0:")) != -1) {
     switch (option) {
       case 'h':  // show the HelpDialog
         printHelpDialog_Qreport();
@@ -126,6 +128,9 @@ void getarg_Qreport(int argc, char **argv) {
         snprintf(par_QR.outputfilebin, MAX_FILENAME, "%s.bin", optarg);
         snprintf(par_QR.outputfilehtml, MAX_FILENAME, "%s.html", optarg);
         snprintf(par_QR.outputfileinfo, MAX_FILENAME, "%s.info", optarg);
+        break;
+      case '0':
+        par_QR.zeroQ = atoi(optarg);
         break;
       default:
         fprintf(stderr, "%s: option `-%c' is invalid: ignored\n",

@@ -73,8 +73,7 @@ int main(int argc, char *argv[]) {
   fprintf(stderr, "- Output info file: %s\n", par_QR.outputfileinfo);
   fprintf(stderr, "- Reading a filtered file? %s.\n", par_QR.filter?"yes":"no");
   if (par_QR.filter)
-     fprintf(stderr, "- Data filtered with trimFilter? %s.\n",
-                       (par_QR.filter-1)?"yes":"no");
+     fprintf(stderr, "- Data filtered with trimFilter? %s.\n", (par_QR.filter-1)?"yes":"no");
 
   // Opening file
   f = fopen_gen(par_QR.inputfile, "r");
