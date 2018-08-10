@@ -203,6 +203,24 @@ int main(int argc, char *argv[]) {
            get_fqread(seq, buffer, c1, c2, nlines, par_TF.L, 0);
            if ((nlines % 4) == 3) {
               stat_TF.nreads++;
+
+	      int lowestQ = 255;
+	      int highestQ = 0;
+	      for (int k = 0; k < seq->line4[k]; k++) {
+		if (lowestQ > seq->line4[k]) lowestQ = seq->line4[k];
+		if (highestQ < seq->line4[k]) highestQ = seq->line4[k];
+	      }
+	      if (lowestQ - par_TF.zeroQ < 0) {
+		fprintf(stderr, "Lowest quality value in fastq read %d (%d) is below ZEROQ (-0 %d).\n", stat_TF.nreads, lowestQ, par_TF.zeroQ);
+		fprintf(stderr, "Exiting program.\n");
+		exit(EXIT_FAILURE);
+	      }
+	      if (highestQ - par_TF.zeroQ > 46) {
+		fprintf(stderr, "Highest quality value in fastq read %d (%d) is too high above ZEROQ (-0 %d).\n", stat_TF.nreads, highestQ, par_TF.zeroQ);
+		fprintf(stderr, "Exiting program.\n");
+		exit(EXIT_FAILURE);
+	      }
+	      
               bool discarded = false;
               int trim;
               if (stat_TF.filters[ADAP] && !discarded) {
