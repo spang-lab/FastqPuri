@@ -51,6 +51,6 @@ int process_seq(unsigned char *packed, unsigned char *read, int L, bool shift,
 
 Ad_seq *pack_adapter(Fa_data *ptr_fa);
 
-double obtain_score(Fq_read *seq, int pos_seq, Ad_seq *ptr_adap, int pos_ad);
+double obtain_score(Fq_read *seq, int pos_seq, Ad_seq *ptr_adap, int pos_ad, int zeroQ);
 
 #endif  // endif INIT_ALIGNER_H_

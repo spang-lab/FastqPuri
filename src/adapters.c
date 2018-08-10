@@ -152,7 +152,7 @@ Ad_seq *pack_adapter(Fa_data *ptr_fa) {
  * @param pos_ad adapter starting position of the alignment (reverse)
  * @return score of the alignment
  * */
-double obtain_score(Fq_read *seq, int pos_seq, Ad_seq *ptr_adap, int pos_ad) {
+double obtain_score(Fq_read *seq, int pos_seq, Ad_seq *ptr_adap, int pos_ad, int zeroQ) {
   if (pos_seq == -1) {
       pos_seq = 0;
       pos_ad++;
@@ -167,7 +167,7 @@ double obtain_score(Fq_read *seq, int pos_seq, Ad_seq *ptr_adap, int pos_ad) {
       score += LOG_4;
       Nmatches++;
     } else {
-      score -= (seq->line4[pos_seq + i] - ZEROQ)/10.0;
+      score -= (seq->line4[pos_seq + i] - zeroQ)/10.0;
     }
   }
   return ((Nmatches < MIN_NMATCHES) ? -1.0 : score);

@@ -49,30 +49,31 @@ typedef struct _adapter {
  *
  * */
 typedef struct _iparam_trimFilter {
-  char *Ifq;  /**< Input fq file single stranded*/
-  char *Ifq2;  /**< Input fq file read 2*/
-  char *Ifa;  /**< Input fa file (containing contamination sequences) */
-  char *Iidx;  /**< Input index file (from an input.fa cont file) */
-  char *Iinfo; /**< Input index info file  */
+  char *Ifq;     /**< Input fq file single stranded*/
+  char *Ifq2;    /**< Input fq file read 2*/
+  char *Ifa;     /**< Input fa file (containing contamination sequences) */
+  char *Iidx;    /**< Input index file (from an input.fa cont file) */
+  char *Iinfo;   /**< Input index info file  */
   char *Oprefix;  /**< Output files prefix for single str (PATH/prefix) */
   bool uncompress;  /**< true if output uncompressed, false otherwise */
-  Adapter ad;  /**< AdapterDS trimming parameters  */
+  Adapter ad;    /**< AdapterDS trimming parameters  */
   Bfkmer *ptr_bfkmer; /**< bloom filter kmer structure */
-  int trimQ;   /**< NO(0), FRAC(1), ENDS(2), ENDSFRAC(3), GLOBAL(4) */
-  int trimN;   /**< NO(0), ALL(1), ENDS(2), STRIP(3) */
-  int method;  /**< TREE(1), BLOOM(2), 0, when not looking for cont*/
-  bool is_fa;  /**< true if a fasta file was passed as a parameter*/
+  int trimQ;     /**< NO(0), FRAC(1), ENDS(2), ENDSFRAC(3), GLOBAL(4) */
+  int trimN;     /**< NO(0), ALL(1), ENDS(2), STRIP(3) */
+  int method;    /**< TREE(1), BLOOM(2), 0, when not looking for cont*/
+  bool is_fa;    /**< true if a fasta file was passed as a parameter*/
   bool is_idx;  /**< true if an index file was passed as a parameter */
   bool is_adapter;  /**< true if filtering adapter sequences*/
   double score;  /**< score threshold for matching reads in sequences */
-  int minQ;  /**<  minimum quality threshold*/
-  int L;  /**<  read length*/
-  int minL;  /**<  minimum read length accepted before discarding a read */
-  int nlowQ;  /**< maximum number of lowQ bases accepted before discarding */
+  int minQ;      /**<  minimum quality threshold*/
+  int zeroQ;     /**<  value of ASCII character representing zero quality*/
+  int L;         /**<  read length*/
+  int minL;      /**<  minimum read length accepted before discarding a read */
+  int nlowQ;     /**< maximum number of lowQ bases accepted before discarding */
   int kmersize;  /**< kmersize to look for contamination */
   int globleft;  /**< number of bases globally trimming from the left */
-  int globright;  /**< number of bases globally trimming from the right */
-  int percent;  /**< percentage of lowQ bases allowed in a read */
+  int globright; /**< number of bases globally trimming from the right */
+  int percent;   /**< percentage of lowQ bases allowed in a read */
 } Iparam_trimFilter;
 
 void free_parTF(Iparam_trimFilter *ptr_parTF);

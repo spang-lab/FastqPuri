@@ -44,7 +44,7 @@ void printHelpDialog_Qreport() {
   const char dialog[] =
     "Usage: ./Qreport -i <INPUT_FILE.fq> -l <READ_LENGTH> \n"
     "       -o <OUTPUT_FILE> [-t <NUMBER_OF_TILES>] [-q <MINQ>]\n"
-    "       [-n <#_QUALITY_VALUES>] [-f <FILTER_STATUS>] [-0 <ZEROQ>\n"
+    "       [-n <#_QUALITY_VALUES>] [-f <FILTER_STATUS>] [-0 <ZEROQ>]\n"
     "Reads in a fq file (gz, bz2, z formats also accepted) and creates a \n"
     "quality report (html file) along with the necessary data to create it\n"
     "stored in binary format.\n"

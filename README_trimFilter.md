@@ -20,7 +20,7 @@ Usage: trimFilter --ifq <INPUT_FILE.fq> --length <READ_LENGTH>
                   (--idx [<INDEX_FILE>:<score>:<lmer_len>] |
                    --ifa [<INPUT.fa>:<score>:[lmer_len]])
                   --trimQ [NO|ALL|ENDS|FRAC|ENDSFRAC|GLOBAL]
-                  --minL [MINL]  --minQ [MINQ]
+                  --minL [MINL]  --minQ [MINQ] --zeroQ [ZEROQ]
                   (--percent [percent] | --global [n1:n2])
                   --trimN [NO|ALL|ENDS|STRIP]
 Reads in a fq file (gz, bz2, z formats also accepted) and removes:
@@ -76,6 +76,7 @@ Options:
  -m, --minL    minimum length allowed for a read before it is discarded
                (default 25).
  -q, --minQ    minimum quality allowed (int), optional (default 27).
+ -0, --zeroQ   value of ASCII character representing zero quality (int), optional (default 33
  -p, --percent percentage of low quality bases to be admitted before
                discarding a read (default 5),
  -g, --global  required option if --trimQ GLOBAL is passed. Two int,

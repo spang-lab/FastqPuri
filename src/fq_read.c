@@ -52,8 +52,7 @@
  *     2 file filtered with another tool
  *
  */
-int get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline,
-                int read_len, int filter) {
+int get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline, int read_len, int filter) {
   /* Check if the line length exceeds READ_MAXLEN
    * and exit the program*/
   if ((pos2 - pos1) > READ_MAXLEN) {
@@ -79,7 +78,7 @@ int get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline,
             fprintf(stderr, "Predefined read length is %d ", read_len);
             fprintf(stderr, "but read in line %d has length %d.\n", nline, seq->L);
             fprintf(stderr, "Read length exceeds predefined length. Revise your settings.\n");
-            fprintf(stderr, "Check that -l is correct.\n");
+            fprintf(stderr, "Check that -l|--length is correct.\n");
             fprintf(stderr, "Check that you fq has NO trailing characters.\n");
             fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
             fprintf(stderr, "Exiting program.\n");
@@ -90,7 +89,7 @@ int get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline,
             fprintf(stderr, "Predefined read length is %d ", read_len);
             fprintf(stderr, "but read in line %d has length %d.\n", nline, seq->L);
             fprintf(stderr, "Predefined length exceeds a read length. Revise your settings.\n");
-            fprintf(stderr, "Check that -l is correct.\n");
+            fprintf(stderr, "Check that -l|--length is correct.\n");
             fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
             fprintf(stderr, "Exiting program.\n");
             exit(EXIT_FAILURE);
@@ -117,8 +116,7 @@ int get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline,
          /* Check that the length of the quality string
           * coincides with the readlength*/
          if ((pos2 - pos1) != seq -> L) {
-           fprintf(stderr, "Qual_len: %d Read_len: %d in line = %d\n",
-                 pos2-pos1, seq -> L, nline);
+           fprintf(stderr, "Qual_len: %d Read_len: %d in line = %d\n", pos2-pos1, seq -> L, nline);
            fprintf(stderr, "Found read with unequal read length and quality\n");
            fprintf(stderr, "Check that you fq has NO trailing characters\n");
            fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
