@@ -129,6 +129,35 @@ int get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline, int re
   }
   return one_read_len;
 }
+/**
+ * @brief checks the zero quality ASCII is valid in a read from fastq
+ *
+ * invalid quality scores lead to an exit from the probram
+ *
+ * @param seq pointer to <b>Fq_read</b>, where the info will be stored.
+ * @param zeroQ, the ASCII value checked for in the quality scores of the fastq-read
+ *
+ */
+void check_zeroQ(Fq_read *seq, int zeroQ, int nreads) {
+  // if (nreads > 0) return; // this check actually does not take much time
+  int lowestQ = 255;
+  int highestQ = 0;
+  for (int k = 0; seq->line4[k]; k++) {
+    if (lowestQ > seq->line4[k]) lowestQ = seq->line4[k];
+    if (highestQ < seq->line4[k]) highestQ = seq->line4[k];
+  }
+  if (lowestQ - zeroQ < 0) {
+    fprintf(stderr, "Lowest quality value in fastq read %d (%d) is below ZEROQ (-0 %d).\n", nreads, lowestQ, zeroQ);
+    fprintf(stderr, "Exiting program.\n");
+    exit(EXIT_FAILURE);
+  }
+  if (highestQ - zeroQ > 46) { // 46 is just a guess of a hightest quality value
+    fprintf(stderr, "Highest quality value in fastq read %d (%d) is above ZEROQ (-0 %d) plus guessed quality values (46).\n", nreads, highestQ, zeroQ);
+    fprintf(stderr, "Exiting program.\n");
+    exit(EXIT_FAILURE);
+  }
+}
+
 
 /**
  * @brief writes the fq entry in a string

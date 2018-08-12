@@ -54,7 +54,7 @@ typedef struct _fq_read {
 
 int get_fqread(Fq_read* seq, char* buffer, int pos1, int pos2,
                int nline, int read_len, int filter);
-
+void check_zeroQ(Fq_read *seq, int zeroQ, int nreads);
 int string_seq(Fq_read *seq, char *char_seq);
 
 #endif  // endif FQ_READ_H_
