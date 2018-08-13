@@ -66,7 +66,6 @@
 #define DEFAULT_NQ 46  /**< Default number of different quality values */
 #define DEFAULT_FILTER_STATE 0 /** Default is non filtered */
 #define DEFAULT_ZEROQ 33  /**< ASCII code of lowest quality value, old is 64 */
-#define ZEROQ 33  /**< !! to be removed after having zeroQ-paramter also in trimFilter ASCII code of lowest quality value, old is 64 */
 #define N_ACGT 5  /**< Number of different nucleotides in the fq file */
 #define MAX_RCOMMAND  4000  /**< Maximum # chars in R command*/
 

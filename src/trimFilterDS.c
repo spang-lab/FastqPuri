@@ -46,7 +46,7 @@
 #include "io_trimFilterDS.h"
 #include "init_trimFilterDS.h"
 
-uint64_t alloc_mem = 0;  /**< global variable. Memory allocated in the heap.*/
+uint64_t alloc_mem = 0;    /**< global variable. Memory allocated in the heap.*/
 Iparam_trimFilter par_TF;  /**< global variable: Input parameters of makeTree.*/
 
 
@@ -166,8 +166,7 @@ int main(int argc, char *argv[]) {
     f_cont2 = fopen_gen(fq_cont2, "w");  // open fq_cont file for writing
     if (par_TF.is_fa && par_TF.method == TREE) {
        Fa_data *ptr_fa = malloc(sizeof(Fa_data));
-       fprintf(stderr, "* DOING: Reading fasta file %s ...\n",
-                       par_TF.Ifa);
+       fprintf(stderr, "* DOING: Reading fasta file %s ...\n", par_TF.Ifa);
        read_fasta(par_TF.Ifa, ptr_fa);
        if (size_fasta(ptr_fa) > MAX_FASZ_TREE) {
          fprintf(stderr, "Fasta file is larger than %d.\b", (int)MAX_FASZ_TREE);
@@ -267,12 +266,14 @@ int main(int argc, char *argv[]) {
            j1++;
            j2++;
         } else if (stop1 && stop2) {  // Do the stuff!!
+ 	   check_zeroQ(seq1, par_TF.zeroQ, stat_TFDS.nreads);
+ 	   check_zeroQ(seq2, par_TF.zeroQ, stat_TFDS.nreads);
            stat_TFDS.nreads++;
            bool discarded = false;
            int trim = 0, trim2 = 0;
            if (stat_TFDS.filters[ADAP] && !discarded) {
               for (i_ad=0; i_ad < par_TF.ad.Nad; i_ad++) {
-                trim = trim_adapterDS(&adap_list[i_ad], seq1, seq2);
+                trim = trim_adapterDS(&adap_list[i_ad], seq1, seq2, par_TF.zeroQ);
                 discarded = (!trim);
                 if (trim != 1) break;
               }

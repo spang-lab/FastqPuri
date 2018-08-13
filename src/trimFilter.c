@@ -202,8 +202,8 @@ int main(int argc, char *argv[]) {
            offset = newlen - j+1;
            get_fqread(seq, buffer, c1, c2, nlines, par_TF.L, 0);
            if ((nlines % 4) == 3) {
-              stat_TF.nreads++;
 	      check_zeroQ(seq, par_TF.zeroQ, stat_TF.nreads);
+              stat_TF.nreads++;
               bool discarded = false;
               int trim;
               if (stat_TF.filters[ADAP] && !discarded) {

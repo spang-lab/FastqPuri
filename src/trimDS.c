@@ -115,7 +115,7 @@ static int QtrimDS(Fq_read *r1, Fq_read *r2, int L) {
  * @return score associated to the comparison of the two strings
  *
  * */
-static double obtain_scoreDS(Fq_read *r1, int pos1, Fq_read *r2, int pos2 ) {
+static double obtain_scoreDS(Fq_read *r1, int pos1, Fq_read *r2, int pos2, int zeroQ) {
   int Nbases = min(r1 -> L_ext - pos1, r2 -> L_ext - pos2);
   int i, p1, p2;
   double score = 0.0;
@@ -137,12 +137,12 @@ static double obtain_scoreDS(Fq_read *r1, int pos1, Fq_read *r2, int pos2 ) {
          fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
       } else if (p1 > 0 || p2 > 0) {
          if (p1 < 0 ) {
-            score -= (r2->line4[p2] - ZEROQ)/10.0;
+            score -= (r2->line4[p2] - zeroQ)/10.0;
          } else if (p2 < 0)  {
-            score -= (r1->line4[p1] - ZEROQ)/10.0;
+            score -= (r1->line4[p1] - zeroQ)/10.0;
          } else {
-            score -= max((r1->line4[p1] - ZEROQ)/10.0,
-                  (r2->line4[p2] - ZEROQ)/10.0);
+            score -= max((r1->line4[p1] - zeroQ)/10.0,
+                  (r2->line4[p2] - zeroQ)/10.0);
          }
       }
     }
@@ -162,7 +162,7 @@ static double obtain_scoreDS(Fq_read *r1, int pos1, Fq_read *r2, int pos2 ) {
  * @return 0 if the read is to be discarded, 1 if left as is, 2 if trimmed.
  *         Reads are trimmed if 2 is returned.
  * */
-static int alignDS_uint64(Fq_read *r1, Fq_read *r2) {
+static int alignDS_uint64(Fq_read *r1, Fq_read *r2, int zeroQ) {
   // Check windows of read 2 against the end of read 1.
   int pos1, pos2, Lnew;
   int n, Nwindows, j;
@@ -178,14 +178,14 @@ static int alignDS_uint64(Fq_read *r1, Fq_read *r2) {
     cmpu64 = (r2shu64 ^ r1u64);
     n = __builtin_popcountl(cmpu64 >> 4);
     if (n <= 2*par_TF.ad.mismatches) {
-      score = obtain_scoreDS(r1, pos1, r2, pos2);
+      score = obtain_scoreDS(r1, pos1, r2, pos2, zeroQ);
       if (score > par_TF.ad.threshold) break;
     }
     pos1--;
     cmpu64 = (r2u64 ^ r1u64);
     n = __builtin_popcountl(cmpu64);
     if (n <= 2*par_TF.ad.mismatches) {
-      score = obtain_scoreDS(r1, pos1, r2, pos2);
+      score = obtain_scoreDS(r1, pos1, r2, pos2, zeroQ);
       if (score > par_TF.ad.threshold) break;
     }
     pos1--;
@@ -206,14 +206,14 @@ static int alignDS_uint64(Fq_read *r1, Fq_read *r2) {
     cmpu64 = (r2shu64 ^ r1u64);
     n = __builtin_popcountl(cmpu64 << 4);
     if (n <= 2*par_TF.ad.mismatches) {
-       score = obtain_scoreDS(r1, pos1, r2, pos2);
+      score = obtain_scoreDS(r1, pos1, r2, pos2, zeroQ);
        if (score > par_TF.ad.threshold) break;
     }
     pos2++;
     cmpu64 = (r2u64 ^ r1u64);
     n = __builtin_popcountl(cmpu64);
     if (n <= 2*par_TF.ad.mismatches) {
-       score = obtain_scoreDS(r1, pos1, r2, pos2);
+      score = obtain_scoreDS(r1, pos1, r2, pos2, zeroQ);
        if (score > par_TF.ad.threshold) break;
     }
     pos2++;
@@ -231,7 +231,7 @@ static int alignDS_uint64(Fq_read *r1, Fq_read *r2) {
  * @return 0 if the read is to be discarded, 1 if left as is, 2 if trimmed.
  *         Reads are trimmed if 2 is returned.
  * */
-int trim_adapterDS(DS_adap *ptr_DSad, Fq_read *r1, Fq_read *r2) {
+int trim_adapterDS(DS_adap *ptr_DSad, Fq_read *r1, Fq_read *r2, int zeroQ) {
   pack_reads(ptr_DSad, r1, r2);
-  return(alignDS_uint64(r1, r2));
+  return(alignDS_uint64(r1, r2, zeroQ));
 }

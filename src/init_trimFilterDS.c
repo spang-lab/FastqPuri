@@ -49,7 +49,7 @@ void printHelpDialog_trimFilterDS() {
    "                  (--idx [<INDEX_FILE>:<score>:<lmer_len>] |\n"
    "                   --ifa [<INPUT.fa>:<score>:[lmer_len]])\n"
    "                  --trimQ [NO|ALL|ENDS|FRAC|ENDSFRAC|GLOBAL]\n"
-   "                  --minL [MINL]  --minQ [MINQ]\n"
+   "                  --minL [MINL]  --minQ [MINQ]  --zeroQ [ZEROQ]\n"
    "                  (--percent [percent] | --global [n1:n2])\n"
    "                  --trimN [NO|ALL|ENDS|STRIP]  \n"
    "Reads in paired end fq files (gz, bz2, z formats also accepted) "
@@ -110,6 +110,7 @@ void printHelpDialog_trimFilterDS() {
    " -m, --minL    minimum length allowed for a read before it is discarded\n"
    "               (default 25).\n"
    " -q, --minQ    minimum quality allowed (int), optional (default 27).\n"
+   " -0, --zeroQ   value of ASCII character representing zero quality (int), optional (default 33)\n"
    " -p, --percent percentage of low quality bases tolerated before \n"
    "               discarding a read (default 5), \n"
    " -g, --global  required option if --trimQ GLOBAL is passed. Two int,\n"
@@ -155,6 +156,7 @@ void getarg_trimFilterDS(int argc, char **argv) {
      {"gzip", required_argument, 0, 'z'},
      {"adapter", required_argument, 0, 'A'},
      {"minQ", required_argument, 0, 'q'},
+     {"zeroQ", required_argument, 0, '0'},
      {"idx", required_argument, 0, 'x'},
      {"ifa", required_argument, 0, 'a'},
      {"method", required_argument, 0, 'C'},
@@ -167,7 +169,7 @@ void getarg_trimFilterDS(int argc, char **argv) {
   int option;
   int method_len = 20;
   Split globTrim, adapt, tree_fa, index, in_fq;
-  while ((option = getopt_long(argc, argv, "hvf:l:o:z:A:q:x:a:C:Q:m:p:g:N:",
+  while ((option = getopt_long(argc, argv, "hvf:l:o:z:A:q:x:a:C:Q:m:p:g:N:0:",
         long_options, 0)) != -1) {
     switch (option) {
       case 'h':
@@ -175,8 +177,7 @@ void getarg_trimFilterDS(int argc, char **argv) {
         exit(EXIT_SUCCESS);
         break;
       case 'v':
-        printf("trimFilterPE version %s \nWritten by Paula Perez Rubio\n",
-              VERSION);
+        printf("trimFilterPE version %s \nWritten by Paula Perez Rubio\n", VERSION);
         exit(EXIT_SUCCESS);
         break;
       case 'f':
@@ -210,7 +211,7 @@ void getarg_trimFilterDS(int argc, char **argv) {
             fprintf(stderr, "--compress,-z: optionERR. You must pass  \n");
             fprintf(stderr, "one of the following options: \n");
             fprintf(stderr, "y|Y|yes|YES|n|N|no|NO");
-            fprintf(stderr, "and you passed %s\n", optarg);
+            fprintf(stderr, " and you passed %s\n", optarg);
             fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
             exit(EXIT_FAILURE);
          }
@@ -233,6 +234,9 @@ void getarg_trimFilterDS(int argc, char **argv) {
          break;
       case 'q':
          par_TF.minQ = atoi(optarg);
+         break;
+      case '0':
+         par_TF.zeroQ = atoi(optarg);
          break;
       case 'x':
          par_TF.is_idx = true;
@@ -367,6 +371,13 @@ void getarg_trimFilterDS(int argc, char **argv) {
     fprintf(stderr, "- Min Quality: %d (default value).\n", par_TF.minQ);
   } else {
     fprintf(stderr, "- Min Quality: %d.\n", par_TF.minQ);
+  }
+  // handling zeroQ
+  if (par_TF.zeroQ == 0) {
+    par_TF.zeroQ = DEFAULT_ZEROQ;
+    fprintf(stderr, "- Zero quality ASCII character: Phred+%d (default value)\n", par_TF.zeroQ);
+  } else {
+    fprintf(stderr, "- Zero quality ASCII character: Phred+%d\n", par_TF.zeroQ);
   }
   // Checking contamination search method
   if (par_TF.method == 0) {

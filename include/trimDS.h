@@ -44,12 +44,12 @@ typedef struct _ds_adap {
 
 DS_adap init_DSadap(char *ad1, char *ad2, int L1, int L2);
 
-int trim_adapterDS(DS_adap *ptr_DSad, Fq_read *r1, Fq_read *r2); 
+int trim_adapterDS(DS_adap *ptr_DSad, Fq_read *r1, Fq_read *r2, int zeroQ); 
 
 /** static functions
-double obtain_scoreDS(Fq_read *r1, int pos1, Fq_read *r2, int pos2);
+double obtain_scoreDS(Fq_read *r1, int pos1, Fq_read *r2, int pos2, int zeroQ);
 void pack_reads(DS_adap *ptr_DSad, Fq_read *r1, Fq_read *r2);
-int alignDS_uint64(Fq_read *r1, Fq_read *r2);  
+int alignDS_uint64(Fq_read *r1, Fq_read *r2, int zeroQ);  
 int QtrimDS(Fq_read *r1, Fq_read *r2, int L);
 **/
 
