@@ -56,10 +56,9 @@ void get_tile_lane(char *line1, int *tile, int *lane) {
   char aux_str1[100], aux_str2[40], end_str[200];
   if (ncolon == 4) {
      sscanf(line1, "%100[^:]:%d:%d:%s", aux_str1, lane, tile, end_str);
-  } else if (ncolon == 9) {
+  } else if ((ncolon == 9) || (ncolon == 6)) { // current Illumina || SRA
      // I hope that the second entry is an integer.
-     sscanf(line1, "%100[^:]:%d:%40[^:]:%d:%d:%s",
-             aux_str1, &aux_int, aux_str2, lane , tile, end_str);
+     sscanf(line1, "%100[^:]:%d:%40[^:]:%d:%d:%s", aux_str1, &aux_int, aux_str2, lane , tile, end_str);
   } else {
     fprintf(stderr, "Error encountered when trying to obtain tile number in the following line:\n%s", line1);
     fprintf(stderr, "This code only supports Illumina sequence identifiers:\n");
