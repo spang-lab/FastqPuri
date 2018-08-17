@@ -44,7 +44,8 @@ void printHelpDialog_Qreport() {
   const char dialog[] =
     "Usage: ./Qreport -i <INPUT_FILE.fq> -l <READ_LENGTH> \n"
     "       -o <OUTPUT_FILE> [-t <NUMBER_OF_TILES>] [-q <MINQ>]\n"
-    "       [-n <#_QUALITY_VALUES>] [-f <FILTER_STATUS>] [-0 <ZEROQ>]\n"
+    "       [-n <#_QUALITY_VALUES>] [-f <FILTER_STATUS>]\n"
+    "       [-0 <ZEROQ>] [-Q <low-Qs>]\n"
     "Reads in a fq file (gz, bz2, z formats also accepted) and creates a \n"
     "quality report (html file) along with the necessary data to create it\n"
     "stored in binary format.\n"
@@ -59,7 +60,9 @@ void printHelpDialog_Qreport() {
      " -n Number of different quality values allowed. Optional (default 46).\n"
      " -f Filter status: 0 original file, 1 file filtered with filter_trim, \n"
      "    2 file filtered with another tool. Optional (default 0).\n\n"
-     " -0 ASCII value for quality score 0. Optional (default 33).\n";
+     " -0 ASCII value for quality score 0. Optional (default 33).\n"
+     " -Q quality values for low quality proportion plot. Optional (default 27,33,37),\n"
+     "    Format is either <int>[,<int>]* or <min-int>:<max-int>.\n";
   fprintf(stderr, "%s", dialog);
 }
 
@@ -79,10 +82,8 @@ void getarg_Qreport(int argc, char **argv) {
   int i;
   for (i = 0; i < argc; i++) {
     if (!str_isascii(argv[i])) {
-      fprintf(stderr, "input parameter %s contains non ASCII chars.\n",
-              argv[i]);
-      fprintf(stderr, "only ASCII characters allowed in the input. ");
-      fprintf(stderr, "Please correct for that.\n");
+      fprintf(stderr, "Input parameter %s contains non ASCII chars.\n", argv[i]);
+      fprintf(stderr, "Correct for that, only ASCII characters allowed in the input. \n");
       fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
       exit(EXIT_FAILURE);
     }
@@ -90,13 +91,14 @@ void getarg_Qreport(int argc, char **argv) {
 
   // Assigning default parameters
   par_QR.minQ = DEFAULT_MINQ;
+  snprintf(par_QR.lowQprops, MAX_FILENAME, "%s", DEFAULT_LOWQPROPS);
   par_QR.nQ = DEFAULT_NQ;
   par_QR.zeroQ = DEFAULT_ZEROQ;
   par_QR.ntiles = DEFAULT_NTILES;
   par_QR.filter = DEFAULT_FILTER_STATE;
   par_QR.one_read_len = 1;
   char option;
-  while ((option = getopt(argc, argv, "hvi:l:t:q:n:o:f:0:")) != -1) {
+  while ((option = getopt(argc, argv, "hvi:l:t:q:n:o:f:0:Q:")) != -1) {
     switch (option) {
       case 'h':  // show the HelpDialog
         printHelpDialog_Qreport();
@@ -117,6 +119,48 @@ void getarg_Qreport(int argc, char **argv) {
         break;
       case 'q':
         par_QR.minQ = atoi(optarg);
+        break;
+      case 'Q':
+        snprintf(par_QR.lowQprops, MAX_FILENAME, "%s", optarg);
+	char aux_str1[MAX_FILENAME];
+	int aux_int, res;
+        int ncommas = count_char(par_QR.lowQprops, ',');
+        if (ncommas == 0) {
+	  int ncolons = count_char(par_QR.lowQprops, ':');
+	  if (ncolons == 1) {
+	    res = sscanf(par_QR.lowQprops, "%d:%d%s", &aux_int, &aux_int, aux_str1);
+            if (res == 2) {
+	      break;
+	    } else {
+	      fprintf(stderr, "Fix incorrect format of parameter -Q (%s).\n", par_QR.lowQprops);
+	      fprintf(stderr, "Correct is <int>:<int> when finding a ':'. Exiting program.\n");
+	      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+	      exit(EXIT_FAILURE);
+	    }
+	  } else {
+	    fprintf(stderr, "Fix incorrect format of parameter -Q (%s).\n", par_QR.lowQprops);
+	    fprintf(stderr, "Correct is a single ':' in <int>:<int>. Exiting program.\n");
+	    fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+	    exit(EXIT_FAILURE);
+	  }
+	}
+        snprintf(aux_str1, MAX_FILENAME, "%s", par_QR.lowQprops);
+	for (i = 0; i < ncommas; i++) {
+	  res = sscanf(aux_str1, "%d,%s", &aux_int, aux_str1);
+	  if (res < 2) {
+	    fprintf(stderr, "Fix incorrect format of parameter -Q (%s).\n", par_QR.lowQprops);
+	    fprintf(stderr, "Correct is <int>[,<int>]*. Exiting program.\n");
+	    fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+	    exit(EXIT_FAILURE);
+	  }
+	}
+	res = sscanf(aux_str1, "%d%s", &aux_int, aux_str1);
+	if (res == 2) {
+	  fprintf(stderr, "Fix incorrect format of parameter -Q (%s).\n", par_QR.lowQprops);
+	  fprintf(stderr, "Correct is <int>[,<int>]*. Exiting program.\n");
+	  fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+	  exit(EXIT_FAILURE);
+	}
         break;
       case 'n':
         par_QR.nQ = atoi(optarg);

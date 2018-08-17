@@ -32,25 +32,27 @@
 #include "defines.h"
 
 /**
+
  * @brief contains Qreport input parameters 
  */
 typedef struct _iparam_Qreport {
-  char *inputfile;  /**< Inputfile name */
-  char outputfilebin[MAX_FILENAME]; /**< Binary outputfile name.*/
+  char *inputfile;                   /**< Inputfile name */
+  char outputfilebin[MAX_FILENAME];  /**< Binary outputfile name.*/
   char outputfilehtml[MAX_FILENAME]; /**< html outputfile name */
   char outputfileinfo[MAX_FILENAME]; /**< Info outputfile name */
-  int nQ;        /**< \# different quality values (default is 46) */
-  int zeroQ;     /**< \# ASCII value for phred zero (default is 33) */
-  int ntiles;    /**< \# tiles (default is 96, corresponding to one lane on an Illumina flow cell of HiSeq or NextSeq machines. */
-                 /**< \# If data comes from multiple lanes, multiply ntiles of one flow cell by the number of lanes.) */
-  int minQ;      /**< minimum Quality allowed 0 - 45 */
-  int read_len;  /**< original read length  */
-  int filter;    /**< 0 original data,
-                   1 this tool filtered data,
-                   2 other tool filtered data */
-  int one_read_len; /**< 1 all reads of equal length
-                      0 reads have different lengths.*/
-}Iparam_Qreport;
+  int nQ;                            /**< \# different quality values (default is 46) */
+  int zeroQ;                         /**< \# ASCII value for phred zero (default is 33) */
+  int ntiles;                        /**< \# tiles (default is 96, corresponding to one lane on an Illumina flow cell of HiSeq or NextSeq machines. */
+                                     /**< \# If data comes from multiple lanes, multiply ntiles of one flow cell by the number of lanes.) */
+  int minQ;                          /**< minimum Quality allowed 0 - 45 */
+  char lowQprops[MAX_FILENAME];      /**< low quatlities %d,[%d]* */
+  int read_len;                     /**< original read length  */
+  int filter;                       /**< 0 original data,
+                                      1 this tool filtered data,
+                                      2 other tool filtered data */
+  int one_read_len;                 /**< 1 all reads of equal length
+                                      0 reads have different lengths.*/
+} Iparam_Qreport;
 
 void printHelpDialog_Qreport();
 

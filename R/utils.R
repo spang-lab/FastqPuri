@@ -6,6 +6,7 @@ getQualStats <- function(path){
    res$read_len <- readBin(to.read, integer())
    res$ntiles <- readBin(to.read, integer())
    res$minQ <- readBin(to.read, integer())
+   res$nLowQprops <- readBin(to.read, integer())
    res$nQ <- readBin(to.read, integer())
    res$zeroQ <- readBin(to.read, integer())
    res$nreads <- readBin(to.read, integer())
@@ -18,6 +19,7 @@ getQualStats <- function(path){
    res$sz_ACGT_pos <- readBin(to.read, integer())
     
    res$base_tags <- c("A","C","G","T","N")
+   res$lowQprops <- readBin(to.read, integer(), n=res$nLowQprops)
    res$tile_tags <- readBin(to.read, integer(), n=res$ntiles)
    res$lane_tags <- readBin(to.read, integer(), n=res$ntiles)
    res$qual_tags <- readBin(to.read, integer(), n=res$nQ)

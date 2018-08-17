@@ -165,37 +165,23 @@ if (all(tiles_lowQ==0)){
 
 
 ## Low Q nucleotides proportion per position for all tiles
+
 ```{r, echo = F, fig.height=2.5 }
 N = length(data$qual_tags)
-
-lowQ_prop <- array(dim=c(3,data$read_len), 
-                     dimnames = list(c("< 27","< 33","< 37" ), 1:data$read_len))
+data$lowQprops <- sort(data$lowQprops)
+lowQ_prop <- array(dim=c(length(data$lowQprops),data$read_len), 
+                     dimnames = list(paste("<", data$lowQprops), 1:data$read_len))
 
 i = 1
-
-for (lowQ in c(27,33,37)){
-   lowQ_idx <- which(data$qual_tags< lowQ)
+for (lowQ in data$lowQprops){
+   lowQ_idx <- which(data$qual_tags < lowQ)
    for (j in 1:data$read_len){
-       lowQ_prop[i,j] <- sum(data$QPosTile_table[j,lowQ_idx,])/sum(data$QPosTile_table[j,,])
+      lowQ_prop[i,j] <- sum(data$QPosTile_table[j,lowQ_idx,])/sum(data$QPosTile_table[j,,])
    }
    i = i + 1
 }
-
-if(all(lowQ==0)){
-   cat( "\t\t NO LOW QUALITY NUCLEOTIDES FOUND. NOT PLOTTING HEATMAP.\n")
-
-} else {
-# modifications by Julia to have color scale range from 0 to 1:
-#   sec_max <- unique(lowQ_prop[3,])[order(unique(lowQ_prop[3,]))[2]]
-#   breaks <- seq(0,sec_max+0.1,length=length(color))
-#   breaks <- c(breaks,1)
-   breaks <- seq(0,1,length=length(color))
-   pheatmap(lowQ_prop,cluster_cols=F, cluster_rows=F,  
-         fontsize_row=6, fontsize_col=6,color=color,breaks = breaks, 
-         cellheight=30)
-                     
-}
-
+breaks <- seq(0,1,length=length(color))
+pheatmap(lowQ_prop, cluster_cols=FALSE, cluster_rows=FALSE, fontsize_row=6, fontsize_col=6,color=color, breaks = breaks)
 ```
 
 ## Nucleotide content per position

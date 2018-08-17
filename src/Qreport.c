@@ -68,6 +68,7 @@ int main(int argc, char *argv[]) {
   fprintf(stderr, "- Read length: %d\n", par_QR.read_len);
   fprintf(stderr, "- Number of tiles: %d\n", par_QR.ntiles);
   fprintf(stderr, "- Min quality: %d\n", par_QR.minQ);
+  fprintf(stderr, "- Qualities for properties plot: %s\n", par_QR.lowQprops);
   fprintf(stderr, "- Output bin file : %s\n", par_QR.outputfilebin);
   fprintf(stderr, "- Output html file : %s\n", par_QR.outputfilehtml);
   fprintf(stderr, "- Output info file: %s\n", par_QR.outputfileinfo);

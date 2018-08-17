@@ -44,6 +44,8 @@ typedef struct statsinfo {
   int nQ;         /**< \# possible quality values */
   int zeroQ;      /**< \# ASCII integer for phred zero */
   int minQ;       /**< Minimum quality threshold */
+  int nLowQprops; /**< Quality values for quality proportion plots, number of values */
+  int *lowQprops; /**< Quality values for quality proportion plots */
   int tile_pos;   /**< current tile position */
   int nreads;     /**< \# reads read till current position. */
   int reads_wN;   /**< \# reads with N's found till current position */
