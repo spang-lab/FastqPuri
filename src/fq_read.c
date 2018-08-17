@@ -81,19 +81,8 @@ int get_fqread(Fq_read *seq, char* buffer, int pos1, int pos2, int nline, int re
       fprintf(stderr, "Exiting program.\n");
       exit(EXIT_FAILURE);
     }
-    // Exit programm if seq -> L < read_len
-    if ((seq -> L) < read_len) {
-      fprintf(stderr, "Predefined read length is %d but read in line %d has length %d.\n", read_len, nline, seq->L);
-      fprintf(stderr, "Predefined length exceeds a read length. Revise your settings.\n");
-      fprintf(stderr, "Check that -l|--length is correct.\n");
-      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
-      fprintf(stderr, "Exiting program.\n");
-      exit(EXIT_FAILURE);
-    }
     seq -> line2[pos2 - pos1] = '\0';
-    if (seq -> L != read_len) {
-      one_read_len = 0;
-    }
+    if (seq -> L != read_len) one_read_len = 0;
     break;
   case 2:
     memcpy(seq -> line3, buffer + pos1, pos2 - pos1);
