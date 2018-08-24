@@ -50,15 +50,20 @@ extern Iparam_Qreport par_QR; /*< input parameters */
  * The function exits with an error if the number of semicolons
  * is different from 4, 6 or 9.
  * */
-void get_tile_lane(char *line1, int *tile, int *lane) {
+void get_tile_lane(char *line1, int *tile, int *lane, int skip_tile_search) {
+  if (skip_tile_search) {
+    tile[0] = -1;
+    lane[0] = -1;
+    return;
+  }
   int ncolon = count_char(line1, ':');
   int aux_int, res;
   char aux_str1[100], aux_str2[40], end_str[200];
   if (ncolon == 4) { // pure Illumina header
      res = sscanf(line1, "%100[^:]:%d:%d:%s", aux_str1, lane, tile, end_str);
      if (res < 4) {
-       fprintf(stderr, "Error encountered when trying to obtain lane and tile number in the following header:\n%s\n", line1);
-       fprintf(stderr, "FastqPuri only supports Illumina fastq headers like this:\n");
+       fprintf(stderr, "Error encountered when trying to obtain lane and tile number in the following fastq-header:\n%s\n", line1);
+       fprintf(stderr, "FastqPuri/Qreport only supports Illumina fastq headers like this:\n");
        fprintf(stderr, "@HWUSI-EAS100R:6:73:941:1973#0/1\n");
        fprintf(stderr, "From 4 expected items only %d are scanned correctly, revise the format of your fastq file.\n", res);
        fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
@@ -69,8 +74,8 @@ void get_tile_lane(char *line1, int *tile, int *lane) {
      // I hope that the second entry is an integer.
     res = sscanf(line1, "%100[^:]:%d:%40[^:]:%d:%d:%s", aux_str1, &aux_int, aux_str2, lane , tile, end_str);
     if (res < 6) {
-      fprintf(stderr, "Error encountered when trying to obtain lane and tile number in the following header:\n%s\n", line1);
-      fprintf(stderr,  "FastqPuri only supports Illumina headers as stored in SRA/NCBI like this:\n");
+      fprintf(stderr, "Error encountered when trying to obtain lane and tile number in the following fastq-header:\n%s\n", line1);
+      fprintf(stderr,  "FastqPuri/Qreport only supports Illumina headers as stored in SRA/NCBI like this:\n");
       fprintf(stderr, "@EAS139:136:FC706VJ:2:2104:15343:197393\n");
       fprintf(stderr, "From 6 expected items only %d are scanned correctly, revise the format of your fastq file.\n", res);
       fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
@@ -81,8 +86,8 @@ void get_tile_lane(char *line1, int *tile, int *lane) {
     // I hope that the second entry is an integer.
     res = sscanf(line1, "%100[^:]:%d:%40[^:]:%d:%d:%s", aux_str1, &aux_int, aux_str2, lane , tile, end_str);
     if (res < 6) {
-      fprintf(stderr, "Error encountered when trying to obtain lane and tile number in the following header:\n%s\n", line1);
-      fprintf(stderr, "FastqPuri only supports Illumina headers like this:\n");
+      fprintf(stderr, "Error encountered when trying to obtain lane and tile number in the following fastq-header:\n%s\n", line1);
+      fprintf(stderr, "FastqPuri/Qreport only supports Illumina headers like this:\n");
       fprintf(stderr, "@EAS139:136:FC706VJ:2:2104:15343:197393 1:Y:18:ATCACG\n");
       fprintf(stderr, "From 6 expected items only %d are scanned correctly, revise the format of your fastq file.\n", res);
       fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
@@ -90,14 +95,8 @@ void get_tile_lane(char *line1, int *tile, int *lane) {
       exit(EXIT_FAILURE);
      }
   } else {
-    fprintf(stderr, "Error encountered when trying to obtain tile number in the following line:\n%s", line1);
-    fprintf(stderr, "This code only supports Illumina sequence identifiers like:\n");
-    fprintf(stderr, "@HWUSI-EAS100R:6:73:941:1973#0/1\n");
-    fprintf(stderr, "@EAS139:136:FC706VJ:2:2104:15343:197393 1:Y:18:ATCACG\n");
-    fprintf(stderr, "Please revise the format of your fastq file.\n");
-    fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
-    fprintf(stderr, "Exiting program.\n");
-    exit(EXIT_FAILURE);
+    tile[0] = -1;
+    lane[0] = -1;
   }
 }
 
@@ -132,8 +131,8 @@ static int cmpfunc(const void * a, const void * b) {
 void init_info(Info *res) {
   int i;
 
-  // Inizialize dimensions
-  res -> sz_lowQ_ACGT_tile = N_ACGT * par_QR.ntiles;
+  // Inizialize dimensions 
+ res -> sz_lowQ_ACGT_tile = N_ACGT * par_QR.ntiles;
   res -> sz_ACGT_tile = N_ACGT * par_QR.ntiles;
   res -> sz_reads_MlowQ = par_QR.read_len + 1;
   res -> sz_QPosTile_table = par_QR.ntiles * par_QR.read_len * par_QR.nQ;
@@ -297,12 +296,10 @@ void print_info(Info* res, char *infofile) {
   fprintf(f, "- Read length: %d\n", res -> read_len);
   fprintf(f, "- Number of tiles x lanes: %d\n", res -> ntiles);
   fprintf(f, "- Total number of reads: %d\n", res -> nreads);
-  fprintf(f, "- Number associated with the first tile: %d\n",
-             res -> tile_tags[0]);
-  fprintf(f, "- Number associated with the first lane: %d\n",
-             res -> lane_tags[0]);
-  fprintf(f, "- Min Quality: %d\n", res -> minQ);
-  fprintf(f, "- Quality values for quality proportaion plots (%d):", res -> nLowQprops);
+  fprintf(f, "- Number associated with the first tile: %d\n", res->tile_tags[0]);
+  fprintf(f, "- Number associated with the first lane: %d\n", res->lane_tags[0]);
+  fprintf(f, "- Min Quality: %d\n", res->minQ);
+  fprintf(f, "- Quality values for quality proportaion plots (%d):", res->nLowQprops);
   for (i = 0; i < res->nLowQprops; i++) fprintf(f, "%d,", res->lowQprops[i]);
   fprintf(f, "\n- Number of ACGT in the first tile: \n");
   fprintf(f, "  A = %" PRIu64 ", C = %" PRIu64 ", G = %" PRIu64 
@@ -369,7 +366,12 @@ void print_info(Info* res, char *infofile) {
  * @brief gets first tile
  * */
 void get_first_tile(Info* res, Fq_read* seq) {
-  get_tile_lane(seq->line1, res->tile_tags, res->lane_tags);
+  get_tile_lane(seq->line1, res->tile_tags, res->lane_tags, 0); // 0 means let search tile number
+  //  fprintf(stderr, "First tile is %d\n", res->tile_tags[0]);
+  if (res->tile_tags[0] == -1) {
+    fprintf(stderr, "Warning: tile number not found in the following fastq-header:\n%s\n", seq->line1);
+    fprintf(stderr, "FastqPuri/Qreport neglects information and plots based on tile numbers.\n");
+  }
 }
 
 /**
@@ -380,30 +382,31 @@ void update_info(Info* res, Fq_read* seq) {
   uint64_t  lowQ = 0;
   int min_quality = res->zeroQ + (res->minQ);
   int tile, lane, curr_tile_pos;
-  get_tile_lane(seq -> line1, &tile, &lane);
+  int skip_tile_search = (res->tile_tags[0]==-1)?1:0;  // 0: search tile number, 1: skip tile number search
+  get_tile_lane(seq -> line1, &tile, &lane, skip_tile_search);
 
-  // check if tile/lane exists already
-  //fprintf(stderr, "Search for tile/lane %d/%d, current tile_pos %d\n", tile, lane, res->tile_pos);
   curr_tile_pos = res->tile_pos;
-  for (i = res->tile_pos; i >= 0; i--) {
-    //fprintf(stderr, "- Check tile position %d with %d/%d\n",  i, res->tile_tags[i], res->lane_tags[i]);
-    if (res->tile_tags[i] == tile && res->lane_tags[i] == lane) {
-      //fprintf(stderr, " !! tile/lane already found\n");
-      curr_tile_pos = i;
-      break;
+  if (!skip_tile_search) {
+    // check if tile/lane exists already
+    for (i = res->tile_pos; i >= 0; i--) {
+      //fprintf(stderr, "- Check tile position %d with %d/%d\n",  i, res->tile_tags[i], res->lane_tags[i]);
+      if (res->tile_tags[i] == tile && res->lane_tags[i] == lane) {
+	//fprnitf(stderr, " !! tile/lane already found\n");
+	curr_tile_pos = i;
+	break;
+      }
     }
+    //fprintf(stderr, "Tile/lane %d/%d is found in %d (%d/%d)\n", tile, lane, curr_tile_pos, res->tile_tags[curr_tile_pos], res->lane_tags[curr_tile_pos]);
+    //if (res->tile_tags[curr_tile_pos] != tile || res->lane_tags[curr_tile_pos] != lane) {
+    //  fprintf(stderr, " !! tile/lane not yet found, curr_tile_pos %d == %d ?\n", curr_tile_pos, res->tile_pos);
+    //}
   }
-  //fprintf(stderr, "Tile/lane %d/%d is found in %d (%d/%d)\n", tile, lane, curr_tile_pos, res->tile_tags[curr_tile_pos], res->lane_tags[curr_tile_pos]);
-  //if (res->tile_tags[curr_tile_pos] != tile || res->lane_tags[curr_tile_pos] != lane) {
-  //  fprintf(stderr, " !! tile/lane not yet found, curr_tile_pos %d == %d ?\n", curr_tile_pos, res->tile_pos);
-  //}
-
   int Ns = 0;
   if (res->tile_tags[curr_tile_pos] != tile || res->lane_tags[curr_tile_pos] != lane) {
     (res->tile_pos)++; curr_tile_pos++;
     if ((res->tile_pos) == (res->ntiles)) {
       fprintf(stderr, "Expected number of tiles is %d \n", res->ntiles);
-      fprintf(stderr, "Yur input file seems to have more tiles. Maybe more than one lane?\n");
+      fprintf(stderr, "Your input file seems to have more tiles. Maybe more than one lane?\n");
       fprintf(stderr, "You can try to adapt Qreport using the parameter -t.\n");
       fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
       fprintf(stderr, "Exiting program.\n");

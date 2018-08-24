@@ -54,8 +54,8 @@ Value=c(sub('.*\\/', '', params$inputfile),
   data$minQ,
   data$nreads,   
   data$reads_MlowQ[1],   
-  data$ntiles,
-  length(unique(data$lane_tags)),
+  ifelse(data$tile_tags[1]==-1, "N/A", data$ntiles),
+  ifelse(data$lane_tags[1]==-1, "N/A", length(unique(data$lane_tags))),
   qualities,
   data$reads_wN,
   sum(data$ACGT_pos[5,]))
@@ -72,9 +72,13 @@ kable(df)
 
 ```{r, echo = F}
   QualAbund <- getQualAbundancies(data)
-  sampleQ <- mimic(QualAbund)
-  my_plot(sampleQ) 
-
+  qualityPosSums <- apply(QualAbund, 1, sum)
+  if (any(qualityPosSums == 0)) {
+    cat("Incorrect quality values observed at position", which(qualityPosSums == 0), "\n")
+  } else {
+    sampleQ <- mimic(QualAbund)
+    my_plot(sampleQ)
+  }
 ```
 
 ## # reads with at least  `m` low Q nucleotides
@@ -86,81 +90,92 @@ barplot(data$reads_MlowQ[2:length(data$reads_MlowQ)], xlab="m" , names=1:data$re
 ## Low Q nucleotide proportion per tile per lane
 
 ```{r, fig.width=4, fig.height=data$ntiles/6, echo = F}
-if(all(data$lowQ_ACGT_tile == 0)){
-   cat( "\t\t NO LOW QUALITY NUCLEOTIDES FOUND. NOT PLOTTING HEATMAP\n")
-}else{
-   lanes <- unique(data$lane_tags)
-   for (lpos in lanes) {
+if (data$tile_tags[1] == -1) {
+  cat("No tile/lane information found in read headers, tile/lane quality heatmap skipped\n")
+} else {
+  if(all(data$lowQ_ACGT_tile == 0)){
+     cat( "No low quality nucleotides found. tile/lane quality heatmap skipped\n")
+  } else {
+    lanes <- unique(data$lane_tags)
+    for (lpos in lanes) {
       tiles <- which(data$lane_tags == lpos)
-      pheatmap((data$lowQ_ACGT_tile/data$ACGT_tile)[tiles,1:4],cluster_cols=F, 
-         cluster_rows=F, fontsize_row=6, fontsize_col=6,  color = color,
-         main = paste0("Lane ",lpos))
-   } 
+      pheatmap((data$lowQ_ACGT_tile/data$ACGT_tile)[tiles,1:4],cluster_cols=FALSE, 
+               cluster_rows=FALSE, fontsize_row=6, fontsize_col=6, color = color,
+               main = paste0("Lane ", lpos))
+    }
+  }
 } 
 ```
 
 ## Average quality per position per tile per lane
 
 ```{r,fig.width=7, fig.height=data$ntiles/6, echo = F }
-tiles_meanQ <- array(dim=c(data$ntiles,data$read_len), 
-                     dimnames = list(data$tile_tags, 1:data$read_len))
-for(i in 1:data$ntiles){
-   for(j in 1:data$read_len){
+if (data$tile_tags[1] == -1) {
+  cat("No tile/lane information found in read headers, tile/lane average quality heatmap skipped\n")
+} else {
+  tiles_meanQ <- array(dim=c(data$ntiles,data$read_len), 
+                       dimnames = list(data$tile_tags, 1:data$read_len))
+  for(i in 1:data$ntiles){
+    for(j in 1:data$read_len){
       tiles_meanQ[i,j] <- weighted.mean(data$qual_tags,data$QPosTile_table[j,,i])
-   }
-}
-lanes <- unique(data$lane_tags)
-for (lpos in lanes) {
-   tiles <- which(data$lane_tags == lpos)
-   if (any(is.nan(tiles_meanQ))){
+    }
+  }
+  lanes <- unique(data$lane_tags)
+  for (lpos in lanes) {
+    tiles <- which(data$lane_tags == lpos)
+    if (any(is.nan(tiles_meanQ))){
       cat("\t\t TILES WITH MISSING POSITIONS FOUND. PLOTTING THEM BLACK.\n")
       color2[length(color2)] <- "#000000"
       from <- min(tiles_meanQ, na.rm=T); to <- max(tiles_meanQ, na.rm=T)
       breaks <- c(seq(from=from,  to=to, 
                       by = (to - from)/(length(color2) -1 )), to+0.01)
       tiles_meanQ[which(is.nan(tiles_meanQ))] = to+0.01 
-      pheatmap(tiles_meanQ[tiles,],cluster_cols=F, cluster_rows=F, 
-               fontsize_row=6, fontsize_col=6,color=color2, 
+      pheatmap(tiles_meanQ[tiles,],cluster_cols=FALSE, cluster_rows=FALSE, 
+               fontsize_row=6, fontsize_col=6, color=color2, 
                breaks=breaks, main =  paste0("Lane ",lpos))
-   }else{
-      pheatmap(tiles_meanQ[tiles,],cluster_cols=F, cluster_rows=F, 
-            fontsize_row=6, fontsize_col=6,color=color2, 
-            main =  paste0("Lane ",lpos))
-   }
+    } else {
+      pheatmap(tiles_meanQ[tiles,],cluster_cols=FALSE, cluster_rows=FALSE, 
+               fontsize_row=6, fontsize_col=6,color=color2, 
+               main =  paste0("Lane ",lpos))
+    }
+  }
 }
-
 ```
 
 ## Low Q nucleotides proportion per position per tile per lane
 
 ```{r,fig.width=7, fig.height=data$ntiles/6, echo = F}
-tiles_lowQ <- array(dim=c(data$ntiles,data$read_len), 
-                     dimnames = list(data$tile_tags, 1:data$read_len))
-lowQ_idx <- which(data$qual_tags < data$minQ)
-for(i in 1:data$ntiles){
-   for(j in 1:data$read_len){
+if (data$tile_tags[1] == -1) {
+  cat("No tile/lane information found in read headers, tile/lane position quality heatmap skipped\n")
+} else {
+  tiles_lowQ <- array(dim=c(data$ntiles,data$read_len), 
+                      dimnames = list(data$tile_tags, 1:data$read_len))
+  lowQ_idx <- which(data$qual_tags < data$minQ)
+  for(i in 1:data$ntiles){
+    for(j in 1:data$read_len){
       tiles_lowQ[i,j] <- sum(data$QPosTile_table[j,lowQ_idx,i])/
       sum(data$QPosTile_table[j,,i])
-   }
-}
-if(sum(is.nan(tiles_lowQ)) > 0) {
-   cat("\t\t THERE WERE TILES WITH MISSING POSITIONS. REMOVING THESE.\n")
-   tiles <- which(rowSums(is.nan(tiles_lowQ)) == 0)
-   data$tile_tags <- data$tile_tags[tiles]
-   data$lane_tags <- data$lane_tags[tiles]
-   tiles_lowQ <- tiles_lowQ[tiles,]
-}
-if (all(tiles_lowQ==0)){
-   cat( "\t\t NO LOW QUALITY NUCLEOTIDES FOUND. NOT PLOTTING HEATMAP.\n")
-}else { 
-   lanes <- unique(data$lane_tags)
-   for (lpos in lanes){
+    }
+  }
+  if(sum(is.nan(tiles_lowQ)) > 0) {
+    cat("\t\t THERE WERE TILES WITH MISSING POSITIONS. REMOVING THESE.\n")
+    tiles <- which(rowSums(is.nan(tiles_lowQ)) == 0)
+    data$tile_tags <- data$tile_tags[tiles]
+    data$lane_tags <- data$lane_tags[tiles]
+    tiles_lowQ <- tiles_lowQ[tiles,]
+  }
+  if (all(tiles_lowQ==0)){
+    cat( "\t\t NO LOW QUALITY NUCLEOTIDES FOUND. NOT PLOTTING HEATMAP.\n")
+  } else { 
+    lanes <- unique(data$lane_tags)
+    for (lpos in lanes){
       tiles <- which(data$lane_tags == lpos)
       pheatmap(tiles_lowQ[tiles,],cluster_cols=F, cluster_rows=F, 
-         fontsize_row=6, fontsize_col=6,color=color, 
-         main =  paste0("Lane ",lpos))
-   }
-} 
+               fontsize_row=6, fontsize_col=6,color=color, 
+               main =  paste0("Lane ",lpos))
+    }
+  }
+}
 ```
 
 

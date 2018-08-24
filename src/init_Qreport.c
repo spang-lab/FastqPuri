@@ -58,7 +58,7 @@ void printHelpDialog_Qreport() {
      " -t Number of tiles. Optional (default 96). \n"
      " -q Minimum quality allowed. Optional (default 27).\n"
      " -n Number of different quality values allowed. Optional (default 46).\n"
-     " -f Filter status: 0 original file, 1 file filtered with filter_trim, \n"
+     " -f Filter status: 0 original file, 1 file filtered with trimFilter, \n"
      "    2 file filtered with another tool. Optional (default 0).\n\n"
      " -0 ASCII value for quality score 0. Optional (default 33).\n"
      " -Q quality values for low quality proportion plot. Optional (default 27,33,37),\n"

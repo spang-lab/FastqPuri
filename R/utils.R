@@ -87,7 +87,7 @@ mimic <- function(Q){
     colnames(whiskers) <- c("Q10","Q90")
     for( i in 1:L){
         means[i] <- weighted.mean(qualities,Q[i,])
-        Q_boxes[,i] <- sample(qualities,N ,replace = T, prob = Q[i,]/sum(Q[i,]))
+        Q_boxes[,i] <- sample(qualities, N, replace=TRUE, prob=Q[i,]/sum(Q[i,]))
         sorted <- sort(Q_boxes[,i])
         whiskers[i,] <- sorted[c(round(N*0.1,0), round(N*0.9,0))]
     }
@@ -108,7 +108,7 @@ simulateQ <- function(){
 }
 
 my_boxplot <- function(data,...){
-    a <-boxplot(data$Q_boxes,col="grey", outline=F, range=1,...)
+    a <- boxplot(data$Q_boxes, col="grey", outline=FALSE, range=1,...)
     points(data$means,type="l", col="blue")
     d <- 0.2
     for (i in 1:nrow(data$whiskers)){
@@ -121,8 +121,7 @@ my_boxplot <- function(data,...){
 
 my_plot <- function(data){
     L <- ncol(data$Q_boxes)
-    my_boxplot(data,ylim=c(0,42),xlab="Position in read",
-      ylab="Quality",xaxt="n",yaxt="n")
+    my_boxplot(data, ylim=c(0,42),xlab="Position in read", ylab="Quality", xaxt="n", yaxt="n")
     axis(1,1:L,1:L,cex.axis=0.6)
     axis(2,data$qualities,data$qualities, cex.axis=0.6)
 
