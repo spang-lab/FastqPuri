@@ -1,5 +1,5 @@
 ---
-title: "Summary filtering report, DS data"
+title: "Summary filtering report, paired end data"
 output: 
    html_document:
       number_section: no
