@@ -25,7 +25,7 @@ Options:
  -m, --bfsizeBits   size of the filter in bits. It will be forced to be
                     a multiple of 8. Optional (default value computed
                     from the false positive rate).
-NOTE: the options -p, -n, -m are mutually exclusive. The program 
+NOTE: the options -p, -g, -m are mutually exclusive. The program 
       will give an error if more than one of them are passed as input.
       It is recommended to pass the false positive rate and let the 
       program compute the other variables (excepting singular situations).
