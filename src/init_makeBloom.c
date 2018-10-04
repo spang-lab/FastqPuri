@@ -59,7 +59,7 @@ void printHelpDialog_makeBloom() {
    " -m, --bfsizeBits   size of the filter in bits. It will be forced to be\n"
    "                    a multiple of 8. Optional (default value computed\n"
    "                    from the false positive rate).\n"
-   "NOTE: the options -p, -n, -m are mutually exclusive. The program \n"
+   "NOTE: the options -p, -g, -m are mutually exclusive. The program \n"
    "      will give an error if more than one of them are passed as input.\n"
    "      It is recommended to pass the false positive rate and let the \n"
    "      program compute the other variables (excepting singular situations)\n"
