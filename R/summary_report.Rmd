@@ -24,10 +24,10 @@ library(pheatmap)
 color <- colorRampPalette(c("white", "red"))( 50 )
 color2 <- colorRampPalette(c("white", "blue"))( 50 )
 files <- list.files(params$inputfolder,pattern="bin$")
+Ns <- length(files)
 fsize <- sapply(files, function(f) file.info(paste0(params$inputfolder,"/",f))$size)
 files <- files[fsize > 100]
 nombres <- gsub('\\.bin$', '', files)
-Ns <- length(files)
 table <- matrix(nrow = Ns, ncol = 4,
                dimnames = list(nombres,c("# reads","# tiles", 
                "% lowQ reads","% reads with N's")))
@@ -37,7 +37,7 @@ for (f in files){
   data <- getQualStats(paste0(params$inputfolder,"/",f))
   if (i == 1){
     meanQ <- matrix(nrow = Ns, ncol = data$read_len,
-             dimnames = list(nombres, 1:data$read_len))
+                    dimnames = list(nombres, 1:data$read_len))
   }
   table[i,] <- c(data$nreads,data$ntiles,
                  (data$nreads - data$reads_MlowQ[1])/data$nreads*100, 
@@ -48,7 +48,6 @@ for (f in files){
   }
   i = i + 1
 }
-
 kable(table)
 
 ```
@@ -56,9 +55,6 @@ kable(table)
 ## Mean quality
 
 ```{r, fig.width=8, fig.height=max(1,Ns/7), echo = F}
-
 pheatmap(meanQ,cluster_cols=F, cluster_rows=F, 
          fontsize_row=8, fontsize_col=6, color=color2)
-
 ```
-

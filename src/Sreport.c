@@ -59,14 +59,16 @@ int main(int argc, char *argv[]) {
   fprintf(stderr, "- Output file: %s\n", par_SR.outputfile);
 #ifdef HAVE_RPKG
   char * command = command_Sreport();
-  fprintf(stderr, "Running command: %s \n", command);
-  int status;
-  if ((status = system(command)) != 0) {
-      fprintf(stderr, "Something went wrong when executing R script.\n");
-      fprintf(stderr, "Most probably, a html file will not be generated.\n");
-      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
-      fprintf(stderr, "Exiting program.\n");
-      exit(EXIT_FAILURE);
+  if (command[0] != '\0') {
+    fprintf(stderr, "Running command: %s \n", command);
+    int status;
+    if ((status = system(command)) != 0) {
+        fprintf(stderr, "Something went wrong when executing R script.\n");
+        fprintf(stderr, "Most probably, a html file will not be generated.\n");
+        fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
+        fprintf(stderr, "Exiting program.\n");
+        exit(EXIT_FAILURE);
+    }
   }
 #else
   fprintf(stderr, "WARNING: html reports are NOT being generated.\n");

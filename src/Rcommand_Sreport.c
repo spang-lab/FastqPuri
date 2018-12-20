@@ -28,7 +28,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <strings.h>
 #include <unistd.h>
+#include "tinydir.h"
 #include "Rcommand_Sreport.h"
 #include "init_Sreport.h"
 #include "defines.h"
@@ -56,13 +58,31 @@ extern Iparam_Sreport par_SR; /**< input parameters Sreport*/
  * */
 char *command_Sreport(){
   char *command = calloc(MAX_RCOMMAND, sizeof(char));
+  command[0] = '\0';
   char cwd[1024];
   if (getcwd(cwd, sizeof(cwd)) != NULL)
       fprintf(stdout, "Current working dir: %s\n", cwd);
   else
       perror("getcwd() error");
+  tinydir_file file;
+  tinydir_dir dir;
+  tinydir_open(&dir, par_SR.inputfolder);
+  int hasBin = 0;
+  while (dir.has_next) {
+    tinydir_readfile(&dir, &file);
+    if (strcmp(file.extension, "bin") == 0) {
+      hasBin = 1;
+      break;
+    }
+    tinydir_next(&dir);
+  }
+  tinydir_close(&dir);
+  if (hasBin == 0) {
+    fprintf(stderr, "Sreport did not find any binary files in %s.\n", par_SR.inputfolder);
+    fprintf(stderr, "Maybe something went wrong with Qreport trying to generate such files.\n");
+  } else {
 #ifdef HAVE_RPKG
-  snprintf(command, MAX_RCOMMAND, "%s -e \" inputfolder = normalizePath('%s', \
+    snprintf(command, MAX_RCOMMAND, "%s -e \" inputfolder = normalizePath('%s', \
 mustWork = TRUE); output = '%s';\
 output_file = gsub('.*/', '', output);\
 path = gsub('[^/]+$', '', output);\
@@ -75,5 +95,6 @@ version = '%s'), output_file = output_file)\"",
         RSCRIPT_EXEC, par_SR.inputfolder,
         par_SR.outputfile, cwd, par_SR.Rmd_file, VERSION);
 #endif
+  }
   return command;
 }
