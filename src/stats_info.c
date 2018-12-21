@@ -515,6 +515,8 @@ void resize_info(Info* res) {
   int nQ = 0;
   uint64_t* QPosTile_table;
   if (res -> ntiles != res -> tile_pos + 1) {
+    fprintf(stderr, "  WARNING: expected %d tiles but found only %d.\n", res->ntiles, res->tile_pos + 1);
+
      res -> ntiles = res -> tile_pos + 1;
      res -> sz_lowQ_ACGT_tile =  N_ACGT*(res -> ntiles);
      res -> sz_ACGT_tile =  N_ACGT*(res -> ntiles);
