@@ -30,6 +30,6 @@
 #ifndef RCOMMAND_SREPORT_H_
 #define RCOMMAND_SREPORT_H_
 
-char *command_Sreport();
+char *command_Sreport(char ** new_dir_ptr);
 
 #endif  // endif RCOMMAND_SREPORT_H_

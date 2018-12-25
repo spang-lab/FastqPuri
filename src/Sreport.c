@@ -58,10 +58,11 @@ int main(int argc, char *argv[]) {
   fprintf(stderr, "- Input folder: %s\n", par_SR.inputfolder);
   fprintf(stderr, "- Output file: %s\n", par_SR.outputfile);
 #ifdef HAVE_RPKG
-  char * command = command_Sreport();
+  char *new_dir;
+  char * command = command_Sreport(&new_dir);
+  int status;
   if (command[0] != '\0') {
     fprintf(stderr, "Running command: %s \n", command);
-    int status;
     if ((status = system(command)) != 0) {
         fprintf(stderr, "Something went wrong when executing R script.\n");
         fprintf(stderr, "Most probably, a html file will not be generated.\n");
@@ -74,6 +75,16 @@ int main(int argc, char *argv[]) {
   fprintf(stderr, "WARNING: html reports are NOT being generated.\n");
   fprintf(stderr, "         Dependencies not fulfilled.\n");
 #endif
+  // Removing tmp directory
+  free(command);
+  char rm_cmd[MAX_FILENAME];
+  snprintf(rm_cmd, MAX_FILENAME, "rm -fr %s", new_dir);
+  if ( (status = system(rm_cmd)) != 0) {
+      fprintf(stderr, "Something went wrong when trying to delete temporary folder %s.\n", new_dir);
+      fprintf(stderr, "Exiting program.\n");
+      exit(EXIT_FAILURE);
+  }
+
 
   // Obtaining elapsed time
   end = clock();

@@ -139,7 +139,8 @@ int main(int argc, char *argv[]) {
 
   fprintf(stderr, "Creating html output in file: %s\n", par_QR.outputfilehtml);
 #ifdef HAVE_RPKG
-  char * command = command_Qreport();
+  char *new_dir;
+  char * command = command_Qreport(&new_dir);
   fprintf(stderr, "Running command: %s \n", command);
   int status;
   if ((status = system(command)) != 0) {
@@ -153,6 +154,17 @@ int main(int argc, char *argv[]) {
   fprintf(stderr, "         Dependencies not fulfilled.\n");
 #endif
   free(buffer);
+  free(command);
+
+  // Removing tmp directory
+  char rm_cmd[MAX_FILENAME];
+  snprintf(rm_cmd, MAX_FILENAME, "rm -fr %s", new_dir);
+  if ((status = system(rm_cmd)) != 0) {
+      fprintf(stderr, "Something went wrong when trying to delete temporary folder %s.\n", new_dir);
+      fprintf(stderr, "Exiting program.\n");
+      exit(EXIT_FAILURE);
+  }
+
   // Obtaining elapsed time
   end = clock();
   cpu_time_used = (double)(end - start)/CLOCKS_PER_SEC;

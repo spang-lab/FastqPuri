@@ -30,6 +30,6 @@
 #ifndef RCOMMAND_QREPORT_H_
 #define RCOMMAND_QREPORT_H_
 
-char *command_Qreport(); 
+char *command_Qreport(char ** new_dir_ptr); 
 
 #endif  // endif RCOMMAND_QREPORT_H_

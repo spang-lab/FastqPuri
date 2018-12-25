@@ -15,7 +15,9 @@ project(FastqPuri)
 set(VERSION "1.0")
 
 # Set the output folder where your program will be created
-set(PROJECT_R_DIR ${CMAKE_SOURCE_DIR}/R)
+
+set(INSTALL_DIR /usr/local/bin)
+set(INSTALL_R_DIR  /usr/local/share/FastqPuri/R)
 set(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR}/src)
 set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/bin)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
@@ -74,23 +76,22 @@ endif(RSCRIPT_EXEC AND HAVE_PANDOC)
 set(READ_MAXLEN 400 CACHE STRING "Illumina maximum read length")
 message("-- Setting Illumina maximum read length: READ_MAXLEN ${READ_MAXLEN}")
 
-set(RMD_QUALITY_REPORT ${PROJECT_R_DIR}/quality_report.Rmd CACHE STRING 
+set(RMD_QUALITY_REPORT ${INSTALL_R_DIR}/quality_report.Rmd CACHE STRING 
    "Rmd quality report file")
 message("-- Setting Rmd quality report file: ${RMD_QUALITY_REPORT}")
 
-set(RMD_SUMMARY_REPORT ${PROJECT_R_DIR}/summary_report.Rmd CACHE STRING 
+set(RMD_SUMMARY_REPORT ${INSTALL_R_DIR}/summary_report.Rmd CACHE STRING 
    "Rmd summary report file")
 message("-- Setting Rmd summary report file: ${RMD_SUMMARY_REPORT}")
 
-set(RMD_SUMMARY_FILTER_REPORT ${PROJECT_R_DIR}/summary_filter_report.Rmd 
+set(RMD_SUMMARY_FILTER_REPORT ${INSTALL_R_DIR}/summary_filter_report.Rmd 
    CACHE STRING  "Rmd summary filter report file")
 message("-- Setting Rmd summary filter report file: ${RMD_SUMMARY_FILTER_REPORT}")
 
-set(RMD_SUMMARY_FILTER_REPORTDS ${PROJECT_R_DIR}/summary_filter_reportDS.Rmd 
+set(RMD_SUMMARY_FILTER_REPORTDS ${INSTALL_R_DIR}/summary_filter_reportDS.Rmd 
    CACHE STRING  "Rmd summary filter report file for DS data")
 message("-- Setting Rmd summary filter report file for DS data: ${RMD_SUMMARY_FILTER_REPORTDS}")
 #MISSING SETTING MEMORY ROOF!!! 
-
 
 
 #---------------------------------------------------------------
@@ -104,7 +105,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 
 
 # Set compiler flags
-set(CMAKE_C_FLAGS  "-Wall -Wextra -O3 -march=native -std=c11") 
+set(CMAKE_C_FLAGS  "-Wall -Wextra -O3 -march=native -std=c11 -D_DEFAULT_SOURCE") 
 message("-- Setting compiler flags: ${CMAKE_C_FLAGS}")
 
 # Set linker flags
@@ -117,6 +118,7 @@ include_directories("${CMAKE_SOURCE_DIR}/include" "${CMAKE_SOURCE_DIR}")
 
 # Add executables 
 add_executable(Qreport ${PROJECT_SOURCE_DIR}/Qreport.c 
+            ${PROJECT_SOURCE_DIR}/copy_file.c
             ${PROJECT_SOURCE_DIR}/fopen_gen.c
             ${PROJECT_SOURCE_DIR}/fq_read.c
             ${PROJECT_SOURCE_DIR}/init_Qreport.c
@@ -126,6 +128,7 @@ add_executable(Qreport ${PROJECT_SOURCE_DIR}/Qreport.c
             ${PROJECT_SOURCE_DIR}/str_manip.c )
 
 add_executable(Sreport ${PROJECT_SOURCE_DIR}/Sreport.c
+            ${PROJECT_SOURCE_DIR}/copy_file.c
             ${PROJECT_SOURCE_DIR}/init_Sreport.c
             ${PROJECT_SOURCE_DIR}/str_manip.c 
             ${PROJECT_SOURCE_DIR}/Rcommand_Sreport.c)
@@ -192,4 +195,17 @@ if ( NOT HAVE_RPKG )
    message("               - Rscript ")
    message("               - pandoc")
    message("               - R packages: rmarkdown, knitr, pheatmap")
-endif() 
+endif()
+
+
+# Make install programs
+install(PROGRAMS bin/Qreport DESTINATION /usr/local/bin/)
+install(PROGRAMS bin/Sreport DESTINATION /usr/local/bin/)
+install(PROGRAMS bin/makeTree DESTINATION /usr/local/bin/)
+install(PROGRAMS bin/trimFilter DESTINATION /usr/local/bin/)
+install(PROGRAMS bin/trimFilterPE DESTINATION /usr/local/bin/)
+install(PROGRAMS bin/makeBloom DESTINATION /usr/local/bin/)
+
+# Make install R scripts 
+
+install(DIRECTORY R DESTINATION /usr/local/share/FastqPuri)

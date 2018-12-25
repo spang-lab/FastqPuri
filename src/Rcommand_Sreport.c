@@ -28,11 +28,13 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <libgen.h>
 #include <strings.h>
 #include <unistd.h>
 #include "tinydir.h"
 #include "Rcommand_Sreport.h"
 #include "init_Sreport.h"
+#include "copy_file.h"
 #include "defines.h"
 #include "config.h"
 
@@ -56,7 +58,7 @@ extern Iparam_Sreport par_SR; /**< input parameters Sreport*/
  *                   output_file = output_file)
  * @endcode
  * */
-char *command_Sreport(){
+char *command_Sreport(char ** new_dir_ptr){
   char *command = calloc(MAX_RCOMMAND, sizeof(char));
   command[0] = '\0';
   char cwd[1024];
@@ -82,7 +84,34 @@ char *command_Sreport(){
     fprintf(stderr, "Maybe something went wrong with Qreport trying to generate such files.\n");
   } else {
 #ifdef HAVE_RPKG
-    snprintf(command, MAX_RCOMMAND, "%s -e \" inputfolder = normalizePath('%s', \
+  printf("rmd summary %s\n", par_SR.Rmd_file);
+  char template[] = "/tmp/FastqPuri_XXXXXX";
+  char * new_dir = mkdtemp(template);
+  *new_dir_ptr = new_dir;
+  char old_dir_tmp[MAX_FILENAME];
+  strncpy(old_dir_tmp, par_SR.Rmd_file, MAX_FILENAME-1);
+  char *old_dir = dirname(old_dir_tmp);
+  char rmd_summary_report_name_tmp[MAX_FILENAME];
+  strncpy(rmd_summary_report_name_tmp, par_SR.Rmd_file, MAX_FILENAME-1);
+  char *rmd_summary_report_name = basename(rmd_summary_report_name_tmp);
+  char style_fname_old[MAX_FILENAME], utils_fname_old[MAX_FILENAME];
+  char style_fname_new[MAX_FILENAME], utils_fname_new[MAX_FILENAME];
+  char rmd_summary_report_new[MAX_FILENAME];
+ 
+
+  snprintf(rmd_summary_report_new, MAX_FILENAME, "%s/%s", new_dir, rmd_summary_report_name);  
+  snprintf(style_fname_old, MAX_FILENAME, "%s/style.css", old_dir);  
+  snprintf(style_fname_new, MAX_FILENAME, "%s/style.css", new_dir);  
+  snprintf(utils_fname_old, MAX_FILENAME, "%s/utils.R", old_dir);  
+  snprintf(utils_fname_new, MAX_FILENAME, "%s/utils.R", new_dir);  
+   
+  copy_file(par_SR.Rmd_file, rmd_summary_report_new);
+  copy_file(utils_fname_old, utils_fname_new);
+  copy_file(style_fname_old, style_fname_new);
+ 
+   
+  
+  snprintf(command, MAX_RCOMMAND, "%s -e \" inputfolder = normalizePath('%s', \
 mustWork = TRUE); output = '%s';\
 output_file = gsub('.*/', '', output);\
 path = gsub('[^/]+$', '', output);\
@@ -93,7 +122,7 @@ output_file = paste0('%s', '/', output_file); };\
 rmarkdown::render('%s', params = list(inputfolder = inputfolder, \
 version = '%s'), output_file = output_file)\"",
         RSCRIPT_EXEC, par_SR.inputfolder,
-        par_SR.outputfile, cwd, par_SR.Rmd_file, VERSION);
+        par_SR.outputfile, cwd, rmd_summary_report_new, VERSION);
 #endif
   }
   return command;

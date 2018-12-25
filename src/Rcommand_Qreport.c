@@ -29,8 +29,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <libgen.h>
 #include "Rcommand_Qreport.h"
 #include "init_Qreport.h"
+#include "copy_file.h"
 #include "defines.h"
 #include "config.h"
 
@@ -39,7 +41,7 @@ extern Iparam_Qreport par_QR; /**< input parameters Qreport*/
 /**
  * @brief returns Rscript command that generates the quality report in html
  * */
-char *command_Qreport() {
+char *command_Qreport(char ** new_dir_ptr) {
   char *command = calloc(MAX_RCOMMAND,sizeof(char));
   char cwd[1024];
   if (getcwd(cwd, sizeof(cwd)) != NULL)
@@ -47,6 +49,30 @@ char *command_Qreport() {
   else
       perror("getcwd() error");
 #ifdef HAVE_RPKG
+  
+  
+  char template[] = "/tmp/FastqPuri_XXXXXX";
+  char * new_dir = mkdtemp(template);
+  *new_dir_ptr = new_dir;
+  char old_dir_tmp[] = RMD_QUALITY_REPORT;
+  char *old_dir = dirname(old_dir_tmp);
+  char rmd_quality_report_name_tmp[] = RMD_QUALITY_REPORT;
+  char * rmd_quality_report_name = basename(rmd_quality_report_name_tmp);
+  char style_fname_old[MAX_FILENAME], utils_fname_old[MAX_FILENAME];
+  char style_fname_new[MAX_FILENAME], utils_fname_new[MAX_FILENAME];
+  char rmd_quality_report_new[MAX_FILENAME];
+ 
+ 
+  snprintf(rmd_quality_report_new, MAX_FILENAME, "%s/%s", new_dir, rmd_quality_report_name);  
+  snprintf(style_fname_old, MAX_FILENAME, "%s/style.css", old_dir);  
+  snprintf(style_fname_new, MAX_FILENAME, "%s/style.css", new_dir);  
+  snprintf(utils_fname_old, MAX_FILENAME, "%s/utils.R", old_dir);  
+  snprintf(utils_fname_new, MAX_FILENAME, "%s/utils.R", new_dir);  
+   
+  copy_file(RMD_QUALITY_REPORT, rmd_quality_report_new);
+  copy_file(utils_fname_old, utils_fname_new);
+  copy_file(style_fname_old, style_fname_new);
+
   snprintf(command, MAX_RCOMMAND,"%s -e \" inputfile = normalizePath('%s', \
  mustWork = TRUE) ; output = '%s';\
 output_file = gsub('.*/', '', output);\
@@ -58,7 +84,7 @@ output_file = paste0('%s', '/', output_file); };\
 rmarkdown::render('%s', params = list(inputfile = inputfile, filter=%d, \
  version = '%s'), output_file = output_file)\"", RSCRIPT_EXEC,
        par_QR.outputfilebin, par_QR.outputfilehtml, cwd,
-       RMD_QUALITY_REPORT, par_QR.filter, VERSION);
+       rmd_quality_report_new, par_QR.filter, VERSION);
 #endif
   return command;
 }
