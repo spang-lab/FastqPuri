@@ -24,9 +24,9 @@ library(pheatmap)
 color <- colorRampPalette(c("white", "red"))( 50 )
 color2 <- colorRampPalette(c("white", "blue"))( 50 )
 files <- list.files(params$inputfolder,pattern="bin$")
-Ns <- length(files)
 fsize <- sapply(files, function(f) file.info(paste0(params$inputfolder,"/",f))$size)
 files <- files[fsize > 100]
+Ns <- length(files)
 nombres <- gsub('\\.bin$', '', files)
 table <- matrix(nrow = Ns, ncol = 4,
                dimnames = list(nombres,c("# reads","# tiles", 
