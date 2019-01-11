@@ -10,7 +10,7 @@ html visualization of the data.
 Usage `C` executable (in folder `bin`): 
 
 ```
-Usage: ./Qreport -i <INPUT_FILE.fq> -l <READ_LENGTH>
+Usage: Qreport -i <INPUT_FILE.fq> -l <READ_LENGTH>
        -o <OUTPUT_FILE> [-t <NUMBER_OF_TILES>] [-q <MINQ>]
         [-n <#_QUALITY_VALUES>] [-f <FILTER_STATUS>]
 	[-0 <ZEROQ>] [-Q <quality-values>]
@@ -85,7 +85,7 @@ example, type,
     $ cd example/Qreport_Sreport
     $ mkdir run_test
     $ cd run_test
-    $ ../../../bin/QReport -i ../test.fq.bz2 -l 51 -o my_test_output
+    $ QReport -i ../test.fq.bz2 -l 51 -o my_test_output
 ```
  and compare it with the provided run example, as specified in the README
  file under `./example/QReport_Sreport`.

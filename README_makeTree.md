@@ -12,7 +12,7 @@ sequences in the fasta file exceeds 10 MB.
 Usage `C` executable (in folder `bin`): 
 
 ```
-Usage: ./makeTree -f|--fasta <FASTA_INPUT> -l|--depth <DEPTH> 
+Usage: makeTree -f|--fasta <FASTA_INPUT> -l|--depth <DEPTH> 
 -o, --output <OUTPUT_FILE> Reads a *fa file, constructs a tree of 
 depth DEPTH and saves it compressed in OUTPUT_FILE.
 Options: 
@@ -29,9 +29,6 @@ Options:
 Compressed file containing the tree structure. For further details,
 read the `Doxygen` documentation of the file `tree.c`, function `save_tree`.
 
-## Example 
- 
-TODOTODOTODOTODOTODO (It was tested somewhere!!)
 
 ## Contributors
 

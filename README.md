@@ -30,6 +30,7 @@ but will skip creating html reports if they are not available.
 $ cmake -H. -Bbuild/ [-DRSCRIPT=/path/to/my/R/bin/Rscript ... ]
 $ cd build 
 $ make 
+$ sudo make install  
 ```
 
 When running cmake, there are some variables you can set 
@@ -40,10 +41,9 @@ using the option -D followed by the variable name. This variables are,
 - `PANDOC`: `pandoc` executable (default `pandoc`),
 - `RSCRIPT`:  `Rscript` executable (default `Rscript`), 
 - `READ_MAXLEN`: Maximum Illumina read length (default 400),
-- `RMD_QUALITY_REPORT`: path to `quality_report.Rmd`,
-- `RMD_SUMMARY_REPORT`: path to `summary_report.Rmd`,
 
-The executables will be created in the folder `bin`. 
+The executables will be created in the folder `bin` and installed in `/usr/local/bin`. 
+`R` scripts will be installed in `usr/local/share/FastqPuri/R`. 
 
 **WARNING:** do not move the executables that depend on `R` scripts, 
 anywhere else, unless you also move the corresponding `R` scripts respecting
@@ -82,7 +82,9 @@ A Doxygen documentation of the code is available:
 
 ## Contributors
 
-Paula Pérez Rubio 
+Paula Pérez Rubio
+Claudio Lottaz
+Julia Engelmann 
 
 ## License
 

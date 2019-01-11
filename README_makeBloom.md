@@ -11,7 +11,7 @@ and saves it to a file.
 Usage `C` executable (in folder `bin`): 
 
 ```
-Usage: ./makeBloom --fasta <FASTA_INPUT> --output <FILTERFILE> --kmersize [KMERSIZE] 
+Usage: makeBloom --fasta <FASTA_INPUT> --output <FILTERFILE> --kmersize [KMERSIZE] 
  (--fal_pos_rate [p] | --hashNum [HASHNUM] | --bfsizeBits [SIZEBITS])
 Options: 
  -v, --version      Prints package version.

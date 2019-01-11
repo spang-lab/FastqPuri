@@ -22,7 +22,7 @@ Creates two types of summary reports in html format
 Usage `C` executable (in folder `bin`):
 
 ```
-Usage: ./Sreport -i <INPUT_FOLDER> -t <Q|T|P> -o <OUTPUT_FILE>
+Usage: Sreport -i <INPUT_FOLDER> -t <Q|T|P> -o <OUTPUT_FILE>
 Uses all *bin files found in a folder (output of Qreport|trimFilter)
 and generates a summary report in html format (of Qreport|trimFilter).
 Options:
@@ -63,7 +63,7 @@ example, type,
 
 ```
     $ cd example/Qreport_Sreport/run_test/
-    $ ../../../bin/SReport -i ./ -t Q -o my_test_summary_report
+    $ SReport -i ./ -t Q -o my_test_summary_report
 ```
  and compare it with the provided run example, as specified in the README
  file under `./examples/QReport_Sreport`
@@ -79,7 +79,7 @@ In folder `.examples/trimFilter_Sreport/bin_files`, 30 fake
 It can be reproduced if you run:
 
 ```
-$ ../../bin/Sreport -i .bin_files/ -o ./bin_files/filter_Sreport_new -t F
+$ Sreport -i .bin_files/ -o ./bin_files/filter_Sreport_new -t F
 ```
 
 ###  Option `-t P` 
@@ -91,7 +91,7 @@ In folder `.examples/trimFilterPE_Sreport/bin_files`, 30 fake
 It can be reproduced if you run:
 
 ```
-$ ../../bin/Sreport -i .bin_files/ -o ./bin_files/DS_Sreport_new -t P
+$ Sreport -i .bin_files/ -o ./bin_files/DS_Sreport_new -t P
 ```
 
 ## Contributors
