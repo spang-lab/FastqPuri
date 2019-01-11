@@ -11,6 +11,9 @@ RUN cd /home && git clone https://github.com/jengelmann/FastqPuri
 RUN cd /home/FastqPuri && cmake -H. -Bbuild/ -DRSCRIPT=/usr/bin/Rscript
 RUN cd /home/FastqPuri/build && make && make install
 
-# Suggestions for docker calls:
-# ~> docker build -t fastqpuri:v1.0.0 .
-# ~> docker run -v $PWD:/tmp -it fastqpuri:v1.0.0 bash
+# Start command
+WORKDIR /tmp
+CMD ["bash"]
+
+# Suggestion for a docker call from the working directory:
+# ~> docker run -v $PWD:/tmp -it fastqpuri
