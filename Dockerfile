@@ -15,5 +15,6 @@ RUN cd /home/FastqPuri/build && make && make install
 WORKDIR /tmp
 CMD ["bash"]
 
-# Suggestion for a docker call from the working directory:
-# ~> docker run -v $PWD:/tmp -it fastqpuri
+# Suggestions for a docker usage from the working directory:
+# Interactive: ~> docker run -v $PWD:/tmp -it fastqpuri
+# As pipeline: ~> docker run -v $PWD:/tmp fastqpuri ./pipeline.sh

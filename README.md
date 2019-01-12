@@ -80,6 +80,37 @@ A Doxygen documentation of the code is available:
 - `html` version under the folder `html` (open `index.html` with a browser).
 - `pdf` version: `latex/refman.pdf`
 
+## Use a docker container for FastqPuri
+
+The file Dockerfile documents the exact linux installation we used for
+testing. If you have a docker installation ready on your machine, you
+may want to use a docker container for easy installation and
+capsulated usage of FastqPuri. After cloning this project from github
+and change to its main directory, you may install a docker container
+as follows:
+
+```
+$ docker build -t fastqpuri .
+```
+
+This will create a container based on the debian linux distribution
+covering all dependencies including R and pandoc. You can use this
+installed docker container either interactively:
+
+```
+$ docker run -v $PWD:/tmp -it fastqpuri
+```
+
+or by running a pipeline implemented in an executable bash script:
+
+```
+$ docker run -v $PWD:/tmp fastqpuri ./pipeline.sh
+```
+
+Note that this intends to generated the results in the docker
+directory /tmp and store them also after closing the docker in the
+current local directory.
+
 ## Contributors
 
 Paula Pérez Rubio
