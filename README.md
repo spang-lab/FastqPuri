@@ -118,6 +118,27 @@ Note that this call generates results in the docker container
 directory /tmp and stores them also after closing the docker container
 in the current local directory.
 
+## Use a singularity container for FastqPuri
+
+Alternativly, we also provide a singularity container deduced from the
+docker implementation for container usage. If you have singularity
+installed on your machine, you can call a singularity container as
+follows:
+
+```
+$ singularity run --bind .:/tmp shub://clottaz/fastqpuri
+```
+
+The parameter suggested here for `--bind` mounts the same directories
+as applied in our suggestions for docker. Without additional script
+provided as parameter, this call opens a shell in the container,
+similar to a call to `singularity shell..`. In order to execute a
+script from the current directory, call singularity like so:
+
+```
+$ singularity run --bind .:/tmp shub://clottaz/fastqpuri /tmp/pipeline.sh
+```
+
 ## Contributors
 
 Paula Pérez Rubio
