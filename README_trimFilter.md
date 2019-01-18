@@ -129,7 +129,8 @@ Technical sequences within the reads are detected if the option
 adapter(s) sequence(s) are read from the fasta file, and the 
 search is done using an 'seed and extend' approach. It starts by looking for
 16-nucleotides long seeds, for which a user defined number of mismatches is
-allowed (`mismatches`). If found, a score is computed. If the score is larger 
+allowed (`mismatches`). We suggest to allow 1 or 2 mismatches in the seed. 
+If a seed match is found, a score is computed. If the score is larger 
 than the user defined threshold (`score`) and the number of matched 
 nucleotides exceeds 12, then the read is trimmed if the remaining part is 
 longer than `minL` (user defined) and discarded otherwise. If no 
@@ -187,7 +188,10 @@ The score is calculated as follows:
  *  - matching bases: `score += log_10(4)`
  *  - unmatching bases: `score -= Q/10`, where Q is the quality score.
 
-
+For example, a perfect match of 12 bases will result in a score of 7.22, 
+and 24 perfectly matching bases will score 14.44. Two mismatches with 
+quality scores of 30 will reduce the score by 0.6, such that we recommend 
+scores ranging from 5 (very sensitive) to 15 (rather strict). 
 
 #### Impurities/biological contaminations
 
