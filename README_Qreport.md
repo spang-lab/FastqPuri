@@ -90,6 +90,8 @@ example, type,
  and compare it with the provided run example, as specified in the README
  file under `./example/QReport_Sreport`.
 
+**NOTE** If you do not know the number of tiles for your dataset and the default 
+of 96 is too low, set -t to a large number, e.g. 1000.
   
 ## Contributors
 
