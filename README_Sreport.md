@@ -68,7 +68,11 @@ example, type,
  and compare it with the provided run example, as specified in the README
  file under `./examples/QReport_Sreport`
 
-**NOTE:** `Sreport` has to be run AFTER the `Qreport` example
+**NOTE:** `Sreport` has to be run AFTER the `Qreport` example.
+       `Sreport` can only process (summarize) results of `Qreport` which were
+       generated with the same Quality thresholds. If you want to compare 
+       different sets of Quality threholds, save the output(s) of `Qreport` in 
+       different folders and run `Sreport` in each of these folders.
 
 ###  Option `-t F`
 
@@ -93,6 +97,12 @@ It can be reproduced if you run:
 ```
 $ Sreport -i .bin_files/ -o ./bin_files/DS_Sreport_new -t P
 ```
+
+**NOTE:** `Sreport` has to be run AFTER the `Qreport` example.
+       `Sreport` can only process (summarize) results of `Qreport` which were
+       generated with the same Quality thresholds. If you want to compare 
+       different sets of Quality threholds, save the output(s) of `Qreport` in 
+       different folders and run `Sreport` in each of these folders.
 
 ## Contributors
 
