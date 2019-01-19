@@ -122,21 +122,21 @@ in the current local directory.
 
 Alternativly, we also provide a singularity container deduced from the
 docker implementation for container usage. If you have singularity
-installed on your machine, you can call a singularity container as
-follows:
+installed on your machine, you can call a singularity container for
+FastqPuri as follows:
 
 ```
-$ singularity run --bind .:/tmp shub://clottaz/fastqpuri
+$ singularity run --bind .:/tmp shub://jengelmann/FastqPuri
 ```
 
 The parameter suggested here for `--bind` mounts the same directories
-as applied in our suggestions for docker. Without additional script
+as applied in our suggestions for docker. Without an additional script
 provided as parameter, this call opens a shell in the container,
 similar to a call to `singularity shell..`. In order to execute a
 script from the current directory, call singularity like so:
 
 ```
-$ singularity run --bind .:/tmp shub://clottaz/fastqpuri /tmp/pipeline.sh
+$ singularity run --bind .:/tmp shub://jengelmann/FastqPuri /tmp/pipeline.sh
 ```
 
 ## Contributors
