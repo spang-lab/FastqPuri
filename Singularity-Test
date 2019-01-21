@@ -1,6 +1,5 @@
-Bootstrap: shub
-
-From: singularityhub/debian
+Bootstrap:docker
+From:debian:stretch
 
 %runscript
 
