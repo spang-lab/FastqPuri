@@ -12,12 +12,14 @@ set(CMAKE_C_COMPILER "gcc" CACHE STRING "default C compiler")
 project(FastqPuri)
 
 # Project's version
-set(VERSION "1.0")
+set(VERSION "1.0.1")
+
+message("-- Check the prefix for root installation: ${CMAKE_INSTALL_PREFIX}")
 
 # Set the output folder where your program will be created
 
-set(INSTALL_DIR /usr/local/bin)
-set(INSTALL_R_DIR  /usr/local/share/FastqPuri/R)
+set(INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/bin)
+set(INSTALL_R_DIR  ${CMAKE_INSTALL_PREFIX}/share/FastqPuri/R)
 set(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR}/src)
 set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/bin)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
@@ -40,7 +42,7 @@ message("-- Check for pandoc: ${HAVE_PANDOC}")
 
 # R
 set(RSCRIPT "Rscript" CACHE STRING "Some user-specified option")
-find_program(RSCRIPT_EXEC ${RSCRIPT})
+find_program(RSCRIPT_EXEC NAMES ${RSCRIPT})
 message("-- Check for Rscript: ${RSCRIPT_EXEC}")
 
 #gunzip 
@@ -199,13 +201,13 @@ endif()
 
 
 # Make install programs
-install(PROGRAMS bin/Qreport DESTINATION /usr/local/bin/)
-install(PROGRAMS bin/Sreport DESTINATION /usr/local/bin/)
-install(PROGRAMS bin/makeTree DESTINATION /usr/local/bin/)
-install(PROGRAMS bin/trimFilter DESTINATION /usr/local/bin/)
-install(PROGRAMS bin/trimFilterPE DESTINATION /usr/local/bin/)
-install(PROGRAMS bin/makeBloom DESTINATION /usr/local/bin/)
+install(PROGRAMS bin/Qreport DESTINATION ${INSTALL_DIR}/)
+install(PROGRAMS bin/Sreport DESTINATION ${INSTALL_DIR}/)
+install(PROGRAMS bin/makeTree DESTINATION ${INSTALL_DIR}/)
+install(PROGRAMS bin/trimFilter DESTINATION ${INSTALL_DIR}/)
+install(PROGRAMS bin/trimFilterPE DESTINATION ${INSTALL_DIR}/)
+install(PROGRAMS bin/makeBloom DESTINATION ${INSTALL_DIR}/)
 
 # Make install R scripts 
 
-install(DIRECTORY R DESTINATION /usr/local/share/FastqPuri)
+install(DIRECTORY R DESTINATION ${INSTALL_R_DIR}/)

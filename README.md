@@ -139,6 +139,21 @@ script from the current directory, call singularity like so:
 $ singularity run --bind .:/tmp shub://jengelmann/FastqPuri /tmp/pipeline.sh
 ```
 
+## Install via bioconda
+
+Bioconda is a channel for the conda package manager specializing in
+bioinformatics software. Have a look at the reference:
+
+* Grüning, Björn, Ryan Dale, Andreas Sjödin, Brad A. Chapman, Jillian
+  Rowe, Christopher H. Tomkins-Tinch, Renan Valieris, the Bioconda
+  Team, and Johannes Köster. 2018. “Bioconda: Sustainable and
+  Comprehensive Software Distribution for the Life Sciences”. Nature
+  Methods, 2018.
+
+To find out how tu use bioconda, see https://bioconda.github.io.
+
+
+
 ## Contributors
 
 Paula Pérez Rubio
