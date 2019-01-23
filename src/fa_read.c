@@ -212,7 +212,7 @@ static uint64_t sweep_fa(char *filename, Fa_data *ptr_fa) {
 int read_fasta(char *filename, Fa_data * ptr_fa) {
   uint64_t sz = sweep_fa(filename, ptr_fa);
   init_entries(ptr_fa);
-  fprintf(stderr, "Reading fasta file: %s.\n- Parameters: \n", filename);
+  fprintf(stderr, "- Reading fasta file: %s.\n- Parameters: \n", filename);
   fprintf(stderr, "- Allocating memory to store the contents of %s.\n",
           filename);
   mem_usageMB();
@@ -309,7 +309,7 @@ uint64_t nkmers(Fa_data *ptr_fa, int kmersize) {
  * and counted, so that we can
  * */
 void free_fasta(Fa_data *ptr_fa) {
-  fprintf(stderr, "Freeing Fa_data structure\n");
+  fprintf(stderr, "- Freeing Fa_data structure:");
   uint64_t mem_freed = 0;
   int i;
   for (i = 0; i < ptr_fa -> nentries; i++) {

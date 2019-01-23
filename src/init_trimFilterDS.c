@@ -317,7 +317,7 @@ void getarg_trimFilterDS(int argc, char **argv) {
         break;
     }
   }
-  fprintf(stderr, "Starting trimFilter.\n");
+
   // Checking the input
   // Ifq is a mandatory argument
   if (par_TF.Ifq == NULL || par_TF.Ifq2 == NULL) {

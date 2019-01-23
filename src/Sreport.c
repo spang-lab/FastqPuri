@@ -54,7 +54,7 @@ int main(int argc, char *argv[]) {
 
   // Get arguments
   getarg_Sreport(argc, argv);
-  fprintf(stderr, "Starting program at: %s", asctime(timeinfo));
+  fprintf(stderr, "Starting Sreport at: %s", asctime(timeinfo));
   fprintf(stderr, "- Input folder: %s\n", par_SR.inputfolder);
   fprintf(stderr, "- Output file: %s\n", par_SR.outputfile);
 #ifdef HAVE_RPKG
@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
   char * command = command_Sreport(&new_dir);
   int status;
   if (command[0] != '\0') {
-    fprintf(stderr, "Running command: %s \n", command);
+    fprintf(stderr, "- Running command: %s \n", command);
     if ((status = system(command)) != 0) {
         fprintf(stderr, "Something went wrong when executing R script.\n");
         fprintf(stderr, "Most probably, a html file will not be generated.\n");

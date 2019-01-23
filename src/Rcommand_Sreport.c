@@ -63,7 +63,7 @@ char *command_Sreport(char ** new_dir_ptr){
   command[0] = '\0';
   char cwd[1024];
   if (getcwd(cwd, sizeof(cwd)) != NULL)
-      fprintf(stdout, "Current working dir: %s\n", cwd);
+      fprintf(stdout, "- Current working dir: %s\n", cwd);
   else
       perror("getcwd() error");
   tinydir_file file;
@@ -84,7 +84,7 @@ char *command_Sreport(char ** new_dir_ptr){
     fprintf(stderr, "Maybe something went wrong with Qreport trying to generate such files.\n");
   } else {
 #ifdef HAVE_RPKG
-  printf("rmd summary %s\n", par_SR.Rmd_file);
+  printf("- Rmd summary %s\n", par_SR.Rmd_file);
   char template[] = "/tmp/FastqPuri_XXXXXX";
   char * new_dir = mkdtemp(template);
   *new_dir_ptr = new_dir;

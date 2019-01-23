@@ -45,19 +45,19 @@ char *command_Qreport(char ** new_dir_ptr) {
   char *command = calloc(MAX_RCOMMAND,sizeof(char));
   char cwd[1024];
   if (getcwd(cwd, sizeof(cwd)) != NULL)
-      fprintf(stdout, "Current working dir: %s\n", cwd);
+      fprintf(stdout, "- Current working dir: %s\n", cwd);
   else
       perror("getcwd() error");
 #ifdef HAVE_RPKG
   
   
   char template[] = "/tmp/FastqPuri_XXXXXX";
-  char * new_dir = mkdtemp(template);
+  char *new_dir = mkdtemp(template);
   *new_dir_ptr = new_dir;
   char old_dir_tmp[] = RMD_QUALITY_REPORT;
   char *old_dir = dirname(old_dir_tmp);
   char rmd_quality_report_name_tmp[] = RMD_QUALITY_REPORT;
-  char * rmd_quality_report_name = basename(rmd_quality_report_name_tmp);
+  char *rmd_quality_report_name = basename(rmd_quality_report_name_tmp);
   char style_fname_old[MAX_FILENAME], utils_fname_old[MAX_FILENAME];
   char style_fname_new[MAX_FILENAME], utils_fname_new[MAX_FILENAME];
   char rmd_quality_report_new[MAX_FILENAME];

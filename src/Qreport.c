@@ -63,15 +63,15 @@ int main(int argc, char *argv[]) {
 
   // Get arguments
   getarg_Qreport(argc, argv);
-  fprintf(stderr, "Starting program at: %s", asctime(timeinfo));
+  fprintf(stderr, "Starting Qreport at: %s", asctime(timeinfo));
   fprintf(stderr, "- Input file: %s\n", par_QR.inputfile);
   fprintf(stderr, "- Read length: %d\n", par_QR.read_len);
   fprintf(stderr, "- Number of tiles: %d\n", par_QR.ntiles);
   fprintf(stderr, "- Min quality: %d\n", par_QR.minQ);
   fprintf(stderr, "- Qualities for properties plot: %s\n", par_QR.lowQprops);
-  fprintf(stderr, "- Output bin file : %s\n", par_QR.outputfilebin);
-  fprintf(stderr, "- Output html file : %s\n", par_QR.outputfilehtml);
-  fprintf(stderr, "- Output info file: %s\n", par_QR.outputfileinfo);
+  fprintf(stderr, "- Output bin-file : %s\n", par_QR.outputfilebin);
+  fprintf(stderr, "- Output html-file : %s\n", par_QR.outputfilehtml);
+  fprintf(stderr, "- Output info-file: %s\n", par_QR.outputfileinfo);
   fprintf(stderr, "- Reading a filtered file? %s.\n", par_QR.filter?"yes":"no");
   if (par_QR.filter)
      fprintf(stderr, "- Data filtered with trimFilter? %s.\n", (par_QR.filter-1)?"no":"yes");
@@ -137,11 +137,11 @@ int main(int argc, char *argv[]) {
   //   print_info(res);
   //
 
-  fprintf(stderr, "Creating html output in file: %s\n", par_QR.outputfilehtml);
+  fprintf(stderr, "- Creating html output in file: %s\n", par_QR.outputfilehtml);
 #ifdef HAVE_RPKG
   char *new_dir;
-  char * command = command_Qreport(&new_dir);
-  fprintf(stderr, "Running command: %s \n", command);
+  char *command = command_Qreport(&new_dir);
+  fprintf(stderr, "- Running command: %s \n", command);
   int status;
   if ((status = system(command)) != 0) {
       fprintf(stderr, "Something went wrong when executing R script.\n");

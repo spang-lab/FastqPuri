@@ -125,7 +125,7 @@ int main(int argc, char *argv[]) {
   start = clock();
   time(&rawtime);
   timeinfo = localtime(&rawtime);
-  fprintf(stderr , "Starting program at: %s", asctime(timeinfo));
+  fprintf(stderr , "Starting trimFilterPE at: %s", asctime(timeinfo));
 
   // BODY of the function here!
   // Initializing stat_TFDS.
@@ -157,7 +157,7 @@ int main(int argc, char *argv[]) {
     init_map();
     free_fasta(ad1);
     free_fasta(ad2);
-    fprintf(stderr, "Adapters removal is activated!\n");
+    fprintf(stderr, "- Adapters removal is activated!\n");
   }  // endif par_TF.is adapter
   Tree *ptr_tree = NULL;
   Bfilter *ptr_bf = NULL;
@@ -433,7 +433,7 @@ int main(int argc, char *argv[]) {
           stat_TFDS.trimmed2[NNNN]);
   }
   // Write summary info file
-  fprintf(stderr, "Writing summary data to %s\n", summary);
+  fprintf(stderr, "- Writing summary data to %s\n", summary);
   write_summary_TFDS(stat_TFDS, summary);
 
   free(seq1);

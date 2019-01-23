@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
 
   // Get arguments
   getarg_makeBloom(argc, argv);
-  fprintf(stderr, "Starting program at: %s", asctime(timeinfo));
+  fprintf(stderr, "Starting makeBloom at: %s", asctime(timeinfo));
   fprintf(stderr, "makeBloom exec: constructing and storing a Bloom filter.\n");
   fprintf(stderr, "- Input file: %s\n", par_MB.inputfasta);
   fprintf(stderr, "- kmersize: %d\n", par_MB.kmersize);

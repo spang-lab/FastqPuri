@@ -31,6 +31,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <getopt.h>
+#include <time.h>
 #include "init_trimFilter.h"
 #include "str_manip.h"
 #include "config.h"
@@ -299,7 +300,7 @@ void getarg_trimFilter(int argc, char **argv) {
         break;
     }
   }
-  fprintf(stderr, "Starting trimFilter.\n");
+
   // Checking the input
   // Ifq is a mandatory argument
   if (par_TF.Ifq == NULL) {
