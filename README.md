@@ -101,7 +101,7 @@ covering all dependencies including R and pandoc. Alternativly, you
 can also pull a pre-built image from the docker hub as follows:
 
 ```
-$ docker pull clottaz/fastqpuri:1.0
+$ docker pull jengelmann/fastqpuri
 ```
 
 As soon as such a container is installed, you can use it either
@@ -118,8 +118,8 @@ $ docker run -v $PWD:/tmp fastqpuri ./pipeline.sh
 ```
 
 Note that this call generates results in the docker container
-directory /tmp and stores them also after closing the docker container
-in the current local directory.
+directory /tmp but also keeps them after closing the docker container
+locally where the container was started.
 
 ## Use a singularity container for FastqPuri
 
@@ -136,13 +136,13 @@ The parameter suggested here for `--bind` mounts the same directories
 as applied in our suggestions for docker. Without an additional script
 provided as parameter, this call opens a shell in the container,
 similar to a call to `singularity shell..`. In order to execute a
-script from the current directory, call singularity like so:
+script from the current directory, call singularity as follows:
 
 ```
 $ singularity run --bind .:/tmp shub://jengelmann/FastqPuri /tmp/pipeline.sh
 ```
 
-## Install via bioconda
+## Installation via bioconda
 
 Bioconda is a channel for the conda package manager specializing in
 bioinformatics software. Have a look at the reference:
@@ -153,9 +153,30 @@ bioinformatics software. Have a look at the reference:
   Comprehensive Software Distribution for the Life Sciences”. Nature
   Methods, 2018.
 
-To find out how tu use bioconda, see https://bioconda.github.io.
+To find out how tu use bioconda, see https://bioconda.github.io. For
+installing FastqPuri in a bioconda environment, you have to install
+either `miniconda` or `anaconda` and register channels as follows:
 
+```
+$ conda config --add channels defaults
+$ conda config --add channels bioconda
+$ conda config --add channels conda-forge
+```
 
+Then you can install `fastqpuri`:
+
+```
+$ conda install fastqpuri
+```
+
+Actually, you may also want to use a specific environment for the
+sequencing quality control:
+
+```
+$ conda create -n qc fastqpuri
+```
+
+This call installs `FastqPuri` directly in a separate environment.
 
 ## Contributors
 
