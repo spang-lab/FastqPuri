@@ -12,7 +12,7 @@ set(CMAKE_C_COMPILER "gcc" CACHE STRING "default C compiler")
 project(FastqPuri)
 
 # Project's version
-set(VERSION "1.0.1")
+set(VERSION "1.0.2")
 
 message("-- Check the prefix for root installation: ${CMAKE_INSTALL_PREFIX}")
 
@@ -94,7 +94,6 @@ set(RMD_SUMMARY_FILTER_REPORTDS ${INSTALL_R_DIR}/summary_filter_reportDS.Rmd
    CACHE STRING  "Rmd summary filter report file for DS data")
 message("-- Setting Rmd summary filter report file for DS data: ${RMD_SUMMARY_FILTER_REPORTDS}")
 #MISSING SETTING MEMORY ROOF!!! 
-
 
 #---------------------------------------------------------------
 # Compiler flags, linker flags and rules
@@ -209,5 +208,4 @@ install(PROGRAMS bin/trimFilterPE DESTINATION ${INSTALL_DIR}/)
 install(PROGRAMS bin/makeBloom DESTINATION ${INSTALL_DIR}/)
 
 # Make install R scripts 
-
-install(DIRECTORY R DESTINATION ${INSTALL_R_DIR}/)
+install(DIRECTORY R DESTINATION ${INSTALL_R_DIR}/..)
