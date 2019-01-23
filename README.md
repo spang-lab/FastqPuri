@@ -27,7 +27,7 @@ your system supplies the following dependencies for FastqPuri.
 but will skip creating html reports if they are not available.
 
 ```
-$ cmake -H. -Bbuild/ [-DRSCRIPT=/path/to/my/R/bin/Rscript ... ]
+$ cmake -H. -Bbuild/ [-DRSCRIPT=/path/to/my/R/bin/Rscript] [-DCMAKE_INSTALL_PREFIXT=/path/to/my/root] ... 
 $ cd build 
 $ make 
 $ sudo make install  
@@ -38,9 +38,12 @@ using the option -D followed by the variable name. This variables are,
 
 - `CMAKE_C_COMPILER`: `C` compiler (default `gcc`)
 - `CMAKE_C_FLAGS`: compiler flags (default `-Wall -O3 -march=native -std=c11`).
+- `CMAKE_INSTALL_PREFIX`: root path for `make install`, e.g. to generate a conda
+  environment (default /),
 - `PANDOC`: `pandoc` executable (default `pandoc`),
-- `RSCRIPT`:  `Rscript` executable (default `Rscript`), 
-- `READ_MAXLEN`: Maximum Illumina read length (default 400),
+- `RSCRIPT`: `Rscript` executable (default `Rscript`),
+- `READ_MAXLEN`: Maximum Illumina read length
+- (default 400),
 
 The executables will be created in the folder `bin` and installed in `/usr/local/bin`. 
 `R` scripts will be installed in `usr/local/share/FastqPuri/R`. 
