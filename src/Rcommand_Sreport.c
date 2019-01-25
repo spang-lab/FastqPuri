@@ -91,7 +91,6 @@ char *command_Sreport(char ** new_dir_ptr){
   char old_dir_tmp[MAX_FILENAME];
   strncpy(old_dir_tmp, par_SR.Rmd_file, MAX_FILENAME-1);
   char *old_dir = dirname(old_dir_tmp);
-  fprintf(stderr, "The old dir is %s\n", old_dir);
   char rmd_summary_report_name_tmp[MAX_FILENAME];
   strncpy(rmd_summary_report_name_tmp, par_SR.Rmd_file, MAX_FILENAME-1);
   char *rmd_summary_report_name = basename(rmd_summary_report_name_tmp);
