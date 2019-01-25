@@ -88,7 +88,7 @@ int main(int argc, char *argv[]) {
   init_info(res);
 
   // Read the fastq file
-  while ( (newlen = fread(buffer+offset, 1, B_LEN-offset, f) ) > 0 ) {
+  while ( (newlen = fread(buffer+offset, 1, B_LEN-offset, f) ) > 0) {
     newlen += offset;
     buffer[newlen++] =  '\0';
     for (j = 0 ; buffer[j] != '\0' ; j++) {
