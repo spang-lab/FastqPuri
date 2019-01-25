@@ -39,6 +39,7 @@ typedef struct _iparam_Sreport{
   char *inputfolder; /**< input folder */
   char outputfile[MAX_FILENAME]; /**< html outputfile path */
   char *Rmd_file; /**< Rmd file path */ 
+  char pBuf[MAX_FILENAME]; /**< html outputfile path */
 } Iparam_Sreport; 
 
 void printHelpDialog_Sreport();

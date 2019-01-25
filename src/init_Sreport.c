@@ -30,6 +30,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include "str_manip.h"
 #include "init_Sreport.h"
 #include "config.h"
@@ -128,6 +129,21 @@ void getarg_Sreport(int argc, char **argv) {
      fprintf(stderr, "Exiting program.\n");
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
+  } else {
+    // find the calling program
+    char szTmp[32];
+    size_t len = sizeof(par_SR.pBuf);
+    sprintf(szTmp, "/proc/%d/exe", getpid());
+    int bytes = readlink(szTmp, par_SR.pBuf, len);
+    if (bytes > len-1) bytes = len-1;
+    if(bytes >= 0) par_SR.pBuf[bytes - 8] = '\0';
+    if (strcmp(par_SR.pBuf, INSTALL_DIR) != 0) {
+      par_SR.pBuf[bytes - 12] = '\0';
+      strcat(par_SR.pBuf, par_SR.Rmd_file+26);
+      fprintf(stderr, "Called a different install, RMD is %s\n", par_SR.pBuf);
+      par_SR.Rmd_file = par_SR.pBuf;
+    }
+    fprintf(stderr, "The RMD file is: %s\n", par_SR.Rmd_file);
   }
   if (!strncmp(par_SR.outputfile, "", 1)) {
      printHelpDialog_Sreport();

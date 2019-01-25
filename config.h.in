@@ -1,4 +1,5 @@
 #cmakedefine VERSION "@VERSION@"
+#cmakedefine INSTALL_DIR "@INSTALL_DIR@"
 #cmakedefine HAVE_RPKG
 #cmakedefine RSCRIPT_EXEC "@RSCRIPT_EXEC@"
 #cmakedefine READ_MAXLEN @READ_MAXLEN@

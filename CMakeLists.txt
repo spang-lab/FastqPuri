@@ -19,7 +19,7 @@ message("-- Check the prefix for root installation: ${CMAKE_INSTALL_PREFIX}")
 # Set the output folder where your program will be created
 
 set(INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/bin)
-set(INSTALL_R_DIR  ${CMAKE_INSTALL_PREFIX}/share/FastqPuri/R)
+set(INSTALL_R_DIR  ${CMAKE_INSTALL_PREFIX}/share/FastqPuri)
 set(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR}/src)
 set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/bin)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
@@ -78,19 +78,19 @@ endif(RSCRIPT_EXEC AND HAVE_PANDOC)
 set(READ_MAXLEN 400 CACHE STRING "Illumina maximum read length")
 message("-- Setting Illumina maximum read length: READ_MAXLEN ${READ_MAXLEN}")
 
-set(RMD_QUALITY_REPORT ${INSTALL_R_DIR}/quality_report.Rmd CACHE STRING 
+set(RMD_QUALITY_REPORT ${INSTALL_R_DIR}/R/quality_report.Rmd CACHE STRING 
    "Rmd quality report file")
 message("-- Setting Rmd quality report file: ${RMD_QUALITY_REPORT}")
 
-set(RMD_SUMMARY_REPORT ${INSTALL_R_DIR}/summary_report.Rmd CACHE STRING 
+set(RMD_SUMMARY_REPORT ${INSTALL_R_DIR}/R/summary_report.Rmd CACHE STRING 
    "Rmd summary report file")
 message("-- Setting Rmd summary report file: ${RMD_SUMMARY_REPORT}")
 
-set(RMD_SUMMARY_FILTER_REPORT ${INSTALL_R_DIR}/summary_filter_report.Rmd 
+set(RMD_SUMMARY_FILTER_REPORT ${INSTALL_R_DIR}/R/summary_filter_report.Rmd 
    CACHE STRING  "Rmd summary filter report file")
 message("-- Setting Rmd summary filter report file: ${RMD_SUMMARY_FILTER_REPORT}")
 
-set(RMD_SUMMARY_FILTER_REPORTDS ${INSTALL_R_DIR}/summary_filter_reportDS.Rmd 
+set(RMD_SUMMARY_FILTER_REPORTDS ${INSTALL_R_DIR}/R/summary_filter_reportDS.Rmd 
    CACHE STRING  "Rmd summary filter report file for DS data")
 message("-- Setting Rmd summary filter report file for DS data: ${RMD_SUMMARY_FILTER_REPORTDS}")
 #MISSING SETTING MEMORY ROOF!!! 
@@ -208,4 +208,4 @@ install(PROGRAMS bin/trimFilterPE DESTINATION ${INSTALL_DIR}/)
 install(PROGRAMS bin/makeBloom DESTINATION ${INSTALL_DIR}/)
 
 # Make install R scripts 
-install(DIRECTORY R DESTINATION ${INSTALL_R_DIR}/..)
+install(DIRECTORY R DESTINATION ${INSTALL_R_DIR})
