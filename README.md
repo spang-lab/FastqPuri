@@ -33,8 +33,8 @@ $ make
 $ sudo make install  
 ```
 
-When running cmake, there are some variables you can set 
-using the option -D followed by the variable name. This variables are, 
+When running `cmake`, there are some variables you can set 
+using the option -D followed by the variable name. These variables are:
 
 - `CMAKE_C_COMPILER`: `C` compiler (default `gcc`)
 - `CMAKE_C_FLAGS`: compiler flags (default `-Wall -O3 -march=native -std=c11`).
