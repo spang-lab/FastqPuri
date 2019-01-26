@@ -101,7 +101,7 @@ covering all dependencies including R and pandoc. Alternativly, you
 can also pull a pre-built image from the docker hub as follows:
 
 ```
-$ docker pull jengelmann/fastqpuri
+$ docker pull clottaz/fastqpuri
 ```
 
 As soon as such a container is installed, you can use it either
