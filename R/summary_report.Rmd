@@ -17,7 +17,7 @@ Running on version `r params$version`
 
 ## General data
 
-```{r, echo = F}
+```{r, echo = TRUE}
 source("utils.R")
 library(knitr)
 library(pheatmap)
@@ -32,29 +32,40 @@ table <- matrix(nrow = Ns, ncol = 4,
                dimnames = list(nombres,c("# reads","# tiles", 
                "% lowQ reads","% reads with N's")))
 
-i = 1
+i <- 1
+generate_minQ <- TRUE
 for (f in files){
   data <- getQualStats(paste0(params$inputfolder,"/",f))
   if (i == 1){
     meanQ <- matrix(nrow = Ns, ncol = data$read_len,
                     dimnames = list(nombres, 1:data$read_len))
+    first_qual_tags <- data$qual_tags
+  }
+  if (!identical(first_qual_tags, data$qual_tags)) {
+    meanQ <- NULL
   }
   table[i,] <- c(data$nreads,data$ntiles,
                  (data$nreads - data$reads_MlowQ[1])/data$nreads*100, 
                  data$reads_wN/data$nreads*100)
-  for(j in 1:data$read_len){
-     meanQ[i,j] <- weighted.mean(data$qual_tags,
-                                 rowSums(data$QPosTile_table[j,,]))
+  if(!is.null(meanQ)) {
+    for(j in 1:data$read_len){
+      if(dim(data$QPosTile_table)[3]==1) { weights <- data$QPosTile_table[j,,1]
+      } else { weights <- rowSums(data$QPosTile_table[j,,]) }
+      meanQ[i,j] <- weighted.mean(data$qual_tags, weights)
+    }
   }
   i = i + 1
 }
 kable(table)
-
 ```
 
 ## Mean quality
 
+Mean quality is counted `ifelse(is.null(meanQ), "inconsistantly", "consistantly")` across samples.
+
 ```{r, fig.width=8, fig.height=max(1,Ns/7), echo = F}
-pheatmap(meanQ,cluster_cols=F, cluster_rows=F, 
-         fontsize_row=8, fontsize_col=6, color=color2)
+if(is.null(meanQ)) {
+  pheatmap(meanQ,cluster_cols=F, cluster_rows=F, 
+           fontsize_row=8, fontsize_col=6, color=color2)
+}	   
 ```

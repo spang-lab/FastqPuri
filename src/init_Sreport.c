@@ -140,10 +140,8 @@ void getarg_Sreport(int argc, char **argv) {
     if (strcmp(par_SR.pBuf, INSTALL_DIR) != 0) {
       par_SR.pBuf[bytes - 12] = '\0';
       strcat(par_SR.pBuf, par_SR.Rmd_file+26);
-      fprintf(stderr, "Called a different install, RMD is %s\n", par_SR.pBuf);
       par_SR.Rmd_file = par_SR.pBuf;
     }
-    fprintf(stderr, "The RMD file is: %s\n", par_SR.Rmd_file);
   }
   if (!strncmp(par_SR.outputfile, "", 1)) {
      printHelpDialog_Sreport();

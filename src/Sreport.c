@@ -79,12 +79,11 @@ int main(int argc, char *argv[]) {
   free(command);
   char rm_cmd[MAX_FILENAME];
   snprintf(rm_cmd, MAX_FILENAME, "rm -fr %s", new_dir);
-  // keep temporary directoy, auskommentiert just for test
-  //  if ( (status = system(rm_cmd)) != 0) {
-  //      fprintf(stderr, "Something went wrong when trying to delete temporary folder %s.\n", new_dir);
-  //      fprintf(stderr, "Exiting program.\n");
-  //      exit(EXIT_FAILURE);
-  //  }
+  if ( (status = system(rm_cmd)) != 0) {
+    fprintf(stderr, "Something went wrong when trying to delete temporary folder %s.\n", new_dir);
+    fprintf(stderr, "Exiting program.\n");
+    exit(EXIT_FAILURE);
+  }
 
 
   // Obtaining elapsed time
