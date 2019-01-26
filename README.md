@@ -39,7 +39,7 @@ using the option -D followed by the variable name. This variables are,
 - `CMAKE_C_COMPILER`: `C` compiler (default `gcc`)
 - `CMAKE_C_FLAGS`: compiler flags (default `-Wall -O3 -march=native -std=c11`).
 - `CMAKE_INSTALL_PREFIX`: root path for `make install`, e.g. to generate a conda
-  environment (default /),
+  environment (default /usr/local),
 - `PANDOC`: `pandoc` executable (default `pandoc`),
 - `RSCRIPT`: `Rscript` executable (default `Rscript`),
 - `READ_MAXLEN`: Maximum Illumina read length
