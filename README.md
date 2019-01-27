@@ -129,17 +129,21 @@ installed on your machine, you can call a singularity container for
 FastqPuri as follows:
 
 ```
-$ singularity shell --bind .:/tmp shub://jengelmann/FastqPuri
+$ singularity shell --bind .:/tmp shub://clottaz/fastqpuri
 ```
 
 The parameter suggested here for `--bind` mounts the same directories
-as applied in our suggestions for docker. This call opens a shell in
-the container. In order to execute a script from the current
+as applied in our suggestions for docker. Hence, `/tmp` matches to the
+directory where `singularity shell` is called. This call opens a shell
+within the container. In order to execute a script from the current
 directory, call singularity as follows:
 
 ```
-$ singularity run --bind .:/tmp shub://jengelmann/FastqPuri /tmp/pipeline.sh
+$ singularity run --bind .:/tmp shub://clottaz/fastqpuri /tmp/pipeline.sh
 ```
+
+Note that `/tmp/pipeline.sh` relates to a call within the
+container. Thus, `pipeline.sh` is located in the calling directory.
 
 ## Installation via bioconda
 
