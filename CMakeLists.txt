@@ -12,7 +12,7 @@ set(CMAKE_C_COMPILER "gcc" CACHE STRING "default C compiler")
 project(FastqPuri)
 
 # Project's version
-set(VERSION "1.0.3")
+set(VERSION "1.0.4")
 
 message("-- Check the prefix for root installation: ${CMAKE_INSTALL_PREFIX}")
 
