@@ -31,6 +31,7 @@
 #include <unistd.h>
 #include <libgen.h>
 #include <unistd.h>
+#include <string.h>
 #include "Rcommand_Qreport.h"
 #include "init_Qreport.h"
 #include "copy_file.h"
@@ -55,7 +56,7 @@ char *command_Qreport(char ** new_dir_ptr) {
   size_t len = sizeof(pBuf);
   sprintf(szTmp, "/proc/%d/exe", getpid());
   int bytes = readlink(szTmp, pBuf, len);
-  if (bytes > len-1) bytes = len-1;
+  if ((size_t)bytes > len-1) bytes = len-1;
   if(bytes >= 0) pBuf[bytes - 8] = '\0';
   if (strcmp(pBuf, INSTALL_DIR) != 0) {
     pBuf[bytes - 11] = 'R';
@@ -65,12 +66,17 @@ char *command_Qreport(char ** new_dir_ptr) {
     pBuf[28] = '\0';
   }
   char *old_dir = pBuf;
+  //fprintf(stderr, "Rmd file searched in '%s'\n", old_dir);
 
   char template[] = "/tmp/FastqPuri_XXXXXX";
   char *new_dir = mkdtemp(template);
   *new_dir_ptr = new_dir;
+  //fprintf(stderr, "Temporary directory is '%s'\n", *new_dir_ptr);
+    
   char rmd_quality_report_name_tmp[] = RMD_QUALITY_REPORT;
   char *rmd_quality_report_name = basename(rmd_quality_report_name_tmp);
+  //fprintf(stderr, "Rmd file name is '%s'\n", rmd_quality_report_name);
+  
   char style_fname_old[MAX_FILENAME], utils_fname_old[MAX_FILENAME];
   char style_fname_new[MAX_FILENAME], utils_fname_new[MAX_FILENAME];
   char rmd_quality_report_old[MAX_FILENAME]; char rmd_quality_report_new[MAX_FILENAME];
@@ -99,7 +105,6 @@ rmarkdown::render('%s', params = list(inputfile = inputfile, filter=%d, \
        par_QR.outputfilebin, par_QR.outputfilehtml, cwd,
        rmd_quality_report_new, par_QR.filter, VERSION);
 #endif
-  exit(1);
   return command;
 }
 

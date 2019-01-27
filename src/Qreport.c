@@ -137,8 +137,8 @@ int main(int argc, char *argv[]) {
   //   print_info(res);
   //
 
-  fprintf(stderr, "- Creating html output in file: %s\n", par_QR.outputfilehtml);
 #ifdef HAVE_RPKG
+  fprintf(stderr, "- Creating html output in file: %s\n", par_QR.outputfilehtml);
   char *new_dir;
   char *command = command_Qreport(&new_dir);
   fprintf(stderr, "- Running command: %s \n", command);

@@ -135,7 +135,7 @@ void getarg_Sreport(int argc, char **argv) {
     size_t len = sizeof(par_SR.pBuf);
     sprintf(szTmp, "/proc/%d/exe", getpid());
     int bytes = readlink(szTmp, par_SR.pBuf, len);
-    if (bytes > len-1) bytes = len-1;
+    if ((size_t)bytes > len-1) bytes = len-1;
     if(bytes >= 0) par_SR.pBuf[bytes - 8] = '\0';
     if (strcmp(par_SR.pBuf, INSTALL_DIR) != 0) {
       par_SR.pBuf[bytes - 12] = '\0';

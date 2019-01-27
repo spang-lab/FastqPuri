@@ -2,6 +2,7 @@
 
 int copy_file(char *old_filename, char  *new_filename)
 {
+  //fprintf(stderr, "Copy '%s' -> '%s.\n", old_filename, new_filename);
   FILE  *ptr_old, *ptr_new;
   int  a;
 
