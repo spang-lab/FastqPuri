@@ -129,7 +129,7 @@ installed on your machine, you can call a singularity container for
 FastqPuri as follows:
 
 ```
-$ singularity shell --bind .:/tmp shub://clottaz/fastqpuri
+$ singularity shell --bind .:/tmp shub://jengelmann/FastqPuri
 ```
 
 The parameter suggested here for `--bind` mounts the same directories
@@ -139,7 +139,7 @@ within the container. In order to execute a script from the current
 directory, call singularity as follows:
 
 ```
-$ singularity run --bind .:/tmp shub://clottaz/fastqpuri /tmp/pipeline.sh
+$ singularity run --bind .:/tmp shub://jengelmann/FastqPuri /tmp/pipeline.sh
 ```
 
 Note that `/tmp/pipeline.sh` relates to a call within the
