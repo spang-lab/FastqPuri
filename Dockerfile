@@ -4,7 +4,7 @@
 FROM debian:stretch
 RUN apt-get update -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y r-base make cmake pandoc git vim
-RUN Rscript -e 'install.packages(c("rmarkdown", "pheatmap"), repos="https://stat.ethz.ch/CRAN")'
+RUN Rscript -e 'install.packages(c("rmarkdown", "pheatmap"), repos="https://cran.uni-muenster.de")'
 
 # compile and install FastqPuri
 RUN cd /home && git clone https://github.com/jengelmann/FastqPuri
