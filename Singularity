@@ -1,2 +1,2 @@
 Bootstrap:docker
-From:clottaz/fastqpuri:1.0.4
+From:clottaz/fastqpuri:1.0.5
