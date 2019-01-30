@@ -58,6 +58,7 @@ int main(int argc, char *argv[]) {
   timeinfo = localtime(&rawtime);
 
   // Get arguments
+  fprintf(stderr, "makeBloom from FastqPuri\n");
   getarg_makeBloom(argc, argv);
   fprintf(stderr, "Starting makeBloom at: %s", asctime(timeinfo));
   fprintf(stderr, "makeBloom exec: constructing and storing a Bloom filter.\n");

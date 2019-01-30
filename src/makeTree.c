@@ -57,6 +57,7 @@ int main(int argc, char *argv[]) {
   timeinfo = localtime(&rawtime);
 
   // Get arguments
+  fprintf(stderr, "makeTree from FastqPuri\n");
   getarg_makeTree(argc, argv);
   fprintf(stderr, "Starting makeTree at: %s", asctime(timeinfo));
   fprintf(stderr, "makeTree exec: constructing a tree and storing it\n.");

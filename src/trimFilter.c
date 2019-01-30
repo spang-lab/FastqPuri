@@ -52,6 +52,7 @@ Iparam_trimFilter par_TF;  /**< global variable: Input parameters trimFilter.*/
  * */
 int main(int argc, char *argv[]) {
   // Read in command line arguments
+  fprintf(stderr, "trimFilter from FastqPuri\n");
   getarg_trimFilter(argc, argv);
 
   // Output filenames

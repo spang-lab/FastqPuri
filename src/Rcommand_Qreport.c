@@ -47,7 +47,7 @@ char *command_Qreport(char ** new_dir_ptr) {
   char *command = calloc(MAX_RCOMMAND,sizeof(char));
   char cwd[1024];
   if (getcwd(cwd, sizeof(cwd)) != NULL)
-      fprintf(stdout, "- Current working dir: %s\n", cwd);
+      fprintf(stderr, "- Current working dir: %s\n", cwd);
   else
       perror("getcwd() error");
 #ifdef HAVE_RPKG
@@ -69,16 +69,13 @@ char *command_Qreport(char ** new_dir_ptr) {
     strcpy(pBuf, RMD_QUALITY_REPORT);
     old_dir = dirname(pBuf);
   }
-  //fprintf(stderr, "Rmd file searched in '%s'\n", old_dir);
 
   char template[] = "/tmp/FastqPuri_XXXXXX";
   char *new_dir = mkdtemp(template);
   *new_dir_ptr = new_dir;
-  //fprintf(stderr, "Temporary directory is '%s'\n", *new_dir_ptr);
     
   char rmd_quality_report_name_tmp[] = RMD_QUALITY_REPORT;
   char *rmd_quality_report_name = basename(rmd_quality_report_name_tmp);
-  //fprintf(stderr, "Rmd file name is '%s'\n", rmd_quality_report_name);
   
   char style_fname_old[MAX_FILENAME], utils_fname_old[MAX_FILENAME];
   char style_fname_new[MAX_FILENAME], utils_fname_new[MAX_FILENAME];
