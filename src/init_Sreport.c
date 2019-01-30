@@ -31,6 +31,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <libgen.h>
 #include "str_manip.h"
 #include "init_Sreport.h"
 #include "config.h"
@@ -136,10 +137,15 @@ void getarg_Sreport(int argc, char **argv) {
     sprintf(szTmp, "/proc/%d/exe", getpid());
     int bytes = readlink(szTmp, par_SR.pBuf, len);
     if ((size_t)bytes > len-1) bytes = len-1;
-    if(bytes >= 0) par_SR.pBuf[bytes - 8] = '\0';
+    if(bytes == 0) {
+      fprintf(stderr, "Unexpected error when searching for call directoy!\n");
+      exit(1);
+    }
+    dirname(par_SR.pBuf);
     if (strcmp(par_SR.pBuf, INSTALL_DIR) != 0) {
-      par_SR.pBuf[bytes - 12] = '\0';
-      strcat(par_SR.pBuf, par_SR.Rmd_file+26);
+      dirname(par_SR.pBuf); // remove Sreport
+      dirname(par_SR.pBuf); // remove bin
+      strcat(par_SR.pBuf, basename(par_SR.Rmd_file));
       par_SR.Rmd_file = par_SR.pBuf;
     }
   }

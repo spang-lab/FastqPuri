@@ -57,15 +57,18 @@ char *command_Qreport(char ** new_dir_ptr) {
   sprintf(szTmp, "/proc/%d/exe", getpid());
   int bytes = readlink(szTmp, pBuf, len);
   if ((size_t)bytes > len-1) bytes = len-1;
-  if(bytes >= 0) pBuf[bytes - 8] = '\0';
-  if (strcmp(pBuf, INSTALL_DIR) != 0) {
-    pBuf[bytes - 11] = 'R';
-    pBuf[bytes - 10] = '\0';
+  if(bytes == 0) {
+    fprintf(stderr, "Unexpected error when searching for call directoy!\n");
+    exit(1);
+  }
+  char *old_dir = dirname(pBuf);
+  if (strcmp(old_dir, INSTALL_DIR) != 0) {
+    old_dir = dirname(old_dir);
+    strcat(old_dir, "/R");
   } else {
     strcpy(pBuf, RMD_QUALITY_REPORT);
-    pBuf[28] = '\0';
+    old_dir = dirname(pBuf);
   }
-  char *old_dir = pBuf;
   //fprintf(stderr, "Rmd file searched in '%s'\n", old_dir);
 
   char template[] = "/tmp/FastqPuri_XXXXXX";
