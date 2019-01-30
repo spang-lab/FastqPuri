@@ -62,8 +62,8 @@ int main(int argc, char *argv[]) {
   timeinfo = localtime(&rawtime);
 
   // Get arguments
+  fprintf(stderr, "Qreport from FastqPuri\n");
   getarg_Qreport(argc, argv);
-  fprintf(stderr, "Starting Qreport at: %s", asctime(timeinfo));
   fprintf(stderr, "- Input file: %s\n", par_QR.inputfile);
   fprintf(stderr, "- Read length: %d\n", par_QR.read_len);
   fprintf(stderr, "- Number of tiles: %d\n", par_QR.ntiles);
@@ -72,11 +72,12 @@ int main(int argc, char *argv[]) {
   fprintf(stderr, "- Output bin-file : %s\n", par_QR.outputfilebin);
   fprintf(stderr, "- Output html-file : %s\n", par_QR.outputfilehtml);
   fprintf(stderr, "- Output info-file: %s\n", par_QR.outputfileinfo);
+  fprintf(stderr, "Starting Qreport at: %s", asctime(timeinfo));
+
+  // Opening file
   fprintf(stderr, "- Reading a filtered file? %s.\n", par_QR.filter?"yes":"no");
   if (par_QR.filter)
      fprintf(stderr, "- Data filtered with trimFilter? %s.\n", (par_QR.filter-1)?"no":"yes");
-
-  // Opening file
   f = fopen_gen(par_QR.inputfile, "r");
   if (f == NULL) {
      fprintf(stderr, "File %s not found. Exiting program.\n", par_QR.inputfile);

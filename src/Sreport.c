@@ -53,10 +53,12 @@ int main(int argc, char *argv[]) {
   timeinfo = localtime(&rawtime);
 
   // Get arguments
+  fprintf(stderr, "Sreport from FastqPuri\n");
   getarg_Sreport(argc, argv);
-  fprintf(stderr, "Starting Sreport at: %s", asctime(timeinfo));
   fprintf(stderr, "- Input folder: %s\n", par_SR.inputfolder);
+  fprintf(stderr, "- Rmd file for html-generation: %s\n", par_SR.Rmd_file);
   fprintf(stderr, "- Output file: %s\n", par_SR.outputfile);
+  fprintf(stderr, "Starting Sreport at: %s", asctime(timeinfo));
 #ifdef HAVE_RPKG
   char *new_dir;
   char * command = command_Sreport(&new_dir);
