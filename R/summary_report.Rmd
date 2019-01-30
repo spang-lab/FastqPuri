@@ -61,8 +61,6 @@ kable(table)
 
 ## Mean quality
 
-Mean quality is counted `r ifelse(is.null(meanQ), "inconsistantly", "consistantly")` across samples.
-
 ```{r, fig.width=8, fig.height=max(1,Ns/7), echo = FALSE}
 if(!is.null(meanQ)) {
   pheatmap(meanQ, cluster_cols=FALSE, cluster_rows=FALSE, 
