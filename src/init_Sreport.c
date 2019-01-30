@@ -141,10 +141,10 @@ void getarg_Sreport(int argc, char **argv) {
       fprintf(stderr, "Unexpected error when searching for call directoy!\n");
       exit(1);
     }
-    dirname(par_SR.pBuf);
+    dirname(par_SR.pBuf); // remove Sreport
     if (strcmp(par_SR.pBuf, INSTALL_DIR) != 0) {
-      dirname(par_SR.pBuf); // remove Sreport
       dirname(par_SR.pBuf); // remove bin
+      strcat(par_SR.pBuf, "/R/");
       strcat(par_SR.pBuf, basename(par_SR.Rmd_file));
       par_SR.Rmd_file = par_SR.pBuf;
     }
