@@ -47,7 +47,7 @@ char *command_Qreport(char ** new_dir_ptr) {
   char *command = calloc(MAX_RCOMMAND,sizeof(char));
   char cwd[1024];
   if (getcwd(cwd, sizeof(cwd)) != NULL)
-      fprintf(stdout, "- Current working dir: %s\n", cwd);
+      fprintf(stderr, "- Current working dir: %s\n", cwd);
   else
       perror("getcwd() error");
 #ifdef HAVE_RPKG
@@ -57,25 +57,25 @@ char *command_Qreport(char ** new_dir_ptr) {
   sprintf(szTmp, "/proc/%d/exe", getpid());
   int bytes = readlink(szTmp, pBuf, len);
   if ((size_t)bytes > len-1) bytes = len-1;
-  if(bytes >= 0) pBuf[bytes - 8] = '\0';
-  if (strcmp(pBuf, INSTALL_DIR) != 0) {
-    pBuf[bytes - 11] = 'R';
-    pBuf[bytes - 10] = '\0';
+  if(bytes == 0) {
+    fprintf(stderr, "Unexpected error when searching for call directoy!\n");
+    exit(1);
+  }
+  char *old_dir = dirname(pBuf);
+  if (strcmp(old_dir, INSTALL_DIR) != 0) {
+    old_dir = dirname(old_dir);
+    strcat(old_dir, "/R");
   } else {
     strcpy(pBuf, RMD_QUALITY_REPORT);
-    pBuf[28] = '\0';
+    old_dir = dirname(pBuf);
   }
-  char *old_dir = pBuf;
-  //fprintf(stderr, "Rmd file searched in '%s'\n", old_dir);
 
   char template[] = "/tmp/FastqPuri_XXXXXX";
   char *new_dir = mkdtemp(template);
   *new_dir_ptr = new_dir;
-  //fprintf(stderr, "Temporary directory is '%s'\n", *new_dir_ptr);
     
   char rmd_quality_report_name_tmp[] = RMD_QUALITY_REPORT;
   char *rmd_quality_report_name = basename(rmd_quality_report_name_tmp);
-  //fprintf(stderr, "Rmd file name is '%s'\n", rmd_quality_report_name);
   
   char style_fname_old[MAX_FILENAME], utils_fname_old[MAX_FILENAME];
   char style_fname_new[MAX_FILENAME], utils_fname_new[MAX_FILENAME];
