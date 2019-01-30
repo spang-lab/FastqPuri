@@ -87,7 +87,8 @@ char *command_Qreport(char ** new_dir_ptr) {
   snprintf(style_fname_new, MAX_FILENAME, "%s/style.css", new_dir);  
   snprintf(utils_fname_old, MAX_FILENAME, "%s/utils.R", old_dir);  
   snprintf(utils_fname_new, MAX_FILENAME, "%s/utils.R", new_dir);  
-   
+  fprintf(stderr, "- Rmd-file used to generate HTML: %s\n", rmd_quality_report_old);
+
   copy_file(rmd_quality_report_old, rmd_quality_report_new);
   copy_file(utils_fname_old, utils_fname_new);
   copy_file(style_fname_old, style_fname_new);
