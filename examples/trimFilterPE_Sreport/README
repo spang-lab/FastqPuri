@@ -1,5 +1,5 @@
 ################################################################################
-#  trimFilterDS examples:                                                      #
+#  trimFilterPE examples:                                                      #
 ################################################################################
 #                                                                              # 
 # The examples work in the  following way:                                     #
@@ -21,7 +21,7 @@
 #    the ends and less than 5% in the remaining part, and strip reads          #
 #    containing N's at the ends.                                               # 
 # 3. `run_example_BLOOM.sh`:                                                   # 
-#    trimFilterDS is run like in 2. but passing a bloom filter to look for     # 
+#    trimFilterPE is run like in 2. but passing a bloom filter to look for     # 
 #       contaminations with `score=0.4` and the --trimN STRIP option.          #
 # 4. With this set up, it is possible to run further customized tests.         #
 # 5. See the folder `adapters` for examples on adapter contaminations.         #
@@ -34,7 +34,7 @@
 #  Sreport example:                                                            #
 ################################################################################
 #                                                                              #
-# In folder `./bin_files`, 30 fake `./trimFilterDS` binary output files were   #
+# In folder `./bin_files`, 30 fake `./trimFilterPE` binary output files were   #
 # generated (with the `R` script `create_fake_bins.R`). An html output was     #
 # created out of them (`./bin_files/filter_Sreport_example.html`). It can      # 
 # re reproduced if you run:                                                    #

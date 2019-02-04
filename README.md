@@ -83,7 +83,7 @@ A Doxygen documentation of the code is available:
 - `html` version under the folder `html` (open `index.html` with a browser).
 - `pdf` version: `latex/refman.pdf`
 
-## Use a docker container for FastqPuri
+## Use a docker container to run FastqPuri
 
 The file Dockerfile documents the exact linux installation we used for
 testing. If you have a docker installation ready on your machine, you
@@ -118,10 +118,10 @@ $ docker run -v $PWD:/tmp fastqpuri ./pipeline.sh
 ```
 
 Note that this call generates results in the docker container
-directory /tmp but also keeps them after closing the docker container
+directory `/tmp` but also keeps them after closing the docker container
 locally where the container was started.
 
-## Use a singularity container for FastqPuri
+## Use a singularity container to run FastqPuri
 
 Alternativly, we also provide a singularity container deduced from the
 docker implementation for container usage. If you have singularity
@@ -132,18 +132,45 @@ FastqPuri as follows:
 $ singularity shell --bind .:/tmp shub://jengelmann/FastqPuri
 ```
 
-The parameter suggested here for `--bind` mounts the same directories
-as applied in our suggestions for docker. Hence, `/tmp` matches to the
-directory where `singularity shell` is called. This call opens a shell
-within the container. In order to execute a script from the current
+This call opens a shell within the container.
+With `--bind` we  mount the current directory also in the container.
+The syntax is as follows: --bind src:dest; src is the source path on
+the host and dest is the destination path in the container, i.e. where
+you would like to make the source path available in your container.
+Note that this destination path in your container should be an existing
+directory, the operation will fail if you do not create the directory first.
+Hence, when we call `singularity shell` like this, the working directory
+in the container is `/tmp`.
+
+Alternatively, in order to execute a script from the current
 directory, call singularity as follows:
 
 ```
 $ singularity run --bind .:/tmp shub://jengelmann/FastqPuri /tmp/pipeline.sh
 ```
 
-Note that `/tmp/pipeline.sh` relates to a call within the
-container. Thus, `pipeline.sh` is located in the calling directory.
+Note that `/tmp/pipeline.sh` relates to the call within the
+container. Thus, `pipeline.sh` is located in the directory where singularity
+run is executed, but will be made available to the container via the `--bind`
+parameter.
+
+If you want to invoke a function of FastqPuri, you can use the 'exec'
+command like so:
+
+```
+singularity exec shub://jengelmann/FastqPuri Qreport -h
+```
+
+or invoke a script located in your home directory (assuming that
+run_ex_TREE.sh is located in your home directory):
+
+```
+$ singularity exec shub://jengelmann/FastqPuri $HOME/run_ex_TREE.sh
+```
+
+Singularity documentation can be found here: [https://www.sylabs.io/docs/](https://www.sylabs.io/docs/)
+
+
 
 ## Installation via bioconda
 
@@ -156,8 +183,8 @@ bioinformatics software. Have a look at the reference:
   Comprehensive Software Distribution for the Life Sciences”. Nature
   Methods, 2018.
 
-To find out how tu use bioconda, see https://bioconda.github.io. For
-installing FastqPuri in a bioconda environment, you have to install
+To find out how to use bioconda, see [https://bioconda.github.io](https://bioconda.github.io).
+For installing FastqPuri in a bioconda environment, you have to install
 either `miniconda` or `anaconda` and register channels as follows:
 
 ```
@@ -183,8 +210,8 @@ This call installs `FastqPuri` directly in a separate environment.
 
 ## Contributors
 
-Paula Pérez Rubio
-Claudio Lottaz
+Paula Pérez Rubio,
+Claudio Lottaz,
 Julia Engelmann 
 
 ## License
