@@ -11,9 +11,13 @@ source:
 
 requirements:
   build:
-    - r-base    - cmake
+    - r-base
+    - cmake
     - make
     - {{ compiler('c') }}
+    - pandoc
+    - zlib
+    - bzip2
   host:
     - r-base
     - cmake
