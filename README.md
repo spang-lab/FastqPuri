@@ -38,8 +38,8 @@ using the option -D followed by the variable name. These variables are:
 
 - `CMAKE_C_COMPILER`: `C` compiler (default `gcc`)
 - `CMAKE_C_FLAGS`: compiler flags (default `-Wall -O3 -march=native -std=c11`).
-- `CMAKE_INSTALL_PREFIX`: root path for `make install`, e.g. to generate a conda
-  environment (default /usr/local),
+- `CMAKE_INSTALL_PREFIX`: root path for `make install`, e.g. to
+  redirect to a directory with user access (default /usr/local),
 - `PANDOC`: `pandoc` executable (default `pandoc`),
 - `RSCRIPT`: `Rscript` executable (default `Rscript`),
 - `READ_MAXLEN`: Maximum Illumina read length
@@ -177,10 +177,10 @@ Singularity documentation can be found here: [https://www.sylabs.io/docs/](https
 Bioconda is a channel for the conda package manager specializing in
 bioinformatics software. Have a look at the reference:
 
-* Grüning, Björn, Ryan Dale, Andreas Sjödin, Brad A. Chapman, Jillian
+* Bjoern Gruening, Ryan Dale, Andreas Sjoedin, Brad A. Chapman, Jillian
   Rowe, Christopher H. Tomkins-Tinch, Renan Valieris, the Bioconda
-  Team, and Johannes Köster. 2018. “Bioconda: Sustainable and
-  Comprehensive Software Distribution for the Life Sciences”. Nature
+  Team, and Johannes Koester. 2018. Bioconda: Sustainable and
+  Comprehensive Software Distribution for the Life Sciences. Nature
   Methods, 2018.
 
 To find out how to use bioconda, see [https://bioconda.github.io](https://bioconda.github.io).
