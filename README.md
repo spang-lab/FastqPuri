@@ -172,7 +172,12 @@ Singularity documentation can be found here: [https://www.sylabs.io/docs/](https
 
 
 
-## Installation via bioconda
+## Installation via bioconda **-under construction**.
+
+*We are currently working on a bioconda environment for FastqPuri. 
+If you follow the instructions below, it is quite likely that 
+FastqPuri will not yet properly run from the bioconda environment.
+Sorry about that and please stay tuned!*
 
 Bioconda is a channel for the conda package manager specializing in
 bioinformatics software. Have a look at the reference:
