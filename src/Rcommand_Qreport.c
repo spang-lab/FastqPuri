@@ -72,7 +72,9 @@ char *command_Qreport(char ** new_dir_ptr) {
   fprintf(stderr, ">>>old_dir: %s, INSTALL_DIR: %s,\n   RSCRIPT_EXEC: %s, CMAKE_INSTALL_PREFIX: %s\n", old_dir, INSTALL_DIR, RSCRIPT_EXEC, CMAKE_INSTALL_PREFIX);
   
   char template[] = "/tmp/FastqPuri_XXXXXX";
+  fprintf(stderr, ">>>template: %s\n", template);
   char *new_dir = mkdtemp(template);
+  fprintf(stderr, ">>>template after mkdtemp: %s\n", template);
   *new_dir_ptr = new_dir;
   fprintf(stderr, ">>>new_dir: %s\n", new_dir);
     
