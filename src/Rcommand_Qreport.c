@@ -69,15 +69,12 @@ char *command_Qreport(char ** new_dir_ptr) {
     strcpy(pBuf, RMD_QUALITY_REPORT);
     old_dir = dirname(pBuf);
   }
-//  fprintf(stderr, ">>>old_dir: %s, INSTALL_DIR: %s,\n   RSCRIPT_EXEC: %s, CMAKE_INSTALL_PREFIX: %s\n", old_dir, INSTALL_DIR, RSCRIPT_EXEC, CMAKE_INSTALL_PREFIX);
-  if(getenv("CONDA_PREFIX")) {
-//    fprintf(stderr, ">>>CONDA_PREFIX: %s\n", getenv("CONDA_PREFIX"));
-  }
+  fprintf(stderr, ">>>old_dir: %s, INSTALL_DIR: %s,\n   RSCRIPT_EXEC: %s, CMAKE_INSTALL_PREFIX: %s\n", old_dir, INSTALL_DIR, RSCRIPT_EXEC, CMAKE_INSTALL_PREFIX);
   
   char template[] = "/tmp/FastqPuri_XXXXXX";
   char *new_dir = mkdtemp(template);
   *new_dir_ptr = new_dir;
-//  fprintf(stderr, ">>>new_dir: %s\n", new_dir);
+  fprintf(stderr, ">>>new_dir: %s\n", new_dir);
     
   char rmd_quality_report_name_tmp[] = RMD_QUALITY_REPORT;
   char *rmd_quality_report_name = basename(rmd_quality_report_name_tmp);
@@ -88,13 +85,13 @@ char *command_Qreport(char ** new_dir_ptr) {
   
   snprintf(rmd_quality_report_old, MAX_FILENAME, "%s/%s", old_dir, rmd_quality_report_name);  
   snprintf(rmd_quality_report_new, MAX_FILENAME, "%s/%s", new_dir, rmd_quality_report_name);  
-//  fprintf(stderr, ">>>rmd_quality_report: %s -> %s\n", rmd_quality_report_old, rmd_quality_report_new);
+  fprintf(stderr, ">>>rmd_quality_report: %s -> %s\n", rmd_quality_report_old, rmd_quality_report_new);
   snprintf(style_fname_old, MAX_FILENAME, "%s/style.css", old_dir);  
   snprintf(style_fname_new, MAX_FILENAME, "%s/style.css", new_dir);  
-//  fprintf(stderr, ">>>style_fname: %s -> %s\n", style_fname_old, style_fname_new);
+  fprintf(stderr, ">>>style_fname: %s -> %s\n", style_fname_old, style_fname_new);
   snprintf(utils_fname_old, MAX_FILENAME, "%s/utils.R", old_dir);  
   snprintf(utils_fname_new, MAX_FILENAME, "%s/utils.R", new_dir);  
-//  fprintf(stderr, ">>>utils_fname: %s\n", utils_fname_old, utils_fname_new);
+  fprintf(stderr, ">>>utils_fname: %s\n", utils_fname_old, utils_fname_new);
   fprintf(stderr, "- Rmd-file used to generate HTML: %s\n", rmd_quality_report_old);
 
   copy_file(rmd_quality_report_old, rmd_quality_report_new);
