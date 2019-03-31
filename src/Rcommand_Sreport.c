@@ -58,7 +58,7 @@ extern Iparam_Sreport par_SR; /**< input parameters Sreport*/
  *                   output_file = output_file)
  * @endcode
  * */
-char *command_Sreport(char ** new_dir_ptr){
+char *command_Sreport(char **new_dir_ptr){
   char *command = calloc(MAX_RCOMMAND, sizeof(char));
   command[0] = '\0';
   char cwd[1024];
@@ -85,7 +85,7 @@ char *command_Sreport(char ** new_dir_ptr){
   } else {
 #ifdef HAVE_RPKG
   char template[] = "/tmp/FastqPuri_XXXXXX";
-  char * new_dir = mkdtemp(template);
+  char *new_dir = mkdtemp(template);
   *new_dir_ptr = new_dir;
   char old_dir_tmp[MAX_FILENAME];
   strncpy(old_dir_tmp, par_SR.Rmd_file, MAX_FILENAME-1);
