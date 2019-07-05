@@ -506,7 +506,7 @@ void getarg_trimFilterDS(int argc, char **argv) {
       exit(EXIT_FAILURE);
   }
   // Consistenty checks
-  if ((par_TF.trimQ != ENDS) && (par_TF.trimQ != ENDSFRAC) &&
+  if ((par_TF.trimQ != ENDS) && (par_TF.trimQ != ENDSFRAC) && (par_TF.trimQ != FRAC) &&
       (par_TF.percent != 0)) {
       fprintf(stderr, "%d\n", par_TF.percent);
       fprintf(stderr, "OPTION_ERROR: --percent passed as an option, but ");
