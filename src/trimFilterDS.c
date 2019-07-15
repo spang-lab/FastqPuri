@@ -56,6 +56,7 @@ Iparam_trimFilter par_TF;  /**< global variable: Input parameters of makeTree.*/
  *
  * */
 int main(int argc, char *argv[]) {
+
   // Read in command line arguments
   fprintf(stderr, "trimFilterPE from FastqPuri\n");
   getarg_trimFilterDS(argc, argv);

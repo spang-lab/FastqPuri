@@ -71,27 +71,22 @@ if(RSCRIPT_EXEC AND HAVE_PANDOC)
       set(HAVE_RPKG TRUE)
    endif(R_rmarkdown AND R_pheatmap AND R_knitr)
 endif(RSCRIPT_EXEC AND HAVE_PANDOC)
-
 #---------------------------------------------------------------
 # Setting defines. Can be modified with -DVARNAME in the command line 
 #---------------------------------------------------------------
 set(READ_MAXLEN 400 CACHE STRING "Illumina maximum read length")
 message("-- Setting Illumina maximum read length: READ_MAXLEN ${READ_MAXLEN}")
-
-set(RMD_QUALITY_REPORT ${INSTALL_R_DIR}/R/quality_report.Rmd CACHE STRING 
-   "Rmd quality report file")
+message(${INSTALL_R_DIR})
+set(RMD_QUALITY_REPORT ${INSTALL_R_DIR}/R/quality_report.Rmd)
 message("-- Setting Rmd quality report file: ${RMD_QUALITY_REPORT}")
 
-set(RMD_SUMMARY_REPORT ${INSTALL_R_DIR}/R/summary_report.Rmd CACHE STRING 
-   "Rmd summary report file")
+set(RMD_SUMMARY_REPORT ${INSTALL_R_DIR}/R/summary_report.Rmd)
 message("-- Setting Rmd summary report file: ${RMD_SUMMARY_REPORT}")
 
-set(RMD_SUMMARY_FILTER_REPORT ${INSTALL_R_DIR}/R/summary_filter_report.Rmd 
-   CACHE STRING  "Rmd summary filter report file")
+set(RMD_SUMMARY_FILTER_REPORT ${INSTALL_R_DIR}/R/summary_filter_report.Rmd )
 message("-- Setting Rmd summary filter report file: ${RMD_SUMMARY_FILTER_REPORT}")
 
-set(RMD_SUMMARY_FILTER_REPORTDS ${INSTALL_R_DIR}/R/summary_filter_reportDS.Rmd 
-   CACHE STRING  "Rmd summary filter report file for DS data")
+set(RMD_SUMMARY_FILTER_REPORTDS ${INSTALL_R_DIR}/R/summary_filter_reportDS.Rmd )
 message("-- Setting Rmd summary filter report file for DS data: ${RMD_SUMMARY_FILTER_REPORTDS}")
 #MISSING SETTING MEMORY ROOF!!! 
 

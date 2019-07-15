@@ -73,6 +73,8 @@ void printHelpDialog_trimFilterDS() {
    "               <AD2.fa>: fasta file containing adapters,\n"
    "               <mismatches>: maximum mismatch count allowed,\n"
    "               <score>: score threshold  for the aligner.\n"
+   " -r, --adapter-rm  if the adapter is matched, instead of trimming it\n"
+   "               , the reads are removed."
    " -x, --idx     index input file. To be included with any methods to remove.\n"
    "               contaminations (TREE, BLOOM). 3 fields separated by colons: \n"
    "               <INDEX_FILE>: output of makeTree, makeBloom,\n"
@@ -120,8 +122,11 @@ void printHelpDialog_trimFilterDS() {
    "               ALL:    removes all reads containing N's,\n"
    "               ENDS:   trims ends of reads with N's,\n"
    "               STRIPS: looks for the largest substring with no N's.\n"
+   "               FRAC:   removes the reads if the uncertainty is above a threshold\n"
+   "                       (-u), default to 10 percent\n"
    "               All reads are discarded if they are shorter than the\n"
-   "               sequence length specified by -m/--minL.\n";
+   "               sequence length specified by -m/--minL.\n"
+   " -u, --uncert  percentage of uncertainity tolerated\n";
   fprintf(stderr, "%s", dialog);
 }
 
@@ -130,7 +135,7 @@ void printHelpDialog_trimFilterDS() {
  *        and stores them in the global variable par_TF.
 */
 void getarg_trimFilterDS(int argc, char **argv) {
-  if ( argc != 2 && (argc > 25 || argc % 2 == 0 || argc == 1) ) {
+  if ( argc != 2 && (argc > 25 || argc == 1) ) {
      fprintf(stderr, "Not an adequate number of arguments\n");
      printHelpDialog_trimFilterDS();
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
@@ -165,12 +170,15 @@ void getarg_trimFilterDS(int argc, char **argv) {
      {"global", required_argument, 0, 'g'},
      {"minL", required_argument, 0, 'm'},
      {"trimN", required_argument, 0, 'N'},
+     {"uncert", required_argument, 0, 'u'},
+     {"adapter-rm", required_argument, 0, 'r'},
   };
   int option;
   int method_len = 20;
   Split globTrim, adapt, tree_fa, index, in_fq;
-  while ((option = getopt_long(argc, argv, "hvf:l:o:z:A:q:x:a:C:Q:m:p:g:N:0:",
+  while ((option = getopt_long(argc, argv, "hvf:l:o:z:A:q:x:a:C:Q:m:p:g:N:0:r:u:",
         long_options, 0)) != -1) {
+    fprintf(stderr,"%c\n",option);
     switch (option) {
       case 'h':
         printHelpDialog_trimFilterDS();
@@ -290,6 +298,12 @@ void getarg_trimFilterDS(int argc, char **argv) {
       case 'p':
          par_TF.percent = atoi(optarg);
          break;
+      case 'u':
+         par_TF.uncertain = atoi(optarg);
+         break;
+      case 'r':
+         par_TF.adapter_rm = true;
+         break;
       case 'g':
          globTrim = strsplit(optarg, ':');
          if (globTrim.N != 2) {
@@ -306,7 +320,8 @@ void getarg_trimFilterDS(int argc, char **argv) {
          par_TF.trimN = (!strncmp(optarg, "NO", method_len)) ? NO :
             (!strncmp(optarg, "ALL", method_len)) ? ALL :
             (!strncmp(optarg, "ENDS", method_len)) ? ENDS :
-            (!strncmp(optarg, "STRIP", method_len)) ? STRIP : ERROR;
+            (!strncmp(optarg, "STRIP", method_len)) ? STRIP : 
+            (!strncmp(optarg, "FRAC", method_len)) ? ENDSFRAC : ERROR;
          break;
       default:
         fprintf(stderr, "%s: option `-%c' is invalid: ignored\n",
@@ -536,7 +551,13 @@ void getarg_trimFilterDS(int argc, char **argv) {
      fprintf(stderr, "- Trimming reads with N's, method: ENDS\n");
   } else if (par_TF.trimN == STRIP) {
      fprintf(stderr, "- Trimming reads with N's, method: STRIP\n");
-  } else {
+  } else if (par_TF.trimN == ENDSFRAC) {
+     fprintf(stderr, "- Removing reads with N's, method: FRAC\n");
+     if (par_TF.uncertain == 0) {
+      par_TF.uncertain = 10;
+    }
+  } 
+  else {
      fprintf(stderr, "OPTION_ERROR: Invalid --trimN option.\n");
      fprintf(stderr, "              Possible options: NO, ALL, ENDS,");
      fprintf(stderr, " STRIP.\n");
