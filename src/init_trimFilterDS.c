@@ -74,7 +74,7 @@ void printHelpDialog_trimFilterDS() {
    "               <mismatches>: maximum mismatch count allowed,\n"
    "               <score>: score threshold  for the aligner.\n"
    " -r, --adapter-rm  if the adapter is matched, instead of trimming it\n"
-   "               , the reads are removed."
+   "               , the reads are removed.\n"
    " -x, --idx     index input file. To be included with any methods to remove.\n"
    "               contaminations (TREE, BLOOM). 3 fields separated by colons: \n"
    "               <INDEX_FILE>: output of makeTree, makeBloom,\n"
@@ -176,7 +176,7 @@ void getarg_trimFilterDS(int argc, char **argv) {
   int option;
   int method_len = 20;
   Split globTrim, adapt, tree_fa, index, in_fq;
-  while ((option = getopt_long(argc, argv, "hvf:l:o:z:A:q:x:a:C:Q:m:p:g:N:0:r:u:",
+  while ((option = getopt_long(argc, argv, "hvf:l:o:z:A:q:x:a:C:Q:m:p:g:N:0:ru:",
         long_options, 0)) != -1) {
     fprintf(stderr,"%c\n",option);
     switch (option) {
@@ -379,6 +379,9 @@ void getarg_trimFilterDS(int argc, char **argv) {
            par_TF.ad.ad2_fa);
     fprintf(stderr, "   Number of mismatches: %d\n", par_TF.ad.mismatches);
     fprintf(stderr, "   Score threshold: %f\n", par_TF.ad.threshold);
+    if (par_TF.adapter_rm){
+       fprintf(stderr, "   Removing adapter reads\n");
+    }
   }
   // handling minQ
   if (par_TF.minQ == 0) {
@@ -560,7 +563,7 @@ void getarg_trimFilterDS(int argc, char **argv) {
   else {
      fprintf(stderr, "OPTION_ERROR: Invalid --trimN option.\n");
      fprintf(stderr, "              Possible options: NO, ALL, ENDS,");
-     fprintf(stderr, " STRIP.\n");
+     fprintf(stderr, " STRIP, FRAC.\n");
      fprintf(stderr, "              Revise your options with --help.\n");
      fprintf(stderr, "Exiting program\n");
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
