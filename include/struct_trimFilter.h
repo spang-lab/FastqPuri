@@ -74,6 +74,8 @@ typedef struct _iparam_trimFilter {
   int globleft;  /**< number of bases globally trimming from the left */
   int globright; /**< number of bases globally trimming from the right */
   int percent;   /**< percentage of lowQ bases allowed in a read */
+  int uncertain; /**< percentage of N bases allowed in a read */
+  bool adapter_rm; /**< true if the adapter matching sequences should be dropped instead of trimmed */
 } Iparam_trimFilter;
 
 void free_parTF(Iparam_trimFilter *ptr_parTF);

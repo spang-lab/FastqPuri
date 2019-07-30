@@ -191,8 +191,12 @@ static int alignDS_uint64(Fq_read *r1, Fq_read *r2, int zeroQ) {
     pos1--;
   }
   if (score > par_TF.ad.threshold) {
-     return ((Lnew = r2->L - r1->L_ad + pos1 - pos2) < par_TF.minL) ?
-             0 : QtrimDS(r1, r2, Lnew);
+    if (par_TF.adapter_rm){
+      return 0;
+    }else{
+      return ((Lnew = r2->L - r1->L_ad + pos1 - pos2) < par_TF.minL) ?
+                  0 : QtrimDS(r1, r2, Lnew);
+    }
   }
   // Controlar bytes al inicio del read
   // loop done on the adapter sequence  without considering the first
@@ -219,8 +223,12 @@ static int alignDS_uint64(Fq_read *r1, Fq_read *r2, int zeroQ) {
     pos2++;
   }
   if (score > par_TF.ad.threshold) {
-      return ( (Lnew = r2->L - r1->L_ad + pos1 - pos2) < par_TF.minL ? 0 :
+     if (par_TF.adapter_rm){
+      return 0;
+     }else{
+        return ( (Lnew = r2->L - r1->L_ad + pos1 - pos2) < par_TF.minL ? 0 :
            QtrimDS(r1, r2, Lnew));
+     }  
   }
   return 1;
 }
