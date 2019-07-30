@@ -62,6 +62,30 @@ static int no_N(Fq_read *seq) {
 }
 
 /**
+*
+* @brief checks if a sequence contains non standard base callings greater than the threshold (N's)
+* @returns 0 if percentage less than threshold, 1 if more.
+*
+* This function checks if any of the base callings in a
+* given fastq read is different from A, C, G, T. Basically,
+* any char different from the former ones is classified as N.
+* */
+static int Nuncertain(Fq_read *seq, int threshold) {
+  int i;
+  char Lmer[seq -> L];
+  memcpy(Lmer, seq -> line2, seq -> L);
+  Lmer_sLmer(Lmer, seq -> L);
+  float ncount=0;
+  for (i = 0; i < seq -> L; i++) {
+    if (Lmer[i] >= Nencode) {
+      ncount++;
+    }
+  }
+  ncount=ncount*100/(float)seq -> L;
+  return (ncount<=threshold);
+}
+
+/**
  * @brief Finds the largest Nfree sub-seq and keeps it if larger than minL
  * @param seq fastq read
  * @param minL minimum accepted trimmed length
@@ -661,12 +685,15 @@ int trim_adapter(Fq_read *seq, Ad_seq *adap_list) {
  * - STRIP(3): finds the longest N-free subsequence and trims it if
  *             it is at least minL nucleotides long (2 if trimming, 1 if
  *             no N's are found), rejects it otherwise (0).
+ *  -ENDSFRAC(4):   removes the reads if the uncertainty is above a threshold\n"
+   "                       (-u), default to 10 percent\n"
  * */
 int trim_sequenceN(Fq_read *seq ) {
   return (par_TF.trimN == NO)? 1:
           (par_TF.trimN == ALL)? no_N(seq):
           (par_TF.trimN == ENDS)? Ntrim_ends(seq, par_TF.minL):
-          (par_TF.trimN == STRIP)? Nfree_Lmer(seq, par_TF.minL): -1;
+          (par_TF.trimN == STRIP)? Nfree_Lmer(seq, par_TF.minL):
+          (par_TF.trimN == ENDSFRAC)? Nuncertain(seq, par_TF.uncertain): -1;
 }
 
 /**
