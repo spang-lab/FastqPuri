@@ -52,7 +52,7 @@ void printHelpDialog_trimFilter() {
    "                  --trimQ [NO|ALL|ENDS|FRAC|ENDSFRAC|GLOBAL]\n"
    "                  --minL [MINL]  --minQ [MINQ] --zeroQ [ZEROQ]\n"
    "                  (--percent [percent] | --global [n1:n2])\n"
-   "                  --trimN [NO|ALL|ENDS|STRIP]  \n"
+   "                  --trimN [NO|ALL|ENDS|STRIP|FRAC]  \n"
    "Reads in a fq file (gz, bz2, z formats also accepted) and removes: \n"
    "  * low quality reads,\n"
    "  * reads containing N base callings,\n"
@@ -117,6 +117,8 @@ void printHelpDialog_trimFilter() {
    "               ALL:    removes all reads containing N's,\n"
    "               ENDS:   trims ends of reads with N's,\n"
    "               STRIPS: looks for the largest substring with no N's.\n"
+   "               FRAC:   removes the reads if the uncertainty is above a threshold\n"
+   "                       (-u), default to 10 percent\n"
    "               All reads are discarded if they are shorter than the\n"
    "               sequence length specified by -m/--minL.\n";
   fprintf(stderr, "%s", dialog);
@@ -261,8 +263,8 @@ void getarg_trimFilter(int argc, char **argv) {
          break;
       case 'Q':
          par_TF.trimQ = (!strncmp(optarg, "NO", method_len)) ? NO :
-            (!strncmp(optarg, "FRAC", method_len)) ? FRAC :
             (!strncmp(optarg, "ALL", method_len)) ? ALL :
+            (!strncmp(optarg, "FRAC", method_len)) ? FRAC :
             (!strncmp(optarg, "ENDS", method_len)) ? ENDS :
             (!strncmp(optarg, "ENDSFRAC", method_len)) ? ENDSFRAC :
             (!strncmp(optarg, "GLOBAL", method_len)) ? GLOBAL : ERROR;
@@ -289,7 +291,8 @@ void getarg_trimFilter(int argc, char **argv) {
          par_TF.trimN = (!strncmp(optarg, "NO", method_len)) ? NO :
             (!strncmp(optarg, "ALL", method_len)) ? ALL :
             (!strncmp(optarg, "ENDS", method_len)) ? ENDS :
-            (!strncmp(optarg, "STRIP", method_len)) ? STRIP : ERROR;
+            (!strncmp(optarg, "STRIP", method_len)) ? STRIP : 
+            (!strncmp(optarg, "FRAC", method_len)) ? FRAC : ERROR;
          break;
       default:
         fprintf(stderr, "%s: option `-%c' is invalid: ignored\n",
@@ -464,7 +467,7 @@ void getarg_trimFilter(int argc, char **argv) {
     fprintf(stderr, "- Trimming globally %d from left and %d from right\n", par_TF.globleft, par_TF.globright);
   } else {
       fprintf(stderr, "OPTION_ERROR: Invalid --trimQ option.\n");
-      fprintf(stderr, "              Possible options: NO, ALL, ENDS, ENDSFRAC, GLOBAL.\n");
+      fprintf(stderr, "              Possible options: NO, ALL, ENDS, FRAC, ENDSFRAC, GLOBAL.\n");
       fprintf(stderr, "              Revise your options with --help.\n");
       fprintf(stderr, "Exiting program\n");
       fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
@@ -496,9 +499,14 @@ void getarg_trimFilter(int argc, char **argv) {
      fprintf(stderr, "- Trimming reads with N's, method: ENDS\n");
   } else if (par_TF.trimN == STRIP) {
      fprintf(stderr, "- Trimming reads with N's, method: STRIP\n");
+  } else if (par_TF.trimN == FRAC) {
+     fprintf(stderr, "- Removing reads with N's, method: FRAC\n");
+     if (par_TF.uncertain == 0) {
+      par_TF.uncertain = 10;
+    }
   } else {
      fprintf(stderr, "OPTION_ERROR: Invalid --trimN option.\n");
-     fprintf(stderr, "              Possible options: NO, ALL, ENDS, STRIP.\n");
+     fprintf(stderr, "              Possible options: NO, ALL, ENDS, STRIP, FRAC.\n");
      fprintf(stderr, "              Revise your options with --help.\n");
      fprintf(stderr, "Exiting program\n");
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);

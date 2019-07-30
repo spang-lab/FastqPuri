@@ -685,15 +685,15 @@ int trim_adapter(Fq_read *seq, Ad_seq *adap_list) {
  * - STRIP(3): finds the longest N-free subsequence and trims it if
  *             it is at least minL nucleotides long (2 if trimming, 1 if
  *             no N's are found), rejects it otherwise (0).
- *  -ENDSFRAC(4):   removes the reads if the uncertainty is above a threshold\n"
-   "                       (-u), default to 10 percent\n"
+ *  - FRAC(4):   removes the reads if the uncertainty is above a threshold\
+                 (-u), default to 10 percent
  * */
 int trim_sequenceN(Fq_read *seq ) {
   return (par_TF.trimN == NO)? 1:
           (par_TF.trimN == ALL)? no_N(seq):
           (par_TF.trimN == ENDS)? Ntrim_ends(seq, par_TF.minL):
           (par_TF.trimN == STRIP)? Nfree_Lmer(seq, par_TF.minL):
-          (par_TF.trimN == ENDSFRAC)? Nuncertain(seq, par_TF.uncertain): -1;
+          (par_TF.trimN == FRAC)? Nuncertain(seq, par_TF.uncertain): -1;
 }
 
 /**

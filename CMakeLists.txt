@@ -76,7 +76,6 @@ endif(RSCRIPT_EXEC AND HAVE_PANDOC)
 #---------------------------------------------------------------
 set(READ_MAXLEN 400 CACHE STRING "Illumina maximum read length")
 message("-- Setting Illumina maximum read length: READ_MAXLEN ${READ_MAXLEN}")
-message(${INSTALL_R_DIR})
 set(RMD_QUALITY_REPORT ${INSTALL_R_DIR}/R/quality_report.Rmd)
 message("-- Setting Rmd quality report file: ${RMD_QUALITY_REPORT}")
 

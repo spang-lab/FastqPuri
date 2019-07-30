@@ -51,7 +51,7 @@ void printHelpDialog_trimFilterDS() {
    "                  --trimQ [NO|ALL|ENDS|FRAC|ENDSFRAC|GLOBAL]\n"
    "                  --minL [MINL]  --minQ [MINQ]  --zeroQ [ZEROQ]\n"
    "                  (--percent [percent] | --global [n1:n2])\n"
-   "                  --trimN [NO|ALL|ENDS|STRIP]  \n"
+   "                  --trimN [NO|ALL|ENDS|ENDSFRAC|STRIP]  \n"
    "Reads in paired end fq files (gz, bz2, z formats also accepted) "
    "and removes:\n"
    "  * low quality reads,\n"
@@ -321,7 +321,7 @@ void getarg_trimFilterDS(int argc, char **argv) {
             (!strncmp(optarg, "ALL", method_len)) ? ALL :
             (!strncmp(optarg, "ENDS", method_len)) ? ENDS :
             (!strncmp(optarg, "STRIP", method_len)) ? STRIP : 
-            (!strncmp(optarg, "FRAC", method_len)) ? ENDSFRAC : ERROR;
+            (!strncmp(optarg, "FRAC", method_len)) ? FRAC : ERROR;
          break;
       default:
         fprintf(stderr, "%s: option `-%c' is invalid: ignored\n",
@@ -498,6 +498,7 @@ void getarg_trimFilterDS(int argc, char **argv) {
       par_TF.percent = 5;
     }
     par_TF.nlowQ = par_TF.L*par_TF.percent/100+1;
+    fprintf(stderr, "- Trimming low Q bases method: FRAC\n");
     fprintf(stderr, "- Read discarded if containing more than %d %c",
            par_TF.percent, '%');
     fprintf(stderr, "lowQ bases (< %d).\n", par_TF.nlowQ);
@@ -516,8 +517,7 @@ void getarg_trimFilterDS(int argc, char **argv) {
            par_TF.globleft, par_TF.globright);
   } else {
       fprintf(stderr, "OPTION_ERROR: Invalid --trimQ option.\n");
-      fprintf(stderr, "              Possible options: NO, ALL, ENDS,");
-      fprintf(stderr, " ENDSFRAC, GLOBAL.\n");
+      fprintf(stderr, "              Possible options: NO, ALL, ENDS, FRAC, ENDSFRAC, GLOBAL.\n");
       fprintf(stderr, "              Revise your options with --help.\n");
       fprintf(stderr, "Exiting program\n");
       fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
@@ -554,16 +554,14 @@ void getarg_trimFilterDS(int argc, char **argv) {
      fprintf(stderr, "- Trimming reads with N's, method: ENDS\n");
   } else if (par_TF.trimN == STRIP) {
      fprintf(stderr, "- Trimming reads with N's, method: STRIP\n");
-  } else if (par_TF.trimN == ENDSFRAC) {
-     fprintf(stderr, "- Removing reads with N's, method: FRAC\n");
-     if (par_TF.uncertain == 0) {
+  } else if (par_TF.trimN == FRAC) {
+    fprintf(stderr, "- Removing reads with N's, method: FRAC\n");
+    if (par_TF.uncertain == 0) {
       par_TF.uncertain = 10;
     }
-  } 
-  else {
+  } else {
      fprintf(stderr, "OPTION_ERROR: Invalid --trimN option.\n");
-     fprintf(stderr, "              Possible options: NO, ALL, ENDS,");
-     fprintf(stderr, " STRIP, FRAC.\n");
+     fprintf(stderr, "              Possible options: NO, ALL, ENDS, STRIP, FRAC.\n");
      fprintf(stderr, "              Revise your options with --help.\n");
      fprintf(stderr, "Exiting program\n");
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
