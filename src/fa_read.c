@@ -142,7 +142,7 @@ static uint64_t sweep_fa(char *filename, Fa_data *ptr_fa) {
   int offset = 0;
   char *buffer = (char *)malloc(sizeof(char)*(B_LEN));
   int nl_pos = 0;
-  int nc = 0;
+  uint64_t nc = 0;
   int newlen = 0;
   while ((newlen = fread(buffer + offset, 1, B_LEN - offset, fa_in)) > 0) {
     int  j = 0;
@@ -160,8 +160,9 @@ static uint64_t sweep_fa(char *filename, Fa_data *ptr_fa) {
        // ignore line and annotate number of characters of the entry.
        case '>':
        case ';':
-           if (ptr_fa -> nlines != 0)
+           if (ptr_fa -> nlines != 0 && nc != 0) {
                ptr_fa -> entrylen[ptr_fa -> nentries++] = nc;
+           }
            while (buffer[j] != '\n' &&  j < newlen)
              j++;
            nc = 0;
@@ -176,8 +177,10 @@ static uint64_t sweep_fa(char *filename, Fa_data *ptr_fa) {
     }  // end of while (j < newlen)
     offset = newlen - nl_pos;
     if (offset > 0) {
-         memcpy(buffer, buffer + nl_pos, offset);
-         nc -= offset;
+      memcpy(buffer, buffer + nl_pos, offset);
+      if (nc != 0) {
+        nc -= offset;
+      }
     }
     nl_pos = 0;
   }
@@ -223,7 +226,7 @@ int read_fasta(char *filename, Fa_data * ptr_fa) {
   fflush(stderr);
   int i;
   for (i = 0; i < ptr_fa -> nentries ; i++)
-     fprintf(stderr, "%" PRIu64, ptr_fa -> entrylen[i]);
+     fprintf(stderr, " %" PRIu64, ptr_fa -> entrylen[i]);
   fprintf(stderr, "].\n");
   FILE *fa_in;
   fa_in = fopen_gen(filename, "r");
