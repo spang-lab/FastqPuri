@@ -179,7 +179,7 @@ void getarg_makeBloom(int argc, char **argv) {
       (fabs(par_MB.falsePosRate) < ZERO_POS_RATE)) {
        fprintf(stderr, "Default values: falsePosRate = 0.05\n");
        fprintf(stderr, "Other parameters inferred from it\n");
-       par_MB.falsePosRate = KMER_LEN;
+       par_MB.falsePosRate = 0.05;
     } else if (par_MB.hashNum && !par_MB.bfsizeBits &&
               (fabs(par_MB.falsePosRate) < ZERO_POS_RATE)) {
        fprintf(stderr, "Input parameter: hashNum = %d\n", par_MB.hashNum);
