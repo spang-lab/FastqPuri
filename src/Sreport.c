@@ -73,10 +73,6 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
   }
-#else
-  fprintf(stderr, "WARNING: html reports are NOT being generated.\n");
-  fprintf(stderr, "         Dependencies not fulfilled.\n");
-#endif
   // Removing tmp directory
   free(command);
   char rm_cmd[MAX_FILENAME];
@@ -86,6 +82,10 @@ int main(int argc, char *argv[]) {
     fprintf(stderr, "Exiting program.\n");
     exit(EXIT_FAILURE);
   }
+#else
+  fprintf(stderr, "WARNING: html reports are NOT being generated.\n");
+  fprintf(stderr, "         Dependencies not fulfilled.\n");
+#endif
 
 
   // Obtaining elapsed time
