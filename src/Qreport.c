@@ -138,33 +138,33 @@ int main(int argc, char *argv[]) {
   //   print_info(res);
   //
 
-//#ifdef HAVE_RPKG
-//  fprintf(stderr, "- Creating html output in file: %s\n", par_QR.outputfilehtml);
-//  char *new_dir;
-//  char *command = command_Qreport(&new_dir);
-//  fprintf(stderr, "- Running command: %s \n", command);
-//  int status;
-//  if ((status = system(command)) != 0) {
-//      fprintf(stderr, "Something went wrong when executing R script.\n");
-//      fprintf(stderr, "Most probably, a html file will not be generated.\n");
-//      fprintf(stderr, "Exiting program.\n");
-//      exit(EXIT_FAILURE);
-//  }
-//  free(command);
-//
-//  // Removing tmp directory
-//  char rm_cmd[MAX_FILENAME];
-//  snprintf(rm_cmd, MAX_FILENAME, "rm -fr %s", new_dir);
-//  if ((status = system(rm_cmd)) != 0) {
-//      fprintf(stderr, "Something went wrong when trying to delete temporary folder %s.\n", new_dir);
-//      fprintf(stderr, "Exiting program.\n");
-//      exit(EXIT_FAILURE);
-//  }
-//
-//#else
+#ifdef HAVE_RPKG
+  fprintf(stderr, "- Creating html output in file: %s\n", par_QR.outputfilehtml);
+  char *new_dir;
+  char *command = command_Qreport(&new_dir);
+  fprintf(stderr, "- Running command: %s \n", command);
+  int status;
+  if ((status = system(command)) != 0) {
+      fprintf(stderr, "Something went wrong when executing R script.\n");
+      fprintf(stderr, "Most probably, a html file will not be generated.\n");
+      fprintf(stderr, "Exiting program.\n");
+      exit(EXIT_FAILURE);
+  }
+  free(command);
+
+  // Removing tmp directory
+  char rm_cmd[MAX_FILENAME];
+  snprintf(rm_cmd, MAX_FILENAME, "rm -fr %s", new_dir);
+  if ((status = system(rm_cmd)) != 0) {
+      fprintf(stderr, "Something went wrong when trying to delete temporary folder %s.\n", new_dir);
+      fprintf(stderr, "Exiting program.\n");
+      exit(EXIT_FAILURE);
+  }
+
+#else
   fprintf(stderr, "WARNING: html reports are NOT being generated.\n");
   fprintf(stderr, "         Dependencies not fulfilled.\n");
-//#endif
+#endif
 
   free(buffer);
   // Obtaining elapsed time
