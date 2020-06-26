@@ -1,10 +1,10 @@
 FastqPuri, an fq quality control and filter tool 
 =========
 
-Software and source code of `FastqPuri`. It creates quality 
-reports of `fastq` files and filters them removing low quality 
-reads, reads containing too many N's or contamination reads 
-(unwanted rRNA reads, impurities coming from another organism, ...).
+Software and source code of `FastqPuri`. It creates quality reports of
+`fastq` files and filters them removing low quality reads, reads
+containing too many N's or contamination reads (unwanted rRNA reads,
+impurities coming from another organism, ...).
 
 
 ## Installation
@@ -46,7 +46,7 @@ using the option -D followed by the variable name. These variables are:
 - (default 400),
 
 The executables will be created in the folder `bin` and installed in `/usr/local/bin`. 
-`R` scripts will be installed in `usr/local/share/FastqPuri/R`. 
+`R` scripts will be installed in `/usr/local/share/FastqPuri/R`. 
 
 **WARNING:** do not move the executables that depend on `R` scripts, 
 anywhere else, unless you also move the corresponding `R` scripts respecting
@@ -59,10 +59,10 @@ the local folder structure.
 * `Sreport`: creates a summary report in html format on a set of samples, 
    regarding either the original files or the filtering process
    (see `README_Sreport.md`),
-* `makeBloom`: creates a  bloom filter from a fata file of a certain size,
+* `makeBloom`: creates a  bloom filter from a fasta file of a certain size,
    and stores it in a file (see `README_makeBloom.md`)
 * `makeTree`: creates a tree of a certain depth from a fasta file and stores
- it in a file (see `README_makeTree.md`),
+   it in a file (see `README_makeTree.md`),
 * `trimFilter`: performs the filtering process for single-end data 
    (see `README_trimFilter.md`).
 * `trimFilterPE`: performs the filtering process for double stranded data 
@@ -79,7 +79,8 @@ An exemplar work flow could be:
 
 ## Documentation of the code
 
-A Doxygen documentation of the code is available: 
+A Doxygen documentation of the code is available:
+
 - `html` version under the folder `html` (open `index.html` with a browser).
 - `pdf` version: `latex/refman.pdf`
 
