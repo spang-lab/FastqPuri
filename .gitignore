@@ -8,3 +8,4 @@ bin/
 build/
 obj/
 Makefile_deprecated
+examples/testdir

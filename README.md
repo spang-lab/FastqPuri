@@ -86,9 +86,9 @@ A Doxygen documentation of the code is available:
 
 ## Use a docker container to run FastqPuri
 
-The file Dockerfile documents the exact linux installation we used for
-testing. If you have a docker installation ready on your machine, you
-may want to use a docker container for easy installation and
+The file 'Dockerfile' documents the exact linux installation we used
+for testing. If you have a docker installation ready on your machine,
+you may want to use a docker container for easy installation and
 capsulated usage of FastqPuri. After cloning this project from github
 and change to its main directory, you may install a docker container
 as follows:

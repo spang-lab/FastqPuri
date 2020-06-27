@@ -1,7 +1,7 @@
 # Dockerfile for FastqPuri
 
 # Generate minimal linux system containing the needed packages>
-FROM debian:stretch
+FROM debian:buster
 RUN apt-get update -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y r-base make cmake pandoc git vim
 RUN Rscript -e 'install.packages(c("rmarkdown", "pheatmap"), repos="https://cran.uni-muenster.de")'
