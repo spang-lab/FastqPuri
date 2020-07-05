@@ -32,9 +32,14 @@
 #include <string.h>
 #include <unistd.h>
 #include <libgen.h>
+#include <limits.h>
 #include "str_manip.h"
 #include "init_Sreport.h"
 #include "config.h"
+
+#ifdef __APPLE__
+    #include <mach-o/dyld.h>
+#endif
 
 extern Iparam_Sreport par_SR;
 
@@ -131,8 +136,12 @@ void getarg_Sreport(int argc, char **argv) {
      fprintf(stderr, "File: %s, line: %d\n", __FILE__, __LINE__);
      exit(EXIT_FAILURE);
   } else {
+#ifdef __APPLE__
+    uint32_t bufsize = sizeof(par_SR.pBuf);
+    _NSGetExecutablePath(par_SR.pBuf, &bufsize);
+#else
     // find the calling program
-    char szTmp[32];
+    char szTmp[MAX_FILENAME];
     size_t len = sizeof(par_SR.pBuf);
     sprintf(szTmp, "/proc/%d/exe", getpid());
     int bytes = readlink(szTmp, par_SR.pBuf, len);
@@ -141,9 +150,10 @@ void getarg_Sreport(int argc, char **argv) {
       fprintf(stderr, "Unexpected error when searching for call directoy!\n");
       exit(1);
     }
-    dirname(par_SR.pBuf); // remove Sreport
+#endif
+    strcpy(par_SR.pBuf, dirname(par_SR.pBuf)); // remove Sreport
     if (strcmp(par_SR.pBuf, INSTALL_DIR) != 0) {
-      dirname(par_SR.pBuf); // remove bin
+      strcpy(par_SR.pBuf, dirname(par_SR.pBuf)); // remove bin
       strcat(par_SR.pBuf, "/R/");
       strcat(par_SR.pBuf, basename(par_SR.Rmd_file));
       par_SR.Rmd_file = par_SR.pBuf;

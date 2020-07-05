@@ -32,11 +32,16 @@
 #include <libgen.h>
 #include <unistd.h>
 #include <string.h>
+#include <limits.h>
 #include "Rcommand_Qreport.h"
 #include "init_Qreport.h"
 #include "copy_file.h"
 #include "defines.h"
 #include "config.h"
+
+#ifdef __APPLE__
+  #include <mach-o/dyld.h>
+#endif
 
 extern Iparam_Qreport par_QR; /**< input parameters Qreport*/
 
@@ -52,8 +57,13 @@ char *command_Qreport(char ** new_dir_ptr) {
       perror("getcwd() error");
 #ifdef HAVE_RPKG
   // find the calling program to deduce where to find Rmd-files
-  char szTmp[32]; char pBuf[MAX_FILENAME];
+  char szTmp[MAX_FILENAME];
+  char pBuf[MAX_FILENAME];
   size_t len = sizeof(pBuf);
+#ifdef __APPLE__
+  uint32_t bufsize = sizeof(pBuf);
+  _NSGetExecutablePath(pBuf, &bufsize);
+#else
   sprintf(szTmp, "/proc/%d/exe", getpid());
   int bytes = readlink(szTmp, pBuf, len);
   if ((size_t)bytes > len-1) bytes = len-1;
@@ -61,6 +71,7 @@ char *command_Qreport(char ** new_dir_ptr) {
     fprintf(stderr, "Unexpected error when searching for call directoy!\n");
     exit(1);
   }
+#endif
   char *old_dir = dirname(pBuf);
   if (strcmp(old_dir, INSTALL_DIR) != 0) {
     old_dir = dirname(old_dir);
