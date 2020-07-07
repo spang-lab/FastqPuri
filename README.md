@@ -98,15 +98,8 @@ $ docker build -t fastqpuri .
 ```
 
 This will create a container based on the debian linux distribution
-covering all dependencies including R and pandoc. Alternativly, you
-can also pull a pre-built image from the docker hub as follows:
-
-```
-$ docker pull clottaz/fastqpuri
-```
-
-As soon as such a container is installed, you can use it either
-interactively:
+covering all dependencies including R and pandoc.  As soon as such a
+container is installed, you can use it either interactively:
 
 ```
 $ docker run -v $PWD:/tmp -it fastqpuri
@@ -121,6 +114,18 @@ $ docker run -v $PWD:/tmp fastqpuri ./pipeline.sh
 Note that this call generates results in the docker container
 directory `/tmp` but also keeps them after closing the docker container
 locally where the container was started.
+
+Instead of generating the docker container yourself with 'docker
+build', you can also pull a pre-built image from the docker hub as
+follows:
+
+```
+$ docker pull clottaz/fastqpuri
+```
+
+You can run such a pre-built image with 'docker run' by indicating the
+images as 'clottaz/fastqpuri'.
+
 
 ## Use a singularity container to run FastqPuri
 
