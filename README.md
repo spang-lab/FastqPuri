@@ -129,13 +129,11 @@ images as 'clottaz/fastqpuri'.
 
 ## Use a singularity container to run FastqPuri
 
-Alternativly, we also provide a singularity container deduced from the
-docker implementation for container usage. If you have singularity
-installed on your machine, you can call a singularity container for
-FastqPuri as follows:
+Alternativly, if you have singularity installed on your machine, you
+can call our docker container for FastqPuri as follows:
 
 ```
-$ singularity shell --bind .:/tmp shub://jengelmann/FastqPuri
+$ singularity shell --bind .:/tmp docker://clottaz/fastqpuri
 ```
 
 This call opens a shell within the container.
@@ -152,7 +150,7 @@ Alternatively, in order to execute a script from the current
 directory, call singularity as follows:
 
 ```
-$ singularity run --bind .:/tmp shub://jengelmann/FastqPuri /tmp/pipeline.sh
+$ singularity run --bind .:/tmp docker://clottaz/fastqpuri /tmp/pipeline.sh
 ```
 
 Note that `/tmp/pipeline.sh` relates to the call within the
@@ -164,14 +162,14 @@ If you want to invoke a function of FastqPuri, you can use the 'exec'
 command like so:
 
 ```
-singularity exec shub://jengelmann/FastqPuri Qreport -h
+singularity exec docker://clottaz/fastqpuri Qreport -h
 ```
 
 or invoke a script located in your home directory (assuming that
 run_ex_TREE.sh is located in your home directory):
 
 ```
-$ singularity exec shub://jengelmann/FastqPuri $HOME/run_ex_TREE.sh
+$ singularity exec docker://clottaz/fastqpuri $HOME/run_ex_TREE.sh
 ```
 
 Singularity documentation can be found here: [https://www.sylabs.io/docs/](https://www.sylabs.io/docs/)
